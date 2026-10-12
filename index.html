@@ -469,6 +469,57 @@ img.mimg.pix{image-rendering:pixelated}
   .bld-show{min-height:0}
 }
 @media (prefers-reduced-motion: reduce){ .bld-big.dance{animation:none} }
+/* Create with Claude: the panel that writes a prompt for Claude, in the builder's place. */
+.cw-entry{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.cw-entry small{font-size:calc(12px*var(--fs));color:var(--muted);line-height:1.4}
+.cw-btn{display:inline-flex;align-items:center;gap:7px;padding:7px 12px}
+.cw-btn svg,.cw-copy .btn svg{flex:none}
+.cw-btn svg{color:var(--gold)}
+.cw-body{flex:1;min-height:0;overflow:auto;padding:16px 20px}
+.cw-inner{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:14px;padding-bottom:24px}
+.cw-body textarea{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(15px*var(--fs));line-height:1.45;resize:vertical;min-height:64px}
+.cw-body textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.cw-lab{font-size:calc(13px*var(--fs));font-weight:600}
+.cw-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.cw-chips button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 11px;font-weight:600;font-size:calc(12.5px*var(--fs));font-family:inherit;cursor:pointer}
+.cw-chips button:hover:not([disabled]){border-color:var(--green2)}
+.cw-chips button.on{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.cw-chips button.on::after{content:" \2715";font-weight:700;opacity:.7}
+.cw-chips button[disabled]{opacity:.45;cursor:default}
+.cw-chips button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cw-chips .lab{align-self:center;font-size:calc(11px*var(--fs));font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+.cw-own{display:flex;gap:6px;margin-top:8px;max-width:360px}
+.cw-own input{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;padding:6px 10px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(14px*var(--fs))}
+.cw-own input:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.cw-own .btn{padding:6px 12px}
+.cw-more{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;margin-top:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 11px;font-weight:600;font-size:calc(13.5px*var(--fs));font-family:inherit;cursor:pointer;text-align:left}
+.cw-more:focus-visible,.cw-fold:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cw-more .cw-count{color:var(--muted);font-weight:500;font-size:calc(12.5px*var(--fs))}
+.cw-more .cw-count::after{content:" \25BE"}
+.cw-more[aria-expanded="true"] .cw-count::after{content:" \25B4"}
+.cw-poses{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.cw-poses[hidden]{display:none}
+.cw-pose{display:grid;grid-template-columns:150px 1fr;gap:8px;align-items:center}
+.cw-pose label b{font-size:calc(13.5px*var(--fs));display:block}
+.cw-pose label small{display:block;font-size:calc(11px*var(--fs));color:var(--muted);line-height:1.3}
+.cw-pose input{border:1px solid var(--line);border-radius:8px;padding:6px 9px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(14px*var(--fs));min-width:0}
+.cw-pose input:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.cw-prompt{border:1px solid var(--line);border-radius:10px;background:var(--field);padding:12px 14px}
+#cw-ptext{white-space:pre-wrap;overflow-wrap:anywhere;font-size:calc(14px*var(--fs));line-height:1.5;color:var(--ink)}
+#cw-ptext .fill{color:var(--green);font-weight:600}
+.cw-fold{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:12px;border:1px dashed var(--line);background:transparent;color:var(--muted);border-radius:9px;padding:7px 10px;font-weight:600;font-size:calc(12.5px*var(--fs));font-family:inherit;text-align:left;cursor:pointer}
+.cw-fold b{color:var(--green);flex:none}
+.cw-spec{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);font-size:calc(13px*var(--fs));line-height:1.5;margin-top:10px}
+.cw-spec[hidden]{display:none}
+.cw-copy{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.cw-copy .btn{display:inline-flex;align-items:center;gap:7px}
+.cw-copy small{flex:1;min-width:220px;font-size:calc(12.5px*var(--fs));color:var(--muted);line-height:1.45}
+@media (max-width:760px){
+  .cw-body{padding:12px}
+  .bld-head .cw-back{order:4;margin-left:auto}
+  .bld-head .mclose{order:5}
+  .cw-pose{grid-template-columns:1fr;gap:3px}
+}
 .mprev:empty{display:none}
 .mprev svg{display:block;width:100%;height:100%}
 .orow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
@@ -848,7 +899,7 @@ img.mimg.pix{image-rendering:pixelated}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.7.2";
+var WIZARD_VERSION = "0.7.3";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -6090,7 +6141,7 @@ function setupCompanions(){
   if(sh && typeof sh === "object") CMP.shown = sh;
   if(!fsSupported()){ CMP.ready = true; renderOptions(); releaseGreet(); return Promise.resolve(); }
   var vs = document.querySelector("#dropveil small");
-  if(vs) vs.textContent = "A round, a saved file, answers, a backup, or a companion's folder";
+  if(vs) vs.textContent = "A round, a saved file, answers, a backup, or a companion's folder or zip";
   document.addEventListener("visibilitychange", function(){ if(!document.hidden) cmpWake(); });
   window.addEventListener("focus", cmpWake);
   return handleGet("cdir").then(function(h){
@@ -6262,23 +6313,27 @@ function addCompanion(src){
         if(!r.comp){ toast(false, dir.name + " can't be added: " + r.problem + "."); return; }
         cand = r.comp;
         var c = cand, key = cmpKey(c.name), have = own(CMP.list, key) ? CMP.list[key] : null;
+        /* The builder the question warns about, if it's open: it keeps still while the copy runs, and only it is closed. */
+        var bst = bldOpen() ? BLD : null;
+        var unlock = function(){ if(bst && BLD === bst && bst.saving){ bst.saving = false; bBusy(false); bHead(); } };
         var moments = Object.keys(c.lines).length;
         var ask;
         if(have){
           ask = confirmBox({ title: "Replace " + c.name + "?", nodefault: true,
-            message: "Your companions folder already has " + c.name + ", in the folder " + have.folder + ". Replace it with the one you picked? The new one is copied in, then the old folder is deleted.",
+            message: "Your companions folder already has " + c.name + ", in the folder " + have.folder + ". Replace it with the one " + (dir.zipName ? "in " + dir.zipName : "you picked") + "? The new one is copied in, then the old folder is deleted." + (bldOpen() ? " It also closes the builder, without saving what's in it." : ""),
             path: have.folder, ok: "Replace", cancel: "Keep mine" });
         } else {
           var hello = (c.lines.opt_hello || [])[0] || "";
-          ask = confirmBox({ calm: true, icon: CMP_ICO, title: "Add " + c.name + " to your companions?",
+          ask = confirmBox({ calm: true, nodefault: !!bst, icon: CMP_ICO, title: "Add " + c.name + " to your companions?",
             fig: picHTML(c, "greet"), line: hello, strip: poseStrip(c),
-            message: c.name + (c.about ? ", " + c.about : "") + ", from the folder " + dir.name + ". " + plural(c.own, "pose", "poses") + " of its own"
+            message: c.name + (c.about ? ", " + c.about : "") + ", from " + (dir.zipName ? dir.zipName : "the folder " + dir.name) + ". " + plural(c.own, "pose", "poses") + " of its own"
               + (c.own < SLOTS.length ? ", the rest borrowed" : "") + (moments ? ", and lines for " + plural(moments, "moment", "moments") : ", and no lines, so it stays quiet")
-              + ". Add copies its folder into your companions folder and switches to it.",
+              + ". Add copies its folder into your companions folder and switches to it." + (bldOpen() ? " It also closes the builder, without saving what's in it." : ""),
             ok: "Add", cancel: "Not now" });
         }
         return ask.then(function(yes){
           if(!yes || moved("you were asked")) return;
+          if(bst && BLD === bst && !bst.saving){ bst.saving = true; bBusy(true); bHead(); } else bst = null;
           var target = "", made = "";
           /* Looks at the folder wait while the copy is written, so a half-written folder never raises a notice. */
           CMP.copying.push(root);
@@ -6297,14 +6352,18 @@ function addCompanion(src){
             }, function(){});
           }).then(function(){
             done();
-            if(moved(c.name + " was being copied")) return;
+            if(moved(c.name + " was being copied")){ unlock(); return; }
             if(SETTINGS.mascot === key) SETTINGS.mascotFolder = target;
             return scanCdir().then(function(){
-              if(own(CMP.list, key) && CMP.list[key].folder === target){ setOption("mascot", key); toast(true, c.name + (have ? " is replaced." : " joined your companions.")); }
-              else toast(false, c.name + " was copied, but it wasn't added. Its notice says why.");
-            });
+              if(own(CMP.list, key) && CMP.list[key].folder === target){
+                if(bst && BLD === bst){ bst.saving = false; bTeardown('#ctiles [data-v="' + key.replace(/"/g, '\\"') + '"]'); }
+                setOption("mascot", key); toast(true, c.name + (have ? " is replaced." : " joined your companions."));
+              }
+              else { unlock(); toast(false, c.name + " was copied, but it wasn't added. Its notice says why."); }
+            }, unlock);
           }, function(){
             done();
+            unlock();
             toast(false, c.name + " couldn't be copied into your companions folder." + (have ? " Your " + c.name + " is as it was." : ""));
             /* Only a folder this add made is tidied away. */
             return (made ? rmEntry(root, made).then(null, function(){}) : Promise.resolve()).then(function(){ if(CMP.handle === root) scanCdir(); });
@@ -6464,7 +6523,7 @@ var BLD = { open: false };
 function bNew(){
   return { open: true, mode: "new", key: "", folder: "", root: null, name: "", about: "", data: {}, pics: {}, orig: {}, lines: {}, sel: "idle",
     origBlob: {}, origSize: {}, cleared: {}, extra: 0, startFrom: "", copyTok: null, from: "", dirty: false, pickFor: "", focusLine: {},
-    playTimer: null, danceTimer: null, playing: false, drag: 0, saving: false };
+    playTimer: null, danceTimer: null, playing: false, drag: 0, saving: false, view: "build", cw: null };
 }
 function bPoseOf(n){ var m = /^([a-z0-9]+)\.(svg|png|webp|gif)$/i.exec(String(n || "")); return (m && SLOTS.indexOf(m[1].toLowerCase()) !== -1) ? m[1].toLowerCase() : ""; }
 function bTypeOf(n){ var m = /\.(svg|png|webp|gif)$/i.exec(String(n || "")); return m ? PICS[m[1].toLowerCase()] : ""; }
@@ -6557,7 +6616,8 @@ function bNameHTML(){
   if(BLD.mode === "new"){
     h += '<div class="bld-field"><label for="bld-start">Start from</label><select id="bld-start"><option value="">Nothing: a blank companion</option>'
       + visibleKeys().concat(SETTINGS.hidden).filter(function(k, i, a){ return a.indexOf(k) === i && own(ART, k); }).map(function(k){ return '<option value="' + esc(k) + '"' + (k === BLD.startFrom ? " selected" : "") + '>A copy of ' + esc(MSHORT[k]) + '</option>'; }).join("")
-      + '</select><small>A copy brings its pictures and lines in, to change as you like.</small></div>';
+      + '</select><small>A copy brings its pictures and lines in, to change as you like.</small></div>'
+      + '<div class="cw-entry"><button type="button" class="btn sec cw-btn" data-action="cw-open">' + cwSpark(16) + 'Create with Claude</button><small>Or describe it, and Claude draws the poses and writes the lines.</small></div>';
   }
   h += '<div class="bld-field"><label for="bld-name">Name</label><input id="bld-name" maxlength="30" autocomplete="off" spellcheck="false" value="' + esc(BLD.name) + '"><small id="bld-namenote"></small></div>'
     + '<div class="bld-field"><label for="bld-about">About</label><input id="bld-about" maxlength="60" autocomplete="off" placeholder="a few words, like the little dragon" value="' + esc(BLD.about) + '"><small id="bld-aboutnote"></small></div>';
@@ -6621,6 +6681,7 @@ function bStageHTML(){
 function bRender(){
   var el = document.getElementById("bld");
   if(!el) return;
+  if(BLD.view === "claude"){ cwRender(); return; }
   el.innerHTML = '<div class="bld-head">' + bHeadHTML() + '</div><div class="bld-body">'
     + '<div class="bld-col">' + bNameHTML() + '<section class="bld-card bld-posecard" id="bld-poses"><div class="dsec">Poses</div><p class="bld-note" style="margin:0 0 10px">Click a pose to choose its picture, or drop pictures on it. Only idle is needed; the rest borrow.</p><div class="bld-grid" id="bld-grid"></div>'
     + '<div class="bld-drop" id="bld-drop" hidden><b>Drop to fill the poses</b><small>Each picture named after a pose, like greet.png, fills it. One picture dropped on a pose fills that pose.</small></div></section></div>'
@@ -7072,9 +7133,10 @@ function bSaveEdit(st){
   });
 }
 function bBusy(on){
-  var b = document.querySelector("#bld .bld-body"), c = document.querySelector('#bld [data-action="b-close"]');
+  var b = document.querySelector("#bld .bld-body") || document.querySelector("#bld .cw-body"), c = document.querySelector('#bld [data-action="b-close"]'), k = document.querySelector('#bld [data-action="cw-back"]');
   if(b){ if(on) b.setAttribute("inert", ""); else b.removeAttribute("inert"); }
   if(c) c.disabled = !!on;
+  if(k) k.disabled = !!on;
 }
 function builderSave(){
   if(!BLD.open || BLD.saving) return;
@@ -7101,6 +7163,7 @@ function bWire(root){
     if(t.id === "bld-name"){ BLD.name = t.value; BLD.dirty = true; bHead(); }
     else if(t.id === "bld-about"){ BLD.about = t.value; BLD.dirty = true; bHead(); }
     else if(t.classList && t.classList.contains("bld-line")) bLineInput(t);
+    else if(t.id && t.id.indexOf("cw-") === 0) cwInput(t);
   });
   root.addEventListener("change", function(ev){
     var t = ev.target;
@@ -7118,6 +7181,7 @@ function bWire(root){
   root.addEventListener("paste", function(ev){ var t = ev.target; if(t.classList && t.classList.contains("bld-line")) bPaste(ev, t); });
   root.addEventListener("keydown", function(ev){
     var t = ev.target;
+    if(ev.key === "Enter" && t.id === "cw-moodin"){ ev.preventDefault(); cwMoodOwn(); return; }
     if(ev.key === "Enter" && t.classList && t.classList.contains("bld-line")){
       ev.preventDefault();
       var nx = document.getElementById("bl-" + t.getAttribute("data-m") + "-" + (+t.getAttribute("data-i") + 1));
@@ -7146,17 +7210,391 @@ function bWire(root){
       }
     }
     if(!pairs.length && dt.files) for(var j=0;j<dt.files.length;j++) pairs.push([null, dt.files[j]]);
-    var out = [];
+    var out = [], dirs = [];
     seqEach(pairs, function(pr){
       return Promise.resolve(pr[0]).then(null, function(){ return null; }).then(function(h){
-        if(h && h.kind === "directory") return readFiles(h).then(function(xs){ xs.forEach(function(x){ out.push(x.f); }); }, function(){});
+        if(h && h.kind === "directory"){ dirs.push(h); return readFiles(h).then(function(xs){ xs.forEach(function(x){ out.push(x.f); }); }, function(){}); }
         if(pr[1]) out.push(pr[1]);
       });
-    }).then(function(){ return bTakeFiles(out, target); });
+    }).then(function(){
+      if(!BLD.open || BLD.saving) return;
+      /* One zip alone is a companion's zip: it goes to the add question, which says the builder will close. */
+      if(out.length === 1 && !dirs.length && /\.zip$/i.test(out[0].name || "")){ zipDrop(out[0]); return; }
+      if(BLD.view === "claude"){
+        /* The panel has no poses to fill: a companion's folder goes to the add question, and pictures to the builder, in view. */
+        if(pairs.length === 1 && dirs.length === 1){ addCompanion(dirs[0]); return; }
+        cwBack();
+      }
+      return bTakeFiles(out, target);
+    });
   });
 }
 if(typeof window !== "undefined"){
   window.addEventListener("beforeunload", function(ev){ if(BLD.open && BLD.dirty){ ev.preventDefault(); ev.returnValue = ""; return ""; } });
+}
+
+
+/* ---------------------------------------------------------------- Create with Claude: a prompt for Claude from the builder */
+/* The panel takes the builder's place. Name and About are the builder's own; the rest lives in BLD.cw until the builder
+   closes. The prompt carries the user's description, then what this wizard checks a companion against, read from its own
+   data, so the folder Claude makes always fits the wizard that will load it. */
+var CW_SKILL = "0.6.2";
+var CW_MOODS = ["funny", "grumpy", "sarcastic", "cute", "cheerful", "dramatic", "proud", "sleepy", "wise", "shy", "chaotic", "polite"];
+var CW_STYLES = ["Flat and outlined", "Pixel art", "Soft and round", "Hand-drawn", "Sticker"];
+var CW_STYLE0 = "flat and outlined, like the wizard's own companions";
+var CW_POSEFOR = { idle: "most of the time", blink: "eyes shut, now and then", greet: "a round opens", pick: "an answer given", skip: "a question skipped",
+  milestone: "halfway, a batch done", warn: "answers about to clear", error: "a file didn't load", finish: "the round is done", yawn: "sleepy, before a nap",
+  sleep: "asleep", wake: "woken up", dance1: "first dance step", dance2: "second dance step" };
+/* The moments' "when" as Claude reads it: about the user, not "you". */
+var CW_WHEN = { back: "the user, who set their name, opens a round", stat_t: "a remark on answers the user wrote", word: "the user typed “wizard”",
+  opt_name: "the user typed their name in Options" };
+function cwSpark(n){ return '<svg viewBox="0 0 24 24" width="' + n + '" height="' + n + '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8Z"/></svg>'; }
+var CW_COPY = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>';
+function cwNew(){ return { title: "", look: "", style: "", poses: {}, sound: "", moods: [], lang: "English", details: false, spec: false }; }
+function cwT(s){ return String(s || "").trim().replace(/\s+/g, " "); }
+/* The name as the prompt gives it: one the wizard would refuse is left for Claude to pick, as the red note under it says. */
+function cwName(){ var n = bName(); return n && bNameProblem() ? "" : n; }
+function cwPoseCount(){ var n = 0; SLOTS.forEach(function(s){ if(cwT(BLD.cw.poses[s])) n++; }); return n; }
+
+/* The user's part of the prompt. With html, the values they typed are marked. */
+function cwUser(html){
+  var c = BLD.cw, w = html ? function(s){ return '<span class="fill">' + esc(s) + '</span>'; } : function(s){ return s; };
+  var t = html ? esc : function(s){ return s; }, L = [];
+  var name = cwName(), about = cwT(BLD.about), title = cwT(c.title), look = cwT(c.look), style = cwT(c.style), sound = cwT(c.sound), lang = cwT(c.lang);
+  L.push(t("Make a companion for my Decision Wizard."), "");
+  L.push(t("Name: ") + (name ? w(name) : t("pick one that suits it")));
+  L.push(t("About: ") + (about ? w(about) + t(" (the few words shown after its name)") : t("a few words to show after its name, up to you")));
+  if(title) L.push(t("Title: ") + w(title) + t(" (a role or nickname; use it in some of its lines)"));
+  L.push(t("Look: ") + (look ? w(look) : t("up to you, to suit its name and mood")));
+  L.push(t("Art style: ") + (style ? w(style) : t(CW_STYLE0)));
+  var ps = SLOTS.filter(function(s){ return !!cwT(c.poses[s]); });
+  if(ps.length){
+    L.push(t("Pose details:"));
+    ps.forEach(function(s){ L.push(t("- " + s + ": ") + w(cwT(c.poses[s]))); });
+    if(ps.length < SLOTS.length) L.push(t("Every other pose: in the same style, as its moment suggests."));
+  }
+  if(sound) L.push(t("Sound: ") + w(sound) + t(". Work it into some of its lines."));
+  if(c.moods.length) L.push(t("Mood: ") + w(c.moods.join(", ")) + t(". Let it shape the lines and the drawings."));
+  L.push(t("Its lines in: ") + w(lang || "English"));
+  L.push("", t("Draw all 14 poses, write its lines for every moment, and give me the companion's folder as a zip."));
+  return L.join("\n");
+}
+/* What this wizard checks a companion against. */
+function cwSpec(){
+  var name = cwName() || "Name", about = cwT(BLD.about) || "a few words";
+  var ex = { name: name, about: about, lines: { greet: ["..."] }, brief: { title: "...", look: "...", style: "...", poses: { sleep: "..." }, sound: "...", mood: ["..."], language: "..." } };
+  var L = [];
+  L.push("What Decision Wizard " + WIZARD_VERSION + " needs:");
+  L.push("- One folder named after the companion, under 5 MB in all.");
+  L.push("- A picture for each pose, named after it: " + SLOTS.join(", ") + ". SVG, PNG, WebP, or GIF. Only idle is required; a pose without a picture borrows another ("
+    + SLOTS.filter(function(s){ return own(BORROW, s); }).map(function(s){ return s + " uses " + (BORROW[s] || "nothing"); }).join(", ") + ").");
+  L.push("- Every pose in the same frame: 200 wide by 262 tall (for SVG, viewBox=\"0 -12 200 262\"), the character in the same place each time, feet near the bottom with a soft shadow, no background, and an outline of its own so it shows on dark and light. It shows at about 145 by 190 pixels, and 49 by 64 on a phone, so bold shapes, no fine detail, and no text. SVG is plain drawing: no scripts, links, or fonts. Pixel art goes as PNG, under 100 pixels wide.");
+  L.push("- companion.json: " + JSON.stringify(ex) + ". The name is up to 30 characters and never Quill, Swoop, or None. \"about\" is what shows after the name, up to 60 characters. \"brief\" keeps the description above (title, look, style, pose details, sound, mood, and language), so it can be described again later; leave out what wasn't given.");
+  L.push("- Lines are short, a sentence or two, light-hearted, in its own voice, and never mention Claude. Use only the placeholders each moment lists: {Decisions} and {Picked} start a sentence; {cname} is \", Name\" or nothing, so it goes right before punctuation; a suggest line must work whoever {other} names.");
+  L.push("- The moments, with when each plays, how many lines to write, and what it can fill:");
+  BMOM.forEach(function(g){ g[1].forEach(function(m){
+    var fills = (CMP_FILLS[m[0]] || []).map(function(x){ return "{" + x + "}"; }).join(", ");
+    L.push("  " + m[0] + " (" + (CW_WHEN[m[0]] || m[2]) + "): " + bRec(m[0]) + (fills ? ", can fill " + fills : ""));
+  }); });
+  return L.join("\n");
+}
+function cwPrompt(){ return cwUser(false) + "\n\n" + cwSpec() + "\n"; }
+
+function cwNameNote(){
+  var n = bName(), np = n ? bNameProblem() : "";
+  if(!n) return ["Leave it empty, and Claude picks one.", ""];
+  if(np) return [np + " Until then, the prompt asks Claude to pick one.", "bld-errt"];
+  if(own(CMP.list, cmpKey(n))) return ["You already have " + CMP.list[cmpKey(n)].name + ". Adding Claude's asks Replace or Keep mine.", ""];
+  return ["The same name as in the builder.", ""];
+}
+function cwMoodsHTML(){
+  var c = BLD.cw, full = c.moods.length >= 3, low = c.moods.map(function(m){ return m.toLowerCase(); });
+  var h = '';
+  if(c.moods.length) h += '<div class="cw-chips">' + c.moods.map(function(m){ return '<button type="button" class="on" data-action="cw-unmood" data-v="' + esc(m) + '" aria-label="Remove ' + esc(m) + '">' + esc(m) + '</button>'; }).join("") + '</div>';
+  h += '<div class="cw-chips" role="group" aria-label="Moods to add"><span class="lab" aria-hidden="true">Add</span>' + CW_MOODS.filter(function(m){ return low.indexOf(m) === -1; }).map(function(m){
+    return '<button type="button" data-action="cw-mood" data-v="' + m + '"' + (full ? " disabled" : "") + '>' + m + '</button>'; }).join("") + '</div>';
+  h += '<div class="cw-own"><input id="cw-moodin" maxlength="24" autocomplete="off" aria-label="A mood of your own" placeholder="' + (full ? "Three picked" : "A word of your own") + '"' + (full ? " disabled" : "") + '>'
+    + '<button type="button" class="btn sec" data-action="cw-moodadd"' + (full ? " disabled" : "") + '>Add</button></div>';
+  return h;
+}
+function cwPosesHTML(){
+  return SLOTS.map(function(s){
+    return '<div class="cw-pose"><label for="cw-pose-' + s + '"><b>' + s + '</b><small>' + CW_POSEFOR[s] + (BORROW[s] ? ", or uses " + BORROW[s] : "") + '</small></label>'
+      + '<input id="cw-pose-' + s + '" data-pose="' + s + '" maxlength="200" autocomplete="off" placeholder="In the same style" value="' + esc(BLD.cw.poses[s] || "") + '"></div>';
+  }).join("");
+}
+function cwRender(){
+  var el = document.getElementById("bld");
+  if(!el) return;
+  var c = BLD.cw, nn = cwNameNote();
+  el.innerHTML = '<div class="bld-head"><span class="mico" aria-hidden="true">' + cwSpark(17) + '</span><div class="bld-ttl"><h2 id="bld-title">Create with Claude</h2>'
+    + '<div class="bld-sub">Describe your companion, then copy the prompt into Claude. It draws the poses and writes the lines.</div></div><span class="bld-sp"></span>'
+    + '<button type="button" class="btn sec cw-back" data-action="cw-back">Back to the builder</button>'
+    + '<button type="button" class="mclose" data-action="b-close" aria-label="Close the builder">&#10005;</button></div>'
+    + '<div class="cw-body"><div class="cw-inner">'
+    + '<section class="bld-card"><div class="dsec">Who it is</div>'
+    + '<div class="bld-field"><label for="cw-name">Name</label><input id="cw-name" maxlength="30" autocomplete="off" spellcheck="false" value="' + esc(BLD.name) + '"><small id="cw-namenote" class="' + nn[1] + '">' + esc(nn[0]) + '</small></div>'
+    + '<div class="bld-field"><label for="cw-title">Title</label><input id="cw-title" maxlength="60" autocomplete="off" placeholder="like keeper of the hoard" value="' + esc(c.title) + '"><small>A role or nickname. Claude uses it in its lines.</small></div>'
+    + '<div class="bld-field"><label for="cw-about">About</label><input id="cw-about" maxlength="60" autocomplete="off" placeholder="a few words, like the little dragon" value="' + esc(BLD.about) + '"><small id="cw-aboutnote"></small></div>'
+    + '<div class="bld-field"><label for="cw-lang">Language of its lines</label><input id="cw-lang" maxlength="40" autocomplete="off" value="' + esc(c.lang) + '"><small>Its lines can be in any language.</small></div></section>'
+    + '<section class="bld-card"><div class="dsec">How it looks</div>'
+    + '<div class="bld-field"><label for="cw-look">Look</label><textarea id="cw-look" rows="3" maxlength="800" placeholder="What it is, its shape, and its colors">' + esc(c.look) + '</textarea><small>What it is, its shape, and its colors. Describe a character of your own: Claude won\'t draw one from a show or a game.</small></div>'
+    + '<div class="bld-field"><label for="cw-style">Art style</label><input id="cw-style" maxlength="120" autocomplete="off" placeholder="Flat and outlined, like the wizard\'s own companions" value="' + esc(c.style) + '">'
+    + '<div class="cw-chips" role="group" aria-label="Art styles to try"><span class="lab" aria-hidden="true">Try</span>' + CW_STYLES.map(function(s){ return '<button type="button" data-action="cw-style" data-v="' + s + '">' + s + '</button>'; }).join("") + '</div></div>'
+    + '<button type="button" class="cw-more" id="cw-detbtn" data-action="cw-details" aria-expanded="' + c.details + '" aria-controls="cw-poses"><span id="cw-detlab">' + (c.details ? "Pose details" : "Describe each pose") + '</span><span class="cw-count" id="cw-detcount"></span></button>'
+    + '<div class="cw-poses" id="cw-poses"' + (c.details ? "" : " hidden") + '>' + cwPosesHTML() + '</div></section>'
+    + '<section class="bld-card"><div class="dsec">How it talks</div>'
+    + '<div class="bld-field"><label for="cw-sound">Sound</label><input id="cw-sound" maxlength="60" autocomplete="off" placeholder="like puff, or hoot hoot" value="' + esc(c.sound) + '"><small>A sound it makes. Claude works it into some of its lines.</small></div>'
+    + '<div class="bld-field"><span class="cw-lab" id="cw-moodlab">Mood</span><div id="cw-moods" role="group" aria-labelledby="cw-moodlab">' + cwMoodsHTML() + '</div><small>Up to 3, or words of your own. They shape its lines and its drawings.</small></div></section>'
+    + '<section class="bld-card cw-pcard" aria-labelledby="cw-plab"><div class="dsec" id="cw-plab">The prompt</div>'
+    + '<div class="cw-prompt"><div id="cw-ptext"></div>'
+    + '<button type="button" class="cw-fold" id="cw-specbtn" data-action="cw-spec" aria-expanded="' + c.spec + '" aria-controls="cw-spec"><span>Then what the wizard needs: the folder, the frame, the 14 poses, and all 43 moments with their line counts</span><b id="cw-speclab">' + (c.spec ? "Hide" : "Show") + '</b></button>'
+    + '<div class="cw-spec" id="cw-spec"' + (c.spec ? "" : " hidden") + '></div></div>'
+    + '<div class="cw-copy"><button type="button" class="btn" data-action="cw-copy">' + CW_COPY + 'Copy prompt</button>'
+    + '<small>Paste it into Claude. Claude needs the d-wizard skill, version ' + CW_SKILL + ' or later. When it sends back a zip, drop the zip on the wizard.</small></div></section>'
+    + '</div></div>';
+  cwUpdate();
+}
+/* Redraws what follows from the fields, leaving the fields themselves alone. */
+function cwUpdate(){
+  if(!BLD.open || BLD.view !== "claude") return;
+  var p = document.getElementById("cw-ptext"); if(p) p.innerHTML = cwUser(true);
+  var sp = document.getElementById("cw-spec"); if(sp && !sp.hidden) sp.textContent = cwSpec();
+  var dc = document.getElementById("cw-detcount"); if(dc) dc.textContent = cwPoseCount() + " of 14 described";
+  var nn = document.getElementById("cw-namenote"), n = cwNameNote(), ni = document.getElementById("cw-name");
+  if(nn){ nn.textContent = n[0]; nn.className = n[1]; }
+  if(ni){ if(n[1]) ni.setAttribute("aria-invalid", "true"); else ni.removeAttribute("aria-invalid"); }
+  var an = document.getElementById("cw-aboutnote");
+  if(an) an.textContent = "Shown after its name" + (bName() && cwT(BLD.about) ? ": " + bName() + ", " + cwT(BLD.about) + "." : ".");
+}
+function cwOpen(){
+  if(!BLD.open || BLD.saving || BLD.mode !== "new") return;
+  if(BLD.copyTok){ toast(false, "The copy is still coming into the builder. Try again in a moment."); return; }
+  if(!BLD.cw) BLD.cw = cwNew();
+  bStopPlay();
+  BLD.view = "claude";
+  cwRender();
+  var f = document.getElementById("cw-name"); if(f) focusQuiet(f);
+}
+function cwBack(){
+  if(!BLD.open || BLD.view !== "claude") return;
+  BLD.view = "build";
+  bRender();
+  var b = document.querySelector('#bld [data-action="cw-open"]'); if(b) focusQuiet(b);
+}
+function cwInput(t){
+  var c = BLD.cw;
+  if(!c) return;
+  if(t.id === "cw-name") BLD.name = t.value;
+  else if(t.id === "cw-about") BLD.about = t.value;
+  else if(t.id === "cw-title") c.title = t.value;
+  else if(t.id === "cw-lang") c.lang = t.value;
+  else if(t.id === "cw-look") c.look = t.value;
+  else if(t.id === "cw-style") c.style = t.value;
+  else if(t.id === "cw-sound") c.sound = t.value;
+  else if(t.getAttribute && t.getAttribute("data-pose")) c.poses[t.getAttribute("data-pose")] = t.value;
+  else return;
+  BLD.dirty = true;
+  cwUpdate();
+}
+function cwMoods(focusSel){
+  var m = document.getElementById("cw-moods");
+  if(m) m.innerHTML = cwMoodsHTML();
+  BLD.dirty = true;
+  cwUpdate();
+  var f = focusSel ? document.querySelector(focusSel) : null;
+  if(!f || f.disabled) f = document.querySelector("#cw-moods button:not([disabled])");
+  if(f) focusQuiet(f);
+}
+function cwMoodAdd(v){
+  var c = BLD.cw, w = cwT(v).slice(0, 24);
+  if(!c || !w || c.moods.length >= 3) return false;
+  if(c.moods.some(function(m){ return m.toLowerCase() === w.toLowerCase(); })) return false;
+  c.moods.push(w);
+  return true;
+}
+function cwMoodPick(v){
+  if(!cwMoodAdd(v)) return;
+  var after = CW_MOODS.filter(function(m){ return BLD.cw.moods.map(function(x){ return x.toLowerCase(); }).indexOf(m) === -1; });
+  var i = CW_MOODS.indexOf(v), next = "";
+  for(var k=i+1;k<CW_MOODS.length && !next;k++){ if(after.indexOf(CW_MOODS[k]) !== -1) next = CW_MOODS[k]; }
+  cwMoods(next ? '#cw-moods [data-action="cw-mood"][data-v="' + next + '"]' : "#cw-moodin");
+}
+function cwMoodOwn(){
+  var inp = document.getElementById("cw-moodin");
+  if(!inp) return;
+  var v = inp.value;
+  if(!cwT(v)){ focusQuiet(inp); return; }
+  if(!cwMoodAdd(v)){ toast(false, cwT(v) + " is already a mood."); focusQuiet(inp); return; }
+  cwMoods("#cw-moodin");
+}
+function cwUnmood(v){
+  var c = BLD.cw;
+  if(!c) return;
+  c.moods = c.moods.filter(function(m){ return m !== v; });
+  cwMoods('#cw-moods .on');
+}
+function cwStyle(v){
+  if(!BLD.cw) return;
+  BLD.cw.style = v;
+  var i = document.getElementById("cw-style"); if(i) i.value = v;
+  BLD.dirty = true;
+  cwUpdate();
+}
+function cwDetails(){
+  var c = BLD.cw; if(!c) return;
+  c.details = !c.details;
+  var b = document.getElementById("cw-detbtn"), p = document.getElementById("cw-poses"), l = document.getElementById("cw-detlab");
+  if(b) b.setAttribute("aria-expanded", String(c.details));
+  if(p) p.hidden = !c.details;
+  if(l) l.textContent = c.details ? "Pose details" : "Describe each pose";
+}
+function cwSpecToggle(){
+  var c = BLD.cw; if(!c) return;
+  c.spec = !c.spec;
+  var b = document.getElementById("cw-specbtn"), p = document.getElementById("cw-spec"), l = document.getElementById("cw-speclab");
+  if(b) b.setAttribute("aria-expanded", String(c.spec));
+  if(p){ p.hidden = !c.spec; if(c.spec) p.textContent = cwSpec(); }
+  if(l) l.textContent = c.spec ? "Hide" : "Show";
+}
+function cwCopied(){ toast(true, "Prompt copied. You can also give Claude reference images if you need."); }
+/* The browser's clipboard first; where it refuses, the older copy command on a text box made for the moment. */
+function cwCopy(){
+  if(!BLD.open || !BLD.cw) return;
+  var text = cwPrompt(), btn = document.querySelector('#bld [data-action="cw-copy"]');
+  var old = function(){
+    var ta = document.createElement("textarea"), ok = false;
+    ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.top = "0"; ta.style.left = "0"; ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    try{ ta.select(); ok = document.execCommand("copy"); }catch(e){ ok = false; }
+    ta.remove();
+    if(btn) focusQuiet(btn);
+    if(ok) cwCopied();
+    else toast(false, "The prompt couldn't be copied. Open what the wizard needs, select the whole prompt, and copy it.");
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(cwCopied, old);
+  } else old();
+}
+
+/* ---------------------------------------------------------------- a companion's zip, opened in the page */
+/* Claude hands a companion over as a zip of its folder. Chrome and Edge unpack it here (DecompressionStream): only plain
+   and deflated files, never more than the companion's 5 MB, each one checked against its checksum. The files become a
+   folder the add question reads like any other, so a zip is added exactly as a dropped folder is. */
+var ZIP_MAX = CMP_LIMIT * 2;
+var CRC_T = null;
+function crc32(u8){
+  if(!CRC_T){ CRC_T = []; for(var n=0;n<256;n++){ var c = n; for(var k=0;k<8;k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1); CRC_T[n] = c >>> 0; } }
+  var crc = 0xFFFFFFFF;
+  for(var i=0;i<u8.length;i++) crc = CRC_T[(crc ^ u8[i]) & 255] ^ (crc >>> 8);
+  return (crc ^ 0xFFFFFFFF) >>> 0;
+}
+/* Inflates one file, stopping the moment it grows past the size its zip says it has. */
+function zipInflate(bytes, size){
+  var rd = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate-raw")).getReader();
+  var out = new Uint8Array(size), at = 0;
+  var pump = function(){
+    return rd.read().then(function(r){
+      if(r.done){ if(at !== size) throw new Error("size"); return out; }
+      if(at + r.value.length > size){ try{ rd.cancel(); }catch(e){} throw new Error("size"); }
+      out.set(r.value, at); at += r.value.length;
+      return pump();
+    });
+  };
+  return pump();
+}
+function zipNameOk(n){ return !!n && n.length <= 120 && !/[\/\\:*?"<>|\u0000-\u001f]/.test(n) && !/^\.|[. ]$/.test(n) && !/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i.test(n); }
+function zipFolderName(n){
+  n = String(n || "").replace(/[\/\\:*?"<>|\u0000-\u001f]/g, " ").replace(/\s+/g, " ").replace(/^[\s.]+|[\s.]+$/g, "").slice(0, 60).replace(/[\s.]+$/, "");
+  if(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])$/i.test(n)) n += " companion";
+  return n || "Companion";
+}
+function zipType(n){
+  var m = /\.([a-z0-9]+)$/i.exec(n), e = m ? m[1].toLowerCase() : "";
+  return own(PICS, e) ? PICS[e] : e === "json" ? "application/json" : "";
+}
+function zipDir(name, files, zipName){
+  return { kind: "directory", name: name, zipName: zipName, values: function(){
+    var i = 0;
+    return { next: function(){ return Promise.resolve(i < files.length ? { done: false, value: zipEntry(files[i++]) } : { done: true, value: undefined }); } };
+  } };
+}
+function zipEntry(f){ return { kind: "file", name: f.name, getFile: function(){ return Promise.resolve(f); } }; }
+/* Resolves { dir } (a folder the add question can read), { ignore } when no companion is in it, or { problem }. */
+function unzipCompanion(file){
+  var fail = function(p){ return { problem: p }; };
+  var cant = fail("this browser can't open zips. Unzip it, then drop the companion's folder here");
+  if(typeof DecompressionStream !== "function" || typeof TextDecoder !== "function") return Promise.resolve(cant);
+  /* Chrome and Edge before 103 have the stream, but not this kind of it. */
+  try{ new DecompressionStream("deflate-raw"); }catch(e0){ return Promise.resolve(cant); }
+  if(file.size > ZIP_MAX) return Promise.resolve(fail("it's " + sizeText(file.size) + ", and a companion stays under 5 MB"));
+  return Promise.resolve().then(function(){ return file.arrayBuffer(); }).then(function(ab){
+    var u8 = new Uint8Array(ab), dv = new DataView(ab), len = ab.byteLength, e = -1;
+    /* The end record is the one whose comment runs exactly to the end, so a comment that happens to hold its signature isn't taken for it. */
+    for(var i = len - 22; i >= 0 && i >= len - 22 - 65535; i--){ if(dv.getUint32(i, true) === 0x06054b50 && i + 22 + dv.getUint16(i + 20, true) === len){ e = i; break; } }
+    if(e < 0) return fail("it isn't a zip the wizard can open");
+    var count = dv.getUint16(e + 10, true), cdSize = dv.getUint32(e + 12, true), cdOff = dv.getUint32(e + 16, true);
+    if(count === 0xFFFF || cdOff === 0xFFFFFFFF || cdOff + cdSize > e) return fail("it isn't a zip the wizard can open");
+    if(count > 500) return fail("it holds too many files to be one companion");
+    var dec = new TextDecoder("utf-8"), groups = {}, order = [], p = cdOff;
+    for(var k=0;k<count;k++){
+      if(p + 46 > e || dv.getUint32(p, true) !== 0x02014b50) return fail("it's damaged");
+      var nlen = dv.getUint16(p + 28, true), xlen = dv.getUint16(p + 30, true), clen = dv.getUint16(p + 32, true);
+      if(p + 46 + nlen > e) return fail("it's damaged");
+      var x = { flags: dv.getUint16(p + 8, true), method: dv.getUint16(p + 10, true), crc: dv.getUint32(p + 16, true), csize: dv.getUint32(p + 20, true),
+        usize: dv.getUint32(p + 24, true), lho: dv.getUint32(p + 42, true) };
+      var path = dec.decode(u8.subarray(p + 46, p + 46 + nlen)).replace(/\\/g, "/");
+      p += 46 + nlen + xlen + clen;
+      if(/\/$/.test(path)) continue;
+      var parts = path.split("/").filter(function(s){ return s !== "" && s !== "."; });
+      if(!parts.length || parts.some(function(s){ return s === ".." || s === "__MACOSX"; })) continue;
+      x.name = parts[parts.length - 1];
+      if(x.name.charAt(0) === "." || /^(thumbs\.db|desktop\.ini)$/i.test(x.name)) continue;
+      var d = parts.slice(0, -1).join("/");
+      if(!own(groups, d)){ groups[d] = []; order.push(d); }
+      groups[d].push(x);
+    }
+    /* The companion is the one folder in the zip that holds a pose picture or companion.json. */
+    var cands = order.filter(function(d){ return groups[d].some(function(x){ return isPicName(x.name) || x.name.toLowerCase() === "companion.json"; }); });
+    if(!cands.length) return { ignore: true };
+    if(cands.length > 1) return fail("it holds more than one companion. Unzip it and add them one at a time");
+    /* Files no computer could name, like a Mac's Icon file, are left out; a companion's own files never have such names. */
+    var dir = cands[0], xs = groups[dir].filter(function(x){ return zipNameOk(x.name); }), total = 0, seen = {};
+    xs.forEach(function(x){ total += x.usize; });
+    if(total > CMP_LIMIT) return fail("it unpacks to " + sizeText(total) + ", over the 5 MB limit");
+    for(var j=0;j<xs.length;j++){
+      var y = xs[j];
+      if(y.flags & 1) return fail("it's locked with a password");
+      if(y.method !== 0 && y.method !== 8) return fail("it's packed in a way the wizard can't open");
+      if(own(seen, y.name.toLowerCase())) return fail("it holds two files named " + y.name);
+      seen[y.name.toLowerCase()] = true;
+    }
+    /* A folder name some zip tools wrote in an old code page reads as gibberish: the zip's own name is used instead. */
+    var last = dir ? dir.split("/").pop() : "";
+    var folder = zipFolderName(last && last.indexOf("\ufffd") === -1 ? last : String(file.name || "").replace(/\.zip$/i, "")), files = [];
+    return seqEach(xs, function(x){
+      if(x.lho + 30 > cdOff || dv.getUint32(x.lho, true) !== 0x04034b50) throw new Error("damaged");
+      var start = x.lho + 30 + dv.getUint16(x.lho + 26, true) + dv.getUint16(x.lho + 28, true);
+      if(start + x.csize > cdOff) throw new Error("damaged");
+      var raw = u8.subarray(start, start + x.csize);
+      var got = x.method === 0 ? (x.csize === x.usize ? Promise.resolve(raw.slice()) : Promise.reject(new Error("size"))) : zipInflate(raw, x.usize);
+      return got.then(function(b){
+        if(crc32(b) !== x.crc) throw new Error("crc");
+        files.push(new File([b], x.name, { type: zipType(x.name), lastModified: file.lastModified || Date.now() }));
+      });
+    }).then(function(){ return { dir: zipDir(folder, files, String(file.name || folder + ".zip")) }; }, function(){ return fail("it's damaged"); });
+  }).then(null, function(){ return fail("it couldn't be read"); });
+}
+/* A zip dropped on the wizard, or on the builder: the same question as a dropped folder. */
+function zipDrop(file){
+  if(confirmOpen) return;
+  if(!fsSupported()){ toast(false, "Adding companions works in Chrome and Edge on a computer."); return; }
+  var nm = String(file.name || "That zip");
+  unzipCompanion(file).then(function(r){
+    if(r.ignore){ toast(false, nm + " has no companion in it. A companion's folder holds pictures named after its poses, like idle.png."); return; }
+    if(!r.dir){ toast(false, nm + " can't be added: " + r.problem + "."); return; }
+    addCompanion(r.dir);
+  });
 }
 
 /* Reactions to Options: shown right in the panel while it is open. */
@@ -7494,6 +7932,15 @@ document.addEventListener("click", function(ev){
   else if(act === "b-clear"){ bClear(); }
   else if(act === "b-play"){ bPlay(el.getAttribute("data-v")); }
   else if(act === "b-chip"){ bChip(el.getAttribute("data-m"), el.getAttribute("data-v")); }
+  else if(act === "cw-open"){ cwOpen(); }
+  else if(act === "cw-back"){ cwBack(); }
+  else if(act === "cw-copy"){ cwCopy(); }
+  else if(act === "cw-style"){ cwStyle(el.getAttribute("data-v")); }
+  else if(act === "cw-mood"){ cwMoodPick(el.getAttribute("data-v")); }
+  else if(act === "cw-unmood"){ cwUnmood(el.getAttribute("data-v")); }
+  else if(act === "cw-moodadd"){ cwMoodOwn(); }
+  else if(act === "cw-details"){ cwDetails(); }
+  else if(act === "cw-spec"){ cwSpecToggle(); }
   else if(act === "wipe-all"){ wipeAll(); }
   else if(act === "backup-all"){ saveBackup(); }
   else if(act === "install-app"){ installApp(); }
@@ -7709,7 +8156,7 @@ document.addEventListener("drop", function(ev){
   Promise.resolve(hp).then(null, function(){ return null; }).then(function(h){
     if(h && h.kind === "directory"){ addCompanion(h); return; }
     if(!file){ ingestFail("That drop held no file."); return; }
-    if(fsSupported() && /\.zip$/i.test(file.name || "")){ toast(false, "That's a zip. Unzip it first, then drop the companion's folder here."); return; }
+    if(fsSupported() && /\.zip$/i.test(file.name || "")){ zipDrop(file); return; }
     return readFileText(file).then(function(txt){ ingestText(txt, { handle: (h && h.kind === "file") ? h : null }); });
   }).then(null, function(){ ingestFail("Could not read that file."); });
 });

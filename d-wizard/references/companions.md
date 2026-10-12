@@ -1,6 +1,6 @@
 # Making a companion
 
-Read this only when the user asks you to make a companion for the Decision Wizard: a character who sits beside the cards, changes pose, and says short lines. Companions need wizard 0.7.0 or later, in Chrome or Edge on a computer.
+Read this only when the user asks you to make a companion for the Decision Wizard: a character who sits beside the cards, changes pose, and says short lines. Often the request is a prompt the wizard wrote, starting "Make a companion for my Decision Wizard." (see From the wizard's prompt). Companions need wizard 0.7.0 or later, in Chrome or Edge on a computer.
 
 ## What a companion is
 
@@ -17,6 +17,21 @@ Inky/
 - **Pictures** are named after the pose they fill: `idle.svg`, `greet.png`, and so on. SVG, PNG, WebP, or GIF. Only `idle` is required.
 - **`companion.json`** gives the name and the lines. It's optional: without it, the folder's name is the companion's name and it never talks.
 - **The whole folder** must stay under 5 MB.
+
+## From the wizard's prompt
+
+The wizard's Create with Claude panel, in its companion builder, writes a prompt from what the user describes, then adds "What Decision Wizard X needs": the folder, the frame, the poses, and every moment with its placeholders and line count, read from that wizard's own data. Where that part differs from this file, follow the prompt: it is what the wizard that will load the folder checks.
+
+- **Name:** use it. "pick one that suits it" means the choice is yours: a short name that fits the look and the mood, never Quill, Swoop, or None.
+- **About:** the few words shown after its name ("the little dragon"), kept as `about`. When it's left to you, write a few.
+- **Title:** a role or nickname, like "keeper of the hoard". Use it in some of its lines; it isn't the name and isn't shown.
+- **Look, art style, and pose details:** draw from them. A pose without details is drawn in the same style, as its moment suggests.
+- **Sound:** a sound it makes. Work it into some of its lines, not all.
+- **Mood:** up to three words. They set the voice of its lines and the faces and gestures of its poses.
+- **Its lines in:** write every line in that language.
+- **Reference images**, when the user attaches some: take shapes, colors, and features from them, and draw in the frame and the style the prompt asks for.
+- **A character of their own:** draw only original characters. If the look describes a known character from a show, game, film, or brand, say so in one line and offer an original character instead.
+- **brief:** write the description into `companion.json` (see below), so it can be described again later.
 
 ## The 14 poses
 
@@ -63,6 +78,7 @@ The dance steps through dance1, dance2, and finish while the whole figure sways.
 
 - **`name`:** up to 30 characters, never Quill, Swoop, or None. The name is the companion's identity: adding another companion with the same name replaces it, after asking.
 - **`about`:** a few words shown after the name, as in "Inky, the octopus". Optional.
+- **`brief`:** the description the companion was made from, when it came from the wizard's prompt: `{"title": "...", "look": "...", "style": "...", "poses": {"sleep": "..."}, "sound": "...", "mood": ["..."], "language": "..."}`, leaving out what wasn't given. Optional; the wizard keeps it but doesn't show it.
 - **`lines`:** each moment below names a list of lines, or one line. Write as many as the Lines column recommends: five where the moment comes up again and again, so it stays fresh; two for warn; and one for the moments that say the same thing each time (speed, the recaps, open_go, and the Options moments). Fewer is fine when the user asks; a moment with no lines stays quiet. A moment name the wizard doesn't know, a line that isn't text, or a placeholder the moment can't fill keeps the whole companion out, with a notice saying why.
 
 ## Lines
@@ -115,7 +131,8 @@ Lines are short (a sentence, two at most), light-hearted, in the companion's own
 
 ## Handing it over
 
-- **In Claude:** zip the companion's folder (the zip holds the folder itself, named after the companion) and give it to the user as a file in the conversation. They unzip it, then drop the folder on the wizard or use Add in the Companion card of Options; the wizard shows the companion and asks before adding it.
+- **Check it first:** every SVG parses and shows the character in the frame, `companion.json` is valid JSON, its moments are all in the table above, and every placeholder is one its moment lists. The wizard refuses the whole companion over one bad line.
+- **In Claude:** zip the companion's folder (the zip holds the folder itself, named after the companion) and give it to the user as a file in the conversation. They drop the zip on the wizard as it is, with wizard 0.7.3 or later; the wizard shows the companion and asks before adding it. With an older wizard, they unzip it first, then drop the folder on the wizard or use Add in the Companion card of Options.
 - **In Claude Code:** if the user gives you the path of their companions folder, write the companion's folder straight into it; the wizard picks it up by itself within seconds. If a folder with that name is already there, ask before writing over it. Without the path, write the folder where the user asks. Never write a companion into a project's `wizard-rounds/` folder or into a repository.
 - Say in one or two sentences what you made: its name, how many poses it has, and which moments it talks in.
-- To change a line or a picture later, the user can choose Edit beside the companion in the Companion card of Options, which opens it in the wizard's builder (wizard 0.7.2 or later). Build, in the same card, makes a new one from pictures of their own.
+- To change a line or a picture later, the user can choose Edit beside the companion in the Companion card of Options, which opens it in the wizard's builder (wizard 0.7.2 or later). Build, in the same card, makes a new one from pictures of their own, and Create with Claude in the builder writes a prompt for a new one.

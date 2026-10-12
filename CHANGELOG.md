@@ -2,6 +2,19 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.7.3 and skill 0.6.2, 12 October 2026
+
+### Added
+
+- Wizard: **Create with Claude**, a button in the companion builder for a new companion. It opens a panel in the builder's place where you describe the companion: its name and the few words after it (shared with the builder), a title (a role or nickname for its lines), the language of its lines, its look, an art style with suggestions, details for any of its 14 poses, a sound it makes, and up to three moods, from suggestions or your own words. A prompt under the fields follows as you type. Copy prompt copies it with what the wizard needs, read from the wizard itself: the folder, the frame, the poses, and all 43 moments with their placeholders and line counts. A note says Claude needs the d-wizard skill 0.6.2 or later, and copying reminds you that you can add reference pictures. Back to the builder keeps what you wrote until the builder closes.
+- Wizard: a companion's zip, dropped on the wizard or on the builder, is opened in the page and goes through the same question as a dropped folder. Only the one folder in the zip that holds a companion is read; files a computer can't name and the zip tools' own extras are left out; a zip with two companions, a password, damage, or more than 5 MB inside is turned away with the reason.
+- Skill: `references/companions.md` reads the wizard's prompt (the prompt's own rules come first), uses the title, sound, mood, language, and any reference pictures, draws only original characters, writes the description into `companion.json` as `brief`, checks the folder before handing it over, and tells you to drop the zip on the wizard as it is.
+
+### Changed
+
+- Wizard: over the builder, the question to add a companion says it closes the builder, starts on neither button, and keeps the builder still while the companion is copied. A companion's folder dropped on the Create with Claude panel goes to that question, and pictures dropped on it go to the builder.
+- Wizard: the drop overlay mentions a companion's zip.
+
 ## Wizard 0.7.2 and skill 0.6.1, 12 October 2026
 
 ### Added
