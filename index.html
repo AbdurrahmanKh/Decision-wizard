@@ -328,7 +328,7 @@ footer{margin-top:34px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 .mframe.pop{animation:mpop .34s ease-out}
 @keyframes mbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 @keyframes mpop{0%{transform:scale(.93)}60%{transform:scale(1.05)}100%{transform:scale(1)}}
-.mbubble{position:relative;flex:1;box-sizing:border-box;background:var(--bub-bg);color:var(--bub-ink);border:1px solid var(--bub-line);border-radius:12px;padding:10px 12px;font-size:calc(14px*var(--fs));line-height:1.45;text-align:left;opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s;pointer-events:none}
+.mbubble{position:relative;flex:1;box-sizing:border-box;background:var(--bub-bg);color:var(--bub-ink);border:1px solid var(--bub-line);border-radius:12px;padding:10px 12px;font-size:calc(14px*var(--fs));line-height:1.45;text-align:start;opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s;pointer-events:none}
 .mbubble:empty{display:none}
 .mbubble.on{opacity:1;transform:none}
 .mbubble::before{content:"";position:absolute;top:calc(50% - 6px);left:-7px;width:12px;height:12px;background:var(--bub-bg);border-left:1px solid var(--bub-line);border-bottom:1px solid var(--bub-line);transform:rotate(45deg)}
@@ -345,6 +345,31 @@ footer{margin-top:34px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 .mpick{display:flex;align-items:center;gap:12px}
 .mpick .seg{flex:1}
 .mprev{flex:none;width:46px;height:60px}
+/* Companions as tiles in Options, and pictures as poses. */
+.ctiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
+.ctile{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;padding:8px 4px 7px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-family:inherit;font-weight:600;font-size:calc(12.5px*var(--fs));cursor:pointer}
+.ctile:hover{border-color:var(--green2)}
+.ctile[aria-pressed="true"]{border-color:var(--green);background:var(--green-soft);color:var(--green);font-weight:700}
+.ctile:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.ctname{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ctface{display:flex;align-items:center;justify-content:center;width:40px;height:52px}
+.ctface svg,.ctface .mimg,.ctface .mstack{display:block;width:100%;height:100%}
+.ctile.add{border-style:dashed;color:var(--green);background:transparent}
+.cchosen{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;font-size:calc(14px*var(--fs));color:var(--muted)}
+.cchosen b{color:var(--ink)}
+.chidden{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px;font-size:calc(13px*var(--fs));color:var(--muted)}
+.chidden:empty{display:none}
+.cdirname{font-weight:500;color:var(--muted);margin-left:6px;overflow-wrap:anywhere}
+.obtns{display:flex;gap:6px;flex:none}
+img.mimg{display:block;width:100%;height:100%;object-fit:contain;object-position:50% 100%;-webkit-user-drag:none;user-select:none}
+img.mimg.pix{image-rendering:pixelated}
+.mstack{position:relative;display:block;width:100%;height:100%}
+.mstack .mzz{position:absolute;right:2%;top:4%;width:30%;height:auto}
+.cfig img.mimg,.cfig .mstack{width:100%;height:100%}
+.cstrip{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+.cstrip figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:calc(11.5px*var(--fs));color:var(--muted)}
+.cstrip .cpf{display:block;width:44px;height:58px;border:1px solid var(--line);border-radius:9px;background:var(--bg);padding:3px}
+.cstrip .cpf svg,.cstrip .cpf .mimg,.cstrip .cpf .mstack{display:block;width:100%;height:100%}
 .mprev:empty{display:none}
 .mprev svg{display:block;width:100%;height:100%}
 .orow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
@@ -643,16 +668,12 @@ footer{margin-top:34px;padding-top:14px;border-top:3px solid var(--ink);font-siz
   <div class="dbody">
     <section class="ogroup">
       <div class="dsec">Companion</div>
-      <div class="mpick">
-        <div class="mprev" id="mprev" aria-hidden="true"></div>
-        <div class="seg" role="group" aria-label="Companion">
-          <button type="button" data-action="set-mascot" data-v="quill" aria-pressed="false">Quill</button>
-          <button type="button" data-action="set-mascot" data-v="swoop" aria-pressed="false">Swoop</button>
-          <button type="button" data-action="set-mascot" data-v="none" aria-pressed="false">None</button>
-        </div>
-      </div>
+      <div class="ctiles" id="ctiles" role="group" aria-label="Companion"></div>
+      <div class="cchosen" id="cchosen"></div>
+      <div class="chidden" id="chidden"></div>
       <div class="mprevline" id="mprevline" role="status" aria-live="polite"></div>
-      <div class="onote">Quill is the pocket wizard and Swoop is the falcon. Hover over your companion, or tap it, for its menu.</div>
+      <div class="orow" id="row-cdir" hidden></div>
+      <div class="onote" id="cnote">Hover over your companion, or tap it, for its menu.</div>
       <div class="orow" id="row-talk"><span class="olab">Speech bubbles</span><div class="seg sm" role="group" aria-label="Speech bubbles"><button type="button" data-action="set-talk" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-talk" data-v="off" aria-pressed="false">Off</button></div></div>
       <div class="orow" id="row-quips"><span class="olab">Stat remarks</span><div class="seg sm" role="group" aria-label="Stat remarks"><button type="button" data-action="set-quips" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-quips" data-v="off" aria-pressed="false">Off</button></div></div>
       <div class="orow" id="row-sound"><span class="olab">Sound effects</span><div class="seg sm" role="group" aria-label="Sound effects"><button type="button" data-action="set-sound" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-sound" data-v="off" aria-pressed="false">Off</button></div></div>
@@ -718,6 +739,7 @@ footer{margin-top:34px;padding-top:14px;border-top:3px solid var(--ink);font-siz
         <div class="cline" id="cline"></div>
         <p id="cmsg"></p>
         <div class="cpath" id="cpath" dir="ltr" hidden></div>
+        <div class="cstrip" id="cstrip" hidden></div>
         <div class="crow"><button type="button" class="btn sec" id="cno">Cancel</button><button type="button" class="btn danger" id="cyes">Go ahead</button></div>
       </div>
     </div>
@@ -727,7 +749,7 @@ footer{margin-top:34px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.6.3";
+var WIZARD_VERSION = "0.7.0";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -975,13 +997,15 @@ function applyConfig(){
   headMeta();
 }
 var SETKEY = "decision-wizard-settings-v1";
-var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true };
+var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true };
 function loadSettings(){
   var s = readJSON(SETKEY);
   if(s && typeof s === "object"){
     if(s.theme === "dark" || s.theme === "light" || s.theme === "system") SETTINGS.theme = s.theme;
     if(s.size === "compact" || s.size === "normal" || s.size === "large") SETTINGS.size = s.size;
-    if(s.mascot === "quill" || s.mascot === "swoop" || s.mascot === "none") SETTINGS.mascot = s.mascot;
+    if(s.mascot === "quill" || s.mascot === "swoop" || s.mascot === "none" || (typeof s.mascot === "string" && /^c:.{1,40}$/.test(s.mascot))) SETTINGS.mascot = s.mascot;
+    if(typeof s.mascotFolder === "string") SETTINGS.mascotFolder = s.mascotFolder.slice(0, 255);
+    if(Array.isArray(s.hidden)) SETTINGS.hidden = s.hidden.filter(function(k, i, a){ return (k === "quill" || k === "swoop") && a.indexOf(k) === i; });
     if(typeof s.talk === "boolean") SETTINGS.talk = s.talk;
     if(typeof s.quips === "boolean") SETTINGS.quips = s.quips;
     if(typeof s.sound === "boolean") SETTINGS.sound = s.sound;
@@ -1011,6 +1035,7 @@ function applySettings(){
 }
 var OPTKEYS = { "set-theme": "theme", "set-size": "size", "set-mascot": "mascot", "set-talk": "talk", "set-quips": "quips", "set-sound": "sound", "set-timerhover": "timerHover", "set-timerbar": "timerBar", "set-recs": "recs" };
 function renderOptions(){
+  renderCompanions();
   var bs = document.querySelectorAll('#optdrawer [data-action^="set-"]');
   for(var i=0;i<bs.length;i++){
     var k = OPTKEYS[bs[i].getAttribute("data-action")];
@@ -1026,7 +1051,7 @@ function renderOptions(){
   if(rh) rh.className = "orow" + (off ? " dim" : "");
   if(rq) rq.className = "orow" + (off || !SETTINGS.talk ? " dim" : "");
   var pv = document.getElementById("mprev");
-  if(pv){ pv.innerHTML = off ? "" : ART[SETTINGS.mascot].idle; }
+  if(pv && !off && !optTimer){ pv.innerHTML = ART[mascotKey()].idle; }
   var nm = document.getElementById("optname");
   if(nm && document.activeElement !== nm) nm.value = SETTINGS.name || "";
   var os = document.getElementById("ostats");
@@ -1084,7 +1109,7 @@ function setOption(k, v){
   var prevName = SETTINGS.name;
   if(k === "theme"){ if(v !== "dark" && v !== "light" && v !== "system") return; SETTINGS.theme = v; }
   else if(k === "size"){ if(v !== "compact" && v !== "normal" && v !== "large") return; SETTINGS.size = v; }
-  else if(k === "mascot"){ if(v !== "quill" && v !== "swoop" && v !== "none") return; SETTINGS.mascot = v; }
+  else if(k === "mascot"){ if(v !== "quill" && v !== "swoop" && v !== "none" && !own(CMP.list, v)) return; SETTINGS.mascot = v; SETTINGS.mascotFolder = own(CMP.list, v) ? CMP.list[v].folder : ""; }
   else if(k === "talk" || k === "quips" || k === "sound" || k === "timerHover" || k === "timerBar" || k === "recs"){ SETTINGS[k] = (v === "on" || v === true); }
   else if(k === "name"){ SETTINGS.name = String(v || "").trim().slice(0, 30); }
   else return;
@@ -1405,6 +1430,7 @@ function noteHTML(id){
   h += '<div class="npanel" id="np-' + esc(id) + '"' + (show ? "" : " hidden") + '><textarea dir="auto" data-role="note" data-note="' + esc(id) + '" aria-label="Note" placeholder="A note that travels with your answer">' + esc(noteOf(a)) + '</textarea></div>';
   return h + '</div>';
 }
+function dirOf(t){ var m = /dir="(\w+)"/.exec(dirA(t)); return m ? m[1] : "auto"; }
 function dirA(t){
   /* Direction from the words, leaving out [bracketed] terms: "[نجوم المباريات]: most match MVPs" reads left to right,
      a mostly Arabic line reads right to left, and a line that is only a bracketed term follows its own letters. */
@@ -2625,7 +2651,7 @@ function ingestFail(msg, withLine){
     var s = document.getElementById("loader-status");
     if(s && mascotOn()){
       s.className = "status bad withface";
-      s.innerHTML = '<span class="sface">' + ART[SETTINGS.mascot].error + '</span><span class="stext">' + (line ? '<span class="sline">' + esc(line) + '</span>' : "") + '<span>' + esc(msg) + '</span></span>';
+      s.innerHTML = '<span class="sface">' + ART[mascotKey()].error + '</span><span class="stext">' + (line ? '<span class="sline">' + esc(line) + '</span>' : "") + '<span>' + esc(msg) + '</span></span>';
     } else {
       setStatus("loader-status", false, msg);
     }
@@ -4409,6 +4435,7 @@ function setupFolders(){
         var d = ev.data || {};
         if(d.t === "scan"){ if(IS_WATCHER) scanAll(); }
         else if(d.t === "folders"){ reloadFolders(); }
+        else if(d.t === "cdir"){ if(fsSupported()) reloadCdir(); }
         else if(d.t === "deleted" && typeof d.key === "string"){ if(lsGet(RPFX + d.key) === null) dropRound(d.key); }
         else if(d.t === "wiped"){ try{ location.reload(); }catch(e){} }
       };
@@ -4574,6 +4601,9 @@ function wipeAll(){
   SETTINGS.theme = "dark";
   SETTINGS.size = "normal";
   SETTINGS.mascot = "quill";
+  SETTINGS.mascotFolder = "";
+  SETTINGS.hidden = [];
+  forgetCompanions();
   SETTINGS.talk = true;
   SETTINGS.quips = true;
   SETTINGS.sound = true;
@@ -4964,7 +4994,7 @@ var LINES = {
   }
 };
 /* Timings, in milliseconds. Kept in one place so they are easy to tune. */
-var TIMING = { statMin: 35000, statMax: 75000, statChance: 0.6, nudge: 120000, yawn: 180000, sleep: 240000, remind: 60000, fast: 2000, speedGap: 300000, longThink: 60000, minLine: 4000, lineBase: 1200, linePerChar: 55, lineMax: 9000, actionLine: 11000, faceHold: 1500, staleLine: 20000, poll: 4000, fileSave: 500, scanDelay: 150, back: 8000, hour: null };
+var TIMING = { cpoll: 4000, statMin: 35000, statMax: 75000, statChance: 0.6, nudge: 120000, yawn: 180000, sleep: 240000, remind: 60000, fast: 2000, speedGap: 300000, longThink: 60000, minLine: 4000, lineBase: 1200, linePerChar: 55, lineMax: 9000, actionLine: 11000, faceHold: 1500, staleLine: 20000, poll: 4000, fileSave: 500, scanDelay: 150, back: 8000, hour: null };
 try{ if(window.__WIZ_TIMING){ for(var tk in window.__WIZ_TIMING){ if(Object.prototype.hasOwnProperty.call(window.__WIZ_TIMING, tk)) TIMING[tk] = window.__WIZ_TIMING[tk]; } } }catch(e){}
 function nowHour(){ return typeof TIMING.hour === "number" ? TIMING.hour : new Date().getHours(); }
 var HOLD = { pick: 1300, skip: 1600, greet: 5600, milestone: 4200, error: 5200, finish: 6500, quip: 5200, batch: 4600,
@@ -4986,7 +5016,8 @@ var lastLine = {}, REACT_LOG = [];
 var MS = { key: null, half: false, sections: {}, last: false, finished: false, lastIdx: -1, arriveAt: 0, sent: false };
 var confirmOpen = false, confirmDone = null;
 
-function mascotOn(){ return SETTINGS.mascot === "quill" || SETTINGS.mascot === "swoop"; }
+function mascotKey(){ var m = SETTINGS.mascot; return (m === "quill" || m === "swoop" || (own(CMP.list, m) && own(ART, m))) ? m : null; }
+function mascotOn(){ return !!mascotKey(); }
 function reducedMotion(){ try{ return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ return false; } }
 function cap(s){ s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); }
 var NUMW = ["zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty"];
@@ -5014,9 +5045,10 @@ function fillLine(t, data){
 function lineFor(kind, data){
   data = data || {};
   var key = data.key || (kind === "milestone" ? (data.type || "half") : kind);
-  var set = (LINES[SETTINGS.mascot] || {})[key] || [];
+  var mk = mascotKey();
+  var set = (LINES[mk] || {})[key] || [];
   if(!set.length) return "";
-  var lk = SETTINGS.mascot + ":" + key;
+  var lk = mk + ":" + key;
   var i = Math.floor(Math.random() * set.length);
   if(set.length > 1 && i === lastLine[lk]) i = (i + 1) % set.length;
   lastLine[lk] = i;
@@ -5027,7 +5059,7 @@ function lineFor(kind, data){
 function setFrame(name){
   if(!mascotOn()) return;
   var el = document.getElementById("mframe");
-  var art = ART[SETTINGS.mascot];
+  var art = ART[mascotKey()];
   if(!el || !art || !art[name]) return;
   if(mFrame !== name){ el.innerHTML = art[name]; mFrame = name; }
 }
@@ -5047,6 +5079,7 @@ function say(text, ms, action){
   if(!b || !text) return;
   bubbleAction = action || null;
   b.textContent = text;
+  b.setAttribute("dir", dirOf(text));
   if(action){
     var btn = document.createElement("button");
     btn.type = "button";
@@ -5342,9 +5375,11 @@ function animateDance(total){
   el.classList.remove("pop", "dance", "loop");
   if(reducedMotion()) return;
   void el.offsetWidth;
-  el.classList.add(SETTINGS.mascot === "swoop" ? "loop" : "dance");
-  var frames = SETTINGS.mascot === "swoop" ? ["dance1", "dance2"] : ["dance1", "dance2", "finish"];
-  var i = 0, t0 = Date.now(), end = SETTINGS.mascot === "swoop" ? "finish" : "finish";
+  /* Swoop spins. Every other companion sways the way Quill does, stepping through its dance poses. */
+  var spin = mascotKey() === "swoop";
+  el.classList.add(spin ? "loop" : "dance");
+  var frames = spin ? ["dance1", "dance2"] : ["dance1", "dance2", "finish"];
+  var i = 0, t0 = Date.now(), end = "finish";
   danceTimer = setInterval(function(){
     if(Date.now() - t0 > total){ clearInterval(danceTimer); danceTimer = null; setFrame(end); return; }
     setFrame(frames[i++ % frames.length]);
@@ -5384,7 +5419,7 @@ function recapData(){
   var ids = open.length <= 3 ? joinAnd(open) : open.slice(0, 3).join(", ") + " and " + (open.length - 3) + " more";
   return { key: open.length ? (picked + typed === 0 ? "recap_none" : "recap_open") : "recap_done", Picked: cap(numWord(picked)),
            timePart: (!open.length && MS.roundMs > 0) ? ", in " + spentText(MS.roundMs) : "",
-           typedPart: typed ? (JOIN[SETTINGS.mascot] || " and ") + numWord(typed) + " written by you" : "", ids: ids };
+           typedPart: typed ? (JOIN[mascotKey()] || " and ") + numWord(typed) + " written by you" : "", ids: ids };
 }
 function markSent(){
   MS.sent = true;
@@ -5531,11 +5566,13 @@ function estimateText(){
   return m === 1 ? "a minute" : numWord(m) + " minutes";
 }
 function otherMascotKey(){
-  var others = MASCOTS.filter(function(m){ return m !== SETTINGS.mascot; });
+  /* Any companion in your list, the current one left out. */
+  var others = visibleKeys().filter(function(m){ return m !== SETTINGS.mascot; });
   return others.length ? others[Math.floor(Math.random() * others.length)] : "";
 }
 function greetRound(opts){
   opts = opts || {};
+  if(holdGreet(opts)) return;
   if(MS.key !== CURKEY) msReset();
   rollDay();
   clearSpeech();
@@ -5588,21 +5625,699 @@ function noteKey(ev){
   }
 }
 
+/* Companions you add. Each is a folder of pictures, named after the pose they fill, with companion.json for its name and
+   lines when it talks, inside one companions folder you pick once (Chrome and Edge on a computer). Pictures are shown as
+   images, and drawings as data: images a browser won't open as a page, so nothing in a folder can run. A pose a
+   companion lacks borrows another, down to idle. */
+var SLOTS = ["idle", "blink", "greet", "pick", "skip", "milestone", "warn", "error", "finish", "yawn", "sleep", "wake", "dance1", "dance2"];
+var BORROW = { blink: "", greet: "idle", pick: "greet", skip: "idle", milestone: "pick", warn: "idle", error: "warn", finish: "milestone", yawn: "idle", sleep: "idle", wake: "greet", dance1: "finish", dance2: "dance1" };
+var PICS = { svg: "image/svg+xml", png: "image/png", webp: "image/webp", gif: "image/gif" };
+var CMP_LIMIT = 5 * 1024 * 1024;
+var CSHOWN = "decision-wizard-cshown-v1";
+/* What each moment's lines may fill in. A line using anything else is named in a notice, and its companion waits. */
+var CMP_FILLS = { greet: ["Decisions"], batch: ["Decisions"], estimate: ["minutes"], morning: ["cname"], late: ["cname"], back: ["cname"], suggest: ["other"],
+  recap_done: ["Picked", "typedPart", "timePart"], recap_open: ["Picked", "typedPart", "ids"], recap_none: ["ids"], open_go: ["id"],
+  stat_r: ["r"], stat_t: ["t"], stat_today: ["td"], warn: ["answers"], opt_name: ["name"] };
+/* seen: every folder in the companions folder at the last look. scannedFor: the companions folder that look was of, so
+   nothing is decided from a look that didn't happen. copying: the companions folders a companion is being copied into. */
+var CMP = { handle: null, perm: "none", list: {}, folders: {}, seen: {}, scannedFor: null, shown: {}, ready: false, scanning: null, again: false, copying: [],
+  timer: null, obs: null, obsTimer: null, curSig: "", cardSig: "", held: null };
+var ZZ_SVG = '<svg class="mzz" viewBox="0 0 40 30" aria-hidden="true"><path d="M3 18h7l-7 9h7M16 4h12L16 18h12" fill="none" stroke="#1B1810" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 18h7l-7 9h7M16 4h12L16 18h12" fill="none" stroke="#F6F0E2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var CMP_ICO = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="M12 8.5 13.2 10.8 15.5 12 13.2 13.2 12 15.5 10.8 13.2 8.5 12 10.8 10.8Z" fill="currentColor"/></svg>';
+var NONE_ICO = '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="3 3" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg>';
+var PLUS_ICO = '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+
+function cmpKey(name){ return "c:" + String(name).toLowerCase(); }
+function visibleKeys(){
+  var out = MASCOTS.filter(function(k){ return SETTINGS.hidden.indexOf(k) === -1; });
+  Object.keys(CMP.list).sort(function(a, b){ return CMP.list[a].name.toLowerCase() < CMP.list[b].name.toLowerCase() ? -1 : 1; }).forEach(function(k){ out.push(k); });
+  return out;
+}
+function cmpWaiting(){ var m = SETTINGS.mascot; return m.indexOf("c:") === 0 && !own(CMP.list, m); }
+function companionSig(){ var mk = mascotKey(); return mk ? mk + "|" + (own(CMP.list, mk) ? CMP.list[mk].pics.idle : "") : ""; }
+function seqEach(arr, fn){ var p = Promise.resolve(); arr.forEach(function(x){ p = p.then(function(){ return fn(x); }); }); return p; }
+function listDir(dir){
+  var out = [], it;
+  try{ it = dir.values(); }catch(e){ return Promise.reject(e); }
+  var next = function(){ return it.next().then(function(r){ if(r.done) return out; out.push(r.value); return next(); }); };
+  return next();
+}
+function sizeText(n){ return n >= 1048576 ? (Math.ceil(n / 104857.6) / 10) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
+function shortLine(t){ t = String(t); return t.length > 48 ? t.slice(0, 45) + "..." : t; }
+function setHTML(el, h){ if(el && el.__h !== h){ el.innerHTML = h; el.__h = h; } }
+function focusQuiet(el){ try{ el.focus({ preventScroll: true }); }catch(e){ try{ el.focus(); }catch(e2){} } }
+/* Only the mascot changes in what is stored, so a window in the background never writes back its older options. */
+function saveMascot(){
+  var s = readJSON(SETKEY);
+  if(!s || typeof s !== "object") s = {};
+  s.mascot = SETTINGS.mascot; s.mascotFolder = SETTINGS.mascotFolder;
+  lsSet(SETKEY, JSON.stringify(s));
+}
+function picHTML(c, slot){
+  var s = slot;
+  while(s && !c.pics[s]) s = BORROW[s];
+  if(!s) s = "idle";
+  var img = '<img class="mimg' + (c.pix[s] ? " pix" : "") + '" src="' + c.pics[s] + '" alt="" width="200" height="262" draggable="false">';
+  return (slot === "sleep" && !c.pics.sleep) ? '<span class="mstack">' + img + ZZ_SVG + '</span>' : img;
+}
+function cmpArt(c){ var a = {}; SLOTS.forEach(function(k){ a[k] = picHTML(c, k); }); return a; }
+function cmpFree(c){
+  if(!c) return;
+  for(var k in c.pics){ if(own(c.pics, k) && c.pics[k].indexOf("blob:") === 0){ try{ URL.revokeObjectURL(c.pics[k]); }catch(e){} } }
+  c.pics = {};
+}
+function folderSig(fs){ return fs.map(function(x){ return x.f.name + ":" + x.f.size + ":" + x.f.lastModified; }).sort().join("|"); }
+function readFiles(dir){
+  return listDir(dir).then(function(es){
+    return Promise.all(es.filter(function(e){ return e.kind === "file"; }).map(function(h){ return h.getFile().then(function(f){ return { h: h, f: f }; }); }));
+  });
+}
+function asURL(f, type){
+  if(type !== PICS.svg) return Promise.resolve(URL.createObjectURL(new Blob([f], { type: type })));
+  return new Promise(function(res, rej){
+    try{
+      var fr = new FileReader();
+      fr.onload = function(){ res(String(fr.result)); };
+      fr.onerror = function(){ rej(fr.error); };
+      fr.readAsDataURL(new Blob([f], { type: type }));
+    }catch(e){ rej(e); }
+  });
+}
+function decodeOk(url){
+  return new Promise(function(res){
+    try{
+      var im = new Image();
+      im.onload = function(){ res(im.naturalWidth > 0 ? im.naturalWidth : 0); };
+      im.onerror = function(){ res(-1); };
+      im.src = url;
+    }catch(e){ res(-1); }
+  });
+}
+function isPicName(n){ var m = /^([a-z0-9]+)\.(svg|png|webp|gif)$/i.exec(n); return !!m && SLOTS.indexOf(m[1].toLowerCase()) !== -1; }
+/* Reads one companion's folder. Resolves { sig, comp }, { sig, problem } (finishing "<folder> wasn't added: ..."),
+   { sig, ignore } for a folder with no companion in it, or { transient } when a file changed while it was read. */
+function readCompanion(dir, folder){
+  return readFiles(dir).then(function(fs){
+    var sig = folderSig(fs), size = 0, found = {}, json = null, any = false;
+    fs.forEach(function(x){
+      size += x.f.size;
+      var m = /^([a-z0-9]+)\.(svg|png|webp|gif)$/i.exec(x.f.name);
+      if(m && SLOTS.indexOf(m[1].toLowerCase()) !== -1 && !found[m[1].toLowerCase()]){ found[m[1].toLowerCase()] = { f: x.f, type: PICS[m[2].toLowerCase()] }; any = true; }
+      if(x.f.name.toLowerCase() === "companion.json"){ json = x.f; any = true; }
+    });
+    var fail = function(p){ return { sig: sig, problem: p }; };
+    if(!any) return { sig: sig, ignore: true };
+    if(size > CMP_LIMIT) return fail("it's " + sizeText(size) + ", over the 5 MB limit");
+    if(!found.idle) return fail("it has no idle picture (idle.svg, idle.png, idle.webp, or idle.gif)");
+    return Promise.resolve(json ? json.text() : null).then(function(txt){
+      var data = {};
+      if(txt !== null){
+        try{ data = JSON.parse(txt); }catch(e){ return fail("its companion.json isn't valid JSON"); }
+        if(!data || typeof data !== "object" || Array.isArray(data)) return fail("its companion.json isn't a JSON object");
+      }
+      var named = typeof data.name === "string" && !!data.name.trim();
+      var name = (named ? data.name.trim() : folder).replace(/\s+/g, " ").slice(0, 30);
+      if(/^(quill|swoop|none)$/i.test(name)) return fail("the name " + name + " is taken");
+      var about = typeof data.about === "string" ? data.about.trim().replace(/\s+/g, " ").slice(0, 60) : "";
+      var lines = {};
+      if(data.lines != null){
+        if(typeof data.lines !== "object" || Array.isArray(data.lines)) return fail("its lines aren't a list of moments");
+        for(var k in data.lines){
+          if(!own(data.lines, k)) continue;
+          if(!own(LINES.quill, k)) return fail("its lines name a moment the wizard doesn't know, \"" + k + "\"");
+          var v = data.lines[k], arr = typeof v === "string" ? [v] : v, keep = [];
+          if(!Array.isArray(arr)) return fail("the lines for " + k + " aren't text");
+          for(var i=0;i<arr.length;i++){
+            if(typeof arr[i] !== "string") return fail("the lines for " + k + " aren't text");
+            var l = arr[i].trim().slice(0, 240);
+            if(!l) continue;
+            var ph = l.match(/\{(\w+)\}/g) || [];
+            for(var j=0;j<ph.length;j++){
+              if((CMP_FILLS[k] || []).indexOf(ph[j].slice(1, -1)) === -1) return fail("the " + k + " line \"" + shortLine(l) + "\" uses " + ph[j] + ", which that moment can't fill");
+            }
+            keep.push(l);
+          }
+          if(keep.length) lines[k] = keep;
+        }
+      }
+      var c = { name: name, named: named, data: data, about: about, folder: folder, pics: {}, pix: {}, own: 0, lines: lines, size: size };
+      var slots = Object.keys(found), dead = false;
+      return Promise.all(slots.map(function(s){ return asURL(found[s].f, found[s].type).then(function(u){
+        if(dead){ if(u.indexOf("blob:") === 0){ try{ URL.revokeObjectURL(u); }catch(e){} } return; }
+        c.pics[s] = u; c.own++;
+      }); })).then(function(){
+        return Promise.all(slots.map(function(s){
+          return decodeOk(c.pics[s]).then(function(w){
+            if(w < 0 && s !== "idle"){ if(c.pics[s].indexOf("blob:") === 0){ try{ URL.revokeObjectURL(c.pics[s]); }catch(e){} } delete c.pics[s]; c.own--; }
+            else if(found[s].type !== PICS.svg && w > 0 && w < 100) c.pix[s] = true;
+            return w;
+          });
+        }));
+      }).then(function(ws){
+        if(ws[slots.indexOf("idle")] < 0){ cmpFree(c); return fail("its idle picture can't be shown"); }
+        return { sig: sig, comp: c };
+      }).then(null, function(){ dead = true; cmpFree(c); return { transient: true }; });
+    }, function(){ return { transient: true }; });
+  }, function(){ return { transient: true }; });
+}
+function dropFolder(n){
+  var f = CMP.folders[n];
+  if(f && f.comp) cmpFree(f.comp);
+  delete CMP.folders[n];
+}
+/* Looks through the companions folder: new and changed folders are read again, gone ones leave. A folder that can't
+   be read just now keeps what it had, and is tried again next time. */
+function scanCdir(){
+  if(!CMP.handle || (CMP.perm !== "granted" && CMP.perm !== "gone")) return Promise.resolve();
+  if(CMP.scanning || CMP.copying.indexOf(CMP.handle) !== -1){ CMP.again = true; return CMP.scanning || Promise.resolve(); }
+  var dir = CMP.handle, wasGone = CMP.perm === "gone";
+  CMP.scanning = listDir(dir).then(function(es){
+    var all = es.filter(function(e){ return e.kind === "directory" && e.name.charAt(0) !== "."; }).sort(function(a, b){ return a.name < b.name ? -1 : 1; });
+    /* Up to 60 folders are read, and always the chosen companion's. */
+    var subs = all.slice(0, 60), mf = SETTINGS.mascotFolder;
+    if(mf && !subs.some(function(x){ return x.name === mf; })) subs = subs.concat(all.filter(function(x){ return x.name === mf; }));
+    var seen = {}, read = {};
+    all.forEach(function(x){ seen[x.name] = true; });
+    subs.forEach(function(x){ read[x.name] = true; });
+    return seqEach(subs, function(sub){
+      return readFiles(sub).then(function(fs){
+        var cur = CMP.folders[sub.name];
+        if(cur && cur.sig === folderSig(fs)) return;
+        return readCompanion(sub, sub.name).then(function(r){
+          if(dir !== CMP.handle || r.transient){ if(r.comp) cmpFree(r.comp); return; }
+          dropFolder(sub.name);
+          CMP.folders[sub.name] = { sig: r.sig, comp: r.comp || null, problem: r.problem || "", ignore: !!r.ignore };
+        });
+      }).then(null, function(){});
+    }).then(function(){
+      if(dir !== CMP.handle) return;
+      for(var n in CMP.folders){ if(own(CMP.folders, n) && !read[n]) dropFolder(n); }
+      CMP.seen = seen;
+      CMP.scannedFor = dir;
+      if(CMP.perm !== "granted"){ CMP.perm = "granted"; if(wasGone) startCdirWatch(); }
+      settleCompanions();
+    });
+  }).then(null, function(e){
+    if(dir !== CMP.handle) return;
+    var name = e && e.name;
+    if(name === "NotAllowedError" || name === "SecurityError"){
+      /* The browser took its OK back: nothing shows until it's given again. */
+      for(var n in CMP.folders){ if(own(CMP.folders, n)) dropFolder(n); }
+      CMP.folders = {}; CMP.seen = {}; CMP.scannedFor = null;
+      CMP.perm = "prompt";
+      settleCompanions();
+      cdirNotice();
+    } else if(CMP.perm !== "gone"){ CMP.perm = "gone"; refreshCard(); }
+  }).then(function(){
+    CMP.scanning = null;
+    CMP.ready = true;
+    if(CMP.again && CMP.copying.indexOf(CMP.handle) === -1){ CMP.again = false; return scanCdir(); }
+  });
+  return CMP.scanning;
+}
+function cardSig(){
+  return JSON.stringify([CMP.perm, CMP.handle ? CMP.handle.name : "", Object.keys(CMP.list).map(function(k){ var c = CMP.list[k]; return [k, c.name, c.about, c.pics.idle]; }), SETTINGS.hidden, SETTINGS.mascot, mascotKey()]);
+}
+function refreshCard(){ var s = cardSig(); if(s !== CMP.cardSig){ CMP.cardSig = s; renderOptions(); } }
+/* Another window may have chosen a companion since this one loaded: what is stored wins, and nothing is written over it. */
+function adoptStored(){
+  var s = readJSON(SETKEY);
+  if(!s || typeof s !== "object" || typeof s.mascot !== "string" || s.mascot === SETTINGS.mascot) return false;
+  if(!/^(quill|swoop|none|c:.{1,40})$/.test(s.mascot)) return false;
+  SETTINGS.mascot = s.mascot;
+  SETTINGS.mascotFolder = typeof s.mascotFolder === "string" ? s.mascotFolder.slice(0, 255) : "";
+  return true;
+}
+/* Turns what was read into the list. Names are identities: the chosen companion's folder keeps its name first, then each
+   companion already in the list, then the rest by folder name. */
+function settleCompanions(){
+  var list = {}, names = Object.keys(CMP.folders).sort(), order = [];
+  var claim = function(n){ if(n && own(CMP.folders, n) && order.indexOf(n) === -1) order.push(n); };
+  claim(SETTINGS.mascotFolder);
+  for(var pk in CMP.list){ if(own(CMP.list, pk)) claim(CMP.list[pk].folder); }
+  names.forEach(claim);
+  order.forEach(function(n){
+    var f = CMP.folders[n];
+    f.dup = "";
+    if(!f.comp) return;
+    var k = cmpKey(f.comp.name);
+    if(own(list, k)){ f.dup = list[k].folder; f.dupName = list[k].name; return; }
+    list[k] = f.comp;
+  });
+  for(var ok in CMP.list){
+    if(own(CMP.list, ok) && !own(list, ok)){ delete ART[ok]; delete LINES[ok]; delete MNAME[ok]; delete MSHORT[ok]; delete JOIN[ok]; }
+  }
+  for(var k2 in list){
+    if(!own(list, k2)) continue;
+    var c = list[k2];
+    if(CMP.list[k2] !== c){ ART[k2] = cmpArt(c); LINES[k2] = c.lines; MNAME[k2] = c.name + (c.about ? ", " + c.about : ""); MSHORT[k2] = c.name; JOIN[k2] = " and "; }
+  }
+  CMP.list = list;
+  /* Only a finished look at the companions folder in use decides anything. */
+  var full = !!CMP.handle && CMP.perm === "granted" && CMP.scannedFor === CMP.handle;
+  showProblems(names, full);
+  /* The chosen companion is followed by its folder: renamed, it is followed to its new name; broken or unreadable for
+     now, it waits; its folder gone, the first companion left takes over. */
+  if(full && SETTINGS.mascot.indexOf("c:") === 0) adoptStored();
+  var m = SETTINGS.mascot;
+  if(full && m.indexOf("c:") === 0){
+    var mf = SETTINGS.mascotFolder;
+    if(own(list, m)){
+      if(mf !== list[m].folder){ SETTINGS.mascotFolder = list[m].folder; saveMascot(); }
+    } else {
+      var f = mf ? CMP.folders[mf] : null;
+      if(f && f.comp && !f.dup && own(list, cmpKey(f.comp.name))){ SETTINGS.mascot = cmpKey(f.comp.name); saveMascot(); }
+      else {
+        var waits = mf ? own(CMP.seen, mf) : Object.keys(CMP.seen).some(function(n){ return n.toLowerCase() === m.slice(2); });
+        if(!waits){ SETTINGS.mascot = visibleKeys()[0] || "none"; SETTINGS.mascotFolder = ""; saveMascot(); }
+      }
+    }
+  }
+  if(companionSig() !== CMP.curSig) applyMascot();
+  refreshCard();
+}
+/* A folder that can't be added says why, once for each version of it, in this browser. Many at once share one notice.
+   What was said is only forgotten after a finished look, and not for a folder that couldn't be read just then. */
+function showProblems(names, full){
+  var probs = [];
+  names.forEach(function(n){
+    var f = CMP.folders[n], text = "";
+    if(f.problem) text = n + " wasn't added to your companions: " + f.problem + ".";
+    else if(f.dup) text = n + " wasn't added to your companions: " + f.dup + " already has the name " + f.dupName + ".";
+    if(text) probs.push({ n: n, text: text, sig: f.sig + "|" + text });
+  });
+  var live = {}, changed = false;
+  var raise = function(id, text, sig){
+    live[id] = true;
+    if(CMP.shown[id] !== sig){ CMP.shown[id] = sig; changed = true; addNotice({ id: "cmp:" + id, text: text, bad: true }); }
+  };
+  var cap = probs.length > 4 ? 3 : 4;
+  probs.slice(0, cap).forEach(function(p){ raise(p.n, p.text, p.sig); });
+  if(probs.length > cap){
+    var rest = probs.slice(cap).map(function(p){ return p.n; });
+    raise("+more", "And " + plural(rest.length, "more folder", "more folders") + " weren't added to your companions: " + rest.join(", ") + ". Fix or remove the ones above to see why.", probs.slice(cap).map(function(p){ return p.sig; }).join("~"));
+  }
+  if(full){
+    for(var id in CMP.shown){
+      if(!own(CMP.shown, id) || live[id] || (own(CMP.seen, id) && !own(CMP.folders, id))) continue;
+      delete CMP.shown[id]; changed = true; dropNotice("cmp:" + id);
+    }
+  }
+  if(changed) lsSet(CSHOWN, JSON.stringify(CMP.shown));
+}
+function stopCdirWatch(){
+  if(CMP.timer){ clearInterval(CMP.timer); CMP.timer = null; }
+  if(CMP.obsTimer){ clearTimeout(CMP.obsTimer); CMP.obsTimer = null; }
+  if(CMP.obs){ try{ CMP.obs.disconnect(); }catch(e){} CMP.obs = null; }
+}
+function startCdirWatch(){
+  stopCdirWatch();
+  if(!CMP.handle || (CMP.perm !== "granted" && CMP.perm !== "gone")) return;
+  CMP.timer = setInterval(function(){ if(!document.hidden) scanCdir(); }, TIMING.cpoll);
+  try{
+    if(typeof FileSystemObserver === "function"){
+      CMP.obs = new FileSystemObserver(function(){
+        if(CMP.obsTimer) clearTimeout(CMP.obsTimer);
+        CMP.obsTimer = setTimeout(function(){ CMP.obsTimer = null; scanCdir(); }, 300);
+      });
+      Promise.resolve(CMP.obs.observe(CMP.handle, { recursive: true })).then(null, function(){});
+    }
+  }catch(e){ CMP.obs = null; }
+}
+function cdirNotice(){
+  if(CMP.perm === "denied") addNotice({ id: "cdir", text: "The browser is blocking your companions folder. Allow it from the icon in the address bar, or pick it again with Change in Options.", bad: true });
+  else addNotice({ id: "cdir", text: "Your companions folder needs your OK again before your companions can show.", label: "Allow", fn: allowCdir });
+}
+function useCdir(h, perm){
+  stopCdirWatch();
+  for(var n in CMP.folders){ if(own(CMP.folders, n)) dropFolder(n); }
+  CMP.folders = {}; CMP.seen = {}; CMP.scannedFor = null;
+  CMP.handle = h;
+  CMP.perm = perm;
+  dropNotice("cdir");
+  if(perm === "granted") return scanCdir().then(function(){ settleCompanions(); startCdirWatch(); });
+  settleCompanions();
+  if(perm === "prompt" || perm === "denied") cdirNotice();
+  return Promise.resolve();
+}
+function queryCdir(h){
+  return Promise.resolve().then(function(){ return h.queryPermission({ mode: "readwrite" }); }).then(function(p){ return p; }, function(){ return "prompt"; });
+}
+/* Coming back to the page: another window may have given the OK, or the folder may be back. */
+function cmpWake(){
+  if(!CMP.handle) return;
+  if(CMP.perm === "prompt" || CMP.perm === "denied"){
+    var h = CMP.handle;
+    queryCdir(h).then(function(p){
+      if(h !== CMP.handle || p !== "granted") return;
+      CMP.perm = "granted"; dropNotice("cdir");
+      scanCdir().then(startCdirWatch);
+    });
+    return;
+  }
+  scanCdir();
+}
+/* Another window picked, changed, or forgot the companions folder. */
+function reloadCdir(){
+  handleGet("cdir").then(function(h){
+    if(!h){ if(CMP.handle){ forgetCompanions(); settleCompanions(); } return; }
+    var same = CMP.handle ? Promise.resolve().then(function(){ return CMP.handle.isSameEntry(h); }).then(null, function(){ return false; }) : Promise.resolve(false);
+    return same.then(function(s){ if(s) return; return queryCdir(h).then(function(p){ return useCdir(h, p); }); });
+  });
+}
+function setupCompanions(){
+  var sh = readJSON(CSHOWN);
+  if(sh && typeof sh === "object") CMP.shown = sh;
+  if(!fsSupported()){ CMP.ready = true; renderOptions(); releaseGreet(); return Promise.resolve(); }
+  var vs = document.querySelector("#dropveil small");
+  if(vs) vs.textContent = "A round, a saved file, answers, a backup, or a companion's folder";
+  document.addEventListener("visibilitychange", function(){ if(!document.hidden) cmpWake(); });
+  window.addEventListener("focus", cmpWake);
+  return handleGet("cdir").then(function(h){
+    if(!h) return;
+    return queryCdir(h).then(function(p){ return useCdir(h, p); });
+  }).then(null, function(){}).then(function(){ CMP.ready = true; refreshCard(); releaseGreet(); });
+}
+/* A round opening while the chosen companion's folder is still being read waits for it, so its greeting isn't lost. */
+function holdGreet(opts){
+  if(CMP.ready || !cmpWaiting()) return false;
+  CMP.held = opts || {};
+  return true;
+}
+function releaseGreet(){
+  var o = CMP.held;
+  CMP.held = null;
+  if(o) greetRound(o);
+}
+function allowCdir(){
+  var h = CMP.handle;
+  if(!h) return;
+  Promise.resolve().then(function(){ return h.requestPermission({ mode: "readwrite" }); }).then(function(p){ return p; }, function(){ return "prompt"; }).then(function(p){
+    if(h !== CMP.handle) return;
+    if(p === "granted"){ CMP.perm = "granted"; dropNotice("cdir"); scanCdir().then(startCdirWatch); }
+    else { CMP.perm = p === "denied" ? "denied" : "prompt"; cdirNotice(); refreshCard(); }
+  });
+}
+/* Resolves a folder, null when the picker was closed, or false when the browser wanted a fresh click. */
+function pickDir(id, mode){
+  return Promise.resolve().then(function(){ return window.showDirectoryPicker({ id: id, mode: mode }); }).then(function(h){ return h; }, function(e){
+    if(e && e.name === "SecurityError"){ toast(false, "The browser needs a fresh click for that. Press it again."); return false; }
+    return null;
+  });
+}
+function looksLikeCompanion(dir){
+  return listDir(dir).then(function(es){ return es.some(function(e){ return e.kind === "file" && (isPicName(e.name) || e.name.toLowerCase() === "companion.json"); }); }, function(){ return false; });
+}
+/* Picking (or changing) the companions folder. A folder that is itself one companion's is turned away, and one whose
+   folders hold no companion at all is asked about first. */
+function pickCdir(){
+  if(!fsSupported()) return Promise.resolve(false);
+  return pickDir("wizard-companions", "readwrite").then(function(h){
+    if(!h) return false;
+    return listDir(h).then(function(es){
+      var isOne = es.some(function(e){ return e.kind === "file" && /^idle\.(svg|png|webp|gif)$/i.test(e.name); });
+      if(isOne){ toast(false, "That folder is one companion. Pick the folder that holds your companions, or make a new one for them."); return false; }
+      var subs = es.filter(function(e){ return e.kind === "directory" && e.name.charAt(0) !== "."; }).slice(0, 60);
+      var anyOne = false;
+      return seqEach(subs, function(s){ if(anyOne) return; return looksLikeCompanion(s).then(function(y){ if(y) anyOne = true; }); }).then(function(){
+        if(!subs.length || anyOne) return true;
+        return confirmBox({ calm: true, icon: CMP_ICO, title: "Use " + h.name + " for your companions?",
+          message: "None of the " + plural(subs.length, "folder", "folders") + " in it is a companion. Companions you add are copied into it, next to them.",
+          ok: "Use it", cancel: "Not this one" });
+      }).then(function(go){
+        if(!go) return false;
+        return handlePut("cdir", h).then(function(){ return useCdir(h, "granted"); }).then(function(){
+          tellPages("cdir");
+          var n = Object.keys(CMP.list).length;
+          toast(true, "Companions folder connected. " + (n ? plural(n, "companion", "companions") + " in it." : "It holds no companions yet."));
+          return true;
+        });
+      });
+    }, function(){ toast(false, "That folder can't be read."); return false; });
+  });
+}
+/* Resolves "ready" when the companions folder can be written, "fresh" when it was picked just now, or false. A drop is
+   no click, so the browser's OK can't be asked for then. */
+function ensureCdir(fromDrop){
+  if(CMP.handle && CMP.perm === "granted") return Promise.resolve("ready");
+  if(CMP.handle && CMP.perm === "gone"){
+    return scanCdir().then(function(){
+      if(CMP.perm === "granted") return "ready";
+      toast(false, "Your companions folder can't be found just now. Check it's still there, or pick it again with Change in Options.");
+      return false;
+    });
+  }
+  if(CMP.handle){
+    if(fromDrop){ cdirNotice(); toast(false, "Allow your companions folder first, then drop the companion again."); return Promise.resolve(false); }
+    return Promise.resolve().then(function(){ return CMP.handle.requestPermission({ mode: "readwrite" }); }).then(function(p){ return p; }, function(){ return "prompt"; }).then(function(p){
+      if(p !== "granted"){ CMP.perm = p === "denied" ? "denied" : "prompt"; cdirNotice(); refreshCard(); return false; }
+      CMP.perm = "granted"; dropNotice("cdir"); return scanCdir().then(function(){ startCdirWatch(); return "ready"; });
+    });
+  }
+  return confirmBox({ calm: true, icon: CMP_ICO, title: "Pick your companions folder first",
+    message: "Companions you add live as folders inside one folder on this computer. Pick that folder, or make a new one, then pick the companion to add.",
+    ok: "Pick the folder", cancel: "Not now" }).then(function(yes){ return yes ? pickCdir().then(function(ok){ return ok ? "fresh" : false; }) : false; });
+}
+function poseStrip(c){
+  return SLOTS.filter(function(s){ return !!c.pics[s]; }).map(function(s){ return '<figure><span class="cpf">' + picHTML(c, s) + '</span>' + s + '</figure>'; }).join("");
+}
+/* The first name nothing in the companions folder has: Inky, then Inky 2, Inky 3. Only "not found" means free. */
+function folderFree(root, name){
+  var n = 1;
+  var tryName = function(nm){
+    return Promise.resolve().then(function(){ return root.getDirectoryHandle(nm); }).then(function(){ return ""; }, function(e){ return (e && e.name === "NotFoundError") ? nm : ""; }).then(function(free){
+      if(free) return free;
+      if(++n > 50) throw new Error("No free folder name");
+      return tryName(name + " " + n);
+    });
+  };
+  return tryName(name);
+}
+function writeFile(dst, name, data){
+  return dst.getFileHandle(name, { create: true }).then(function(th){ return th.createWritable(); }).then(function(w){
+    return w.write(data).then(function(){ return w.close(); });
+  });
+}
+/* Copies a companion's files into a new folder of the companions folder. A companion named by its folder keeps its name
+   in a companion.json of the copy, when the copy's folder has to be called something else. */
+function copyFolder(root, src, name, c){
+  return root.getDirectoryHandle(name, { create: true }).then(function(dst){
+    return readFiles(src).then(function(fs){
+      return seqEach(fs, function(x){
+        if(x.f.name.toLowerCase() === "companion.json" && !c.named && name !== src.name) return;
+        return writeFile(dst, x.f.name, x.f);
+      });
+    }).then(function(){
+      if(c.named || name === src.name) return;
+      var d = {}; for(var k in c.data){ if(own(c.data, k)) d[k] = c.data[k]; }
+      d.name = c.name;
+      return writeFile(dst, "companion.json", JSON.stringify(d, null, 1) + "\n");
+    });
+  });
+}
+function rmEntry(root, name){ return Promise.resolve().then(function(){ return root.removeEntry(name, { recursive: true }); }); }
+/* Adding a companion: from the Add tile (pick its folder) or a folder dropped on the page. It asks first, then copies
+   the folder into the companions folder and switches to it. Replacing copies first, and only then deletes the old one.
+   Everything happens in the companions folder it started with: if that changes meanwhile, nothing more is done. */
+function addCompanion(src){
+  if(!fsSupported()){ toast(false, "Adding companions works in Chrome and Edge on a computer."); return; }
+  if(confirmOpen) return;
+  var cand = null, root = null;
+  var moved = function(what){
+    if(CMP.handle === root) return false;
+    toast(false, "Your companions folder changed while " + what + ". Nothing more was done.");
+    return true;
+  };
+  ensureCdir(!!src).then(function(st){
+    if(!st) return null;
+    root = CMP.handle;
+    if(src) return src;
+    if(st === "fresh"){
+      /* The first picker used up the click; a second question gives the next picker one of its own. */
+      return confirmBox({ calm: true, icon: CMP_ICO, title: "Now the companion", message: "Your companions folder is ready. Pick the folder of the companion to add.", ok: "Pick its folder", cancel: "Not now" })
+        .then(function(yes){ return yes ? pickDir("wizard-companion", "read") : null; });
+    }
+    return pickDir("wizard-companion", "read");
+  }).then(function(dir){
+    if(!dir) return;
+    return scanCdir().then(function(){ return Promise.resolve().then(function(){ return root.resolve(dir); }).then(null, function(){ return null; }); }).then(function(path){
+      if(moved("the companion was being read")) return;
+      if(path && path.length === 0){ toast(false, "That's your companions folder. Pick one companion's folder."); return; }
+      if(path && path.length > 1){ toast(false, "That folder is inside your companions folder. Pick a companion's folder from somewhere else."); return; }
+      if(path && path.length === 1){
+        var f = CMP.folders[path[0]];
+        if(f && f.comp && !f.dup){ setOption("mascot", cmpKey(f.comp.name)); toast(true, f.comp.name + " is already in your companions folder."); }
+        else if(f && (f.problem || f.dup)) toast(false, path[0] + " is already in your companions folder, but it wasn't added. Its notice says why.");
+        else toast(false, path[0] + " is in your companions folder, but it isn't a companion.");
+        return;
+      }
+      return readCompanion(dir, dir.name).then(function(r){
+        if(r.transient){ toast(false, dir.name + " couldn't be read. Try again."); return; }
+        if(r.ignore){ toast(false, dir.name + " isn't a companion. A companion's folder holds pictures named after its poses, like idle.png."); return; }
+        if(!r.comp){ toast(false, dir.name + " can't be added: " + r.problem + "."); return; }
+        cand = r.comp;
+        var c = cand, key = cmpKey(c.name), have = own(CMP.list, key) ? CMP.list[key] : null;
+        var moments = Object.keys(c.lines).length;
+        var ask;
+        if(have){
+          ask = confirmBox({ title: "Replace " + c.name + "?", nodefault: true,
+            message: "Your companions folder already has " + c.name + ", in the folder " + have.folder + ". Replace it with the one you picked? The new one is copied in, then the old folder is deleted.",
+            path: have.folder, ok: "Replace", cancel: "Keep mine" });
+        } else {
+          var hello = (c.lines.opt_hello || [])[0] || "";
+          ask = confirmBox({ calm: true, icon: CMP_ICO, title: "Add " + c.name + " to your companions?",
+            fig: picHTML(c, "greet"), line: hello, strip: poseStrip(c),
+            message: c.name + (c.about ? ", " + c.about : "") + ", from the folder " + dir.name + ". " + plural(c.own, "pose", "poses") + " of its own"
+              + (c.own < SLOTS.length ? ", the rest borrowed" : "") + (moments ? ", and lines for " + plural(moments, "moment", "moments") : ", and no lines, so it stays quiet")
+              + ". Add copies its folder into your companions folder and switches to it.",
+            ok: "Add", cancel: "Not now" });
+        }
+        return ask.then(function(yes){
+          if(!yes || moved("you were asked")) return;
+          var target = "", made = "";
+          /* Looks at the folder wait while the copy is written, so a half-written folder never raises a notice. */
+          CMP.copying.push(root);
+          var done = function(){ var i = CMP.copying.indexOf(root); if(i !== -1) CMP.copying.splice(i, 1); };
+          return Promise.resolve(CMP.scanning).then(function(){
+            return folderFree(root, dir.name);
+          }).then(function(nm){ target = made = nm; return copyFolder(root, dir, nm, c); }).then(function(){
+            if(!have || have.folder === target || CMP.handle !== root) return;
+            return rmEntry(root, have.folder).then(function(){
+              /* With the old folder gone, the new one takes its name back, so Inky stays in the folder Inky. */
+              if(have.folder !== dir.name || target === dir.name || CMP.handle !== root) return;
+              return copyFolder(root, dir, dir.name, c).then(function(){
+                var tmp = target; target = dir.name;
+                return rmEntry(root, tmp).then(null, function(){});
+              }, function(){ return rmEntry(root, dir.name).then(null, function(){}); });
+            }, function(){});
+          }).then(function(){
+            done();
+            if(moved(c.name + " was being copied")) return;
+            if(SETTINGS.mascot === key) SETTINGS.mascotFolder = target;
+            return scanCdir().then(function(){
+              if(own(CMP.list, key) && CMP.list[key].folder === target){ setOption("mascot", key); toast(true, c.name + (have ? " is replaced." : " joined your companions.")); }
+              else toast(false, c.name + " was copied, but it wasn't added. Its notice says why.");
+            });
+          }, function(){
+            done();
+            toast(false, c.name + " couldn't be copied into your companions folder." + (have ? " Your " + c.name + " is as it was." : ""));
+            /* Only a folder this add made is tidied away. */
+            return (made ? rmEntry(root, made).then(null, function(){}) : Promise.resolve()).then(function(){ if(CMP.handle === root) scanCdir(); });
+          });
+        });
+      });
+    });
+  }).then(function(){ if(cand) cmpFree(cand); }, function(){ if(cand) cmpFree(cand); });
+}
+function removeCompanion(key){
+  if(!own(CMP.list, key) || !CMP.handle) return;
+  var c = CMP.list[key], root = CMP.handle, btn = document.activeElement;
+  confirmBox({ title: "Remove " + c.name + "?", message: "This deletes the folder " + c.folder + ", with its pictures and lines, from your companions folder.",
+    path: c.folder, ok: "Remove", cancel: "Keep it" }).then(function(yes){
+    if(!yes) return;
+    /* The question was about this folder, in this companions folder: if either changed meanwhile, nothing is deleted. */
+    if(CMP.handle !== root || !own(CMP.list, key) || CMP.list[key].folder !== c.folder){ toast(false, "Your companions changed while you were asked, so nothing was deleted."); return; }
+    return rmEntry(root, c.folder).then(function(){
+      if(SETTINGS.mascot === key){ SETTINGS.mascot = visibleKeys().filter(function(k){ return k !== key; })[0] || "none"; SETTINGS.mascotFolder = ""; saveSettings(); }
+      return scanCdir().then(function(){
+        applySettings();
+        var t = document.querySelector('#ctiles [aria-pressed="true"]');
+        if(t && btn && !document.body.contains(btn)) focusQuiet(t);
+        toast(true, c.name + " is removed.");
+      });
+    }, function(){ toast(false, c.name + "'s folder couldn't be deleted. Close any app using it, then try again."); });
+  });
+}
+function hideCompanion(k){
+  if(k !== "quill" && k !== "swoop") return;
+  if(SETTINGS.hidden.indexOf(k) === -1) SETTINGS.hidden.push(k);
+  if(SETTINGS.mascot === k){ SETTINGS.mascot = visibleKeys()[0] || "none"; SETTINGS.mascotFolder = own(CMP.list, SETTINGS.mascot) ? CMP.list[SETTINGS.mascot].folder : ""; }
+  saveSettings();
+  applySettings();
+  var b = document.querySelector('#chidden [data-v="' + k + '"]');
+  if(b) focusQuiet(b);
+}
+function showCompanion(k){
+  SETTINGS.hidden = SETTINGS.hidden.filter(function(x){ return x !== k; });
+  saveSettings();
+  applySettings();
+  var t = document.querySelector('#ctiles [data-v="' + k + '"]');
+  if(t) focusQuiet(t);
+}
+function forgetCompanions(){
+  stopCdirWatch();
+  for(var n in CMP.folders){ if(own(CMP.folders, n)) dropFolder(n); }
+  for(var k in CMP.list){ if(own(CMP.list, k)){ delete ART[k]; delete LINES[k]; delete MNAME[k]; delete MSHORT[k]; delete JOIN[k]; } }
+  for(var id in CMP.shown){ if(own(CMP.shown, id)) dropNotice("cmp:" + id); }
+  dropNotice("cdir");
+  CMP.folders = {}; CMP.list = {}; CMP.seen = {}; CMP.scannedFor = null; CMP.shown = {}; CMP.handle = null; CMP.perm = "none"; CMP.cardSig = "";
+}
+/* The Companion card in Options: a tile per companion, the chosen one's line, and the companions folder. Each part is
+   written only when it changes, so a look at the folder never moves the focus or the scroll. */
+function renderCompanions(){
+  var box = document.getElementById("ctiles");
+  if(!box) return;
+  CMP.cardSig = cardSig();
+  var ae = document.activeElement, focusV = (ae && box.contains(ae)) ? (ae.getAttribute("data-v") || ae.getAttribute("data-action")) : null;
+  var mk = mascotKey(), h = "";
+  visibleKeys().forEach(function(k){
+    h += '<button type="button" class="ctile" data-action="set-mascot" data-v="' + esc(k) + '" aria-pressed="' + (k === SETTINGS.mascot) + '" aria-label="' + esc(MNAME[k] || k) + '">'
+      + '<span class="ctface"' + (k === mk ? ' id="mprev"' : '') + ' aria-hidden="true">' + ART[k].idle + '</span><span class="ctname" ' + dirA(MSHORT[k]) + '>' + esc(MSHORT[k]) + '</span></button>';
+  });
+  h += '<button type="button" class="ctile" data-action="set-mascot" data-v="none" aria-pressed="' + (SETTINGS.mascot === "none") + '"><span class="ctface" aria-hidden="true">' + NONE_ICO + '</span><span class="ctname">None</span></button>';
+  if(fsSupported()) h += '<button type="button" class="ctile add" data-action="c-add" aria-label="Add a companion"><span class="ctface" aria-hidden="true">' + PLUS_ICO + '</span><span class="ctname">Add</span></button>';
+  var before = box.__h;
+  setHTML(box, h);
+  if(focusV && box.__h !== before){
+    var bs = box.querySelectorAll("button");
+    for(var i=0;i<bs.length;i++){ if((bs[i].getAttribute("data-v") || bs[i].getAttribute("data-action")) === focusV){ focusQuiet(bs[i]); break; } }
+  }
+  var t = "";
+  if(mk && (mk === "quill" || mk === "swoop")) t = '<span><b>' + esc(MSHORT[mk]) + '</b>' + esc(MNAME[mk].slice(MSHORT[mk].length)) + '</span><button type="button" class="btn sec obtn" data-action="c-hide" data-v="' + mk + '" aria-label="Hide ' + esc(MSHORT[mk]) + '">Hide</button>';
+  else if(mk){ var c = CMP.list[mk]; t = '<span ' + dirA(MNAME[mk]) + '><b>' + esc(c.name) + '</b>' + (c.about ? ", " + esc(c.about) : "") + '</span>' + (CMP.perm === "granted" ? '<button type="button" class="btn sec obtn" data-action="c-remove" data-v="' + esc(mk) + '" aria-label="Remove ' + esc(c.name) + '">Remove</button>' : ''); }
+  else if(cmpWaiting()) t = '<span>Your companion shows once its folder can be read.</span>';
+  else t = '<span>No companion.</span>';
+  setHTML(document.getElementById("cchosen"), t);
+  setHTML(document.getElementById("chidden"), SETTINGS.hidden.length ? '<span>Hidden:</span>' + SETTINGS.hidden.map(function(k){ return '<button type="button" class="btn sec obtn" data-action="c-show" data-v="' + k + '">Show ' + esc(MSHORT[k]) + '</button>'; }).join("") : "");
+  var row = document.getElementById("row-cdir"), note = document.getElementById("cnote");
+  if(row){
+    if(!fsSupported()){ row.hidden = true; setHTML(row, ""); }
+    else {
+      row.hidden = false;
+      var lab = '<span class="olab">Companions folder' + (CMP.handle ? '<span class="cdirname" dir="auto">' + esc(CMP.handle.name) + '</span>' : '') + '</span>', btns = "";
+      if(!CMP.handle) btns = '<button type="button" class="btn sec obtn" data-action="c-pick">Pick a folder</button>';
+      else if(CMP.perm === "granted" || CMP.perm === "gone") btns = '<button type="button" class="btn sec obtn" data-action="c-pick">Change</button>';
+      else if(CMP.perm === "denied") btns = '<button type="button" class="btn sec obtn" data-action="c-pick">Change</button>';
+      else btns = '<button type="button" class="btn obtn" data-action="c-allow">Allow</button><button type="button" class="btn sec obtn" data-action="c-pick">Change</button>';
+      setHTML(row, lab + '<span class="obtns">' + btns + '</span>');
+    }
+  }
+  if(note){
+    var nt;
+    if(!fsSupported()) nt = "Companions you add work in Chrome and Edge on a computer. Hover over your companion, or tap it, for its menu.";
+    else if(CMP.handle && CMP.perm === "gone") nt = "Your companions folder can't be read just now. It's looked for again every few seconds, and when you come back to the page. Hover over your companion, or tap it, for its menu.";
+    else if(CMP.handle && CMP.perm === "denied") nt = "The browser is blocking your companions folder. Allow it from the icon in the address bar, or pick it again with Change. Hover over your companion, or tap it, for its menu.";
+    else nt = "Each companion you add is a folder of pictures in your companions folder. Hover over your companion, or tap it, for its menu.";
+    if(note.textContent !== nt) note.textContent = nt;
+  }
+}
+
 /* Reactions to Options: shown right in the panel while it is open. */
 function optReact(key, frame){
   if(!mascotOn()) return;
   var inPanel = drawerOpen && drawerId === "optdrawer";
   if(!inPanel){ if(SETTINGS.talk) react("opt", { key: key, frame: frame, name: SETTINGS.name }); return; }
   var pv = document.getElementById("mprev"), pl = document.getElementById("mprevline");
-  var art = ART[SETTINGS.mascot];
+  var art = ART[mascotKey()];
   if(pv && art && art[frame]) pv.innerHTML = art[frame];
   var line = SETTINGS.talk ? lineFor("opt", { key: key, name: SETTINGS.name }) : "";
-  if(pl){ pl.textContent = line; pl.className = "mprevline" + (line ? " on" : ""); }
+  if(pl){ pl.textContent = line; pl.setAttribute("dir", dirOf(line)); pl.className = "mprevline" + (line ? " on" : ""); }
   playSound("pick");
   if(optTimer) clearTimeout(optTimer);
   optTimer = setTimeout(function(){
     optTimer = null;
-    if(pv && mascotOn()) pv.innerHTML = ART[SETTINGS.mascot].idle;
+    pv = document.getElementById("mprev");
+    if(pv && mascotOn()) pv.innerHTML = ART[mascotKey()].idle;
     if(pl) pl.className = "mprevline";
   }, line ? lineDuration(line) : 2800);
 }
@@ -5688,7 +6403,7 @@ function copyAnswers(fromMascot){
   var txt = JSON.stringify(buildExport(), null, 2);
   var ok = function(){
     markSent();
-    if(mascotOn() && SETTINGS.talk && fromMascot){ react("copied"); }
+    if(mascotOn() && SETTINGS.talk && fromMascot && ((LINES[mascotKey()] || {}).copied || []).length){ react("copied"); }
     else { toast(true, "Answers JSON copied to the clipboard."); }
   };
   var fallback = function(){
@@ -5710,11 +6425,12 @@ function copyAnswers(fromMascot){
   }catch(e){ fallback(); }
 }
 function applyMascot(){
+  CMP.curSig = companionSig();
   closeMenu(false);
   var st = document.getElementById("stage");
   if(st){ st.className = "stage" + (mascotOn() ? "" : " nomascot"); }
   var b = document.getElementById("mascotbtn");
-  if(b){ b.setAttribute("aria-label", (MNAME[SETTINGS.mascot] || "Companion") + ". Menu"); }
+  if(b){ b.setAttribute("aria-label", (MNAME[mascotKey()] || "Companion") + ". Menu"); }
   if(mTimer){ clearTimeout(mTimer); mTimer = null; }
   stopDance();
   mFrame = null;
@@ -5807,10 +6523,15 @@ function confirmBox(o){
     var head = document.getElementById("chead"), ico = document.getElementById("cico"), cx = document.getElementById("cx");
     if(head) head.className = "chead" + (o.calm ? "" : " danger");
     if(ico) ico.innerHTML = o.calm ? CICO.calm : CICO.danger;
+    if(head && o.calm && o.icon) head.className = "chead";
     if(pathEl){ pathEl.textContent = o.path || ""; pathEl.hidden = !o.path; }
     yes.className = o.calm ? "btn" : "btn danger";
-    fig.innerHTML = mascotOn() ? ART[SETTINGS.mascot][face] : "";
-    line.textContent = (!o.calm && mascotOn() && SETTINGS.talk && o.answers > 0) ? lineFor("warn", { answers: o.answers }) : "";
+    fig.innerHTML = o.fig != null ? o.fig : (mascotOn() ? ART[mascotKey()][face] : "");
+    line.textContent = o.line != null ? o.line : ((!o.calm && mascotOn() && SETTINGS.talk && o.answers > 0) ? lineFor("warn", { answers: o.answers }) : "");
+    line.setAttribute("dir", dirOf(line.textContent));
+    var stripEl = document.getElementById("cstrip");
+    if(stripEl){ stripEl.innerHTML = o.strip || ""; stripEl.hidden = !o.strip; }
+    if(o.icon && ico) ico.innerHTML = o.icon;
     if(!o.calm) playSound("warn");
     if(mascotOn()){ if(mTimer){ clearTimeout(mTimer); mTimer = null; } setFrame(face); }
     var els = [document.querySelector("header"), document.querySelector(".wrap"), document.getElementById("drawer"), document.getElementById("optdrawer"), document.getElementById("drawerback"), document.getElementById("notices")];
@@ -5901,6 +6622,12 @@ document.addEventListener("click", function(ev){
   else if(act === "mm-next"){ closeMenu(false); gotoOpen(false); }
   else if(act === "bubble-act"){ var ba = bubbleAction; hideBubble(); if(ba && ba.fn) ba.fn(); }
   else if(OPTKEYS[act]){ setOption(OPTKEYS[act], el.getAttribute("data-v")); }
+  else if(act === "c-add"){ addCompanion(null); }
+  else if(act === "c-pick"){ pickCdir(); }
+  else if(act === "c-allow"){ allowCdir(); }
+  else if(act === "c-remove"){ removeCompanion(el.getAttribute("data-v")); }
+  else if(act === "c-hide"){ hideCompanion(el.getAttribute("data-v")); }
+  else if(act === "c-show"){ showCompanion(el.getAttribute("data-v")); }
   else if(act === "wipe-all"){ wipeAll(); }
   else if(act === "backup-all"){ saveBackup(); }
   else if(act === "install-app"){ installApp(); }
@@ -6034,6 +6761,7 @@ scheduleBlink();
 setupApp();
 renderBadge();
 setupFolders();
+setupCompanions();
 (function(){ var v = document.getElementById("oversion"); if(v) v.textContent = "Decision Wizard " + WIZARD_VERSION; })();
 scheduleTimerTick();
 (function(){
@@ -6108,14 +6836,18 @@ document.addEventListener("drop", function(ev){
   try{ if(item && typeof item.getAsFileSystemHandle === "function") hp = item.getAsFileSystemHandle(); }catch(e){ hp = null; }
   try{ file = item ? item.getAsFile() : null; }catch(e){ file = null; }
   if(!file && dt.files && dt.files.length) file = dt.files[0];
-  if(!file){ ingestFail("That drop held no file."); return; }
   Promise.resolve(hp).then(null, function(){ return null; }).then(function(h){
+    if(h && h.kind === "directory"){ addCompanion(h); return; }
+    if(!file){ ingestFail("That drop held no file."); return; }
+    if(fsSupported() && /\.zip$/i.test(file.name || "")){ toast(false, "That's a zip. Unzip it first, then drop the companion's folder here."); return; }
     return readFileText(file).then(function(txt){ ingestText(txt, { handle: (h && h.kind === "file") ? h : null }); });
   }).then(null, function(){ ingestFail("Could not read that file."); });
 });
 
 if(typeof window !== "undefined"){
   window.__wiz = {
+    get companions(){ return CMP; },
+    scanCompanions: function(){ return scanCdir(); },
     get state(){ return state; },
     get config(){ return CONFIG; },
     get library(){ return LIB; },

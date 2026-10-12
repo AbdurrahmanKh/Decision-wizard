@@ -1,9 +1,9 @@
 ---
 name: "d-wizard"
-description: Communicate a set of questions, decisions, or approvals as a Decision Wizard questions JSON instead of long prose. Use this skill whenever the user says "d-wizard", "communicate through the wizard", "wizard this", "ask me through the wizard", "decision wizard", "decision round", or asks to turn open questions into a wizard; and proactively when open decisions need evidence attached to be answered well (conflicting sources, a table to compare), when content items need one-by-one approval (copy lines, assets, table rows, sections), or when new open decisions come up while acting on a previous round's answers, on any topic. Also use it to interpret and act on an answers JSON the user pastes back, points to as a file, or says is ready in the project's wizard-rounds folder, recognizable by meta.tool = "decision-wizard". Do not use it for quick clarifications, for approving your own next steps, for a single question, or for questions meant for a teammate.
+description: Communicate a set of questions, decisions, or approvals as a Decision Wizard questions JSON instead of long prose. Use this skill whenever the user says "d-wizard", "communicate through the wizard", "wizard this", "ask me through the wizard", "decision wizard", "decision round", or asks to turn open questions into a wizard; and proactively when open decisions need evidence attached to be answered well (conflicting sources, a table to compare), when content items need one-by-one approval (copy lines, assets, table rows, sections), or when new open decisions come up while acting on a previous round's answers, on any topic. Also use it to interpret and act on an answers JSON the user pastes back, points to as a file, or says is ready in the project's wizard-rounds folder, recognizable by meta.tool = "decision-wizard". Also use it to make a wizard companion (mascot). Do not use it for quick clarifications, for approving your own next steps, for a single question, or for questions meant for a teammate.
 metadata:
-  version: "0.5.1"
-compatibility: Needs Decision Wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, and 0.6.0 for a project's rounds to open in the wizard by themselves and for answers to be saved back into the round file. Older wizards still open plain rounds, but show no recommendations and give no way to add a note to a pick.
+  version: "0.6.0"
+compatibility: Needs Decision Wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for a project's rounds to open in the wizard by themselves and for answers to be saved back into the round file, and 0.7.0 for companions. Older wizards still open plain rounds, but show no recommendations and give no way to add a note to a pick.
 ---
 
 # Decision Wizard
@@ -13,6 +13,8 @@ The Decision Wizard is a standalone HTML page, hosted at https://abdurrahmankh.g
 In Claude Code, inside a project, the wizard can carry both ends by itself. Once the user has connected the project's `wizard-rounds/` folder to their wizard, a round Claude Code writes there opens in the wizard without being loaded, and the answers are saved into the round file as they go, where Claude Code reads them. This needs wizard 0.6.0 in Chrome or Edge on a computer. The folder is Claude Code's alone: everywhere else, Claude included when it can reach the user's folders, a round goes to the user as a file in the conversation, and the answers come back by hand, as before.
 
 If the user asks where the wizard is, or may not have one, point them to https://abdurrahmankh.github.io/decision-wizard/. Any copy of the wizard, hosted or their own, opens any valid questions JSON. Do not attempt to build or describe the HTML, and never open, read, or edit the user's own copy.
+
+To make a new companion for the wizard, read `references/companions.md` and follow it; the rest of this file is about rounds.
 
 ## When to use it, when not
 

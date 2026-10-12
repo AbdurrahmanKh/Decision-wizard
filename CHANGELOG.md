@@ -2,6 +2,20 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.7.0 and skill 0.6.0, 9 October 2026
+
+### Added
+
+- Wizard: your own companions, in Chrome and Edge on a computer. Each is a folder of pictures, one per pose, with `companion.json` for its name and lines, inside one companions folder you pick once in Options. Add one with Add in the Companion card, or by dropping its folder on the wizard: the wizard shows it, asks first, then copies the folder in and switches to it. A folder you put there yourself joins by itself, and the folder is watched, so changes show within seconds. Remove deletes a companion's folder after asking.
+- Wizard: a companion's poses can be drawings (SVG) or pictures (PNG, WebP, or GIF). Only the idle pose is needed; a missing pose borrows another. Small pixel art keeps its hard edges. Its lines can be in any language, and a right-to-left line reads right to left in the bubble.
+- Wizard: a red notice for each folder in the companions folder that can't be added, saying why.
+- Skill: `references/companions.md`, read only when you ask Claude for a companion: the poses, the frame, `companion.json`, every moment a companion can speak in and what it can fill in, and how the companion reaches you.
+
+### Changed
+
+- Wizard: the Companion card in Options shows each companion as a tile with its picture, with Add, None, and Hide for Quill and Swoop.
+- Wizard: where folders can be opened, the drop overlay mentions a companion's folder.
+
 ## Wizard 0.6.3, 9 October 2026
 
 ### Added
