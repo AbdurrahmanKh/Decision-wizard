@@ -2,6 +2,16 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.7.1, 12 October 2026
+
+### Changed
+
+- Wizard: Add, with no companions folder yet, asks only for the companions folder. If the folder you pick already holds companions, they show at once and that's it; only an empty folder goes on to ask for the companion to add.
+
+### Fixed
+
+- Wizard: picking your companions folder when asked for a companion's folder now says it's your companions folder, whose companions are already there, instead of saying it isn't a companion.
+
 ## Wizard 0.7.0 and skill 0.6.0, 9 October 2026
 
 ### Added

@@ -749,7 +749,7 @@ img.mimg.pix{image-rendering:pixelated}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.7.0";
+var WIZARD_VERSION = "0.7.1";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -6075,7 +6075,7 @@ function ensureCdir(fromDrop){
     });
   }
   return confirmBox({ calm: true, icon: CMP_ICO, title: "Pick your companions folder first",
-    message: "Companions you add live as folders inside one folder on this computer. Pick that folder, or make a new one, then pick the companion to add.",
+    message: "Companions live as folders inside one folder on this computer. Pick that folder, or make a new one for them.",
     ok: "Pick the folder", cancel: "Not now" }).then(function(yes){ return yes ? pickCdir().then(function(ok){ return ok ? "fresh" : false; }) : false; });
 }
 function poseStrip(c){
@@ -6133,16 +6133,21 @@ function addCompanion(src){
     root = CMP.handle;
     if(src) return src;
     if(st === "fresh"){
-      /* The first picker used up the click; a second question gives the next picker one of its own. */
-      return confirmBox({ calm: true, icon: CMP_ICO, title: "Now the companion", message: "Your companions folder is ready. Pick the folder of the companion to add.", ok: "Pick its folder", cancel: "Not now" })
+      /* A companions folder that already holds companions is all Add needed: they show at once. */
+      if(Object.keys(CMP.list).length) return null;
+      /* An empty one: the first picker used up the click, so a second question gives the next picker one of its own. */
+      return confirmBox({ calm: true, icon: CMP_ICO, title: "Now the companion", message: "Your companions folder is ready, with no companions in it yet. Pick the folder of the companion to add.", ok: "Pick its folder", cancel: "Not now" })
         .then(function(yes){ return yes ? pickDir("wizard-companion", "read") : null; });
     }
     return pickDir("wizard-companion", "read");
   }).then(function(dir){
     if(!dir) return;
     return scanCdir().then(function(){ return Promise.resolve().then(function(){ return root.resolve(dir); }).then(null, function(){ return null; }); }).then(function(path){
+      if(path) return path;
+      return Promise.resolve().then(function(){ return root.isSameEntry(dir); }).then(function(same){ return same ? [] : null; }, function(){ return null; });
+    }).then(function(path){
       if(moved("the companion was being read")) return;
-      if(path && path.length === 0){ toast(false, "That's your companions folder. Pick one companion's folder."); return; }
+      if(path && path.length === 0){ toast(false, "That's your companions folder, so its companions are already here. To add another, pick that companion's own folder."); return; }
       if(path && path.length > 1){ toast(false, "That folder is inside your companions folder. Pick a companion's folder from somewhere else."); return; }
       if(path && path.length === 1){
         var f = CMP.folders[path[0]];
