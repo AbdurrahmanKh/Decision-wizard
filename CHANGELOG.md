@@ -2,6 +2,13 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.7.4 and skill 0.6.3, 13 October 2026
+
+### Changed
+
+- Wizard: the Create with Claude prompt is your description alone. It no longer adds the wizard's list of poses, moments, and line counts: the d-wizard skill knows all of that. The fold that showed it is gone, and what Copy prompt copies is exactly what the panel shows.
+- Skill: `references/companions.md` describes the prompt as it now is: the description only, with everything else in that file.
+
 ## Wizard 0.7.3 and skill 0.6.2, 12 October 2026
 
 ### Added

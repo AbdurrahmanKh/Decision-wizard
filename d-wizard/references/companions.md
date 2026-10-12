@@ -20,7 +20,7 @@ Inky/
 
 ## From the wizard's prompt
 
-The wizard's Create with Claude panel, in its companion builder, writes a prompt from what the user describes, then adds "What Decision Wizard X needs": the folder, the frame, the poses, and every moment with its placeholders and line count, read from that wizard's own data. Where that part differs from this file, follow the prompt: it is what the wizard that will load the folder checks.
+The wizard's Create with Claude panel, in its companion builder, writes a prompt from what the user describes. It carries only the description: everything about the folder, the frame, the poses, and the lines is in this file.
 
 - **Name:** use it. "pick one that suits it" means the choice is yours: a short name that fits the look and the mood, never Quill, Swoop, or None.
 - **About:** the few words shown after its name ("the little dragon"), kept as `about`. When it's left to you, write a few.

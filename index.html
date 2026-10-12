@@ -493,7 +493,7 @@ img.mimg.pix{image-rendering:pixelated}
 .cw-own input:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
 .cw-own .btn{padding:6px 12px}
 .cw-more{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;margin-top:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 11px;font-weight:600;font-size:calc(13.5px*var(--fs));font-family:inherit;cursor:pointer;text-align:left}
-.cw-more:focus-visible,.cw-fold:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cw-more:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .cw-more .cw-count{color:var(--muted);font-weight:500;font-size:calc(12.5px*var(--fs))}
 .cw-more .cw-count::after{content:" \25BE"}
 .cw-more[aria-expanded="true"] .cw-count::after{content:" \25B4"}
@@ -507,10 +507,6 @@ img.mimg.pix{image-rendering:pixelated}
 .cw-prompt{border:1px solid var(--line);border-radius:10px;background:var(--field);padding:12px 14px}
 #cw-ptext{white-space:pre-wrap;overflow-wrap:anywhere;font-size:calc(14px*var(--fs));line-height:1.5;color:var(--ink)}
 #cw-ptext .fill{color:var(--green);font-weight:600}
-.cw-fold{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:12px;border:1px dashed var(--line);background:transparent;color:var(--muted);border-radius:9px;padding:7px 10px;font-weight:600;font-size:calc(12.5px*var(--fs));font-family:inherit;text-align:left;cursor:pointer}
-.cw-fold b{color:var(--green);flex:none}
-.cw-spec{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);font-size:calc(13px*var(--fs));line-height:1.5;margin-top:10px}
-.cw-spec[hidden]{display:none}
 .cw-copy{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
 .cw-copy .btn{display:inline-flex;align-items:center;gap:7px}
 .cw-copy small{flex:1;min-width:220px;font-size:calc(12.5px*var(--fs));color:var(--muted);line-height:1.45}
@@ -899,7 +895,7 @@ img.mimg.pix{image-rendering:pixelated}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.7.3";
+var WIZARD_VERSION = "0.7.4";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -7236,8 +7232,7 @@ if(typeof window !== "undefined"){
 
 /* ---------------------------------------------------------------- Create with Claude: a prompt for Claude from the builder */
 /* The panel takes the builder's place. Name and About are the builder's own; the rest lives in BLD.cw until the builder
-   closes. The prompt carries the user's description, then what this wizard checks a companion against, read from its own
-   data, so the folder Claude makes always fits the wizard that will load it. */
+   closes. The prompt carries only the user's description: the d-wizard skill knows what a companion's folder needs. */
 var CW_SKILL = "0.6.2";
 var CW_MOODS = ["funny", "grumpy", "sarcastic", "cute", "cheerful", "dramatic", "proud", "sleepy", "wise", "shy", "chaotic", "polite"];
 var CW_STYLES = ["Flat and outlined", "Pixel art", "Soft and round", "Hand-drawn", "Sticker"];
@@ -7245,12 +7240,9 @@ var CW_STYLE0 = "flat and outlined, like the wizard's own companions";
 var CW_POSEFOR = { idle: "most of the time", blink: "eyes shut, now and then", greet: "a round opens", pick: "an answer given", skip: "a question skipped",
   milestone: "halfway, a batch done", warn: "answers about to clear", error: "a file didn't load", finish: "the round is done", yawn: "sleepy, before a nap",
   sleep: "asleep", wake: "woken up", dance1: "first dance step", dance2: "second dance step" };
-/* The moments' "when" as Claude reads it: about the user, not "you". */
-var CW_WHEN = { back: "the user, who set their name, opens a round", stat_t: "a remark on answers the user wrote", word: "the user typed “wizard”",
-  opt_name: "the user typed their name in Options" };
 function cwSpark(n){ return '<svg viewBox="0 0 24 24" width="' + n + '" height="' + n + '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8Z"/></svg>'; }
 var CW_COPY = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>';
-function cwNew(){ return { title: "", look: "", style: "", poses: {}, sound: "", moods: [], lang: "English", details: false, spec: false }; }
+function cwNew(){ return { title: "", look: "", style: "", poses: {}, sound: "", moods: [], lang: "English", details: false }; }
 function cwT(s){ return String(s || "").trim().replace(/\s+/g, " "); }
 /* The name as the prompt gives it: one the wizard would refuse is left for Claude to pick, as the red note under it says. */
 function cwName(){ var n = bName(); return n && bNameProblem() ? "" : n; }
@@ -7279,26 +7271,7 @@ function cwUser(html){
   L.push("", t("Draw all 14 poses, write its lines for every moment, and give me the companion's folder as a zip."));
   return L.join("\n");
 }
-/* What this wizard checks a companion against. */
-function cwSpec(){
-  var name = cwName() || "Name", about = cwT(BLD.about) || "a few words";
-  var ex = { name: name, about: about, lines: { greet: ["..."] }, brief: { title: "...", look: "...", style: "...", poses: { sleep: "..." }, sound: "...", mood: ["..."], language: "..." } };
-  var L = [];
-  L.push("What Decision Wizard " + WIZARD_VERSION + " needs:");
-  L.push("- One folder named after the companion, under 5 MB in all.");
-  L.push("- A picture for each pose, named after it: " + SLOTS.join(", ") + ". SVG, PNG, WebP, or GIF. Only idle is required; a pose without a picture borrows another ("
-    + SLOTS.filter(function(s){ return own(BORROW, s); }).map(function(s){ return s + " uses " + (BORROW[s] || "nothing"); }).join(", ") + ").");
-  L.push("- Every pose in the same frame: 200 wide by 262 tall (for SVG, viewBox=\"0 -12 200 262\"), the character in the same place each time, feet near the bottom with a soft shadow, no background, and an outline of its own so it shows on dark and light. It shows at about 145 by 190 pixels, and 49 by 64 on a phone, so bold shapes, no fine detail, and no text. SVG is plain drawing: no scripts, links, or fonts. Pixel art goes as PNG, under 100 pixels wide.");
-  L.push("- companion.json: " + JSON.stringify(ex) + ". The name is up to 30 characters and never Quill, Swoop, or None. \"about\" is what shows after the name, up to 60 characters. \"brief\" keeps the description above (title, look, style, pose details, sound, mood, and language), so it can be described again later; leave out what wasn't given.");
-  L.push("- Lines are short, a sentence or two, light-hearted, in its own voice, and never mention Claude. Use only the placeholders each moment lists: {Decisions} and {Picked} start a sentence; {cname} is \", Name\" or nothing, so it goes right before punctuation; a suggest line must work whoever {other} names.");
-  L.push("- The moments, with when each plays, how many lines to write, and what it can fill:");
-  BMOM.forEach(function(g){ g[1].forEach(function(m){
-    var fills = (CMP_FILLS[m[0]] || []).map(function(x){ return "{" + x + "}"; }).join(", ");
-    L.push("  " + m[0] + " (" + (CW_WHEN[m[0]] || m[2]) + "): " + bRec(m[0]) + (fills ? ", can fill " + fills : ""));
-  }); });
-  return L.join("\n");
-}
-function cwPrompt(){ return cwUser(false) + "\n\n" + cwSpec() + "\n"; }
+function cwPrompt(){ return cwUser(false) + "\n"; }
 
 function cwNameNote(){
   var n = bName(), np = n ? bNameProblem() : "";
@@ -7348,8 +7321,7 @@ function cwRender(){
     + '<div class="bld-field"><span class="cw-lab" id="cw-moodlab">Mood</span><div id="cw-moods" role="group" aria-labelledby="cw-moodlab">' + cwMoodsHTML() + '</div><small>Up to 3, or words of your own. They shape its lines and its drawings.</small></div></section>'
     + '<section class="bld-card cw-pcard" aria-labelledby="cw-plab"><div class="dsec" id="cw-plab">The prompt</div>'
     + '<div class="cw-prompt"><div id="cw-ptext"></div>'
-    + '<button type="button" class="cw-fold" id="cw-specbtn" data-action="cw-spec" aria-expanded="' + c.spec + '" aria-controls="cw-spec"><span>Then what the wizard needs: the folder, the frame, the 14 poses, and all 43 moments with their line counts</span><b id="cw-speclab">' + (c.spec ? "Hide" : "Show") + '</b></button>'
-    + '<div class="cw-spec" id="cw-spec"' + (c.spec ? "" : " hidden") + '></div></div>'
+    + '</div>'
     + '<div class="cw-copy"><button type="button" class="btn" data-action="cw-copy">' + CW_COPY + 'Copy prompt</button>'
     + '<small>Paste it into Claude. Claude needs the d-wizard skill, version ' + CW_SKILL + ' or later. When it sends back a zip, drop the zip on the wizard.</small></div></section>'
     + '</div></div>';
@@ -7359,7 +7331,6 @@ function cwRender(){
 function cwUpdate(){
   if(!BLD.open || BLD.view !== "claude") return;
   var p = document.getElementById("cw-ptext"); if(p) p.innerHTML = cwUser(true);
-  var sp = document.getElementById("cw-spec"); if(sp && !sp.hidden) sp.textContent = cwSpec();
   var dc = document.getElementById("cw-detcount"); if(dc) dc.textContent = cwPoseCount() + " of 14 described";
   var nn = document.getElementById("cw-namenote"), n = cwNameNote(), ni = document.getElementById("cw-name");
   if(nn){ nn.textContent = n[0]; nn.className = n[1]; }
@@ -7448,14 +7419,6 @@ function cwDetails(){
   if(b) b.setAttribute("aria-expanded", String(c.details));
   if(p) p.hidden = !c.details;
   if(l) l.textContent = c.details ? "Pose details" : "Describe each pose";
-}
-function cwSpecToggle(){
-  var c = BLD.cw; if(!c) return;
-  c.spec = !c.spec;
-  var b = document.getElementById("cw-specbtn"), p = document.getElementById("cw-spec"), l = document.getElementById("cw-speclab");
-  if(b) b.setAttribute("aria-expanded", String(c.spec));
-  if(p){ p.hidden = !c.spec; if(c.spec) p.textContent = cwSpec(); }
-  if(l) l.textContent = c.spec ? "Hide" : "Show";
 }
 function cwCopied(){ toast(true, "Prompt copied. You can also give Claude reference images if you need."); }
 /* The browser's clipboard first; where it refuses, the older copy command on a text box made for the moment. */
@@ -7940,7 +7903,6 @@ document.addEventListener("click", function(ev){
   else if(act === "cw-unmood"){ cwUnmood(el.getAttribute("data-v")); }
   else if(act === "cw-moodadd"){ cwMoodOwn(); }
   else if(act === "cw-details"){ cwDetails(); }
-  else if(act === "cw-spec"){ cwSpecToggle(); }
   else if(act === "wipe-all"){ wipeAll(); }
   else if(act === "backup-all"){ saveBackup(); }
   else if(act === "install-app"){ installApp(); }
