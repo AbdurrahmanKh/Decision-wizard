@@ -63,7 +63,7 @@ The dance steps through dance1, dance2, and finish while the whole figure sways.
 
 - **`name`:** up to 30 characters, never Quill, Swoop, or None. The name is the companion's identity: adding another companion with the same name replaces it, after asking.
 - **`about`:** a few words shown after the name, as in "Inky, the octopus". Optional.
-- **`lines`:** each moment below names a list of lines, or one line. One line is enough for a moment; up to five keeps it fresh. A moment with no lines stays quiet. A moment name the wizard doesn't know, a line that isn't text, or a placeholder the moment can't fill keeps the whole companion out, with a notice saying why.
+- **`lines`:** each moment below names a list of lines, or one line. Write as many as the Lines column recommends: five where the moment comes up again and again, so it stays fresh; two for warn; and one for the moments that say the same thing each time (speed, the recaps, open_go, and the Options moments). Fewer is fine when the user asks; a moment with no lines stays quiet. A moment name the wizard doesn't know, a line that isn't text, or a placeholder the moment can't fill keeps the whole companion out, with a notice saying why.
 
 ## Lines
 
@@ -73,48 +73,49 @@ Lines are short (a sentence, two at most), light-hearted, in the companion's own
 - A `suggest` line must work whoever `{other}` names, since the user may have many companions.
 - Use only the placeholders each moment lists. `{Decisions}` and `{Picked}` start a sentence ("Seven decisions"); `{cname}` is ", Name" or nothing, so it goes right before punctuation ("Morning{cname}!").
 
-| Moment | When it plays | Placeholders |
-|---|---|---|
-| greet | a round opens | `{Decisions}` |
-| estimate | after greet, how long the round may take | `{minutes}` |
-| morning | first round of a morning | `{cname}` |
-| late | a round opened late at night | `{cname}` |
-| back | the user, who gave a name, opens a round | `{cname}` |
-| suggest | the day's second round, offering another companion | `{other}` |
-| pick | an answer after some thought | |
-| skip | a question skipped | |
-| speed | an answer given the moment the question appeared | |
-| second | the same answer changed a third time | |
-| nudge | a question sitting a while with no answer | |
-| batch | a card of rows to answer one by one | `{Decisions}` |
-| half | half the round answered | |
-| last | the last question | |
-| finish | every question answered | |
-| recap_done | the summary, nothing open | `{Picked}`, `{typedPart}`, `{timePart}` |
-| recap_open | the summary, some still open | `{Picked}`, `{typedPart}`, `{ids}` |
-| recap_none | the summary, nothing answered | `{ids}` |
-| remind | finished, answers not copied yet | |
-| copied | answers copied | |
-| open_go | jumping to a question still open | `{id}` |
-| stat_r | a remark on rounds finished | `{r}` |
-| stat_t | a remark on answers the user wrote | `{t}` |
-| stat_today | a remark on decisions today | `{td}` |
-| wake | woken from a nap | |
-| poke | five quick taps on the companion | |
-| word | the user typed "wizard" | |
-| warn | before answers are cleared | `{answers}` |
-| error | a file didn't load | |
-| opt_hello | chosen in Options | |
-| opt_name | the user typed their name in Options | `{name}` |
-| opt_light, opt_dark, opt_system | the theme changed | |
-| opt_large, opt_compact, opt_normal | the text size changed | |
-| opt_soundon, opt_soundoff | sounds turned on or off | |
-| opt_quipson, opt_quipsoff | remarks turned on or off | |
-| opt_talkon | speech bubbles turned back on | |
-| opt_timereset | the round timer reset | |
+| Moment | When it plays | Placeholders | Lines |
+|---|---|---|---|
+| greet | a round opens | `{Decisions}` | 5 |
+| estimate | after greet, how long the round may take | `{minutes}` | 5 |
+| morning | first round of a morning | `{cname}` | 5 |
+| late | a round opened late at night | `{cname}` | 5 |
+| back | the user, who gave a name, opens a round | `{cname}` | 5 |
+| suggest | the day's second round, offering another companion | `{other}` | 5 |
+| pick | an answer after some thought | | 5 |
+| skip | a question skipped | | 5 |
+| speed | an answer given the moment the question appeared | | 1 |
+| second | the same answer changed a third time | | 5 |
+| nudge | a question sitting a while with no answer | | 5 |
+| batch | a card of rows to answer one by one | `{Decisions}` | 5 |
+| half | half the round answered | | 5 |
+| last | the last question | | 5 |
+| finish | every question answered | | 5 |
+| recap_done | the summary, nothing open | `{Picked}`, `{typedPart}`, `{timePart}` | 1 |
+| recap_open | the summary, some still open | `{Picked}`, `{typedPart}`, `{ids}` | 1 |
+| recap_none | the summary, nothing answered | `{ids}` | 1 |
+| remind | finished, answers not copied yet | | 5 |
+| copied | answers copied | | 5 |
+| open_go | jumping to a question still open | `{id}` | 1 |
+| stat_r | a remark on rounds finished | `{r}` | 5 |
+| stat_t | a remark on answers the user wrote | `{t}` | 5 |
+| stat_today | a remark on decisions today | `{td}` | 5 |
+| wake | woken from a nap | | 5 |
+| poke | five quick taps on the companion | | 5 |
+| word | the user typed "wizard" | | 5 |
+| warn | before answers are cleared | `{answers}` | 2 |
+| error | a file didn't load | | 5 |
+| opt_hello | chosen in Options | | 1 |
+| opt_name | the user typed their name in Options | `{name}` | 1 |
+| opt_light, opt_dark, opt_system | the theme changed | | 1 |
+| opt_large, opt_compact, opt_normal | the text size changed | | 1 |
+| opt_soundon, opt_soundoff | sounds turned on or off | | 1 |
+| opt_quipson, opt_quipsoff | remarks turned on or off | | 1 |
+| opt_talkon | speech bubbles turned back on | | 1 |
+| opt_timereset | the round timer reset | | 1 |
 
 ## Handing it over
 
 - **In Claude:** zip the companion's folder (the zip holds the folder itself, named after the companion) and give it to the user as a file in the conversation. They unzip it, then drop the folder on the wizard or use Add in the Companion card of Options; the wizard shows the companion and asks before adding it.
 - **In Claude Code:** if the user gives you the path of their companions folder, write the companion's folder straight into it; the wizard picks it up by itself within seconds. If a folder with that name is already there, ask before writing over it. Without the path, write the folder where the user asks. Never write a companion into a project's `wizard-rounds/` folder or into a repository.
 - Say in one or two sentences what you made: its name, how many poses it has, and which moments it talks in.
+- To change a line or a picture later, the user can choose Edit beside the companion in the Companion card of Options, which opens it in the wizard's builder (wizard 0.7.2 or later). Build, in the same card, makes a new one from pictures of their own.

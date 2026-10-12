@@ -370,6 +370,105 @@ img.mimg.pix{image-rendering:pixelated}
 .cstrip figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:calc(11.5px*var(--fs));color:var(--muted)}
 .cstrip .cpf{display:block;width:44px;height:58px;border:1px solid var(--line);border-radius:9px;background:var(--bg);padding:3px}
 .cstrip .cpf svg,.cstrip .cpf .mimg,.cstrip .cpf .mstack{display:block;width:100%;height:100%}
+/* The companion builder: a full workshop over the wizard. */
+.bld{position:fixed;inset:0;z-index:58;background:var(--bg);color:var(--ink);display:flex;flex-direction:column}
+.bld-head{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--green-soft);border-bottom:1px solid var(--line);flex:none}
+.bld-ttl{min-width:0}
+.bld-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:calc(20px*var(--fs));line-height:1.15;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bld-sub{font-size:calc(13px*var(--fs));color:var(--muted);font-weight:600}
+.bld-sp{flex:1}
+.bld-size{display:flex;flex-direction:column;gap:4px;font-size:calc(12.5px*var(--fs));color:var(--muted);font-variant-numeric:tabular-nums;min-width:120px}
+.bld-size b{color:var(--ink)}
+.bld-bar{display:block;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bld-bar i{display:block;height:100%;background:var(--green);border-radius:3px}
+.bld-block{display:flex;align-items:center;gap:6px;font-size:calc(13px*var(--fs));color:var(--red);font-weight:600;max-width:300px}
+.bld-block:empty{display:none}
+.bld-block svg{flex:none}
+.bld-body{flex:1;min-height:0;display:grid;grid-template-columns:330px minmax(300px,1fr) 450px;gap:16px;padding:16px 20px}
+.bld-col{min-height:0;overflow:auto;display:flex;flex-direction:column;gap:14px;padding-bottom:12px}
+.bld-card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:12px 14px 14px}
+.bld-card > .dsec,.bld-stage > .dsec{display:flex;align-items:center;gap:8px;margin:0 0 10px;color:var(--ink);font-size:calc(11.5px*var(--fs))}
+.bld-card > .dsec::before{content:"";width:14px;height:3px;border-radius:2px;background:var(--gold)}
+.bld-field{display:flex;flex-direction:column;gap:4px;margin-top:10px}
+.bld-card > .dsec + .bld-field{margin-top:0}
+.bld-field label{font-size:calc(13px*var(--fs));font-weight:600}
+.bld-field input,.bld-field select{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(15px*var(--fs))}
+.bld-field input[aria-invalid="true"]{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
+.bld-field small{font-size:calc(12px*var(--fs));color:var(--muted);line-height:1.4}
+.bld-field small.bld-errt{color:var(--red);font-weight:600}
+.bld-field input:focus-visible,.bld-field select:focus-visible,.bld-line:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.bld-note{font-size:calc(12.5px*var(--fs));color:var(--muted);line-height:1.5;margin:6px 0 0}
+.bld-muted{color:var(--muted);font-size:calc(12.5px*var(--fs))}
+.bld-posecard{position:relative}
+.bld-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.bld-pose{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;padding:6px 3px 6px;border:1.5px solid var(--line);border-radius:11px;background:var(--card);color:var(--ink);font-weight:600;font-size:calc(12px*var(--fs));font-family:inherit;cursor:pointer}
+.bld-pose:hover{border-color:var(--green2)}
+.bld-pose:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.bld-pose .bld-pf{display:flex;align-items:flex-end;justify-content:center;width:46px;height:60px}
+.bld-pf svg,.bld-pf .mimg,.bld-pf .mstack,.bld-pf .bld-none{display:block;width:100%;height:100%}
+.bld-pose small{font-weight:500;font-size:calc(10.5px*var(--fs));color:var(--muted);white-space:nowrap}
+.bld-pose.borrow{border-style:dashed;background:transparent}
+.bld-pose.borrow .bld-pf{opacity:.35}
+.bld-pose.sel{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.bld-none{box-sizing:border-box;border:2px dashed var(--line);border-radius:10px}
+.bld-drop{position:absolute;inset:0;border:2.5px dashed var(--green);border-radius:14px;background:var(--green-soft);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:18px;color:var(--green);pointer-events:none}
+.bld-drop small{font-weight:500;color:var(--ink);max-width:260px;line-height:1.45}
+.bld-stage{display:flex;flex-direction:column;align-items:center;gap:12px;padding:22px 16px 16px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.bld-show{display:flex;align-items:center;gap:14px;justify-content:center;min-height:196px}
+.bld-big{display:block;width:145px;height:190px;flex:none}
+.bld-big svg,.bld-big .mimg,.bld-big .mstack,.bld-big .bld-none{display:block;width:100%;height:100%}
+.bld-big.dance{animation:mdance .6s ease-in-out 4}
+.bld-bub{position:relative;max-width:240px;background:var(--bub-bg);color:var(--bub-ink);border:1px solid var(--bub-line);border-radius:12px;padding:10px 12px;font-size:calc(14px*var(--fs));line-height:1.45;visibility:hidden}
+.bld-bub.on{visibility:visible}
+.bld-bub.quiet{font-style:italic;opacity:.8}
+.bld-bub::before{content:"";position:absolute;top:calc(50% - 6px);left:-7px;width:12px;height:12px;background:var(--bub-bg);border-left:1px solid var(--bub-line);border-bottom:1px solid var(--bub-line);transform:rotate(45deg)}
+.bld-small{display:flex;align-items:center;gap:8px;font-size:calc(12px*var(--fs));color:var(--muted)}
+.bld-small .f{display:block;width:49px;height:64px;border:1px dashed var(--line);border-radius:8px}
+.bld-small .f svg,.bld-small .f .mimg,.bld-small .f .mstack,.bld-small .f .bld-none{display:block;width:100%;height:100%}
+.bld-playlab{font-size:calc(11px*var(--fs));font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.bld-play{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.bld-play button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 11px;font-weight:600;font-size:calc(12.5px*var(--fs));font-family:inherit;cursor:pointer}
+.bld-play button:hover{border-color:var(--green2)}
+.bld-play button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.bld-pc{display:flex;gap:12px;align-items:center}
+.bld-pcf{display:block;width:46px;height:60px;flex:none}
+.bld-pcf svg,.bld-pcf .mimg,.bld-pcf .mstack,.bld-pcf .bld-none{display:block;width:100%;height:100%}
+.bld-pct{flex:1;min-width:0;font-weight:600}
+.bld-pcb{display:flex;gap:8px;margin-top:12px}
+.bld-file{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom;padding:2px 7px;border-radius:7px;background:var(--card);border:1px solid var(--line);font:600 calc(12px*var(--fs)) ui-monospace,Menlo,Consolas,monospace;color:var(--ink)}
+.bld-grp{margin:14px 0 6px;font-size:calc(11px*var(--fs));font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.bld-grp:first-of-type{margin-top:0}
+.bld-mom{border:1px solid var(--line);border-radius:11px;background:var(--card);padding:9px 11px 10px;margin-bottom:8px}
+.bld-mt{display:flex;align-items:center;gap:8px}
+.bld-mt b{font-size:calc(14.5px*var(--fs));white-space:nowrap}
+.bld-mt .w{flex:1;min-width:0;font-size:calc(12.5px*var(--fs));color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bld-mt .p{display:flex;align-items:center;gap:4px;font-size:calc(11.5px*var(--fs));color:var(--muted);flex:none}
+.bld-mt .p > span{display:block;width:20px;height:26px}
+.bld-mt .p > span svg,.bld-mt .p > span .mimg,.bld-mt .p > span .mstack,.bld-mt .p > span .bld-none{display:block;width:100%;height:100%}
+.bld-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:6px 0 2px;font-size:calc(12px*var(--fs));color:var(--muted)}
+.bld-chips{display:inline-flex;flex-wrap:wrap;align-items:center;gap:5px}
+.bld-chips button{border:1px solid var(--line);background:var(--gold-soft);color:var(--ink);border-radius:7px;padding:2px 7px;font:600 calc(12px*var(--fs)) ui-monospace,Menlo,Consolas,monospace;cursor:pointer}
+.bld-chips button:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.bld-lines{display:flex;flex-direction:column;gap:5px;margin-top:7px}
+.bld-line{border:1px solid var(--line);border-radius:8px;padding:6px 9px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(14px*var(--fs))}
+.bld-line::placeholder{color:var(--muted);opacity:.75}
+.bld-line.bad{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
+.bld-err{display:flex;gap:6px;align-items:flex-start;font-size:calc(12.5px*var(--fs));color:var(--red);line-height:1.4;margin:-1px 0 2px}
+.bld-err svg{flex:none;margin-top:1px}
+.ctile.build{border-style:dashed;color:var(--green);background:transparent}
+@media (max-width:1250px){
+  .bld-body{grid-template-columns:320px 1fr;overflow:auto;align-items:start}
+  .bld-col{overflow:visible;min-height:auto}
+  .bld-body > .bld-col:first-child{grid-row:span 2}
+  #bld-linescol{grid-column:2}
+}
+@media (max-width:760px){
+  .bld-body{display:flex;flex-direction:column;padding:12px}
+  .bld-head{flex-wrap:wrap;padding:10px 12px;gap:8px}
+  .bld-head .bld-size{order:5;flex-basis:100%}
+  .bld-show{min-height:0}
+}
+@media (prefers-reduced-motion: reduce){ .bld-big.dance{animation:none} }
 .mprev:empty{display:none}
 .mprev svg{display:block;width:100%;height:100%}
 .orow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
@@ -749,7 +848,7 @@ img.mimg.pix{image-rendering:pixelated}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.7.1";
+var WIZARD_VERSION = "0.7.2";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -5125,6 +5224,7 @@ function lineDuration(text, action){
 }
 var DEDUPE = { skip: 1, pick: 1, speed: 1, second: 1, stat: 1, nudge: 1, remind: 1, recap: 1 };
 function react(kind, data){
+  if(bldOpen()) return;
   data = data || {};
   var it = { kind: kind, data: data, cls: speechClass(kind, data), at: Date.now() };
   if(INTERRUPTS[kind]){
@@ -5227,7 +5327,7 @@ function faceFlash(kind, ms){
   flashTimer = setTimeout(function(){ flashTimer = null; restoreFrame(); }, ms || 1300);
 }
 function busy(){
-  return !!(nowItem || SPEECH.length || BURST.length || drawerOpen || confirmOpen || menuOpen || sleeping || danceTimer);
+  return !!(nowItem || SPEECH.length || BURST.length || drawerOpen || confirmOpen || menuOpen || sleeping || danceTimer || bldOpen());
 }
 
 /* Stats, kept in this browser. */
@@ -5328,7 +5428,7 @@ function scheduleIdle(){
   clearIdle();
   idleTimers.push(setTimeout(function(){ if(mascotOn() && !busy()) faceFlash("yawn", 2800); }, TIMING.yawn));
   idleTimers.push(setTimeout(function(){
-    if(drawerOpen || confirmOpen) return;
+    if(drawerOpen || confirmOpen || bldOpen()) return;
     if(mascotOn()){
       clearSpeech(); stopDance();
       if(mTimer){ clearTimeout(mTimer); mTimer = null; }
@@ -6270,7 +6370,8 @@ function renderCompanions(){
       + '<span class="ctface"' + (k === mk ? ' id="mprev"' : '') + ' aria-hidden="true">' + ART[k].idle + '</span><span class="ctname" ' + dirA(MSHORT[k]) + '>' + esc(MSHORT[k]) + '</span></button>';
   });
   h += '<button type="button" class="ctile" data-action="set-mascot" data-v="none" aria-pressed="' + (SETTINGS.mascot === "none") + '"><span class="ctface" aria-hidden="true">' + NONE_ICO + '</span><span class="ctname">None</span></button>';
-  if(fsSupported()) h += '<button type="button" class="ctile add" data-action="c-add" aria-label="Add a companion"><span class="ctface" aria-hidden="true">' + PLUS_ICO + '</span><span class="ctname">Add</span></button>';
+  if(fsSupported()) h += '<button type="button" class="ctile add" data-action="c-add" aria-label="Add a companion"><span class="ctface" aria-hidden="true">' + PLUS_ICO + '</span><span class="ctname">Add</span></button>'
+    + '<button type="button" class="ctile build" data-action="b-new" aria-label="Build a companion"><span class="ctface" aria-hidden="true">' + bIco(28) + '</span><span class="ctname">Build</span></button>';
   var before = box.__h;
   setHTML(box, h);
   if(focusV && box.__h !== before){
@@ -6279,7 +6380,7 @@ function renderCompanions(){
   }
   var t = "";
   if(mk && (mk === "quill" || mk === "swoop")) t = '<span><b>' + esc(MSHORT[mk]) + '</b>' + esc(MNAME[mk].slice(MSHORT[mk].length)) + '</span><button type="button" class="btn sec obtn" data-action="c-hide" data-v="' + mk + '" aria-label="Hide ' + esc(MSHORT[mk]) + '">Hide</button>';
-  else if(mk){ var c = CMP.list[mk]; t = '<span ' + dirA(MNAME[mk]) + '><b>' + esc(c.name) + '</b>' + (c.about ? ", " + esc(c.about) : "") + '</span>' + (CMP.perm === "granted" ? '<button type="button" class="btn sec obtn" data-action="c-remove" data-v="' + esc(mk) + '" aria-label="Remove ' + esc(c.name) + '">Remove</button>' : ''); }
+  else if(mk){ var c = CMP.list[mk]; t = '<span ' + dirA(MNAME[mk]) + '><b>' + esc(c.name) + '</b>' + (c.about ? ", " + esc(c.about) : "") + '</span>' + (CMP.perm === "granted" ? '<span class="obtns"><button type="button" class="btn sec obtn" data-action="b-edit" data-v="' + esc(mk) + '" aria-label="Edit ' + esc(c.name) + '">Edit</button><button type="button" class="btn sec obtn" data-action="c-remove" data-v="' + esc(mk) + '" aria-label="Remove ' + esc(c.name) + '">Remove</button></span>' : ''); }
   else if(cmpWaiting()) t = '<span>Your companion shows once its folder can be read.</span>';
   else t = '<span>No companion.</span>';
   setHTML(document.getElementById("cchosen"), t);
@@ -6305,6 +6406,757 @@ function renderCompanions(){
     else nt = "Each companion you add is a folder of pictures in your companions folder. Hover over your companion, or tap it, for its menu.";
     if(note.textContent !== nt) note.textContent = nt;
   }
+}
+
+/* The companion builder: pick every picture, write every line, and save the companion's folder into the companions
+   folder. A full workshop over the wizard: name and poses on the left, the companion in the middle, every moment's
+   lines on the right. Computer only, like the companions folder. Nothing is written until Save. */
+var BMOM = [
+  ["A round opens", [["greet", "Greet", "a round opens", "greet"], ["estimate", "Estimate", "after greet, how long the round may take", "greet"],
+    ["morning", "Morning", "first round of a morning", "greet"], ["late", "Late", "a round opened late at night", "greet"],
+    ["back", "Back", "you, with your name set, open a round", "greet"], ["suggest", "Suggest", "the day's second round, offering another companion", "greet"]]],
+  ["While you answer", [["pick", "Pick", "an answer after some thought", "pick"], ["skip", "Skip", "a question skipped", "skip"],
+    ["speed", "Speed", "an answer the moment the question showed", "skip"], ["second", "Second thoughts", "the same answer changed a third time", "error"],
+    ["nudge", "Nudge", "a question sitting a while with no answer", "skip"], ["batch", "Batch", "a card of rows to answer one by one", "milestone"]]],
+  ["Milestones", [["half", "Halfway", "half the round answered", "milestone"], ["last", "Last question", "the last question", "milestone"],
+    ["finish", "Finish", "every question answered", "finish"]]],
+  ["The summary", [["recap_done", "Recap, all done", "the summary, nothing open", "milestone"], ["recap_open", "Recap, some open", "the summary, some still open", "milestone"],
+    ["recap_none", "Recap, none yet", "the summary, nothing answered", "milestone"], ["remind", "Remind", "finished, answers not copied yet", "greet"],
+    ["copied", "Copied", "answers copied", "pick"], ["open_go", "Go to open", "jumping to a question still open", "greet"]]],
+  ["Now and then", [["stat_r", "Rounds", "a remark on rounds finished", "milestone"], ["stat_t", "Your words", "a remark on answers you wrote", "milestone"],
+    ["stat_today", "Today", "a remark on decisions today", "milestone"], ["wake", "Wake", "woken from a nap", "wake"],
+    ["poke", "Poke", "five quick taps on the companion", "dance1"], ["word", "Magic word", "you typed “wizard”", "pick"]]],
+  ["Careful moments", [["warn", "Warn", "before answers are cleared", "warn"], ["error", "Error", "a file didn't load", "error"]]],
+  ["Options", [["opt_hello", "Hello", "chosen in Options", "greet"], ["opt_name", "Your name", "you typed your name in Options", "greet"],
+    ["opt_light", "Light theme", "the theme set to light", "warn"], ["opt_dark", "Dark theme", "the theme set to dark", "pick"],
+    ["opt_system", "System theme", "the theme set to follow the system", "pick"], ["opt_large", "Large text", "the text size set to large", "pick"],
+    ["opt_compact", "Compact text", "the text size set to compact", "skip"], ["opt_normal", "Normal text", "the text size set to normal", "pick"],
+    ["opt_soundon", "Sounds on", "sounds turned on", "pick"], ["opt_soundoff", "Sounds off", "sounds turned off", "skip"],
+    ["opt_quipson", "Remarks on", "remarks turned on", "pick"], ["opt_quipsoff", "Remarks off", "remarks turned off", "skip"],
+    ["opt_talkon", "Bubbles on", "speech bubbles turned back on", "greet"], ["opt_timereset", "Clock reset", "the round's clock reset", "pick"]]]
+];
+/* A short example for each moment, shown in its first empty box, so every placeholder is seen in use. */
+var BEX = { greet: "{Decisions} today. Let's begin.", estimate: "About {minutes}, I'd say.", morning: "Good morning{cname}!", late: "Up late{cname}?",
+  back: "Welcome back{cname}.", suggest: "{other} would love a turn.", pick: "Good choice.", skip: "We'll come back to that one.", speed: "That was quick!",
+  second: "Changed your mind again?", nudge: "Take your time.", batch: "{Decisions} in this one.", half: "Halfway there.", last: "Last one!",
+  finish: "All done!", recap_done: "{Picked} picked{typedPart}{timePart}. Nothing left open.", recap_open: "{Picked} picked{typedPart}. Still open: {ids}.",
+  recap_none: "Nothing answered yet. Still open: {ids}.", remind: "Don't forget to send your answers.", copied: "Copied!", open_go: "{id} is still waiting.",
+  stat_r: "{r} finished so far.", stat_t: "{t} written by you.", stat_today: "{td} today.", wake: "Huh? I'm awake!", poke: "Hey, that tickles!",
+  word: "You said the magic word.", warn: "Careful, that clears {answers}.", error: "That file didn't load.", opt_hello: "Hello! I'm here now.",
+  opt_name: "Nice to meet you, {name}.", opt_light: "Bright in here!", opt_dark: "Ah, darker.", opt_system: "Following the system.", opt_large: "Bigger text.",
+  opt_compact: "Smaller text.", opt_normal: "Back to normal.", opt_soundon: "Sound's on.", opt_soundoff: "Shh.", opt_quipsoff: "No more remarks.",
+  opt_quipson: "Remarks are back.", opt_talkon: "I can talk again!", opt_timereset: "Clock reset." };
+var BNAME = {}, BWHEN = {}, BPOSEOF = {};
+BMOM.forEach(function(g){ g[1].forEach(function(m){ BNAME[m[0]] = m[1]; BWHEN[m[0]] = m[2]; BPOSEOF[m[0]] = m[3]; }); });
+/* How many lines a moment needs: the shape Quill's and Swoop's settled on. */
+function bRec(m){ return (/^opt_/.test(m) || /^recap_/.test(m) || m === "speed" || m === "open_go") ? 1 : m === "warn" ? 2 : 5; }
+var BUSES = { idle: "Most of the time. Every pose without a picture of its own ends up here.", blink: "For a moment now and then, between other poses.",
+  yawn: "When you've been away a while, before a nap.", sleep: "During a nap, after a while away.", dance1: "In the dance, after a finished round and five quick taps.",
+  dance2: "In the dance, after a finished round and five quick taps." };
+var BPLAY = [["Greet", "greet", "greet", "greet"], ["Pick", "pick", "pick", "pick"], ["Skip", "skip", "skip", "skip"], ["Milestone", "half", "milestone", "milestone"],
+  ["Warn", "warn", "warn", "warn"], ["Error", "error", "error", "error"], ["Finish", "finish", "finish", "finish"], ["Nap", "", "", ""], ["Dance", "", "", "finish"]];
+/* Function declarations, so the Options card can draw the Build tile before this block has run. */
+function bIco(n){ return '<svg viewBox="0 0 24 24" width="' + n + '" height="' + n + '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="M13.5 6.5l4 4"/></svg>'; }
+function bldOpen(){ return typeof BLD !== "undefined" && !!BLD && !!BLD.open; }
+var BWARN = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2.8 20h18.4Z"/><path d="M12 10v4"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg>';
+var BLD = { open: false };
+
+function bNew(){
+  return { open: true, mode: "new", key: "", folder: "", root: null, name: "", about: "", data: {}, pics: {}, orig: {}, lines: {}, sel: "idle",
+    origBlob: {}, origSize: {}, cleared: {}, extra: 0, startFrom: "", copyTok: null, from: "", dirty: false, pickFor: "", focusLine: {},
+    playTimer: null, danceTimer: null, playing: false, drag: 0, saving: false };
+}
+function bPoseOf(n){ var m = /^([a-z0-9]+)\.(svg|png|webp|gif)$/i.exec(String(n || "")); return (m && SLOTS.indexOf(m[1].toLowerCase()) !== -1) ? m[1].toLowerCase() : ""; }
+function bTypeOf(n){ var m = /\.(svg|png|webp|gif)$/i.exec(String(n || "")); return m ? PICS[m[1].toLowerCase()] : ""; }
+function bExt(p){ var m = /\.(svg|png|webp|gif)$/i.exec(p.name || ""); return m ? m[1].toLowerCase() : (p.type === PICS.svg ? "svg" : "png"); }
+function bFree(p){ if(p && p.url && p.url.indexOf("blob:") === 0){ try{ URL.revokeObjectURL(p.url); }catch(e){} } }
+function bComp(){ var c = { pics: {}, pix: {} }; for(var s in BLD.pics){ if(own(BLD.pics, s)){ c.pics[s] = BLD.pics[s].url; if(BLD.pics[s].pix) c.pix[s] = true; } } return c; }
+function bArt(slot){
+  var s = slot;
+  while(s && !BLD.pics[s]) s = BORROW[s];
+  if(!s) s = "idle";
+  return BLD.pics[s] ? picHTML(bComp(), slot) : '<span class="bld-none" aria-hidden="true"></span>';
+}
+function bBorrows(slot){ var s = BORROW[slot]; while(s && !BLD.pics[s]) s = BORROW[s]; return s || (slot === "blink" ? "" : "idle"); }
+function bLinesOf(m){ return (BLD.lines[m] || []).filter(function(l){ return String(l).trim(); }); }
+/* The folder's size once saved: its pictures, the files in it the builder doesn't touch, and companion.json in bytes. */
+function bSize(){
+  var n = BLD.extra || 0;
+  for(var s in BLD.pics){ if(own(BLD.pics, s)) n += BLD.pics[s].size || 0; }
+  for(var o in BLD.orig){ if(own(BLD.orig, o) && !BLD.pics[o] && !BLD.cleared[o]) n += BLD.origSize[o] || 0; }
+  try{ return n + new Blob([bJSON()]).size; }catch(e){ return n + bJSON().length * 3; }
+}
+function bJSON(){
+  var d = {};
+  for(var k in BLD.data){ if(own(BLD.data, k) && k !== "name" && k !== "about" && k !== "lines") d[k] = BLD.data[k]; }
+  d.name = bName();
+  if(BLD.about.trim()) d.about = BLD.about.trim().replace(/\s+/g, " ");
+  var lines = {}, any = false;
+  BMOM.forEach(function(g){ g[1].forEach(function(m){ var ls = bLinesOf(m[0]).map(function(l){ return String(l).trim(); }); if(ls.length){ lines[m[0]] = ls; any = true; } }); });
+  /* Lines for a moment the builder doesn't list, like section, stay as they were. */
+  for(var k2 in BLD.lines){ if(own(BLD.lines, k2) && !own(BNAME, k2)){ var x = bLinesOf(k2); if(x.length){ lines[k2] = x; any = true; } } }
+  if(any) d.lines = lines;
+  return JSON.stringify(d, null, 1) + "\n";
+}
+function bName(){ return BLD.name.trim().replace(/\s+/g, " "); }
+/* A line's problem: a placeholder its moment can't fill. Names the moment that can, when there is one. */
+function bLineProblem(m, text){
+  var ph = String(text || "").match(/\{(\w+)\}/g) || [];
+  for(var i=0;i<ph.length;i++){
+    var p = ph[i].slice(1, -1);
+    if((CMP_FILLS[m] || []).indexOf(p) !== -1) continue;
+    var alt = "";
+    for(var k in CMP_FILLS){ if(own(CMP_FILLS, k) && CMP_FILLS[k].indexOf(p) !== -1){ alt = k; break; } }
+    return BNAME[m] + " can't fill " + ph[i] + ". " + (alt ? "Take it out, or move the line to " + BNAME[alt] + "." : "Take it out.");
+  }
+  return "";
+}
+function bNameProblem(){
+  var n = bName();
+  if(!n) return "A name is needed to save.";
+  if(/^(quill|swoop|none)$/i.test(n)) return n + " is taken by the wizard. Pick another name.";
+  if(BLD.mode === "new" && /[\/\\:*?"<>|\u0000-\u001f]/.test(n)) return "A name can't have / \\ : * ? \" < > | in it, since it names a folder.";
+  if(BLD.mode === "new" && /^\.|\.$/.test(n)) return "A name can't start or end with a dot, since it names a folder.";
+  if(BLD.mode === "new" && /^(con|prn|aux|nul|com[0-9]|lpt[0-9])$/i.test(n)) return n + " is a name Windows keeps for itself. Pick another name.";
+  var k = cmpKey(n);
+  if(BLD.mode === "edit" && k !== BLD.key && own(CMP.list, k)) return CMP.list[k].name + " is already in your list. Pick another name.";
+  return "";
+}
+function bBadLines(){ var n = 0; for(var m in BLD.lines){ if(own(BLD.lines, m)) BLD.lines[m].forEach(function(l){ if(bLineProblem(m, l)) n++; }); } return n; }
+/* What stops Save, if anything: the first problem, said beside the button. */
+function bBlocker(){
+  var np = bNameProblem();
+  if(np && !bName()) return "Name it to save";
+  if(np) return "Pick another name to save";
+  if(!BLD.pics.idle) return "Choose an idle picture to save";
+  var bad = bBadLines();
+  if(bad) return "Fix " + plural(bad, "line", "lines") + " to save";
+  if(bSize() > CMP_LIMIT){
+    var big = Object.keys(BLD.pics).sort(function(a, b){ return BLD.pics[b].size - BLD.pics[a].size; }).slice(0, 2).map(function(s){ return s + "." + bExt(BLD.pics[s]); });
+    return "Over 5 MB: " + big.join(" and ") + (big.length > 1 ? " are" : " is") + " the biggest";
+  }
+  return "";
+}
+function bSample(){
+  var nm = (SETTINGS.name || "").trim(), others = visibleKeys().filter(function(k){ return k !== BLD.key; });
+  return { count: 7, answers: 3, minutes: "three minutes", cname: nm ? ", " + nm : "", name: nm || "Sam", other: MSHORT[others[0]] || "Quill",
+    Picked: "Five", typedPart: " and one written by you", timePart: ", in four minutes", ids: "B2 and C1", id: "B2", r: "12 rounds", t: "8 answers", td: "5 decisions" };
+}
+
+/* ---------------------------------------------------------------- drawing */
+function bHeadHTML(){
+  var t = BLD.mode === "edit" ? "Editing " + esc(BLD.origName) : "Companion builder";
+  var sub = BLD.mode === "edit" ? "Save changes writes them into its folder, " + esc(BLD.folder) + "." : "A new companion. Nothing is saved until you press Save.";
+  return '<span class="mico" aria-hidden="true">' + bIco(17) + '</span><div class="bld-ttl"><h2 id="bld-title">' + t + '</h2><div class="bld-sub">' + sub + '</div></div><span class="bld-sp"></span>'
+    + '<div class="bld-size" id="bld-size"></div><span class="bld-block" id="bld-block" role="status"></span>'
+    + '<button type="button" class="btn" id="bld-save" data-action="b-save">' + (BLD.mode === "edit" ? "Save changes" : "Save to your companions") + '</button>'
+    + '<button type="button" class="mclose" data-action="b-close" aria-label="Close the builder">&#10005;</button>';
+}
+function bNameHTML(){
+  var h = '<section class="bld-card"><div class="dsec">Name</div>';
+  if(BLD.mode === "new"){
+    h += '<div class="bld-field"><label for="bld-start">Start from</label><select id="bld-start"><option value="">Nothing: a blank companion</option>'
+      + visibleKeys().concat(SETTINGS.hidden).filter(function(k, i, a){ return a.indexOf(k) === i && own(ART, k); }).map(function(k){ return '<option value="' + esc(k) + '"' + (k === BLD.startFrom ? " selected" : "") + '>A copy of ' + esc(MSHORT[k]) + '</option>'; }).join("")
+      + '</select><small>A copy brings its pictures and lines in, to change as you like.</small></div>';
+  }
+  h += '<div class="bld-field"><label for="bld-name">Name</label><input id="bld-name" maxlength="30" autocomplete="off" spellcheck="false" value="' + esc(BLD.name) + '"><small id="bld-namenote"></small></div>'
+    + '<div class="bld-field"><label for="bld-about">About</label><input id="bld-about" maxlength="60" autocomplete="off" placeholder="a few words, like the little dragon" value="' + esc(BLD.about) + '"><small id="bld-aboutnote"></small></div>';
+  return h + '</section>';
+}
+function bGridHTML(){
+  return SLOTS.map(function(s){
+    var own_ = !!BLD.pics[s], from = own_ ? "own" : s === "idle" ? "needed" : (bBorrows(s) ? "uses " + bBorrows(s) : "none");
+    return '<button type="button" class="bld-pose' + (own_ ? "" : " borrow") + (s === BLD.sel ? " sel" : "") + '" data-action="b-pose" data-v="' + s + '" aria-pressed="' + (s === BLD.sel) + '" aria-label="' + s + ': ' + (own_ ? "its own picture, " + esc(BLD.pics[s].name) : from === "none" ? "no picture" : "no picture, " + from) + '">'
+      + '<span class="bld-pf" aria-hidden="true">' + bArt(s) + '</span>' + s + '<small>' + from + '</small></button>';
+  }).join("");
+}
+function bPoseCardHTML(){
+  var s = BLD.sel, p = BLD.pics[s], uses = BUSES[s];
+  if(!uses){
+    var ms = [];
+    BMOM.forEach(function(g){ g[1].forEach(function(m){ if(m[3] === s && !/^opt_/.test(m[0])) ms.push(m[1]); }); });
+    var opts = BMOM[6][1].some(function(m){ return m[3] === s; });
+    uses = ms.length ? "For " + (ms.length > 1 ? ms.slice(0, -1).join(", ") + (opts ? ", " : " and ") + ms[ms.length - 1] : ms[0]) + (opts ? ", and some option changes" : "") + "." : (opts ? "For some option changes." : "");
+    if(s === "finish") uses = "When every question is answered, and at the end of the dance.";
+    if(s === "wake") uses = "When you come back from a nap.";
+  }
+  var b = bBorrows(s);
+  return '<div class="dsec">The ' + s + ' pose</div><div class="bld-pc"><span class="bld-pcf" aria-hidden="true">' + bArt(s) + '</span><div class="bld-pct">'
+    + '<div>' + (p ? '<span class="bld-file" dir="auto">' + esc(p.name) + '</span> <span class="bld-muted">' + sizeText(p.size) + (p.pix ? ", pixel art" : "") + '</span>' : s === "idle" ? "No picture yet. Idle is the one pose every companion needs." : (b ? "No picture: uses " + b : "No picture: no blink")) + '</div>'
+    + '<div class="bld-note">' + esc(uses) + '</div></div></div>'
+    + '<div class="bld-pcb"><button type="button" class="btn sec obtn" data-action="b-choose">Choose a picture</button>' + (p ? '<button type="button" class="btn sec obtn" data-action="b-clear">Clear</button>' : '') + '</div>';
+}
+function bLinesHTML(m){
+  var ls = (BLD.lines[m] || []).slice(), n = ls.length + ((ls.length < 5 && (!ls.length || String(ls[ls.length - 1]).trim())) ? 1 : 0), h = "";
+  if(!n) n = 1;
+  for(var i=0;i<n;i++){
+    var v = ls[i] || "", bad = v ? bLineProblem(m, v) : "";
+    h += '<input class="bld-line' + (bad ? " bad" : "") + '" id="bl-' + m + '-' + i + '" data-m="' + m + '" data-i="' + i + '" maxlength="240" autocomplete="off" dir="auto" aria-label="' + esc(BNAME[m]) + ', line ' + (i + 1) + '"'
+      + (bad ? ' aria-invalid="true" aria-describedby="be-' + m + '-' + i + '"' : '') + ' value="' + esc(v) + '" placeholder="' + esc(!v && i === 0 && !ls.filter(function(x){ return String(x).trim(); }).length ? "e.g. " + BEX[m] : "Another line, if you like") + '">'
+      + (bad ? '<div class="bld-err" id="be-' + m + '-' + i + '">' + BWARN + '<span>' + esc(bad) + '</span></div>' : '');
+  }
+  return h;
+}
+function bMomHTML(m){
+  var fills = CMP_FILLS[m] || [], r = bRec(m);
+  return '<div class="bld-mom" id="bm-' + m + '" data-m="' + m + '"><div class="bld-mt"><b>' + esc(BNAME[m]) + '</b><span class="w">' + esc(BWHEN[m]) + '</span><span class="p"><span aria-hidden="true">' + bArt(BPOSEOF[m]) + '</span>' + BPOSEOF[m] + '</span></div>'
+    + '<div class="bld-meta"><span>' + (r === 1 ? "1 line is enough" : "Recommended: " + r + " lines") + '</span>'
+    + (fills.length ? '<span class="bld-chips">Can fill: ' + fills.map(function(f){ return '<button type="button" data-action="b-chip" data-m="' + m + '" data-v="{' + f + '}" aria-label="Put {' + f + '} in the line">{' + f + '}</button>'; }).join("") + '</span>' : '') + '</div>'
+    + '<div class="bld-lines" id="bls-' + m + '">' + bLinesHTML(m) + '</div></div>';
+}
+function bAllLinesHTML(){
+  var h = '<section class="bld-card"><div class="dsec">Lines</div><p class="bld-note" id="bld-linesnote" style="margin:0 0 12px"></p>';
+  BMOM.forEach(function(g){
+    h += '<div class="bld-grp"><span>' + g[0] + '</span><span>' + plural(g[1].length, "moment", "moments") + '</span></div>';
+    g[1].forEach(function(m){ h += bMomHTML(m[0]); });
+  });
+  return h + '</section>';
+}
+function bStageHTML(){
+  return '<section class="bld-stage"><div class="bld-show"><span class="bld-big" id="bld-big" aria-hidden="true"></span><div class="bld-bub" id="bld-bub" role="status" aria-live="polite"></div></div>'
+    + '<div class="bld-small"><span class="f" id="bld-small" aria-hidden="true"></span>On a phone, it\'s this size.</div>'
+    + '<div class="bld-playlab" id="bld-playlab">Play a moment</div><div class="bld-play" role="group" aria-labelledby="bld-playlab">'
+    + BPLAY.map(function(p){ return '<button type="button" data-action="b-play" data-v="' + p[0] + '">' + p[0] + '</button>'; }).join("") + '</div></section>';
+}
+function bRender(){
+  var el = document.getElementById("bld");
+  if(!el) return;
+  el.innerHTML = '<div class="bld-head">' + bHeadHTML() + '</div><div class="bld-body">'
+    + '<div class="bld-col">' + bNameHTML() + '<section class="bld-card bld-posecard" id="bld-poses"><div class="dsec">Poses</div><p class="bld-note" style="margin:0 0 10px">Click a pose to choose its picture, or drop pictures on it. Only idle is needed; the rest borrow.</p><div class="bld-grid" id="bld-grid"></div>'
+    + '<div class="bld-drop" id="bld-drop" hidden><b>Drop to fill the poses</b><small>Each picture named after a pose, like greet.png, fills it. One picture dropped on a pose fills that pose.</small></div></section></div>'
+    + '<div class="bld-col">' + bStageHTML() + '<section class="bld-card" id="bld-pose"></section></div>'
+    + '<div class="bld-col" id="bld-linescol">' + bAllLinesHTML() + '</div></div>'
+    + '<input type="file" id="bld-file" multiple accept=".svg,.png,.webp,.gif,image/svg+xml,image/png,image/webp,image/gif" hidden>';
+  bRefresh();
+}
+/* Redraws what depends on the pictures, the name, and the lines, leaving the line boxes alone. */
+function bRefresh(){
+  var g = document.getElementById("bld-grid"); if(g) g.innerHTML = bGridHTML();
+  var pc = document.getElementById("bld-pose"); if(pc) pc.innerHTML = bPoseCardHTML();
+  if(!BLD.playing) bShow(BLD.sel, null);
+  BMOM.forEach(function(gr){ gr[1].forEach(function(m){ var t = document.querySelector('#bm-' + m[0] + ' .p span'); if(t) t.innerHTML = bArt(m[3]); }); });
+  bHead();
+}
+function bHead(){
+  var sz = document.getElementById("bld-size"), n = bSize();
+  if(sz) sz.innerHTML = '<span><b>' + sizeText(n) + '</b> of 5 MB</span><span class="bld-bar"><i style="width:' + Math.min(100, Math.round(n / CMP_LIMIT * 100)) + '%"></i></span>';
+  var bl = bBlocker(), b = document.getElementById("bld-block"), sv = document.getElementById("bld-save");
+  if(b) b.innerHTML = bl ? BWARN + '<span>' + esc(bl) + '</span>' : "";
+  if(sv) sv.disabled = !!bl || BLD.saving;
+  var nn = document.getElementById("bld-namenote"), np = bNameProblem(), nm = document.getElementById("bld-name");
+  if(nn){ nn.textContent = np || (BLD.mode === "edit" ? "Its folder keeps its name, " + BLD.folder + "." : "Its folder in your companions folder gets this name."); nn.className = np && bName() ? "bld-errt" : ""; }
+  if(nm){ if(np && bName()) nm.setAttribute("aria-invalid", "true"); else nm.removeAttribute("aria-invalid"); }
+  var an = document.getElementById("bld-aboutnote");
+  if(an) an.textContent = bName() ? "Shown after the name: " + bName() + (BLD.about.trim() ? ", " + BLD.about.trim() : "") + "." : "Shown after the name.";
+  var ln = document.getElementById("bld-linesnote");
+  if(ln){
+    var tl = 0, tm = 0;
+    for(var m in BLD.lines){ if(own(BLD.lines, m)){ var c = bLinesOf(m).length; tl += c; if(c) tm++; } }
+    ln.textContent = "Up to five lines for each moment; one is picked at random each time. A moment with no lines stays quiet. " + (tl ? plural(tl, "line", "lines") + " in " + plural(tm, "moment", "moments") + " so far." : "No lines yet.");
+  }
+}
+function bShow(slot, line){
+  var big = document.getElementById("bld-big"), sm = document.getElementById("bld-small"), bub = document.getElementById("bld-bub");
+  var h = bArt(slot);
+  if(big) big.innerHTML = h;
+  if(sm) sm.innerHTML = h;
+  if(bub){
+    if(line == null){ bub.textContent = ""; bub.className = "bld-bub"; }
+    else { bub.textContent = line || "No lines here yet, so it stays quiet."; bub.className = "bld-bub on" + (line ? "" : " quiet"); bub.setAttribute("dir", dirOf(line || "")); }
+  }
+}
+
+/* ---------------------------------------------------------------- opening and closing */
+function bMount(){
+  closeDrawer();
+  var d = document.createElement("div");
+  d.className = "bld"; d.id = "bld";
+  d.setAttribute("role", "dialog"); d.setAttribute("aria-modal", "true"); d.setAttribute("aria-labelledby", "bld-title");
+  document.body.appendChild(d);
+  setInert(true);
+  bWire(d);
+  bRender();
+  var f = document.getElementById("bld-name");
+  if(f) try{ f.focus({ preventScroll: true }); }catch(e){}
+}
+function builderNew(){
+  if(!fsSupported() || BLD.open || bEditing || confirmOpen) return;
+  BLD = bNew();
+  BLD.from = "b-new";
+  bMount();
+}
+/* A picture, read into memory so it can still be written after its file is gone, and checked that it shows.
+   Resolves the picture, or null when it can't be read or shown. */
+function bLoadPic(file, name, type){
+  return Promise.resolve().then(function(){ return file.arrayBuffer(); }).then(function(ab){
+    var blob = new Blob([ab], { type: type });
+    return asURL(blob, type).then(function(url){
+      return decodeOk(url).then(function(w){
+        if(w < 0){ if(url.indexOf("blob:") === 0){ try{ URL.revokeObjectURL(url); }catch(e){} } return null; }
+        return { blob: blob, name: name, type: type, url: url, size: blob.size, pix: type !== PICS.svg && w > 0 && w < 100 };
+      });
+    });
+  }).then(null, function(){ return null; });
+}
+function bFreeAll(pics){ for(var s in pics){ if(own(pics, s)) bFree(pics[s]); } }
+/* Reads a companion's own pictures from its folder, the same way the wizard reads them: the first file named after
+   each pose. Everything else in the folder counts toward its size. */
+function bReadFolder(root, folder){
+  return root.getDirectoryHandle(folder).then(function(dir){ return readFiles(dir); }).then(function(fs){
+    var found = {}, extra = 0;
+    fs.forEach(function(x){
+      var s = bPoseOf(x.f.name);
+      if(s && !found[s]) found[s] = x.f;
+      else if(x.f.name.toLowerCase() !== "companion.json") extra += x.f.size;
+    });
+    return { found: found, extra: extra };
+  });
+}
+var bEditing = null;
+function builderEdit(key){
+  if(!fsSupported() || BLD.open || bEditing || confirmOpen || !own(CMP.list, key) || !CMP.handle) return;
+  var c = CMP.list[key], root = CMP.handle, tok = bEditing = {};
+  var st = bNew();
+  st.open = false; st.mode = "edit"; st.key = key; st.folder = c.folder; st.root = root; st.name = c.name; st.origName = c.name; st.about = c.about;
+  st.data = c.data || {}; st.lines = JSON.parse(JSON.stringify(c.lines || {})); st.from = "b-edit";
+  bReadFolder(root, c.folder).then(function(r){
+    st.extra = r.extra;
+    return seqEach(Object.keys(r.found), function(s){
+      var f = r.found[s];
+      /* Every pose file is known, so a replaced or cleared one can be deleted; one that can't be shown is left as it is. */
+      st.orig[s] = f.name; st.origSize[s] = f.size;
+      return bLoadPic(f, f.name, bTypeOf(f.name)).then(function(pic){ if(pic){ st.pics[s] = pic; st.origBlob[s] = pic.blob; } });
+    });
+  }).then(function(){
+    /* Opened only if Options is still where Edit was pressed. */
+    var ok = bEditing === tok && !BLD.open && !confirmOpen && drawerOpen && drawerId === "optdrawer";
+    if(bEditing === tok) bEditing = null;
+    if(!ok){ bFreeAll(st.pics); return; }
+    st.open = true;
+    BLD = st;
+    bMount();
+  }, function(){
+    if(bEditing === tok) bEditing = null;
+    bFreeAll(st.pics);
+    toast(false, c.name + "'s folder couldn't be read. Try again.");
+  });
+}
+/* Closing returns to Options, to the tile or button that opened the builder. */
+function bTeardown(focusSel){
+  var from = BLD.from;
+  bStopPlay();
+  bFreeAll(BLD.pics);
+  var el = document.getElementById("bld");
+  if(el) el.remove();
+  BLD = { open: false };
+  setInert(false);
+  showDrawer("optdrawer", null);
+  /* After the panel has slid in, as Options does, since a hidden panel can't take the focus. */
+  var sel = focusSel || (from === "b-edit" ? '#cchosen [data-action="b-edit"]' : '#ctiles [data-action="b-new"]');
+  setTimeout(function(){ var t = document.querySelector(sel); if(t && drawerOpen && drawerId === "optdrawer") try{ t.focus({ preventScroll: true }); }catch(e){} }, 60);
+}
+function builderClose(){
+  if(!BLD.open || BLD.saving) return;
+  if(!BLD.dirty){ bTeardown(); return; }
+  var nm = bName() || "This companion", st = BLD;
+  confirmBox({ title: "Close without saving?", message: nm + " has changes that aren't saved. Closing loses them.", ok: "Discard", cancel: "Keep editing" }).then(function(yes){
+    if(yes && BLD === st && !st.saving) bTeardown();
+  });
+}
+
+/* ---------------------------------------------------------------- pictures */
+function bPoseClick(v){
+  BLD.sel = v;
+  bRefresh();
+  var t = document.querySelector('.bld-pose[data-v="' + v + '"]'); if(t) try{ t.focus(); }catch(e){}
+  bPick(v);
+}
+function bPick(slot){
+  var f = document.getElementById("bld-file");
+  if(!f) return;
+  BLD.pickFor = slot || "";
+  f.value = "";
+  f.click();
+}
+/* Pictures in: each one named after a pose fills it; a single picture with another name fills the pose it's meant for. */
+function bTakeFiles(files, target){
+  files = Array.prototype.slice.call(files || []);
+  var st = BLD, skipped = [], bad = [], done = 0;
+  return seqEach(files, function(f){
+    var type = bTypeOf(f.name);
+    if(!type){ skipped.push(f.name); return; }
+    var slot = bPoseOf(f.name) || (files.length === 1 && target ? target : "");
+    if(!slot){ skipped.push(f.name); return; }
+    return bLoadPic(f, f.name, type).then(function(pic){
+      if(!pic){ bad.push(f.name); return; }
+      if(BLD !== st){ bFree(pic); return; }
+      bFree(st.pics[slot]);
+      st.pics[slot] = pic;
+      delete st.cleared[slot];
+      done++;
+      if(files.length === 1) st.sel = slot;
+    });
+  }).then(function(){
+    if(BLD !== st) return;
+    if(done){ st.dirty = true; bRefresh(); }
+    if(bad.length) toast(false, bad.join(", ") + " can't be shown. Try another picture.");
+    else if(skipped.length) toast(false, skipped.join(", ") + (skipped.length > 1 ? " aren't" : " isn't") + " named after a pose" + (skipped.some(function(n){ return !bTypeOf(n); }) ? ", or isn't an SVG, PNG, WebP, or GIF" : "") + ". Drop a picture on its pose, or click the pose.");
+  });
+}
+function bClear(){
+  var s = BLD.sel;
+  if(!BLD.pics[s]) return;
+  bFree(BLD.pics[s]);
+  delete BLD.pics[s];
+  if(BLD.orig[s]) BLD.cleared[s] = true;
+  BLD.dirty = true;
+  bRefresh();
+  var b = document.querySelector('#bld-pose [data-action="b-choose"]'); if(b) try{ b.focus(); }catch(e){}
+}
+
+/* ---------------------------------------------------------------- start from a copy */
+/* A copy is read into its own map and only swapped in once it's whole, so a second choice, or closing, can't mix two. */
+function bCopyFrom(k){
+  var st = BLD, tok = st.copyTok = {};
+  var take = function(src, lines, about){
+    var pics = {};
+    return seqEach(Object.keys(src), function(s){ return bLoadPic(src[s].blob, src[s].name, src[s].type).then(function(pic){ if(pic) pics[s] = pic; }); }).then(function(){
+      if(BLD !== st || st.copyTok !== tok){ bFreeAll(pics); return; }
+      st.copyTok = null;
+      bFreeAll(st.pics);
+      st.pics = pics;
+      st.lines = {};
+      for(var m in lines){ if(own(lines, m) && own(BNAME, m)) st.lines[m] = (lines[m] || []).filter(function(l){ return typeof l === "string" && l.trim(); }); }
+      st.about = about || "";
+      st.startFrom = k;
+      st.dirty = true;
+      bRender();
+      var n = document.getElementById("bld-name"); if(n) try{ n.focus(); }catch(e){}
+      toast(true, "A copy of " + MSHORT[k] + " is in the builder. Give it a name of its own.");
+    });
+  };
+  if(k === "quill" || k === "swoop"){
+    var src = {};
+    SLOTS.forEach(function(s){
+      var svg = ART[k][s];
+      if(!svg) return;
+      if(svg.indexOf("xmlns=") === -1) svg = svg.replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" ');
+      src[s] = { blob: new Blob([svg], { type: PICS.svg }), name: s + ".svg", type: PICS.svg };
+    });
+    return take(src, LINES[k], MNAME[k].slice(MSHORT[k].length + 2));
+  }
+  if(!own(CMP.list, k) || !CMP.handle){ st.copyTok = null; return Promise.resolve(); }
+  var c = CMP.list[k];
+  return bReadFolder(CMP.handle, c.folder).then(function(r){
+    var src = {};
+    for(var s in r.found){ if(own(r.found, s)) src[s] = { blob: r.found[s], name: r.found[s].name, type: bTypeOf(r.found[s].name) }; }
+    return take(src, c.lines, c.about);
+  }, function(){ if(st.copyTok === tok) st.copyTok = null; toast(false, c.name + "'s folder couldn't be read. Try again."); });
+}
+function bBlank(){
+  var st = BLD;
+  st.copyTok = null;
+  bFreeAll(st.pics);
+  st.pics = {}; st.lines = {}; st.about = ""; st.startFrom = ""; st.sel = "idle"; st.dirty = true;
+  bRender();
+}
+function bStartChange(sel){
+  var k = sel.value, st = BLD;
+  /* One question at a time: a change made while one is asked is undone. */
+  if(confirmOpen){ sel.value = st.startFrom; return; }
+  var made = st.dirty || st.copyTok;
+  if(!made){ if(k) bCopyFrom(k); return; }
+  var title = k ? "Start from a copy of " + MSHORT[k] + "?" : "Start again from nothing?";
+  var msg = k ? "What you've made so far is replaced by " + MSHORT[k] + "'s pictures and lines." : "Its pictures and lines are cleared. The name stays.";
+  confirmBox({ title: title, message: msg, ok: k ? "Start from " + MSHORT[k] : "Start again", cancel: "Keep what I have" }).then(function(yes){
+    if(BLD !== st) return;
+    if(yes && k){ bCopyFrom(k); return; }
+    if(yes) bBlank(); else sel.value = st.startFrom;
+    setTimeout(function(){ var e = document.getElementById("bld-start"); if(e && BLD === st) try{ e.focus(); }catch(x){} }, 0);
+  });
+}
+
+/* ---------------------------------------------------------------- playing a moment */
+function bStopPlay(){
+  if(BLD.playTimer){ clearTimeout(BLD.playTimer); BLD.playTimer = null; }
+  if(BLD.danceTimer){ clearInterval(BLD.danceTimer); BLD.danceTimer = null; }
+  BLD.playing = false;
+  var big = document.getElementById("bld-big"); if(big) big.classList.remove("dance");
+}
+function bPlay(label){
+  var p = null;
+  for(var i=0;i<BPLAY.length;i++){ if(BPLAY[i][0] === label) p = BPLAY[i]; }
+  if(!p) return;
+  bStopPlay();
+  BLD.playing = true;
+  var back = function(ms){ BLD.playTimer = setTimeout(function(){ BLD.playTimer = null; BLD.playing = false; bShow(BLD.sel, null); }, ms); };
+  if(label === "Nap"){
+    bShow("yawn", null);
+    BLD.playTimer = setTimeout(function(){
+      bShow("sleep", null);
+      BLD.playTimer = setTimeout(function(){ bShow("wake", null); back(1100); }, 2400);
+    }, 1100);
+    return;
+  }
+  if(label === "Dance"){
+    playSound("finish");
+    var big = document.getElementById("bld-big"), frames = ["dance1", "dance2", "finish"], n = 0, t0 = Date.now();
+    if(big && !reducedMotion()){ void big.offsetWidth; big.classList.add("dance"); }
+    bShow("dance1", null);
+    BLD.danceTimer = setInterval(function(){
+      if(Date.now() - t0 > 2400){ clearInterval(BLD.danceTimer); BLD.danceTimer = null; if(big) big.classList.remove("dance"); bShow("finish", null); back(1200); return; }
+      bShow(frames[++n % frames.length], null);
+    }, 230);
+    return;
+  }
+  var ls = bLinesOf(p[1]), line = ls.length ? fillLine(ls[Math.floor(Math.random() * ls.length)], bSample()) : "";
+  bShow(p[2], line);
+  playSound(p[3]);
+  back(line ? lineDuration(line) : 2600);
+}
+
+/* ---------------------------------------------------------------- lines */
+function bRedrawLines(m, focusI){
+  var box = document.getElementById("bls-" + m);
+  if(!box) return;
+  box.innerHTML = bLinesHTML(m);
+  if(focusI != null){ var el = document.getElementById("bl-" + m + "-" + Math.min(focusI, box.querySelectorAll("input").length - 1)); if(el) try{ el.focus(); var l = el.value.length; el.setSelectionRange(l, l); }catch(e){} }
+}
+function bLineInput(el){
+  var m = el.getAttribute("data-m"), i = +el.getAttribute("data-i");
+  var ls = BLD.lines[m] || (BLD.lines[m] = []);
+  while(ls.length < i) ls.push("");
+  ls[i] = el.value;
+  BLD.dirty = true;
+  /* The line's own problem, under it. */
+  var bad = el.value ? bLineProblem(m, el.value) : "", err = document.getElementById("be-" + m + "-" + i);
+  el.classList.toggle("bad", !!bad);
+  if(bad){
+    el.setAttribute("aria-invalid", "true"); el.setAttribute("aria-describedby", "be-" + m + "-" + i);
+    if(!err){ err = document.createElement("div"); err.className = "bld-err"; err.id = "be-" + m + "-" + i; el.after(err); }
+    err.innerHTML = BWARN + '<span>' + esc(bad) + '</span>';
+  } else {
+    el.removeAttribute("aria-invalid"); el.removeAttribute("aria-describedby");
+    if(err) err.remove();
+  }
+  /* A new empty box once the last one has words in it, up to five. */
+  var box = document.getElementById("bls-" + m), ins = box ? box.querySelectorAll("input") : [];
+  if(box && el === ins[ins.length - 1] && el.value.trim() && ins.length < 5){
+    var n = document.createElement("div");
+    n.innerHTML = '<input class="bld-line" id="bl-' + m + '-' + ins.length + '" data-m="' + m + '" data-i="' + ins.length + '" maxlength="240" autocomplete="off" dir="auto" aria-label="' + esc(BNAME[m]) + ', line ' + (ins.length + 1) + '" placeholder="Another line, if you like">';
+    box.appendChild(n.firstChild);
+  }
+  bHead();
+}
+/* Empty boxes left behind fold away once the moment is left. */
+function bCompact(m){
+  var ls = (BLD.lines[m] || []).filter(function(l){ return String(l).trim(); });
+  var before = (BLD.lines[m] || []).length;
+  BLD.lines[m] = ls;
+  if(ls.length !== before) bRedrawLines(m, null);
+}
+function bChip(m, ph){
+  var el = BLD.focusLine[m] && document.body.contains(BLD.focusLine[m]) ? BLD.focusLine[m] : null;
+  if(!el){
+    var ins = document.querySelectorAll("#bls-" + m + " input");
+    for(var i=0;i<ins.length;i++){ if(!ins[i].value){ el = ins[i]; break; } }
+    if(!el) el = ins[ins.length - 1];
+  }
+  if(!el) return;
+  try{ el.focus(); }catch(e){}
+  var s = el.selectionStart == null ? el.value.length : el.selectionStart, e2 = el.selectionEnd == null ? s : el.selectionEnd;
+  el.value = el.value.slice(0, s) + ph + el.value.slice(e2);
+  try{ el.setSelectionRange(s + ph.length, s + ph.length); }catch(e3){}
+  bLineInput(el);
+}
+/* A pasted list fills a box per line, from the box pasted into. Text around the cursor stays with the first and last
+   pasted line, and a moment that runs out of boxes keeps the lines it had. */
+function bPaste(ev, el){
+  var t = "";
+  try{ t = (ev.clipboardData || window.clipboardData).getData("text"); }catch(e){ t = ""; }
+  if(!t || !/[\r\n]/.test(t)) return;
+  ev.preventDefault();
+  var parts = t.split(/\r?\n/).map(function(x){ return x.trim(); }).filter(Boolean);
+  if(!parts.length) return;
+  var m = el.getAttribute("data-m"), i = +el.getAttribute("data-i");
+  var a = el.selectionStart == null ? el.value.length : el.selectionStart, z = el.selectionEnd == null ? a : el.selectionEnd;
+  parts[0] = el.value.slice(0, a) + parts[0];
+  var after = el.value.slice(z);
+  var ls = (BLD.lines[m] || []).slice();
+  while(ls.length <= i) ls.push("");
+  var before = ls.slice(0, i).filter(function(l){ return String(l).trim(); }).length;
+  var others = ls.filter(function(l, k){ return k !== i && String(l).trim(); }).length;
+  var cap = Math.max(5, others + 1), room = cap - others, cut = parts.length > room;
+  if(cut) parts = parts.slice(0, room);
+  parts[parts.length - 1] += after;
+  ls.splice.apply(ls, [i, 1].concat(parts));
+  BLD.lines[m] = ls.filter(function(l){ return String(l).trim(); });
+  BLD.dirty = true;
+  bRedrawLines(m, before + parts.length - 1);
+  if(cut) toast(false, "This moment has no more room. The rest weren't added.");
+  bHead();
+}
+
+/* ---------------------------------------------------------------- saving */
+/* Writes the companion's folder: each picture named after its pose, and companion.json. Editing touches only what
+   changed: a new picture is written first and the file it replaces deleted after; a cleared one is deleted; an
+   unchanged one, or one the builder couldn't show, is left as it is. */
+function bWriteFolder(st, root, folder, edit){
+  return root.getDirectoryHandle(folder, { create: !edit }).then(function(dir){
+    return seqEach(SLOTS, function(s){
+      var p = st.pics[s], old = edit ? st.orig[s] : "", name = p ? s + "." + bExt(p) : "";
+      if(edit && p && p.blob === st.origBlob[s]) return;
+      /* Greet.PNG replaced by a PNG keeps its file's name: on Windows and macOS greet.png is the same file, and deleting
+         the old name would delete the new picture. */
+      if(p && old && old.toLowerCase() === name.toLowerCase()) return writeFile(dir, old, p.blob);
+      if(p) return writeFile(dir, name, p.blob).then(function(){ if(old) return dir.removeEntry(old).then(null, function(){}); });
+      if(edit && old && st.cleared[s]) return dir.removeEntry(old).then(null, function(){});
+    }).then(function(){ return writeFile(dir, "companion.json", bJSON()); });
+  });
+}
+/* Resolves { key, msg } when saved, or false when nothing was. */
+function bSaveNew(st, root){
+  var name = bName(), key = cmpKey(name), have = own(CMP.list, key) ? CMP.list[key] : null;
+  var ask = have ? confirmBox({ title: "Replace " + have.name + "?", nodefault: true,
+      message: "Your companions folder already has " + have.name + ", in the folder " + have.folder + ". Replace it with this one? The new one is written first, then the old folder is deleted.",
+      path: have.folder, ok: "Replace", cancel: "Keep mine" }) : Promise.resolve(true);
+  return ask.then(function(yes){
+    if(!yes || BLD !== st) return false;
+    if(CMP.handle !== root){ toast(false, "Your companions folder changed while you were asked, so nothing was saved."); return false; }
+    var target = "", made = "";
+    CMP.copying.push(root);
+    var done = function(){ var i = CMP.copying.indexOf(root); if(i !== -1) CMP.copying.splice(i, 1); };
+    return Promise.resolve(CMP.scanning).then(function(){ return folderFree(root, name); }).then(function(nm){
+      target = made = nm;
+      return bWriteFolder(st, root, nm, false);
+    }).then(function(){
+      if(!have || have.folder === target || CMP.handle !== root) return;
+      return rmEntry(root, have.folder).then(function(){
+        /* With the old folder gone, the new one takes its folder's name, so a replaced companion stays where it was. */
+        if(target === have.folder || CMP.handle !== root) return;
+        return bWriteFolder(st, root, have.folder, false).then(function(){ var tmp = target; target = have.folder; return rmEntry(root, tmp).then(null, function(){}); },
+          function(){ return rmEntry(root, have.folder).then(null, function(){}); });
+      }, function(){});
+    }).then(function(){
+      done();
+      if(CMP.handle !== root){ toast(false, "Your companions folder changed while " + name + " was being saved. Nothing more was done."); return false; }
+      if(SETTINGS.mascot === key) SETTINGS.mascotFolder = target;
+      return scanCdir().then(function(){
+        if(own(CMP.list, key) && CMP.list[key].folder === target) return { key: key, msg: name + (have ? " is replaced." : " joined your companions.") };
+        return { key: "", msg: name + " was saved, but it wasn't added. Its notice says why.", bad: true };
+      });
+    }, function(){
+      done();
+      toast(false, name + " couldn't be saved into your companions folder." + (have ? " Your " + have.name + " is as it was." : ""));
+      return (made ? rmEntry(root, made).then(null, function(){}) : Promise.resolve()).then(function(){ if(CMP.handle === root) scanCdir(); return false; });
+    });
+  });
+}
+function bSaveEdit(st){
+  var root = st.root, name = bName(), key = cmpKey(name), folder = st.folder;
+  if(CMP.handle !== root){ toast(false, "Your companions folder changed while you were editing, so nothing was saved."); return Promise.resolve(false); }
+  CMP.copying.push(root);
+  var done = function(){ var i = CMP.copying.indexOf(root); if(i !== -1) CMP.copying.splice(i, 1); };
+  return Promise.resolve(CMP.scanning).then(function(){ return bWriteFolder(st, root, folder, true); }).then(function(){
+    done();
+    if(SETTINGS.mascot === st.key && key !== st.key) SETTINGS.mascotFolder = folder;
+    return scanCdir().then(function(){
+      if(own(CMP.list, key) && CMP.list[key].folder === folder) return { key: (SETTINGS.mascot === st.key || SETTINGS.mascot === key) ? key : "", msg: name + " is saved." };
+      return { key: "", msg: name + " was saved, but it wasn't added. Its notice says why.", bad: true };
+    });
+  }, function(){
+    done();
+    toast(false, name + " couldn't be saved completely into its folder, " + folder + ". Some changes may not be written: open it in the builder again to check.");
+    if(CMP.handle === root) scanCdir();
+    return false;
+  });
+}
+function bBusy(on){
+  var b = document.querySelector("#bld .bld-body"), c = document.querySelector('#bld [data-action="b-close"]');
+  if(b){ if(on) b.setAttribute("inert", ""); else b.removeAttribute("inert"); }
+  if(c) c.disabled = !!on;
+}
+function builderSave(){
+  if(!BLD.open || BLD.saving) return;
+  if(bBlocker()){ bHead(); return; }
+  var st = BLD;
+  /* Nothing can change while it's written. */
+  st.saving = true; bBusy(true); bHead();
+  var go = st.mode === "edit" ? bSaveEdit(st) : ensureCdir(false).then(function(r){ if(!r || BLD !== st) return false; st.root = CMP.handle; return bSaveNew(st, CMP.handle); });
+  go.then(null, function(){ return false; }).then(function(res){
+    if(BLD !== st) return;
+    st.saving = false;
+    if(!res){ bBusy(false); bHead(); var n = document.getElementById("bld-name"); if(n) try{ n.focus(); }catch(e){} return; }
+    st.dirty = false;
+    bTeardown(res.key ? '#ctiles [data-v="' + res.key.replace(/"/g, '\\"') + '"]' : null);
+    if(res.key) setOption("mascot", res.key);
+    if(res.msg) toast(!res.bad, res.msg);
+  });
+}
+
+/* ---------------------------------------------------------------- wiring */
+function bWire(root){
+  root.addEventListener("input", function(ev){
+    var t = ev.target;
+    if(t.id === "bld-name"){ BLD.name = t.value; BLD.dirty = true; bHead(); }
+    else if(t.id === "bld-about"){ BLD.about = t.value; BLD.dirty = true; bHead(); }
+    else if(t.classList && t.classList.contains("bld-line")) bLineInput(t);
+  });
+  root.addEventListener("change", function(ev){
+    var t = ev.target;
+    if(t.id === "bld-file"){ var fs = t.files; bTakeFiles(fs, BLD.pickFor); }
+    else if(t.id === "bld-start") bStartChange(t);
+  });
+  root.addEventListener("focusin", function(ev){ var t = ev.target; if(t.classList && t.classList.contains("bld-line")) BLD.focusLine[t.getAttribute("data-m")] = t; });
+  root.addEventListener("focusout", function(ev){
+    var t = ev.target;
+    if(!(t.classList && t.classList.contains("bld-line"))) return;
+    var m = t.getAttribute("data-m"), to = ev.relatedTarget;
+    if(to && to.getAttribute && (to.getAttribute("data-m") === m)) return;
+    setTimeout(function(){ if(BLD.open && !(document.activeElement && document.activeElement.getAttribute && document.activeElement.getAttribute("data-m") === m)) bCompact(m); }, 0);
+  });
+  root.addEventListener("paste", function(ev){ var t = ev.target; if(t.classList && t.classList.contains("bld-line")) bPaste(ev, t); });
+  root.addEventListener("keydown", function(ev){
+    var t = ev.target;
+    if(ev.key === "Enter" && t.classList && t.classList.contains("bld-line")){
+      ev.preventDefault();
+      var nx = document.getElementById("bl-" + t.getAttribute("data-m") + "-" + (+t.getAttribute("data-i") + 1));
+      if(nx) try{ nx.focus(); }catch(e){}
+    }
+  });
+  var files = function(ev){ var dt = ev.dataTransfer; if(!dt || !dt.types) return false; for(var i=0;i<dt.types.length;i++){ if(dt.types[i] === "Files") return true; } return false; };
+  var veilOn = function(on){ var d = document.getElementById("bld-drop"); if(d) d.hidden = !on; };
+  root.addEventListener("dragenter", function(ev){ if(!files(ev)) return; ev.preventDefault(); ev.stopPropagation(); if(BLD.saving) return; BLD.drag++; veilOn(true); });
+  root.addEventListener("dragover", function(ev){ if(!files(ev)) return; ev.preventDefault(); ev.stopPropagation(); try{ ev.dataTransfer.dropEffect = BLD.saving ? "none" : "copy"; }catch(e){} });
+  root.addEventListener("dragleave", function(ev){ if(!files(ev)) return; ev.stopPropagation(); BLD.drag = Math.max(0, BLD.drag - 1); if(!BLD.drag) veilOn(false); });
+  root.addEventListener("drop", function(ev){
+    if(!files(ev)) return;
+    ev.preventDefault(); ev.stopPropagation();
+    BLD.drag = 0; veilOn(false);
+    if(BLD.saving) return;
+    var tile = ev.target && ev.target.closest ? ev.target.closest(".bld-pose") : null, target = tile ? tile.getAttribute("data-v") : "";
+    var dt = ev.dataTransfer, pairs = [];
+    if(dt.items){
+      for(var i=0;i<dt.items.length;i++){
+        var it = dt.items[i], h = null, f = null;
+        if(it.kind !== "file") continue;
+        try{ if(typeof it.getAsFileSystemHandle === "function") h = it.getAsFileSystemHandle(); }catch(e){ h = null; }
+        try{ f = it.getAsFile(); }catch(e){ f = null; }
+        pairs.push([h, f]);
+      }
+    }
+    if(!pairs.length && dt.files) for(var j=0;j<dt.files.length;j++) pairs.push([null, dt.files[j]]);
+    var out = [];
+    seqEach(pairs, function(pr){
+      return Promise.resolve(pr[0]).then(null, function(){ return null; }).then(function(h){
+        if(h && h.kind === "directory") return readFiles(h).then(function(xs){ xs.forEach(function(x){ out.push(x.f); }); }, function(){});
+        if(pr[1]) out.push(pr[1]);
+      });
+    }).then(function(){ return bTakeFiles(out, target); });
+  });
+}
+if(typeof window !== "undefined"){
+  window.addEventListener("beforeunload", function(ev){ if(BLD.open && BLD.dirty){ ev.preventDefault(); ev.returnValue = ""; return ""; } });
 }
 
 /* Reactions to Options: shown right in the panel while it is open. */
@@ -6539,7 +7391,7 @@ function confirmBox(o){
     if(o.icon && ico) ico.innerHTML = o.icon;
     if(!o.calm) playSound("warn");
     if(mascotOn()){ if(mTimer){ clearTimeout(mTimer); mTimer = null; } setFrame(face); }
-    var els = [document.querySelector("header"), document.querySelector(".wrap"), document.getElementById("drawer"), document.getElementById("optdrawer"), document.getElementById("drawerback"), document.getElementById("notices")];
+    var els = [document.querySelector("header"), document.querySelector(".wrap"), document.getElementById("drawer"), document.getElementById("optdrawer"), document.getElementById("drawerback"), document.getElementById("notices"), document.getElementById("bld")];
     var had = [];
     for(var i=0;i<els.length;i++){ had.push(!!(els[i] && els[i].hasAttribute("inert"))); if(els[i]) els[i].setAttribute("inert", ""); }
     var prev = document.activeElement;
@@ -6633,6 +7485,15 @@ document.addEventListener("click", function(ev){
   else if(act === "c-remove"){ removeCompanion(el.getAttribute("data-v")); }
   else if(act === "c-hide"){ hideCompanion(el.getAttribute("data-v")); }
   else if(act === "c-show"){ showCompanion(el.getAttribute("data-v")); }
+  else if(act === "b-new"){ builderNew(); }
+  else if(act === "b-edit"){ builderEdit(el.getAttribute("data-v")); }
+  else if(act === "b-close"){ builderClose(); }
+  else if(act === "b-save"){ builderSave(); }
+  else if(act === "b-pose"){ bPoseClick(el.getAttribute("data-v")); }
+  else if(act === "b-choose"){ bPick(BLD.sel); }
+  else if(act === "b-clear"){ bClear(); }
+  else if(act === "b-play"){ bPlay(el.getAttribute("data-v")); }
+  else if(act === "b-chip"){ bChip(el.getAttribute("data-m"), el.getAttribute("data-v")); }
   else if(act === "wipe-all"){ wipeAll(); }
   else if(act === "backup-all"){ saveBackup(); }
   else if(act === "install-app"){ installApp(); }
@@ -6685,6 +7546,7 @@ document.addEventListener("pointercancel", rankDragEnd);
 (function(){ var mo = document.getElementById("modal"); if(mo) mo.addEventListener("click", function(e){ if(e.target === mo) extraClose(); }); })();
 document.addEventListener("keydown", function(ev){
   if(confirmOpen){ if(ev.key === "Escape" && confirmDone){ confirmDone(null); } return; }
+  if(bldOpen()){ if(ev.key === "Escape"){ ev.preventDefault(); builderClose(); } return; }
   var mo = document.getElementById("modal");
   if(mo && mo.className.indexOf("on") !== -1){ if(ev.key === "Escape") extraClose(); return; }
   if(menuOpen && menuKeys(ev)) return;
@@ -6817,22 +7679,25 @@ function hasFiles(ev){
 }
 document.addEventListener("dragenter", function(ev){
   if(!hasFiles(ev)) return;
+  if(bldOpen()){ ev.preventDefault(); return; }
   ev.preventDefault();
   dragDepth++;
   veil(true);
 });
 document.addEventListener("dragover", function(ev){
   if(!hasFiles(ev)) return;
+  if(bldOpen()){ ev.preventDefault(); return; }
   ev.preventDefault();
   try{ ev.dataTransfer.dropEffect = "copy"; }catch(e){}
 });
 document.addEventListener("dragleave", function(ev){
-  if(!hasFiles(ev)) return;
+  if(!hasFiles(ev) || bldOpen()) return;
   dragDepth = Math.max(0, dragDepth - 1);
   if(dragDepth === 0) veil(false);
 });
 document.addEventListener("drop", function(ev){
   if(!hasFiles(ev)) return;
+  if(bldOpen()){ ev.preventDefault(); return; }
   ev.preventDefault();
   dragDepth = 0;
   veil(false);
@@ -6852,6 +7717,7 @@ document.addEventListener("drop", function(ev){
 if(typeof window !== "undefined"){
   window.__wiz = {
     get companions(){ return CMP; },
+    get builder(){ return BLD; },
     scanCompanions: function(){ return scanCdir(); },
     get state(){ return state; },
     get config(){ return CONFIG; },

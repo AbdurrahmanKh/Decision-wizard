@@ -2,6 +2,18 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.7.2 and skill 0.6.1, 12 October 2026
+
+### Added
+
+- Wizard: the companion builder. **Build** in the Companion card of Options opens a workshop over the wizard for making a companion by hand: a tile for each of the 14 poses, where you choose or drop a picture and see which pose a missing one borrows; a stage that plays greet, pick, skip, milestone, warn, error, finish, the nap, and the dance with your pictures and lines; and every moment the companion can speak in, grouped, with a box per line, an example line, how many lines it needs, and the placeholders it can fill in as buttons. Start from copies Quill, Swoop, or one of your companions to begin with. The size against the 5 MB limit shows as you go, and Save says what's missing until the companion can be added. Save writes the folder into your companions folder and switches to it.
+- Wizard: **Edit** beside each of your companions in the Companion card opens it in the builder. Save writes your changes back into its folder, leaves pictures you didn't change alone, and keeps any files and lines the builder doesn't show.
+- Skill: `references/companions.md` gives the recommended number of lines for each moment (five for most, two for warn, one for speed, the recaps, open_go, and the Options moments), so a companion Claude makes has as many lines as each moment needs, and mentions Edit and Build when handing a companion over.
+
+### Changed
+
+- Wizard: closing the builder with changes not saved asks first. While the builder is open, the companion beside the cards keeps still and quiet, and pictures or a folder dropped on the page fill the poses their names match instead of adding a companion.
+
 ## Wizard 0.7.1, 12 October 2026
 
 ### Changed

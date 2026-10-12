@@ -46,6 +46,8 @@ You can add your own, in Chrome and Edge on a computer. Each companion is a fold
 
 - **Add one** with **Add** in the Companion card, or by dropping a companion's folder on the wizard. The wizard shows it and asks first, then copies the folder into your companions folder and switches to it. A folder you put in the companions folder yourself joins by itself.
 - **Make one with Claude.** Ask Claude for a companion; d-wizard knows the poses and lines it needs. In Claude it arrives as a zip: unzip it and drop the folder on the wizard. In Claude Code, give Claude your companions folder's path and it writes the companion straight in.
+- **Build one yourself** with **Build** in the Companion card. It opens a workshop: a tile for each pose, where you choose or drop a picture; buttons that play the poses the way the wizard will; and a box for each line, moment by moment, with how many lines the moment needs and what it can fill in. **Start from** copies another companion's pictures and lines to begin with. **Save** writes the folder into your companions folder and switches to it.
+- **Edit one** with **Edit** beside it in the Companion card, which opens it in the same workshop. Save writes your changes into its folder.
 - **Remove one** with **Remove** in the Companion card, which deletes its folder after asking, or delete the folder yourself.
 - **Inky, the octopus,** the first companion made this way, is attached to the [wizard 0.7.0 release](https://github.com/AbdurrahmanKh/decision-wizard/releases/tag/wizard-v0.7.0) as `Inky.zip`.
 
@@ -66,7 +68,7 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 ## Versions
 
-- **Wizard: 0.7.1.** It's shown at the bottom of the wizard's Options panel.
-- **Skill: 0.6.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, and 0.7.0 for companions.
+- **Wizard: 0.7.2.** It's shown at the bottom of the wizard's Options panel.
+- **Skill: 0.6.1.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, and 0.7.0 for companions.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
