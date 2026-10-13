@@ -1,9 +1,9 @@
 ---
 name: "d-wizard"
-description: Communicate a set of questions, decisions, or approvals as a Decision Wizard questions JSON instead of long prose. Use it whenever the user says "d-wizard", "communicate through the wizard", "wizard this", "ask me through the wizard", "decision wizard", "decision round", or asks to turn open questions into a wizard; and proactively when open decisions need evidence attached to be answered well (conflicting sources, a table to compare), when content items need one-by-one approval (copy lines, assets, rows), or when new decisions come up while acting on a round's answers, on any topic. Also use it to act on an answers JSON the user pastes, points to as a file, or says is ready in the project's wizard-rounds folder, recognizable by meta.tool = "decision-wizard". Also use it to make a wizard companion (mascot), as when a prompt says "Make a companion for my Decision Wizard". Do not use it for quick clarifications, for approving your own next steps, for a single question, or for questions meant for a teammate.
+description: Send questions, decisions, or approvals as a Decision Wizard questions JSON instead of long prose. Use it whenever the user says "d-wizard", "communicate through the wizard", "wizard this", "ask me through the wizard", "decision wizard", "decision round", or asks to turn open questions into a wizard; and proactively when open decisions need evidence attached (conflicting sources, a table to compare), when content items need one-by-one approval (copy lines, assets, rows), when acting on a round's answers raises new decisions, or when a hard open question has no clear options (offer a brainstorm). Also use it to act on an answers JSON the user pastes, gives as a file, or says is ready in the project's wizard-rounds folder (meta.tool = "decision-wizard"); to make a wizard companion ("Make a companion for my Decision Wizard"); and to send a six-hats brainstorm when asked for one. Not for brainstorming in chat, quick clarifications, approving your own next steps, a single question, or questions for a teammate.
 metadata:
-  version: "0.6.3"
-compatibility: Needs Decision Wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for a project's rounds to open in the wizard by themselves and for answers to be saved back into the round file, 0.7.0 for companions, and 0.7.3 to drop a companion's zip on the wizard as it is. Older wizards still open plain rounds, but show no recommendations and give no way to add a note to a pick.
+  version: "0.7.0"
+compatibility: Needs Decision Wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for a project's rounds to open in the wizard by themselves and for answers to be saved back into the round file, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, and 0.8.0 for brainstorms. Older wizards still open plain rounds, but show no recommendations and give no way to add a note to a pick.
 ---
 
 # Decision Wizard
@@ -14,7 +14,7 @@ In Claude Code, inside a project, the wizard can carry both ends by itself. Once
 
 If the user asks where the wizard is, or may not have one, point them to https://abdurrahmankh.github.io/decision-wizard/. Any copy of the wizard, hosted or their own, opens any valid questions JSON. Do not attempt to build or describe the HTML, and never open, read, or edit the user's own copy.
 
-To make a new companion for the wizard, including from a prompt the wizard writes ("Make a companion for my Decision Wizard."), read `references/companions.md` and follow it; the rest of this file is about rounds.
+To make a new companion for the wizard, including from a prompt the wizard writes ("Make a companion for my Decision Wizard."), read `references/companions.md` and follow it. To send a brainstorm, or to act on a brainstorm's answers (`meta.kind` is `"brainstorm"`), read `references/brainstorms.md` and follow it. The rest of this file is about rounds.
 
 ## When to use it, when not
 
@@ -23,6 +23,8 @@ An explicit request always fires it. Without one, use it when:
 - the questions need evidence attached to be answered well: two sources that conflict, a table to compare, a quote to judge;
 - content items need one-by-one approval: copy lines, assets, rows of a table, sections of a document;
 - you are acting on a previous round's answers and new open decisions come up: they go into the next round, not into prose.
+
+When a hard open question has no clear options yet, so a round would only guess at them, offer a brainstorm in one line: the wizard's six thinking hats, each bringing ideas for the user to star. Send one only when the user asks.
 
 Do not use it for quick clarifications that need no evidence (which folder, which test runner, okay to install a package), for approving your own next steps (a refactor plan, the order of edits), or for one blocking yes or no question. For those, use the environment's native multiple-choice prompt when one exists, otherwise just ask. Decisions meant for a teammate go as a plain question in the message. Never use it to deliver information that requires no decision.
 

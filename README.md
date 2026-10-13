@@ -28,6 +28,17 @@ A local copy of `index.html` keeps working as a plain page; installing is for th
 3. **Load and answer.** Open the wizard, press **Load**, and choose the file, drag it in, or paste it. Answer each question, or skip it to leave it open.
 4. **Send the answers back.** Choose **Copy answers JSON** in the companion's menu or on the last screen, and paste it to Claude. Or use **Save round JSON file** and give Claude the file. In Chrome or Edge, saving writes the answers into the round file itself, so in Claude Code you just say the answers are ready.
 
+## Brainstorms
+
+When a question is still too open for options, ask Claude for a brainstorm in the wizard. A brainstorm looks at one topic through the Six Thinking Hats, one card per hat, each hat worn by a character. Cap, the capybara, hosts in Blue: the focus, the plan, and the context. Then come Tally, the owl (White, the facts), Ruby, the fox (Red, the feelings), Sunny, the bee (Yellow, the benefits), Pebble, the tortoise (Black, the caution), and Doodle, the chameleon (Green, new ideas), in the order Claude picked. Cap closes.
+
+- **Star the ideas that matter.** The rest stay as heard; they go back to Claude too.
+- **Add a note** to any idea, or **add ideas of your own**.
+- **Answer a hat's question** when it asks you one.
+- **Blue's last card** shows what you starred, and the next steps to star.
+
+Send it back the way you send a round. Claude sums up what you starred and sends anything left to decide as a decision round. Brainstorms need wizard 0.8.0 and skill 0.7.0.
+
 ## Project folders, for Claude Code
 
 A round Claude Code writes names its project and the `wizard-rounds/` folder it's in. The first time you load a round from a project, the wizard says which project it's from and where it will save, and asks you to pick that folder once, because a web page can't open a folder from a written path. The wizard checks that the folder holds the round, then remembers it for the project. You can also start from the folder: **Open a project folder** in Load connects it and opens its newest round that has no answers yet. From then on:
@@ -63,12 +74,12 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 - `index.html`: the wizard, and this site's homepage.
 - `manifest.webmanifest`, `sw.js`, and `icons/`: what makes the hosted wizard installable as an app, with its icons. The service worker keeps a copy for offline use and loads the newest version whenever you're online.
-- `d-wizard/`: the skill. This folder is its source; `references/example-round.json` is a complete worked round, and `references/companions.md` is how Claude makes a companion.
+- `d-wizard/`: the skill. This folder is its source; `references/example-round.json` is a complete worked round, `references/brainstorms.md` is how Claude writes a brainstorm and reads its answers, with `references/example-brainstorm.json` as a complete one, and `references/companions.md` is how Claude makes a companion.
 - `.nojekyll`: tells GitHub Pages to serve every file exactly as uploaded.
 
 ## Versions
 
-- **Wizard: 0.7.5.** It's shown at the bottom of the wizard's Options panel.
-- **Skill: 0.6.3.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, and 0.7.3 to drop a companion's zip on the wizard as it is.
+- **Wizard: 0.8.0.** It's shown at the bottom of the wizard's Options panel.
+- **Skill: 0.7.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, and 0.8.0 for brainstorms.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).

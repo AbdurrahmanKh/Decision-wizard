@@ -2,6 +2,27 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.8.0 and skill 0.7.0, 14 October 2026
+
+### Added
+
+- Wizard: brainstorms, a new kind of file. A brainstorm looks at one topic through the Six Thinking Hats, one card per hat. Blue opens with the focus, the plan, and the topic's context in full. White (facts), Red (feelings), Yellow (benefits), Black (caution), and Green (new ideas) follow in the order Claude picked, and Blue closes with what you starred and the next steps. Each card says what its hat's kind of thinking is.
+- Wizard: the cast. A character wears each hat at the head of its card, with the hat's name first and the character's name beside it: Cap, the capybara (Blue), Tally, the owl (White), Ruby, the fox (Red), Sunny, the bee (Yellow), Pebble, the tortoise (Black), and Doodle, the chameleon (Green). Each says the line Claude wrote for it, and has three poses: speaking as its card opens, pleased when you star one of its ideas, and still.
+- Wizard: on a hat's card, its ideas are sticky notes. Star what matters, add a note to any idea, and add ideas of your own: they start starred, up to 20 a hat, and Enter adds one while Shift+Enter starts a new line. When a hat asks you something, the answer box is on its card. Next marks the hat as seen; the plan on Blue's first card and the list beside the cards jump to any hat. Nothing is picked and nothing is recommended.
+- Wizard: the brainstorm's summary shows what you starred and wrote under each hat, with the answers JSON. Everything goes back to Claude, the ideas you didn't star too.
+- Wizard: brainstorms sit in Load with the rounds, marked with a hat and Brainstorm, with how many hats you've seen. They save, back up, restore, and work with project folders as rounds do, and files go out in the brainstorm's own form. A new version of a brainstorm keeps your stars and notes on ideas whose words didn't change, your own ideas, and your answers. What the files look like, in Load, describes a brainstorm.
+- Skill: brainstorms. `references/brainstorms.md`, read only when a brainstorm is sent or answered, has the format, the cast and their voices, how to write each hat, how to deliver it, what comes back, and what to do next. `references/example-brainstorm.json` is a complete brainstorm.
+- Skill: on a hard open question with no clear options yet, Claude offers a brainstorm in one line, and sends one only when you ask. After a brainstorm, Claude sums up what you starred and sends anything left to decide as a decision round.
+
+### Changed
+
+- Wizard: while a brainstorm is open, the companion keeps its faces but says nothing, so the hats do the talking. Brainstorms don't count in stats.
+- Skill: the description covers brainstorms, and the compatibility line names wizard 0.8.0 for them.
+
+### Fixed
+
+- Wizard: on a phone, the question list could make the whole page scroll sideways. It now scrolls inside itself.
+
 ## Wizard 0.7.5, 13 October 2026
 
 ### Added

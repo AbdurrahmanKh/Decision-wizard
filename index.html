@@ -606,7 +606,7 @@ img.mimg.pix{image-rendering:pixelated}
 .ostnote{font-size:calc(12.5px*var(--fs));color:var(--muted);margin:8px 0 0}
 @media(max-width:880px){
   .layout{grid-template-columns:minmax(0,1fr)}
-  #side{position:static;max-height:none;display:flex;overflow-x:auto;gap:4px;padding:6px}
+  #side{position:relative;top:0;max-height:none;display:flex;overflow-x:auto;gap:4px;padding:6px}
   .sitem{width:auto;flex:none;padding:6px 10px}
   .sitem .stt,.shead,.sitem .scount{display:none}
   .qcard{padding:22px 16px 18px 56px}
@@ -766,6 +766,107 @@ html{scroll-padding-bottom:var(--lift,0px)}
 /* Read out, never seen: what a screen reader should hear after something changes out of sight. */
 .srx{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media (max-width:700px){.mcard{margin:12px auto}#mbody{padding:4px 14px 16px}.ctx{padding:12px 12px 10px}}
+.lkind{display:inline-flex;align-items:center;gap:5px;font-weight:700;color:var(--ink)}
+.lkind svg{flex:none}
+/* Brainstorms: each hat's color, as an edge, a swatch, a tint for its notes, and a line around them. */
+.bs-blue{--bs-edge:#4F86E0;--bs-sw:#3C73CF;--bs-tint:#E8EFFB;--bs-line:#B0C9F1}
+.bs-white{--bs-edge:#A9A08A;--bs-sw:#F6F2E8;--bs-tint:#F4F3F0;--bs-line:#D8D4CA}
+.bs-red{--bs-edge:#D9483E;--bs-sw:#D9483E;--bs-tint:#FAE7E6;--bs-line:#EEADA8}
+.bs-yellow{--bs-edge:#D6A512;--bs-sw:#FFD84A;--bs-tint:#FAF3E0;--bs-line:#EDD694}
+.bs-black{--bs-edge:#2D2924;--bs-sw:#2D2924;--bs-tint:#E4E3E3;--bs-line:#A09F9C}
+.bs-green{--bs-edge:#3FA163;--bs-sw:#3FA163;--bs-tint:#E6F3EB;--bs-line:#A9D5B9}
+[data-theme="dark"] .bs-blue{--bs-edge:#5B8FE6;--bs-tint:#283535;--bs-line:#3B5676}
+[data-theme="dark"] .bs-white{--bs-edge:#E6E0D0;--bs-tint:#3A3F32;--bs-line:#797A6C}
+[data-theme="dark"] .bs-red{--bs-edge:#E0574D;--bs-tint:#392D21;--bs-line:#763D31}
+[data-theme="dark"] .bs-yellow{--bs-edge:#E2B520;--bs-tint:#39391B;--bs-line:#77671D}
+[data-theme="dark"] .bs-black{--bs-edge:#A39B88;--bs-tint:#313628;--bs-line:#5B5B4C}
+[data-theme="dark"] .bs-green{--bs-edge:#4DB173;--bs-tint:#263926;--bs-line:#346542}
+.bsdot{display:inline-block;flex:none;width:11px;height:11px;border-radius:50%;background:var(--bs-sw,var(--muted));border:1.5px solid #1B1810}
+[data-theme="dark"] .bsdot{border-color:rgba(255,255,255,.35)}
+.section-chip.bssec{display:inline-flex;align-items:center;gap:7px;background:var(--bs-tint);color:var(--ink);border:1px solid var(--bs-edge)}
+.qcard.bscard{padding:22px 26px;border-top:5px solid var(--bs-edge)}
+.bshead{display:flex;align-items:flex-end;gap:14px;margin:-6px 0 14px}
+.bsfig{flex:none;width:86px;height:113px;display:block}
+.bsfig svg,.bsav svg{width:100%;height:100%;display:block}
+.bshmeta{flex:1;min-width:0;padding-bottom:4px}
+.bschip{display:flex;flex-wrap:wrap;align-items:center;gap:2px 7px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:calc(17px*var(--fs));letter-spacing:.01em}
+.bsname{font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:calc(14px*var(--fs));color:var(--muted);margin-left:3px;letter-spacing:0}
+.bskind{font-size:calc(13.5px*var(--fs));color:var(--muted);margin:2px 0 8px}
+.bssay{position:relative;display:inline-block;background:var(--bub-bg);color:var(--bub-ink);border:1.5px solid var(--bub-line);border-radius:14px;padding:8px 13px;font-size:calc(14.5px*var(--fs));line-height:1.45;max-width:560px}
+.bssay:before{content:"";position:absolute;left:-9px;bottom:12px;border:8px solid transparent;border-right-color:var(--bub-line);border-left:0}
+.bscard .qtopic{margin-top:2px}
+.bsplanrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:12px 0 4px}
+.bsplanl{font-size:calc(12px*var(--fs));font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.bsplans{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.bsplan{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 11px 4px 8px;font-family:inherit;font-weight:600;font-size:calc(14px*var(--fs));cursor:pointer}
+.bsplan:hover{border-color:var(--bs-edge)}
+.bsplan:focus-visible,.bsstar:focus-visible,.bspen:focus-visible,.bslink:focus-visible,.bsadd:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.bsplan .bsdot,.bsitem .bsdot{background:transparent;border-color:var(--bs-edge)}
+.bsplan.seen .bsdot,.bsitem .bsdot.seen{background:var(--bs-sw);border-color:#1B1810}
+[data-theme="dark"] .bsplan.seen .bsdot,[data-theme="dark"] .bsitem .bsdot.seen{border-color:rgba(255,255,255,.35)}
+.bsarrow{color:var(--muted);font-weight:700}
+.bsnotes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:14px 0 4px}
+.bsnote{position:relative;background:var(--bs-tint);border:1px solid var(--bs-line);border-top:4px solid var(--bs-edge);border-radius:6px 6px 10px 10px;padding:12px 12px 8px;display:flex;flex-direction:column;gap:4px;min-height:104px}
+.bsnote.lit{box-shadow:0 0 0 2px var(--gold)}
+.bsnote.mine{border-style:dashed;border-top-style:solid}
+.bsnote p{font-size:calc(15.5px*var(--fs));line-height:1.45;padding-right:40px;overflow-wrap:anywhere}
+.bsnote.mine p{padding-top:22px}
+.bsnote small{display:block;font-size:calc(13px*var(--fs));color:var(--muted);line-height:1.4}
+.bsntop{position:absolute;top:8px;right:9px;left:12px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.bsntop>*{pointer-events:auto}
+.bsnfoot{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:auto;padding-top:4px}
+.bsstar{border:1.5px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.bsstar:hover{border-color:var(--gold);color:var(--gold)}
+.bsstar.on{color:var(--gold);border-color:var(--gold);background:var(--gold-soft)}
+.bspen{display:inline-flex;align-items:center;gap:5px;border:1px dashed var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:3px 10px;font-size:calc(12.5px*var(--fs));font-family:inherit;cursor:pointer}
+.bspen:hover{border-color:var(--green2)}
+.bspen.has{border-color:var(--gold);color:var(--amber);border-style:solid;background:var(--gold-soft)}
+.bslink{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:calc(12.5px*var(--fs));text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:3px 4px;margin-right:auto}
+.bslink:hover{color:var(--red)}
+.bsnbox textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:8px 10px;font-family:inherit;font-size:calc(14.5px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:58px;line-height:1.45;margin-top:4px}
+.bsyours{display:inline-block;font-size:calc(11px*var(--fs));font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);border:1px solid var(--green);border-radius:6px;padding:0 6px;line-height:1.5}
+.bsadd{display:block;width:100%;text-align:left;margin-top:12px;border:1.5px dashed var(--line);background:transparent;color:var(--muted);border-radius:12px;padding:12px 14px;font-size:calc(15.5px*var(--fs));font-family:inherit;cursor:pointer}
+.bsadd:hover{border-color:var(--green2);color:var(--ink)}
+.bsaddp{margin-top:12px;border:1.5px dashed var(--green2);border-radius:12px;padding:12px 14px;background:var(--panel)}
+.bsaddl{display:block;font-size:calc(12px*var(--fs));font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.bsaddp textarea,.bsask textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-family:inherit;font-size:calc(15px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:58px;line-height:1.5}
+.bsaddp textarea:focus-visible,.bsask textarea:focus-visible,.bsnbox textarea:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+.bsaddrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:10px}
+.bshint{font-size:calc(12.5px*var(--fs));color:var(--muted)}
+.bsfull{margin-top:12px;font-size:calc(13.5px*var(--fs));color:var(--muted)}
+.bsask{display:flex;align-items:flex-start;gap:12px;margin:14px 0 4px;padding:12px 14px;border:1.5px solid var(--bs-edge);border-radius:12px;background:var(--bs-tint)}
+.bsav{flex:none;width:40px;height:52px;display:block}
+.bsaskb{flex:1;min-width:0}
+.bsaskq{display:block;font-size:calc(15.5px*var(--fs));line-height:1.45;margin-bottom:8px}
+.bsaskq b{display:block;font-size:calc(12px*var(--fs));letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.bssum{margin:14px 0 6px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--bg)}
+.bssumh,.bssub{font-family:inherit;font-size:calc(12px*var(--fs));font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.bssub{margin:18px 0 0}
+.bssuml{list-style:none}
+.bssumr{display:flex;align-items:baseline;gap:9px;padding:6px 0;border-top:1px solid var(--line2);font-size:calc(15px*var(--fs));line-height:1.45}
+.bssumr:first-child{border-top:0}
+.bssumr .bsdot{transform:translateY(1px)}
+.bssumhat{flex:none;width:52px;font-weight:700;color:var(--muted);font-size:calc(13px*var(--fs))}
+.bssumf{font-size:calc(13px*var(--fs));color:var(--muted);margin-top:8px}
+.bssumt .bsgo{display:inline-flex;align-items:center;gap:7px;text-align:left}
+.bscell{list-style:none}
+.bscell li{padding:2px 0}
+.bscell li+li{border-top:1px dashed var(--line2)}
+.bsstarmark{color:var(--gold)}
+#side .bsitem .bsdot{margin:0 4px 0 2px}
+#side .bsitem.cur{box-shadow:inset 3px 0 0 var(--bs-edge)}
+#side .bsitem .bssid{display:none}
+@media(max-width:880px){
+  #side .bsitem .bssid{display:inline;width:auto}
+}
+@media(max-width:700px){
+  .qcard.bscard{padding:18px 14px 16px}
+  .bshead{gap:10px}
+  .bsfig{width:62px;height:82px}
+  .bssay{font-size:calc(14px*var(--fs))}
+  .bsnotes{grid-template-columns:minmax(0,1fr)}
+  .bssumhat{width:46px}
+}
 </style>
 </head>
 <body>
@@ -842,6 +943,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
     <details class="fmt">
       <summary>What the files look like</summary>
       <div class="ldef"><b>Round.</b> Either a bare array of questions, or an object {config, questions} where config sets {title, tagline, product}. Each question: <b>id</b>, <b>section</b>, <b>title</b>, <b>options</b> (array of strings). Ids must be unique, and so must row ids inside one batch. Optional: <b>question</b> (the question itself, shown large, with the title as a small topic line above it; the sidebar keeps the title); <b>context</b>; <b>detail</b> (array of {kind: quote, note, or code, src, text}; code keeps indentation and line breaks and shows src exactly as written, such as a file path and line); <b>links</b> (array of {label, url}); <b>extra</b> ({label, blocks:[{kind: text, text}, {kind: table, title, columns, rows}, {kind: quote, src, text}, {kind: note, text}, or {kind: code, src, text}]}, or a list of them for several buttons) for context popups; <b>customLabel</b>; <b>custom</b>: false; <b>skip</b>: false; <b>recommend</b> (the label of the recommended option) with <b>because</b> (the reason, finishing "I recommend this because"), on a question, a follow-up, or a batch row. For a batch table set <b>type</b>: "batch" and <b>items</b>: [{id, label, note}], sharing one options set per row. Every question and every row takes a note with the pen. <b>type</b>: "rank" makes a ranking of 2 to 10 options (recommend is the whole order); "number" takes <b>min</b>, <b>max</b>, <b>step</b>, and <b>unit</b> instead of options (recommend is a number); "bracket" runs 4 to 32 options in knockout pairs, in the listed order. In config, <b>needs_wizard</b> names the oldest wizard version the round is made for, and a round written into a project sets <b>project</b> (the project's name) and <b>folder</b> (the full path of the folder the round file is in).</div>
+      <div class="ldef"><b>Brainstorm.</b> An object {config, topic, hats}, with config.kind set to "brainstorm". The <b>topic</b> has a <b>title</b> and a <b>question</b>, and may have context, detail, links, and extra, as a question does. The seven <b>hats</b> are Blue first, then White, Red, Yellow, Black, and Green in any order, then Blue again. Each hat has a <b>line</b>, and may have a <b>question</b>, up to six <b>ideas</b> ({id, text, why}), and an <b>ask</b> for you. It saves, backs up, and works with project folders as a round does.</div>
       <div class="ldef"><b>Saved file.</b> What Save writes: the answers JSON (meta and answers, the same as Copy answers JSON) with the whole round under <b>round</b>, so opening it picks up where you left off.</div>
       <div class="ldef"><b>Answers JSON.</b> Answers on their own merge into the round with the same title, or into the open round: matching ids overwrite, and open entries are ignored unless they carry a note. A note comes back as <b>comment</b>.</div>
       <div class="ldef"><b>Backup.</b> What Back up all rounds writes: every round in this browser with its answers, each in the saved-file form, under <b>rounds</b>. Loading a backup adds the rounds that are missing here and brings back the ones the backup has a newer copy of. When a round changed here after the backup was made, the wizard asks whether to keep it.</div>
@@ -942,7 +1044,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.7.5";
+var WIZARD_VERSION = "0.8.0";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -983,6 +1085,7 @@ function normConfig(c){
     product: typeof c.product === "string" ? c.product : ""
   };
   if(typeof c.needs_wizard === "string" && VER_RE.test(c.needs_wizard.trim())) out.needs_wizard = c.needs_wizard.trim();
+  if(c.kind === "brainstorm") out.kind = "brainstorm";
   var pj = cleanStr(c.project), fo = cleanStr(c.folder);
   if(pj) out.project = pj.slice(0, 80);
   if(fo) out.folder = fo.slice(0, 600);
@@ -1089,6 +1192,7 @@ function upsertEntry(key, cfg, titled, questions, stateObj){
   if((e.fkey || "") !== fk){ delete e.file; delete e.fsig; delete e.fsaved; }
   if(fk){ e.fkey = fk; e.folder = cfg.folder; e.project = cleanStr(cfg.project) || (folderRec(fk) || {}).project || projectName(cfg); }
   else { delete e.fkey; delete e.folder; delete e.project; }
+  if(isBS(cfg)) e.kind = "brainstorm"; else delete e.kind;
   e.total = questions.length;
   e.answered = countAnswered(questions, stateObj.answers);
   e.changed = Date.now();
@@ -1120,6 +1224,7 @@ function updateExportNode(){
 function loadRoundIntoView(key){
   var r = readJSON(RPFX + key);
   if(!r || !Array.isArray(r.questions)) return false;
+  if(key !== CURKEY) bsFresh();
   QUESTIONS.length = 0;
   for(var i=0;i<r.questions.length;i++){ QUESTIONS.push(r.questions[i]); }
   CONFIG = normConfig(r.config);
@@ -1131,6 +1236,7 @@ function loadRoundIntoView(key){
   return true;
 }
 function clearView(){
+  bsFresh();
   QUESTIONS.length = 0;
   CONFIG = normConfig(null);
   state = { idx: 0, answers: {} };
@@ -1345,6 +1451,7 @@ function isBatch(q){ return q.type === "batch" && Array.isArray(q.items); }
 /* Question types: single (options to pick from), batch (grouped rows), rank, number, and bracket. */
 function qType(q){
   if(!q) return "single";
+  if(q.type === "hat") return "hat";
   if(q.type === "batch" && Array.isArray(q.items)) return "batch";
   return (q.type === "rank" || q.type === "number" || q.type === "bracket") ? q.type : "single";
 }
@@ -1383,6 +1490,7 @@ function liveFups(q, answers){ var a = answers[q.id]; return fups(q).filter(func
 function qAnsweredIn(q, answers){
   var a = answers[q.id];
   if(!a) return false;
+  if(isHat(q)) return a.status === "hat" && !!a.seen;
   if(isBatch(q)) return a.status === "batch" && batchDoneIn(q, answers) === q.items.length;
   if(!done1(a)) return false;
   var live = liveFups(q, answers);
@@ -1404,13 +1512,14 @@ function answeredCount(){ return countAnswered(QUESTIONS, state.answers); }
 function headMeta(){
   var el = document.getElementById("headmeta");
   if(!el) return;
-  el.textContent = (CONFIG.tagline && CONFIG.tagline.length) ? CONFIG.tagline : (QUESTIONS.length === 0 ? "No round loaded. Press Load, or drop a round file on the page." : (QUESTIONS.length + " issues. Click to answer; skipped issues stay open."));
+  el.textContent = (CONFIG.tagline && CONFIG.tagline.length) ? CONFIG.tagline : bsOn() ? "A brainstorm, one hat at a time. Star what matters; your notes and ideas go back too." : (QUESTIONS.length === 0 ? "No round loaded. Press Load, or drop a round file on the page." : (QUESTIONS.length + " issues. Click to answer; skipped issues stay open."));
 }
 
 function renderSide(){
   var el = document.getElementById("side");
   if(!el) return;
   if(QUESTIONS.length === 0){ el.innerHTML = '<div class="shead">No round loaded</div>'; return; }
+  if(bsOn()){ el.innerHTML = bsSideHTML(); return; }
   var h = "";
   var lastSection = null;
   for(var i=0;i<QUESTIONS.length;i++){
@@ -1493,7 +1602,7 @@ function render(){
    screen is the same, and to the heading when it changed, so the keyboard and a screen reader carry on from the
    answer just given instead of from the top of the page. */
 var lastScreen = null;
-var FOCUS_KEYS = ["data-action", "data-role", "data-i", "data-item", "data-f", "data-side", "data-idx", "data-note", "data-x", "data-d"];
+var FOCUS_KEYS = ["data-action", "data-role", "data-i", "data-item", "data-f", "data-side", "data-idx", "data-note", "data-x", "data-d", "data-idea"];
 function screenKey(){ return (CURKEY || "") + "#" + (QUESTIONS.length ? state.idx : "none"); }
 function focusBefore(){
   var ae = document.activeElement, body = !ae || ae === document.body;
@@ -1590,11 +1699,13 @@ function updateTimers(){
 function renderCore(){
   if(state.idx < 0) state.idx = 0;
   if(QUESTIONS.length === 0){ renderEmpty(); renderSide(); return; }
-  if(state.idx >= QUESTIONS.length){ renderSummary(); renderSide(); return; }
+  if(state.idx >= QUESTIONS.length){ bsScreen = null; if(bsOn()) renderBsSummary(); else renderSummary(); renderSide(); return; }
   var q = QUESTIONS[state.idx];
   if(state.idx !== draftIdx || CURKEY !== draftKey){ rankDrafts = {}; numDrafts = {}; draftIdx = state.idx; draftKey = CURKEY; }
   var t = qType(q);
-  if(t === "batch"){ renderBatch(q); }
+  if(t !== "hat") bsScreen = null;
+  if(t === "hat"){ renderHat(q); }
+  else if(t === "batch"){ renderBatch(q); }
   else if(t === "rank"){ renderRank(q); }
   else if(t === "number"){ renderNumber(q); }
   else if(t === "bracket"){ renderBracket(q); }
@@ -1607,9 +1718,10 @@ function chromeTop(q){
   var pct = Math.round(state.idx / QUESTIONS.length * 100);
   var h = '<div class="ptop">';
   h += '<div class="progress"><div class="ptrack"><div class="pbar" style="width:' + pct + '%"></div></div>';
-  h += '<div class="pcount" id="pcount">Issue ' + (state.idx+1) + ' of ' + QUESTIONS.length + '</div>' + TIMER_PILL + '</div>';
+  h += '<div class="pcount" id="pcount">' + (isHat(q) ? 'Hat ' : 'Issue ') + (state.idx+1) + ' of ' + QUESTIONS.length + '</div>' + TIMER_PILL + '</div>';
   var chip = projectChipHTML();
-  h += chip ? '<div class="chiprow"><span class="section-chip">' + esc(q.section) + '</span>' + chip + '</div>' : '<span class="section-chip">' + esc(q.section) + '</span>';
+  var sec = isHat(q) ? '<span class="section-chip bssec bs-' + esc(q.hat) + '"><span class="bsdot" aria-hidden="true"></span>' + esc(bsHatName(q)) + ' hat</span>' : '<span class="section-chip">' + esc(q.section) + '</span>';
+  h += chip ? '<div class="chiprow">' + sec + chip + '</div>' : sec;
   return h + '</div>';
 }
 function chromeControls(q){
@@ -2178,7 +2290,7 @@ function renderBatch(q){
 }
 
 function extraOpen(k){
-  var q = QUESTIONS[state.idx], e = extras(q)[k || 0];
+  var q = QUESTIONS[state.idx], e = extras(isHat(q) && q.topic ? q.topic : q)[k || 0];
   var t = document.getElementById("mtitle"), b = document.getElementById("mbody"), m = document.getElementById("modal");
   if(!e || !t || !b || !m) return;
   t.innerHTML = '<span class="mico">' + xIcon(e) + '</span><span ' + dirA(e.label || "") + '>' + esc(e.label || "More context") + '</span>';
@@ -2201,6 +2313,7 @@ function extraClose(){
 
 function buildExport(){ return exportFor(QUESTIONS, state.answers, CONFIG); }
 function exportFor(qs, ans, cfg){
+  if(isBS(cfg) && qs.length && isHat(qs[0])) return bsExport(qs, ans, cfg);
   var answers = [];
   for(var i=0;i<qs.length;i++){
     var q = qs[i];
@@ -2564,9 +2677,12 @@ function firstOpen(){
 }
 function resetAll(){
   var rkey = CURKEY;
-  confirmBox({ title: "Clear every answer?", message: 'Every answer in "' + (CONFIG.title || "this round") + '" is cleared, and the round starts over.', ok: "Clear answers", answers: answeredCount(), key: rkey }).then(function(yes){
+  var bsr = bsOn();
+  confirmBox(bsr ? { title: "Clear the brainstorm?", message: 'Every star, note, and idea of your own in "' + (CONFIG.title || "this brainstorm") + '" is cleared, and the brainstorm starts over.', ok: "Clear it", answers: answeredCount(), key: rkey }
+                 : { title: "Clear every answer?", message: 'Every answer in "' + (CONFIG.title || "this round") + '" is cleared, and the round starts over.', ok: "Clear answers", answers: answeredCount(), key: rkey }).then(function(yes){
     if(!yes || CURKEY !== rkey) return;
     state = { idx: 0, answers: {} };
+    bsFresh();
     openComments = {};
     openNotes = {};
     var re = libEntry(CURKEY);
@@ -2833,6 +2949,11 @@ function answersFromExport(arr, qs){
     var e = arr[j];
     if(!e || typeof e.id !== "string" || !(e.id in byId)){ ignored++; unknown++; continue; }
     var q = byId[e.id];
+    if(isHat(q)){
+      var ha = bsFromEntry(q, e);
+      if(ha){ out[q.id] = ha; applied++; } else { ignored++; }
+      continue;
+    }
     if(isBatch(q)){
       if(e.status === "batch" && Array.isArray(e.items)){
         var rows = Object.create(null);
@@ -2866,6 +2987,7 @@ function normAnswers(qs, ans){
   var out = [];
   for(var i=0;i<qs.length;i++){
     var q = qs[i], a = own(ans, q.id) ? ans[q.id] : null;
+    if(isHat(q)){ out.push(bsNorm(q, a)); continue; }
     if(isBatch(q)){
       var rows = [];
       for(var j=0;j<q.items.length;j++){
@@ -2888,7 +3010,8 @@ function lostAnswers(oldA, newA){
   for(var id in oldA){
     if(!own(oldA, id)) continue;
     var a = oldA[id], b = own(newA, id) ? newA[id] : null;
-    if(a && a.status === "batch" && a.items){
+    if(a && a.status === "hat") lost += bsLost(a, b);
+    else if(a && a.status === "batch" && a.items){
       for(var rid in a.items){
         if(!own(a.items, rid) || !unitHas(a.items[rid])) continue;
         var ia = a.items[rid], ib = (b && b.status === "batch" && own(b.items, rid)) ? b.items[rid] : null;
@@ -2909,12 +3032,17 @@ function carryAnswers(oldQs, newQs, oldA){
   for(var id in oldA){
     if(!own(oldA, id)) continue;
     var a0 = oldA[id];
-    if(a0 && a0.status === "batch" && a0.items){ for(var r0 in a0.items){ if(own(a0.items, r0) && unitHas(a0.items[r0])) had++; } }
+    if(a0 && a0.status === "hat") had += bsUnits(byId[id] || null, a0).length;
+    else if(a0 && a0.status === "batch" && a0.items){ for(var r0 in a0.items){ if(own(a0.items, r0) && unitHas(a0.items[r0])) had++; } }
     else if(a0 && (done1(a0) || hasNote(a0) || bkMatches(a0).length)) had++;
   }
   for(var j=0;j<newQs.length;j++){
     var nq = newQs[j], oq = byId[nq.id], a = own(oldA, nq.id) ? oldA[nq.id] : null;
     if(!oq || !a) continue;
+    if(isHat(nq) || isHat(oq)){
+      if(isHat(nq) && isHat(oq) && nq.hat === oq.hat && nq.role === oq.role && a.status === "hat"){ var bc = bsCarry(oq, nq, a); if(bc.any){ out[nq.id] = bc.a; kept += bc.kept; } }
+      continue;
+    }
     if(nq.title !== oq.title || JSON.stringify(nq.options) !== JSON.stringify(oq.options) || isBatch(nq) !== isBatch(oq)) continue;
     if(qType(nq) !== qType(oq)) continue;
     if(qType(nq) === "number" && JSON.stringify([nq.min, nq.max, nq.step, nq.unit]) !== JSON.stringify([oq.min, oq.max, oq.step, oq.unit])) continue;
@@ -2944,7 +3072,7 @@ function carryAnswers(oldQs, newQs, oldA){
 
 /* Bringing rounds, saved files, and answers in. */
 function ingestFail(msg, withLine){
-  var line = (withLine && mascotOn() && SETTINGS.talk) ? lineFor("error", {}) : "";
+  var line = (withLine && mascotOn() && SETTINGS.talk && !bsOn()) ? lineFor("error", {}) : "";
   if(drawerOpen && drawerId === "drawer"){
     var s = document.getElementById("loader-status");
     if(s && mascotOn()){
@@ -2970,7 +3098,7 @@ function commitRound(key, cfg, titled, qarr, incoming, st, src, msg, fresh){
   if(!writePair(key, incoming, st)){ ingestFail(FULL_MSG); return false; }
   upsertEntry(key, cfg, titled, qarr, st);
   rememberHandle(key, src.handle);
-  if(fresh) countStart();
+  if(fresh && !isBS(cfg)) countStart();
   switchTo(key);
   var full = msg + loadNote(key, src.handle);
   ingestDone(full, true, fresh);
@@ -3002,16 +3130,27 @@ function ingestText(text, src){
 function ingestParsed(p, src){
   if(p && typeof p === "object" && !Array.isArray(p) && p.meta && p.meta.tool === "decision-wizard"){
     if(p.meta.kind === "backup" && Array.isArray(p.rounds)) return ingestBackup(p);
+    if(p.round && typeof p.round === "object" && bsIs(p.round)){
+      var bp = bsProblem(p.round);
+      if(bp){ ingestFail(bp, true); return false; }
+      return ingestBundle({ meta: p.meta, answers: p.answers, round: bsToRound(p.round) }, src, true);
+    }
     if(p.round && typeof p.round === "object" && Array.isArray(p.round.questions)) return ingestBundle(p, src);
     if(Array.isArray(p.answers)) return ingestAnswers(p);
+  }
+  if(bsIs(p)){
+    var bq = bsProblem(p);
+    if(bq){ ingestFail(bq, true); return false; }
+    var br = bsToRound(p);
+    return ingestRound(br.questions, br.config, src, true);
   }
   if(Array.isArray(p)) return ingestRound(p, null, src);
   if(p && typeof p === "object" && Array.isArray(p.questions)) return ingestRound(p.questions, p.config, src);
   ingestFail("This JSON is not a round, a saved file, an answers file, or a backup. Nothing was loaded.", true);
   return false;
 }
-function ingestRound(qarr, rawCfg, src){
-  var err = validateQuestions(qarr) || versionProblem(rawCfg);
+function ingestRound(qarr, rawCfg, src, bs){
+  var err = (bs ? null : (isBS(rawCfg) ? BS_NEEDS_HATS : validateQuestions(qarr))) || versionProblem(rawCfg);
   if(err){ ingestFail(err, true); return false; }
   var titled = hasTitle(rawCfg);
   var cfg = normConfig(rawCfg);
@@ -3054,9 +3193,9 @@ function ingestRound(qarr, rawCfg, src){
       return false;
     });
 }
-function ingestBundle(b, src){
+function ingestBundle(b, src, bs){
   var qarr = b.round.questions;
-  var err = validateQuestions(qarr) || versionProblem(b.round.config);
+  var err = (bs ? null : (isBS(b.round.config) ? BS_NEEDS_HATS : validateQuestions(qarr))) || versionProblem(b.round.config);
   if(err){ ingestFail(err, true); return false; }
   var titled = hasTitle(b.round.config);
   var cfg = normConfig(b.round.config);
@@ -3074,7 +3213,7 @@ function ingestBundle(b, src){
       return openKnown(key, src, 'Loaded "' + cfg.title + '". The file matches what this browser already had.');
     }
   }
-  var msg = 'Loaded "' + cfg.title + '" with ' + plural(n, "answered question", "answered questions") + ".";
+  var msg = 'Loaded "' + cfg.title + '" with ' + (bs ? plural(n, "hat", "hats") + " seen" : plural(n, "answered question", "answered questions")) + ".";
   var lost = ex ? lostAnswers(validState(readJSON(APFX + key)).answers, conv.answers) : 0;
   if(lost === 0) return commitRound(key, cfg, titled, qarr, incoming, st, src, msg);
   return confirmBox({ title: "Replace the answers in this browser?", message: '"' + cfg.title + '" is already in this browser, and ' + plural(lost, "of its answers is", "of its answers are") + " not in this file. The file's answers take their place.", ok: "Replace", answers: lost, key: key })
@@ -3156,7 +3295,7 @@ function saveFileName(title){
 }
 function saveText(){
   var exp = buildExport();
-  exp.round = { config: CONFIG, questions: QUESTIONS };
+  exp.round = roundOut(CONFIG, QUESTIONS);
   return JSON.stringify(exp, null, 2);
 }
 function downloadFile(text, name){
@@ -3196,7 +3335,7 @@ function backupBundle(){
     if(!r || !Array.isArray(r.questions)) continue;
     cfg = normConfig(r.config);
     var b = exportFor(r.questions, st.answers, cfg);
-    b.round = { config: cfg, questions: r.questions };
+    b.round = roundOut(cfg, r.questions);
     b.kept = { titled: !!e.titled, current: e.key === CURKEY, idx: st.idx, startedAt: e.startedAt, changed: e.changed, opened: e.opened, lastActiveAt: e.lastActiveAt, finishedAt: e.finishedAt, pausedMs: e.pausedMs, pausedAt: e.pausedAt };
     rounds.push(b);
   }
@@ -3225,8 +3364,13 @@ function ingestBackup(b){
   var madeAt = Date.parse(b.meta && b.meta.exported_at) || Date.now();
   var plan = [], skipped = 0;
   for(var i=0;i<list.length;i++){
-    var x = list[i];
-    if(!x || typeof x !== "object" || !x.round || typeof x.round !== "object" || !Array.isArray(x.round.questions) || validateQuestions(x.round.questions) || versionProblem(x.round.config)){ skipped++; continue; }
+    var x = list[i], bsr = false;
+    if(x && typeof x === "object" && x.round && typeof x.round === "object" && bsIs(x.round)){
+      if(bsProblem(x.round)){ skipped++; continue; }
+      x = { answers: x.answers, kept: x.kept, round: bsToRound(x.round) };
+      bsr = true;
+    }
+    if(!x || typeof x !== "object" || !x.round || typeof x.round !== "object" || !Array.isArray(x.round.questions) || (bsr ? null : (isBS(x.round.config) || validateQuestions(x.round.questions))) || versionProblem(x.round.config)){ skipped++; continue; }
     var kept = (x.kept && typeof x.kept === "object") ? x.kept : {};
     var qarr = x.round.questions, cfg = normConfig(x.round.config), titled = hasTitle(x.round.config) && kept.titled !== false;
     var incoming = { config: cfg, questions: qarr };
@@ -3423,10 +3567,14 @@ function fileRound(p){
   if(!p || typeof p !== "object") return null;
   if(p.meta && p.meta.tool === "decision-wizard"){
     if(p.meta.kind !== "backup" && p.round && typeof p.round === "object" && Array.isArray(p.round.questions)) return { saved: true, config: p.round.config, questions: p.round.questions };
+    if(p.meta.kind !== "backup" && p.round && typeof p.round === "object" && bsIs(p.round)) return bsFileRound(p.round, true);
     return null;
   }
+  if(bsIs(p)) return bsFileRound(p, false);
   return Array.isArray(p.questions) ? { saved: false, config: p.config, questions: p.questions } : null;
 }
+/* What keeps a round found in a folder from loading, if anything. */
+function roundProblem(r){ return r.bs ? r.problem : ((isBS(r.config) ? BS_NEEDS_HATS : validateQuestions(r.questions)) || versionProblem(r.config)); }
 function readRound(h){
   return h.getFile().then(function(f){
     if(f.size > 8000000) return null;
@@ -3453,7 +3601,7 @@ function findFileFor(dir, e, taken){
       if(i >= list.length) return null;
       var x = list[i++];
       return readRound(x.h).then(function(r){
-        var ok = r && fileIsRound(e, r, qs) && (r.saved || !(validateQuestions(r.questions) || versionProblem(r.config)));
+        var ok = r && fileIsRound(e, r, qs) && (r.saved || !roundProblem(r));
         return ok ? x.h.name : next();
       });
     };
@@ -3614,7 +3762,7 @@ function considerFile(rec, name, f, stamp){
       dropNotice(badId);
       return true;
     }
-    var err = validateQuestions(r.questions) || versionProblem(r.config);
+    var err = roundProblem(r);
     if(err){ if(!r.bare) fileNotice(rec, name, "can't be loaded. " + err.replace(/ Nothing was loaded\.$/, "")); return true; }
     dropNotice(badId);
     arriveRound(rec, name, inc);
@@ -3667,7 +3815,7 @@ function arriveRound(rec, name, inc){
     e.file = name; e.arrived = Date.now(); e.unseen = true; e.pausedAt = e.startedAt;
     saveLib();
     releaseFile(rec, name, key);
-    countStart();
+    if(!isBS(cfg)) countStart();
     announce(e);
     return;
   }
@@ -3751,13 +3899,13 @@ function reviewUpdate(key){
   Promise.resolve().then(function(){ return rec.handle.getFileHandle(name); }).then(function(h){
     return readRound(h).then(function(r){
       if(!r){ toast(false, "The changed file can't be read right now. Press Review again in a moment."); updNotice(e); return; }
-      if(r.saved || validateQuestions(r.questions) || versionProblem(r.config)){ settled(false); return; }
+      if(r.saved || roundProblem(r)){ settled(false); return; }
       var inc = fromFolder(rec, r);
       /* The file has since been given to another round: that one is taken in, and this round stays as it is. */
       if(e.titled ? !fileIsRound(e, r) : ownTitle(r.config)){ settled(true); arriveRound(rec, name, inc); return; }
       /* The look is at the file as it is now, which may be newer than the version that set the wait. */
       patchEntry(e, { usig: sigOf(JSON.stringify(inc.incoming)) });
-      ingestText(JSON.stringify(inc.incoming), { dirFile: name, review: key, rec: rec, fname: name });
+      ingestText(JSON.stringify(roundOut(inc.incoming.config, inc.incoming.questions)), { dirFile: name, review: key, rec: rec, fname: name });
     });
   }, function(err){
     if(err && err.name === "NotFoundError"){ settled(false); return; }
@@ -3778,7 +3926,8 @@ function hasInput(answers){
   for(var id in answers){
     if(!own(answers, id) || !answers[id]) continue;
     var a = answers[id];
-    if(a.status === "batch" && a.items){ for(var r in a.items){ if(own(a.items, r) && unitHas(a.items[r])) return true; } }
+    if(a.status === "hat"){ if(bsHasInput(a)) return true; }
+    else if(a.status === "batch" && a.items){ for(var r in a.items){ if(own(a.items, r) && unitHas(a.items[r])) return true; } }
     else if(done1(a) || hasNote(a) || bkMatches(a).length) return true;
   }
   return false;
@@ -3966,7 +4115,7 @@ function fileFirst(fh, e, rec, name, rt, sv){
       }
       var r = fileRound(p);
       if(!r){ letGo(); throw hold("taken"); }
-      var inc = fromFolder(rec, r), okRound = !(validateQuestions(r.questions) || versionProblem(r.config));
+      var inc = fromFolder(rec, r), okRound = !roundProblem(r);
       /* For a round with no title, a changed version in its own file is still its file: only a file that has
          been given a title of its own, or (once saved) other questions, is another round's. */
       var other = e.titled ? !fileIsRound(e, r) : (ownTitle(r.config) || (r.saved && !fileIsRound(e, r, rt.exp.round.questions)));
@@ -4011,7 +4160,7 @@ function writeLinked(key, force){
   }).then(function(fh){
     return fileFirst(fh, e, rec, name, rt, sv);
   }).then(function(fh){
-    var text = JSON.stringify(rt.exp, null, 2);
+    var text = JSON.stringify(fileForm(rt.exp), null, 2);
     wrote = new Blob([text]).size;
     return fh.createWritable().then(function(w){
       return Promise.resolve(w.write(text)).then(function(){ return fh.getFile(); }).then(function(f2){
@@ -4270,8 +4419,8 @@ function connectDir(dir, known, list){
 function placeFile(p, src){
   if(!src || !src.handle || !foldersReady || !p || typeof p !== "object") return null;
   var saved = !Array.isArray(p) && p.meta && p.meta.tool === "decision-wizard";
-  if(saved && (p.meta.kind === "backup" || !p.round || typeof p.round !== "object" || !Array.isArray(p.round.questions))) return null;
-  if(!saved && !Array.isArray(p) && !Array.isArray(p.questions)) return null;
+  if(saved && (p.meta.kind === "backup" || !p.round || typeof p.round !== "object" || !(Array.isArray(p.round.questions) || bsIs(p.round)))) return null;
+  if(!saved && !Array.isArray(p) && !Array.isArray(p.questions) && !bsIs(p)) return null;
   var list = folderList().filter(function(rec){ return rec.handle && typeof rec.handle.resolve === "function"; });
   if(!list.length) return null;
   var i = 0;
@@ -4482,7 +4631,7 @@ function foldersChanged(){ projectUI(); }
    data is gone was deleted somewhere and leaves the list; a round with data that the stored list lacks goes back
    into it (a page stored the list before it had heard of the round). */
 var followTimer = null;
-var FOLLOWED = ["unseen", "file", "fsig", "fsaved", "update", "ufolder", "usig", "declined", "title", "titled", "tagline", "fkey", "folder", "project", "total", "answered", "changed"];
+var FOLLOWED = ["unseen", "file", "fsig", "fsaved", "update", "ufolder", "usig", "declined", "title", "titled", "tagline", "fkey", "folder", "project", "total", "answered", "changed", "kind"];
 function followLib(){
   var stored = readJSON(LKEY);
   if(!stored || !Array.isArray(stored.rounds)) return;
@@ -4535,6 +4684,7 @@ function shownNow(){
    answers into a new version looks at: a changed context line or recommendation is still the same question. */
 function sameAsk(oq, nq){
   if(!oq || !nq || oq.id !== nq.id) return false;
+  if(isHat(oq) || isHat(nq)) return bsSame(oq, nq);
   if(nq.title !== oq.title || JSON.stringify(nq.options) !== JSON.stringify(oq.options) || isBatch(nq) !== isBatch(oq)) return false;
   if(qType(nq) !== qType(oq)) return false;
   if(qType(nq) === "number" && JSON.stringify([nq.min, nq.max, nq.step, nq.unit]) !== JSON.stringify([oq.min, oq.max, oq.step, oq.unit])) return false;
@@ -4548,7 +4698,8 @@ function byId(list, id){ for(var i=0;i<list.length;i++){ if(list[i].id === id) r
 /* Whether the field the cursor is in still stands in the new version of its question. */
 function fieldStands(cf, shown, q){
   if(!cf || !shown || !q || !sameAsk(shown.q, q)) return false;
-  if(cf.kind === "num" || cf.kind === "custom") return true;
+  if(cf.kind === "num" || cf.kind === "custom" || cf.kind === "bsask" || cf.kind === "bsnew") return true;
+  if(cf.kind === "bsnote") return !!bsIdea(q, cf.id);
   if(cf.kind === "row"){
     var orow = byId(shown.q.items || [], cf.id), nrow = byId(q.items || [], cf.id);
     return !!(orow && nrow && orow.label === nrow.label);
@@ -4567,6 +4718,13 @@ function fieldBack(t){
   } else if(role === "bcomment" && q && isBatch(q)){
     var it = t.getAttribute("data-item"), row = batchState(q).items[it] || {};
     if(q.items.some(function(x){ return x.id === it; }) && String(row.comment || "") !== v) bcomment(it, v);
+  } else if(role === "bs-note" && q && isHat(q)){
+    var bi = t.getAttribute("data-idea"), bn = bsA(q).notes || {};
+    if(bsIdea(q, bi) && String(own(bn, bi) ? bn[bi] : "") !== v) bsNoteSet(bi, v);
+  } else if(role === "bs-ask" && q && q.ask){
+    if(String(bsA(q).ask || "") !== v) bsAskSet(v);
+  } else if(role === "bs-new" && q && isHat(q)){
+    bsDraft[q.id] = v;
   }
 }
 function followRound(){
@@ -4630,6 +4788,9 @@ function cursorField(shown){
   else if(a.id === "ctext"){ k.kind = "custom"; }
   else if(a.classList.contains("fctext")){ k.kind = "fcustom"; k.fid = shown ? shown.fids[parseInt(a.getAttribute("data-f"), 10)] : undefined; }
   else if(a.id === "numin"){ k.kind = "num"; }
+  else if(role === "bs-note"){ k.kind = "bsnote"; k.id = a.getAttribute("data-idea"); }
+  else if(role === "bs-ask"){ k.kind = "bsask"; }
+  else if(role === "bs-new"){ k.kind = "bsnew"; }
   return k;
 }
 /* Drawing again after something outside changed the round. A custom answer typed but not recorded yet lives only
@@ -4654,6 +4815,8 @@ function followDraw(shown, say, asked){
   else if(q){ delete numDrafts[q.id]; delete rankDrafts[q.id]; }
   if(stands && cf.kind === "note") openNotes[cf.id] = true;
   if(stands && cf.kind === "row") openComments[q.id + ":" + cf.id] = true;
+  if(stands && cf.kind === "bsnote") bsOpenNotes[q.id + ":" + cf.id] = true;
+  if(stands && cf.kind === "bsnew"){ bsAddOpen[q.id] = true; bsDraft[q.id] = cf.text; }
   scrollKeep(render);
   updateExportNode();
   /* Typed custom text goes back into its box, open, without the cursor. */
@@ -4678,6 +4841,9 @@ function followDraw(shown, say, asked){
       if(back){ openBox(fid, cf.text); if(cf.typed) back.setAttribute("data-typed", "1"); }
     }
     else if(cf.kind === "num"){ back = document.getElementById("numin"); }
+    else if(cf.kind === "bsnote"){ var bnb = document.getElementById("bsn-" + cf.id); back = bnb ? bnb.querySelector("textarea") : null; }
+    else if(cf.kind === "bsask"){ back = document.getElementById("bsask"); }
+    else if(cf.kind === "bsnew"){ back = document.getElementById("bs-new"); }
     if(back){
       try{ back.focus(); if(typeof cf.from === "number") back.setSelectionRange(cf.from, cf.to); }catch(e){}
       /* A number box has no place for the cursor to be set to: giving it its text afresh leaves the cursor at the end. */
@@ -4796,7 +4962,7 @@ function renderLib(){
     h += '<button type="button" class="lopen" data-action="lib-open" data-key="' + esc(e.key) + '"' + (isCur ? ' aria-current="true"' : "") + '>';
     h += '<span class="ltitle" ' + dirA(title) + '>' + esc(title) + '</span>';
     if(e.tagline){ h += '<span class="ltag" ' + dirA(e.tagline) + '>' + esc(e.tagline) + '</span>'; }
-    h += '<span class="lmeta">' + (e.unseen ? '<span class="lnew">New</span>' : "") + (e.project ? '<span class="lproj" ' + dirA(e.project) + '>' + esc(e.project) + '</span>' : "") + '<span>' + (e.answered || 0) + ' of ' + (e.total || 0) + ' answered</span><span>' + esc(fmtWhen(e.changed)) + '</span>' + (isCur ? '<span class="lnow">Open now</span>' : "") + '</span>';
+    h += '<span class="lmeta">' + (e.unseen ? '<span class="lnew">New</span>' : "") + (e.project ? '<span class="lproj" ' + dirA(e.project) + '>' + esc(e.project) + '</span>' : "") + '' + (e.kind === "brainstorm" ? '<span class="lkind">' + BS_MARK + 'Brainstorm</span><span>' + (e.answered || 0) + ' of ' + (e.total || 0) + ' hats seen</span>' : '<span>' + (e.answered || 0) + ' of ' + (e.total || 0) + ' answered</span>') + '<span>' + esc(fmtWhen(e.changed)) + '</span>' + (isCur ? '<span class="lnow">Open now</span>' : "") + '</span>';
     h += '</button>';
     h += '<button type="button" class="ldel" data-action="lib-delete" data-key="' + esc(e.key) + '" aria-label="Delete ' + esc(title) + '">Delete</button>';
     h += '</div>';
@@ -5515,7 +5681,7 @@ function play(it){
   var frame = data.frame || FRAME_FOR[kind] || kind;
   setFrame(frame);
   pop();
-  var line = (TALKS[kind] && SETTINGS.talk) ? (data.line !== undefined ? data.line : lineFor(kind, data)) : "";
+  var line = (TALKS[kind] && SETTINGS.talk && !bsOn()) ? (data.line !== undefined ? data.line : lineFor(kind, data)) : "";
   var ms = line ? lineDuration(line, data.action) : (data.hold || TIMING.faceHold);
   if(line) say(line, ms, data.action);
   nowItem = { kind: kind, frame: frame, when: data.when || null };
@@ -5588,6 +5754,7 @@ function countDecision(){ rollDay(); STATS.decisions++; STATS.dayDecisions++; sa
 function countTyped(){ STATS.typed++; saveStats(); }
 function countStart(){ rollDay(); STATS.dayStarted++; saveStats(); }
 function countFinish(){
+  if(isBS(CONFIG)) return;
   var e = CURKEY ? libEntry(CURKEY) : null;
   if(!e || e.finishedOnce) return;
   e.finishedOnce = true;
@@ -5654,7 +5821,7 @@ function startVisit(idx){
 function restartNudge(){
   if(nudgeTimer){ clearTimeout(nudgeTimer); nudgeTimer = null; }
   var idx = state.idx, key = CURKEY;
-  if(!CURKEY || idx >= QUESTIONS.length || qAnswered(QUESTIONS[idx])) return;
+  if(!CURKEY || idx >= QUESTIONS.length || qAnswered(QUESTIONS[idx]) || bsOn()) return;
   nudgeTimer = setTimeout(function(){ nudgeTimer = null; if(CURKEY === key && state.idx === idx) nudge(); }, TIMING.nudge);
 }
 function nudge(){
@@ -5807,8 +5974,8 @@ function gotoOpen(fromStart){
   }
   /* Nothing is open. The companion stays quiet; the summary's status line says so, and the menu's Next open question
      is greyed out meanwhile, so the toast is only for a menu opened before the last answer went in. */
-  if(state.idx >= t){ setStatus("sum-status", true, "Nothing open. Every issue has an answer."); }
-  else { toast(true, "Nothing is open. Every question has an answer."); }
+  if(state.idx >= t){ setStatus("sum-status", true, bsOn() ? "Every hat has had its turn." : "Nothing open. Every issue has an answer."); }
+  else { toast(true, bsOn() ? "Every hat has had its turn." : "Nothing is open. Every question has an answer."); }
 }
 
 /* Milestones and arrivals. */
@@ -8020,7 +8187,7 @@ function confirmBox(o){
     if(pathEl){ pathEl.textContent = o.path || ""; pathEl.hidden = !o.path; }
     yes.className = o.calm ? "btn" : "btn danger";
     fig.innerHTML = o.fig != null ? o.fig : (mascotOn() ? ART[mascotKey()][face] : "");
-    line.textContent = o.line != null ? o.line : ((!o.calm && mascotOn() && SETTINGS.talk && o.answers > 0) ? lineFor("warn", { answers: o.answers }) : "");
+    line.textContent = o.line != null ? o.line : ((!o.calm && mascotOn() && SETTINGS.talk && o.answers > 0 && !bsOn()) ? lineFor("warn", { answers: o.answers }) : "");
     line.setAttribute("dir", dirOf(line.textContent));
     var stripEl = document.getElementById("cstrip");
     if(stripEl){ stripEl.innerHTML = o.strip || ""; stripEl.hidden = !o.strip; }
@@ -8064,6 +8231,578 @@ function confirmBox(o){
     if(cx) cx.onclick = function(){ confirmDone(null); };
   });
 }
+
+/* Brainstorms (0.8.0). A brainstorm is a round of its own kind: one topic, looked at through de Bono's six thinking
+   hats, each worn by a character of the cast. Its file holds config (kind "brainstorm"), topic, and seven hats: Blue
+   first, White, Red, Yellow, Black, and Green in the order Claude picked, and Blue again last. Inside the wizard each
+   hat is kept as one entry of the round's questions (type "hat"), so the list of rounds, saving, folders, backups,
+   and the other windows all work as they do for rounds; files going out are written back in the brainstorm form. */
+var BS_HATS = ["white", "red", "yellow", "black", "green"];
+var BS_MAX = 6, BS_MINE = 20;
+var BS_INFO = {
+  blue:   { name: "Blue",   kind: "The focus and the plan", close: "What came out, and what's next" },
+  white:  { name: "White",  kind: "Facts: what we know, and what we're missing", side: "facts", q: "What do we know, and what's missing?" },
+  red:    { name: "Red",    kind: "Feelings: gut reactions, no reasons needed", side: "feelings", q: "How does it feel?" },
+  yellow: { name: "Yellow", kind: "Benefits: why it could work", side: "benefits", q: "What's good about it?" },
+  black:  { name: "Black",  kind: "Caution: why it might not", side: "caution", q: "What could go wrong?" },
+  green:  { name: "Green",  kind: "New ideas: other ways to get there", side: "new ideas", q: "What else could we try?" }
+};
+var BS_CLOSE_Q = "What did we find, and what's next?";
+var BS_WHO = { blue: { name: "Cap", what: "the capybara" }, white: { name: "Tally", what: "the owl" }, red: { name: "Ruby", what: "the fox" },
+               yellow: { name: "Sunny", what: "the bee" }, black: { name: "Pebble", what: "the tortoise" }, green: { name: "Doodle", what: "the chameleon" } };
+var BS_TOPIC_KEYS = ["context", "detail", "links", "extra"];
+var BS_STAR = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 3.2l2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.5l6-.8z" fill="FILL" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+var bsScreen = null, bsPose = "still", bsPoseTimer = null, bsOpenNotes = {}, bsAddOpen = {}, bsDraft = {};
+
+function isBS(c){ return !!(c && typeof c === "object" && c.kind === "brainstorm"); }
+function isHat(q){ return !!(q && q.type === "hat"); }
+function bsOn(){ return isBS(CONFIG) && QUESTIONS.length > 0 && isHat(QUESTIONS[0]); }
+/* A brainstorm lists hats and no questions; a file that lists questions is a round, as before. */
+function bsIs(p){ return !!(p && typeof p === "object" && !Array.isArray(p) && Array.isArray(p.hats) && !Array.isArray(p.questions)); }
+function bsHatName(q){ return BS_INFO[q.hat] ? BS_INFO[q.hat].name : String(q.hat); }
+function bsTopic(){ var o = QUESTIONS[0]; return (o && o.topic) ? o.topic : { title: "", question: "" }; }
+
+/* Checking a brainstorm file. Every message ends the way the round checks do. */
+function bsWhere(i, h){ return i === 0 ? "The opening Blue hat" : i === 6 ? "The closing Blue hat" : ((BS_INFO[h && h.hat] || {}).name || "Hat " + (i + 1)) + " hat"; }
+function bsProblem(p){
+  var c = p.config, NL = " Nothing was loaded.";
+  if(!c || typeof c !== "object" || c.kind !== "brainstorm") return 'A brainstorm needs config with kind set to "brainstorm".' + NL;
+  var vp = versionProblem(c);
+  if(vp) return vp;
+  var t = p.topic;
+  if(!t || typeof t !== "object" || typeof t.title !== "string" || !t.title.trim() || typeof t.question !== "string" || !t.question.trim()) return "A brainstorm needs a topic with a title and a question." + NL;
+  if(t.context !== undefined && typeof t.context !== "string") return "The topic's context must be text." + NL;
+  if(t.detail !== undefined && !Array.isArray(t.detail)) return "The topic's detail must be a list." + NL;
+  if(t.links !== undefined && !Array.isArray(t.links)) return "The topic's links must be a list." + NL;
+  if(t.extra !== undefined && (!t.extra || typeof t.extra !== "object")) return "The topic's extra must be a popup or a list of them." + NL;
+  var hs = p.hats;
+  if(hs.length !== 7) return "A brainstorm has seven hats: Blue first, White, Red, Yellow, Black, and Green in any order, and Blue again last. This one lists " + hs.length + "." + NL;
+  if(!hs[0] || hs[0].hat !== "blue" || !hs[6] || hs[6].hat !== "blue") return "A brainstorm opens and closes with the Blue hat." + NL;
+  var mid = hs.slice(1, 6).map(function(h){ return h && h.hat; });
+  if(mid.slice().sort().join() !== BS_HATS.slice().sort().join()) return "Between the two Blue hats come White, Red, Yellow, Black, and Green, each once." + NL;
+  var seen = Object.create(null);
+  for(var i=0;i<hs.length;i++){
+    var h = hs[i], w = bsWhere(i, h);
+    if(typeof h.line !== "string" || !h.line.trim()) return w + " needs a line: every hat says something." + NL;
+    if(h.question !== undefined && typeof h.question !== "string") return w + ": question must be text." + NL;
+    if(h.ask !== undefined){
+      if(i === 0 || i === 6) return w + " asks nothing; only the five hats between the two Blue ones ask." + NL;
+      if(typeof h.ask !== "string" || !h.ask.trim()) return w + ": ask must be text." + NL;
+    }
+    if(h.ideas === undefined) continue;
+    if(!Array.isArray(h.ideas)) return w + ": ideas must be a list." + NL;
+    if(i === 0 && h.ideas.length) return "The opening Blue hat sets the focus and the plan, so it brings no ideas." + NL;
+    if(h.ideas.length > BS_MAX) return w + " brings " + h.ideas.length + " ideas; a hat brings at most " + BS_MAX + "." + NL;
+    for(var k=0;k<h.ideas.length;k++){
+      var d = h.ideas[k];
+      if(!d || typeof d !== "object" || typeof d.id !== "string" || !d.id.trim() || typeof d.text !== "string" || !d.text.trim()) return w + ", idea " + (k + 1) + " needs an id and text." + NL;
+      if(d.why !== undefined && typeof d.why !== "string") return w + ", idea " + d.id + ": why must be text." + NL;
+      if(d.id in seen) return w + " reuses the idea id " + d.id + ". Every idea needs its own id." + NL;
+      seen[d.id] = true;
+    }
+  }
+  return null;
+}
+/* A brainstorm file as the wizard keeps it: one question entry per hat. The config stays as written, so the checks on
+   titles and projects see what Claude wrote. */
+function bsToRound(p){
+  var t = p.topic, qs = [];
+  for(var i=0;i<p.hats.length;i++){
+    var h = p.hats[i], role = i === 0 ? "open" : i === 6 ? "close" : "hat";
+    var q = { id: role === "hat" ? h.hat : role, type: "hat", hat: h.hat, role: role, section: "Brainstorm",
+              title: role === "open" ? "Blue: the focus" : role === "close" ? "Blue: wrap-up" : BS_INFO[h.hat].name + ": " + BS_INFO[h.hat].side,
+              question: role === "open" ? t.question : (cleanStr(h.question) || (role === "close" ? BS_CLOSE_Q : BS_INFO[h.hat].q)),
+              line: h.line };
+    if(role === "open"){
+      q.topic = { title: t.title, question: t.question };
+      for(var k=0;k<BS_TOPIC_KEYS.length;k++){ if(t[BS_TOPIC_KEYS[k]] !== undefined) q.topic[BS_TOPIC_KEYS[k]] = t[BS_TOPIC_KEYS[k]]; }
+    } else {
+      q.ideas = (h.ideas || []).map(function(d){ var o = { id: d.id, text: d.text }; if(typeof d.why === "string" && d.why.trim()) o.why = d.why; return o; });
+      if(role === "hat" && typeof h.ask === "string" && h.ask.trim()) q.ask = h.ask;
+    }
+    qs.push(q);
+  }
+  return { config: p.config, questions: qs };
+}
+/* ...and back, for every file the wizard writes: a saved file, a project folder's file, a backup. */
+function bsFromRound(cfg, qs){
+  var open = qs[0] || {}, tp = open.topic || {}, topic = { title: tp.title || "", question: tp.question || "" };
+  for(var k=0;k<BS_TOPIC_KEYS.length;k++){ if(tp[BS_TOPIC_KEYS[k]] !== undefined) topic[BS_TOPIC_KEYS[k]] = tp[BS_TOPIC_KEYS[k]]; }
+  return { config: cfg, topic: topic, hats: qs.map(function(q){
+    var h = { hat: q.hat, line: q.line };
+    if(q.role !== "open"){ h.question = q.question; h.ideas = (q.ideas || []).map(function(d){ var o = { id: d.id, text: d.text }; if(d.why) o.why = d.why; return o; }); }
+    if(q.ask) h.ask = q.ask;
+    return h;
+  }) };
+}
+function roundOut(cfg, qs){ return isBS(cfg) ? bsFromRound(cfg, qs) : { config: cfg, questions: qs }; }
+function fileForm(exp){
+  if(!exp || !exp.round || !isBS(exp.round.config)) return exp;
+  var o = {}, k;
+  for(k in exp){ if(own(exp, k)) o[k] = exp[k]; }
+  o.round = roundOut(exp.round.config, exp.round.questions);
+  return o;
+}
+/* A brainstorm found in a project folder, ready for the folder checks the way a round is. */
+function bsFileRound(p, saved){
+  var pr = bsProblem(p);
+  if(pr) return { saved: saved, bs: true, problem: pr, config: p.config, questions: [] };
+  var r = bsToRound(p);
+  return { saved: saved, bs: true, problem: null, config: r.config, questions: r.questions };
+}
+function bsFresh(){ bsOpenNotes = {}; bsAddOpen = {}; bsDraft = {}; bsScreen = null; }
+var BS_MARK = '<svg viewBox="0 0 20 16" width="17" height="14" aria-hidden="true" focusable="false"><path d="M5.6 1.2h8.8l.7 10.3H4.9z" fill="#3C73CF" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M1.2 11.6h17.6v2.6H1.2z" fill="#3C73CF" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.3 7.6h9.4" stroke="currentColor" stroke-width="1.6"/></svg>';
+var BS_NEEDS_HATS = 'This round says it is a brainstorm (config.kind "brainstorm") but lists questions. A brainstorm lists a topic and its hats instead. Nothing was loaded.';
+
+/* A hat's answer: stars and notes by idea id, your own ideas, your answer to the hat's question, and whether you
+   have been through its card. */
+function bsA(q, answers){
+  var a = (answers || state.answers)[q.id];
+  return (a && a.status === "hat") ? a : { status: "hat" };
+}
+function bsTake(q){
+  var a = bsA(q), o = { status: "hat", stars: {}, notes: {}, mine: [], ask: typeof a.ask === "string" ? a.ask : "", next: a.next || 1 };
+  if(a.seen) o.seen = true;
+  var k;
+  for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k]) o.stars[k] = true; }
+  for(k in (a.notes || {})){ if(own(a.notes, k) && typeof a.notes[k] === "string") o.notes[k] = a.notes[k]; }
+  (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ if(m && typeof m.id === "string" && typeof m.text === "string") o.mine.push({ id: m.id, text: m.text }); });
+  return o;
+}
+function bsPut(q, a){ state.answers[q.id] = a; markChanged(); saveState(); }
+function bsIdea(q, id){
+  var i;
+  for(i=0;i<(q.ideas || []).length;i++){ if(q.ideas[i].id === id) return q.ideas[i]; }
+  var m = bsA(q).mine;
+  for(i=0;i<(Array.isArray(m) ? m.length : 0);i++){ if(m[i] && m[i].id === id) return { id: id, text: m[i].text, mine: true }; }
+  return null;
+}
+function bsHasInput(a){
+  if(!a || a.status !== "hat") return false;
+  var k;
+  if(a.seen) return true;
+  for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k]) return true; }
+  for(k in (a.notes || {})){ if(own(a.notes, k) && String(a.notes[k] || "").trim()) return true; }
+  return !!((Array.isArray(a.mine) && a.mine.length) || String(a.ask || "").trim());
+}
+/* What a hat's answer holds, as units the version checks can count: a star, a note, your idea, your answer. Your
+   own ideas count by their words, since a saved file numbers them afresh. With no question at hand, an idea counts
+   by its id alone. */
+function bsUnits(q, a){
+  var u = [];
+  if(!a || a.status !== "hat") return u;
+  var mine = Array.isArray(a.mine) ? a.mine : [], txt = {}, k;
+  var tag = function(id){ return own(txt, id) ? txt[id] : (q ? null : "idea\n" + id); };
+  (q && q.ideas || []).forEach(function(d){ txt[d.id] = "idea\n" + d.id + "\n" + d.text; });
+  mine.forEach(function(m){ if(m && m.id){ txt[m.id] = "mine\n" + m.text; u.push("mine\n" + m.text); } });
+  for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k] && tag(k)) u.push("star\n" + tag(k)); }
+  for(k in (a.notes || {})){ if(own(a.notes, k) && String(a.notes[k] || "").trim() && tag(k)) u.push("note\n" + tag(k) + "\n" + String(a.notes[k]).trim()); }
+  if(String(a.ask || "").trim()) u.push("ask\n" + String(a.ask).trim());
+  return u.sort();
+}
+/* How many of a hat's units the new answers lack. */
+function bsLost(a, b){
+  var have = bsUnits(null, b), n = 0;
+  bsUnits(null, a).forEach(function(x){ var i = have.indexOf(x); if(i === -1) n++; else have.splice(i, 1); });
+  return n;
+}
+function bsNorm(q, a){ return JSON.stringify([!!(a && a.seen)].concat(bsUnits(q, a))); }
+/* Your own ideas are numbered u1, u2, and so on, past any id the hat's own ideas use. */
+function bsMineId(o, ideas){
+  var used = {};
+  (ideas || []).forEach(function(d){ used[d.id] = true; });
+  o.mine.forEach(function(m){ used[m.id] = true; });
+  var id = "u" + o.next++;
+  while(own(used, id)) id = "u" + o.next++;
+  return id;
+}
+/* A new version of a brainstorm keeps what still applies: stars and notes on ideas whose words didn't change, your
+   own ideas, and your answer while the hat asks the same thing. An idea of yours whose id the new version gives to
+   one of the hat's ideas takes a new number, and its star and note go with it. */
+function bsCarry(oq, nq, a){
+  var o = { status: "hat", stars: {}, notes: {}, mine: [], ask: "", next: a.next || 1 }, kept = 0, k;
+  if(a.seen) o.seen = true;
+  var oldTxt = {}, newTxt = {}, moved = {};
+  (oq.ideas || []).forEach(function(d){ oldTxt[d.id] = d.text; });
+  (nq.ideas || []).forEach(function(d){ newTxt[d.id] = d.text; });
+  (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){
+    if(!m || !m.id || own(moved, m.id)) return;
+    var id = (own(newTxt, m.id) || o.mine.some(function(x){ return x.id === m.id; })) ? bsMineId(o, nq.ideas) : m.id;
+    moved[m.id] = id;
+    o.mine.push({ id: id, text: m.text });
+    kept++;
+  });
+  var still = function(id){ return !own(moved, id) && own(oldTxt, id) && own(newTxt, id) && oldTxt[id] === newTxt[id]; };
+  for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k] && (own(moved, k) || still(k))){ o.stars[own(moved, k) ? moved[k] : k] = true; kept++; } }
+  for(k in (a.notes || {})){ if(own(a.notes, k) && String(a.notes[k] || "").trim() && (own(moved, k) || still(k))){ o.notes[own(moved, k) ? moved[k] : k] = a.notes[k]; kept++; } }
+  if(String(a.ask || "").trim() && nq.ask && nq.ask === oq.ask && nq.question === oq.question){ o.ask = a.ask; kept++; }
+  return { a: o, kept: kept, any: kept > 0 || !!o.seen };
+}
+function bsSame(oq, nq){
+  return !!(oq && nq && isHat(oq) && isHat(nq) && oq.hat === nq.hat && oq.role === nq.role && oq.question === nq.question && (oq.ask || "") === (nq.ask || "")
+    && JSON.stringify(oq.ideas || []) === JSON.stringify(nq.ideas || []));
+}
+
+/* The answers Claude gets back. */
+function bsExport(qs, ans, cfg){
+  var ideas = 0, starred = 0, yours = 0, seen = 0;
+  var answers = qs.map(function(q){
+    var a = bsA(q, ans), stars = a.stars || {}, notes = a.notes || {};
+    var note = function(id){ return own(notes, id) ? String(notes[id] || "").trim() : ""; };
+    var e = { id: q.id, hat: q.hat, issue: q.title, question: q.question, status: "brainstorm", seen: !!a.seen };
+    if(a.seen) seen++;
+    if(q.role === "open") return e;
+    e.ideas = (q.ideas || []).map(function(d){
+      var x = { id: d.id, text: d.text, starred: !!(own(stars, d.id) && stars[d.id]) }, n = note(d.id);
+      if(n) x.comment = n;
+      ideas++; if(x.starred) starred++;
+      return x;
+    });
+    e.yours = (Array.isArray(a.mine) ? a.mine : []).map(function(m){
+      var y = { text: m.text, starred: !!(own(stars, m.id) && stars[m.id]) }, n = note(m.id);
+      if(n) y.comment = n;
+      yours++; if(y.starred) starred++;
+      return y;
+    });
+    if(q.ask){ e.ask = q.ask; e.answer = String(a.ask || "").trim(); }
+    return e;
+  });
+  var tp = (qs[0] && qs[0].topic) || {};
+  return {
+    meta: { tool: "decision-wizard", kind: "brainstorm", wizard_version: WIZARD_VERSION, wizard_title: cfg.title || "", exported_at: new Date().toISOString(),
+            total: qs.length, seen: seen, ideas: ideas, yours: yours, starred: starred },
+    topic: { title: tp.title || "", question: tp.question || "" },
+    answers: answers
+  };
+}
+/* A brainstorm's answers coming back in: a saved file, a backup, or answers pasted on their own. */
+function bsFromEntry(q, e){
+  if(!e || e.status !== "brainstorm") return null;
+  var a = { status: "hat", stars: {}, notes: {}, mine: [], ask: "", next: 1 }, any = false;
+  if(e.seen === true){ a.seen = true; any = true; }
+  var known = {};
+  (q.ideas || []).forEach(function(d){ known[d.id] = true; });
+  (Array.isArray(e.ideas) ? e.ideas : []).forEach(function(x){
+    if(!x || typeof x.id !== "string" || !known[x.id]) return;
+    if(x.starred === true){ a.stars[x.id] = true; any = true; }
+    if(typeof x.comment === "string" && x.comment.trim()){ a.notes[x.id] = x.comment; any = true; }
+  });
+  if(q.role !== "open"){
+    (Array.isArray(e.yours) ? e.yours : []).forEach(function(y){
+      if(!y || typeof y.text !== "string" || !y.text.trim() || a.mine.length >= BS_MINE) return;
+      var id = bsMineId(a, q.ideas);
+      a.mine.push({ id: id, text: y.text.trim() });
+      if(y.starred === true) a.stars[id] = true;
+      if(typeof y.comment === "string" && y.comment.trim()) a.notes[id] = y.comment;
+      any = true;
+    });
+  }
+  if(q.ask && typeof e.answer === "string" && e.answer.trim()){ a.ask = e.answer; any = true; }
+  return any ? a : null;
+}
+
+/* Drawing. */
+function bsArt(hat, pose){ var s = BS_ART[hat] || BS_ART.blue; return s[pose] || s.still; }
+function bsStarBtn(id, on, text){
+  return '<button type="button" class="bsstar' + (on ? " on" : "") + '" data-action="bs-star" data-idea="' + esc(id) + '" aria-pressed="' + (on ? "true" : "false") + '" aria-label="Star" aria-describedby="bst-' + esc(id) + '">' + BS_STAR.replace("FILL", on ? "currentColor" : "none") + '</button>';
+}
+function bsNoteHTML(q, d, a){
+  var on = !!(a.stars && own(a.stars, d.id) && a.stars[d.id]), n = (a.notes && own(a.notes, d.id)) ? String(a.notes[d.id] || "") : "";
+  var has = !!n.trim(), o = bsOpenNotes[q.id + ":" + d.id], shown = o === true || (o !== false && has);
+  var h = '<div class="bsnote' + (on ? " lit" : "") + (d.mine ? " mine" : "") + '" role="listitem">';
+  h += '<div class="bsntop">' + (d.mine ? '<span class="bsyours">Yours</span>' : '<span></span>') + bsStarBtn(d.id, on, d.text) + '</div>';
+  h += '<p id="bst-' + esc(d.id) + '" ' + dirA(d.text) + '>' + esc(d.text) + '</p>';
+  if(d.why) h += '<small ' + dirA(d.why) + '>' + esc(d.why) + '</small>';
+  h += '<div class="bsnfoot">';
+  if(d.mine) h += '<button type="button" class="bslink" data-action="bs-remove" data-idea="' + esc(d.id) + '" aria-describedby="bst-' + esc(d.id) + '">Remove</button>';
+  h += '<button type="button" class="bspen' + (has ? " has" : "") + '" data-action="bs-pen" data-idea="' + esc(d.id) + '" aria-expanded="' + (shown ? "true" : "false") + '" aria-controls="bsn-' + esc(d.id) + '" aria-describedby="bst-' + esc(d.id) + '"><span aria-hidden="true">&#9998;</span> <span>' + (has ? "Note" : "Add a note") + '</span></button>';
+  h += '</div>';
+  h += '<div class="bsnbox" id="bsn-' + esc(d.id) + '"' + (shown ? '' : ' hidden') + '><textarea dir="auto" data-role="bs-note" data-idea="' + esc(d.id) + '" aria-label="Note on this idea" aria-describedby="bst-' + esc(d.id) + '" placeholder="Your note on this idea">' + esc(n) + '</textarea></div>';
+  return h + '</div>';
+}
+function bsIdeasHTML(q, a){
+  var list = (q.ideas || []).concat((Array.isArray(a.mine) ? a.mine : []).map(function(m){ return { id: m.id, text: m.text, mine: true }; }));
+  var h = list.length ? '<div class="bsnotes" role="list" aria-label="' + esc(q.role === "close" ? "Next steps" : bsHatName(q) + " hat's ideas") + '">' + list.map(function(d){ return bsNoteHTML(q, d, a); }).join("") + '</div>' : '';
+  var open = !!bsAddOpen[q.id], step = q.role === "close";
+  if((Array.isArray(a.mine) ? a.mine.length : 0) >= BS_MINE){ return h + '<p class="bsfull">That\'s ' + BS_MINE + ' of your own here, the most a hat keeps.</p>'; }
+  h += '<button type="button" class="bsadd" data-action="bs-add-open" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="bsaddp"' + (open ? ' hidden' : '') + '>+ ' + (step ? "Add a step of your own" : "Add an idea of your own") + '</button>';
+  h += '<div class="bsaddp" id="bsaddp"' + (open ? '' : ' hidden') + '><label class="bsaddl" for="bs-new">' + (step ? "Your step" : "Your idea") + '</label><textarea id="bs-new" dir="auto" data-role="bs-new" rows="2" placeholder="' + (step ? "A step worth taking" : "An idea of your own") + '">' + esc(bsDraft[q.id] || "") + '</textarea>';
+  h += '<div class="bsaddrow"><button type="button" class="btn" data-action="bs-add"' + ((bsDraft[q.id] || "").trim() ? '' : ' disabled') + '>Add</button><button type="button" class="btn sec" data-action="bs-add-cancel">Cancel</button><span class="bshint">Enter adds it; Shift+Enter starts a new line.</span></div></div>';
+  return h;
+}
+function bsBand(q, pose){
+  var w = BS_WHO[q.hat] || {}, kind = q.role === "close" ? BS_INFO.blue.close : BS_INFO[q.hat].kind;
+  var h = '<div class="bshead"><span class="bsfig" id="bsfig" data-hat="' + esc(q.hat) + '" data-pose="' + pose + '">' + bsArt(q.hat, pose) + '</span><div class="bshmeta">';
+  h += '<div class="bschip"><span class="bsdot" aria-hidden="true"></span><span>' + esc(bsHatName(q)) + ' hat</span>' + (w.name ? '<span class="bsname">' + esc(w.name + ", " + w.what) + '</span>' : '') + '</div>';
+  h += '<div class="bskind">' + esc(kind) + '</div>';
+  h += '<div class="bssay" ' + dirA(q.line) + '>' + esc(q.line) + '</div>';
+  return h + '</div></div>';
+}
+function bsPlanHTML(){
+  var h = '<div class="bsplanrow"><span class="bsplanl" id="bsplanl">The plan</span><span class="bsplans" role="list" aria-labelledby="bsplanl">';
+  for(var i=1;i<QUESTIONS.length;i++){
+    var q = QUESTIONS[i], seen = !!bsA(q).seen;
+    h += (i > 1 ? '<span class="bsarrow" aria-hidden="true">&#8250;</span>' : '') + '<span role="listitem"><button type="button" class="bsplan bs-' + esc(q.hat) + (seen ? " seen" : "") + '" data-action="goto" data-idx="' + i + '"><span class="bsdot" aria-hidden="true"></span>' + esc(bsHatName(q)) + '<span class="srx">' + (seen ? ", seen" : "") + '</span></button></span>';
+  }
+  return h + '</span></div>';
+}
+function bsStarredList(){
+  var rows = [], total = 0;
+  for(var i=1;i<QUESTIONS.length-1;i++){
+    var q = QUESTIONS[i], a = bsA(q), st = a.stars || {};
+    (q.ideas || []).forEach(function(d){ total++; if(own(st, d.id) && st[d.id]) rows.push({ q: q, text: d.text }); });
+    (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ total++; if(own(st, m.id) && st[m.id]) rows.push({ q: q, text: m.text, mine: true }); });
+  }
+  return { rows: rows, total: total };
+}
+function bsSummaryBlock(){
+  var s = bsStarredList(), asked = 0, told = 0;
+  for(var i=1;i<QUESTIONS.length-1;i++){ var q = QUESTIONS[i]; if(q.ask){ asked++; if(String(bsA(q).ask || "").trim()) told++; } }
+  var h = '<section class="bssum" aria-labelledby="bssumh"><h3 class="bssumh" id="bssumh">What you starred</h3>';
+  if(!s.rows.length) h += '<p class="bssumf">Nothing starred yet. Go back to any hat and star the ideas that matter.</p>';
+  else {
+    h += '<ul class="bssuml">' + s.rows.map(function(r){ return '<li class="bssumr bs-' + esc(r.q.hat) + '"><span class="bsdot" aria-hidden="true"></span><span class="bssumhat">' + esc(bsHatName(r.q)) + '</span><span ' + dirA(r.text) + '>' + (r.mine ? '<span class="bsyours">Yours</span> ' : '') + esc(r.text) + '</span></li>'; }).join("") + '</ul>';
+    h += '<p class="bssumf">' + s.rows.length + ' starred of ' + plural(s.total, "idea", "ideas") + '.' + (asked ? ' You answered ' + told + ' of the ' + plural(asked, "question", "questions") + ' the hats asked; your answers go back with the rest.' : '') + '</p>';
+  }
+  return h + '</section>';
+}
+function bsAskHTML(q, a){
+  return '<div class="bsask"><span class="bsav" aria-hidden="true">' + bsArt(q.hat, "still") + '</span><div class="bsaskb"><label class="bsaskq" for="bsask"><b>' + esc(bsHatName(q)) + ' asks you</b><span ' + dirA(q.ask) + '>' + esc(q.ask) + '</span></label>' +
+    '<textarea id="bsask" dir="auto" data-role="bs-ask" rows="2" placeholder="Type your answer">' + esc(a.ask || "") + '</textarea></div></div>';
+}
+function bsNextLabel(){
+  var i = state.idx, q = QUESTIONS[i], n = QUESTIONS[i + 1];
+  if(q.role === "open") return "Start with " + bsHatName(n);
+  if(q.role === "close") return "Finish";
+  return n && n.role === "close" ? "Next: back to Blue" : "Next: " + bsHatName(n) + " hat";
+}
+function renderHat(q){
+  customOpen = false;
+  var a = bsA(q), sk = screenKey(), fresh = bsScreen !== sk;
+  if(fresh){ bsScreen = sk; bsPose = "talk"; bsSettle(q, 2600); }
+  var h = chromeTop(q);
+  h += '<div class="qcard bscard bs-' + esc(q.hat) + '">';
+  h += bsBand(q, bsPose);
+  var tp = bsTopic();
+  h += '<div class="qtopic" ' + dirA(tp.title) + '>' + esc(tp.title) + '</div><h2 class="qtitle" id="qh" tabindex="-1" aria-describedby="pcount" ' + dirA(q.question) + '>' + esc(q.question) + '</h2>';
+  if(q.role === "open"){
+    h += bsPlanHTML();
+    h += contextHTML(q.topic || {});
+  } else {
+    if(q.role === "close"){ h += bsSummaryBlock(); h += '<h3 class="bssub">What\'s next? Star the steps worth taking.</h3>'; }
+    h += bsIdeasHTML(q, a);
+    if(q.ask) h += bsAskHTML(q, a);
+  }
+  h += '<div class="hint">' + (q.role === "open" ? "Each hat in the plan opens its card. Your stars, notes, and ideas go back to Claude with the brainstorm." : q.role === "close" ? "Finish shows your brainstorm and its answers, ready to hand back." : "Star what matters; the rest stay as heard. A note or an idea of your own goes back with them.") + '</div>';
+  h += '</div>';
+  h += '<div class="controls"><button type="button" class="btn sec" data-action="back"' + (state.idx === 0 ? " disabled" : "") + '>Back</button><span class="spacer"></span><button type="button" class="btn" data-action="bs-next">' + esc(bsNextLabel()) + '</button></div>';
+  document.getElementById("app").innerHTML = h;
+}
+/* The character speaks as its card opens, smiles when you star one of its ideas, and stands still otherwise. */
+function bsSetPose(pose){
+  bsPose = pose;
+  var f = document.getElementById("bsfig");
+  if(f && f.getAttribute("data-pose") !== pose){ f.innerHTML = bsArt(f.getAttribute("data-hat"), pose); f.setAttribute("data-pose", pose); }
+}
+function bsSettle(q, ms){
+  if(bsPoseTimer) clearTimeout(bsPoseTimer);
+  var sk = screenKey();
+  bsPoseTimer = setTimeout(function(){ bsPoseTimer = null; if(screenKey() === sk) bsSetPose("still"); else bsPose = "still"; }, ms);
+}
+function bsPleased(q){ bsSetPose("pleased"); bsSettle(q, 1600); }
+
+/* The brainstorm's summary, once you finish or jump past the last hat. */
+function renderBsSummary(){
+  customOpen = false;
+  var exp = buildExport(), s = bsStarredList(), tp = bsTopic(), seen = 0;
+  QUESTIONS.forEach(function(q){ if(bsA(q).seen) seen++; });
+  var last = QUESTIONS[QUESTIONS.length - 1], la = bsA(last), steps = (last.ideas || []).length + (Array.isArray(la.mine) ? la.mine.length : 0), took = 0, sk;
+  for(sk in (la.stars || {})){ if(own(la.stars, sk) && la.stars[sk] && bsIdea(last, sk)) took++; }
+  var h = '<div class="ptop"><div class="progress"><div class="ptrack"><div class="pbar" style="width:100%"></div></div><div class="pcount">' + seen + ' of ' + QUESTIONS.length + ' hats seen</div>' + TIMER_PILL + '</div></div>';
+  h += '<div class="sumcard"><h2 tabindex="-1">Your brainstorm</h2>';
+  h += '<div class="sumstats"><b ' + dirA(tp.title) + '>' + esc(tp.title) + '</b>: <span ' + dirA(tp.question) + '>' + esc(tp.question) + '</span> You starred <b>' + s.rows.length + '</b> of ' + plural(s.total, "idea", "ideas") + (steps ? ' and <b>' + took + '</b> of ' + plural(steps, "next step", "next steps") : '') + '. Hand it back to Claude with Copy answers JSON or Save. Click a hat to go back to it.</div>';
+  h += sumProjHTML();
+  h += '<table class="sum bssumt"><tr><th>Hat</th><th>What you starred and wrote</th></tr>';
+  for(var i=0;i<QUESTIONS.length;i++){
+    var q = QUESTIONS[i], a = bsA(q), st = a.stars || {}, notes = a.notes || {}, parts = [];
+    (q.ideas || []).forEach(function(d){ if(own(st, d.id) && st[d.id]) parts.push('<li ' + dirA(d.text) + '>' + esc(d.text) + '</li>'); });
+    (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ parts.push('<li ' + dirA(m.text) + '><span class="bsyours">Yours</span> ' + esc(m.text) + (own(st, m.id) && st[m.id] ? ' <span class="bsstarmark" aria-label="starred">&#9733;</span>' : '') + '</li>'); });
+    var nn = 0; for(var k in notes){ if(own(notes, k) && String(notes[k] || "").trim()) nn++; }
+    var cell = parts.length ? '<ul class="bscell">' + parts.join("") + '</ul>' : '';
+    if(nn) cell += '<div class="sumsub">' + plural(nn, "note", "notes") + '</div>';
+    if(q.ask && String(a.ask || "").trim()) cell += sumNote({ comment: a.ask }).replace("<b>Note</b>", "<b>Your answer</b>");
+    if(!cell) cell = q.role === "open" ? '<span class="sumsub">The focus and the plan</span>' : (a.seen ? '<span class="sumsub">Nothing starred</span>' : '<span class="pill open">not seen</span>');
+    h += '<tr class="rowbtn" data-action="goto" data-idx="' + i + '"><td><button type="button" class="sumgo bsgo bs-' + esc(q.hat) + '" data-action="goto" data-idx="' + i + '" aria-label="Go back to ' + esc(q.title) + '"><span class="bsdot" aria-hidden="true"></span>' + esc(q.title) + '</button></td><td>' + cell + '</td></tr>';
+  }
+  h += '</table>';
+  h += '<div class="exphead"><label for="exp"><b>Answers JSON</b></label><button type="button" class="btn sec" data-action="copy">Copy answers JSON</button></div>';
+  h += '<textarea id="exp" spellcheck="false">' + esc(JSON.stringify(exp, null, 2)) + '</textarea>';
+  h += '<div class="crow"><button type="button" class="btn" data-action="save">Save brainstorm</button>';
+  if(seen < QUESTIONS.length) h += '<button type="button" class="btn sec" data-action="first-open">First hat not seen</button>';
+  h += '<button type="button" class="btn danger" data-action="reset">Reset all</button></div>';
+  h += '<div class="status" id="sum-status" role="status"></div></div>';
+  document.getElementById("app").innerHTML = h;
+}
+function bsSideHTML(){
+  var h = '<div class="shead">Brainstorm</div>';
+  for(var i=0;i<QUESTIONS.length;i++){
+    var q = QUESTIONS[i], a = bsA(q), st = a.stars || {}, n = 0, k;
+    for(k in st){ if(own(st, k) && st[k] && bsIdea(q, k)) n++; }
+    h += '<button type="button" class="sitem bsitem bs-' + esc(q.hat) + (i === state.idx ? " cur" : "") + '" data-action="goto" data-idx="' + i + '"' + (i === state.idx ? ' aria-current="step"' : '') + '>';
+    h += '<span class="bsdot' + (a.seen ? " seen" : "") + '" aria-hidden="true"></span><span class="sid bssid">' + esc(bsHatName(q)) + '</span>';
+    h += '<span class="stt">' + esc(q.title) + '</span>' + (n && q.role !== "open" ? '<span class="scount">' + n + '&#9733;</span>' : '') + '<span class="srx">' + (a.seen ? ", seen" : ", not seen yet") + (n ? ", " + plural(n, "star", "stars") : "") + '</span></button>';
+  }
+  return h;
+}
+
+/* What you do on a hat's card. */
+function bsCur(){ var q = cur(); return isHat(q) ? q : null; }
+function bsAttr(v){ return String(v).replace(/["\\]/g, "\\$&"); }
+function bsStar(id){
+  var q = bsCur();
+  if(!q || !bsIdea(q, id)) return;
+  var a = bsTake(q), on = !a.stars[id];
+  if(on) a.stars[id] = true; else delete a.stars[id];
+  bsPut(q, a);
+  var b = document.querySelector('#app .bsstar[data-idea="' + bsAttr(id) + '"]');
+  if(b){
+    b.classList.toggle("on", on);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    b.innerHTML = BS_STAR.replace("FILL", on ? "currentColor" : "none");
+    var card = b.closest ? b.closest(".bsnote") : null;
+    if(card) card.classList.toggle("lit", on);
+  }
+  renderSide();
+  if(q.role === "close"){ var sm = document.querySelector("#app .bssum"); if(sm) sm.outerHTML = bsSummaryBlock(); }
+  srSay(on ? "Starred." : "Star taken off.");
+  if(on){ bsPleased(q); faceFlash("pick", 1300); }
+}
+function bsPen(id){
+  var q = bsCur();
+  if(!q || !bsIdea(q, id)) return;
+  var p = document.getElementById("bsn-" + id), b = document.querySelector('#app .bspen[data-idea="' + bsAttr(id) + '"]');
+  if(!p) return;
+  var show = p.hasAttribute("hidden");
+  bsOpenNotes[q.id + ":" + id] = show;
+  if(show) p.removeAttribute("hidden"); else p.setAttribute("hidden", "");
+  if(b) b.setAttribute("aria-expanded", show ? "true" : "false");
+  if(show){ var t = p.querySelector("textarea"); if(t && t.focus) t.focus(); }
+}
+function bsNoteSet(id, val){
+  var q = bsCur();
+  if(!q || !bsIdea(q, id)) return;
+  var a = bsTake(q);
+  if(String(val || "").trim()) a.notes[id] = String(val); else delete a.notes[id];
+  bsOpenNotes[q.id + ":" + id] = true;
+  bsPut(q, a);
+  var b = document.querySelector('#app .bspen[data-idea="' + bsAttr(id) + '"]');
+  if(b){ var has = !!String(val || "").trim(); b.classList.toggle("has", has); var sp = b.querySelectorAll("span")[1]; if(sp) sp.textContent = has ? "Note" : "Add a note"; }
+}
+function bsAskSet(val){
+  var q = bsCur();
+  if(!q || !q.ask) return;
+  var a = bsTake(q);
+  a.ask = String(val || "");
+  bsPut(q, a);
+}
+function bsAddShow(open){
+  var q = bsCur();
+  if(!q) return;
+  bsAddOpen[q.id] = !!open;
+  if(!open) delete bsDraft[q.id];
+  var p = document.getElementById("bsaddp"), b = document.querySelector('#app [data-action="bs-add-open"]');
+  if(p){ if(open) p.removeAttribute("hidden"); else p.setAttribute("hidden", ""); }
+  if(b){ if(open) b.setAttribute("hidden", ""); else b.removeAttribute("hidden"); b.setAttribute("aria-expanded", open ? "true" : "false"); }
+  var t = document.getElementById("bs-new");
+  if(open && t){ t.focus(); }
+  if(!open){ if(t) t.value = ""; focusQuiet(b); }
+}
+function bsDraftSet(val){
+  var q = bsCur();
+  if(!q) return;
+  bsDraft[q.id] = String(val || "");
+  var ok = document.querySelector('#app [data-action="bs-add"]');
+  if(ok) ok.disabled = !bsDraft[q.id].trim();
+}
+function bsAdd(){
+  var q = bsCur(), t = document.getElementById("bs-new");
+  if(!q || !t) return;
+  var text = String(t.value || "").trim();
+  if(!text) return;
+  var a = bsTake(q);
+  if(a.mine.length >= BS_MINE) return;
+  var id = bsMineId(a, q.ideas);
+  a.mine.push({ id: id, text: text });
+  a.stars[id] = true;
+  delete bsDraft[q.id];
+  bsAddOpen[q.id] = false;
+  bsPut(q, a);
+  scrollKeep(render);
+  focusQuiet(document.querySelector('#app [data-action="bs-add-open"]'));
+  srSay("Added, with a star.");
+  faceFlash("pick", 1300);
+}
+function bsRemove(id){
+  var q = bsCur();
+  if(!q) return;
+  var a = bsTake(q), n = a.mine.length;
+  a.mine = a.mine.filter(function(m){ return m.id !== id; });
+  if(a.mine.length === n) return;
+  delete a.stars[id]; delete a.notes[id]; delete bsOpenNotes[q.id + ":" + id];
+  bsPut(q, a);
+  scrollKeep(render);
+  focusQuiet(document.querySelector('#app [data-action="bs-add-open"]') || pageHeading());
+  srSay("Removed.");
+}
+function bsNext(){
+  var q = bsCur();
+  if(!q) return;
+  var a = bsTake(q);
+  if(!a.seen){ a.seen = true; state.answers[q.id] = a; markChanged(); }
+  if(sleeping) wakeUp();
+  advance();
+}
+function bsKey(ev){
+  var t = ev.target;
+  if(!t || !t.getAttribute || t.getAttribute("data-role") !== "bs-new") return false;
+  if(ev.key === "Enter" && !ev.shiftKey && !ev.isComposing){ ev.preventDefault(); bsAdd(); return true; }
+  if(ev.key === "Escape"){ ev.preventDefault(); bsAddShow(false); return true; }
+  return false;
+}
+
+/* The brainstorm cast, one character per hat, each in three poses: still, talk (as its card opens), and pleased (when you star one of its ideas). */
+var BS_ART = {
+  blue: {
+    still: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="54" ry="6" fill="#000" opacity=".18"/><ellipse cx="80" cy="232" rx="15" ry="7" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="120" cy="232" rx="15" ry="7" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><path d="M50 196 C46 160 66 140 100 140 C134 140 154 160 150 196 C148 222 128 234 100 234 C72 234 52 222 50 196 Z" fill="#B07A4F" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="100" cy="200" rx="30" ry="26" fill="#CFA076"/><path d="M60 172 Q44 190 58 206" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 172 Q44 190 58 206" fill="none" stroke="#B07A4F" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 172 Q156 190 142 206" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 172 Q156 190 142 206" fill="none" stroke="#B07A4F" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate(30 142 206)"><path d="M142 206 L142 166" fill="none" stroke="#1B1810" stroke-width="7" stroke-linecap="round"/><path d="M142 206 L142 166" fill="none" stroke="#FFFDF6" stroke-width="3" stroke-linecap="round"/><ellipse cx="142" cy="208" rx="5" ry="6" fill="#3C73CF" stroke="#1B1810" stroke-width="2.2"/></g><ellipse cx="62" cy="72" rx="10" ry="9" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="138" cy="72" rx="10" ry="9" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="62" cy="73" rx="4.5" ry="4" fill="#5C3A26"/><ellipse cx="138" cy="73" rx="4.5" ry="4" fill="#5C3A26"/><path d="M52 98 C52 78 72 68 100 68 C128 68 148 78 148 98 L152 136 C152 158 130 168 100 168 C70 168 48 158 48 136 Z" fill="#B07A4F" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M60 140 C66 152 82 160 100 160 C118 160 134 152 140 140 C134 146 118 150 100 150 C82 150 66 146 60 140 Z" fill="#CFA076"/><path d="M86 118 Q90 113 95 117 M105 117 Q110 113 114 118" fill="none" stroke="#1B1810" stroke-width="3.6" stroke-linecap="round"/><path d="M100 120 L100 130" fill="none" stroke="#7E5235" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="64" cy="124" rx="8" ry="5" fill="#E8A08A" opacity=".8"/><ellipse cx="136" cy="124" rx="8" ry="5" fill="#E8A08A" opacity=".8"/><ellipse cx="74" cy="96" rx="4.95" ry="5.5" fill="#1B1810"/><ellipse cx="126" cy="96" rx="4.95" ry="5.5" fill="#1B1810"/><circle cx="76" cy="94" r="1.8" fill="#FFFDF6"/><circle cx="128" cy="94" r="1.8" fill="#FFFDF6"/><path d="M66 90 Q74 85 82 89 M118 89 Q126 85 134 90" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M91 136 Q100 144.1 109 136" fill="none" stroke="#1B1810" stroke-width="3" stroke-linecap="round"/><path d="M60 90 Q64 78 76 73" fill="none" stroke="#E7C4A0" stroke-width="3" stroke-linecap="round" opacity=".8"/><ellipse cx="100" cy="70" rx="44" ry="8.5" fill="#3C73CF" stroke="#1B1810" stroke-width="2.8"/><path d="M69 70 L73 22 Q100 14 127 22 L131 70 Q100 75 69 70 Z" fill="#3C73CF" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70 53.36 L130 53.36 L131 69 Q100 74 69 69 Z" fill="#22488C" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M78 28 L77 49.2" fill="none" stroke="#8FB3EE" stroke-width="3.5" stroke-linecap="round"/></svg>',
+    talk: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="54" ry="6" fill="#000" opacity=".18"/><ellipse cx="80" cy="232" rx="15" ry="7" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="120" cy="232" rx="15" ry="7" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><path d="M50 196 C46 160 66 140 100 140 C134 140 154 160 150 196 C148 222 128 234 100 234 C72 234 52 222 50 196 Z" fill="#B07A4F" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="100" cy="200" rx="30" ry="26" fill="#CFA076"/><path d="M60 172 Q44 190 58 206" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 172 Q44 190 58 206" fill="none" stroke="#B07A4F" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 172 Q160 158 160 132" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 172 Q160 158 160 132" fill="none" stroke="#B07A4F" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate(18 160 130)"><path d="M160 130 L160 90" fill="none" stroke="#1B1810" stroke-width="7" stroke-linecap="round"/><path d="M160 130 L160 90" fill="none" stroke="#FFFDF6" stroke-width="3" stroke-linecap="round"/><ellipse cx="160" cy="132" rx="5" ry="6" fill="#3C73CF" stroke="#1B1810" stroke-width="2.2"/></g><ellipse cx="62" cy="72" rx="10" ry="9" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="138" cy="72" rx="10" ry="9" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="62" cy="73" rx="4.5" ry="4" fill="#5C3A26"/><ellipse cx="138" cy="73" rx="4.5" ry="4" fill="#5C3A26"/><path d="M52 98 C52 78 72 68 100 68 C128 68 148 78 148 98 L152 136 C152 158 130 168 100 168 C70 168 48 158 48 136 Z" fill="#B07A4F" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M60 140 C66 152 82 160 100 160 C118 160 134 152 140 140 C134 146 118 150 100 150 C82 150 66 146 60 140 Z" fill="#CFA076"/><path d="M86 118 Q90 113 95 117 M105 117 Q110 113 114 118" fill="none" stroke="#1B1810" stroke-width="3.6" stroke-linecap="round"/><path d="M100 120 L100 130" fill="none" stroke="#7E5235" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="64" cy="124" rx="8" ry="5" fill="#E8A08A" opacity=".8"/><ellipse cx="136" cy="124" rx="8" ry="5" fill="#E8A08A" opacity=".8"/><ellipse cx="74" cy="96" rx="4.95" ry="5.5" fill="#1B1810"/><ellipse cx="126" cy="96" rx="4.95" ry="5.5" fill="#1B1810"/><circle cx="76" cy="94" r="1.8" fill="#FFFDF6"/><circle cx="128" cy="94" r="1.8" fill="#FFFDF6"/><path d="M66 90 Q74 85 82 89 M118 89 Q126 85 134 90" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="100" cy="139" rx="5.3999999999999995" ry="6.3" fill="#1B1810"/><ellipse cx="100" cy="142" rx="3.42" ry="2.5200000000000005" fill="#E07A6C"/><path d="M60 90 Q64 78 76 73" fill="none" stroke="#E7C4A0" stroke-width="3" stroke-linecap="round" opacity=".8"/><g transform="rotate(-6 100 70)"><ellipse cx="100" cy="70" rx="44" ry="8.5" fill="#3C73CF" stroke="#1B1810" stroke-width="2.8"/><path d="M69 70 L73 22 Q100 14 127 22 L131 70 Q100 75 69 70 Z" fill="#3C73CF" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70 53.36 L130 53.36 L131 69 Q100 74 69 69 Z" fill="#22488C" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M78 28 L77 49.2" fill="none" stroke="#8FB3EE" stroke-width="3.5" stroke-linecap="round"/></g></svg>',
+    pleased: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="54" ry="6" fill="#000" opacity=".18"/><ellipse cx="80" cy="232" rx="15" ry="7" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="120" cy="232" rx="15" ry="7" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><path d="M50 196 C46 160 66 140 100 140 C134 140 154 160 150 196 C148 222 128 234 100 234 C72 234 52 222 50 196 Z" fill="#B07A4F" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="100" cy="200" rx="30" ry="26" fill="#CFA076"/><path d="M60 172 Q70 196 92 196" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 172 Q70 196 92 196" fill="none" stroke="#B07A4F" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 172 Q130 196 108 196" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 172 Q130 196 108 196" fill="none" stroke="#B07A4F" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="62" cy="72" rx="10" ry="9" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="138" cy="72" rx="10" ry="9" fill="#7E5235" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="62" cy="73" rx="4.5" ry="4" fill="#5C3A26"/><ellipse cx="138" cy="73" rx="4.5" ry="4" fill="#5C3A26"/><path d="M52 98 C52 78 72 68 100 68 C128 68 148 78 148 98 L152 136 C152 158 130 168 100 168 C70 168 48 158 48 136 Z" fill="#B07A4F" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M60 140 C66 152 82 160 100 160 C118 160 134 152 140 140 C134 146 118 150 100 150 C82 150 66 146 60 140 Z" fill="#CFA076"/><path d="M86 118 Q90 113 95 117 M105 117 Q110 113 114 118" fill="none" stroke="#1B1810" stroke-width="3.6" stroke-linecap="round"/><path d="M100 120 L100 130" fill="none" stroke="#7E5235" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="64" cy="124" rx="8" ry="5" fill="#E8A08A" opacity=".8"/><ellipse cx="136" cy="124" rx="8" ry="5" fill="#E8A08A" opacity=".8"/><path d="M66 98 Q74 88 82 98" fill="none" stroke="#1B1810" stroke-width="4" stroke-linecap="round"/><path d="M118 98 Q126 88 134 98" fill="none" stroke="#1B1810" stroke-width="4" stroke-linecap="round"/><path d="M89 136 Q100 149.5 111 136 Z" fill="#1B1810"/><path d="M95.5 141.4 Q100 145 104.5 141.4" fill="none" stroke="#E07A6C" stroke-width="2.6" stroke-linecap="round"/><path d="M60 90 Q64 78 76 73" fill="none" stroke="#E7C4A0" stroke-width="3" stroke-linecap="round" opacity=".8"/><ellipse cx="100" cy="70" rx="44" ry="8.5" fill="#3C73CF" stroke="#1B1810" stroke-width="2.8"/><path d="M69 70 L73 22 Q100 14 127 22 L131 70 Q100 75 69 70 Z" fill="#3C73CF" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70 53.36 L130 53.36 L131 69 Q100 74 69 69 Z" fill="#22488C" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M78 28 L77 49.2" fill="none" stroke="#8FB3EE" stroke-width="3.5" stroke-linecap="round"/><path d="M158.0 37.0 L159.9 41.5 L164.7 41.8 L161.0 45.0 L162.1 49.7 L158.0 47.1 L153.9 49.7 L155.0 45.0 L151.3 41.8 L156.1 41.5Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/><path d="M42.0 53.0 L43.3 56.2 L46.8 56.5 L44.1 58.7 L44.9 62.0 L42.0 60.3 L39.1 62.0 L39.9 58.7 L37.2 56.5 L40.7 56.2Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/><path d="M170.0 66.0 L171.1 68.5 L173.8 68.8 L171.7 70.6 L172.4 73.2 L170.0 71.8 L167.6 73.2 L168.3 70.6 L166.2 68.8 L168.9 68.5Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/></svg>'
+  },
+  white: {
+    still: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="48" ry="6" fill="#000" opacity=".18"/><path d="M80 230 l-6 8 M86 232 l0 8 M92 230 l6 8 M108 230 l-6 8 M114 232 l0 8 M120 230 l6 8" fill="none" stroke="#E9A23B" stroke-width="5" stroke-linecap="round"/><ellipse cx="100" cy="156" rx="62" ry="80" fill="#A97B52" stroke="#1B1810" stroke-width="3"/><ellipse cx="100" cy="188" rx="38" ry="42" fill="#EFE3CB" stroke="#1B1810" stroke-width="2.2"/><path d="M86 172 q7 7 14 0 q7 7 14 0 M80 188 q7 7 14 0 q7 7 14 0 q7 7 14 0 M86 204 q7 7 14 0 q7 7 14 0" fill="none" stroke="#C9B48F" stroke-width="2.6" stroke-linecap="round"/><path d="M44 140 C30 160 30 196 48 214 C56 196 60 170 58 146 Z" fill="#8A603D" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><g transform="rotate(-6 146 184)"><rect x="129" y="162" width="34" height="44" rx="3" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.4"/><path d="M135 173 h22 M135 181 h22 M135 189 h22 M135 197 h13" fill="none" stroke="#3C73CF" stroke-width="2" stroke-linecap="round"/><rect x="129" y="162" width="34" height="7" fill="#BDB49F" stroke="#1B1810" stroke-width="2.4"/></g><path d="M156 140 C172 160 172 196 154 214 C146 200 140 180 142 150 Z" fill="#8A603D" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M100 112 C92 96 56 94 54 120 C52 146 82 154 100 140 C118 154 148 146 146 120 C144 94 108 96 100 112 Z" fill="#E8D7B6" stroke="#1B1810" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="79" cy="122" rx="14" ry="15" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><ellipse cx="121" cy="122" rx="14" ry="15" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><circle cx="80" cy="124" r="7.800000000000001" fill="#1B1810"/><circle cx="122" cy="124" r="7.800000000000001" fill="#1B1810"/><circle cx="82.5" cy="120" r="2.85" fill="#FFFDF6"/><circle cx="124.5" cy="120" r="2.85" fill="#FFFDF6"/><path d="M64 106 Q78 100 92 108 M108 108 Q122 100 136 106" fill="none" stroke="#1B1810" stroke-width="3" stroke-linecap="round"/><path d="M93 141 L107 141 L100 154 Z" fill="#E9A23B" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="62" cy="142" rx="8" ry="5" fill="#EBA48E" opacity=".8"/><ellipse cx="138" cy="142" rx="8" ry="5" fill="#EBA48E" opacity=".8"/><ellipse cx="100" cy="82" rx="45" ry="8.5" fill="#F6F2E8" stroke="#1B1810" stroke-width="2.8"/><path d="M68 82 L72 30 Q100 22 128 30 L132 82 Q100 87 68 82 Z" fill="#F6F2E8" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M69 64.08 L131 64.08 L132 81 Q100 86 68 81 Z" fill="#BDB49F" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M77 36 L76 59.599999999999994" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/></svg>',
+    talk: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="48" ry="6" fill="#000" opacity=".18"/><path d="M80 230 l-6 8 M86 232 l0 8 M92 230 l6 8 M108 230 l-6 8 M114 232 l0 8 M120 230 l6 8" fill="none" stroke="#E9A23B" stroke-width="5" stroke-linecap="round"/><ellipse cx="100" cy="156" rx="62" ry="80" fill="#A97B52" stroke="#1B1810" stroke-width="3"/><ellipse cx="100" cy="188" rx="38" ry="42" fill="#EFE3CB" stroke="#1B1810" stroke-width="2.2"/><path d="M86 172 q7 7 14 0 q7 7 14 0 M80 188 q7 7 14 0 q7 7 14 0 q7 7 14 0 M86 204 q7 7 14 0 q7 7 14 0" fill="none" stroke="#C9B48F" stroke-width="2.6" stroke-linecap="round"/><path d="M46 150 C26 130 26 104 40 92 C50 110 58 130 60 152 Z" fill="#8A603D" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><g transform="rotate(-6 146 184)"><rect x="129" y="162" width="34" height="44" rx="3" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.4"/><path d="M135 173 h22 M135 181 h22 M135 189 h22 M135 197 h13" fill="none" stroke="#3C73CF" stroke-width="2" stroke-linecap="round"/><rect x="129" y="162" width="34" height="7" fill="#BDB49F" stroke="#1B1810" stroke-width="2.4"/></g><path d="M156 140 C172 160 172 196 154 214 C146 200 140 180 142 150 Z" fill="#8A603D" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M100 112 C92 96 56 94 54 120 C52 146 82 154 100 140 C118 154 148 146 146 120 C144 94 108 96 100 112 Z" fill="#E8D7B6" stroke="#1B1810" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="79" cy="122" rx="14" ry="15" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><ellipse cx="121" cy="122" rx="14" ry="15" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><circle cx="82" cy="124" r="7.800000000000001" fill="#1B1810"/><circle cx="124" cy="124" r="7.800000000000001" fill="#1B1810"/><circle cx="84.5" cy="120" r="2.85" fill="#FFFDF6"/><circle cx="126.5" cy="120" r="2.85" fill="#FFFDF6"/><path d="M64 106 Q78 100 92 108 M108 108 Q122 100 136 106" fill="none" stroke="#1B1810" stroke-width="3" stroke-linecap="round"/><path d="M93 140 L107 140 L100 148 Z" fill="#E9A23B" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M95 151 L105 151 L100 158 Z" fill="#E9A23B" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="62" cy="142" rx="8" ry="5" fill="#EBA48E" opacity=".8"/><ellipse cx="138" cy="142" rx="8" ry="5" fill="#EBA48E" opacity=".8"/><g transform="rotate(5 100 82)"><ellipse cx="100" cy="82" rx="45" ry="8.5" fill="#F6F2E8" stroke="#1B1810" stroke-width="2.8"/><path d="M68 82 L72 30 Q100 22 128 30 L132 82 Q100 87 68 82 Z" fill="#F6F2E8" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M69 64.08 L131 64.08 L132 81 Q100 86 68 81 Z" fill="#BDB49F" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M77 36 L76 59.599999999999994" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/></g></svg>',
+    pleased: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="48" ry="6" fill="#000" opacity=".18"/><path d="M80 230 l-6 8 M86 232 l0 8 M92 230 l6 8 M108 230 l-6 8 M114 232 l0 8 M120 230 l6 8" fill="none" stroke="#E9A23B" stroke-width="5" stroke-linecap="round"/><ellipse cx="100" cy="156" rx="62" ry="80" fill="#A97B52" stroke="#1B1810" stroke-width="3"/><ellipse cx="100" cy="188" rx="38" ry="42" fill="#EFE3CB" stroke="#1B1810" stroke-width="2.2"/><path d="M86 172 q7 7 14 0 q7 7 14 0 M80 188 q7 7 14 0 q7 7 14 0 q7 7 14 0 M86 204 q7 7 14 0 q7 7 14 0" fill="none" stroke="#C9B48F" stroke-width="2.6" stroke-linecap="round"/><path d="M44 140 C30 160 30 196 48 214 C56 196 60 170 58 146 Z" fill="#8A603D" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><g transform="rotate(10 146 178)"><rect x="129" y="156" width="34" height="44" rx="3" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.4"/><path d="M135 167 h22 M135 175 h22 M135 183 h22 M135 191 h13" fill="none" stroke="#3C73CF" stroke-width="2" stroke-linecap="round"/><rect x="129" y="156" width="34" height="7" fill="#BDB49F" stroke="#1B1810" stroke-width="2.4"/></g><path d="M156 140 C172 160 172 196 154 214 C146 200 140 180 142 150 Z" fill="#8A603D" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M100 112 C92 96 56 94 54 120 C52 146 82 154 100 140 C118 154 148 146 146 120 C144 94 108 96 100 112 Z" fill="#E8D7B6" stroke="#1B1810" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M64 124 Q79 104 94 124" fill="none" stroke="#1B1810" stroke-width="4.5" stroke-linecap="round"/><path d="M106 124 Q121 104 136 124" fill="none" stroke="#1B1810" stroke-width="4.5" stroke-linecap="round"/><path d="M93 141 L107 141 L100 154 Z" fill="#E9A23B" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="62" cy="142" rx="8" ry="5" fill="#EBA48E" opacity=".8"/><ellipse cx="138" cy="142" rx="8" ry="5" fill="#EBA48E" opacity=".8"/><ellipse cx="100" cy="82" rx="45" ry="8.5" fill="#F6F2E8" stroke="#1B1810" stroke-width="2.8"/><path d="M68 82 L72 30 Q100 22 128 30 L132 82 Q100 87 68 82 Z" fill="#F6F2E8" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M69 64.08 L131 64.08 L132 81 Q100 86 68 81 Z" fill="#BDB49F" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M77 36 L76 59.599999999999994" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/><path d="M158.0 37.0 L159.9 41.5 L164.7 41.8 L161.0 45.0 L162.1 49.7 L158.0 47.1 L153.9 49.7 L155.0 45.0 L151.3 41.8 L156.1 41.5Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/><path d="M42.0 53.0 L43.3 56.2 L46.8 56.5 L44.1 58.7 L44.9 62.0 L42.0 60.3 L39.1 62.0 L39.9 58.7 L37.2 56.5 L40.7 56.2Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/><path d="M170.0 66.0 L171.1 68.5 L173.8 68.8 L171.7 70.6 L172.4 73.2 L170.0 71.8 L167.6 73.2 L168.3 70.6 L166.2 68.8 L168.9 68.5Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/></svg>'
+  },
+  red: {
+    still: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="54" ry="6" fill="#000" opacity=".18"/><path d="M128 222 C170 228 196 196 184 154 C178 132 160 124 150 132 C164 150 166 180 140 196 Z" fill="#E8873A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M184 154 C178 132 160 124 150 132 C156 140 160 150 162 160 C170 156 178 154 184 154 Z" fill="#FFF4E3" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="82" cy="232" rx="14" ry="7" fill="#5A3420" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="118" cy="232" rx="14" ry="7" fill="#5A3420" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="100" cy="196" rx="46" ry="42" fill="#E8873A" stroke="#1B1810" stroke-width="3"/><path d="M100 160 C82 170 78 200 100 226 C122 200 118 170 100 160 Z" fill="#FFF4E3"/><path d="M62 182 Q60 206 74 216" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 182 Q60 206 74 216" fill="none" stroke="#E8873A" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="74" cy="218" rx="7" ry="6" fill="#5A3420" stroke="#1B1810" stroke-width="2.4"/><path d="M138 182 Q140 206 126 216" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M138 182 Q140 206 126 216" fill="none" stroke="#E8873A" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="126" cy="218" rx="7" ry="6" fill="#5A3420" stroke="#1B1810" stroke-width="2.4"/><path d="M52 104 L42 46 L86 80 Z" fill="#E8873A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M54 92 L49 60 L74 80 Z" fill="#B85E24"/><path d="M148 104 L158 46 L114 80 Z" fill="#E8873A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M146 92 L151 60 L126 80 Z" fill="#B85E24"/><path d="M44 118 C44 88 70 72 100 72 C130 72 156 88 156 118 C156 140 140 150 124 156 L100 166 L76 156 C60 150 44 140 44 118 Z" fill="#E8873A" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M50 128 C62 132 76 140 100 166 C124 140 138 132 150 128 C144 146 126 156 100 168 C74 156 56 146 50 128 Z" fill="#FFF4E3" stroke="#1B1810" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="100" cy="140" rx="7" ry="5" fill="#1B1810"/><ellipse cx="78" cy="114" rx="11" ry="12" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><ellipse cx="122" cy="114" rx="11" ry="12" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><circle cx="79" cy="116" r="6.24" fill="#1B1810"/><circle cx="123" cy="116" r="6.24" fill="#1B1810"/><circle cx="81.5" cy="112" r="2.2800000000000002" fill="#FFFDF6"/><circle cx="125.5" cy="112" r="2.2800000000000002" fill="#FFFDF6"/><path d="M92 148 Q100 155.2 108 148" fill="none" stroke="#1B1810" stroke-width="3" stroke-linecap="round"/><ellipse cx="60" cy="130" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><ellipse cx="140" cy="130" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><path d="M58 94 Q64 82 76 78" fill="none" stroke="#F6B27A" stroke-width="3" stroke-linecap="round" opacity=".9"/><ellipse cx="100" cy="78" rx="43" ry="8.5" fill="#D9483E" stroke="#1B1810" stroke-width="2.8"/><path d="M70 78 L74 30 Q100 22 126 30 L130 78 Q100 83 70 78 Z" fill="#D9483E" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M71 61.36 L129 61.36 L130 77 Q100 82 70 77 Z" fill="#8E2620" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M79 36 L78 57.2" fill="none" stroke="#F08B82" stroke-width="3.5" stroke-linecap="round"/></svg>',
+    talk: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="54" ry="6" fill="#000" opacity=".18"/><path d="M128 222 C170 228 196 196 184 154 C178 132 160 124 150 132 C164 150 166 180 140 196 Z" fill="#E8873A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M184 154 C178 132 160 124 150 132 C156 140 160 150 162 160 C170 156 178 154 184 154 Z" fill="#FFF4E3" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="82" cy="232" rx="14" ry="7" fill="#5A3420" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="118" cy="232" rx="14" ry="7" fill="#5A3420" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="100" cy="196" rx="46" ry="42" fill="#E8873A" stroke="#1B1810" stroke-width="3"/><path d="M100 160 C82 170 78 200 100 226 C122 200 118 170 100 160 Z" fill="#FFF4E3"/><path d="M62 182 Q60 206 74 216" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 182 Q60 206 74 216" fill="none" stroke="#E8873A" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="74" cy="218" rx="7" ry="6" fill="#5A3420" stroke="#1B1810" stroke-width="2.4"/><path d="M138 180 Q130 196 110 192" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M138 180 Q130 196 110 192" fill="none" stroke="#E8873A" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="108" cy="190" rx="7" ry="6" fill="#5A3420" stroke="#1B1810" stroke-width="2.4"/><path d="M100 191 C86 181.2 93 172.8 100 179.8 C107 172.8 114 181.2 100 191 Z" fill="#E5574C" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M52 104 L42 46 L86 80 Z" fill="#E8873A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M54 92 L49 60 L74 80 Z" fill="#B85E24"/><path d="M148 104 L158 46 L114 80 Z" fill="#E8873A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M146 92 L151 60 L126 80 Z" fill="#B85E24"/><path d="M44 118 C44 88 70 72 100 72 C130 72 156 88 156 118 C156 140 140 150 124 156 L100 166 L76 156 C60 150 44 140 44 118 Z" fill="#E8873A" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M50 128 C62 132 76 140 100 166 C124 140 138 132 150 128 C144 146 126 156 100 168 C74 156 56 146 50 128 Z" fill="#FFF4E3" stroke="#1B1810" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="100" cy="140" rx="7" ry="5" fill="#1B1810"/><ellipse cx="78" cy="114" rx="11" ry="12" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><ellipse cx="122" cy="114" rx="11" ry="12" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><circle cx="79" cy="116" r="6.24" fill="#1B1810"/><circle cx="123" cy="116" r="6.24" fill="#1B1810"/><circle cx="81.5" cy="112" r="2.2800000000000002" fill="#FFFDF6"/><circle cx="125.5" cy="112" r="2.2800000000000002" fill="#FFFDF6"/><ellipse cx="100" cy="151" rx="4.8" ry="5.6" fill="#1B1810"/><ellipse cx="100" cy="154" rx="3.04" ry="2.24" fill="#E07A6C"/><ellipse cx="60" cy="130" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><ellipse cx="140" cy="130" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><path d="M58 94 Q64 82 76 78" fill="none" stroke="#F6B27A" stroke-width="3" stroke-linecap="round" opacity=".9"/><ellipse cx="100" cy="78" rx="43" ry="8.5" fill="#D9483E" stroke="#1B1810" stroke-width="2.8"/><path d="M70 78 L74 30 Q100 22 126 30 L130 78 Q100 83 70 78 Z" fill="#D9483E" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M71 61.36 L129 61.36 L130 77 Q100 82 70 77 Z" fill="#8E2620" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M79 36 L78 57.2" fill="none" stroke="#F08B82" stroke-width="3.5" stroke-linecap="round"/></svg>',
+    pleased: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="54" ry="6" fill="#000" opacity=".18"/><path d="M128 222 C170 228 196 196 184 154 C178 132 160 124 150 132 C164 150 166 180 140 196 Z" fill="#E8873A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M184 154 C178 132 160 124 150 132 C156 140 160 150 162 160 C170 156 178 154 184 154 Z" fill="#FFF4E3" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="82" cy="232" rx="14" ry="7" fill="#5A3420" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="118" cy="232" rx="14" ry="7" fill="#5A3420" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="100" cy="196" rx="46" ry="42" fill="#E8873A" stroke="#1B1810" stroke-width="3"/><path d="M100 160 C82 170 78 200 100 226 C122 200 118 170 100 160 Z" fill="#FFF4E3"/><path d="M62 180 Q46 160 50 136" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 180 Q46 160 50 136" fill="none" stroke="#E8873A" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="50" cy="132" rx="7" ry="6" fill="#5A3420" stroke="#1B1810" stroke-width="2.4"/><path d="M138 180 Q154 160 150 136" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M138 180 Q154 160 150 136" fill="none" stroke="#E8873A" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="150" cy="132" rx="7" ry="6" fill="#5A3420" stroke="#1B1810" stroke-width="2.4"/><path d="M52 104 L42 46 L86 80 Z" fill="#E8873A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M54 92 L49 60 L74 80 Z" fill="#B85E24"/><path d="M148 104 L158 46 L114 80 Z" fill="#E8873A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M146 92 L151 60 L126 80 Z" fill="#B85E24"/><path d="M44 118 C44 88 70 72 100 72 C130 72 156 88 156 118 C156 140 140 150 124 156 L100 166 L76 156 C60 150 44 140 44 118 Z" fill="#E8873A" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M50 128 C62 132 76 140 100 166 C124 140 138 132 150 128 C144 146 126 156 100 168 C74 156 56 146 50 128 Z" fill="#FFF4E3" stroke="#1B1810" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="100" cy="140" rx="7" ry="5" fill="#1B1810"/><path d="M66 116 Q78 99.6 90 116" fill="none" stroke="#1B1810" stroke-width="4.5" stroke-linecap="round"/><path d="M110 116 Q122 99.6 134 116" fill="none" stroke="#1B1810" stroke-width="4.5" stroke-linecap="round"/><path d="M90 148 Q100 160 110 148 Z" fill="#1B1810"/><path d="M96 152.8 Q100 156 104 152.8" fill="none" stroke="#E07A6C" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="60" cy="130" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><ellipse cx="140" cy="130" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><path d="M58 94 Q64 82 76 78" fill="none" stroke="#F6B27A" stroke-width="3" stroke-linecap="round" opacity=".9"/><g transform="rotate(-5 100 78)"><ellipse cx="100" cy="78" rx="43" ry="8.5" fill="#D9483E" stroke="#1B1810" stroke-width="2.8"/><path d="M70 78 L74 30 Q100 22 126 30 L130 78 Q100 83 70 78 Z" fill="#D9483E" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M71 61.36 L129 61.36 L130 77 Q100 82 70 77 Z" fill="#8E2620" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M79 36 L78 57.2" fill="none" stroke="#F08B82" stroke-width="3.5" stroke-linecap="round"/></g><path d="M160 57 C146 47.2 153 38.8 160 45.8 C167 38.8 174 47.2 160 57 Z" fill="#E5574C" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M40 69 C30 62 35 56 40 61 C45 56 50 62 40 69 Z" fill="#E5574C" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M170.0 76.0 L171.1 78.5 L173.8 78.8 L171.7 80.6 L172.4 83.2 L170.0 81.8 L167.6 83.2 L168.3 80.6 L166.2 78.8 L168.9 78.5Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/></svg>'
+  },
+  yellow: {
+    still: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="46" ry="6" fill="#000" opacity=".18"/><g transform="translate(0 0)"><ellipse cx="56" cy="132" rx="24" ry="38" fill="#DCEFF7" stroke="#1B1810" stroke-width="2.6" transform="rotate(-34 56 132)" opacity=".95"/><ellipse cx="144" cy="132" rx="24" ry="38" fill="#DCEFF7" stroke="#1B1810" stroke-width="2.6" transform="rotate(34 144 132)" opacity=".95"/><path d="M50 124 Q56 112 64 108 M150 124 Q144 112 136 108" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/><path d="M82 92 Q66 72 52 66" fill="none" stroke="#1B1810" stroke-width="3.5" stroke-linecap="round"/><circle cx="50" cy="65" r="6" fill="#4A3420" stroke="#1B1810" stroke-width="2"/><path d="M118 92 Q134 72 148 66" fill="none" stroke="#1B1810" stroke-width="3.5" stroke-linecap="round"/><circle cx="150" cy="65" r="6" fill="#4A3420" stroke="#1B1810" stroke-width="2"/><path d="M94 226 L100 240 L106 226 Z" fill="#4A3420" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="84" cy="230" rx="9" ry="5" fill="#4A3420" stroke="#1B1810" stroke-width="2.2"/><ellipse cx="116" cy="230" rx="9" ry="5" fill="#4A3420" stroke="#1B1810" stroke-width="2.2"/><circle cx="100" cy="160" r="68" fill="#E9A62A" stroke="#1B1810" stroke-width="3"/><path d="M36.6 180 L163.4 180 A66.5 66.5 0 0 1 155.9 196 L44.1 196 A66.5 66.5 0 0 1 36.6 180 Z" fill="#4A3420"/><path d="M54.0 208 L146.0 208 A66.5 66.5 0 0 1 124.0 222 L76.0 222 A66.5 66.5 0 0 1 54.0 208 Z" fill="#4A3420"/><path d="M38 168 Q26 184 34 196" fill="none" stroke="#1B1810" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 168 Q26 184 34 196" fill="none" stroke="#4A3420" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M162 168 Q176 184 168 196" fill="none" stroke="#1B1810" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M162 168 Q176 184 168 196" fill="none" stroke="#4A3420" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 132 Q52 112 70 100" fill="none" stroke="#F8D27A" stroke-width="4" stroke-linecap="round"/><ellipse cx="80" cy="142" rx="12" ry="13" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><ellipse cx="120" cy="142" rx="12" ry="13" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><circle cx="81" cy="144" r="6.76" fill="#1B1810"/><circle cx="121" cy="144" r="6.76" fill="#1B1810"/><circle cx="83.5" cy="140" r="2.47" fill="#FFFDF6"/><circle cx="123.5" cy="140" r="2.47" fill="#FFFDF6"/><path d="M91 162 Q100 170.1 109 162" fill="none" stroke="#1B1810" stroke-width="3" stroke-linecap="round"/><ellipse cx="62" cy="160" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><ellipse cx="138" cy="160" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><ellipse cx="100" cy="98" rx="43" ry="8.5" fill="#FFD84A" stroke="#1B1810" stroke-width="2.8"/><path d="M70 98 L74 48 Q100 40 126 48 L130 98 Q100 103 70 98 Z" fill="#FFD84A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M71 80.72 L129 80.72 L130 97 Q100 102 70 97 Z" fill="#B48A0E" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M79 54 L78 76.4" fill="none" stroke="#FFF1B0" stroke-width="3.5" stroke-linecap="round"/></g></svg>',
+    talk: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="46" ry="6" fill="#000" opacity=".18"/><g transform="translate(0 0)"><ellipse cx="56" cy="132" rx="24" ry="38" fill="#DCEFF7" stroke="#1B1810" stroke-width="2.6" transform="rotate(-34 56 132)" opacity=".95"/><ellipse cx="144" cy="132" rx="24" ry="38" fill="#DCEFF7" stroke="#1B1810" stroke-width="2.6" transform="rotate(34 144 132)" opacity=".95"/><path d="M50 124 Q56 112 64 108 M150 124 Q144 112 136 108" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/><path d="M82 92 Q66 72 52 66" fill="none" stroke="#1B1810" stroke-width="3.5" stroke-linecap="round"/><circle cx="50" cy="65" r="6" fill="#4A3420" stroke="#1B1810" stroke-width="2"/><path d="M118 92 Q134 72 148 66" fill="none" stroke="#1B1810" stroke-width="3.5" stroke-linecap="round"/><circle cx="150" cy="65" r="6" fill="#4A3420" stroke="#1B1810" stroke-width="2"/><path d="M94 226 L100 240 L106 226 Z" fill="#4A3420" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="84" cy="230" rx="9" ry="5" fill="#4A3420" stroke="#1B1810" stroke-width="2.2"/><ellipse cx="116" cy="230" rx="9" ry="5" fill="#4A3420" stroke="#1B1810" stroke-width="2.2"/><circle cx="100" cy="160" r="68" fill="#E9A62A" stroke="#1B1810" stroke-width="3"/><path d="M36.6 180 L163.4 180 A66.5 66.5 0 0 1 155.9 196 L44.1 196 A66.5 66.5 0 0 1 36.6 180 Z" fill="#4A3420"/><path d="M54.0 208 L146.0 208 A66.5 66.5 0 0 1 124.0 222 L76.0 222 A66.5 66.5 0 0 1 54.0 208 Z" fill="#4A3420"/><path d="M38 168 Q26 152 30 134" fill="none" stroke="#1B1810" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 168 Q26 152 30 134" fill="none" stroke="#4A3420" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M162 168 Q176 184 168 196" fill="none" stroke="#1B1810" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M162 168 Q176 184 168 196" fill="none" stroke="#4A3420" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="122" r="9" fill="#FFD84A" stroke="#1B1810" stroke-width="2.2"/><path d="M43.0 122.0 L48.0 122.0" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M39.2 131.2 L42.7 134.7" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M30.0 135.0 L30.0 140.0" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M20.8 131.2 L17.3 134.7" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M17.0 122.0 L12.0 122.0" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M20.8 112.8 L17.3 109.3" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M30.0 109.0 L30.0 104.0" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M39.2 112.8 L42.7 109.3" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M48 132 Q52 112 70 100" fill="none" stroke="#F8D27A" stroke-width="4" stroke-linecap="round"/><ellipse cx="80" cy="142" rx="12" ry="13" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><ellipse cx="120" cy="142" rx="12" ry="13" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.5"/><circle cx="81" cy="144" r="6.76" fill="#1B1810"/><circle cx="121" cy="144" r="6.76" fill="#1B1810"/><circle cx="83.5" cy="140" r="2.47" fill="#FFFDF6"/><circle cx="123.5" cy="140" r="2.47" fill="#FFFDF6"/><ellipse cx="100" cy="165" rx="5.3999999999999995" ry="6.3" fill="#1B1810"/><ellipse cx="100" cy="168" rx="3.42" ry="2.5200000000000005" fill="#E07A6C"/><ellipse cx="62" cy="160" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><ellipse cx="138" cy="160" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><ellipse cx="100" cy="98" rx="43" ry="8.5" fill="#FFD84A" stroke="#1B1810" stroke-width="2.8"/><path d="M70 98 L74 48 Q100 40 126 48 L130 98 Q100 103 70 98 Z" fill="#FFD84A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M71 80.72 L129 80.72 L130 97 Q100 102 70 97 Z" fill="#B48A0E" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M79 54 L78 76.4" fill="none" stroke="#FFF1B0" stroke-width="3.5" stroke-linecap="round"/></g></svg>',
+    pleased: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="46" ry="6" fill="#000" opacity=".18"/><g transform="translate(0 -8)"><ellipse cx="56" cy="132" rx="24" ry="38" fill="#DCEFF7" stroke="#1B1810" stroke-width="2.6" transform="rotate(-34 56 132)" opacity=".95"/><ellipse cx="144" cy="132" rx="24" ry="38" fill="#DCEFF7" stroke="#1B1810" stroke-width="2.6" transform="rotate(34 144 132)" opacity=".95"/><path d="M50 124 Q56 112 64 108 M150 124 Q144 112 136 108" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/><path d="M82 92 Q66 72 52 66" fill="none" stroke="#1B1810" stroke-width="3.5" stroke-linecap="round"/><circle cx="50" cy="65" r="6" fill="#4A3420" stroke="#1B1810" stroke-width="2"/><path d="M118 92 Q134 72 148 66" fill="none" stroke="#1B1810" stroke-width="3.5" stroke-linecap="round"/><circle cx="150" cy="65" r="6" fill="#4A3420" stroke="#1B1810" stroke-width="2"/><path d="M94 226 L100 240 L106 226 Z" fill="#4A3420" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="84" cy="230" rx="9" ry="5" fill="#4A3420" stroke="#1B1810" stroke-width="2.2"/><ellipse cx="116" cy="230" rx="9" ry="5" fill="#4A3420" stroke="#1B1810" stroke-width="2.2"/><circle cx="100" cy="160" r="68" fill="#E9A62A" stroke="#1B1810" stroke-width="3"/><path d="M36.6 180 L163.4 180 A66.5 66.5 0 0 1 155.9 196 L44.1 196 A66.5 66.5 0 0 1 36.6 180 Z" fill="#4A3420"/><path d="M54.0 208 L146.0 208 A66.5 66.5 0 0 1 124.0 222 L76.0 222 A66.5 66.5 0 0 1 54.0 208 Z" fill="#4A3420"/><path d="M38 166 Q24 146 30 126" fill="none" stroke="#1B1810" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 166 Q24 146 30 126" fill="none" stroke="#4A3420" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M162 166 Q176 146 170 126" fill="none" stroke="#1B1810" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M162 166 Q176 146 170 126" fill="none" stroke="#4A3420" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 132 Q52 112 70 100" fill="none" stroke="#F8D27A" stroke-width="4" stroke-linecap="round"/><path d="M67 144 Q80 126.4 93 144" fill="none" stroke="#1B1810" stroke-width="4.5" stroke-linecap="round"/><path d="M107 144 Q120 126.4 133 144" fill="none" stroke="#1B1810" stroke-width="4.5" stroke-linecap="round"/><path d="M89 162 Q100 175.5 111 162 Z" fill="#1B1810"/><path d="M95.5 167.4 Q100 171 104.5 167.4" fill="none" stroke="#E07A6C" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="62" cy="160" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><ellipse cx="138" cy="160" rx="8" ry="5" fill="#F07A6A" opacity=".8"/><g transform="rotate(6 100 98)"><ellipse cx="100" cy="98" rx="43" ry="8.5" fill="#FFD84A" stroke="#1B1810" stroke-width="2.8"/><path d="M70 98 L74 48 Q100 40 126 48 L130 98 Q100 103 70 98 Z" fill="#FFD84A" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M71 80.72 L129 80.72 L130 97 Q100 102 70 97 Z" fill="#B48A0E" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M79 54 L78 76.4" fill="none" stroke="#FFF1B0" stroke-width="3.5" stroke-linecap="round"/></g></g><circle cx="164" cy="42" r="9" fill="#FFD84A" stroke="#1B1810" stroke-width="2.2"/><path d="M177.0 42.0 L182.0 42.0" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M173.2 51.2 L176.7 54.7" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M164.0 55.0 L164.0 60.0" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M154.8 51.2 L151.3 54.7" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M151.0 42.0 L146.0 42.0" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M154.8 32.8 L151.3 29.3" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M164.0 29.0 L164.0 24.0" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M173.2 32.8 L176.7 29.3" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M36.0 45.0 L37.3 48.2 L40.8 48.5 L38.1 50.7 L38.9 54.0 L36.0 52.3 L33.1 54.0 L33.9 50.7 L31.2 48.5 L34.7 48.2Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/></svg>'
+  },
+  black: {
+    still: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="58" ry="6" fill="#000" opacity=".18"/><path d="M30 196 C26 138 58 112 100 112 C142 112 174 138 170 196 C168 218 150 228 100 228 C50 228 32 218 30 196 Z" fill="#7E6040" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M36 196 C34 150 62 122 100 122 C138 122 166 150 164 196" fill="none" stroke="#A3825A" stroke-width="5" stroke-linecap="round"/><path d="M44 156 L62 146 L64 170 L46 182 M156 156 L138 146 L136 170 L154 182 M40 200 L58 188 M160 200 L142 188" fill="none" stroke="#5A4228" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="82" cy="232" rx="16" ry="8" fill="#B5A983" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="118" cy="232" rx="16" ry="8" fill="#B5A983" stroke="#1B1810" stroke-width="2.6"/><path d="M64 160 C64 140 80 132 100 132 C120 132 136 140 136 160 L136 200 C136 220 120 230 100 230 C80 230 64 220 64 200 Z" fill="#E7D6A8" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M66 168 L134 168 M64 186 L136 186 M66 204 L134 204 M100 134 L100 228" fill="none" stroke="#C2AE7C" stroke-width="2.4" stroke-linecap="round"/><path d="M66 160 Q50 180 58 196" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M66 160 Q50 180 58 196" fill="none" stroke="#B5A983" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 160 Q150 178 142 192" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 160 Q150 178 142 192" fill="none" stroke="#B5A983" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate(24 146 178)"><path d="M146 192 L146 212" fill="none" stroke="#1B1810" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M146 192 L146 212" fill="none" stroke="#7E6040" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="146" cy="178" r="15" fill="#CFE8F2" stroke="#1B1810" stroke-width="3"/><circle cx="146" cy="178" r="11" fill="none" stroke="#8C8576" stroke-width="2"/><path d="M139 174 Q141 169 146 168" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/></g><path d="M84 140 L84 124 L116 124 L116 140 Z" fill="#B5A983" stroke="#1B1810" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="100" cy="98" rx="48" ry="40" fill="#B5A983" stroke="#1B1810" stroke-width="3"/><path d="M64 84 Q70 70 84 66" fill="none" stroke="#D8CFAE" stroke-width="3" stroke-linecap="round"/><ellipse cx="80" cy="100" rx="5.8500000000000005" ry="6.5" fill="#1B1810"/><ellipse cx="120" cy="100" rx="5.8500000000000005" ry="6.5" fill="#1B1810"/><circle cx="82" cy="98" r="1.8" fill="#FFFDF6"/><circle cx="122" cy="98" r="1.8" fill="#FFFDF6"/><path d="M70 87 L90 89 M110 84 Q120 77 132 82" fill="none" stroke="#1B1810" stroke-width="3.2" stroke-linecap="round"/><path d="M94 120 Q100 125.4 106 120" fill="none" stroke="#1B1810" stroke-width="3" stroke-linecap="round"/><ellipse cx="66" cy="112" rx="8" ry="5" fill="#D9988A" opacity=".8"/><ellipse cx="134" cy="112" rx="8" ry="5" fill="#D9988A" opacity=".8"/><ellipse cx="100" cy="66" rx="42" ry="8.5" fill="#2D2924" stroke="#1B1810" stroke-width="2.8"/><path d="M71 66 L75 18 Q100 10 125 18 L129 66 Q100 71 71 66 Z" fill="#2D2924" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M72 49.36 L128 49.36 L129 65 Q100 70 71 65 Z" fill="#8C8576" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 24 L79 45.2" fill="none" stroke="#6B6355" stroke-width="3.5" stroke-linecap="round"/></svg>',
+    talk: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="58" ry="6" fill="#000" opacity=".18"/><path d="M30 196 C26 138 58 112 100 112 C142 112 174 138 170 196 C168 218 150 228 100 228 C50 228 32 218 30 196 Z" fill="#7E6040" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M36 196 C34 150 62 122 100 122 C138 122 166 150 164 196" fill="none" stroke="#A3825A" stroke-width="5" stroke-linecap="round"/><path d="M44 156 L62 146 L64 170 L46 182 M156 156 L138 146 L136 170 L154 182 M40 200 L58 188 M160 200 L142 188" fill="none" stroke="#5A4228" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="82" cy="232" rx="16" ry="8" fill="#B5A983" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="118" cy="232" rx="16" ry="8" fill="#B5A983" stroke="#1B1810" stroke-width="2.6"/><path d="M64 160 C64 140 80 132 100 132 C120 132 136 140 136 160 L136 200 C136 220 120 230 100 230 C80 230 64 220 64 200 Z" fill="#E7D6A8" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M66 168 L134 168 M64 186 L136 186 M66 204 L134 204 M100 134 L100 228" fill="none" stroke="#C2AE7C" stroke-width="2.4" stroke-linecap="round"/><path d="M66 160 Q50 180 58 196" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M66 160 Q50 180 58 196" fill="none" stroke="#B5A983" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 160 Q152 150 150 128" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 160 Q152 150 150 128" fill="none" stroke="#B5A983" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate(8 152 108)"><path d="M152 122 L152 142" fill="none" stroke="#1B1810" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M152 122 L152 142" fill="none" stroke="#7E6040" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="152" cy="108" r="15" fill="#CFE8F2" stroke="#1B1810" stroke-width="3"/><circle cx="152" cy="108" r="11" fill="none" stroke="#8C8576" stroke-width="2"/><path d="M145 104 Q147 99 152 98" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/></g><path d="M84 140 L84 124 L116 124 L116 140 Z" fill="#B5A983" stroke="#1B1810" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="100" cy="98" rx="48" ry="40" fill="#B5A983" stroke="#1B1810" stroke-width="3"/><path d="M64 84 Q70 70 84 66" fill="none" stroke="#D8CFAE" stroke-width="3" stroke-linecap="round"/><ellipse cx="80" cy="100" rx="5.8500000000000005" ry="6.5" fill="#1B1810"/><ellipse cx="120" cy="100" rx="5.8500000000000005" ry="6.5" fill="#1B1810"/><circle cx="82" cy="98" r="1.8" fill="#FFFDF6"/><circle cx="122" cy="98" r="1.8" fill="#FFFDF6"/><path d="M70 87 L90 89 M110 84 Q120 77 132 82" fill="none" stroke="#1B1810" stroke-width="3.2" stroke-linecap="round"/><ellipse cx="100" cy="123" rx="4.8" ry="5.6" fill="#1B1810"/><ellipse cx="100" cy="126" rx="3.04" ry="2.24" fill="#E07A6C"/><ellipse cx="66" cy="112" rx="8" ry="5" fill="#D9988A" opacity=".8"/><ellipse cx="134" cy="112" rx="8" ry="5" fill="#D9988A" opacity=".8"/><g transform="rotate(-5 100 66)"><ellipse cx="100" cy="66" rx="42" ry="8.5" fill="#2D2924" stroke="#1B1810" stroke-width="2.8"/><path d="M71 66 L75 18 Q100 10 125 18 L129 66 Q100 71 71 66 Z" fill="#2D2924" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M72 49.36 L128 49.36 L129 65 Q100 70 71 65 Z" fill="#8C8576" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 24 L79 45.2" fill="none" stroke="#6B6355" stroke-width="3.5" stroke-linecap="round"/></g></svg>',
+    pleased: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="58" ry="6" fill="#000" opacity=".18"/><path d="M30 196 C26 138 58 112 100 112 C142 112 174 138 170 196 C168 218 150 228 100 228 C50 228 32 218 30 196 Z" fill="#7E6040" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M36 196 C34 150 62 122 100 122 C138 122 166 150 164 196" fill="none" stroke="#A3825A" stroke-width="5" stroke-linecap="round"/><path d="M44 156 L62 146 L64 170 L46 182 M156 156 L138 146 L136 170 L154 182 M40 200 L58 188 M160 200 L142 188" fill="none" stroke="#5A4228" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="82" cy="232" rx="16" ry="8" fill="#B5A983" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="118" cy="232" rx="16" ry="8" fill="#B5A983" stroke="#1B1810" stroke-width="2.6"/><path d="M64 160 C64 140 80 132 100 132 C120 132 136 140 136 160 L136 200 C136 220 120 230 100 230 C80 230 64 220 64 200 Z" fill="#E7D6A8" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M66 168 L134 168 M64 186 L136 186 M66 204 L134 204 M100 134 L100 228" fill="none" stroke="#C2AE7C" stroke-width="2.4" stroke-linecap="round"/><path d="M66 160 Q50 180 58 196" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M66 160 Q50 180 58 196" fill="none" stroke="#B5A983" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 160 Q152 178 144 196" fill="none" stroke="#1B1810" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 160 Q152 178 144 196" fill="none" stroke="#B5A983" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate(30 150 206)"><path d="M150 220 L150 240" fill="none" stroke="#1B1810" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M150 220 L150 240" fill="none" stroke="#7E6040" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="150" cy="206" r="15" fill="#CFE8F2" stroke="#1B1810" stroke-width="3"/><circle cx="150" cy="206" r="11" fill="none" stroke="#8C8576" stroke-width="2"/><path d="M143 202 Q145 197 150 196" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/></g><path d="M84 140 L84 124 L116 124 L116 140 Z" fill="#B5A983" stroke="#1B1810" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="100" cy="98" rx="48" ry="40" fill="#B5A983" stroke="#1B1810" stroke-width="3"/><path d="M64 84 Q70 70 84 66" fill="none" stroke="#D8CFAE" stroke-width="3" stroke-linecap="round"/><path d="M72 102 Q80 92 88 102" fill="none" stroke="#1B1810" stroke-width="4" stroke-linecap="round"/><path d="M112 102 Q120 92 128 102" fill="none" stroke="#1B1810" stroke-width="4" stroke-linecap="round"/><path d="M90 120 Q100 132 110 120 Z" fill="#1B1810"/><path d="M96 124.8 Q100 128 104 124.8" fill="none" stroke="#E07A6C" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="66" cy="112" rx="8" ry="5" fill="#D9988A" opacity=".8"/><ellipse cx="134" cy="112" rx="8" ry="5" fill="#D9988A" opacity=".8"/><ellipse cx="100" cy="66" rx="42" ry="8.5" fill="#2D2924" stroke="#1B1810" stroke-width="2.8"/><path d="M71 66 L75 18 Q100 10 125 18 L129 66 Q100 71 71 66 Z" fill="#2D2924" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M72 49.36 L128 49.36 L129 65 Q100 70 71 65 Z" fill="#8C8576" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 24 L79 45.2" fill="none" stroke="#6B6355" stroke-width="3.5" stroke-linecap="round"/><path d="M158.0 37.0 L159.9 41.5 L164.7 41.8 L161.0 45.0 L162.1 49.7 L158.0 47.1 L153.9 49.7 L155.0 45.0 L151.3 41.8 L156.1 41.5Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/><path d="M42.0 53.0 L43.3 56.2 L46.8 56.5 L44.1 58.7 L44.9 62.0 L42.0 60.3 L39.1 62.0 L39.9 58.7 L37.2 56.5 L40.7 56.2Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/><path d="M170.0 66.0 L171.1 68.5 L173.8 68.8 L171.7 70.6 L172.4 73.2 L170.0 71.8 L167.6 73.2 L168.3 70.6 L166.2 68.8 L168.9 68.5Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/></svg>'
+  },
+  green: {
+    still: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="54" ry="6" fill="#000" opacity=".18"/><path d="M126 214 C160 222 178 200 172 178 C168 162 150 160 146 172 C142 182 152 188 158 182" fill="none" stroke="#1B1810" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M126 214 C160 222 178 200 172 178 C168 162 150 160 146 172 C142 182 152 188 158 182" fill="none" stroke="#A97BC9" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="80" cy="232" rx="14" ry="7" fill="#A97BC9" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="114" cy="232" rx="14" ry="7" fill="#A97BC9" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="96" cy="190" rx="44" ry="42" fill="#A97BC9" stroke="#1B1810" stroke-width="3"/><path d="M78 166 C86 182 86 210 96 228 C106 210 106 182 114 166 Z" fill="#D5BDEA"/><circle cx="70" cy="200" r="5" fill="#8A5DAE"/><circle cx="124" cy="188" r="4" fill="#8A5DAE"/><circle cx="118" cy="212" r="3.5" fill="#8A5DAE"/><path d="M58 180 Q44 196 54 212" fill="none" stroke="#1B1810" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 180 Q44 196 54 212" fill="none" stroke="#A97BC9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 178 Q152 194 144 208" fill="none" stroke="#1B1810" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 178 Q152 194 144 208" fill="none" stroke="#A97BC9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate(40 144 208)"><path d="M144 208 L144 170" fill="none" stroke="#1B1810" stroke-width="8" stroke-linecap="round"/><path d="M144 208 L144 170" fill="none" stroke="#E9A23B" stroke-width="4" stroke-linecap="round"/><rect x="139" y="160" width="10" height="10" fill="#BDB49F" stroke="#1B1810" stroke-width="2"/><path d="M139 160 Q140 148 144 142 Q148 148 149 160 Z" fill="#3FA163" stroke="#1B1810" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M46 122 C44 92 68 74 98 74 C130 74 152 92 152 120 C152 146 130 160 100 160 C70 160 48 148 46 122 Z" fill="#A97BC9" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="114" cy="96" r="4" fill="#8A5DAE"/><circle cx="76" cy="90" r="3" fill="#8A5DAE"/><circle cx="62" cy="114" r="20" fill="#A97BC9" stroke="#1B1810" stroke-width="3"/><circle cx="138" cy="114" r="20" fill="#A97BC9" stroke="#1B1810" stroke-width="3"/><circle cx="62" cy="114" r="11" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.4"/><circle cx="138" cy="114" r="11" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.4"/><circle cx="57" cy="109" r="5.5" fill="#1B1810"/><circle cx="144" cy="118" r="5.5" fill="#1B1810"/><path d="M76 136 Q100 152 124 136" fill="none" stroke="#1B1810" stroke-width="3.2" stroke-linecap="round"/><ellipse cx="80" cy="128" rx="8" ry="5" fill="#F09AB8" opacity=".8"/><ellipse cx="120" cy="128" rx="8" ry="5" fill="#F09AB8" opacity=".8"/><path d="M60 92 Q66 82 78 78" fill="none" stroke="#D5BDEA" stroke-width="3" stroke-linecap="round"/><g transform="rotate(3 100 80)"><ellipse cx="100" cy="80" rx="42" ry="8.5" fill="#3FA163" stroke="#1B1810" stroke-width="2.8"/><path d="M71 80 L75 32 Q100 24 125 32 L129 80 Q100 85 71 80 Z" fill="#3FA163" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M72 63.36 L128 63.36 L129 79 Q100 84 71 79 Z" fill="#22683B" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 38 L79 59.2" fill="none" stroke="#8FD3A6" stroke-width="3.5" stroke-linecap="round"/></g></svg>',
+    talk: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="54" ry="6" fill="#000" opacity=".18"/><path d="M126 214 C160 222 178 200 172 178 C168 162 150 160 146 172 C142 182 152 188 158 182" fill="none" stroke="#1B1810" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M126 214 C160 222 178 200 172 178 C168 162 150 160 146 172 C142 182 152 188 158 182" fill="none" stroke="#A97BC9" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="80" cy="232" rx="14" ry="7" fill="#A97BC9" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="114" cy="232" rx="14" ry="7" fill="#A97BC9" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="96" cy="190" rx="44" ry="42" fill="#A97BC9" stroke="#1B1810" stroke-width="3"/><path d="M78 166 C86 182 86 210 96 228 C106 210 106 182 114 166 Z" fill="#D5BDEA"/><circle cx="70" cy="200" r="5" fill="#8A5DAE"/><circle cx="124" cy="188" r="4" fill="#8A5DAE"/><circle cx="118" cy="212" r="3.5" fill="#8A5DAE"/><path d="M58 180 Q44 196 54 212" fill="none" stroke="#1B1810" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 180 Q44 196 54 212" fill="none" stroke="#A97BC9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 176 Q154 164 156 140" fill="none" stroke="#1B1810" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 176 Q154 164 156 140" fill="none" stroke="#A97BC9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate(14 156 140)"><path d="M156 140 L156 102" fill="none" stroke="#1B1810" stroke-width="8" stroke-linecap="round"/><path d="M156 140 L156 102" fill="none" stroke="#E9A23B" stroke-width="4" stroke-linecap="round"/><rect x="151" y="92" width="10" height="10" fill="#BDB49F" stroke="#1B1810" stroke-width="2"/><path d="M151 92 Q152 80 156 74 Q160 80 161 92 Z" fill="#3FA163" stroke="#1B1810" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M46 122 C44 92 68 74 98 74 C130 74 152 92 152 120 C152 146 130 160 100 160 C70 160 48 148 46 122 Z" fill="#A97BC9" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="114" cy="96" r="4" fill="#8A5DAE"/><circle cx="76" cy="90" r="3" fill="#8A5DAE"/><circle cx="62" cy="114" r="20" fill="#A97BC9" stroke="#1B1810" stroke-width="3"/><circle cx="138" cy="114" r="20" fill="#A97BC9" stroke="#1B1810" stroke-width="3"/><circle cx="62" cy="114" r="11" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.4"/><circle cx="138" cy="114" r="11" fill="#FFFDF6" stroke="#1B1810" stroke-width="2.4"/><circle cx="66" cy="110" r="5.5" fill="#1B1810"/><circle cx="142" cy="110" r="5.5" fill="#1B1810"/><ellipse cx="100" cy="141" rx="6" ry="7" fill="#1B1810"/><ellipse cx="100" cy="144" rx="3.8" ry="2.8000000000000003" fill="#E07A6C"/><ellipse cx="80" cy="128" rx="8" ry="5" fill="#F09AB8" opacity=".8"/><ellipse cx="120" cy="128" rx="8" ry="5" fill="#F09AB8" opacity=".8"/><path d="M60 92 Q66 82 78 78" fill="none" stroke="#D5BDEA" stroke-width="3" stroke-linecap="round"/><g transform="rotate(8 100 80)"><ellipse cx="100" cy="80" rx="42" ry="8.5" fill="#3FA163" stroke="#1B1810" stroke-width="2.8"/><path d="M71 80 L75 32 Q100 24 125 32 L129 80 Q100 85 71 80 Z" fill="#3FA163" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M72 63.36 L128 63.36 L129 79 Q100 84 71 79 Z" fill="#22683B" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 38 L79 59.2" fill="none" stroke="#8FD3A6" stroke-width="3.5" stroke-linecap="round"/></g></svg>',
+    pleased: '<svg viewBox="0 -12 200 262" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><ellipse cx="100" cy="240" rx="54" ry="6" fill="#000" opacity=".18"/><path d="M126 214 C160 222 178 200 172 178 C168 162 150 160 146 172 C142 182 152 188 158 182" fill="none" stroke="#1B1810" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M126 214 C160 222 178 200 172 178 C168 162 150 160 146 172 C142 182 152 188 158 182" fill="none" stroke="#A97BC9" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="80" cy="232" rx="14" ry="7" fill="#A97BC9" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="114" cy="232" rx="14" ry="7" fill="#A97BC9" stroke="#1B1810" stroke-width="2.6"/><ellipse cx="96" cy="190" rx="44" ry="42" fill="#A97BC9" stroke="#1B1810" stroke-width="3"/><path d="M78 166 C86 182 86 210 96 228 C106 210 106 182 114 166 Z" fill="#D5BDEA"/><circle cx="70" cy="200" r="5" fill="#8A5DAE"/><circle cx="124" cy="188" r="4" fill="#8A5DAE"/><circle cx="118" cy="212" r="3.5" fill="#8A5DAE"/><path d="M58 180 Q34 166 28 146" fill="none" stroke="#1B1810" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 180 Q34 166 28 146" fill="none" stroke="#A97BC9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 178 Q152 196 146 210" fill="none" stroke="#1B1810" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 178 Q152 196 146 210" fill="none" stroke="#A97BC9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M46 122 C44 92 68 74 98 74 C130 74 152 92 152 120 C152 146 130 160 100 160 C70 160 48 148 46 122 Z" fill="#A97BC9" stroke="#1B1810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="114" cy="96" r="4" fill="#8A5DAE"/><circle cx="76" cy="90" r="3" fill="#8A5DAE"/><circle cx="62" cy="114" r="20" fill="#A97BC9" stroke="#1B1810" stroke-width="3"/><circle cx="138" cy="114" r="20" fill="#A97BC9" stroke="#1B1810" stroke-width="3"/><path d="M51 116 Q62 100.8 73 116" fill="none" stroke="#1B1810" stroke-width="4.5" stroke-linecap="round"/><path d="M127 116 Q138 100.8 149 116" fill="none" stroke="#1B1810" stroke-width="4.5" stroke-linecap="round"/><path d="M85 136 Q100 155.5 115 136 Z" fill="#1B1810"/><path d="M93.5 143.8 Q100 149 106.5 143.8" fill="none" stroke="#E07A6C" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="80" cy="128" rx="8" ry="5" fill="#F09AB8" opacity=".8"/><ellipse cx="120" cy="128" rx="8" ry="5" fill="#F09AB8" opacity=".8"/><path d="M60 92 Q66 82 78 78" fill="none" stroke="#D5BDEA" stroke-width="3" stroke-linecap="round"/><g transform="rotate(-6 100 80)"><ellipse cx="100" cy="80" rx="42" ry="8.5" fill="#3FA163" stroke="#1B1810" stroke-width="2.8"/><path d="M71 80 L75 32 Q100 24 125 32 L129 80 Q100 85 71 80 Z" fill="#3FA163" stroke="#1B1810" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M72 63.36 L128 63.36 L129 79 Q100 84 71 79 Z" fill="#22683B" stroke="#1B1810" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 38 L79 59.2" fill="none" stroke="#8FD3A6" stroke-width="3.5" stroke-linecap="round"/></g><circle cx="24" cy="126" r="11" fill="#FFE98A" stroke="#1B1810" stroke-width="2.4"/><rect x="19" y="135" width="10" height="7" rx="1.5" fill="#BDB49F" stroke="#1B1810" stroke-width="2"/><path d="M6 118 l-6 -3 M42 118 l6 -3 M24 108 l0 -6" fill="none" stroke="#1B1810" stroke-width="2.6" stroke-linecap="round"/><path d="M160.0 39.0 L161.9 43.5 L166.7 43.8 L163.0 47.0 L164.1 51.7 L160.0 49.1 L155.9 51.7 L157.0 47.0 L153.3 43.8 L158.1 43.5Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/><path d="M170.0 67.5 L171.2 70.4 L174.3 70.6 L171.9 72.6 L172.6 75.6 L170.0 74.0 L167.4 75.6 L168.1 72.6 L165.7 70.6 L168.8 70.4Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/><path d="M40.0 56.0 L41.1 58.5 L43.8 58.8 L41.7 60.6 L42.4 63.2 L40.0 61.8 L37.6 63.2 L38.3 60.6 L36.2 58.8 L38.9 58.5Z" fill="#F6D365" stroke="#1B1810" stroke-width="1.6" stroke-linejoin="round"/></svg>'
+  }
+};
 
 document.addEventListener("click", function(ev){
   if(followNew && !confirmOpen){
@@ -8152,6 +8891,13 @@ document.addEventListener("click", function(ev){
   else if(act === "extra-open"){ extraOpen(parseInt(el.getAttribute("data-x"), 10) || 0); }
   else if(act === "modal-close"){ extraClose(); }
   else if(act === "modal-back"){ extraClose(); }
+  else if(act === "bs-star"){ bsStar(el.getAttribute("data-idea")); }
+  else if(act === "bs-pen"){ bsPen(el.getAttribute("data-idea")); }
+  else if(act === "bs-add-open"){ bsAddShow(true); }
+  else if(act === "bs-add"){ bsAdd(); }
+  else if(act === "bs-add-cancel"){ bsAddShow(false); }
+  else if(act === "bs-remove"){ bsRemove(el.getAttribute("data-idea")); }
+  else if(act === "bs-next"){ bsNext(); }
 });
 document.addEventListener("mousedown", function(ev){
   if(ev.target && ev.target.id === "modal"){ extraClose(); }
@@ -8176,6 +8922,12 @@ document.addEventListener("input", function(ev){
     openNotes[nid] = true;
     var nb = document.querySelector('.npen[data-note="' + nid + '"]');
     if(nb){ var nh = !!(t.value || "").trim(); nb.classList.toggle("has", nh); var ns = nb.querySelector("span"); if(ns) ns.textContent = nh ? "Note" : "Add a note"; }
+  } else if(t.getAttribute && t.getAttribute("data-role") === "bs-note"){
+    bsNoteSet(t.getAttribute("data-idea"), t.value || "");
+  } else if(t.getAttribute && t.getAttribute("data-role") === "bs-ask"){
+    bsAskSet(t.value || "");
+  } else if(t.getAttribute && t.getAttribute("data-role") === "bs-new"){
+    bsDraftSet(t.value || "");
   } else if(t.getAttribute && t.getAttribute("data-role") === "bcomment"){
     bcomment(t.getAttribute("data-item"), t.value || "");
     var q = cur();
@@ -8210,6 +8962,7 @@ document.addEventListener("keydown", function(ev){
   noteKey(ev);
   if(state.idx >= QUESTIONS.length) return;
   if(ev.target && ev.target.id === "numin" && ev.key === "Enter"){ ev.preventDefault(); if(!numCommitBox()) numRecord(); return; }
+  if(bsKey(ev)) return;
   if(ev.target && (ev.target.tagName === "TEXTAREA" || ev.target.tagName === "INPUT")){
     if(ev.key === "Escape"){ cancelCustom(); }
     return;

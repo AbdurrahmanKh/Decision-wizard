@@ -1,0 +1,163 @@
+{
+  "config": {
+    "title": "Loyalty Points, Brainstorm 1",
+    "tagline": "Points at checkout, looked at through six hats",
+    "product": "Shop Checkout",
+    "kind": "brainstorm",
+    "needs_wizard": "0.8.0"
+  },
+  "topic": {
+    "title": "Loyalty points at checkout",
+    "question": "Should checkout offer loyalty points?",
+    "context": "The checkout redesign kept guest checkout, and the CRM team still wants a reason for guests to make an account. Points are the idea on the table. Nothing is built yet, so this is the time to look at it from every side.",
+    "detail": [
+      {
+        "kind": "quote",
+        "src": "UX research report, June",
+        "text": "41% of completed purchases came through guest checkout."
+      },
+      {
+        "kind": "quote",
+        "src": "CRM strategy memo, August",
+        "text": "Guest orders are unreachable for lifecycle marketing."
+      }
+    ]
+  },
+  "hats": [
+    {
+      "hat": "blue",
+      "line": "Today's focus is points at checkout. Five hats, then back to me."
+    },
+    {
+      "hat": "white",
+      "line": "Numbers first. Here is what we have, and what nobody has measured.",
+      "question": "What do we know about points at checkout?",
+      "ideas": [
+        {
+          "id": "w1",
+          "text": "41% of purchases come through guest checkout, and guests can't hold points.",
+          "why": "From the June research report."
+        },
+        {
+          "id": "w2",
+          "text": "Nobody has asked shoppers whether they would join.",
+          "why": "No survey or test covers it."
+        },
+        {
+          "id": "w3",
+          "text": "Both launch payment providers can show a points balance.",
+          "why": "From the providers' integration docs."
+        },
+        {
+          "id": "w4",
+          "text": "Last year's coupon test lifted repeat orders for two months, then faded.",
+          "why": "From last year's coupon test results."
+        }
+      ],
+      "ask": "What do you know about our shoppers that I don't?"
+    },
+    {
+      "hat": "red",
+      "line": "Never mind the numbers. How does it feel?",
+      "question": "How does points at checkout feel?",
+      "ideas": [
+        {
+          "id": "r1",
+          "text": "Points feel like a thank-you."
+        },
+        {
+          "id": "r2",
+          "text": "Another box at checkout feels like a hurdle."
+        },
+        {
+          "id": "r3",
+          "text": "Shoppers are tired of joining loyalty programs."
+        }
+      ],
+      "ask": "What does your gut say about points?"
+    },
+    {
+      "hat": "yellow",
+      "line": "Let's see what's good about it.",
+      "question": "What could points at checkout do for us?",
+      "ideas": [
+        {
+          "id": "y1",
+          "text": "Points give guests a reason to make an account after paying."
+        },
+        {
+          "id": "y2",
+          "text": "Repeat buyers get something back, so they come back sooner."
+        },
+        {
+          "id": "y3",
+          "text": "A points balance gives the CRM team a reason to write."
+        }
+      ]
+    },
+    {
+      "hat": "black",
+      "line": "Someone has to look for the cracks.",
+      "question": "What could go wrong with points at checkout?",
+      "ideas": [
+        {
+          "id": "k1",
+          "text": "A points line adds weight to the page with the biggest drop-off.",
+          "why": "Checkout loses more shoppers than any other page."
+        },
+        {
+          "id": "k2",
+          "text": "Unspent points sit on the books as money owed.",
+          "why": "Points count as a debt until they are spent or expire."
+        },
+        {
+          "id": "k3",
+          "text": "Points that take months to add up feel like nothing.",
+          "why": "Most shoppers order only a few times a year."
+        }
+      ]
+    },
+    {
+      "hat": "green",
+      "line": "What if we did something else entirely?",
+      "question": "What else could we try?",
+      "ideas": [
+        {
+          "id": "g1",
+          "text": "Show the points, don't ask: \"This order earns 120 points\", with Join after payment."
+        },
+        {
+          "id": "g2",
+          "text": "Free shipping over a threshold instead of points."
+        },
+        {
+          "id": "g3",
+          "text": "Points only from the second order."
+        },
+        {
+          "id": "g4",
+          "text": "Let guests claim their points by email within 30 days."
+        }
+      ]
+    },
+    {
+      "hat": "blue",
+      "line": "Here is what you starred. Now, what's next?",
+      "question": "What did we find, and what should happen next?",
+      "ideas": [
+        {
+          "id": "n1",
+          "text": "Ask 200 shoppers whether they would join, before building anything."
+        },
+        {
+          "id": "n2",
+          "text": "Decide where the points line sits: before or after payment."
+        },
+        {
+          "id": "n3",
+          "text": "Price unspent points with finance."
+        }
+      ]
+    }
+  ]
+}
