@@ -2,6 +2,34 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.7.5, 13 October 2026
+
+### Added
+
+- Wizard: a Keys card in Options, with Number keys pick answers, On or Off. It's on from the first visit.
+- Wizard: Skip to the question, a link at the top of the page that shows when you press Tab.
+
+### Changed
+
+- Wizard: on a screen under 1440 px wide, the companion no longer takes a row above the cards. Beside the question list it stands under the list, and stays in view as you scroll. On a narrower screen it stands beside the progress bar, and its lines show over the bar. The cards start 72 px higher, and over 100 px higher on a phone. The companion's menu opens below it, or above it where there's no room below.
+- Wizard: focus follows your answers. After a pick, focus moves to the next question, or to the follow-up the pick opened. After a bracket pick it moves to the next match, and after the last one to the winner. Back, Skip, Next, Next open question, and the question list take focus to the question. Closing a popup, the custom answer, a notice, Options, or the builder gives focus back to where you were.
+- Wizard: number keys pick only while you're on the question, never from the question list, the header, or the companion.
+- Wizard: a number typed into a number question that the question doesn't allow moves to the nearest allowed value, and Enter records it only on a second press, once you've seen it.
+- Wizard: in the builder, Start from has a Start from it button, so moving through the list copies nothing until you press it.
+- Wizard: a companion line with a button, like Skip for now, stays while you hover it or the button has focus, and when the line ends its button goes with it. A toast stays while you hover it, and a longer message stays longer.
+- Wizard: in the question list, an open question is a ring and an answered one a dot, so they differ by shape as well as colour.
+- Wizard: on a phone, the round's title wraps instead of being cut off.
+- Wizard: in Options, rows that need a companion, or speech bubbles, say so under their name instead of fading.
+
+### Fixed
+
+- Wizard: screen readers now hear the question as a heading, which answer is picked, which question a set of answers belongs to, which row a grouped-row button or note is for, the position of a ranked item after a move, a number with its unit, each bracket match and who beat whom, and the current question in the list with whether it's answered. Arabic and Hebrew text is marked with its language.
+- Wizard: what changes out of sight is said once: a grouped row's answer and count, a new notice, a mood added in Create with Claude, and a number moved to an allowed value. The notices list is no longer read out in full on every change.
+- Wizard: the context popup is named, keeps focus inside, and gives it back when it closes. The companion's menu opens with the arrow keys, has Home and End, reads the round's time, and, when it opened on hover, no longer takes keys from where you are.
+- Wizard: contrast. Muted and amber text in the light theme, red buttons in the dark theme, placeholders, focus rings in the light theme and on the header, and the hat on a picked answer all reach WCAG AA.
+- Wizard: the builder fits narrow screens and 400% zoom, and its moment descriptions wrap instead of being cut off. Two quotes side by side fit a 320 px screen.
+- Wizard: a key wakes the napping companion, as a click does.
+
 ## Wizard 0.7.4 and skill 0.6.3, 13 October 2026
 
 ### Changed

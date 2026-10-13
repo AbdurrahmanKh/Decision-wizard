@@ -18,14 +18,14 @@
 <style>
 :root{
   color-scheme:light;
-  --bg:#F4EFE3; --card:#FFFFFF; --ink:#221F17; --muted:#7A7160;
+  --bg:#F4EFE3; --card:#FFFFFF; --ink:#221F17; --muted:#6E6656;
   --line:#E3DAC4; --line2:#EFE8D6;
   --green:#0E5B46; --green2:#177457; --green-soft:#E4EFE8;
   --gold:#B18A1E; --gold-soft:#F5ECD3;
   --red:#B3362B; --red-soft:#F6E2DF;
-  --amber:#A9700F; --amber-soft:#F5EAD1;
+  --amber:#8F5E0B; --amber-soft:#F5EAD1;
   --field:#FFFFFF; --panel:#FFFDF6;
-  --btn-bg:#221F17; --btn-fg:#F4EFE2; --linkc:#0E5B46;
+  --btn-bg:#221F17; --btn-fg:#F4EFE2; --linkc:#0E5B46; --focus:#946F12;
 }
 [data-theme="dark"]{
   color-scheme:dark;
@@ -36,7 +36,7 @@
   --red:#E07A6C; --red-soft:#452622;
   --amber:#D8A445; --amber-soft:#403319;
   --field:#161B10; --panel:#2A2E1D;
-  --btn-bg:#D2A62F; --btn-fg:#221B06; --linkc:#7BD0AC;
+  --btn-bg:#D2A62F; --btn-fg:#221B06; --linkc:#7BD0AC; --focus:#D2A62F;
 }
 :root{--fs:1}
 html[data-size="compact"]{--fs:.9}
@@ -53,11 +53,11 @@ h1{font-family:'Bricolage Grotesque','IBM Plex Sans',sans-serif;font-size:calc(2
 .hbtn{flex:none;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 14px;border:1px solid rgba(244,239,226,.45);background:transparent;color:#F4EFE2;border-radius:999px;font-size:calc(13.5px*var(--fs));font-weight:700;cursor:pointer;font-family:inherit}
 .hbtn:hover{background:rgba(244,239,226,.1)}
 .hbtn:disabled{opacity:.45;cursor:not-allowed;background:transparent}
-.hbtn:focus-visible{outline:3px solid #B18A1E;outline-offset:2px}
+.hbtn:focus-visible{outline:3px solid #E8C25A;outline-offset:2px}
 .hbtn svg{flex:none}
 #openbtn{margin-left:auto}
 .icon-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(244,239,226,.45);background:transparent;color:#F4EFE2;border-radius:999px;font-size:calc(16px*var(--fs));line-height:1;cursor:pointer;font-family:inherit}
-.icon-btn:focus-visible{outline:3px solid #B18A1E;outline-offset:2px}
+.icon-btn:focus-visible{outline:3px solid #E8C25A;outline-offset:2px}
 .icon-btn:hover{background:rgba(244,239,226,.1)}
 
 .layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:22px;margin-top:20px}
@@ -65,9 +65,9 @@ h1{font-family:'Bricolage Grotesque','IBM Plex Sans',sans-serif;font-size:calc(2
 .sitem{display:flex;align-items:center;gap:8px;width:100%;text-align:left;background:transparent;border:0;border-radius:9px;padding:7px 9px;font-size:calc(13.5px*var(--fs));line-height:1.3;cursor:pointer;color:var(--ink)}
 .sitem:hover{background:var(--line2)}
 .sitem.cur{background:var(--green-soft);font-weight:700}
-.sitem:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
-.sitem .dot{flex:none;width:9px;height:9px;border-radius:999px;background:var(--amber)}
-.sitem .dot.done{background:var(--green)}
+.sitem:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+.sitem .dot{flex:none;width:9px;height:9px;border-radius:999px;border:2px solid var(--amber);background:transparent}
+.sitem .dot.done{background:var(--green);border-color:var(--green)}
 .sitem .sid{flex:none;font-variant-numeric:tabular-nums;font-weight:700;font-size:calc(12px*var(--fs));color:var(--muted);width:26px}
 .sitem .stt{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sitem .scount{flex:none;font-size:calc(11px*var(--fs));color:var(--muted);font-variant-numeric:tabular-nums}
@@ -82,7 +82,7 @@ h1{font-family:'Bricolage Grotesque','IBM Plex Sans',sans-serif;font-size:calc(2
 .mmtime em{font-style:normal}
 .mmtime.paused b,.ptime.paused b{color:var(--muted)}
 .ptime.paused{opacity:.65;border-style:dashed}
-.otime{font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;margin-left:6px}
+.otime{font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;margin-left:2px}
 .obtn{padding:6px 14px;font-size:calc(13.5px*var(--fs))}
 .ptrack{flex:1;background:var(--line2);border:1px solid var(--line);border-radius:999px;height:12px;overflow:hidden}
 .pbar{height:100%;background:linear-gradient(90deg,var(--green),var(--green2));border-radius:999px;transition:width .2s}
@@ -95,6 +95,7 @@ h1{font-family:'Bricolage Grotesque','IBM Plex Sans',sans-serif;font-size:calc(2
 .corner .s{display:block;font-size:calc(16px*var(--fs));color:var(--gold)}
 .qtopic{font-family:'Bricolage Grotesque',sans-serif;font-size:calc(15px*var(--fs));font-weight:700;color:var(--muted);line-height:1.3;margin-bottom:5px}
 .qtitle{font-family:'Bricolage Grotesque',sans-serif;font-size:calc(23px*var(--fs));font-weight:800;line-height:1.2;margin-bottom:8px}
+.qtitle:focus,.fuptitle:focus,.sumcard h2:focus,main:focus{outline:none}
 .qcontext{font-size:calc(15.5px*var(--fs));color:var(--muted);margin-bottom:10px;line-height:1.55}
 .recorded{display:inline-block;font-size:calc(12px*var(--fs));font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);background:var(--green-soft);border-radius:999px;padding:2px 10px;margin:6px 0 12px}
 
@@ -106,16 +107,16 @@ h1{font-family:'Bricolage Grotesque','IBM Plex Sans',sans-serif;font-size:calc(2
 .dcode .csrc{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:calc(12px*var(--fs));color:var(--muted);background:var(--line2);border-bottom:1px solid var(--line);padding:6px 13px;overflow-wrap:anywhere}
 .dcode pre{padding:10px 13px;overflow:auto;max-height:420px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:calc(13.5px*var(--fs));line-height:1.55;tab-size:4;-moz-tab-size:4;white-space:pre;text-align:left;color:var(--ink)}
 .dcode code{font:inherit}
-.dcode pre:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+.dcode pre:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
 .xrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px;align-items:center}
 .plink{font-size:calc(13px*var(--fs));font-weight:600;color:var(--linkc);border:1px solid var(--line);border-radius:999px;padding:4px 13px;text-decoration:none;background:var(--card)}
 .plink:hover{border-color:var(--green)}
-.plink:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.plink:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .ctx{margin:16px 0 4px;padding:14px 16px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
 .ctxlab{display:flex;align-items:center;gap:6px;font-size:calc(11.5px*var(--fs));font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
 .ctxlead{font-size:calc(15.5px*var(--fs));line-height:1.6;color:var(--ink);margin:0 0 10px;max-width:74ch}
 .cqs{display:grid;gap:10px;margin:10px 0}
-.cqs.two{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.cqs.two{grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
 .cq{margin:0;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:10px 14px}
 .cqsrc{display:flex;align-items:center;gap:6px;font-size:calc(11.5px*var(--fs));font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
 .cq blockquote{margin:0;font-size:calc(15px*var(--fs));line-height:1.6;color:var(--ink)}
@@ -124,13 +125,13 @@ h1{font-family:'Bricolage Grotesque','IBM Plex Sans',sans-serif;font-size:calc(2
 .ctext{font-size:calc(15.5px*var(--fs));line-height:1.65;margin:10px 0;max-width:74ch}
 .xbtn{display:inline-flex;align-items:center;gap:7px;font-size:calc(13.5px*var(--fs));font-weight:700;color:var(--green);background:var(--green-soft);border:1px solid var(--green);border-radius:10px;padding:7px 14px;cursor:pointer}
 .xbtn:hover{filter:brightness(1.06)}
-.xbtn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.xbtn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 
 .opts{display:flex;flex-direction:column;gap:9px}
 button{font-family:inherit}
 .opt{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:calc(16.5px*var(--fs));line-height:1.45;cursor:pointer;color:var(--ink);transition:border-color .12s,background .12s}
 .opt:hover{border-color:var(--green2)}
-.opt:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.opt:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .opt .num{flex:none;font-variant-numeric:tabular-nums;font-weight:700;font-size:calc(13px*var(--fs));color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 7px;margin-top:2px}
 .opt .lab{flex:1}
 .opt.sel{border-color:var(--green);background:var(--green-soft)}
@@ -139,7 +140,7 @@ button{font-family:inherit}
 .ocards{display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:12px}
 .ocard{display:flex;flex-direction:column;align-items:stretch;gap:9px;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px 16px;font-family:inherit;color:var(--ink);cursor:pointer;min-height:84px}
 .ocard:hover{border-color:var(--green2)}
-.ocard:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.ocard:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .ocard.sel{border-color:var(--green);background:var(--green-soft)}
 .ocard .ochead{display:flex;align-items:flex-start;gap:10px}
 .ocard .num{flex:none;font-variant-numeric:tabular-nums;font-weight:700;font-size:calc(13px*var(--fs));color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 7px;margin-top:2px}
@@ -163,15 +164,16 @@ button{font-family:inherit}
 .opt.custom .num{border-style:dashed}
 
 .btable{width:100%;border-collapse:collapse;font-size:calc(15px*var(--fs))}
-.btable td{padding:10px 8px;border-bottom:1px solid var(--line2);vertical-align:top}
-.btable tr:last-child td{border-bottom:none}
+.btable td,.btable th{padding:10px 8px;border-bottom:1px solid var(--line2);vertical-align:top}
+.btable th{font-weight:inherit;text-align:start}
+.btable tr:last-child td,.btable tr:last-child th{border-bottom:none}
 .bl{width:52%}
 .bl .bname{font-weight:600}
 .bl .bnote{font-size:calc(13px*var(--fs));color:var(--muted);margin-top:2px;line-height:1.45}
 .bops{text-align:right;white-space:nowrap}
 .btable.stack tr{display:block;border-bottom:1px solid var(--line2);padding:6px 0}
 .btable.stack tr:last-child{border-bottom:none}
-.btable.stack td{display:block;width:auto;border-bottom:none;padding:3px 8px}
+.btable.stack td,.btable.stack th{display:block;width:auto;border-bottom:none;padding:3px 8px}
 .btable.stack .bl{width:auto}
 .btable.stack .bops{text-align:left;white-space:normal;padding-bottom:6px}
 .btable.stack .bopt{margin:4px 6px 0 0}
@@ -179,7 +181,7 @@ button{font-family:inherit}
 .bopt{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;font-size:calc(13.5px*var(--fs));font-weight:600;cursor:pointer;margin-left:6px}
 .bopt:hover{border-color:var(--green2)}
 .bopt.sel{border-color:var(--green);background:var(--green-soft);color:var(--green);font-weight:700}
-.bopt:focus-visible,.bpen:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.bopt:focus-visible,.bpen:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .bpen{border:1.5px dashed var(--line);background:transparent;color:var(--muted);border-radius:999px;width:32px;height:32px;font-size:calc(14px*var(--fs));cursor:pointer;margin-left:8px;vertical-align:middle}
 .bpen.has{border-color:var(--gold);color:var(--amber);border-style:solid;background:var(--gold-soft)}
 .bcrow td{background:var(--panel);border-bottom:1px solid var(--line2)}
@@ -189,13 +191,14 @@ button{font-family:inherit}
 
 .cpanel{border:1.5px dashed var(--gold);border-radius:12px;padding:14px;margin-top:9px;background:var(--panel)}
 .cpanel textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:calc(16px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:84px;line-height:1.5}
-.cpanel textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.cpanel textarea:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .crow{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;align-items:center}
 .btn{border:1px solid var(--btn-bg);background:var(--btn-bg);color:var(--btn-fg);padding:9px 16px;border-radius:9px;font-weight:700;font-size:calc(13.5px*var(--fs));cursor:pointer}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 .btn.sec{background:var(--card);color:var(--ink);border-color:var(--line)}
 .btn.danger{background:var(--red);border-color:var(--red);color:#fff}
-.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+[data-theme="dark"] .btn.danger{color:#171B12}
+.btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 
 .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .controls .spacer{flex:1}
@@ -210,6 +213,8 @@ table.sum th{text-align:left;font-size:calc(11.5px*var(--fs));letter-spacing:.07
 table.sum td{padding:7px 8px;border-bottom:1px solid var(--line2);vertical-align:top}
 table.sum tr:last-child td{border-bottom:none}
 tr.rowbtn{cursor:pointer}
+.sumgo{font:inherit;font-weight:700;color:var(--linkc);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.sumgo:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
 tr.rowbtn:hover td{background:var(--line2)}
 .pill{display:inline-block;font-size:calc(11.5px*var(--fs));font-weight:700;letter-spacing:.08em;padding:2px 10px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
 .pill.picked{background:var(--green-soft);color:var(--green)}
@@ -228,7 +233,7 @@ tr.rowbtn:hover td{background:var(--line2)}
 .mhead{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:0;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--green-soft)}
 .mico{display:inline-flex;flex:none;width:30px;height:30px;border-radius:9px;align-items:center;justify-content:center;background:var(--green);color:var(--card)}
 #mbody{padding:6px 22px 22px}
-.mhead h3{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:calc(19px*var(--fs));font-weight:800}
+.mhead h2{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:calc(19px*var(--fs));font-weight:800}
 .mclose{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;width:32px;height:32px;font-size:calc(15px*var(--fs));cursor:pointer}
 .mcard p{font-size:calc(15px*var(--fs));margin:10px 0;line-height:1.6}
 .xtw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:8px 0 16px}
@@ -263,13 +268,13 @@ table.xt td:first-child{font-weight:700}
 .dropzone{border:1.5px dashed var(--gold);border-radius:12px;background:var(--panel);padding:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:calc(13.5px*var(--fs));color:var(--muted);line-height:1.45}
 .dropzone span{flex:1;min-width:150px}
 #qpaste{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:calc(12.5px*var(--fs));min-height:110px;resize:vertical;background:var(--field);color:var(--ink)}
-#qpaste:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+#qpaste:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .lrow{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:8px;overflow:hidden}
 .lrow.cur{border-color:var(--green);background:var(--green-soft)}
 .lopen{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;text-align:left;background:transparent;border:0;padding:10px 12px;cursor:pointer;color:var(--ink)}
 .lopen:hover{background:var(--line2)}
 .lrow.cur .lopen:hover{background:transparent}
-.lopen:focus-visible,.ldel:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+.lopen:focus-visible,.ldel:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
 .ltitle{font-weight:700;font-size:calc(14.5px*var(--fs));line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ltag{font-size:calc(12.5px*var(--fs));color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lmeta{display:flex;gap:12px;flex-wrap:wrap;font-size:calc(12px*var(--fs));color:var(--muted);font-variant-numeric:tabular-nums;margin-top:2px}
@@ -280,7 +285,7 @@ table.xt td:first-child{font-weight:700}
 .seg button{flex:1;min-width:96px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:9px 12px;font-weight:600;font-size:calc(14px*var(--fs));cursor:pointer}
 .seg button:hover{border-color:var(--green2)}
 .seg button[aria-pressed="true"]{border-color:var(--green);background:var(--green-soft);color:var(--green);font-weight:700}
-.seg button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.seg button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .onote{font-size:calc(12.5px*var(--fs));color:var(--muted);margin-top:7px;line-height:1.5}
 .odanger{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--panel)}
 .oversion{margin-top:18px;text-align:center;font-size:calc(12.5px*var(--fs));color:var(--muted);font-variant-numeric:tabular-nums}
@@ -294,6 +299,7 @@ details.fmt summary{cursor:pointer;font-size:calc(13px*var(--fs));font-weight:70
 .dropveil div{border:3px dashed #D2A62F;border-radius:20px;background:var(--card);color:var(--ink);padding:28px 36px;text-align:center;font-family:'Bricolage Grotesque',sans-serif;font-size:calc(24px*var(--fs));font-weight:800;pointer-events:none}
 .dropveil small{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:calc(14px*var(--fs));font-weight:500;color:var(--muted);margin-top:6px}
 .toast{position:fixed;left:50%;bottom:calc(20px + var(--lift,0px));transform:translate(-50%,20px);width:max-content;max-width:min(560px,calc(100% - 32px));display:flex;align-items:center;gap:11px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:9px 16px 9px 10px;font-size:calc(14px*var(--fs));font-weight:500;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.28);z-index:80;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
+.toast.on{pointer-events:auto}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .toast.bad{background:var(--card);color:var(--ink)}
 .toast:empty{display:none}
@@ -307,7 +313,7 @@ footer{margin-top:34px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 :root{--bub-bg:#FFFFFF;--bub-line:#E3DAC4;--bub-ink:#221F17}
 [data-theme="dark"]{--bub-bg:#F6F0E2;--bub-line:#F6F0E2;--bub-ink:#221F17}
 .stage{position:relative;display:flex;flex-direction:column;gap:8px}
-.stage.nomascot #mascot{display:none}
+body.nomascot #mascot{display:none}
 #mascot{order:-1;min-width:0}
 .mstick{position:relative;z-index:5;display:flex;flex-direction:row;align-items:center;gap:12px}
 .mmenu{position:absolute;top:calc(100% + 6px);left:0;z-index:40;display:none;flex-direction:column;gap:2px;min-width:214px;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.35)}
@@ -317,12 +323,12 @@ footer{margin-top:34px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 .mmenu button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:transparent;border:0;border-radius:9px;padding:7px 11px;font-size:calc(14px*var(--fs));font-weight:600;color:var(--ink);cursor:pointer;white-space:nowrap;font-family:inherit}
 .mmenu button svg{flex:none;color:var(--muted)}
 .mmenu button:hover{background:var(--line2)}
-.mmenu button:focus-visible{outline:none;background:var(--line2);box-shadow:inset 0 0 0 2px var(--gold)}
+.mmenu button:focus-visible{outline:none;background:var(--line2);box-shadow:inset 0 0 0 2px var(--focus)}
 .mmenu button:disabled{opacity:.4;cursor:not-allowed;background:transparent}
 .mmenu button.mm-main{color:var(--green)}
 .mmenu button.mm-main svg{color:var(--green)}
 .mbtn{display:block;border:0;background:transparent;padding:0;cursor:pointer;border-radius:16px;color:inherit}
-.mbtn:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.mbtn:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
 .mframe{display:block;flex:none;width:49px;height:64px;animation:mbob 3.4s ease-in-out infinite}
 .mframe svg{display:block;width:100%;height:100%}
 .mframe.pop{animation:mpop .34s ease-out}
@@ -342,6 +348,24 @@ footer{margin-top:34px;padding-top:14px;border-top:3px solid var(--ink);font-siz
   .mbubble::before{top:-7px;left:calc(50% - 6px);border-bottom:0;border-top:1px solid var(--bub-line)}
   .mbact{margin:8px auto 0}
 }
+/* Under 1440 px the companion takes no height from the cards. Beside the question list it stands in the list's
+   column, under the list (placeCompanion moves it there); on narrower screens it stands beside the progress bar,
+   and its lines show over the bar. */
+body:not(.nomascot) .sidecol.withcomp{max-height:calc(100vh - 94px)}
+.sidecol #mascot{flex:none;order:0}
+.sidecol .mstick{flex-direction:column;align-items:stretch;gap:10px}
+.sidecol .mframe{width:100px;height:auto;aspect-ratio:200 / 262}
+.sidecol .mbubble{flex:none;text-align:center}
+.sidecol .mbubble::before{top:-7px;left:calc(50% - 6px);border-bottom:0;border-top:1px solid var(--bub-line)}
+.sidecol .mbact{margin:8px auto 0}
+.sidecol .mmenu{right:0}
+@media(max-width:880px){
+  body:not(.nomascot) .ptop{margin-left:61px;min-height:64px}
+  .stage #mascot{position:absolute;top:0;left:0;right:0;z-index:6;pointer-events:none}
+  .stage .mstick{height:64px}
+  .stage .mbtn,.stage .mmenu,.stage .mbubble.act{pointer-events:auto}
+  .stage .mbubble{position:absolute;left:61px;right:0;top:50%;translate:0 -50%}
+}
 .mpick{display:flex;align-items:center;gap:12px}
 .mpick .seg{flex:1}
 .mprev{flex:none;width:46px;height:60px}
@@ -350,7 +374,7 @@ footer{margin-top:34px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 .ctile{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;padding:8px 4px 7px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-family:inherit;font-weight:600;font-size:calc(12.5px*var(--fs));cursor:pointer}
 .ctile:hover{border-color:var(--green2)}
 .ctile[aria-pressed="true"]{border-color:var(--green);background:var(--green-soft);color:var(--green);font-weight:700}
-.ctile:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.ctile:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .ctname{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ctface{display:flex;align-items:center;justify-content:center;width:40px;height:52px}
 .ctface svg,.ctface .mimg,.ctface .mstack{display:block;width:100%;height:100%}
@@ -382,6 +406,7 @@ img.mimg.pix{image-rendering:pixelated}
 .bld-bar{display:block;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
 .bld-bar i{display:block;height:100%;background:var(--green);border-radius:3px}
 .bld-block{display:flex;align-items:center;gap:6px;font-size:calc(13px*var(--fs));color:var(--red);font-weight:600;max-width:300px}
+[data-theme="dark"] .bld-block{color:#EA8F82}
 .bld-block:empty{display:none}
 .bld-block svg{flex:none}
 .bld-body{flex:1;min-height:0;display:grid;grid-template-columns:330px minmax(300px,1fr) 450px;gap:16px;padding:16px 20px}
@@ -391,19 +416,20 @@ img.mimg.pix{image-rendering:pixelated}
 .bld-card > .dsec::before{content:"";width:14px;height:3px;border-radius:2px;background:var(--gold)}
 .bld-field{display:flex;flex-direction:column;gap:4px;margin-top:10px}
 .bld-card > .dsec + .bld-field{margin-top:0}
+.bld-startgo{align-self:flex-start;margin-top:2px}
 .bld-field label{font-size:calc(13px*var(--fs));font-weight:600}
 .bld-field input,.bld-field select{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(15px*var(--fs))}
 .bld-field input[aria-invalid="true"]{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
 .bld-field small{font-size:calc(12px*var(--fs));color:var(--muted);line-height:1.4}
 .bld-field small.bld-errt{color:var(--red);font-weight:600}
-.bld-field input:focus-visible,.bld-field select:focus-visible,.bld-line:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.bld-field input:focus-visible,.bld-field select:focus-visible,.bld-line:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .bld-note{font-size:calc(12.5px*var(--fs));color:var(--muted);line-height:1.5;margin:6px 0 0}
 .bld-muted{color:var(--muted);font-size:calc(12.5px*var(--fs))}
 .bld-posecard{position:relative}
 .bld-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
 .bld-pose{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;padding:6px 3px 6px;border:1.5px solid var(--line);border-radius:11px;background:var(--card);color:var(--ink);font-weight:600;font-size:calc(12px*var(--fs));font-family:inherit;cursor:pointer}
 .bld-pose:hover{border-color:var(--green2)}
-.bld-pose:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.bld-pose:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .bld-pose .bld-pf{display:flex;align-items:flex-end;justify-content:center;width:46px;height:60px}
 .bld-pf svg,.bld-pf .mimg,.bld-pf .mstack,.bld-pf .bld-none{display:block;width:100%;height:100%}
 .bld-pose small{font-weight:500;font-size:calc(10.5px*var(--fs));color:var(--muted);white-space:nowrap}
@@ -429,7 +455,7 @@ img.mimg.pix{image-rendering:pixelated}
 .bld-play{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
 .bld-play button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 11px;font-weight:600;font-size:calc(12.5px*var(--fs));font-family:inherit;cursor:pointer}
 .bld-play button:hover{border-color:var(--green2)}
-.bld-play button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.bld-play button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .bld-pc{display:flex;gap:12px;align-items:center}
 .bld-pcf{display:block;width:46px;height:60px;flex:none}
 .bld-pcf svg,.bld-pcf .mimg,.bld-pcf .mstack,.bld-pcf .bld-none{display:block;width:100%;height:100%}
@@ -439,34 +465,38 @@ img.mimg.pix{image-rendering:pixelated}
 .bld-grp{margin:14px 0 6px;font-size:calc(11px*var(--fs));font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
 .bld-grp:first-of-type{margin-top:0}
 .bld-mom{border:1px solid var(--line);border-radius:11px;background:var(--card);padding:9px 11px 10px;margin-bottom:8px}
-.bld-mt{display:flex;align-items:center;gap:8px}
+.bld-mt{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
 .bld-mt b{font-size:calc(14.5px*var(--fs));white-space:nowrap}
-.bld-mt .w{flex:1;min-width:0;font-size:calc(12.5px*var(--fs));color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bld-mt .w{flex:1 1 12em;min-width:0;font-size:calc(12.5px*var(--fs));color:var(--muted)}
 .bld-mt .p{display:flex;align-items:center;gap:4px;font-size:calc(11.5px*var(--fs));color:var(--muted);flex:none}
 .bld-mt .p > span{display:block;width:20px;height:26px}
 .bld-mt .p > span svg,.bld-mt .p > span .mimg,.bld-mt .p > span .mstack,.bld-mt .p > span .bld-none{display:block;width:100%;height:100%}
 .bld-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:6px 0 2px;font-size:calc(12px*var(--fs));color:var(--muted)}
 .bld-chips{display:inline-flex;flex-wrap:wrap;align-items:center;gap:5px}
 .bld-chips button{border:1px solid var(--line);background:var(--gold-soft);color:var(--ink);border-radius:7px;padding:2px 7px;font:600 calc(12px*var(--fs)) ui-monospace,Menlo,Consolas,monospace;cursor:pointer}
-.bld-chips button:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.bld-chips button:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .bld-lines{display:flex;flex-direction:column;gap:5px;margin-top:7px}
 .bld-line{border:1px solid var(--line);border-radius:8px;padding:6px 9px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(14px*var(--fs))}
-.bld-line::placeholder{color:var(--muted);opacity:.75}
+::placeholder{color:var(--muted);opacity:1}
 .bld-line.bad{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
 .bld-err{display:flex;gap:6px;align-items:flex-start;font-size:calc(12.5px*var(--fs));color:var(--red);line-height:1.4;margin:-1px 0 2px}
 .bld-err svg{flex:none;margin-top:1px}
 .ctile.build{border-style:dashed;color:var(--green);background:transparent}
 @media (max-width:1250px){
-  .bld-body{grid-template-columns:320px 1fr;overflow:auto;align-items:start}
+  .bld-body{grid-template-columns:320px minmax(0,1fr);overflow:auto;align-items:start}
   .bld-col{overflow:visible;min-height:auto}
   .bld-body > .bld-col:first-child{grid-row:span 2}
   #bld-linescol{grid-column:2}
 }
 @media (max-width:760px){
-  .bld-body{display:flex;flex-direction:column;padding:12px}
+  .bld-body{display:flex;flex-direction:column;padding:12px;align-items:stretch}
   .bld-head{flex-wrap:wrap;padding:10px 12px;gap:8px}
   .bld-head .bld-size{order:5;flex-basis:100%}
   .bld-show{min-height:0}
+}
+@media (max-width:760px),(max-height:560px){
+  .bld{overflow-y:auto}
+  .bld-body,.cw-body{flex:none;min-height:auto;overflow:visible}
 }
 @media (prefers-reduced-motion: reduce){ .bld-big.dance{animation:none} }
 /* Create with Claude: the panel that writes a prompt for Claude, in the builder's place. */
@@ -478,7 +508,7 @@ img.mimg.pix{image-rendering:pixelated}
 .cw-body{flex:1;min-height:0;overflow:auto;padding:16px 20px}
 .cw-inner{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:14px;padding-bottom:24px}
 .cw-body textarea{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(15px*var(--fs));line-height:1.45;resize:vertical;min-height:64px}
-.cw-body textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.cw-body textarea:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .cw-lab{font-size:calc(13px*var(--fs));font-weight:600}
 .cw-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .cw-chips button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 11px;font-weight:600;font-size:calc(12.5px*var(--fs));font-family:inherit;cursor:pointer}
@@ -486,24 +516,24 @@ img.mimg.pix{image-rendering:pixelated}
 .cw-chips button.on{border-color:var(--green);background:var(--green-soft);color:var(--green)}
 .cw-chips button.on::after{content:" \2715";font-weight:700;opacity:.7}
 .cw-chips button[disabled]{opacity:.45;cursor:default}
-.cw-chips button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cw-chips button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .cw-chips .lab{align-self:center;font-size:calc(11px*var(--fs));font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-right:2px}
 .cw-own{display:flex;gap:6px;margin-top:8px;max-width:360px}
 .cw-own input{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;padding:6px 10px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(14px*var(--fs))}
-.cw-own input:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.cw-own input:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .cw-own .btn{padding:6px 12px}
 .cw-more{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;margin-top:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 11px;font-weight:600;font-size:calc(13.5px*var(--fs));font-family:inherit;cursor:pointer;text-align:left}
-.cw-more:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cw-more:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .cw-more .cw-count{color:var(--muted);font-weight:500;font-size:calc(12.5px*var(--fs))}
-.cw-more .cw-count::after{content:" \25BE"}
-.cw-more[aria-expanded="true"] .cw-count::after{content:" \25B4"}
+.cw-more .cw-count::after{content:" \25BE" / ""}
+.cw-more[aria-expanded="true"] .cw-count::after{content:" \25B4" / ""}
 .cw-poses{display:flex;flex-direction:column;gap:6px;margin-top:8px}
 .cw-poses[hidden]{display:none}
 .cw-pose{display:grid;grid-template-columns:150px 1fr;gap:8px;align-items:center}
 .cw-pose label b{font-size:calc(13.5px*var(--fs));display:block}
 .cw-pose label small{display:block;font-size:calc(11px*var(--fs));color:var(--muted);line-height:1.3}
 .cw-pose input{border:1px solid var(--line);border-radius:8px;padding:6px 9px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(14px*var(--fs));min-width:0}
-.cw-pose input:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.cw-pose input:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .cw-prompt{border:1px solid var(--line);border-radius:10px;background:var(--field);padding:12px 14px}
 #cw-ptext{white-space:pre-wrap;overflow-wrap:anywhere;font-size:calc(14px*var(--fs));line-height:1.5;color:var(--ink)}
 #cw-ptext .fill{color:var(--green);font-weight:600}
@@ -522,7 +552,7 @@ img.mimg.pix{image-rendering:pixelated}
 .olab{font-size:calc(14px*var(--fs));font-weight:600}
 .seg.sm{flex:none}
 .seg.sm button{flex:none;min-width:64px;padding:7px 12px}
-.orow.dim{opacity:.45}
+.orow.dim .olab::after{content:attr(data-why);display:block;font-weight:500;font-size:calc(12.5px*var(--fs));color:var(--muted)}
 .status.withface{display:flex;gap:10px;align-items:flex-start}
 .status .sface{flex:none;width:40px;height:52px}
 .status .sface svg{display:block;width:100%;height:100%}
@@ -555,7 +585,7 @@ img.mimg.pix{image-rendering:pixelated}
 .mfig{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px}
 .mbubble.act{pointer-events:auto}
 .mbact{display:table;margin:8px 0 0;border:0;background:#221F17;color:#F6F0E2;border-radius:999px;padding:5px 13px;font-size:calc(12.5px*var(--fs));font-weight:700;cursor:pointer;font-family:inherit}
-.mbact:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.mbact:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .mburst{position:absolute;left:50%;top:38%;width:0;height:0;pointer-events:none;z-index:6}
 .mburst i{position:absolute;left:0;top:0;width:8px;height:5px;border-radius:1.5px;opacity:0;animation:mconf 1.5s cubic-bezier(.2,.7,.3,1) forwards}
 .mburst i.spark{width:auto;height:auto;background:none;color:#D6A72C;font-style:normal;font-size:calc(16px*var(--fs));line-height:1}
@@ -567,7 +597,7 @@ img.mimg.pix{image-rendering:pixelated}
 .mprevline{display:none;margin-top:10px;background:var(--bub-bg);color:var(--bub-ink);border:1px solid var(--bub-line);border-radius:10px;padding:7px 11px;font-size:calc(13px*var(--fs));line-height:1.4}
 .mprevline.on{display:block}
 .oname{width:190px;border:1px solid var(--line);border-radius:9px;padding:7px 10px;background:var(--field);color:var(--ink);font-family:inherit;font-size:calc(14px*var(--fs))}
-.oname:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.oname:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .ostats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .ostat{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--panel)}
 .ostat b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:calc(20px*var(--fs));font-weight:800;line-height:1.2;color:var(--ink)}
@@ -584,14 +614,15 @@ img.mimg.pix{image-rendering:pixelated}
   .bops{white-space:normal}
 }
 @media(max-width:600px){
-  .btable,.btable tbody,.btable tr,.btable td{display:block;width:100%}
+  .btable,.btable tbody,.btable tr,.btable td,.btable th{display:block;width:100%}
   .btable tr{border:1.5px solid var(--line);border-radius:12px;margin-bottom:10px;background:var(--card)}
   .btable tr.bcrow{border-top:none;border-radius:0 0 12px 12px;margin:-11px 0 10px}
-  .btable td{border-bottom:none;padding:10px 12px}
+  .btable td,.btable th{border-bottom:none;padding:10px 12px}
   .bl{width:auto}
   .bops{text-align:left;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:2px}
   .bopt,.bpen{margin-left:0}
   .head-meta,.hbtn .hlab{display:none}
+  h1{white-space:normal;overflow-wrap:anywhere}
   .hbtn{padding:0 10px}
   h1{font-size:calc(19px*var(--fs))}
 }
@@ -602,6 +633,7 @@ img.mimg.pix{image-rendering:pixelated}
 }
 .rhat{flex:none;display:inline-flex;width:26px;height:26px;margin:-2px -2px -4px auto;color:var(--gold)}
 .rhat svg{display:block;width:100%;height:100%}
+.opt.sel .rhat,.ocard.sel .rhat{color:var(--amber)}
 .ocard .rhat{margin:-3px -4px 0 auto}
 .rwhy{display:block;margin-top:6px;font-size:calc(14px*var(--fs));line-height:1.45;color:var(--amber);font-weight:500}
 .ocard .rwhy{margin-top:0}
@@ -614,10 +646,10 @@ img.mimg.pix{image-rendering:pixelated}
 .npen{display:inline-flex;align-items:center;gap:7px;border:1.5px dashed var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:5px 14px 5px 12px;font-size:calc(13.5px*var(--fs));font-weight:600;cursor:pointer;font-family:inherit}
 .npen:hover{border-color:var(--green2)}
 .npen.has{border-color:var(--gold);color:var(--amber);border-style:solid;background:var(--gold-soft)}
-.npen:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.npen:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .npanel{margin-top:8px}
 .npanel textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-family:inherit;font-size:calc(15px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:64px;line-height:1.5}
-.npanel textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.npanel textarea:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .sumnote{display:flex;gap:6px;align-items:baseline;margin-top:4px;font-size:calc(13.5px*var(--fs));color:var(--muted)}
 .sumnote b{flex:none;color:var(--amber);font-weight:700}
 .rechead{display:flex;gap:8px;align-items:flex-start;color:var(--amber);font-size:calc(14px*var(--fs));font-weight:500;line-height:1.45;margin:2px 0 12px}
@@ -629,14 +661,15 @@ img.mimg.pix{image-rendering:pixelated}
 .rhandle:hover{color:var(--ink);background:var(--line2)}
 .ritem.dragging .rhandle{cursor:grabbing}
 .rpos{flex:none;font-variant-numeric:tabular-nums;font-weight:800;font-size:calc(14px*var(--fs));color:var(--green);min-width:22px;text-align:center}
-.rtext{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.rtext{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;overflow-wrap:anywhere}
 .rtext .rl{font-weight:600}
 .rtext .cx{color:var(--muted);font-size:calc(14px*var(--fs));line-height:1.45}
 .rarrows{flex:none;display:flex;gap:5px}
+@media(max-width:480px){.rarrows{flex-direction:column}.ritem{gap:6px}}
 .rarrow{width:34px;height:34px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
 .rarrow:disabled{opacity:.3;cursor:default}
 .rarrow:hover:not(:disabled){border-color:var(--green2)}
-.rarrow:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.rarrow:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .numbox{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px 12px}
 .numtop{display:flex;align-items:flex-start;gap:16px}
 .numslide{flex:1;min-width:0}
@@ -644,7 +677,7 @@ img.mimg.pix{image-rendering:pixelated}
 .numends{display:flex;justify-content:space-between;gap:10px;font-size:calc(12.5px*var(--fs));color:var(--muted);font-variant-numeric:tabular-nums}
 .numval{flex:none;display:flex;align-items:center;gap:7px}
 .numval input{width:130px;border:1px solid var(--line);border-radius:9px;padding:6px 10px;font-family:inherit;font-size:calc(17px*var(--fs));font-weight:700;background:var(--field);color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
-.numval input:focus-visible,.numslide input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.numval input:focus-visible,.numslide input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .numunit{color:var(--muted);font-weight:700;font-size:calc(15px*var(--fs))}
 @media(max-width:600px){.numtop{flex-direction:column;align-items:stretch;gap:8px}.numval{align-self:flex-end}}
 .bkline{font-size:calc(13.5px*var(--fs));color:var(--muted);font-weight:700;margin:0 0 10px;font-variant-numeric:tabular-nums}
@@ -653,13 +686,15 @@ img.mimg.pix{image-rendering:pixelated}
 @media(max-width:600px){.bkpair{grid-template-columns:minmax(0,1fr)}.bkvs{justify-self:center}}
 .bkwin{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--green-soft);border:1.5px solid var(--green);border-radius:12px;padding:10px 14px;margin:2px 0 12px;font-size:calc(16.5px*var(--fs))}
 .bkwin b{color:var(--green)}
-.bkwin small{color:var(--muted);font-weight:600;font-size:calc(13px*var(--fs))}
+.bkwin:focus{outline:none}
+.bkwin small{color:var(--ink);font-weight:600;font-size:calc(13px*var(--fs))}
 .bktree{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+.bktree:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:8px}
 .bkcol{flex:none;width:180px;display:flex;flex-direction:column;gap:8px}
-.bkcol h4{font-size:calc(11px*var(--fs));letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0}
-.bkms{flex:1;display:flex;flex-direction:column;justify-content:space-around;gap:8px}
+.bkcol h3{font-size:calc(11px*var(--fs));letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0}
+.bkms{flex:1;list-style:none;display:flex;flex-direction:column;justify-content:space-around;gap:8px}
 .bkm{border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:calc(13.5px*var(--fs));background:var(--card)}
-.bkm div{padding:5px 10px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bkm div{padding:5px 10px;color:var(--muted);overflow-wrap:anywhere}
 .bkm div+div{border-top:1px solid var(--line2)}
 .bkm div.w{color:var(--ink);font-weight:700;background:var(--green-soft)}
 .sumrank{margin:4px 0 0 20px;padding:0}
@@ -678,7 +713,7 @@ img.mimg.pix{image-rendering:pixelated}
 .pchip.wait .pst{color:var(--amber)}
 .pchip.bad .pst{color:var(--red);font-weight:700}
 .pact{border:0;background:var(--btn-bg);color:var(--btn-fg);border-radius:999px;padding:3px 11px;margin:0 -8px 0 2px;font-size:calc(12.5px*var(--fs));font-weight:700;cursor:pointer;white-space:nowrap}
-.pact:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.pact:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .sumproj{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:10px 14px;margin:0 0 16px;font-size:calc(14.5px*var(--fs));line-height:1.5}
 .sumproj svg{flex:none;color:var(--muted)}
 .sumproj span{flex:1;min-width:200px}
@@ -696,7 +731,7 @@ img.mimg.pix{image-rendering:pixelated}
 .frow.ok .fstate{color:var(--green)}
 .fbtn{flex:none;border:0;border-left:1px solid var(--line2);background:var(--gold-soft);color:var(--amber);padding:0 14px;font-size:calc(12.5px*var(--fs));font-weight:700;cursor:pointer}
 .fbtn:hover{filter:brightness(1.06)}
-.fbtn:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+.fbtn:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
 .lnew{font-weight:800;color:var(--btn-fg);background:var(--btn-bg);border-radius:999px;padding:0 8px}
 .lproj{font-weight:700;color:var(--ink)}
 .hbadge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#D2A62F;color:#221B06;font-size:calc(11.5px*var(--fs));font-weight:800;font-variant-numeric:tabular-nums}
@@ -705,6 +740,7 @@ img.mimg.pix{image-rendering:pixelated}
 .notices{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:44;display:flex;flex-direction:column-reverse;gap:8px;width:min(620px,calc(100% - 24px));pointer-events:none}
 .notices:empty{display:none}
 .wrap::after{content:"";display:block;height:var(--lift,0px)}
+html{scroll-padding-bottom:var(--lift,0px)}
 .notice{pointer-events:auto;display:flex;align-items:center;gap:11px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:9px 10px;box-shadow:0 12px 30px rgba(0,0,0,.28);font-size:calc(14px*var(--fs));line-height:1.45}
 .sidecol{min-width:0}
 @media(min-width:881px){
@@ -721,14 +757,19 @@ img.mimg.pix{image-rendering:pixelated}
 .notice .btn{flex:none;padding:7px 14px}
 .nclose{flex:none;border:0;background:transparent;color:var(--muted);width:28px;height:28px;border-radius:999px;font-size:calc(13px*var(--fs));cursor:pointer}
 .nclose:hover{background:var(--line2);color:var(--ink)}
-.nclose:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.nclose:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .cbox:focus{outline:none}
 .cpath{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:calc(13px*var(--fs));line-height:1.5;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 11px;overflow-wrap:anywhere;-webkit-user-select:all;user-select:all}
 [hidden]{display:none!important}
+.skip{position:absolute;left:12px;top:-80px;z-index:100;background:var(--card);color:var(--ink);border:2px solid var(--focus);border-radius:10px;padding:8px 14px;font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+/* Read out, never seen: what a screen reader should hear after something changes out of sight. */
+.srx{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media (max-width:700px){.mcard{margin:12px auto}#mbody{padding:4px 14px 16px}.ctx{padding:12px 12px 10px}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to the question</a>
 <header>
   <div class="head-in">
     <h1 id="wiztitle">Decision Wizard</h1>
@@ -742,16 +783,16 @@ img.mimg.pix{image-rendering:pixelated}
 <div class="wrap">
   <div class="layout">
     <div class="sidecol">
-      <div class="notices" id="notices" role="status" aria-live="polite"></div>
+      <div class="notices" id="notices"></div>
       <nav id="side" aria-label="Questions"></nav>
     </div>
-    <div>
+    <main id="main" tabindex="-1">
       <div class="stage" id="stage">
         <div id="app"></div>
         <aside id="mascot" aria-label="Companion">
           <div class="mstick">
             <div class="mfig">
-              <div class="mmenu" id="mmenu" role="menu" aria-label="Companion menu">
+              <div class="mmenu" id="mmenu" role="menu" aria-label="Companion menu" aria-describedby="mmtime">
                 <div class="mmtime" id="mmtime" role="none" hidden><span><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9.5 2.5h5"/></svg> <em class="mtlab">Time on this round</em></span><b></b></div>
                 <button type="button" role="menuitem" data-action="mm-options"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M19.15 10.08 L22.10 10.58 L22.10 13.42 L19.15 13.92 L18.41 15.70 L20.15 18.14 L18.14 20.15 L15.70 18.41 L13.92 19.15 L13.42 22.10 L10.58 22.10 L10.08 19.15 L8.30 18.41 L5.86 20.15 L3.85 18.14 L5.59 15.70 L4.85 13.92 L1.90 13.42 L1.90 10.58 L4.85 10.08 L5.59 8.30 L3.85 5.86 L5.86 3.85 L8.30 5.59 L10.08 4.85 L10.58 1.90 L13.42 1.90 L13.92 4.85 L15.70 5.59 L18.14 3.85 L20.15 5.86 L18.41 8.30Z"/><circle cx="12" cy="12" r="3"/></svg><span>Options</span></button>
                 <button type="button" role="menuitem" data-action="mm-load"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Load new question round</span></button>
@@ -770,34 +811,34 @@ img.mimg.pix{image-rendering:pixelated}
         <div>Save keeps the round and its answers in one file. The summary also copies the answers alone.</div>
         <div id="wizfoot"></div>
       </footer>
-    </div>
+    </main>
   </div>
 </div>
 
 <div id="wiz-export" aria-hidden="true" style="display:none"></div>
 
-<div class="mback" id="modal" role="dialog" aria-modal="true">
+<div class="mback" id="modal" role="dialog" aria-modal="true" aria-labelledby="mtitle">
   <div class="mcard">
-    <div class="mhead"><h3 id="mtitle"></h3><button type="button" class="mclose" data-action="modal-close" aria-label="Close">&#10005;</button></div>
+    <div class="mhead"><h2 id="mtitle"></h2><button type="button" class="mclose" data-action="modal-close" aria-label="Close">&#10005;</button></div>
     <div id="mbody"></div>
   </div>
 </div>
 
 <div class="dback" id="drawerback" data-action="drawer-close"></div>
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawertitle" aria-hidden="true">
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawertitle" aria-hidden="true">
   <div class="dhead"><h2 id="drawertitle">Load a round</h2><button type="button" class="mclose" data-action="drawer-close" aria-label="Close">&#10005;</button></div>
   <div class="dbody">
-    <div class="dsec">From a file</div>
+    <h3 class="dsec">From a file</h3>
     <div class="dropzone"><button type="button" class="btn" id="pickbtn" data-action="pick-file">Choose file</button><span>or drop a round, a saved file, or a backup anywhere on this page</span></div>
-    <div class="dsec">Paste JSON</div>
+    <h3 class="dsec">Paste JSON</h3>
     <textarea id="qpaste" spellcheck="false" aria-label="Paste a round, a saved file, answers JSON, or a backup" placeholder="A round, a saved file, answers JSON, or a backup"></textarea>
     <div class="crow"><button type="button" class="btn sec" data-action="paste-load">Load</button></div>
-    <div class="status" id="loader-status"></div>
-    <div class="dsec">Project folders</div>
-    <div id="folderlist"></div>
-    <div class="dsec">Rounds in this browser</div>
+    <div class="status" id="loader-status" role="status"></div>
+    <h3 class="dsec">Project folders</h3>
+    <div id="folderlist" aria-label="Project folders"></div>
+    <h3 class="dsec">Rounds in this browser</h3>
     <div class="crow lbar"><button type="button" class="btn sec" data-action="backup-all">Back up all rounds</button><button type="button" class="btn sec" data-action="pick-file">Restore from a backup</button></div>
-    <div id="liblist"></div>
+    <div id="liblist" aria-label="Rounds in this browser"></div>
     <details class="fmt">
       <summary>What the files look like</summary>
       <div class="ldef"><b>Round.</b> Either a bare array of questions, or an object {config, questions} where config sets {title, tagline, product}. Each question: <b>id</b>, <b>section</b>, <b>title</b>, <b>options</b> (array of strings). Ids must be unique, and so must row ids inside one batch. Optional: <b>question</b> (the question itself, shown large, with the title as a small topic line above it; the sidebar keeps the title); <b>context</b>; <b>detail</b> (array of {kind: quote, note, or code, src, text}; code keeps indentation and line breaks and shows src exactly as written, such as a file path and line); <b>links</b> (array of {label, url}); <b>extra</b> ({label, blocks:[{kind: text, text}, {kind: table, title, columns, rows}, {kind: quote, src, text}, {kind: note, text}, or {kind: code, src, text}]}, or a list of them for several buttons) for context popups; <b>customLabel</b>; <b>custom</b>: false; <b>skip</b>: false; <b>recommend</b> (the label of the recommended option) with <b>because</b> (the reason, finishing "I recommend this because"), on a question, a follow-up, or a batch row. For a batch table set <b>type</b>: "batch" and <b>items</b>: [{id, label, note}], sharing one options set per row. Every question and every row takes a note with the pen. <b>type</b>: "rank" makes a ranking of 2 to 10 options (recommend is the whole order); "number" takes <b>min</b>, <b>max</b>, <b>step</b>, and <b>unit</b> instead of options (recommend is a number); "bracket" runs 4 to 32 options in knockout pairs, in the listed order. In config, <b>needs_wizard</b> names the oldest wizard version the round is made for, and a round written into a project sets <b>project</b> (the project's name) and <b>folder</b> (the full path of the folder the round file is in).</div>
@@ -808,12 +849,12 @@ img.mimg.pix{image-rendering:pixelated}
       <div class="ldef"><b>The list.</b> Every round stays in this browser, with its answers, until you delete it. A round whose title is already in the list replaces the saved one, and answers to questions that did not change stay.</div>
     </details>
   </div>
-</aside>
-<aside class="drawer" id="optdrawer" role="dialog" aria-modal="true" aria-labelledby="opttitle" aria-hidden="true">
+</div>
+<div class="drawer" id="optdrawer" role="dialog" aria-modal="true" aria-labelledby="opttitle" aria-hidden="true">
   <div class="dhead fam"><span class="mico" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M5.5 18.5l1.8-1.8M16.7 7.3l1.8-1.8"/></svg></span><h2 id="opttitle">Options</h2><button type="button" class="mclose" data-action="drawer-close" aria-label="Close">&#10005;</button></div>
   <div class="dbody">
     <section class="ogroup">
-      <div class="dsec">Companion</div>
+      <h3 class="dsec">Companion</h3>
       <div class="ctiles" id="ctiles" role="group" aria-label="Companion"></div>
       <div class="cchosen" id="cchosen"></div>
       <div class="chidden" id="chidden"></div>
@@ -826,19 +867,24 @@ img.mimg.pix{image-rendering:pixelated}
       <div class="orow"><label class="olab" for="optname">Your name</label><input type="text" id="optname" class="oname" maxlength="30" autocomplete="off" placeholder="Optional"></div>
     </section>
     <section class="ogroup">
-      <div class="dsec">Round timer</div>
+      <h3 class="dsec">Round timer</h3>
       <div class="orow" id="row-timerhover"><span class="olab">When you hover the companion</span><div class="seg sm" role="group" aria-label="Round timer when you hover the companion"><button type="button" data-action="set-timerhover" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-timerhover" data-v="off" aria-pressed="false">Off</button></div></div>
       <div class="orow" id="row-timerbar"><span class="olab">Next to the progress bar</span><div class="seg sm" role="group" aria-label="Round timer next to the progress bar"><button type="button" data-action="set-timerbar" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-timerbar" data-v="off" aria-pressed="false">Off</button></div></div>
-      <div class="orow" id="row-timerreset"><span class="olab">This round's clock<span class="otime" id="otime"></span></span><button type="button" class="btn sec obtn" id="timerresetbtn" data-action="timer-reset">Reset</button></div>
+      <div class="orow" id="row-timerreset"><span class="olab">This round's clock <span class="otime" id="otime"></span></span><button type="button" class="btn sec obtn" id="timerresetbtn" data-action="timer-reset" aria-label="Reset this round's clock">Reset</button></div>
       <div class="onote">The clock starts when a round is first loaded and stops once every question has an answer. It pauses while your companion naps, and while you have another round open.</div>
     </section>
     <section class="ogroup">
-      <div class="dsec">Recommendations</div>
+      <h3 class="dsec">Recommendations</h3>
       <div class="orow" id="row-recs"><span class="olab">Wizard recommendations</span><div class="seg sm" role="group" aria-label="Wizard recommendations"><button type="button" data-action="set-recs" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-recs" data-v="off" aria-pressed="false">Off</button></div></div>
       <div class="onote">When a round recommends an answer, a small wizard hat marks it, with the reason under it when there is one.</div>
     </section>
     <section class="ogroup">
-      <div class="dsec">Look</div>
+      <h3 class="dsec">Keys</h3>
+      <div class="orow" id="row-keys"><span class="olab">Number keys pick answers</span><div class="seg sm" role="group" aria-label="Number keys pick answers"><button type="button" data-action="set-keys" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-keys" data-v="off" aria-pressed="false">Off</button></div></div>
+      <div class="onote">Keys 1 to 9 pick an answer while you're on the question, and 1 and 2 pick in a bracket. They never pick while you type.</div>
+    </section>
+    <section class="ogroup">
+      <h3 class="dsec">Look</h3>
       <div class="osub">Theme</div>
       <div class="seg" role="group" aria-label="Theme">
         <button type="button" data-action="set-theme" data-v="dark" aria-pressed="false">Dark</button>
@@ -853,18 +899,18 @@ img.mimg.pix{image-rendering:pixelated}
       </div>
     </section>
     <section class="ogroup">
-      <div class="dsec" id="ostatshead">Stats</div>
+      <h3 class="dsec" id="ostatshead">Stats</h3>
       <div class="crow"><button type="button" class="btn sec" id="statsbtn" data-action="stats-toggle" aria-expanded="false" aria-controls="ostats">Show stats</button></div>
       <div class="ostats" id="ostats" hidden></div>
       <p class="ostnote" id="ostnote" hidden>Counted in this browser.</p>
     </section>
     <section class="ogroup">
-      <div class="dsec">App</div>
+      <h3 class="dsec">App</h3>
       <div class="orow" id="row-install"><span class="olab">Install the wizard as an app</span><button type="button" class="btn sec obtn" id="installbtn" data-action="install-app" hidden>Install</button></div>
       <div class="onote" id="installnote"></div>
     </section>
     <section class="ogroup">
-      <div class="dsec">Saved data</div>
+      <h3 class="dsec">Saved data</h3>
       <div class="odanger">
         <p>Clear everything this browser keeps for the wizard: every round, its answers, the project folders it remembers, and these options. Files you saved stay where they are.</p>
         <div class="crow"><button type="button" class="btn sec" data-action="backup-all">Back up all rounds first</button><button type="button" class="btn danger" data-action="wipe-all">Clear everything</button></div>
@@ -872,12 +918,13 @@ img.mimg.pix{image-rendering:pixelated}
     </section>
     <div class="ofoot"><p>Options stay in this browser. Rounds never change them.</p><div class="oversion" id="oversion"></div></div>
   </div>
-</aside>
+</div>
 <input type="file" id="fileinput" accept=".json,application/json" hidden>
 <div class="dropveil" id="dropveil"><div>Drop to open<small>A round, a saved file, answers, or a backup</small></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="srx" id="srsay" role="status" aria-live="polite"></div>
 <div class="cback" id="cback">
-  <div class="cbox" role="alertdialog" aria-modal="true" aria-labelledby="ctitle" aria-describedby="cmsg">
+  <div class="cbox" role="alertdialog" aria-modal="true" aria-labelledby="ctitle" aria-describedby="cline cmsg">
     <div class="chead" id="chead"><span class="mico" id="cico" aria-hidden="true"></span><h3 id="ctitle"></h3><button type="button" class="mclose" id="cx" aria-label="Close">&#10005;</button></div>
     <div class="cbody">
       <div class="cfig" id="cfig" aria-hidden="true"></div>
@@ -895,7 +942,7 @@ img.mimg.pix{image-rendering:pixelated}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.7.4";
+var WIZARD_VERSION = "0.7.5";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -1143,7 +1190,7 @@ function applyConfig(){
   headMeta();
 }
 var SETKEY = "decision-wizard-settings-v1";
-var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true };
+var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true, keys: true };
 function loadSettings(){
   var s = readJSON(SETKEY);
   if(s && typeof s === "object"){
@@ -1158,6 +1205,7 @@ function loadSettings(){
     if(typeof s.timerHover === "boolean") SETTINGS.timerHover = s.timerHover;
     if(typeof s.timerBar === "boolean") SETTINGS.timerBar = s.timerBar;
     if(typeof s.recs === "boolean") SETTINGS.recs = s.recs;
+    if(typeof s.keys === "boolean") SETTINGS.keys = s.keys;
     if(typeof s.name === "string") SETTINGS.name = s.name.slice(0, 30);
   } else {
     var t = lsGet(TKEY);
@@ -1179,7 +1227,7 @@ function applySettings(){
   applyMascot();
   renderOptions();
 }
-var OPTKEYS = { "set-theme": "theme", "set-size": "size", "set-mascot": "mascot", "set-talk": "talk", "set-quips": "quips", "set-sound": "sound", "set-timerhover": "timerHover", "set-timerbar": "timerBar", "set-recs": "recs" };
+var OPTKEYS = { "set-theme": "theme", "set-size": "size", "set-mascot": "mascot", "set-talk": "talk", "set-quips": "quips", "set-sound": "sound", "set-timerhover": "timerHover", "set-timerbar": "timerBar", "set-recs": "recs", "set-keys": "keys" };
 function renderOptions(){
   renderCompanions();
   var bs = document.querySelectorAll('#optdrawer [data-action^="set-"]');
@@ -1192,10 +1240,17 @@ function renderOptions(){
   }
   var off = !mascotOn();
   var rt = document.getElementById("row-talk"), rq = document.getElementById("row-quips");
-  if(rt) rt.className = "orow" + (off ? " dim" : "");
   var rh = document.getElementById("row-timerhover");
-  if(rh) rh.className = "orow" + (off ? " dim" : "");
-  if(rq) rq.className = "orow" + (off || !SETTINGS.talk ? " dim" : "");
+  var why = function(row, w){
+    if(!row) return;
+    row.className = "orow" + (w ? " dim" : "");
+    var lab = row.querySelector(".olab"), g = row.querySelector(".seg");
+    if(lab) lab.setAttribute("data-why", w);
+    if(g){ var base = g.getAttribute("data-base") || g.getAttribute("aria-label"); g.setAttribute("data-base", base); g.setAttribute("aria-label", base + (w ? ". " + w : "")); }
+  };
+  why(rt, off ? "Needs a companion" : "");
+  why(rh, off ? "Needs a companion" : "");
+  why(rq, off ? "Needs a companion" : !SETTINGS.talk ? "Needs speech bubbles" : "");
   var pv = document.getElementById("mprev");
   if(pv && !off && !optTimer){ pv.innerHTML = ART[mascotKey()].idle; }
   var nm = document.getElementById("optname");
@@ -1256,13 +1311,13 @@ function setOption(k, v){
   if(k === "theme"){ if(v !== "dark" && v !== "light" && v !== "system") return; SETTINGS.theme = v; }
   else if(k === "size"){ if(v !== "compact" && v !== "normal" && v !== "large") return; SETTINGS.size = v; }
   else if(k === "mascot"){ if(v !== "quill" && v !== "swoop" && v !== "none" && !own(CMP.list, v)) return; SETTINGS.mascot = v; SETTINGS.mascotFolder = own(CMP.list, v) ? CMP.list[v].folder : ""; }
-  else if(k === "talk" || k === "quips" || k === "sound" || k === "timerHover" || k === "timerBar" || k === "recs"){ SETTINGS[k] = (v === "on" || v === true); }
+  else if(k === "talk" || k === "quips" || k === "sound" || k === "timerHover" || k === "timerBar" || k === "recs" || k === "keys"){ SETTINGS[k] = (v === "on" || v === true); }
   else if(k === "name"){ SETTINGS.name = String(v || "").trim().slice(0, 30); }
   else return;
   saveSettings();
   applySettings();
   updateTimers();
-  if(k === "recs" && QUESTIONS.length) scrollKeep(render);
+  if((k === "recs" || k === "keys") && QUESTIONS.length) scrollKeep(render);
   var map = null;
   if(k === "theme") map = { light: ["opt_light", "warn"], dark: ["opt_dark", "pick"], system: ["opt_system", "pick"] }[SETTINGS.theme];
   else if(k === "size") map = { large: ["opt_large", "pick"], compact: ["opt_compact", "skip"], normal: ["opt_normal", "pick"] }[SETTINGS.size];
@@ -1373,10 +1428,10 @@ function renderSide(){
         if(dp < tp){ count = '<span class="scount">' + dp + '/' + tp + '</span>'; }
       }
     }
-    h += '<button type="button" class="sitem' + (i === state.idx ? " cur" : "") + '" data-action="goto" data-idx="' + i + '">';
+    h += '<button type="button" class="sitem' + (i === state.idx ? " cur" : "") + '" data-action="goto" data-idx="' + i + '"' + (i === state.idx ? ' aria-current="step"' : '') + '>';
     h += '<span class="dot' + (done ? " done" : "") + '"></span>';
     h += '<span class="sid">' + esc(q.id) + '</span>';
-    h += '<span class="stt" ' + dirA(q.title) + '>' + esc(q.title) + '</span>' + count + '</button>';
+    h += '<span class="stt" ' + dirA(q.title) + '>' + esc(q.title) + '</span>' + count + '<span class="srx">' + (done ? ", answered" : ", open") + '</span></button>';
   }
   el.innerHTML = h;
 }
@@ -1406,7 +1461,7 @@ function detailHTMLv1(q){
   }
   if(hasLinks || hasExtra){
     h += '<div class="xrow">';
-    if(hasExtra){ h += '<button type="button" class="xbtn" data-action="extra-open">&#9776; ' + esc(q.extra.label || "More context") + '</button>'; }
+    if(hasExtra){ h += '<button type="button" class="xbtn" data-action="extra-open" aria-haspopup="dialog"><span aria-hidden="true">&#9776;</span> ' + esc(q.extra.label || "More context") + '</button>'; }
     if(hasLinks){
       for(var j=0;j<q.links.length;j++){
         var L = q.links[j];
@@ -1420,7 +1475,7 @@ function detailHTMLv1(q){
 }
 
 function renderEmpty(){
-  var h = '<div class="sumcard"><h2>No round loaded</h2>';
+  var h = '<div class="ptop"></div><div class="sumcard"><h2 tabindex="-1">No round loaded</h2>';
   h += '<div class="sumstats">Press Load to choose a round file or paste one, or drop a file anywhere on this page. Every round you load stays in this browser, with its answers, until you delete it.</div>';
   h += '<div class="crow"><button type="button" class="btn" data-action="open-drawer">Load a round</button></div>';
   h += '</div>';
@@ -1428,9 +1483,42 @@ function renderEmpty(){
 }
 function render(){
   var behind = followNew && followKey === CURKEY;
+  var fx = focusBefore();
   followWait = false; followNew = false; followShown = null;
   renderCore(); renderHooks(); updateTimers(); try{ cutStaleLine(); fitBatch(); }catch(e){}
+  focusAfter(fx);
   if(behind) tell("ver:" + CURKEY, 'A new version of "' + CONFIG.title + '" arrived.');
+}
+/* Drawing replaces the cards, and with them the focused button. Focus goes back to the same control when the
+   screen is the same, and to the heading when it changed, so the keyboard and a screen reader carry on from the
+   answer just given instead of from the top of the page. */
+var lastScreen = null;
+var FOCUS_KEYS = ["data-action", "data-role", "data-i", "data-item", "data-f", "data-side", "data-idx", "data-note", "data-x", "data-d"];
+function screenKey(){ return (CURKEY || "") + "#" + (QUESTIONS.length ? state.idx : "none"); }
+function focusBefore(){
+  var ae = document.activeElement, body = !ae || ae === document.body;
+  var host = body ? null : (ae.closest ? ae.closest("#app, #side, #mascot") : null);
+  var sel = "";
+  if(host && host.id !== "mascot"){
+    if(ae.getAttribute("data-action") || ae.getAttribute("data-role")){
+      sel = FOCUS_KEYS.map(function(k){ var v = ae.getAttribute(k); return v === null ? "" : "[" + k + '="' + String(v).replace(/["\\]/g, "\\$&") + '"]'; }).join("");
+    } else if(ae.id){ sel = "#" + ae.id; }
+  }
+  return { screen: lastScreen, mine: body || !!host, body: body, el: ae, sel: sel, host: host ? host.id : "", caret: (ae && typeof ae.selectionStart === "number") ? ae.selectionStart : null };
+}
+function pageHeading(){ return document.querySelector("#app .qtitle, #app .sumcard h2"); }
+function focusAfter(fx){
+  var now = screenKey(), was = fx.screen;
+  lastScreen = now;
+  if(!fx.mine || was === null) return;
+  var ae = document.activeElement;
+  if(was !== now){ if(fx.body || ae === document.body || !ae || !document.body.contains(fx.el)) focusQuiet(pageHeading()); return; }
+  if(fx.body || (ae && ae !== document.body)) return;
+  var el = fx.sel ? document.querySelector("#" + fx.host + " " + fx.sel) : null;
+  if(el && !el.disabled && el.offsetParent !== null){
+    focusQuiet(el);
+    if(fx.caret !== null && typeof el.setSelectionRange === "function"){ try{ el.setSelectionRange(fx.caret, fx.caret); }catch(e){} }
+  } else focusQuiet(pageHeading());
 }
 /* The round clock: from the round's first load until every question has an answer, minus the time it was paused:
    while the companion naps, while another round is open, and while the page was closed. */
@@ -1517,12 +1605,12 @@ function renderCore(){
 var TIMER_PILL = '<span class="ptime" id="ptime" title="Time on this round" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9.5 2.5h5"/></svg><b></b></span>';
 function chromeTop(q){
   var pct = Math.round(state.idx / QUESTIONS.length * 100);
-  var h = "";
+  var h = '<div class="ptop">';
   h += '<div class="progress"><div class="ptrack"><div class="pbar" style="width:' + pct + '%"></div></div>';
-  h += '<div class="pcount">Issue ' + (state.idx+1) + ' of ' + QUESTIONS.length + '</div>' + TIMER_PILL + '</div>';
+  h += '<div class="pcount" id="pcount">Issue ' + (state.idx+1) + ' of ' + QUESTIONS.length + '</div>' + TIMER_PILL + '</div>';
   var chip = projectChipHTML();
   h += chip ? '<div class="chiprow"><span class="section-chip">' + esc(q.section) + '</span>' + chip + '</div>' : '<span class="section-chip">' + esc(q.section) + '</span>';
-  return h;
+  return h + '</div>';
 }
 function chromeControls(q){
   var h = '<div class="controls">';
@@ -1535,21 +1623,21 @@ function chromeControls(q){
   return h;
 }
 
-function optionsHTML(opts, saved, act, fattr, rec){
-  var card = isCardList(opts), h = "";
-  h += card ? '<div class="ocards" style="--n:' + opts.length + '">' : '<div class="opts">';
+function optionsHTML(opts, saved, act, fattr, rec, labId){
+  var card = isCardList(opts), h = "", grp = ' role="group" aria-labelledby="' + (labId || "qh") + '"';
+  h += card ? '<div class="ocards"' + grp + ' style="--n:' + opts.length + '">' : '<div class="opts"' + grp + '>';
   for(var i=0;i<opts.length;i++){
     var lab = optLabel(opts[i]), sel = saved && saved.status === "picked" && saved.answer === lab;
     var isRec = !!(rec && rec.label === lab), why = (isRec && rec.because) ? whyText(rec) : "";
     if(card){
       var tx = optText(opts[i]);
-      h += '<button type="button" class="ocard' + (sel ? " sel" : "") + (isRec ? " rec" : "") + '" data-action="' + act + '" data-i="' + i + '"' + fattr + '>';
+      h += '<button type="button" class="ocard' + (sel ? " sel" : "") + (isRec ? " rec" : "") + '" data-action="' + act + '" data-i="' + i + '"' + fattr + ' aria-pressed="' + (sel ? "true" : "false") + '">';
       h += '<span class="ochead"><span class="num">' + (i+1) + '</span><span class="ct" ' + dirA(lab) + '>' + esc(lab) + '</span>' + (isRec ? hatHTML() : '') + '</span>';
       if(tx) h += '<span class="cx" ' + dirA(tx) + '>' + esc(tx) + '</span>';
       if(why) h += '<span class="rwhy" ' + dirA(rec.because) + '>' + esc(why) + '</span>';
       h += '</button>';
     } else {
-      h += '<button type="button" class="opt' + (sel ? " sel" : "") + (isRec ? " rec" : "") + '" data-action="' + act + '" data-i="' + i + '"' + fattr + '>';
+      h += '<button type="button" class="opt' + (sel ? " sel" : "") + (isRec ? " rec" : "") + '" data-action="' + act + '" data-i="' + i + '"' + fattr + ' aria-pressed="' + (sel ? "true" : "false") + '">';
       h += '<span class="num">' + (i+1) + '</span><span class="lab" ' + dirA(lab) + '>' + esc(lab) + (why ? '<span class="rwhy" ' + dirA(rec.because) + '>' + esc(why) + '</span>' : '') + '</span>' + (isRec ? hatHTML() : '') + '</button>';
     }
   }
@@ -1559,21 +1647,21 @@ function optionsHTML(opts, saved, act, fattr, rec){
 function customHTML(label, saved, ids, acts, fattr, separate){
   var csel = saved && saved.status === "custom";
   var h = separate ? '<div class="opts ocustom">' : "";
-  h += '<button type="button" class="opt custom' + (csel ? " sel" : "") + '" data-action="' + acts[0] + '"' + fattr + '>';
-  h += '<span class="num">&#9998;</span><span class="lab">' + esc(label || "Custom answer (type it)") + '</span></button>';
+  h += '<button type="button" class="opt custom' + (csel ? " sel" : "") + '" data-action="' + acts[0] + '"' + fattr + ' aria-pressed="' + (csel ? "true" : "false") + '" aria-expanded="false" aria-controls="' + ids[0] + '">';
+  h += '<span class="num" aria-hidden="true">&#9998;</span><span class="lab">' + esc(label || "Custom answer (type it)") + '</span></button>';
   h += '<div class="cpanel" id="' + ids[0] + '" style="display:none">';
-  h += '<textarea id="' + ids[1] + '"' + (fattr ? ' class="fctext"' + fattr : "") + ' dir="auto" placeholder="Type the answer"></textarea>';
+  h += '<textarea id="' + ids[1] + '"' + (fattr ? ' class="fctext"' + fattr : "") + ' dir="auto" aria-label="Your own answer" placeholder="Type the answer"></textarea>';
   h += '<div class="crow"><button type="button" class="btn" id="' + ids[2] + '" data-action="' + acts[1] + '"' + fattr + ' disabled>Record answer</button>';
   h += '<button type="button" class="btn sec" data-action="' + acts[2] + '"' + fattr + '>Cancel</button></div></div>';
   if(separate) h += '</div>';
   return h;
 }
 function noteShown(id){ var o = openNotes[id]; return o === true || (o !== false && hasNote(state.answers[id])); }
-function noteHTML(id){
+function noteHTML(id, about){
   var a = state.answers[id], has = hasNote(a), show = noteShown(id);
   var h = '<div class="nrow">';
-  h += '<button type="button" class="npen' + (has ? " has" : "") + '" data-action="note-toggle" data-note="' + esc(id) + '" aria-expanded="' + (show ? "true" : "false") + '" aria-controls="np-' + esc(id) + '">&#9998; <span>' + (has ? "Note" : "Add a note") + '</span></button>';
-  h += '<div class="npanel" id="np-' + esc(id) + '"' + (show ? "" : " hidden") + '><textarea dir="auto" data-role="note" data-note="' + esc(id) + '" aria-label="Note" placeholder="A note that travels with your answer">' + esc(noteOf(a)) + '</textarea></div>';
+  h += '<button type="button" class="npen' + (has ? " has" : "") + '" data-action="note-toggle" data-note="' + esc(id) + '" aria-expanded="' + (show ? "true" : "false") + '" aria-controls="np-' + esc(id) + '"><span aria-hidden="true">&#9998;</span> <span>' + (has ? "Note" : "Add a note") + '</span></button>';
+  h += '<div class="npanel" id="np-' + esc(id) + '"' + (show ? "" : " hidden") + '><textarea dir="auto" data-role="note" data-note="' + esc(id) + '" aria-label="' + esc(about ? "Note on " + about : "Note") + '" placeholder="A note that travels with your answer">' + esc(noteOf(a)) + '</textarea></div>';
   return h + '</div>';
 }
 function dirOf(t){ var m = /dir="(\w+)"/.exec(dirA(t)); return m ? m[1] : "auto"; }
@@ -1586,7 +1674,8 @@ function dirA(t){
   if(!AR.test(core) && !LA.test(core)) core = t;
   var w = core.split(/\s+/), r = 0, l = 0;
   for(var i=0;i<w.length;i++){ if(AR.test(w[i])) r++; else if(LA.test(w[i])) l++; }
-  return 'dir="' + (r > l ? "rtl" : (l > r ? "ltr" : "auto")) + '"';
+  if(r > l) return 'dir="rtl" lang="' + (/[\u0590-\u05FF]/.test(core) ? "he" : "ar") + '"';
+  return 'dir="' + (l > r ? "ltr" : "auto") + '"';
 }
 var ICO = {
   info: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>',
@@ -1654,7 +1743,7 @@ function contextHTML(q){
   }
   if(xs.length || links.length){
     h += '<div class="xrow">';
-    xs.forEach(function(e, k){ h += '<button type="button" class="xbtn" data-action="extra-open" data-x="' + k + '">' + xIcon(e) + '<span>' + esc(e.label || "More context") + '</span></button>'; });
+    xs.forEach(function(e, k){ h += '<button type="button" class="xbtn" data-action="extra-open" data-x="' + k + '" aria-haspopup="dialog">' + xIcon(e) + '<span>' + esc(e.label || "More context") + '</span></button>'; });
     links.forEach(function(L){ h += '<a class="plink" href="' + esc(L.url) + '" target="_blank" rel="noopener">' + esc(L.label || L.url) + ' &#8599;</a>'; });
     h += '</div>';
   }
@@ -1662,8 +1751,9 @@ function contextHTML(q){
 }
 function hasQuestion(q){ return !!(q && typeof q.question === "string" && q.question.trim()); }
 function headHTML(q){
-  if(hasQuestion(q)) return '<div class="qtopic" ' + dirA(q.title) + '>' + esc(q.title) + '</div><div class="qtitle" ' + dirA(q.question) + '>' + esc(q.question) + '</div>';
-  return '<div class="qtitle" ' + dirA(q.title) + '>' + esc(q.title) + '</div>';
+  var hd = ' id="qh" tabindex="-1" aria-describedby="pcount"';
+  if(hasQuestion(q)) return '<div class="qtopic" ' + dirA(q.title) + '>' + esc(q.title) + '</div><h2 class="qtitle"' + hd + ' ' + dirA(q.question) + '>' + esc(q.question) + '</h2>';
+  return '<h2 class="qtitle"' + hd + ' ' + dirA(q.title) + '>' + esc(q.title) + '</h2>';
 }
 function renderSingle(q){
   customOpen = false;
@@ -1671,7 +1761,7 @@ function renderSingle(q){
   var card = isCardList(q.options), all = fups(q), live = liveFups(q, state.answers);
   var h = chromeTop(q);
   h += '<div class="qcard">';
-  h += '<div class="corner"><span class="n">' + esc(q.id) + '</span><span class="s">&#10022;</span></div>';
+  h += '<div class="corner"><span class="n">' + esc(q.id) + '</span><span class="s" aria-hidden="true">&#10022;</span></div>';
   h += headHTML(q);
   if(saved && saved.status !== "open" && saved.status !== "batch"){ h += '<div class="recorded">Recorded: ' + (saved.status === "custom" ? "custom answer" : "picked") + '</div>'; }
   if(card){
@@ -1682,7 +1772,7 @@ function renderSingle(q){
     if(q.custom !== false){ h += customHTML(q.customLabel, saved, ["cpanel", "ctext", "cok"], ["custom-open", "custom-confirm", "custom-cancel"], "", false); }
     h += '</div>';
   }
-  h += noteHTML(q.id);
+  h += noteHTML(q.id, q.title);
   if(live.length){
     h += '<div class="fups" id="fups">';
     h += '<div class="fuphead">' + (saved.status === "picked" ? 'Because you picked <b ' + dirA(saved.answer) + '>' + esc(saved.answer) + '</b>' : 'Because of your answer') + '</div>';
@@ -1691,14 +1781,14 @@ function renderSingle(q){
       h += '<div class="fup' + (done1(fa) ? " done" : "") + '" id="fup-' + fi + '">';
       if(hasQuestion(f)){
         h += '<div class="fuptopic"><span class="fid">' + esc(f.id) + '</span><span ' + dirA(f.title) + '>' + esc(f.title) + '</span></div>';
-        h += '<div class="fuptitle"><span ' + dirA(f.question) + '>' + esc(f.question) + '</span></div>';
+        h += '<h3 class="fuptitle" id="fh-' + fi + '" tabindex="-1"><span ' + dirA(f.question) + '>' + esc(f.question) + '</span></h3>';
       } else {
-        h += '<div class="fuptitle"><span class="fid">' + esc(f.id) + '</span><span ' + dirA(f.title) + '>' + esc(f.title) + '</span></div>';
+        h += '<h3 class="fuptitle" id="fh-' + fi + '" tabindex="-1"><span class="fid">' + esc(f.id) + '</span><span ' + dirA(f.title) + '>' + esc(f.title) + '</span></h3>';
       }
       var fcard = isCardList(f.options);
-      h += optionsHTML(f.options, fa, "fpick", fattr, recOf(f));
+      h += optionsHTML(f.options, fa, "fpick", fattr, recOf(f), "fh-" + fi);
       if(f.custom !== false){ h += customHTML(f.customLabel, fa, ["fcp-" + fi, "fct-" + fi, "fcok-" + fi], ["fcustom-open", "fcustom-confirm", "fcustom-cancel"], fattr, true); }
-      h += noteHTML(f.id);
+      h += noteHTML(f.id, f.question || f.title);
       h += contextHTML({ context: f.context, detail: f.detail, links: f.links });
       h += '</div>';
     }
@@ -1706,13 +1796,13 @@ function renderSingle(q){
   }
   h += contextHTML(q);
   var hint;
-  if(live.length && done1(saved)) hint = qAnsweredIn(q, state.answers) ? "All answered. Next moves on, or change any answer above." : "Number keys answer the first open follow-up. This issue moves on once they are answered.";
-  else hint = 'Keys 1-' + Math.min(q.options.length, 9) + ' pick an answer. ' + (all.length ? "Some answers open a follow-up below." : "Recording moves to the next issue.");
+  if(live.length && done1(saved)) hint = qAnsweredIn(q, state.answers) ? "All answered. Next moves on, or change any answer above." : (SETTINGS.keys ? "Number keys answer the first open follow-up. " : "") + "This issue moves on once they are answered.";
+  else hint = (SETTINGS.keys ? 'Keys 1-' + Math.min(q.options.length, 9) + ' pick an answer. ' : '') + (all.length ? "Some answers open a follow-up below." : "Recording moves to the next issue.");
   h += '<div class="hint">' + hint + '</div>';
   h += '</div>';
   h += chromeControls(q);
   document.getElementById("app").innerHTML = h;
-  if(saved && saved.status === "custom"){ openCustom(saved.answer); }
+  if(saved && saved.status === "custom"){ openCustom(saved.answer, true); }
   for(var j=0;j<live.length;j++){
     var fa2 = state.answers[live[j].id];
     if(fa2 && fa2.status === "custom") openFupCustom(all.indexOf(live[j]), fa2.answer, true);
@@ -1737,7 +1827,7 @@ function sameSet(a, labs){
 function typeTail(q, saved, hint){
   var h = "";
   if(q.custom !== false){ h += customHTML(q.customLabel, saved, ["cpanel", "ctext", "cok"], ["custom-open", "custom-confirm", "custom-cancel"], "", true); }
-  h += noteHTML(q.id);
+  h += noteHTML(q.id, q.title);
   h += contextHTML(q);
   h += '<div class="hint">' + hint + '</div>';
   h += '</div>';
@@ -1747,7 +1837,7 @@ function typeTail(q, saved, hint){
 function typeHead(q, a){
   var h = chromeTop(q);
   h += '<div class="qcard">';
-  h += '<div class="corner"><span class="n">' + esc(q.id) + '</span><span class="s">&#10022;</span></div>';
+  h += '<div class="corner"><span class="n">' + esc(q.id) + '</span><span class="s" aria-hidden="true">&#10022;</span></div>';
   h += headHTML(q) + recordedHTML(a);
   return h;
 }
@@ -1767,23 +1857,23 @@ function renderRank(q){
   q.options.forEach(function(o){ byLab[optLabel(o)] = o; });
   var h = typeHead(q, a);
   if(r) h += recHead("I recommend this order" + whyTail(r.because), r.because);
-  h += '<ol class="rlist" id="rlist" data-q="' + esc(q.id) + '">';
+  h += '<ol class="rlist" id="rlist" data-q="' + esc(q.id) + '" aria-label="Your order">';
   for(var i=0;i<order.length;i++){
-    var lab = order[i], tx = optText(byLab[lab]);
+    var lab = order[i], tx = optText(byLab[lab]), pos = ', now ' + (i+1) + ' of ' + order.length;
     h += '<li class="ritem" data-label="' + esc(lab) + '">';
     h += '<button type="button" class="rhandle" tabindex="-1" aria-hidden="true" title="Drag to move">' + ICO.grip + '</button>';
     h += '<span class="rpos">' + (i+1) + '</span>';
     h += '<span class="rtext"><span class="rl" ' + dirA(lab) + '>' + esc(lab) + '</span>' + (tx ? '<span class="cx" ' + dirA(tx) + '>' + esc(tx) + '</span>' : '') + '</span>';
     h += '<span class="rarrows">';
-    h += '<button type="button" class="rarrow" data-action="rk-move" data-i="' + i + '" data-d="-1" aria-label="Move ' + esc(lab) + ' up"' + (i === 0 ? ' disabled' : '') + '>' + ICO.up + '</button>';
-    h += '<button type="button" class="rarrow" data-action="rk-move" data-i="' + i + '" data-d="1" aria-label="Move ' + esc(lab) + ' down"' + (i === order.length - 1 ? ' disabled' : '') + '>' + ICO.down + '</button>';
+    h += '<button type="button" class="rarrow" data-action="rk-move" data-i="' + i + '" data-d="-1" aria-label="Move ' + esc(lab) + ' up' + pos + '"' + (i === 0 ? ' disabled' : '') + '>' + ICO.up + '</button>';
+    h += '<button type="button" class="rarrow" data-action="rk-move" data-i="' + i + '" data-d="1" aria-label="Move ' + esc(lab) + ' down' + pos + '"' + (i === order.length - 1 ? ' disabled' : '') + '>' + ICO.down + '</button>';
     h += '</span></li>';
   }
   h += '</ol>';
   h += '<div class="crow"><button type="button" class="btn" data-action="rk-record">Record this order</button></div>';
   h += typeTail(q, a, "Drag a row by its handle, or move it with its arrows. Record this order saves it and moves on.");
   document.getElementById("app").innerHTML = h;
-  if(a && a.status === "custom"){ openCustom(a.answer); }
+  if(a && a.status === "custom"){ openCustom(a.answer, true); }
 }
 function rankMove(i, d){
   var q = cur();
@@ -1880,13 +1970,13 @@ function renderNumber(q){
   if(r) h += recHead("I recommend " + numFmt(sp, numSnap(sp, r.value)) + whyTail(r.because), r.because);
   var attrs = ' min="' + sp.min + '" max="' + sp.max + '" step="' + sp.step + '"';
   h += '<div class="numbox"><div class="numtop">';
-  h += '<div class="numslide"><input type="range" id="numrange"' + attrs + ' value="' + v + '" aria-label="Value"><div class="numends"><span>' + esc(numFmt(sp, sp.min)) + '</span><span>' + esc(numFmt(sp, sp.max)) + '</span></div></div>';
-  h += '<div class="numval"><input type="number" id="numin"' + attrs + ' value="' + v.toFixed(sp.dec) + '" inputmode="decimal" aria-label="Exact value">' + (sp.unit ? '<span class="numunit">' + esc(sp.unit) + '</span>' : '') + '</div>';
+  h += '<div class="numslide"><input type="range" id="numrange"' + attrs + ' value="' + v + '" aria-label="' + esc(q.title) + '" aria-valuetext="' + esc(numFmt(sp, v)) + '"><div class="numends"><span>' + esc(numFmt(sp, sp.min)) + '</span><span>' + esc(numFmt(sp, sp.max)) + '</span></div></div>';
+  h += '<div class="numval"><input type="number" id="numin"' + attrs + ' value="' + v.toFixed(sp.dec) + '" inputmode="decimal" aria-label="' + esc(q.title) + ', exact value' + (sp.unit ? ' in ' + esc(sp.unit) : '') + '">' + (sp.unit ? '<span class="numunit">' + esc(sp.unit) + '</span>' : '') + '</div>';
   h += '</div></div>';
   h += '<div class="crow"><button type="button" class="btn" id="numrec" data-action="num-record">Record ' + esc(numFmt(sp, v)) + '</button></div>';
   h += typeTail(q, a, "Drag the slider, use the arrow keys, or type the exact value. Record saves it and moves on.");
   document.getElementById("app").innerHTML = h;
-  if(a && a.status === "custom"){ openCustom(a.answer); }
+  if(a && a.status === "custom"){ openCustom(a.answer, true); }
 }
 function numLabel(q, sp){ var b = document.getElementById("numrec"); if(b) b.textContent = "Record " + numFmt(sp, numDrafts[q.id]); }
 function numInput(t){
@@ -1896,8 +1986,10 @@ function numInput(t){
   if(!isFinite(v)) return;
   var sv = numSnap(sp, v);
   numDrafts[q.id] = sv;
+  var rg = document.getElementById("numrange");
   if(t.id === "numrange"){ var box = document.getElementById("numin"); if(box) box.value = sv.toFixed(sp.dec); }
-  else { var rg = document.getElementById("numrange"); if(rg) rg.value = sv; }
+  else if(rg){ rg.value = sv; }
+  if(rg) rg.setAttribute("aria-valuetext", numFmt(sp, sv));
   numLabel(q, sp);
 }
 function numCommitBox(){
@@ -1908,8 +2000,12 @@ function numCommitBox(){
   numDrafts[q.id] = v;
   box.value = v.toFixed(sp.dec);
   var rg = document.getElementById("numrange");
-  if(rg) rg.value = v;
+  if(rg){ rg.value = v; rg.setAttribute("aria-valuetext", numFmt(sp, v)); }
   numLabel(q, sp);
+  /* A typed value the question doesn't allow is moved to the nearest one it does, and that is said out loud. */
+  var moved = isFinite(raw) && v !== raw;
+  if(moved) srSay("Changed to " + numFmt(sp, v) + ", the nearest allowed value.");
+  return moved;
 }
 function numRecord(){
   var q = cur();
@@ -1962,14 +2058,14 @@ function bracketState(q, matches){
   }
 }
 function bracketTreeHTML(st){
-  var h = '<div class="bktree">';
+  var h = '<div class="bktree" role="region" aria-label="The bracket" tabindex="0">';
   st.rounds.forEach(function(r){
-    h += '<div class="bkcol"><h4>' + (r.round === st.totalRounds ? "Final" : "Round " + r.round) + '</h4><div class="bkms">';
+    h += '<div class="bkcol"><h3>' + (r.round === st.totalRounds ? "Final" : "Round " + r.round) + '</h3><ul class="bkms">';
     r.pairs.forEach(function(p, pi){
-      var w = r.winners[pi];
-      h += '<div class="bkm"><div' + (w === p[0] ? ' class="w"' : '') + ' ' + dirA(p[0]) + ' title="' + esc(p[0]) + '">' + esc(p[0]) + '</div><div' + (w === p[1] ? ' class="w"' : '') + ' ' + dirA(p[1]) + ' title="' + esc(p[1]) + '">' + esc(p[1]) + '</div></div>';
+      var w = r.winners[pi], said = w === undefined ? p[0] + " versus " + p[1] : w + " beat " + (w === p[0] ? p[1] : p[0]);
+      h += '<li class="bkm"><span class="srx">' + esc(said) + '</span><div' + (w === p[0] ? ' class="w"' : '') + ' ' + dirA(p[0]) + ' aria-hidden="true">' + esc(p[0]) + '</div><div' + (w === p[1] ? ' class="w"' : '') + ' ' + dirA(p[1]) + ' aria-hidden="true">' + esc(p[1]) + '</div></li>';
     });
-    h += '</div></div>';
+    h += '</ul></div>';
   });
   return h + '</div>';
 }
@@ -1977,7 +2073,7 @@ function bkCard(q, lab, side, rec){
   var o = null;
   for(var i=0;i<q.options.length;i++){ if(optLabel(q.options[i]) === lab){ o = q.options[i]; break; } }
   var tx = optText(o), isRec = !!(rec && rec.label === lab), why = (isRec && rec.because) ? whyText(rec) : "";
-  var h = '<button type="button" class="ocard' + (isRec ? " rec" : "") + '" data-action="bk-pick" data-side="' + side + '">';
+  var h = '<button type="button" class="ocard' + (isRec ? " rec" : "") + '" data-action="bk-pick" data-side="' + side + '" aria-describedby="bkline">';
   h += '<span class="ochead"><span class="num">' + (side + 1) + '</span><span class="ct" ' + dirA(lab) + '>' + esc(lab) + '</span>' + (isRec ? hatHTML() : '') + '</span>';
   if(tx) h += '<span class="cx" ' + dirA(tx) + '>' + esc(tx) + '</span>';
   if(why) h += '<span class="rwhy" ' + dirA(rec.because) + '>' + esc(why) + '</span>';
@@ -1988,20 +2084,20 @@ function renderBracket(q){
   var a = state.answers[q.id], st = bracketState(q, bkMatches(a)), rec = recOf(q);
   var h = typeHead(q, a), hint;
   if(st.winner !== undefined && a && a.status === "picked"){
-    h += '<div class="bkwin">Winner: <b ' + dirA(st.winner) + '>' + esc(st.winner) + '</b><small>after ' + plural(st.total, "match", "matches") + '</small></div>';
+    h += '<div class="bkwin" tabindex="-1">Winner: <b ' + dirA(st.winner) + '>' + esc(st.winner) + '</b><small>after ' + plural(st.total, "match", "matches") + '</small></div>';
     h += bracketTreeHTML(st);
     h += '<div class="crow"><button type="button" class="btn sec" data-action="bk-again">Run it again</button></div>';
     hint = "Run it again starts the matches over. Next moves on.";
   } else if(st.current){
-    h += '<div class="bkline">Match ' + (st.played + 1) + ' of ' + st.total + ', round ' + st.current.round + ' of ' + st.totalRounds + '</div>';
+    h += '<div class="bkline" id="bkline">Match ' + (st.played + 1) + ' of ' + st.total + ', round ' + st.current.round + ' of ' + st.totalRounds + '</div>';
     h += '<div class="bkpair">' + bkCard(q, st.current.pair[0], 0, rec) + '<span class="bkvs">vs</span>' + bkCard(q, st.current.pair[1], 1, rec) + '</div>';
-    hint = "Pick the better of each pair, or press 1 or 2. The last one standing is the answer.";
+    hint = "Pick the better of each pair" + (SETTINGS.keys ? ", or press 1 or 2" : "") + ". The last one standing is the answer.";
   } else {
     hint = "";
   }
   h += typeTail(q, a, hint);
   document.getElementById("app").innerHTML = h;
-  if(a && a.status === "custom"){ openCustom(a.answer); }
+  if(a && a.status === "custom"){ openCustom(a.answer, true); }
 }
 function bkPick(side){
   var q = cur();
@@ -2017,14 +2113,19 @@ function bkPick(side){
     saveState();
     afterAnswer(q, { first: !was, changed: was && prev.answer !== nst.winner });
     scrollKeep(render);
+    focusQuiet("#app .bkwin");
   } else {
     state.answers[q.id] = withNote(prev, { status:"open", answer:"", matches: ms });
     markChanged();
     saveState();
     if(mascotOn()) faceFlash("pick", 700);
     scrollKeep(render);
+    /* The next match starts where the last one was: focus goes to its first card, which reads the match line. */
+    focusQuiet('#app [data-action="bk-pick"]');
+    srSay("Picked " + st.current.pair[side] + ".");
   }
 }
+
 function bkAgain(){
   var q = cur();
   if(!q || qType(q) !== "bracket") return;
@@ -2036,6 +2137,7 @@ function bkAgain(){
     markChanged();
     saveState();
     render();
+    focusQuiet('#app [data-action="bk-pick"]');
   });
 }
 
@@ -2045,26 +2147,26 @@ function renderBatch(q){
   var done = batchDone(q);
   var h = chromeTop(q);
   h += '<div class="qcard">';
-  h += '<div class="corner"><span class="n">' + esc(q.id) + '</span><span class="s">&#10022;</span></div>';
+  h += '<div class="corner"><span class="n">' + esc(q.id) + '</span><span class="s" aria-hidden="true">&#10022;</span></div>';
   h += headHTML(q);
   h += '<div class="bmeta"><span><b>' + done + '</b> of <b>' + q.items.length + '</b> rows answered</span><span>Pen adds a note on any row</span></div>';
   h += '<table class="btable">';
   for(var i=0;i<q.items.length;i++){
     var it = q.items[i];
     var ia = a.items[it.id] || {}, ir = recOf(it);
-    h += '<tr><td class="bl"><span class="bname" ' + dirA(it.label) + '>' + esc(it.label) + '</span>' + (it.note ? '<div class="bnote" ' + dirA(it.note) + '>' + esc(it.note) + '</div>' : '');
+    var bn = ' aria-describedby="bn-' + esc(it.id) + '"', show = (ia.comment && ia.comment.trim().length > 0) || openComments[q.id + ":" + it.id];
+    h += '<tr><th scope="row" class="bl"><span class="bname" id="bn-' + esc(it.id) + '" ' + dirA(it.label) + '>' + esc(it.label) + '</span>' + (it.note ? '<div class="bnote" ' + dirA(it.note) + '>' + esc(it.note) + '</div>' : '');
     if(ir && ir.because) h += '<div class="bwhy">' + ICO.hat + '<span ' + dirA(ir.because) + '>' + esc(whyText(ir, ir.label)) + '</span></div>';
-    h += '</td>';
+    h += '</th>';
     h += '<td class="bops">';
     for(var o=0;o<q.options.length;o++){
       var sel = ia.answer === q.options[o], brec = !!(ir && ir.label === q.options[o]);
-      h += '<button type="button" class="bopt' + (sel ? " sel" : "") + (brec ? " rec" : "") + '" data-action="bpick" data-item="' + esc(it.id) + '" data-i="' + o + '">' + (brec ? hatHTML("bhat") : '') + esc(q.options[o]) + '</button>';
+      h += '<button type="button" class="bopt' + (sel ? " sel" : "") + (brec ? " rec" : "") + '" data-action="bpick" data-item="' + esc(it.id) + '" data-i="' + o + '" aria-pressed="' + (sel ? "true" : "false") + '"' + bn + '>' + (brec ? hatHTML("bhat") : '') + esc(q.options[o]) + '</button>';
     }
     var hasC = ia.comment && ia.comment.trim().length > 0;
-    h += '<button type="button" class="bpen' + (hasC ? " has" : "") + '" data-action="bpen" data-item="' + esc(it.id) + '" aria-label="Note">&#9998;</button>';
+    h += '<button type="button" class="bpen' + (hasC ? " has" : "") + '" data-action="bpen" data-item="' + esc(it.id) + '" aria-label="' + (hasC ? "Note" : "Add a note") + '"' + bn + ' aria-expanded="' + (show ? "true" : "false") + '" aria-controls="crow-' + esc(it.id) + '"><span aria-hidden="true">&#9998;</span></button>';
     h += '</td></tr>';
-    var show = hasC || openComments[q.id + ":" + it.id];
-    h += '<tr class="bcrow" id="crow-' + esc(it.id) + '" style="' + (show ? "" : "display:none") + '"><td colspan="2"><textarea dir="auto" data-role="bcomment" data-item="' + esc(it.id) + '" placeholder="Note for this row">' + esc(ia.comment || "") + '</textarea></td></tr>';
+    h += '<tr class="bcrow" id="crow-' + esc(it.id) + '" style="' + (show ? "" : "display:none") + '"><td colspan="2"><textarea dir="auto" data-role="bcomment" data-item="' + esc(it.id) + '" aria-label="Note on this row"' + bn + ' placeholder="Note for this row">' + esc(ia.comment || "") + '</textarea></td></tr>';
   }
   h += '</table>';
   h += contextHTML(q);
@@ -2081,12 +2183,20 @@ function extraOpen(k){
   if(!e || !t || !b || !m) return;
   t.innerHTML = '<span class="mico">' + xIcon(e) + '</span><span ' + dirA(e.label || "") + '>' + esc(e.label || "More context") + '</span>';
   b.innerHTML = e.blocks.map(function(d){ return blockHTML(d, false); }).join("");
+  if(m.className.indexOf("on") === -1) mOpener = document.activeElement;
   m.className = "mback on";
+  setInert(true);
   setTimeout(function(){ try{ m.querySelector(".mclose").focus(); }catch(err){} }, 30);
 }
+var mOpener = null;
 function extraClose(){
   var m = document.getElementById("modal");
-  if(m) m.className = "mback";
+  if(!m || m.className.indexOf("on") === -1) return;
+  m.className = "mback";
+  setInert(false);
+  var o = mOpener;
+  mOpener = null;
+  if(o && document.body.contains(o)) focusQuiet(o);
 }
 
 function buildExport(){ return exportFor(QUESTIONS, state.answers, CONFIG); }
@@ -2173,11 +2283,11 @@ function sumNote(a){ var t = noteOf(a).trim(); return '<div class="sumnote"><b>N
 function renderSummary(){
   customOpen = false;
   var exp = buildExport();
-  var h = "";
+  var h = '<div class="ptop">';
   h += '<div class="progress"><div class="ptrack"><div class="pbar" style="width:100%"></div></div>';
-  h += '<div class="pcount">' + exp.meta.answered + ' of ' + QUESTIONS.length + ' answered</div>' + TIMER_PILL + '</div>';
+  h += '<div class="pcount">' + exp.meta.answered + ' of ' + QUESTIONS.length + ' answered</div>' + TIMER_PILL + '</div></div>';
   h += '<div class="sumcard">';
-  h += '<h2>Answers so far</h2>';
+  h += '<h2 tabindex="-1">Answers so far</h2>';
   h += '<div class="sumstats"><b>' + exp.meta.answered + '</b> answered, <b>' + exp.meta.open + '</b> still open. Open items stay flagged in the docs. Click a row to revisit it.</div>';
   h += sumProjHTML();
   h += '<table class="sum"><tr><th>#</th><th>Section</th><th>Issue</th><th>Answer</th></tr>';
@@ -2205,17 +2315,17 @@ function renderSummary(){
         }
       }
     }
-    h += '<tr class="rowbtn" data-action="goto" data-idx="' + i + '"><td>' + esc(q.id) + '</td><td>' + esc(q.section) + '</td><td ' + dirA(q.title) + '>' + esc(q.title) + '</td><td>' + ansText + '</td></tr>';
+    h += '<tr class="rowbtn" data-action="goto" data-idx="' + i + '"><td><button type="button" class="sumgo" data-action="goto" data-idx="' + i + '" aria-label="Revisit ' + esc(q.id) + ', ' + esc(q.title) + '">' + esc(q.id) + '</button></td><td>' + esc(q.section) + '</td><td ' + dirA(q.title) + '>' + esc(q.title) + '</td><td>' + ansText + '</td></tr>';
   }
   h += '</table>';
-  h += '<div class="exphead"><b>Answers JSON</b><button type="button" class="btn sec" data-action="copy">Copy answers JSON</button></div>';
+  h += '<div class="exphead"><label for="exp"><b>Answers JSON</b></label><button type="button" class="btn sec" data-action="copy">Copy answers JSON</button></div>';
   h += '<textarea id="exp" spellcheck="false">' + esc(JSON.stringify(exp, null, 2)) + '</textarea>';
   h += '<div class="crow">';
   h += '<button type="button" class="btn" data-action="save">Save round</button>';
   h += '<button type="button" class="btn sec" data-action="first-open">Go to first open</button>';
   h += '<button type="button" class="btn danger" data-action="reset">Reset all</button>';
   h += '</div>';
-  h += '<div class="status" id="sum-status"></div>';
+  h += '<div class="status" id="sum-status" role="status"></div>';
   h += '</div>';
   document.getElementById("app").innerHTML = h;
 }
@@ -2244,6 +2354,7 @@ function settleIssue(q, wasDone){
     if(!done1(state.answers[live[i].id])){
       var el = document.getElementById("fup-" + all.indexOf(live[i]));
       if(el && el.scrollIntoView){ try{ el.scrollIntoView({ block: "nearest", behavior: reducedMotion() ? "auto" : "smooth" }); }catch(e){ el.scrollIntoView(); } }
+      focusQuiet(document.getElementById("fh-" + all.indexOf(live[i])));
       return;
     }
   }
@@ -2278,15 +2389,19 @@ function openFupCustom(fi, prefill, quiet){
   var p = document.getElementById("fcp-" + fi), t = document.getElementById("fct-" + fi), ok = document.getElementById("fcok-" + fi);
   if(!p || !t) return;
   p.style.display = "";
+  customToggle("fcp-" + fi, true);
   if(typeof prefill === "string") t.value = prefill;
   if(ok) ok.disabled = !(t.value && t.value.trim().length > 0);
   if(!quiet){ customOpen = true; if(t.focus) t.focus(); }
 }
 function cancelFupCustom(fi){
   var p = document.getElementById("fcp-" + fi), ft = document.getElementById("fct-" + fi);
+  var inside = !!(p && p.contains(document.activeElement));
   if(p) p.style.display = "none";
   if(ft) ft.removeAttribute("data-typed");
   customOpen = false;
+  var b = customToggle("fcp-" + fi, false);
+  if(inside && b) focusQuiet(b);
 }
 function confirmFupCustom(fi){
   var q = cur(), f = fups(q)[fi], t = document.getElementById("fct-" + fi);
@@ -2316,6 +2431,7 @@ function bpick(itemId, i){
   markChanged();
   saveState();
   scrollKeep(render);
+  srSay(q.options[i] + ". " + batchDone(q) + " of " + q.items.length + " rows answered.");
   afterAnswer(q, { first: !before, changed: !!before && before !== q.options[i], key: q.id + ":" + itemId });
 }
 function bpen(itemId){
@@ -2332,6 +2448,8 @@ function bpen(itemId){
     openComments[key] = false;
     row.style.display = "none";
   }
+  var pen = document.querySelector('#app .bpen[aria-controls="crow-' + String(itemId).replace(/["\\]/g, "\\$&") + '"]');
+  if(pen) pen.setAttribute("aria-expanded", hidden ? "true" : "false");
 }
 function bcomment(itemId, val){
   var q = cur();
@@ -2366,23 +2484,37 @@ function toggleNote(id){
   if(b) b.setAttribute("aria-expanded", show ? "true" : "false");
   if(show){ var t = p.querySelector("textarea"); if(t && t.focus) t.focus(); }
 }
-function openCustom(prefill){
+function customToggle(panelId, open){
+  var b = document.querySelector('#app [aria-controls="' + panelId + '"]');
+  if(b) b.setAttribute("aria-expanded", open ? "true" : "false");
+  return b;
+}
+/* Arriving on a question whose answer was typed shows it without taking focus (quiet); opening it by hand
+   puts you in the box. */
+function openCustom(prefill, quiet){
   var p = document.getElementById("cpanel");
   var t = document.getElementById("ctext");
   var ok = document.getElementById("cok");
   if(!p || !t) return;
   p.style.display = "";
-  customOpen = true;
+  customToggle("cpanel", true);
   if(typeof prefill === "string"){ t.value = prefill; }
   if(ok){ ok.disabled = !(t.value && t.value.trim().length > 0); }
+  if(quiet) return;
+  customOpen = true;
   if(t.focus) t.focus();
 }
 function cancelCustom(){
-  var ps = document.querySelectorAll(".cpanel");
-  for(var i=0;i<ps.length;i++) ps[i].style.display = "none";
+  var ps = document.querySelectorAll(".cpanel"), back = null;
+  for(var i=0;i<ps.length;i++){
+    if(ps[i].style.display !== "none" && ps[i].contains(document.activeElement)) back = ps[i].id;
+    ps[i].style.display = "none";
+    customToggle(ps[i].id, false);
+  }
   var ts = document.querySelectorAll("#ctext, textarea.fctext");
   for(var j=0;j<ts.length;j++) ts[j].removeAttribute("data-typed");
   customOpen = false;
+  if(back) focusQuiet(document.querySelector('#app [aria-controls="' + back + '"]'));
 }
 function confirmCustom(){
   var q = cur();
@@ -2480,13 +2612,33 @@ function askConfirm(msg){
   try{ if(typeof confirm === "function") return confirm(msg); }catch(e){}
   return true;
 }
+/* Says a short sentence to a screen reader. Cleared first, so the same sentence twice is read twice. */
+var srTimer = null;
+function srSay(text){
+  var el = document.getElementById("srsay");
+  if(!el) return;
+  el.textContent = "";
+  if(srTimer) clearTimeout(srTimer);
+  srTimer = setTimeout(function(){ srTimer = null; el.textContent = text; }, 60);
+}
 function toast(ok, msg){
   var t = document.getElementById("toast");
   if(!t) return;
   t.innerHTML = '<span class="nico' + (ok ? " ok" : " bad") + '" aria-hidden="true">' + (ok ? NICO.ok : NICO.bad) + '</span><span class="nmsg" ' + dirA(msg) + '>' + esc(msg) + '</span>';
   t.className = "toast on" + (ok ? "" : " bad");
+  toastFor = ok ? Math.max(3600, lineDuration(msg)) : Math.max(6500, lineDuration(msg) + 2500);
+  toastArm();
+}
+var toastFor = 3600;
+function toastArm(){
+  var t = document.getElementById("toast");
   if(toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(function(){ t.className = "toast" + (ok ? "" : " bad"); }, ok ? 3600 : 6500);
+  toastTimer = setTimeout(function(){
+    toastTimer = null;
+    if(!t) return;
+    t.className = t.className.replace(" on", "");
+    setTimeout(function(){ if(t.className.indexOf(" on") === -1) t.innerHTML = ""; }, 250);
+  }, toastFor);
 }
 
 /* File handles are kept so Save can write back into the file a round came from (Chrome and Edge). */
@@ -3680,6 +3832,7 @@ function addNotice(n){
   NOTICES = NOTICES.filter(function(x){ return x.id !== n.id; });
   NOTICES.push(n);
   renderNotices();
+  srSay(n.text);
 }
 function dropNotice(id){
   var n = NOTICES.length;
@@ -3714,19 +3867,32 @@ function renderNotices(){
   var el = document.getElementById("notices");
   if(!el) return;
   el.innerHTML = NOTICES.map(function(n){
-    return '<div class="notice' + (n.bad ? " bad" : "") + '">' + noticeTile(n) + '<span class="ntext" ' + dirA(n.text) + '>' + esc(n.text) + '</span>'
-      + (n.label ? '<button type="button" class="btn" data-action="notice-act" data-id="' + esc(n.id) + '">' + esc(n.label) + '</button>' : '')
-      + '<button type="button" class="nclose" data-action="notice-close" data-id="' + esc(n.id) + '" aria-label="Dismiss">&#10005;</button></div>';
+    var nt = "nt-" + String(n.id).replace(/[^A-Za-z0-9_-]/g, "_");
+    return '<div class="notice' + (n.bad ? " bad" : "") + '">' + noticeTile(n) + '<span class="ntext" id="' + nt + '" ' + dirA(n.text) + '>' + esc(n.text) + '</span>'
+      + (n.label ? '<button type="button" class="btn" data-action="notice-act" data-id="' + esc(n.id) + '" aria-describedby="' + nt + '">' + esc(n.label) + '</button>' : '')
+      + '<button type="button" class="nclose" data-action="notice-close" data-id="' + esc(n.id) + '" aria-label="Dismiss notice" aria-describedby="' + nt + '">&#10005;</button></div>';
   }).join("");
   noticeLift();
+}
+/* Dismissing a notice by keyboard moves to the next one's close button, or to the question when none is left. */
+function noticeClose(id){
+  var ids = NOTICES.map(function(x){ return x.id; }), i = ids.indexOf(id);
+  var mine = !!(document.activeElement && document.activeElement.closest && document.activeElement.closest("#notices"));
+  dropNotice(id);
+  if(!mine) return;
+  var nx = NOTICES[Math.min(i, NOTICES.length - 1)];
+  var to = nx ? document.querySelector('#notices .nclose[data-id="' + String(nx.id).replace(/["\\]/g, "\\$&") + '"]') : null;
+  focusQuiet(to || pageHeading() || document.getElementById("main"));
 }
 function noticeAct(id){
   if(confirmOpen) return;
   var n = null;
   for(var i=0;i<NOTICES.length;i++){ if(NOTICES[i].id === id) n = NOTICES[i]; }
   if(!n) return;
+  var mine = !!(document.activeElement && document.activeElement.closest && document.activeElement.closest("#notices"));
   dropNotice(id);
   if(n.fn) n.fn();
+  if(mine && (!document.activeElement || document.activeElement === document.body)) focusQuiet(pageHeading() || document.getElementById("main"));
 }
 
 /* Saving into the folder. Each change to a linked round is written into its file a moment later, in the same form
@@ -4251,6 +4417,7 @@ function renderFolders(){
   var el = document.getElementById("folderlist");
   if(!el) return;
   var list = folderList();
+  if(list.length) el.setAttribute("role", "list"); else el.removeAttribute("role");
   if(!list.length){
     el.innerHTML = fsSupported()
       ? '<div class="lempty">None yet. Rounds Claude Code writes name their project\'s folder. Open that folder here, or load one of its rounds and pick the folder when the wizard asks. From then on the wizard saves your answers into it, and opens that project\'s new rounds by itself.</div>' + FOLDER_OPEN_BTN
@@ -4260,10 +4427,10 @@ function renderFolders(){
   var h = "";
   list.forEach(function(rec){
     var ok = rec.perm === "granted", gone = rec.perm === "gone", name = recName(rec);
-    h += '<div class="frow' + (ok ? " ok" : "") + '"><div class="fmain"><span class="fname" ' + dirA(name) + '>' + esc(name) + '</span>';
+    h += '<div class="frow' + (ok ? " ok" : "") + '" role="listitem"><div class="fmain"><span class="fname" ' + dirA(name) + '>' + esc(name) + '</span>';
     h += '<span class="fpath" dir="ltr" title="' + esc(rec.path) + '">' + esc(rec.path) + '</span>';
     h += '<span class="fstate">' + (ok ? "Saving your answers, and opening new rounds" : gone ? "This folder can't be found right now. If it moved, load a round from it and pick it again" : rec.perm === "denied" ? "Blocked in the browser" : "Waiting for your OK") + '</span></div>';
-    if(!ok && !gone) h += '<button type="button" class="fbtn" data-action="folder-allow" data-key="' + esc(rec.key) + '">Allow</button>';
+    if(!ok && !gone) h += '<button type="button" class="fbtn" data-action="folder-allow" data-key="' + esc(rec.key) + '" aria-label="Allow ' + esc(name) + '">Allow</button>';
     h += '<button type="button" class="ldel" data-action="folder-forget" data-key="' + esc(rec.key) + '" aria-label="Forget ' + esc(name) + '">Forget</button></div>';
   });
   h += FOLDER_OPEN_BTN;
@@ -4619,12 +4786,13 @@ function setupFolders(){
 function renderLib(){
   var el = document.getElementById("liblist");
   if(!el) return;
+  if(LIB.rounds.length) el.setAttribute("role", "list"); else el.removeAttribute("role");
   if(!LIB.rounds.length){ el.innerHTML = '<div class="lempty">No rounds yet. Every round you load stays here, with its answers, until you delete it.</div>'; return; }
   var rows = LIB.rounds.slice().sort(function(a, b){ return (b.changed || 0) - (a.changed || 0); });
   var h = "";
   for(var i=0;i<rows.length;i++){
     var e = rows[i], isCur = e.key === CURKEY, title = e.title || "Untitled round";
-    h += '<div class="lrow' + (isCur ? " cur" : "") + '">';
+    h += '<div class="lrow' + (isCur ? " cur" : "") + '" role="listitem">';
     h += '<button type="button" class="lopen" data-action="lib-open" data-key="' + esc(e.key) + '"' + (isCur ? ' aria-current="true"' : "") + '>';
     h += '<span class="ltitle" ' + dirA(title) + '>' + esc(title) + '</span>';
     if(e.tagline){ h += '<span class="ltag" ' + dirA(e.tagline) + '>' + esc(e.tagline) + '</span>'; }
@@ -4668,10 +4836,11 @@ function deleteRound(key){
   renderLib();
   renderBadge();
   setStatus("loader-status", true, 'Deleted "' + title + '".');
+  if(drawerOpen && drawerId === "drawer" && (!document.activeElement || document.activeElement === document.body)) focusQuiet(document.querySelector("#liblist .lopen") || document.getElementById("pickbtn"));
   });
 }
 function setInert(on){
-  var els = [document.querySelector("header"), document.querySelector(".wrap")];
+  var els = [document.querySelector("header"), document.querySelector(".wrap"), document.querySelector(".skip")];
   for(var i=0;i<els.length;i++){
     if(!els[i]) continue;
     if(on){ els[i].setAttribute("inert", ""); } else { els[i].removeAttribute("inert"); }
@@ -4694,6 +4863,7 @@ function showDrawer(id, focusEl){
 }
 function hideDrawerOnly(){
   var d = drawerId ? document.getElementById(drawerId) : null;
+  if(d && d.contains(document.activeElement)) try{ document.activeElement.blur(); }catch(e){}
   if(d){ d.className = "drawer"; d.setAttribute("aria-hidden", "true"); }
   var s = document.getElementById("loader-status");
   if(s){ s.className = "status"; s.textContent = ""; }
@@ -5238,7 +5408,32 @@ function say(text, ms, action){
   void b.offsetWidth;
   b.className = "mbubble on" + (action ? " act" : "");
   if(bubbleTimer) clearTimeout(bubbleTimer);
-  bubbleTimer = setTimeout(function(){ bubbleTimer = null; bubbleAction = null; b.className = "mbubble"; }, Math.max(ms || 0, 3500));
+  bubbleHeld = false;
+  bubbleTimer = setTimeout(bubbleEnd, Math.max(ms || 0, 3500));
+}
+function bubbleEnd(){
+  var b = document.getElementById("mbubble");
+  bubbleTimer = null; bubbleAction = null; bubbleHeld = false;
+  if(!b) return;
+  var act = b.querySelector(".mbact");
+  if(act){ if(act === document.activeElement) focusQuiet("#mascotbtn"); act.remove(); }
+  b.className = "mbubble";
+  setTimeout(function(){ if(b.className.indexOf("on") === -1) b.textContent = ""; }, 250);
+}
+var bubbleHeld = false;
+function holdBubble(on){
+  var b = document.getElementById("mbubble");
+  if(!b || b.className.indexOf("act") === -1 || b.className.indexOf("on") === -1) return;
+  if(on){
+    bubbleHeld = true;
+    if(bubbleTimer){ clearTimeout(bubbleTimer); bubbleTimer = null; }
+    if(speakTimer){ clearTimeout(speakTimer); speakTimer = null; }
+    return;
+  }
+  if(!bubbleHeld) return;
+  bubbleHeld = false;
+  bubbleTimer = setTimeout(bubbleEnd, 2500);
+  if(!speakTimer) speakTimer = setTimeout(function(){ speakTimer = null; nowItem = null; pump(); }, 2500);
 }
 function hideBubble(){
   var b = document.getElementById("mbubble");
@@ -5333,7 +5528,7 @@ function fitBatch(){
     var t = ts[i]; t.classList.remove("stack");
     var tw = t.offsetWidth, rows = t.querySelectorAll("tr"), crowd = false;
     for(var j=0;j<rows.length && !crowd;j++){
-      var bl = rows[j].querySelector("td.bl"), bo = rows[j].querySelector("td.bops");
+      var bl = rows[j].querySelector(".bl"), bo = rows[j].querySelector("td.bops");
       if(!bl || !bo) continue;
       var k = bo.children, used = k.length ? (k[k.length - 1].getBoundingClientRect().right - k[0].getBoundingClientRect().left) : 0;
       var share = used / (tw || 1);
@@ -5489,7 +5684,7 @@ function scheduleIdle(){
 }
 var lastSeen = Date.now(), lastPersist = 0;
 function activity(ev){
-  if(sleeping){ if(ev && ev.type === "pointerdown") wakeUp(); return; }
+  if(sleeping){ if(ev && (ev.type === "pointerdown" || ev.type === "keydown")) wakeUp(); return; }
   var now = Date.now();
   lastSeen = now;
   if(now - lastAct < 1000) return;
@@ -5539,7 +5734,7 @@ function burst(kind){
   var box = document.createElement("div");
   box.className = "mburst";
   box.setAttribute("aria-hidden", "true");
-  var cols = ["#D6A72C", "#3A9A73", "#E07A6C", "#8FD0F0", "#F6F0E2"], scale = wideMode() ? 1 : 0.55;
+  var cols = ["#D6A72C", "#3A9A73", "#E07A6C", "#8FD0F0", "#F6F0E2"], scale = wideMode() ? 1 : sideMode() ? 0.75 : 0.55;
   for(var i=0;i<26;i++){
     var p = document.createElement("i");
     var ang = Math.random() * Math.PI * 2, dist = (50 + Math.random() * 70) * scale;
@@ -5812,7 +6007,7 @@ function listDir(dir){
 function sizeText(n){ return n >= 1048576 ? (Math.ceil(n / 104857.6) / 10) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
 function shortLine(t){ t = String(t); return t.length > 48 ? t.slice(0, 45) + "..." : t; }
 function setHTML(el, h){ if(el && el.__h !== h){ el.innerHTML = h; el.__h = h; } }
-function focusQuiet(el){ try{ el.focus({ preventScroll: true }); }catch(e){ try{ el.focus(); }catch(e2){} } }
+function focusQuiet(el){ if(typeof el === "string") el = document.querySelector(el); if(!el) return; try{ el.focus({ preventScroll: true }); }catch(e){ try{ el.focus(); }catch(e2){} } }
 /* Only the mascot changes in what is stored, so a window in the background never writes back its older options. */
 function saveMascot(){
   var s = readJSON(SETKEY);
@@ -6608,14 +6803,14 @@ function bHeadHTML(){
     + '<button type="button" class="mclose" data-action="b-close" aria-label="Close the builder">&#10005;</button>';
 }
 function bNameHTML(){
-  var h = '<section class="bld-card"><div class="dsec">Name</div>';
+  var h = '<section class="bld-card"><h3 class="dsec">Name</h3>';
   if(BLD.mode === "new"){
     h += '<div class="bld-field"><label for="bld-start">Start from</label><select id="bld-start"><option value="">Nothing: a blank companion</option>'
       + visibleKeys().concat(SETTINGS.hidden).filter(function(k, i, a){ return a.indexOf(k) === i && own(ART, k); }).map(function(k){ return '<option value="' + esc(k) + '"' + (k === BLD.startFrom ? " selected" : "") + '>A copy of ' + esc(MSHORT[k]) + '</option>'; }).join("")
-      + '</select><small>A copy brings its pictures and lines in, to change as you like.</small></div>'
+      + '</select><button type="button" class="btn sec obtn bld-startgo" data-action="b-start">Start from it</button><small>A copy brings its pictures and lines in, to change as you like.</small></div>'
       + '<div class="cw-entry"><button type="button" class="btn sec cw-btn" data-action="cw-open">' + cwSpark(16) + 'Create with Claude</button><small>Or describe it, and Claude draws the poses and writes the lines.</small></div>';
   }
-  h += '<div class="bld-field"><label for="bld-name">Name</label><input id="bld-name" maxlength="30" autocomplete="off" spellcheck="false" value="' + esc(BLD.name) + '"><small id="bld-namenote"></small></div>'
+  h += '<div class="bld-field"><label for="bld-name">Name</label><input id="bld-name" maxlength="30" autocomplete="off" spellcheck="false" aria-describedby="bld-namenote" value="' + esc(BLD.name) + '"><small id="bld-namenote"></small></div>'
     + '<div class="bld-field"><label for="bld-about">About</label><input id="bld-about" maxlength="60" autocomplete="off" placeholder="a few words, like the little dragon" value="' + esc(BLD.about) + '"><small id="bld-aboutnote"></small></div>';
   return h + '</section>';
 }
@@ -6637,10 +6832,10 @@ function bPoseCardHTML(){
     if(s === "wake") uses = "When you come back from a nap.";
   }
   var b = bBorrows(s);
-  return '<div class="dsec">The ' + s + ' pose</div><div class="bld-pc"><span class="bld-pcf" aria-hidden="true">' + bArt(s) + '</span><div class="bld-pct">'
+  return '<h3 class="dsec">The ' + s + ' pose</h3><div class="bld-pc"><span class="bld-pcf" aria-hidden="true">' + bArt(s) + '</span><div class="bld-pct">'
     + '<div>' + (p ? '<span class="bld-file" dir="auto">' + esc(p.name) + '</span> <span class="bld-muted">' + sizeText(p.size) + (p.pix ? ", pixel art" : "") + '</span>' : s === "idle" ? "No picture yet. Idle is the one pose every companion needs." : (b ? "No picture: uses " + b : "No picture: no blink")) + '</div>'
     + '<div class="bld-note">' + esc(uses) + '</div></div></div>'
-    + '<div class="bld-pcb"><button type="button" class="btn sec obtn" data-action="b-choose">Choose a picture</button>' + (p ? '<button type="button" class="btn sec obtn" data-action="b-clear">Clear</button>' : '') + '</div>';
+    + '<div class="bld-pcb"><button type="button" class="btn sec obtn" data-action="b-choose" aria-label="Choose a picture for ' + s + '">Choose a picture</button>' + (p ? '<button type="button" class="btn sec obtn" data-action="b-clear" aria-label="Clear the ' + s + ' picture">Clear</button>' : '') + '</div>';
 }
 function bLinesHTML(m){
   var ls = (BLD.lines[m] || []).slice(), n = ls.length + ((ls.length < 5 && (!ls.length || String(ls[ls.length - 1]).trim())) ? 1 : 0), h = "";
@@ -6648,22 +6843,22 @@ function bLinesHTML(m){
   for(var i=0;i<n;i++){
     var v = ls[i] || "", bad = v ? bLineProblem(m, v) : "";
     h += '<input class="bld-line' + (bad ? " bad" : "") + '" id="bl-' + m + '-' + i + '" data-m="' + m + '" data-i="' + i + '" maxlength="240" autocomplete="off" dir="auto" aria-label="' + esc(BNAME[m]) + ', line ' + (i + 1) + '"'
-      + (bad ? ' aria-invalid="true" aria-describedby="be-' + m + '-' + i + '"' : '') + ' value="' + esc(v) + '" placeholder="' + esc(!v && i === 0 && !ls.filter(function(x){ return String(x).trim(); }).length ? "e.g. " + BEX[m] : "Another line, if you like") + '">'
+      + (bad ? ' aria-invalid="true" aria-describedby="be-' + m + '-' + i + ' bw-' + m + '"' : ' aria-describedby="bw-' + m + '"') + ' value="' + esc(v) + '" placeholder="' + esc(!v && i === 0 && !ls.filter(function(x){ return String(x).trim(); }).length ? "e.g. " + BEX[m] : "Another line, if you like") + '">'
       + (bad ? '<div class="bld-err" id="be-' + m + '-' + i + '">' + BWARN + '<span>' + esc(bad) + '</span></div>' : '');
   }
   return h;
 }
 function bMomHTML(m){
   var fills = CMP_FILLS[m] || [], r = bRec(m);
-  return '<div class="bld-mom" id="bm-' + m + '" data-m="' + m + '"><div class="bld-mt"><b>' + esc(BNAME[m]) + '</b><span class="w">' + esc(BWHEN[m]) + '</span><span class="p"><span aria-hidden="true">' + bArt(BPOSEOF[m]) + '</span>' + BPOSEOF[m] + '</span></div>'
+  return '<div class="bld-mom" id="bm-' + m + '" data-m="' + m + '"><div class="bld-mt"><b role="heading" aria-level="5">' + esc(BNAME[m]) + '</b><span class="w" id="bw-' + m + '">' + esc(BWHEN[m]) + '</span><span class="p"><span aria-hidden="true">' + bArt(BPOSEOF[m]) + '</span>' + BPOSEOF[m] + '</span></div>'
     + '<div class="bld-meta"><span>' + (r === 1 ? "1 line is enough" : "Recommended: " + r + " lines") + '</span>'
     + (fills.length ? '<span class="bld-chips">Can fill: ' + fills.map(function(f){ return '<button type="button" data-action="b-chip" data-m="' + m + '" data-v="{' + f + '}" aria-label="Put {' + f + '} in the line">{' + f + '}</button>'; }).join("") + '</span>' : '') + '</div>'
     + '<div class="bld-lines" id="bls-' + m + '">' + bLinesHTML(m) + '</div></div>';
 }
 function bAllLinesHTML(){
-  var h = '<section class="bld-card"><div class="dsec">Lines</div><p class="bld-note" id="bld-linesnote" style="margin:0 0 12px"></p>';
+  var h = '<section class="bld-card"><h3 class="dsec">Lines</h3><p class="bld-note" id="bld-linesnote" style="margin:0 0 12px"></p>';
   BMOM.forEach(function(g){
-    h += '<div class="bld-grp"><span>' + g[0] + '</span><span>' + plural(g[1].length, "moment", "moments") + '</span></div>';
+    h += '<h4 class="bld-grp"><span>' + g[0] + '</span><span>' + plural(g[1].length, "moment", "moments") + '</span></h4>';
     g[1].forEach(function(m){ h += bMomHTML(m[0]); });
   });
   return h + '</section>';
@@ -6679,7 +6874,7 @@ function bRender(){
   if(!el) return;
   if(BLD.view === "claude"){ cwRender(); return; }
   el.innerHTML = '<div class="bld-head">' + bHeadHTML() + '</div><div class="bld-body">'
-    + '<div class="bld-col">' + bNameHTML() + '<section class="bld-card bld-posecard" id="bld-poses"><div class="dsec">Poses</div><p class="bld-note" style="margin:0 0 10px">Click a pose to choose its picture, or drop pictures on it. Only idle is needed; the rest borrow.</p><div class="bld-grid" id="bld-grid"></div>'
+    + '<div class="bld-col">' + bNameHTML() + '<section class="bld-card bld-posecard" id="bld-poses"><h3 class="dsec">Poses</h3><p class="bld-note" style="margin:0 0 10px">Click a pose to choose its picture, or drop pictures on it. Only idle is needed; the rest borrow.</p><div class="bld-grid" id="bld-grid"></div>'
     + '<div class="bld-drop" id="bld-drop" hidden><b>Drop to fill the poses</b><small>Each picture named after a pose, like greet.png, fills it. One picture dropped on a pose fills that pose.</small></div></section></div>'
     + '<div class="bld-col">' + bStageHTML() + '<section class="bld-card" id="bld-pose"></section></div>'
     + '<div class="bld-col" id="bld-linescol">' + bAllLinesHTML() + '</div></div>'
@@ -6688,8 +6883,13 @@ function bRender(){
 }
 /* Redraws what depends on the pictures, the name, and the lines, leaving the line boxes alone. */
 function bRefresh(){
+  var ae = document.activeElement, back = null;
+  if(ae && ae.closest && ae.closest("#bld-grid, #bld-pose") && ae.getAttribute("data-action")){
+    back = '[data-action="' + ae.getAttribute("data-action") + '"]' + (ae.getAttribute("data-v") ? '[data-v="' + ae.getAttribute("data-v") + '"]' : "");
+  }
   var g = document.getElementById("bld-grid"); if(g) g.innerHTML = bGridHTML();
   var pc = document.getElementById("bld-pose"); if(pc) pc.innerHTML = bPoseCardHTML();
+  if(back){ var to = document.querySelector("#bld " + back) || document.querySelector('#bld-pose [data-action="b-choose"]'); if(to) focusQuiet(to); }
   if(!BLD.playing) bShow(BLD.sel, null);
   BMOM.forEach(function(gr){ gr[1].forEach(function(m){ var t = document.querySelector('#bm-' + m[0] + ' .p span'); if(t) t.innerHTML = bArt(m[3]); }); });
   bHead();
@@ -6698,7 +6898,7 @@ function bHead(){
   var sz = document.getElementById("bld-size"), n = bSize();
   if(sz) sz.innerHTML = '<span><b>' + sizeText(n) + '</b> of 5 MB</span><span class="bld-bar"><i style="width:' + Math.min(100, Math.round(n / CMP_LIMIT * 100)) + '%"></i></span>';
   var bl = bBlocker(), b = document.getElementById("bld-block"), sv = document.getElementById("bld-save");
-  if(b) b.innerHTML = bl ? BWARN + '<span>' + esc(bl) + '</span>' : "";
+  if(b && b.__said !== (bl || "")){ b.__said = bl || ""; b.innerHTML = bl ? BWARN + '<span>' + esc(bl) + '</span>' : ""; }
   if(sv) sv.disabled = !!bl || BLD.saving;
   var nn = document.getElementById("bld-namenote"), np = bNameProblem(), nm = document.getElementById("bld-name");
   if(nn){ nn.textContent = np || (BLD.mode === "edit" ? "Its folder keeps its name, " + BLD.folder + "." : "Its folder in your companions folder gets this name."); nn.className = np && bName() ? "bld-errt" : ""; }
@@ -6725,6 +6925,7 @@ function bShow(slot, line){
 
 /* ---------------------------------------------------------------- opening and closing */
 function bMount(){
+  var ret = lastFocus;
   closeDrawer();
   var d = document.createElement("div");
   d.className = "bld"; d.id = "bld";
@@ -6733,6 +6934,7 @@ function bMount(){
   setInert(true);
   bWire(d);
   bRender();
+  BLD.ret = ret;
   var f = document.getElementById("bld-name");
   if(f) try{ f.focus({ preventScroll: true }); }catch(e){}
 }
@@ -6800,7 +7002,7 @@ function builderEdit(key){
 }
 /* Closing returns to Options, to the tile or button that opened the builder. */
 function bTeardown(focusSel){
-  var from = BLD.from;
+  var from = BLD.from, ret = BLD.ret;
   bStopPlay();
   bFreeAll(BLD.pics);
   var el = document.getElementById("bld");
@@ -6808,6 +7010,7 @@ function bTeardown(focusSel){
   BLD = { open: false };
   setInert(false);
   showDrawer("optdrawer", null);
+  if(ret && document.body.contains(ret)) lastFocus = ret;
   /* After the panel has slid in, as Options does, since a hidden panel can't take the focus. */
   var sel = focusSel || (from === "b-edit" ? '#cchosen [data-action="b-edit"]' : '#ctiles [data-action="b-new"]');
   setTimeout(function(){ var t = document.querySelector(sel); if(t && drawerOpen && drawerId === "optdrawer") try{ t.focus({ preventScroll: true }); }catch(e){} }, 60);
@@ -6960,6 +7163,10 @@ function bPlay(label){
     var big = document.getElementById("bld-big"), frames = ["dance1", "dance2", "finish"], n = 0, t0 = Date.now();
     if(big && !reducedMotion()){ void big.offsetWidth; big.classList.add("dance"); }
     bShow("dance1", null);
+    if(reducedMotion()){
+      BLD.playTimer = setTimeout(function(){ bShow("dance2", null); BLD.playTimer = setTimeout(function(){ bShow("finish", null); back(1200); }, 800); }, 800);
+      return;
+    }
     BLD.danceTimer = setInterval(function(){
       if(Date.now() - t0 > 2400){ clearInterval(BLD.danceTimer); BLD.danceTimer = null; if(big) big.classList.remove("dance"); bShow("finish", null); back(1200); return; }
       bShow(frames[++n % frames.length], null);
@@ -7144,7 +7351,7 @@ function builderSave(){
   go.then(null, function(){ return false; }).then(function(res){
     if(BLD !== st) return;
     st.saving = false;
-    if(!res){ bBusy(false); bHead(); var n = document.getElementById("bld-name"); if(n) try{ n.focus(); }catch(e){} return; }
+    if(!res){ bBusy(false); bHead(); var n = bNameProblem() ? document.getElementById("bld-name") : document.getElementById("bld-save"); if(n) try{ n.focus(); }catch(e){} return; }
     st.dirty = false;
     bTeardown(res.key ? '#ctiles [data-v="' + res.key.replace(/"/g, '\\"') + '"]' : null);
     if(res.key) setOption("mascot", res.key);
@@ -7164,7 +7371,6 @@ function bWire(root){
   root.addEventListener("change", function(ev){
     var t = ev.target;
     if(t.id === "bld-file"){ var fs = t.files; bTakeFiles(fs, BLD.pickFor); }
-    else if(t.id === "bld-start") bStartChange(t);
   });
   root.addEventListener("focusin", function(ev){ var t = ev.target; if(t.classList && t.classList.contains("bld-line")) BLD.focusLine[t.getAttribute("data-m")] = t; });
   root.addEventListener("focusout", function(ev){
@@ -7305,21 +7511,21 @@ function cwRender(){
     + '<button type="button" class="btn sec cw-back" data-action="cw-back">Back to the builder</button>'
     + '<button type="button" class="mclose" data-action="b-close" aria-label="Close the builder">&#10005;</button></div>'
     + '<div class="cw-body"><div class="cw-inner">'
-    + '<section class="bld-card"><div class="dsec">Who it is</div>'
-    + '<div class="bld-field"><label for="cw-name">Name</label><input id="cw-name" maxlength="30" autocomplete="off" spellcheck="false" value="' + esc(BLD.name) + '"><small id="cw-namenote" class="' + nn[1] + '">' + esc(nn[0]) + '</small></div>'
+    + '<section class="bld-card"><h3 class="dsec">Who it is</h3>'
+    + '<div class="bld-field"><label for="cw-name">Name</label><input id="cw-name" maxlength="30" autocomplete="off" spellcheck="false" aria-describedby="cw-namenote" value="' + esc(BLD.name) + '"><small id="cw-namenote" class="' + nn[1] + '">' + esc(nn[0]) + '</small></div>'
     + '<div class="bld-field"><label for="cw-title">Title</label><input id="cw-title" maxlength="60" autocomplete="off" placeholder="like keeper of the hoard" value="' + esc(c.title) + '"><small>A role or nickname. Claude uses it in its lines.</small></div>'
     + '<div class="bld-field"><label for="cw-about">About</label><input id="cw-about" maxlength="60" autocomplete="off" placeholder="a few words, like the little dragon" value="' + esc(BLD.about) + '"><small id="cw-aboutnote"></small></div>'
     + '<div class="bld-field"><label for="cw-lang">Language of its lines</label><input id="cw-lang" maxlength="40" autocomplete="off" value="' + esc(c.lang) + '"><small>Its lines can be in any language.</small></div></section>'
-    + '<section class="bld-card"><div class="dsec">How it looks</div>'
+    + '<section class="bld-card"><h3 class="dsec">How it looks</h3>'
     + '<div class="bld-field"><label for="cw-look">Look</label><textarea id="cw-look" rows="3" maxlength="800" placeholder="What it is, its shape, and its colors">' + esc(c.look) + '</textarea><small>What it is, its shape, and its colors. Describe a character of your own: Claude won\'t draw one from a show or a game.</small></div>'
     + '<div class="bld-field"><label for="cw-style">Art style</label><input id="cw-style" maxlength="120" autocomplete="off" placeholder="Flat and outlined, like the wizard\'s own companions" value="' + esc(c.style) + '">'
     + '<div class="cw-chips" role="group" aria-label="Art styles to try"><span class="lab" aria-hidden="true">Try</span>' + CW_STYLES.map(function(s){ return '<button type="button" data-action="cw-style" data-v="' + s + '">' + s + '</button>'; }).join("") + '</div></div>'
     + '<button type="button" class="cw-more" id="cw-detbtn" data-action="cw-details" aria-expanded="' + c.details + '" aria-controls="cw-poses"><span id="cw-detlab">' + (c.details ? "Pose details" : "Describe each pose") + '</span><span class="cw-count" id="cw-detcount"></span></button>'
     + '<div class="cw-poses" id="cw-poses"' + (c.details ? "" : " hidden") + '>' + cwPosesHTML() + '</div></section>'
-    + '<section class="bld-card"><div class="dsec">How it talks</div>'
+    + '<section class="bld-card"><h3 class="dsec">How it talks</h3>'
     + '<div class="bld-field"><label for="cw-sound">Sound</label><input id="cw-sound" maxlength="60" autocomplete="off" placeholder="like puff, or hoot hoot" value="' + esc(c.sound) + '"><small>A sound it makes. Claude works it into some of its lines.</small></div>'
-    + '<div class="bld-field"><span class="cw-lab" id="cw-moodlab">Mood</span><div id="cw-moods" role="group" aria-labelledby="cw-moodlab">' + cwMoodsHTML() + '</div><small>Up to 3, or words of your own. They shape its lines and its drawings.</small></div></section>'
-    + '<section class="bld-card cw-pcard" aria-labelledby="cw-plab"><div class="dsec" id="cw-plab">The prompt</div>'
+    + '<div class="bld-field"><span class="cw-lab" id="cw-moodlab">Mood</span><div id="cw-moods" role="group" aria-labelledby="cw-moodlab" aria-describedby="cw-moodnote">' + cwMoodsHTML() + '</div><small id="cw-moodnote">Up to 3, or words of your own. They shape its lines and its drawings.</small></div></section>'
+    + '<section class="bld-card cw-pcard" aria-labelledby="cw-plab"><h3 class="dsec" id="cw-plab">The prompt</h3>'
     + '<div class="cw-prompt"><div id="cw-ptext"></div>'
     + '</div>'
     + '<div class="cw-copy"><button type="button" class="btn" data-action="cw-copy">' + CW_COPY + 'Copy prompt</button>'
@@ -7368,8 +7574,9 @@ function cwInput(t){
   BLD.dirty = true;
   cwUpdate();
 }
-function cwMoods(focusSel){
+function cwMoods(focusSel, said){
   var m = document.getElementById("cw-moods");
+  if(said){ var n = BLD.cw.moods.length; srSay(said + " " + n + " of 3 picked." + (n >= 3 ? " Remove one to pick another." : "")); }
   if(m) m.innerHTML = cwMoodsHTML();
   BLD.dirty = true;
   cwUpdate();
@@ -7389,7 +7596,7 @@ function cwMoodPick(v){
   var after = CW_MOODS.filter(function(m){ return BLD.cw.moods.map(function(x){ return x.toLowerCase(); }).indexOf(m) === -1; });
   var i = CW_MOODS.indexOf(v), next = "";
   for(var k=i+1;k<CW_MOODS.length && !next;k++){ if(after.indexOf(CW_MOODS[k]) !== -1) next = CW_MOODS[k]; }
-  cwMoods(next ? '#cw-moods [data-action="cw-mood"][data-v="' + next + '"]' : "#cw-moodin");
+  cwMoods(next ? '#cw-moods [data-action="cw-mood"][data-v="' + next + '"]' : "#cw-moodin", v + " added.");
 }
 function cwMoodOwn(){
   var inp = document.getElementById("cw-moodin");
@@ -7397,13 +7604,13 @@ function cwMoodOwn(){
   var v = inp.value;
   if(!cwT(v)){ focusQuiet(inp); return; }
   if(!cwMoodAdd(v)){ toast(false, cwT(v) + " is already a mood."); focusQuiet(inp); return; }
-  cwMoods("#cw-moodin");
+  cwMoods("#cw-moodin", cwT(v) + " added.");
 }
 function cwUnmood(v){
   var c = BLD.cw;
   if(!c) return;
   c.moods = c.moods.filter(function(m){ return m !== v; });
-  cwMoods('#cw-moods .on');
+  cwMoods('#cw-moods .on', v + " removed.");
 }
 function cwStyle(v){
   if(!BLD.cw) return;
@@ -7583,6 +7790,28 @@ function optReact(key, frame){
 var menuOpen = false, menuBy = null, menuCloseTimer = null, lastPointer = "mouse";
 var MENU_ORDER = ["mm-options", "mm-load", "mm-next", "mm-save", "mm-copy"];
 function wideMode(){ try{ return window.matchMedia("(min-width: 1440px)").matches; }catch(e){ return false; } }
+/* Where the companion stands: beside the cards on a wide screen, under the question list while the list is a
+   column beside the cards, and beside the progress bar below that. Only the list's column needs the companion
+   moved; the other two are CSS. */
+function sideMode(){ try{ return !wideMode() && window.matchMedia("(min-width: 881px)").matches; }catch(e){ return false; } }
+function placeCompanion(){
+  var m = document.getElementById("mascot"), col = document.querySelector(".sidecol"), st = document.getElementById("stage");
+  if(!m || !col || !st) return;
+  var host = sideMode() ? col : st;
+  /* Under the list, the column must fit the screen before the page scrolls too, below the header, or the
+     companion's lines would start off screen. */
+  col.classList.toggle("withcomp", host === col);
+  if(m.parentNode === host) return;
+  var had = m.contains(document.activeElement);
+  closeMenu(false);
+  host.appendChild(m);
+  if(had){ var b = document.getElementById("mascotbtn"); if(b) b.focus(); }
+}
+function menuFitsBelow(m){
+  m.className = "mmenu on down";
+  var r = m.getBoundingClientRect();
+  return r.bottom <= (window.innerHeight || document.documentElement.clientHeight) - 8;
+}
 function menuItems(){
   var m = document.getElementById("mmenu");
   return m ? Array.prototype.filter.call(m.querySelectorAll("button"), function(x){ return !x.disabled && !x.hidden; }) : [];
@@ -7606,7 +7835,7 @@ function openMenu(by){
   if(menuCloseTimer){ clearTimeout(menuCloseTimer); menuCloseTimer = null; }
   if(!menuOpen){
     updateTimers();
-    menuUp = wideMode();
+    menuUp = wideMode() || (sideMode() && !menuFitsBelow(m));
     arrangeMenu(menuUp);
   }
   m.className = "mmenu on " + (menuUp ? "up" : "down");
@@ -7642,8 +7871,15 @@ function mascotClick(ev){
   if(menuOpen) closeMenu(false); else openMenu("touch");
 }
 function menuKeys(ev){
-  if(ev.key === "Escape"){ closeMenu(true); return true; }
+  var mm = document.getElementById("mascot"), inside = !!(mm && mm.contains(document.activeElement));
+  if(ev.key === "Escape"){ closeMenu(inside); return true; }
+  if(!inside) return false;
   if(ev.key === "Tab"){ closeMenu(false); return false; }
+  if(ev.key === "Home" || ev.key === "End"){
+    var all = menuItems();
+    if(all.length){ all[ev.key === "Home" ? 0 : all.length - 1].focus(); ev.preventDefault(); }
+    return true;
+  }
   if(ev.key === "ArrowDown" || ev.key === "ArrowUp"){
     var items = menuItems();
     if(!items.length) return true;
@@ -7685,8 +7921,7 @@ function copyAnswers(fromMascot){
 function applyMascot(){
   CMP.curSig = companionSig();
   closeMenu(false);
-  var st = document.getElementById("stage");
-  if(st){ st.className = "stage" + (mascotOn() ? "" : " nomascot"); }
+  document.body.classList.toggle("nomascot", !mascotOn());
   var b = document.getElementById("mascotbtn");
   if(b){ b.setAttribute("aria-label", (MNAME[mascotKey()] || "Companion") + ". Menu"); }
   if(mTimer){ clearTimeout(mTimer); mTimer = null; }
@@ -7792,7 +8027,7 @@ function confirmBox(o){
     if(o.icon && ico) ico.innerHTML = o.icon;
     if(!o.calm) playSound("warn");
     if(mascotOn()){ if(mTimer){ clearTimeout(mTimer); mTimer = null; } setFrame(face); }
-    var els = [document.querySelector("header"), document.querySelector(".wrap"), document.getElementById("drawer"), document.getElementById("optdrawer"), document.getElementById("drawerback"), document.getElementById("notices"), document.getElementById("bld")];
+    var els = [document.querySelector("header"), document.querySelector(".wrap"), document.querySelector(".skip"), document.getElementById("drawer"), document.getElementById("optdrawer"), document.getElementById("drawerback"), document.getElementById("notices"), document.getElementById("bld")];
     var had = [];
     for(var i=0;i<els.length;i++){ had.push(!!(els[i] && els[i].hasAttribute("inert"))); if(els[i]) els[i].setAttribute("inert", ""); }
     var prev = document.activeElement;
@@ -7873,12 +8108,12 @@ document.addEventListener("click", function(ev){
   else if(act === "lib-delete"){ deleteRound(el.getAttribute("data-key")); }
   else if(act === "open-options"){ openOptions(); }
   else if(act === "timer-reset"){ resetTimer(); }
-  else if(act === "mm-options"){ closeMenu(false); openOptions(); }
-  else if(act === "mm-load"){ closeMenu(false); openDrawer(); }
-  else if(act === "mm-save"){ closeMenu(false); saveRound(); }
-  else if(act === "mm-copy"){ closeMenu(false); copyAnswers(true); }
-  else if(act === "mm-next"){ closeMenu(false); gotoOpen(false); }
-  else if(act === "bubble-act"){ var ba = bubbleAction; hideBubble(); if(ba && ba.fn) ba.fn(); }
+  else if(act === "mm-options"){ closeMenu(true); openOptions(); }
+  else if(act === "mm-load"){ closeMenu(true); openDrawer(); }
+  else if(act === "mm-save"){ closeMenu(true); saveRound(); }
+  else if(act === "mm-copy"){ closeMenu(true); copyAnswers(true); }
+  else if(act === "mm-next"){ closeMenu(true); var was = screenKey(); gotoOpen(false); if(screenKey() !== was) focusQuiet(pageHeading()); }
+  else if(act === "bubble-act"){ var ba = bubbleAction; hideBubble(); focusQuiet("#mascotbtn"); if(ba && ba.fn) ba.fn(); }
   else if(OPTKEYS[act]){ setOption(OPTKEYS[act], el.getAttribute("data-v")); }
   else if(act === "c-add"){ addCompanion(null); }
   else if(act === "c-pick"){ pickCdir(); }
@@ -7893,6 +8128,7 @@ document.addEventListener("click", function(ev){
   else if(act === "b-pose"){ bPoseClick(el.getAttribute("data-v")); }
   else if(act === "b-choose"){ bPick(BLD.sel); }
   else if(act === "b-clear"){ bClear(); }
+  else if(act === "b-start"){ var bs = document.getElementById("bld-start"); if(bs) bStartChange(bs); }
   else if(act === "b-play"){ bPlay(el.getAttribute("data-v")); }
   else if(act === "b-chip"){ bChip(el.getAttribute("data-m"), el.getAttribute("data-v")); }
   else if(act === "cw-open"){ cwOpen(); }
@@ -7911,7 +8147,7 @@ document.addEventListener("click", function(ev){
   else if(act === "folder-forget"){ forgetFolder(el.getAttribute("data-key")); }
   else if(act === "folder-open"){ openProjectFolder(); }
   else if(act === "notice-act"){ noticeAct(el.getAttribute("data-id")); }
-  else if(act === "notice-close"){ dropNotice(el.getAttribute("data-id")); }
+  else if(act === "notice-close"){ noticeClose(el.getAttribute("data-id")); }
   else if(act === "stats-toggle"){ toggleStats(); }
   else if(act === "extra-open"){ extraOpen(parseInt(el.getAttribute("data-x"), 10) || 0); }
   else if(act === "modal-close"){ extraClose(); }
@@ -7959,7 +8195,7 @@ document.addEventListener("keydown", function(ev){
   var mo = document.getElementById("modal");
   if(mo && mo.className.indexOf("on") !== -1){ if(ev.key === "Escape") extraClose(); return; }
   if(menuOpen && menuKeys(ev)) return;
-  if(ev.target && ev.target.id === "optname" && ev.key === "Enter"){ ev.target.blur(); return; }
+  if(ev.target && ev.target.id === "optname" && ev.key === "Enter"){ ev.preventDefault(); setOption("name", ev.target.value); return; }
   if(ev.key === "Escape"){
     var m = document.getElementById("modal");
     if(m && m.className.indexOf("on") !== -1){ extraClose(); return; }
@@ -7973,7 +8209,7 @@ document.addEventListener("keydown", function(ev){
   }
   noteKey(ev);
   if(state.idx >= QUESTIONS.length) return;
-  if(ev.target && ev.target.id === "numin" && ev.key === "Enter"){ ev.preventDefault(); numRecord(); return; }
+  if(ev.target && ev.target.id === "numin" && ev.key === "Enter"){ ev.preventDefault(); if(!numCommitBox()) numRecord(); return; }
   if(ev.target && (ev.target.tagName === "TEXTAREA" || ev.target.tagName === "INPUT")){
     if(ev.key === "Escape"){ cancelCustom(); }
     return;
@@ -7981,6 +8217,11 @@ document.addEventListener("keydown", function(ev){
   if(customOpen && ev.key === "Escape"){ cancelCustom(); return; }
   /* Keys held with Ctrl, Alt, or Cmd are the browser's shortcuts (Ctrl+2 is its second tab), so they never pick. */
   if(ev.ctrlKey || ev.altKey || ev.metaKey) return;
+  /* Number keys answer only while you're on the card (or nowhere in particular), never from the question list,
+     the header, or the companion, and Options can turn them off. */
+  if(!SETTINGS.keys) return;
+  var at = ev.target;
+  if(at && at !== document.body && !(at.closest && at.closest("#app .qcard"))) return;
   var q = cur();
   if(q && qType(q) === "bracket"){
     var bn = parseInt(ev.key, 10);
@@ -8028,6 +8269,16 @@ loadLib();
 })();
 window.addEventListener("pagehide", noteSeen);
 window.addEventListener("resize", noticeLift);
+(function(){
+  var t = document.getElementById("toast");
+  if(!t) return;
+  t.addEventListener("pointerenter", function(){ if(toastTimer && t.className.indexOf(" on") !== -1){ clearTimeout(toastTimer); toastTimer = null; } });
+  t.addEventListener("pointerleave", function(){ if(t.className.indexOf(" on") !== -1){ toastFor = 2000; toastArm(); } });
+})();
+placeCompanion();
+["(min-width: 1440px)", "(min-width: 881px)"].forEach(function(q){
+  try{ var mq = window.matchMedia(q); if(mq.addEventListener){ mq.addEventListener("change", placeCompanion); } else if(mq.addListener){ mq.addListener(placeCompanion); } }catch(e){}
+});
 document.addEventListener("visibilitychange", function(){ if(document.hidden) noteSeen(); });
 applyConfig();
 render();
@@ -8063,6 +8314,15 @@ scheduleTimerTick();
     mm.addEventListener("pointerenter", function(ev){ if(isMouse(ev) && menuCloseTimer){ clearTimeout(menuCloseTimer); menuCloseTimer = null; } });
     mm.addEventListener("pointerleave", leave);
     mb.addEventListener("click", mascotClick);
+    var bub = document.getElementById("mbubble");
+    if(bub){
+      bub.addEventListener("focusin", function(){ holdBubble(true); });
+      bub.addEventListener("focusout", function(ev){ if(!bub.contains(ev.relatedTarget)) holdBubble(false); });
+      bub.addEventListener("pointerenter", function(ev){ if(isMouse(ev)) holdBubble(true); });
+      bub.addEventListener("pointerleave", function(ev){ if(isMouse(ev) && !bub.contains(document.activeElement)) holdBubble(false); });
+    }
+    /* Arrow keys open the menu from the companion too, as on any menu button. */
+    mb.addEventListener("keydown", function(ev){ if((ev.key === "ArrowDown" || ev.key === "ArrowUp") && !menuOpen){ ev.preventDefault(); openMenu("key"); } });
     document.addEventListener("pointerdown", function(ev){
       lastPointer = ev.pointerType || "mouse";
       if(menuOpen && !mm.contains(ev.target) && !mb.contains(ev.target)) closeMenu(false);
