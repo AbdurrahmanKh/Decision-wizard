@@ -30,14 +30,23 @@ A local copy of `index.html` keeps working as a plain page; installing is for th
 
 ## Brainstorms
 
-When a question is still too open for options, ask Claude for a brainstorm in the wizard. A brainstorm looks at one topic through the Six Thinking Hats, one card per hat, each hat worn by a character. Cap, the capybara, hosts in Blue: the focus, the plan, and the context. Then come Tally, the owl (White, the facts), Ruby, the fox (Red, the feelings), Sunny, the bee (Yellow, the benefits), Pebble, the tortoise (Black, the caution), and Doodle, the chameleon (Green, new ideas), in the order Claude picked. Cap closes.
+When a question is still too open for options, ask Claude for a brainstorm in the wizard. A brainstorm is for finding ideas, not for settling details: those come after, in a round. It looks at one topic through the Six Thinking Hats, each worn by a character: Cap, the capybara (Blue, the point), Tally, the owl (White, realistic), Ruby, the fox (Red, human), Sunny, the bee (Yellow, the dream), Pebble, the tortoise (Black, caution), and Doodle, the chameleon (Green, twists). It always takes two rounds.
 
-- **Star the ideas that matter.** The rest stay as heard; they go back to Claude too.
-- **Add a note** to any idea, or **add ideas of your own**.
-- **Answer a hat's question** when it asks you one.
-- **Blue's last card** shows what you starred, and the next steps to star.
+**Round 1: your ideas first.**
 
-Send it back the way you send a round. Claude sums up what you starred and sends anything left to decide as a decision round. Brainstorms need wizard 0.8.0 and skill 0.7.0.
+- **Your turn.** Each hat asks you one question and says nothing else. Write as many cards as you like; Enter adds one.
+- **Sparks.** Some hats bring a question or two that might set off more ideas, each with its own box.
+- **Suggestions.** Every hat suggests up to four ideas beside yours. Blue's are other paths to the same goal.
+- **Kill what misses.** Every card stays unless you kill it, yours too, and you can edit your own. A killed card crumples into the bin at the top, the only place to bring it back from.
+
+**Round 2: the council.** Send round 1 back, and Claude writes round 2 from it.
+
+- **Your aims** open it: your goals, and what you want to avoid.
+- **Extras:** a few more ideas from the hats, from what you wrote. Kill any that miss; the rest go to the council.
+- **The council:** every idea that survived, one at a time, with the six hats around it at a round table, or in a row if you choose that in Options. A gold mark means a hat has something to say: open it to read. Take a comment as an idea of your own, add a variant, or kill the idea.
+- **Your order:** drag what survived into order. The decision round Claude sends next starts from the top.
+
+Send each round back the way you send a round. Brainstorms need wizard 0.9.0 and skill 0.8.0. The one-file brainstorms of wizard 0.8.0 no longer open, but the ones already in your list keep their answers.
 
 ## Project folders, for Claude Code
 
@@ -74,12 +83,12 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 - `index.html`: the wizard, and this site's homepage.
 - `manifest.webmanifest`, `sw.js`, and `icons/`: what makes the hosted wizard installable as an app, with its icons. The service worker keeps a copy for offline use and loads the newest version whenever you're online.
-- `d-wizard/`: the skill. This folder is its source; `references/example-round.json` is a complete worked round, `references/brainstorms.md` is how Claude writes a brainstorm and reads its answers, with `references/example-brainstorm.json` as a complete one, and `references/companions.md` is how Claude makes a companion.
+- `d-wizard/`: the skill. This folder is its source; `references/example-round.json` is a complete worked round, `references/brainstorms.md` is how Claude writes a brainstorm's two rounds and reads their answers, with `references/example-brainstorm.json` and `references/example-brainstorm-round2.json` as complete ones, and `references/companions.md` is how Claude makes a companion.
 - `.nojekyll`: tells GitHub Pages to serve every file exactly as uploaded.
 
 ## Versions
 
-- **Wizard: 0.8.0.** It's shown at the bottom of the wizard's Options panel.
-- **Skill: 0.7.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, and 0.8.0 for brainstorms.
+- **Wizard: 0.9.0.** It's shown at the bottom of the wizard's Options panel.
+- **Skill: 0.8.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, and 0.9.0 for brainstorms.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).

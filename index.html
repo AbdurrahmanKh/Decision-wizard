@@ -867,6 +867,122 @@ html{scroll-padding-bottom:var(--lift,0px)}
   .bsnotes{grid-template-columns:minmax(0,1fr)}
   .bssumhat{width:46px}
 }
+/* Brainstorms (0.9.0): the top bar's bin, writing boxes, sparks, kills, the council, the recap, and the bucket. */
+.bschips{justify-content:flex-start}
+.bschips .bsbin{margin-left:auto}
+.bsbin{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px 4px 10px;font-family:inherit;font-weight:600;font-size:calc(13.5px*var(--fs));cursor:pointer}
+.bsbin:hover{border-color:var(--red)}
+.bsbin b{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;border-radius:999px;background:var(--red);color:#fff;font-size:calc(12px*var(--fs));padding:0 5px}
+.bsbin:focus-visible,.bskill:focus-visible,.bsseat:focus-visible,.bstake:focus-visible,.bskillbtn:focus-visible,.bsbinx:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.bshold{display:inline-flex;align-items:center;gap:8px;font-size:calc(14px*var(--fs));color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:5px 12px;margin-top:2px}
+.bswrite{margin:12px 0 6px;border:1.5px dashed var(--line);border-radius:12px;padding:10px 12px;background:var(--panel)}
+.bswrite.big{border:2px solid var(--green2);padding:12px 14px}
+.bswrite textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-family:inherit;font-size:calc(15.5px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:44px;line-height:1.5}
+.bswrite.big textarea{min-height:62px;font-size:calc(16px*var(--fs))}
+.bswrite textarea:focus-visible,.bsedit:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+.bswrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:8px;font-size:calc(12.5px*var(--fs));color:var(--muted)}
+.bswrow b{color:var(--ink)}
+.bsaddrow2{display:flex;justify-content:flex-end;margin-top:-2px}
+.bsspark{margin:16px 0 4px;padding:12px 14px;border:1px solid var(--bs-line);border-left:5px solid var(--bs-edge);border-radius:12px;background:var(--panel)}
+.bssq{display:flex;align-items:flex-start;gap:10px}
+.bssqt{position:relative;min-width:0;overflow-wrap:anywhere;white-space:pre-line;background:var(--bub-bg);color:var(--bub-ink);border:1.5px solid var(--bub-line);border-radius:12px;padding:8px 12px;font-size:calc(15.5px*var(--fs));line-height:1.45;font-weight:600}
+.bsspark .bsnotes{margin-top:10px}
+.bssub2{display:flex;align-items:center;gap:8px;font-size:calc(12px*var(--fs));font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:18px 0 0}
+.bssub2 .bsdot{background:var(--bs-sw)}
+.bsmini{display:inline-block;width:22px;height:29px;flex:none}
+.bsmini svg{width:100%;height:100%;display:block}
+.bsnone{margin:8px 0 2px;font-size:calc(14px*var(--fs));color:var(--muted)}
+.bskill{border:1.5px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.bskill:hover{border-color:var(--red);color:var(--red)}
+.bsby{display:inline-block;font-size:calc(12px*var(--fs));color:var(--muted);font-weight:600}
+.bsnote.big{min-height:0;padding:14px 14px 10px}
+.bsnote.big p{font-size:calc(19px*var(--fs));font-weight:600;padding-top:22px;padding-right:0}
+.bsnote .bsedit{width:100%;border:1px solid var(--line);border-radius:9px;padding:8px 10px;font-family:inherit;font-size:calc(15px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:58px;line-height:1.45;margin-top:22px}
+.bsnote .bsnfoot .btn.sm{padding:5px 12px;font-size:calc(13px*var(--fs))}
+.bsnotes.small{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.bsnotes.small .bsnote{min-height:0}
+.bsstats{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.bsstat{display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 13px;background:var(--card);font-size:calc(14px*var(--fs))}
+.bsstat b{font-family:'Bricolage Grotesque',sans-serif;font-size:calc(18px*var(--fs))}
+.bshat{margin-top:12px;border:1px solid var(--bs-line);border-left:5px solid var(--bs-edge);border-radius:12px;padding:10px 14px;background:var(--panel)}
+.bshat h4{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:calc(15px*var(--fs));font-weight:800;margin:0}
+.bshat h4 .bsdot{background:var(--bs-sw)}
+.bshat .bsc{font-weight:600;color:var(--muted);font-size:calc(13px*var(--fs));margin-left:auto}
+.bshat ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}
+.bshat li>span:last-child{min-width:0;overflow-wrap:anywhere;white-space:pre-line}
+.bshat li{display:flex;gap:8px;align-items:baseline;font-size:calc(14.5px*var(--fs));line-height:1.4}
+.bsbytag{flex:none;font-size:calc(11px*var(--fs));font-weight:800;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--bs-edge);color:var(--muted);border-radius:6px;padding:0 6px;line-height:1.6}
+.bsbytag.you{border-color:var(--green);color:var(--green)}
+.bsidea{margin:12px 0 4px}
+.bsseats.row{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:16px 0 0}
+.bstable{display:grid;grid-template-columns:118px minmax(0,1fr) 118px;gap:12px;align-items:start;margin-top:12px}
+.bscol{display:flex;flex-direction:column;gap:10px}
+.bsmid{min-width:0}
+.bsmid .bsidea{margin-top:0}
+.bsseat{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;border:1.5px solid var(--line);border-radius:14px;padding:8px 4px 7px;background:var(--card);color:var(--ink);font-family:inherit;cursor:pointer;min-width:0}
+.bsseat:hover{border-color:var(--bs-edge)}
+.bsseat.open{border-color:var(--bs-edge);box-shadow:0 0 0 3px var(--bs-edge)}
+.bsseat.quiet .bsface{opacity:.6}
+.bsface{width:56px;height:74px;display:block}
+.bsface svg{width:100%;height:100%;display:block}
+.bsseat .bsn{display:flex;align-items:center;gap:5px;font-weight:700;font-size:calc(13px*var(--fs))}
+.bsseat .bsl{font-size:calc(11.5px*var(--fs));color:var(--muted)}
+.bsbang,.bsdone{position:absolute;top:-8px;right:-6px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--card)}
+.bsbang{width:26px;height:26px;background:var(--gold);color:#221F17;font-weight:900;font-size:calc(15px*var(--fs))}
+.bsdone{width:24px;height:24px;background:var(--green);color:#fff}
+.bsbub{position:relative;margin:12px 0 4px;background:var(--bub-bg);color:var(--bub-ink);border:1.5px solid var(--bub-line);border-radius:14px;padding:12px 14px}
+.bsseats.row + .bsbub:before{content:"";position:absolute;top:-10px;left:var(--x,10%);border:9px solid transparent;border-bottom-color:var(--bub-line);border-top:0;transform:translateX(-50%)}
+.bsmid .bsbub{border-left:6px solid var(--bs-edge)}
+.bsbub.empty{background:transparent;color:var(--muted);border:1.5px dashed var(--line)}
+.bsbub.empty p{font-size:calc(14px*var(--fs))}
+.bsbh{display:flex;align-items:center;gap:7px;font-size:calc(12.5px*var(--fs));font-weight:800;letter-spacing:.04em;color:#6E675A}
+.bsbh .bsdot{background:var(--bs-sw);border-color:#1B1810}
+.bsbub p{font-size:calc(16px*var(--fs));line-height:1.5;margin:4px 0 0}
+.bsbrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:10px}
+.bstake{border:1.5px solid #2F6B47;background:#fff;color:#22412D;border-radius:999px;padding:5px 13px;font-family:inherit;font-weight:700;font-size:calc(13.5px*var(--fs));cursor:pointer}
+.bstake:hover{background:#EAF5EE}
+.bsreadl{display:inline-flex;align-items:center;gap:5px;font-size:calc(12.5px*var(--fs));color:#4E6B57}
+.bsacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;align-items:flex-start}
+.bsacts .bsadd{flex:1;min-width:220px;margin-top:0;width:auto}
+.bsacts .bswrite{flex:1;min-width:220px;margin:0}
+.bskillbtn{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--red);background:transparent;color:var(--red);border-radius:12px;padding:10px 14px;font-family:inherit;font-weight:700;font-size:calc(14.5px*var(--fs));cursor:pointer}
+.bskillbtn:hover{background:var(--red);color:#fff}
+.bsgone{margin:14px 0 4px;border:1.5px dashed var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.bsgone p{margin:0;color:var(--muted);font-size:calc(15px*var(--fs));max-width:60ch}
+.bsgh{font-size:calc(11px*var(--fs));font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 9px 4px}
+.sitem.gone .stt{text-decoration:line-through;color:var(--muted)}
+.bsorder .ritem{border-left:5px solid var(--bs-edge)}
+.bssumord{margin:10px 0 6px;padding-left:22px;display:flex;flex-direction:column;gap:4px}
+#bsbinp{position:fixed;inset:0;z-index:70}
+.bsbinscrim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.bsbinpanel{position:absolute;top:0;right:0;bottom:0;width:min(420px,92vw);background:var(--panel);border-left:1px solid var(--line);display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(0,0,0,.3);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bsbinhd{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line);background:var(--card)}
+.bsbinico{width:34px;height:34px;border-radius:9px;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.bsbinhd h3{font-family:'Bricolage Grotesque',sans-serif;font-size:calc(19px*var(--fs));flex:1;margin:0}
+.bsbinx{width:34px;height:34px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.bsbinbd{padding:14px 18px;overflow:auto;display:flex;flex-direction:column;gap:10px}
+.bsbinp-note{font-size:calc(13.5px*var(--fs));color:var(--muted);line-height:1.5;margin:0}
+.bsdeadl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.bsdead{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--card)}
+.bsdt{flex:1;min-width:0}
+.bsdt p{font-size:calc(14.5px*var(--fs));line-height:1.4;margin:0;overflow-wrap:anywhere}
+.bsdt small{display:flex;align-items:center;gap:6px;font-size:calc(12.5px*var(--fs));color:var(--muted);margin-top:3px}
+.bsdt .bsdot{background:var(--bs-sw)}
+@media (max-width:880px){
+  .bsseats.row{grid-template-columns:repeat(3,1fr)}
+  .bstable{grid-template-columns:minmax(0,1fr)}
+  .bscol{flex-direction:row}
+  .bscol .bsseat{flex:1}
+  .bsface{width:46px;height:61px}
+  .bsgh{display:none}
+  .bsacts .bswrite{flex-basis:100%}
+  .bswrite textarea{min-height:68px}
+}
+@media (prefers-reduced-motion:reduce){ .bsbang{animation:none} }
+.bscard .bsnote p,.bsdt p,#bsorder .rl,.bssumord li{white-space:pre-line}
+.bscard .qtitle,.bssum .sumstats{overflow-wrap:anywhere}
+.bscard .qtopic,.bscard .ctx p,.bscard .ctx blockquote,.bscard .ctx td,.bssay,.bscard .bsnote small,.bsbub p,.bssumord li,.bssum li,.bsgone p{overflow-wrap:anywhere}
+.bsgone p{white-space:pre-line}
 </style>
 </head>
 <body>
@@ -943,7 +1059,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
     <details class="fmt">
       <summary>What the files look like</summary>
       <div class="ldef"><b>Round.</b> Either a bare array of questions, or an object {config, questions} where config sets {title, tagline, product}. Each question: <b>id</b>, <b>section</b>, <b>title</b>, <b>options</b> (array of strings). Ids must be unique, and so must row ids inside one batch. Optional: <b>question</b> (the question itself, shown large, with the title as a small topic line above it; the sidebar keeps the title); <b>context</b>; <b>detail</b> (array of {kind: quote, note, or code, src, text}; code keeps indentation and line breaks and shows src exactly as written, such as a file path and line); <b>links</b> (array of {label, url}); <b>extra</b> ({label, blocks:[{kind: text, text}, {kind: table, title, columns, rows}, {kind: quote, src, text}, {kind: note, text}, or {kind: code, src, text}]}, or a list of them for several buttons) for context popups; <b>customLabel</b>; <b>custom</b>: false; <b>skip</b>: false; <b>recommend</b> (the label of the recommended option) with <b>because</b> (the reason, finishing "I recommend this because"), on a question, a follow-up, or a batch row. For a batch table set <b>type</b>: "batch" and <b>items</b>: [{id, label, note}], sharing one options set per row. Every question and every row takes a note with the pen. <b>type</b>: "rank" makes a ranking of 2 to 10 options (recommend is the whole order); "number" takes <b>min</b>, <b>max</b>, <b>step</b>, and <b>unit</b> instead of options (recommend is a number); "bracket" runs 4 to 32 options in knockout pairs, in the listed order. In config, <b>needs_wizard</b> names the oldest wizard version the round is made for, and a round written into a project sets <b>project</b> (the project's name) and <b>folder</b> (the full path of the folder the round file is in).</div>
-      <div class="ldef"><b>Brainstorm.</b> An object {config, topic, hats}, with config.kind set to "brainstorm". The <b>topic</b> has a <b>title</b> and a <b>question</b>, and may have context, detail, links, and extra, as a question does. The seven <b>hats</b> are Blue first, then White, Red, Yellow, Black, and Green in any order, then Blue again. Each hat has a <b>line</b>, and may have a <b>question</b>, up to six <b>ideas</b> ({id, text, why}), and an <b>ask</b> for you. It saves, backs up, and works with project folders as a round does.</div>
+      <div class="ldef"><b>Brainstorm.</b> An object with config.kind set to "brainstorm", a <b>topic</b> (a <b>title</b> and a <b>question</b>, and maybe context, detail, links, and extra, as a question has), and the cards of one of its two rounds. <b>Round 1</b> has <b>hold</b> (the six hats, Blue first, each with an optional <b>question</b>), <b>sparks</b> (optional: a hat with an optional <b>line</b> and up to three sparks {id, text}), <b>suggest</b> (the six hats, Blue last, each with a <b>line</b> and up to four <b>ideas</b> {id, text, why}), and an optional <b>recap</b> {line}. <b>Round 2</b> has <b>aims</b> (Blue's <b>line</b>, your <b>goals</b>, and what to <b>avoid</b>), optional <b>extras</b> {line, ideas: [{id, hat, text, why, council}]}, <b>ideas</b> [{id, text, by, hat, from, council}], where by is "you" or the hat that suggested it and council holds one {hat, say} per hat at most, and an optional <b>order</b> {line}. Ids use letters, digits, - and _, and are unique; ids like u1 are kept for your own cards. A brainstorm saves, backs up, and works with project folders as a round does. A file made for wizard 0.8.0, with a hats list, no longer loads; one already in your list keeps its answers.</div>
       <div class="ldef"><b>Saved file.</b> What Save writes: the answers JSON (meta and answers, the same as Copy answers JSON) with the whole round under <b>round</b>, so opening it picks up where you left off.</div>
       <div class="ldef"><b>Answers JSON.</b> Answers on their own merge into the round with the same title, or into the open round: matching ids overwrite, and open entries are ignored unless they carry a note. A note comes back as <b>comment</b>.</div>
       <div class="ldef"><b>Backup.</b> What Back up all rounds writes: every round in this browser with its answers, each in the saved-file form, under <b>rounds</b>. Loading a backup adds the rounds that are missing here and brings back the ones the backup has a newer copy of. When a round changed here after the backup was made, the wizard asks whether to keep it.</div>
@@ -984,6 +1100,11 @@ html{scroll-padding-bottom:var(--lift,0px)}
       <h3 class="dsec">Keys</h3>
       <div class="orow" id="row-keys"><span class="olab">Number keys pick answers</span><div class="seg sm" role="group" aria-label="Number keys pick answers"><button type="button" data-action="set-keys" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-keys" data-v="off" aria-pressed="false">Off</button></div></div>
       <div class="onote">Keys 1 to 9 pick an answer while you're on the question, and 1 and 2 pick in a bracket. They never pick while you type.</div>
+    </section>
+    <section class="ogroup">
+      <h3 class="dsec">Brainstorms</h3>
+      <div class="orow" id="row-council"><span class="olab">The council</span><div class="seg sm" role="group" aria-label="How the council sits"><button type="button" data-action="set-council" data-v="table" aria-pressed="false">Round table</button><button type="button" data-action="set-council" data-v="row" aria-pressed="false">In a row</button></div></div>
+      <div class="onote">How the six hats sit around each idea in a brainstorm's round 2: three on each side of the idea, or in a row under it.</div>
     </section>
     <section class="ogroup">
       <h3 class="dsec">Look</h3>
@@ -1044,7 +1165,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.8.0";
+var WIZARD_VERSION = "0.9.0";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -1085,7 +1206,7 @@ function normConfig(c){
     product: typeof c.product === "string" ? c.product : ""
   };
   if(typeof c.needs_wizard === "string" && VER_RE.test(c.needs_wizard.trim())) out.needs_wizard = c.needs_wizard.trim();
-  if(c.kind === "brainstorm") out.kind = "brainstorm";
+  if(c.kind === "brainstorm"){ out.kind = "brainstorm"; if(c.round === 1 || c.round === 2) out.round = c.round; }
   var pj = cleanStr(c.project), fo = cleanStr(c.folder);
   if(pj) out.project = pj.slice(0, 80);
   if(fo) out.folder = fo.slice(0, 600);
@@ -1192,7 +1313,7 @@ function upsertEntry(key, cfg, titled, questions, stateObj){
   if((e.fkey || "") !== fk){ delete e.file; delete e.fsig; delete e.fsaved; }
   if(fk){ e.fkey = fk; e.folder = cfg.folder; e.project = cleanStr(cfg.project) || (folderRec(fk) || {}).project || projectName(cfg); }
   else { delete e.fkey; delete e.folder; delete e.project; }
-  if(isBS(cfg)) e.kind = "brainstorm"; else delete e.kind;
+  if(isBS(cfg)){ e.kind = "brainstorm"; if(cfg.round === 1 || cfg.round === 2) e.bsround = cfg.round; else delete e.bsround; } else { delete e.kind; delete e.bsround; }
   e.total = questions.length;
   e.answered = countAnswered(questions, stateObj.answers);
   e.changed = Date.now();
@@ -1296,7 +1417,7 @@ function applyConfig(){
   headMeta();
 }
 var SETKEY = "decision-wizard-settings-v1";
-var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true, keys: true };
+var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true, keys: true, council: "table" };
 function loadSettings(){
   var s = readJSON(SETKEY);
   if(s && typeof s === "object"){
@@ -1312,6 +1433,7 @@ function loadSettings(){
     if(typeof s.timerBar === "boolean") SETTINGS.timerBar = s.timerBar;
     if(typeof s.recs === "boolean") SETTINGS.recs = s.recs;
     if(typeof s.keys === "boolean") SETTINGS.keys = s.keys;
+    if(s.council === "table" || s.council === "row") SETTINGS.council = s.council;
     if(typeof s.name === "string") SETTINGS.name = s.name.slice(0, 30);
   } else {
     var t = lsGet(TKEY);
@@ -1333,7 +1455,7 @@ function applySettings(){
   applyMascot();
   renderOptions();
 }
-var OPTKEYS = { "set-theme": "theme", "set-size": "size", "set-mascot": "mascot", "set-talk": "talk", "set-quips": "quips", "set-sound": "sound", "set-timerhover": "timerHover", "set-timerbar": "timerBar", "set-recs": "recs", "set-keys": "keys" };
+var OPTKEYS = { "set-theme": "theme", "set-size": "size", "set-mascot": "mascot", "set-talk": "talk", "set-quips": "quips", "set-sound": "sound", "set-timerhover": "timerHover", "set-timerbar": "timerBar", "set-recs": "recs", "set-keys": "keys", "set-council": "council" };
 function renderOptions(){
   renderCompanions();
   var bs = document.querySelectorAll('#optdrawer [data-action^="set-"]');
@@ -1419,11 +1541,12 @@ function setOption(k, v){
   else if(k === "mascot"){ if(v !== "quill" && v !== "swoop" && v !== "none" && !own(CMP.list, v)) return; SETTINGS.mascot = v; SETTINGS.mascotFolder = own(CMP.list, v) ? CMP.list[v].folder : ""; }
   else if(k === "talk" || k === "quips" || k === "sound" || k === "timerHover" || k === "timerBar" || k === "recs" || k === "keys"){ SETTINGS[k] = (v === "on" || v === true); }
   else if(k === "name"){ SETTINGS.name = String(v || "").trim().slice(0, 30); }
+  else if(k === "council"){ if(v !== "table" && v !== "row") return; SETTINGS.council = v; }
   else return;
   saveSettings();
   applySettings();
   updateTimers();
-  if((k === "recs" || k === "keys") && QUESTIONS.length) scrollKeep(render);
+  if((k === "recs" || k === "keys" || k === "council") && QUESTIONS.length) scrollKeep(render);
   var map = null;
   if(k === "theme") map = { light: ["opt_light", "warn"], dark: ["opt_dark", "pick"], system: ["opt_system", "pick"] }[SETTINGS.theme];
   else if(k === "size") map = { large: ["opt_large", "pick"], compact: ["opt_compact", "skip"], normal: ["opt_normal", "pick"] }[SETTINGS.size];
@@ -1512,7 +1635,7 @@ function answeredCount(){ return countAnswered(QUESTIONS, state.answers); }
 function headMeta(){
   var el = document.getElementById("headmeta");
   if(!el) return;
-  el.textContent = (CONFIG.tagline && CONFIG.tagline.length) ? CONFIG.tagline : bsOn() ? "A brainstorm, one hat at a time. Star what matters; your notes and ideas go back too." : (QUESTIONS.length === 0 ? "No round loaded. Press Load, or drop a round file on the page." : (QUESTIONS.length + " issues. Click to answer; skipped issues stay open."));
+  el.textContent = (CONFIG.tagline && CONFIG.tagline.length) ? CONFIG.tagline : bsOn() ? (bsOld() ? "A brainstorm made by an older wizard." : bsRound() === 1 ? "A brainstorm, round 1: your ideas first, then sparks, then the hats' suggestions." : "A brainstorm, round 2: the council on every idea, then your order.") : (QUESTIONS.length === 0 ? "No round loaded. Press Load, or drop a round file on the page." : (QUESTIONS.length + " issues. Click to answer; skipped issues stay open."));
 }
 
 function renderSide(){
@@ -1715,6 +1838,7 @@ function renderCore(){
 
 var TIMER_PILL = '<span class="ptime" id="ptime" title="Time on this round" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9.5 2.5h5"/></svg><b></b></span>';
 function chromeTop(q){
+  if(isHat(q)) return bsTopHTML(q);
   var pct = Math.round(state.idx / QUESTIONS.length * 100);
   var h = '<div class="ptop">';
   h += '<div class="progress"><div class="ptrack"><div class="pbar" style="width:' + pct + '%"></div></div>';
@@ -2016,7 +2140,7 @@ function rankRecord(){
 var rdrag = null;
 function rankDragStart(ev){
   var h = ev.target && ev.target.closest ? ev.target.closest(".rhandle") : null;
-  if(!h || (ev.button !== undefined && ev.button > 0)) return;
+  if(!h || (ev.button !== undefined && ev.button > 0) || h.closest("#bsorder")) return;
   var li = h.closest(".ritem"), list = li ? li.parentNode : null;
   if(!li || !list) return;
   ev.preventDefault();
@@ -2678,7 +2802,7 @@ function firstOpen(){
 function resetAll(){
   var rkey = CURKEY;
   var bsr = bsOn();
-  confirmBox(bsr ? { title: "Clear the brainstorm?", message: 'Every star, note, and idea of your own in "' + (CONFIG.title || "this brainstorm") + '" is cleared, and the brainstorm starts over.', ok: "Clear it", answers: answeredCount(), key: rkey }
+  confirmBox(bsr ? { title: "Clear the brainstorm?", message: 'Every card you wrote, every kill, and every read in "' + (CONFIG.title || "this brainstorm") + '" is cleared, and the brainstorm starts over.', ok: "Clear it", answers: answeredCount(), key: rkey }
                  : { title: "Clear every answer?", message: 'Every answer in "' + (CONFIG.title || "this round") + '" is cleared, and the round starts over.', ok: "Clear answers", answers: answeredCount(), key: rkey }).then(function(yes){
     if(!yes || CURKEY !== rkey) return;
     state = { idx: 0, answers: {} };
@@ -2981,6 +3105,7 @@ function answersFromExport(arr, qs){
       }
     } else { ignored++; }
   }
+  if(qs.length && isHat(qs[0])) bsFixOrder(qs, out);
   return { answers: out, applied: applied, ignored: ignored, unknown: unknown };
 }
 function normAnswers(qs, ans){
@@ -3213,7 +3338,7 @@ function ingestBundle(b, src, bs){
       return openKnown(key, src, 'Loaded "' + cfg.title + '". The file matches what this browser already had.');
     }
   }
-  var msg = 'Loaded "' + cfg.title + '" with ' + (bs ? plural(n, "hat", "hats") + " seen" : plural(n, "answered question", "answered questions")) + ".";
+  var msg = 'Loaded "' + cfg.title + '" with ' + (bs ? plural(n, "card", "cards") + " seen" : plural(n, "answered question", "answered questions")) + ".";
   var lost = ex ? lostAnswers(validState(readJSON(APFX + key)).answers, conv.answers) : 0;
   if(lost === 0) return commitRound(key, cfg, titled, qarr, incoming, st, src, msg);
   return confirmBox({ title: "Replace the answers in this browser?", message: '"' + cfg.title + '" is already in this browser, and ' + plural(lost, "of its answers is", "of its answers are") + " not in this file. The file's answers take their place.", ok: "Replace", answers: lost, key: key })
@@ -3366,8 +3491,13 @@ function ingestBackup(b){
   for(var i=0;i<list.length;i++){
     var x = list[i], bsr = false;
     if(x && typeof x === "object" && x.round && typeof x.round === "object" && bsIs(x.round)){
-      if(bsProblem(x.round)){ skipped++; continue; }
-      x = { answers: x.answers, kept: x.kept, round: bsToRound(x.round) };
+      if(Array.isArray(x.round.hats)){
+        if(bsOldProblem(x.round)){ skipped++; continue; }
+        x = { answers: x.answers, kept: x.kept, round: bsOldToRound(x.round) };
+      } else {
+        if(bsProblem(x.round)){ skipped++; continue; }
+        x = { answers: x.answers, kept: x.kept, round: bsToRound(x.round) };
+      }
       bsr = true;
     }
     if(!x || typeof x !== "object" || !x.round || typeof x.round !== "object" || !Array.isArray(x.round.questions) || (bsr ? null : (isBS(x.round.config) || validateQuestions(x.round.questions))) || versionProblem(x.round.config)){ skipped++; continue; }
@@ -4631,7 +4761,7 @@ function foldersChanged(){ projectUI(); }
    data is gone was deleted somewhere and leaves the list; a round with data that the stored list lacks goes back
    into it (a page stored the list before it had heard of the round). */
 var followTimer = null;
-var FOLLOWED = ["unseen", "file", "fsig", "fsaved", "update", "ufolder", "usig", "declined", "title", "titled", "tagline", "fkey", "folder", "project", "total", "answered", "changed", "kind"];
+var FOLLOWED = ["unseen", "file", "fsig", "fsaved", "update", "ufolder", "usig", "declined", "title", "titled", "tagline", "fkey", "folder", "project", "total", "answered", "changed", "kind", "bsround"];
 function followLib(){
   var stored = readJSON(LKEY);
   if(!stored || !Array.isArray(stored.rounds)) return;
@@ -4698,8 +4828,8 @@ function byId(list, id){ for(var i=0;i<list.length;i++){ if(list[i].id === id) r
 /* Whether the field the cursor is in still stands in the new version of its question. */
 function fieldStands(cf, shown, q){
   if(!cf || !shown || !q || !sameAsk(shown.q, q)) return false;
-  if(cf.kind === "num" || cf.kind === "custom" || cf.kind === "bsask" || cf.kind === "bsnew") return true;
-  if(cf.kind === "bsnote") return !!bsIdea(q, cf.id);
+  if(cf.kind === "num" || cf.kind === "custom") return true;
+  if(cf.kind === "bsfield") return bsFieldStands(q, cf.id);
   if(cf.kind === "row"){
     var orow = byId(shown.q.items || [], cf.id), nrow = byId(q.items || [], cf.id);
     return !!(orow && nrow && orow.label === nrow.label);
@@ -4718,13 +4848,9 @@ function fieldBack(t){
   } else if(role === "bcomment" && q && isBatch(q)){
     var it = t.getAttribute("data-item"), row = batchState(q).items[it] || {};
     if(q.items.some(function(x){ return x.id === it; }) && String(row.comment || "") !== v) bcomment(it, v);
-  } else if(role === "bs-note" && q && isHat(q)){
-    var bi = t.getAttribute("data-idea"), bn = bsA(q).notes || {};
-    if(bsIdea(q, bi) && String(own(bn, bi) ? bn[bi] : "") !== v) bsNoteSet(bi, v);
-  } else if(role === "bs-ask" && q && q.ask){
-    if(String(bsA(q).ask || "") !== v) bsAskSet(v);
-  } else if(role === "bs-new" && q && isHat(q)){
-    bsDraft[q.id] = v;
+  } else if(role === "bs-field" && q && isHat(q)){
+    var bk = t.getAttribute("data-key") || "";
+    if(bsFieldStands(q, bk)) bsDraft[bk] = v;
   }
 }
 function followRound(){
@@ -4788,9 +4914,7 @@ function cursorField(shown){
   else if(a.id === "ctext"){ k.kind = "custom"; }
   else if(a.classList.contains("fctext")){ k.kind = "fcustom"; k.fid = shown ? shown.fids[parseInt(a.getAttribute("data-f"), 10)] : undefined; }
   else if(a.id === "numin"){ k.kind = "num"; }
-  else if(role === "bs-note"){ k.kind = "bsnote"; k.id = a.getAttribute("data-idea"); }
-  else if(role === "bs-ask"){ k.kind = "bsask"; }
-  else if(role === "bs-new"){ k.kind = "bsnew"; }
+  else if(role === "bs-field"){ k.kind = "bsfield"; k.id = a.getAttribute("data-key") || ""; }
   return k;
 }
 /* Drawing again after something outside changed the round. A custom answer typed but not recorded yet lives only
@@ -4815,8 +4939,7 @@ function followDraw(shown, say, asked){
   else if(q){ delete numDrafts[q.id]; delete rankDrafts[q.id]; }
   if(stands && cf.kind === "note") openNotes[cf.id] = true;
   if(stands && cf.kind === "row") openComments[q.id + ":" + cf.id] = true;
-  if(stands && cf.kind === "bsnote") bsOpenNotes[q.id + ":" + cf.id] = true;
-  if(stands && cf.kind === "bsnew"){ bsAddOpen[q.id] = true; bsDraft[q.id] = cf.text; }
+  if(stands && cf.kind === "bsfield") bsFieldBack(cf.id, cf.text);
   scrollKeep(render);
   updateExportNode();
   /* Typed custom text goes back into its box, open, without the cursor. */
@@ -4841,9 +4964,7 @@ function followDraw(shown, say, asked){
       if(back){ openBox(fid, cf.text); if(cf.typed) back.setAttribute("data-typed", "1"); }
     }
     else if(cf.kind === "num"){ back = document.getElementById("numin"); }
-    else if(cf.kind === "bsnote"){ var bnb = document.getElementById("bsn-" + cf.id); back = bnb ? bnb.querySelector("textarea") : null; }
-    else if(cf.kind === "bsask"){ back = document.getElementById("bsask"); }
-    else if(cf.kind === "bsnew"){ back = document.getElementById("bs-new"); }
+    else if(cf.kind === "bsfield"){ back = document.querySelector('#app textarea[data-key="' + bsAttr(cf.id) + '"]'); }
     if(back){
       try{ back.focus(); if(typeof cf.from === "number") back.setSelectionRange(cf.from, cf.to); }catch(e){}
       /* A number box has no place for the cursor to be set to: giving it its text afresh leaves the cursor at the end. */
@@ -4962,7 +5083,7 @@ function renderLib(){
     h += '<button type="button" class="lopen" data-action="lib-open" data-key="' + esc(e.key) + '"' + (isCur ? ' aria-current="true"' : "") + '>';
     h += '<span class="ltitle" ' + dirA(title) + '>' + esc(title) + '</span>';
     if(e.tagline){ h += '<span class="ltag" ' + dirA(e.tagline) + '>' + esc(e.tagline) + '</span>'; }
-    h += '<span class="lmeta">' + (e.unseen ? '<span class="lnew">New</span>' : "") + (e.project ? '<span class="lproj" ' + dirA(e.project) + '>' + esc(e.project) + '</span>' : "") + '' + (e.kind === "brainstorm" ? '<span class="lkind">' + BS_MARK + 'Brainstorm</span><span>' + (e.answered || 0) + ' of ' + (e.total || 0) + ' hats seen</span>' : '<span>' + (e.answered || 0) + ' of ' + (e.total || 0) + ' answered</span>') + '<span>' + esc(fmtWhen(e.changed)) + '</span>' + (isCur ? '<span class="lnow">Open now</span>' : "") + '</span>';
+    h += '<span class="lmeta">' + (e.unseen ? '<span class="lnew">New</span>' : "") + (e.project ? '<span class="lproj" ' + dirA(e.project) + '>' + esc(e.project) + '</span>' : "") + '' + (e.kind === "brainstorm" ? '<span class="lkind">' + BS_MARK + (e.bsround ? 'Brainstorm, round ' + e.bsround : 'Older brainstorm') + '</span><span>' + (e.answered || 0) + ' of ' + (e.total || 0) + ' cards seen</span>' : '<span>' + (e.answered || 0) + ' of ' + (e.total || 0) + ' answered</span>') + '<span>' + esc(fmtWhen(e.changed)) + '</span>' + (isCur ? '<span class="lnow">Open now</span>' : "") + '</span>';
     h += '</button>';
     h += '<button type="button" class="ldel" data-action="lib-delete" data-key="' + esc(e.key) + '" aria-label="Delete ' + esc(title) + '">Delete</button>';
     h += '</div>';
@@ -5974,8 +6095,8 @@ function gotoOpen(fromStart){
   }
   /* Nothing is open. The companion stays quiet; the summary's status line says so, and the menu's Next open question
      is greyed out meanwhile, so the toast is only for a menu opened before the last answer went in. */
-  if(state.idx >= t){ setStatus("sum-status", true, bsOn() ? "Every hat has had its turn." : "Nothing open. Every issue has an answer."); }
-  else { toast(true, bsOn() ? "Every hat has had its turn." : "Nothing is open. Every question has an answer."); }
+  if(state.idx >= t){ setStatus("sum-status", true, bsOn() ? "Every card has been seen." : "Nothing open. Every issue has an answer."); }
+  else { toast(true, bsOn() ? "Every card has been seen." : "Nothing is open. Every question has an answer."); }
 }
 
 /* Milestones and arrivals. */
@@ -8232,108 +8353,392 @@ function confirmBox(o){
   });
 }
 
-/* Brainstorms (0.8.0). A brainstorm is a round of its own kind: one topic, looked at through de Bono's six thinking
-   hats, each worn by a character of the cast. Its file holds config (kind "brainstorm"), topic, and seven hats: Blue
-   first, White, Red, Yellow, Black, and Green in the order Claude picked, and Blue again last. Inside the wizard each
-   hat is kept as one entry of the round's questions (type "hat"), so the list of rounds, saving, folders, backups,
-   and the other windows all work as they do for rounds; files going out are written back in the brainstorm form. */
-var BS_HATS = ["white", "red", "yellow", "black", "green"];
-var BS_MAX = 6, BS_MINE = 20;
+/* Crumple and toss: the card folds and creases into a faceted ball of its own colour, then flies into the bin.
+   crumpleToss(card, bin, done). Effects run in a fixed layer on top of the page, so nothing clips them.
+   Older-style script (var, plain functions), as the wizard is written. */
+var CRUMPLE = (function(){
+  var NS = "http://www.w3.org/2000/svg";
+  function rnd(seed){ var s = seed || 1; return function(){ s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; }; }
+  function rgbOf(el){
+    var m = String(getComputedStyle(el).backgroundColor || "").match(/(\d+(\.\d+)?)/g);
+    if(!m || m.length < 3 || (m.length > 3 && +m[3] === 0)) return [246, 240, 226];
+    return [+m[0], +m[1], +m[2]];
+  }
+  function mix(c, t, f){ return "rgb(" + Math.round(c[0] + (t[0] - c[0]) * f) + "," + Math.round(c[1] + (t[1] - c[1]) * f) + "," + Math.round(c[2] + (t[2] - c[2]) * f) + ")"; }
+  function shade(c, f){ return f >= 0 ? mix(c, [255, 255, 255], f) : mix(c, [20, 16, 10], -f); }
+  function layer(){
+    var l = document.getElementById("crumple-layer");
+    if(!l){ l = document.createElement("div"); l.id = "crumple-layer"; l.setAttribute("aria-hidden", "true"); l.style.cssText = "position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:visible"; document.body.appendChild(l); }
+    return l;
+  }
+  function el(tag, attrs){ var e = document.createElementNS(NS, tag); for(var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+  function ease(t){ return 1 - Math.pow(1 - t, 2.2); }
+  function reduced(){ return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
+
+  function crumpleToss(card, bin, done){
+    var r = card.getBoundingClientRect(), b = bin ? bin.getBoundingClientRect() : null;
+    if(reduced() || !card.animate || !r.width){
+      if(card.animate){ card.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 180, fill: "forwards" }).onfinish = function(){ done && done(); }; }
+      else if(done) done();
+      return;
+    }
+    var w = r.width, h = r.height, cx = w / 2, cy = h / 2, N = 20;
+    var R = Math.max(18, Math.min(30, Math.min(w, h) * 0.22));
+    var rand = rnd(Math.floor(w * 7 + h * 13 + Date.now() % 997));
+    var base = rgbOf(card);
+    // angles and the ball's final outline
+    var ang = [], rEnd = [], rStart = [], spd = [], lump = [], i, k;
+    // four rays go exactly to the corners, so the first frame is the whole card
+    var corners = [Math.atan2(cy, cx), Math.atan2(cy, -cx), Math.atan2(-cy, -cx) + Math.PI * 2, Math.atan2(-cy, cx) + Math.PI * 2];
+    var per = (N - 4) / 4, bounds = [0].concat(corners).concat([Math.PI * 2]);
+    for(var s=0;s<5;s++){
+      var lo = bounds[s], hi = bounds[s + 1], n = s === 0 || s === 4 ? per / 2 : per;
+      if(s > 0) ang.push(lo);
+      for(var q=1;q<=n;q++) ang.push(lo + (hi - lo) * (q - .5 + (rand() - .5) * .5) / n);
+    }
+    ang = ang.slice(0, N);
+    for(i=0;i<N;i++){
+      rEnd.push(R * (0.8 + rand() * 0.38));
+      spd.push(0.82 + rand() * 0.5);
+      lump.push(rand() * 2 - 1);
+    }
+    for(i=0;i<N;i++){ // where each ray meets the card's edge
+      var dx = Math.cos(ang[i]), dy = Math.sin(ang[i]);
+      var tx = dx ? (cx / Math.abs(dx)) : 1e9, ty = dy ? (cy / Math.abs(dy)) : 1e9;
+      rStart.push(Math.min(tx, ty));
+    }
+    function poly(t, jag, twist){
+      var pts = [];
+      for(var j=0;j<N;j++){
+        var tj = Math.min(1, t * spd[j]);
+        var rr = rStart[j] + (rEnd[j] - rStart[j]) * ease(tj);
+        rr *= 1 + (lump[j] * .7 + (rand() - .5) * .6) * jag;
+        var a = ang[j] + twist;
+        var x = cx + Math.cos(a) * rr, y = cy + Math.sin(a) * rr;
+        pts.push((x / w * 100).toFixed(2) + "% " + (y / h * 100).toFixed(2) + "%");
+      }
+      return "polygon(" + pts.join(",") + ")";
+    }
+    var frames = [
+      { t: 0, jag: 0, tw: 0, rot: 0, sc: 1 },
+      { t: .18, jag: .1, tw: .03, rot: -2, sc: .99 },
+      { t: .4, jag: .2, tw: -.04, rot: 3, sc: .97 },
+      { t: .62, jag: .24, tw: .06, rot: -6, sc: .95 },
+      { t: .82, jag: .16, tw: -.03, rot: 9, sc: .94 },
+      { t: 1, jag: 0, tw: 0, rot: 12, sc: .94 }
+    ];
+    var kf = frames.map(function(f, n){ return { clipPath: f.t === 0 ? "inset(0 0 0 0 round 8px)" : poly(f.t, f.jag, f.tw), transform: "rotate(" + f.rot + "deg) scale(" + f.sc + ")", offset: n / (frames.length - 1) }; });
+    // polygon interpolation needs the same shape on every frame
+    kf[0].clipPath = poly(0, 0, 0);
+
+    // creases and facets drawn over the card while it folds
+    var L = layer();
+    var ov = document.createElement("div");
+    ov.style.cssText = "position:fixed;left:" + r.left + "px;top:" + r.top + "px;width:" + w + "px;height:" + h + "px;opacity:0;transform-origin:50% 50%";
+    var svg = el("svg", { width: w, height: h, viewBox: "0 0 " + w + " " + h });
+    // low-poly facets across the card: a jittered grid, each cell split in two, shaded at random
+    var cols = Math.max(4, Math.round(w / 46)), rows = Math.max(3, Math.round(h / 40)), G = [], x0, y0;
+    for(y0=0;y0<=rows;y0++){ var row = []; for(x0=0;x0<=cols;x0++){
+      var gx = x0 / cols * w, gy = y0 / rows * h;
+      if(x0 > 0 && x0 < cols) gx += (rand() - .5) * w / cols * .8;
+      if(y0 > 0 && y0 < rows) gy += (rand() - .5) * h / rows * .8;
+      row.push([gx, gy]); } G.push(row); }
+    function tri(a, b, c2){
+      var v = rand(), fill = v < .45 ? "rgba(255,255,255," + (.1 + rand() * .28).toFixed(2) + ")" : "rgba(20,16,10," + (.05 + rand() * .2).toFixed(2) + ")";
+      svg.appendChild(el("path", { d: "M" + a[0] + " " + a[1] + "L" + b[0] + " " + b[1] + "L" + c2[0] + " " + c2[1] + "Z", fill: fill, stroke: rand() < .5 ? "rgba(20,16,10,.22)" : "rgba(255,255,255,.4)", "stroke-width": .9, "stroke-linejoin": "round" }));
+    }
+    for(y0=0;y0<rows;y0++) for(x0=0;x0<cols;x0++){
+      var A = G[y0][x0], B = G[y0][x0 + 1], C = G[y0 + 1][x0 + 1], D = G[y0 + 1][x0];
+      if((x0 + y0) % 2){ tri(A, B, C); tri(A, C, D); } else { tri(A, B, D); tri(B, C, D); }
+    }
+    ov.appendChild(svg);
+    L.appendChild(ov);
+    var dur1 = 720;
+    card.style.transformOrigin = "50% 50%";
+    var a1an = card.animate(kf, { duration: dur1, easing: "cubic-bezier(.4,.1,.6,1)", fill: "forwards" });
+    ov.animate(kf.map(function(f, n){ return { clipPath: f.clipPath, transform: f.transform, opacity: [0, .55, .8, .95, 1, 1][n], offset: f.offset }; }), { duration: dur1, easing: "cubic-bezier(.4,.1,.6,1)", fill: "forwards" });
+
+    a1an.onfinish = function(){
+      // the ball: the same outline, faceted in the card's own colour
+      var S = R * 2.6, bx = r.left + cx - S / 2, by = r.top + cy - S / 2, c = S / 2;
+      var ball = document.createElement("div");
+      ball.style.cssText = "position:fixed;left:" + bx + "px;top:" + by + "px;width:" + S + "px;height:" + S + "px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.28))";
+      var bs = el("svg", { width: S, height: S, viewBox: "0 0 " + S + " " + S });
+      var g = el("g", { transform: "rotate(12 " + c + " " + c + ") scale(.94) translate(" + (c * .064) + " " + (c * .064) + ")" });
+      var P = [];
+      for(i=0;i<N;i++) P.push([c + Math.cos(ang[i]) * rEnd[i], c + Math.sin(ang[i]) * rEnd[i]]);
+      var inner = [c + (rand() - .5) * R * .5, c + (rand() - .5) * R * .5], inner2 = [c + (rand() - .5) * R * .7, c + (rand() - .5) * R * .7];
+      var tones = [.38, -.06, .18, -.22, .3, -.12, .08, -.3, .24];
+      for(i=0;i<N;i++){
+        var p1 = P[i], p2 = P[(i + 1) % N];
+        var ip = i % 3 === 0 ? inner2 : inner;
+        g.appendChild(el("path", { d: "M" + ip[0] + " " + ip[1] + "L" + p1[0] + " " + p1[1] + "L" + p2[0] + " " + p2[1] + "Z", fill: shade(base, tones[i % tones.length]), stroke: shade(base, -.35), "stroke-width": .6, "stroke-linejoin": "round" }));
+      }
+      for(k=0;k<5;k++){
+        var q1 = P[Math.floor(rand() * N)], q2 = P[Math.floor(rand() * N)];
+        g.appendChild(el("path", { d: "M" + q1[0] + " " + q1[1] + "Q" + (inner[0] + (rand() - .5) * R * .6) + " " + (inner[1] + (rand() - .5) * R * .6) + " " + q2[0] + " " + q2[1], fill: "none", stroke: k % 2 ? "rgba(255,255,255,.6)" : shade(base, -.4), "stroke-width": .8 }));
+      }
+      g.appendChild(el("path", { d: "M" + P.map(function(p){ return p[0] + " " + p[1]; }).join("L") + "Z", fill: "none", stroke: shade(base, -.45), "stroke-width": 1.1, "stroke-linejoin": "round" }));
+      bs.appendChild(g);
+      ball.appendChild(bs);
+      L.appendChild(ball);
+      card.style.visibility = "hidden";
+      ov.remove();
+
+      var ex = b ? (b.left + b.width / 2 - S / 2) : bx, ey = b ? (b.top + b.height / 2 - S / 2) : by - 200;
+      var ddx = ex - bx, ddy = ey - by, up = Math.min(140, 60 + Math.abs(ddx) * 0.12), steps = 12, path = [];
+      path.push({ transform: "translate(0,0) rotate(0) scale(1)", offset: 0 });
+      path.push({ transform: "translate(0,4px) rotate(-8deg) scale(1.04,.94)", offset: .1 });
+      for(i=1;i<=steps;i++){
+        var t = i / steps, arc = -up * 4 * t * (1 - t);
+        path.push({ transform: "translate(" + (ddx * t).toFixed(1) + "px," + (ddy * t + arc).toFixed(1) + "px) rotate(" + (t * 600).toFixed(0) + "deg) scale(" + (1 - .55 * t).toFixed(3) + ")", offset: .1 + .9 * t });
+      }
+      var fly = ball.animate(path, { duration: 760, easing: "cubic-bezier(.3,.05,.55,1)", fill: "forwards" });
+      fly.onfinish = function(){
+        ball.remove();
+        if(bin && bin.animate) bin.animate([{ transform: "scale(1) rotate(0)" }, { transform: "scale(1.22) rotate(-6deg)", offset: .35 }, { transform: "scale(.96) rotate(3deg)", offset: .7 }, { transform: "scale(1) rotate(0)" }], { duration: 420, easing: "ease-out" });
+        if(done) done();
+      };
+    };
+  }
+  return { crumpleToss: crumpleToss };
+})();
+
+/* Brainstorms (0.9.0): the Brainstorming Wizard. A brainstorm comes in two files, each a round of its own kind
+   (config.kind "brainstorm"). Round 1 holds the topic and three passes over the six hats: Hold back (each hat asks
+   one question and you write), Spark (questions or notes that open a direction), and Suggest (each hat's ideas,
+   which you can kill), then Blue's recap. Round 2, written by Claude from round 1's answers, holds your aims, the
+   extras, and every idea with the council's comments on it, then your order. Inside the wizard each card is one
+   entry of the round's questions (type "hat", with a role), so the list of rounds, saving, folders, backups, and
+   the other windows all work as they do for rounds; files going out are written back in the brainstorm's own form.
+   Brainstorms made by 0.8.0 (a "hats" list) no longer open; ones already kept in this browser stay in Load, with
+   their answers still there to copy. */
+var BS_HATS = ["white", "red", "yellow", "black", "green"], BS_ALL = ["blue", "white", "red", "yellow", "black", "green"];
+var BS_SUGG_MAX = 4, BS_SPARK_MAX = 3, BS_EXTRA_MAX = 40, BS_IDEA_MAX = 120, BS_MINE = 60;
 var BS_INFO = {
-  blue:   { name: "Blue",   kind: "The focus and the plan", close: "What came out, and what's next" },
-  white:  { name: "White",  kind: "Facts: what we know, and what we're missing", side: "facts", q: "What do we know, and what's missing?" },
-  red:    { name: "Red",    kind: "Feelings: gut reactions, no reasons needed", side: "feelings", q: "How does it feel?" },
-  yellow: { name: "Yellow", kind: "Benefits: why it could work", side: "benefits", q: "What's good about it?" },
-  black:  { name: "Black",  kind: "Caution: why it might not", side: "caution", q: "What could go wrong?" },
-  green:  { name: "Green",  kind: "New ideas: other ways to get there", side: "new ideas", q: "What else could we try?" }
+  blue:   { name: "Blue",   kind: "The point", hold: "Where is this going, and what are its main goals?", sugg: "What other path could get you there?" },
+  white:  { name: "White",  kind: "Realistic", hold: "What's the smallest version of this that would already be worth having?", sugg: "What's within reach?" },
+  red:    { name: "Red",    kind: "Human", hold: "What excites you most about this?", sugg: "How could it feel more human?" },
+  yellow: { name: "Yellow", kind: "The dream", hold: "If you imagine it as wild as you can, how does it go?", sugg: "How far could it go?" },
+  black:  { name: "Black",  kind: "Caution", hold: "What could make this useless, or hurt and go badly?", sugg: "What would keep it out of trouble?" },
+  green:  { name: "Green",  kind: "Twists", hold: "What's a twist on this that nobody would expect?", sugg: "What twist could feed it?" }
 };
-var BS_CLOSE_Q = "What did we find, and what's next?";
+/* What a hat with nothing to add says on the council, in its own voice. */
+var BS_SILENT = { blue: "Nothing to add. It stays on the point.", white: "No facts to add on this one.", red: "It's fine. No strong feelings.",
+                  yellow: "It's an OK idea! Nothing more from me.", black: "No cracks I can see.", green: "No twist this time. Hm." };
 var BS_WHO = { blue: { name: "Cap", what: "the capybara" }, white: { name: "Tally", what: "the owl" }, red: { name: "Ruby", what: "the fox" },
                yellow: { name: "Sunny", what: "the bee" }, black: { name: "Pebble", what: "the tortoise" }, green: { name: "Doodle", what: "the chameleon" } };
 var BS_TOPIC_KEYS = ["context", "detail", "links", "extra"];
-var BS_STAR = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 3.2l2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.5l6-.8z" fill="FILL" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
-var bsScreen = null, bsPose = "still", bsPoseTimer = null, bsOpenNotes = {}, bsAddOpen = {}, bsDraft = {};
+var BS_KILL = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+var BS_BIN = '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4.5h6V7"/><path d="M6.5 7l1 13h9l1-13"/><path d="M10 11v6M14 11v6"/></svg>';
+var BS_CHECK = '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var BS_RETIRED = "This brainstorm was made for wizard 0.8.0, and 0.9.0 replaced that kind of brainstorm. Ask Claude for it again in the new form. Nothing was loaded.";
+var bsScreen = null, bsPose = "still", bsPoseTimer = null, bsDraft = {}, bsEdit = null, bsBoxOpen = {}, bsSeat = {}, bsPinned = {}, bsReadTimer = null, bsDrag = null, bsNoHover = null, bsLeaveTimer = null;
+var bsLastQ = null, bsOrderGap = {}, bsHoverTimer = null, bsPtrX = -1, bsPtrY = -1, bsStillX = null, bsStillY = null;
 
 function isBS(c){ return !!(c && typeof c === "object" && c.kind === "brainstorm"); }
 function isHat(q){ return !!(q && q.type === "hat"); }
 function bsOn(){ return isBS(CONFIG) && QUESTIONS.length > 0 && isHat(QUESTIONS[0]); }
-/* A brainstorm lists hats and no questions; a file that lists questions is a round, as before. */
-function bsIs(p){ return !!(p && typeof p === "object" && !Array.isArray(p) && Array.isArray(p.hats) && !Array.isArray(p.questions)); }
+/* A brainstorm lists its cards and no questions; a file that lists questions is a round, as before. An 0.8.0
+   brainstorm (a "hats" list) is still recognised, so it can be turned away with a reason. */
+function bsIs(p){ return !!(p && typeof p === "object" && !Array.isArray(p) && !Array.isArray(p.questions) && (Array.isArray(p.hold) || Array.isArray(p.ideas) || Array.isArray(p.hats))); }
+function bsOldQs(qs){ return !!(qs && qs.length && isHat(qs[0]) && (qs[0].role === "open" || qs[0].role === "hat" || qs[0].role === "close")); }
+function bsOld(){ return bsOldQs(QUESTIONS); }
+function bsRound(qs){ qs = qs || QUESTIONS; return qs.length && qs[0].role === "aims" ? 2 : 1; }
 function bsHatName(q){ return BS_INFO[q.hat] ? BS_INFO[q.hat].name : String(q.hat); }
+function bsName(h){ return BS_INFO[h] ? BS_INFO[h].name : String(h); }
 function bsTopic(){ var o = QUESTIONS[0]; return (o && o.topic) ? o.topic : { title: "", question: "" }; }
+function bsQ(id){ for(var i=0;i<QUESTIONS.length;i++){ if(QUESTIONS[i].id === id) return QUESTIONS[i]; } return null; }
+function bsStr(v){ return typeof v === "string" && v.trim().length > 0; }
 
 /* Checking a brainstorm file. Every message ends the way the round checks do. */
-function bsWhere(i, h){ return i === 0 ? "The opening Blue hat" : i === 6 ? "The closing Blue hat" : ((BS_INFO[h && h.hat] || {}).name || "Hat " + (i + 1)) + " hat"; }
 function bsProblem(p){
   var c = p.config, NL = " Nothing was loaded.";
+  if(Array.isArray(p.hats)) return BS_RETIRED;
   if(!c || typeof c !== "object" || c.kind !== "brainstorm") return 'A brainstorm needs config with kind set to "brainstorm".' + NL;
   var vp = versionProblem(c);
   if(vp) return vp;
   var t = p.topic;
-  if(!t || typeof t !== "object" || typeof t.title !== "string" || !t.title.trim() || typeof t.question !== "string" || !t.question.trim()) return "A brainstorm needs a topic with a title and a question." + NL;
+  if(!t || typeof t !== "object" || !bsStr(t.title) || !bsStr(t.question)) return "A brainstorm needs a topic with a title and a question." + NL;
   if(t.context !== undefined && typeof t.context !== "string") return "The topic's context must be text." + NL;
   if(t.detail !== undefined && !Array.isArray(t.detail)) return "The topic's detail must be a list." + NL;
   if(t.links !== undefined && !Array.isArray(t.links)) return "The topic's links must be a list." + NL;
   if(t.extra !== undefined && (!t.extra || typeof t.extra !== "object")) return "The topic's extra must be a popup or a list of them." + NL;
-  var hs = p.hats;
-  if(hs.length !== 7) return "A brainstorm has seven hats: Blue first, White, Red, Yellow, Black, and Green in any order, and Blue again last. This one lists " + hs.length + "." + NL;
-  if(!hs[0] || hs[0].hat !== "blue" || !hs[6] || hs[6].hat !== "blue") return "A brainstorm opens and closes with the Blue hat." + NL;
-  var mid = hs.slice(1, 6).map(function(h){ return h && h.hat; });
-  if(mid.slice().sort().join() !== BS_HATS.slice().sort().join()) return "Between the two Blue hats come White, Red, Yellow, Black, and Green, each once." + NL;
+  var r1 = Array.isArray(p.hold), r2 = Array.isArray(p.ideas);
+  if(r1 && r2) return "A brainstorm file is round 1 (with hold) or round 2 (with ideas), not both." + NL;
+  if(c.round !== undefined && c.round !== (r1 ? 1 : 2)) return "config.round says " + c.round + ", but the file is laid out as round " + (r1 ? 1 : 2) + "." + NL;
   var seen = Object.create(null);
-  for(var i=0;i<hs.length;i++){
-    var h = hs[i], w = bsWhere(i, h);
-    if(typeof h.line !== "string" || !h.line.trim()) return w + " needs a line: every hat says something." + NL;
-    if(h.question !== undefined && typeof h.question !== "string") return w + ": question must be text." + NL;
-    if(h.ask !== undefined){
-      if(i === 0 || i === 6) return w + " asks nothing; only the five hats between the two Blue ones ask." + NL;
-      if(typeof h.ask !== "string" || !h.ask.trim()) return w + ": ask must be text." + NL;
+  var idOk = function(where, d, k){
+    if(!d || typeof d !== "object" || !bsStr(d.id) || !bsStr(d.text)) return where + ", " + k + " " + "needs an id and text." + NL;
+    if(!/^[A-Za-z0-9_-]{1,40}$/.test(d.id)) return where + ' uses the id "' + d.id + '"; ids use letters, digits, - and _ only.' + NL;
+    if(d.id in seen) return where + " reuses the id " + d.id + ". Every card needs its own id." + NL;
+    if(/^u\d+$/.test(d.id)) return where + " uses the id " + d.id + "; ids like u1 are kept for your own cards." + NL;
+    seen[d.id] = true;
+    return null;
+  };
+  var hatOk = function(h){ return BS_ALL.indexOf(h) !== -1; };
+  var i, k, e, x;
+  if(r1){
+    var ho = p.hold;
+    if(ho.length !== 6) return "Round 1's hold lists each of the six hats once. This one lists " + ho.length + "." + NL;
+    if(!ho[0] || ho[0].hat !== "blue") return "Round 1's hold starts with the Blue hat." + NL;
+    if(ho.map(function(h){ return h && h.hat; }).sort().join() !== BS_ALL.slice().sort().join()) return "Round 1's hold lists Blue, White, Red, Yellow, Black, and Green, each once." + NL;
+    for(i=0;i<ho.length;i++){ if(ho[i].question !== undefined && typeof ho[i].question !== "string") return bsName(ho[i].hat) + "'s hold question must be text." + NL; }
+    var sp = p.sparks === undefined ? [] : p.sparks;
+    if(!Array.isArray(sp)) return "Round 1's sparks must be a list." + NL;
+    var sh = {};
+    for(i=0;i<sp.length;i++){
+      e = sp[i];
+      if(!e || !hatOk(e.hat)) return "Spark entry " + (i + 1) + " needs a hat: blue, white, red, yellow, black, or green." + NL;
+      if(sh[e.hat]) return bsName(e.hat) + " has two spark entries; each hat has one at most." + NL;
+      sh[e.hat] = true;
+      if(e.line !== undefined && typeof e.line !== "string") return bsName(e.hat) + "'s spark line must be text." + NL;
+      if(e.question !== undefined && typeof e.question !== "string") return bsName(e.hat) + "'s spark question must be text." + NL;
+      if(!Array.isArray(e.sparks) || !e.sparks.length) return bsName(e.hat) + "'s spark entry needs a list of sparks." + NL;
+      if(e.sparks.length > BS_SPARK_MAX) return bsName(e.hat) + " brings " + e.sparks.length + " sparks; a hat brings at most " + BS_SPARK_MAX + "." + NL;
+      for(k=0;k<e.sparks.length;k++){ x = idOk(bsName(e.hat) + "'s sparks", e.sparks[k], "spark " + (k + 1)); if(x) return x; }
     }
-    if(h.ideas === undefined) continue;
-    if(!Array.isArray(h.ideas)) return w + ": ideas must be a list." + NL;
-    if(i === 0 && h.ideas.length) return "The opening Blue hat sets the focus and the plan, so it brings no ideas." + NL;
-    if(h.ideas.length > BS_MAX) return w + " brings " + h.ideas.length + " ideas; a hat brings at most " + BS_MAX + "." + NL;
-    for(var k=0;k<h.ideas.length;k++){
-      var d = h.ideas[k];
-      if(!d || typeof d !== "object" || typeof d.id !== "string" || !d.id.trim() || typeof d.text !== "string" || !d.text.trim()) return w + ", idea " + (k + 1) + " needs an id and text." + NL;
-      if(d.why !== undefined && typeof d.why !== "string") return w + ", idea " + d.id + ": why must be text." + NL;
-      if(d.id in seen) return w + " reuses the idea id " + d.id + ". Every idea needs its own id." + NL;
-      seen[d.id] = true;
+    var su = p.suggest;
+    if(!Array.isArray(su) || su.length !== 6) return "Round 1's suggest lists each of the six hats once." + NL;
+    if(su[5].hat !== "blue") return "Round 1's suggest ends with the Blue hat, which suggests other paths." + NL;
+    if(su.map(function(h){ return h && h.hat; }).sort().join() !== BS_ALL.slice().sort().join()) return "Round 1's suggest lists Blue, White, Red, Yellow, Black, and Green, each once." + NL;
+    for(i=0;i<su.length;i++){
+      e = su[i];
+      if(!bsStr(e.line)) return bsName(e.hat) + "'s suggest entry needs a line: every hat says something as it suggests." + NL;
+      if(e.question !== undefined && typeof e.question !== "string") return bsName(e.hat) + "'s suggest question must be text." + NL;
+      if(e.ideas !== undefined && !Array.isArray(e.ideas)) return bsName(e.hat) + "'s ideas must be a list." + NL;
+      if((e.ideas || []).length > BS_SUGG_MAX) return bsName(e.hat) + " suggests " + e.ideas.length + " ideas; a hat suggests at most " + BS_SUGG_MAX + " in round 1." + NL;
+      for(k=0;k<(e.ideas || []).length;k++){
+        x = idOk(bsName(e.hat) + "'s suggestions", e.ideas[k], "idea " + (k + 1)); if(x) return x;
+        if(e.ideas[k].why !== undefined && typeof e.ideas[k].why !== "string") return bsName(e.hat) + ", idea " + e.ideas[k].id + ": why must be text." + NL;
+      }
     }
+    if(p.recap !== undefined && (!p.recap || typeof p.recap !== "object" || (p.recap.line !== undefined && typeof p.recap.line !== "string"))) return "Round 1's recap must be an object, with an optional line." + NL;
+    return null;
   }
-  return null;
+  if(r2){
+    var am = p.aims;
+    if(!am || typeof am !== "object" || !bsStr(am.line)) return "Round 2 needs aims with Blue's line." + NL;
+    var strs = function(l){ return l === undefined || (Array.isArray(l) && l.every(bsStr)); };
+    if(!strs(am.goals) || !strs(am.avoid)) return "Round 2's aims: goals and avoid are lists of text." + NL;
+    var council = function(where, list){
+      if(list === undefined) return null;
+      if(!Array.isArray(list)) return where + ": council must be a list." + NL;
+      var hs = {};
+      for(var j=0;j<list.length;j++){
+        var cm = list[j];
+        if(!cm || !hatOk(cm.hat) || !bsStr(cm.say)) return where + ": each council comment needs a hat and what it says." + NL;
+        if(hs[cm.hat]) return where + ": " + bsName(cm.hat) + " speaks twice. Each hat says one thing at most." + NL;
+        hs[cm.hat] = true;
+      }
+      return null;
+    };
+    var ex = p.extras;
+    if(ex !== undefined){
+      if(!ex || typeof ex !== "object" || !Array.isArray(ex.ideas)) return "Round 2's extras need a list of ideas." + NL;
+      if(ex.line !== undefined && typeof ex.line !== "string") return "The extras' line must be text." + NL;
+      if(ex.ideas.length > BS_EXTRA_MAX) return "Round 2 brings " + ex.ideas.length + " extras; at most " + BS_EXTRA_MAX + "." + NL;
+      for(i=0;i<ex.ideas.length;i++){
+        e = ex.ideas[i];
+        x = idOk("The extras", e, "extra " + (i + 1)); if(x) return x;
+        if(!hatOk(e.hat)) return "Extra " + e.id + " needs the hat that brings it." + NL;
+        if(e.why !== undefined && typeof e.why !== "string") return "Extra " + e.id + ": why must be text." + NL;
+        x = council("Extra " + e.id, e.council); if(x) return x;
+      }
+    }
+    if(!p.ideas.length) return "Round 2 needs at least one idea for the council." + NL;
+    if(p.ideas.length > BS_IDEA_MAX) return "Round 2 brings " + p.ideas.length + " ideas; at most " + BS_IDEA_MAX + "." + NL;
+    for(i=0;i<p.ideas.length;i++){
+      e = p.ideas[i];
+      x = idOk("The ideas", e, "idea " + (i + 1)); if(x) return x;
+      if(!hatOk(e.hat)) return "Idea " + e.id + " needs the hat it came under." + NL;
+      if(e.by !== "you" && !hatOk(e.by)) return "Idea " + e.id + ": by is \"you\" or the hat that suggested it." + NL;
+      if(e.from !== undefined && typeof e.from !== "string") return "Idea " + e.id + ": from must be text." + NL;
+      x = council("Idea " + e.id, e.council); if(x) return x;
+    }
+    if(p.order !== undefined && (!p.order || typeof p.order !== "object" || (p.order.line !== undefined && typeof p.order.line !== "string"))) return "Round 2's order must be an object, with an optional line." + NL;
+    return null;
+  }
+  return "A brainstorm needs hold (round 1) or ideas (round 2)." + NL;
 }
-/* A brainstorm file as the wizard keeps it: one question entry per hat. The config stays as written, so the checks on
-   titles and projects see what Claude wrote. */
+function bsWhyOf(d){ var o = { id: d.id, text: d.text }; if(bsStr(d.why)) o.why = d.why; return o; }
+function bsCouncilOf(l){ return (Array.isArray(l) ? l : []).map(function(c){ return { hat: c.hat, say: c.say }; }); }
+/* A brainstorm file as the wizard keeps it: one question entry per card. The config gets its round written in. */
 function bsToRound(p){
-  var t = p.topic, qs = [];
-  for(var i=0;i<p.hats.length;i++){
-    var h = p.hats[i], role = i === 0 ? "open" : i === 6 ? "close" : "hat";
-    var q = { id: role === "hat" ? h.hat : role, type: "hat", hat: h.hat, role: role, section: "Brainstorm",
-              title: role === "open" ? "Blue: the focus" : role === "close" ? "Blue: wrap-up" : BS_INFO[h.hat].name + ": " + BS_INFO[h.hat].side,
-              question: role === "open" ? t.question : (cleanStr(h.question) || (role === "close" ? BS_CLOSE_Q : BS_INFO[h.hat].q)),
-              line: h.line };
-    if(role === "open"){
-      q.topic = { title: t.title, question: t.question };
-      for(var k=0;k<BS_TOPIC_KEYS.length;k++){ if(t[BS_TOPIC_KEYS[k]] !== undefined) q.topic[BS_TOPIC_KEYS[k]] = t[BS_TOPIC_KEYS[k]]; }
-    } else {
-      q.ideas = (h.ideas || []).map(function(d){ var o = { id: d.id, text: d.text }; if(typeof d.why === "string" && d.why.trim()) o.why = d.why; return o; });
-      if(role === "hat" && typeof h.ask === "string" && h.ask.trim()) q.ask = h.ask;
+  var t = p.topic, qs = [], cfg = {}, k, i;
+  for(k in p.config){ if(own(p.config, k)) cfg[k] = p.config[k]; }
+  var topic = { title: t.title, question: t.question };
+  for(k=0;k<BS_TOPIC_KEYS.length;k++){ if(t[BS_TOPIC_KEYS[k]] !== undefined) topic[BS_TOPIC_KEYS[k]] = t[BS_TOPIC_KEYS[k]]; }
+  if(Array.isArray(p.hold)){
+    cfg.round = 1;
+    p.hold.forEach(function(h, n){
+      var q = { id: "h-" + h.hat, type: "hat", hat: h.hat, role: "hold", section: "Your turn", title: bsName(h.hat) + ": your turn", question: cleanStr(h.question) || BS_INFO[h.hat].hold };
+      if(n === 0) q.topic = topic;
+      qs.push(q);
+    });
+    (p.sparks || []).forEach(function(s){
+      var q = { id: "s-" + s.hat, type: "hat", hat: s.hat, role: "spark", section: "Sparks", title: bsName(s.hat) + ": sparks", question: cleanStr(s.question) || "What do these set off?", sparks: s.sparks.map(function(d){ return { id: d.id, text: d.text }; }) };
+      if(bsStr(s.line)) q.line = s.line;
+      qs.push(q);
+    });
+    p.suggest.forEach(function(s){
+      qs.push({ id: "g-" + s.hat, type: "hat", hat: s.hat, role: "suggest", section: "Suggestions", title: s.hat === "blue" ? "Blue: other paths" : bsName(s.hat) + ": suggests", question: cleanStr(s.question) || BS_INFO[s.hat].sugg, line: s.line, ideas: (s.ideas || []).map(bsWhyOf) });
+    });
+    qs.push({ id: "recap", type: "hat", hat: "blue", role: "recap", section: "Recap", title: "Blue: recap", question: "What's standing after round 1?", line: (p.recap && bsStr(p.recap.line)) ? p.recap.line : "That's round 1. Send it back, and round 2 brings the council." });
+  } else {
+    cfg.round = 2;
+    var am = p.aims;
+    qs.push({ id: "aims", type: "hat", hat: "blue", role: "aims", section: "Your aims", title: "Blue: your aims", question: t.question, line: am.line, goals: (am.goals || []).slice(), avoid: (am.avoid || []).slice(), topic: topic });
+    var xs = (p.extras && p.extras.ideas) || [];
+    if(xs.length){
+      var xq = { id: "extras", type: "hat", hat: "blue", role: "extras", section: "Extras", title: "Extras", question: "Anything here worth keeping?", ideas: xs.map(function(d){ var o = bsWhyOf(d); o.hat = d.hat; return o; }) };
+      xq.line = bsStr(p.extras.line) ? p.extras.line : "From what you wrote, the hats had a few more. Kill any that miss.";
+      qs.push(xq);
     }
-    qs.push(q);
+    p.ideas.forEach(function(d){
+      var idea = { id: d.id, text: d.text, by: d.by, hat: d.hat };
+      if(bsStr(d.from)) idea.from = d.from;
+      qs.push({ id: "c-" + d.id, type: "hat", hat: d.hat, role: "council", section: "The council", title: d.text, question: d.text, idea: idea, council: bsCouncilOf(d.council) });
+    });
+    xs.forEach(function(d){
+      var idea = { id: d.id, text: d.text, by: d.hat, hat: d.hat, extra: true };
+      if(bsStr(d.why)) idea.from = d.why;
+      qs.push({ id: "c-" + d.id, type: "hat", hat: d.hat, role: "council", section: "The council", title: d.text, question: d.text, idea: idea, council: bsCouncilOf(d.council) });
+    });
+    qs.push({ id: "order", type: "hat", hat: "blue", role: "order", section: "Your order", title: "Blue: your order", question: "Which ideas matter most?", line: (p.order && bsStr(p.order.line)) ? p.order.line : "These made it through. Put them in your order; the decision round starts from the top." });
   }
-  return { config: p.config, questions: qs };
+  return { config: cfg, questions: qs };
 }
 /* ...and back, for every file the wizard writes: a saved file, a project folder's file, a backup. */
 function bsFromRound(cfg, qs){
-  var open = qs[0] || {}, tp = open.topic || {}, topic = { title: tp.title || "", question: tp.question || "" };
-  for(var k=0;k<BS_TOPIC_KEYS.length;k++){ if(tp[BS_TOPIC_KEYS[k]] !== undefined) topic[BS_TOPIC_KEYS[k]] = tp[BS_TOPIC_KEYS[k]]; }
-  return { config: cfg, topic: topic, hats: qs.map(function(q){
-    var h = { hat: q.hat, line: q.line };
-    if(q.role !== "open"){ h.question = q.question; h.ideas = (q.ideas || []).map(function(d){ var o = { id: d.id, text: d.text }; if(d.why) o.why = d.why; return o; }); }
-    if(q.ask) h.ask = q.ask;
-    return h;
-  }) };
+  if(bsOldQs(qs)) return bsOldFromRound(cfg, qs);
+  var first = qs[0] || {}, tp = first.topic || {}, topic = { title: tp.title || "", question: tp.question || "" }, k;
+  for(k=0;k<BS_TOPIC_KEYS.length;k++){ if(tp[BS_TOPIC_KEYS[k]] !== undefined) topic[BS_TOPIC_KEYS[k]] = tp[BS_TOPIC_KEYS[k]]; }
+  var out = { config: cfg, topic: topic };
+  if(bsRound(qs) === 1){
+    out.hold = []; out.sparks = []; out.suggest = [];
+    qs.forEach(function(q){
+      if(q.role === "hold") out.hold.push({ hat: q.hat, question: q.question });
+      else if(q.role === "spark"){ var s = { hat: q.hat, question: q.question, sparks: q.sparks.map(function(d){ return { id: d.id, text: d.text }; }) }; if(q.line) s.line = q.line; out.sparks.push(s); }
+      else if(q.role === "suggest") out.suggest.push({ hat: q.hat, line: q.line, question: q.question, ideas: q.ideas.map(function(d){ var o = { id: d.id, text: d.text }; if(d.why) o.why = d.why; return o; }) });
+      else if(q.role === "recap") out.recap = { line: q.line };
+    });
+  } else {
+    var ex = [], ideas = [];
+    qs.forEach(function(q){
+      if(q.role === "aims") out.aims = { line: q.line, goals: (q.goals || []).slice(), avoid: (q.avoid || []).slice() };
+      else if(q.role === "extras") out.extras = { line: q.line, ideas: [] };
+      else if(q.role === "council"){
+        var d = q.idea, o = { id: d.id, text: d.text };
+        if(d.extra){ o.hat = d.hat; if(d.from) o.why = d.from; o.council = bsCouncilOf(q.council); ex.push(o); }
+        else { o.by = d.by; o.hat = d.hat; if(d.from) o.from = d.from; o.council = bsCouncilOf(q.council); ideas.push(o); }
+      }
+      else if(q.role === "order") out.order = { line: q.line };
+    });
+    if(out.extras) out.extras.ideas = ex;
+    out.ideas = ideas;
+  }
+  return out;
 }
 function roundOut(cfg, qs){ return isBS(cfg) ? bsFromRound(cfg, qs) : { config: cfg, questions: qs }; }
 function fileForm(exp){
@@ -8350,101 +8755,1108 @@ function bsFileRound(p, saved){
   var r = bsToRound(p);
   return { saved: saved, bs: true, problem: null, config: r.config, questions: r.questions };
 }
-function bsFresh(){ bsOpenNotes = {}; bsAddOpen = {}; bsDraft = {}; bsScreen = null; }
+function bsFresh(){ bsDraft = {}; bsEdit = null; bsBoxOpen = {}; bsSeat = {}; bsPinned = {}; bsScreen = null; bsLastQ = null; bsOrderGap = {}; bsHoverCancel(); if(bsReadTimer){ clearTimeout(bsReadTimer); bsReadTimer = null; } bsBinClose(true); }
 var BS_MARK = '<svg viewBox="0 0 20 16" width="17" height="14" aria-hidden="true" focusable="false"><path d="M5.6 1.2h8.8l.7 10.3H4.9z" fill="#3C73CF" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M1.2 11.6h17.6v2.6H1.2z" fill="#3C73CF" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.3 7.6h9.4" stroke="currentColor" stroke-width="1.6"/></svg>';
-var BS_NEEDS_HATS = 'This round says it is a brainstorm (config.kind "brainstorm") but lists questions. A brainstorm lists a topic and its hats instead. Nothing was loaded.';
+var BS_NEEDS_HATS = 'This round says it is a brainstorm (config.kind "brainstorm") but lists questions. A brainstorm lists its topic and its cards instead. Nothing was loaded.';
 
-/* A hat's answer: stars and notes by idea id, your own ideas, your answer to the hat's question, and whether you
-   have been through its card. */
+/* A card's answer: whether you've been through it, the cards you wrote there (each may be killed), the hats' cards
+   you killed, the council comments you've read, and, on the last card of round 2, your order. */
 function bsA(q, answers){
   var a = (answers || state.answers)[q.id];
   return (a && a.status === "hat") ? a : { status: "hat" };
 }
 function bsTake(q){
-  var a = bsA(q), o = { status: "hat", stars: {}, notes: {}, mine: [], ask: typeof a.ask === "string" ? a.ask : "", next: a.next || 1 };
+  var a = bsA(q), o = { status: "hat", mine: [], killed: {}, read: {}, next: a.next || 1 }, k;
   if(a.seen) o.seen = true;
-  var k;
-  for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k]) o.stars[k] = true; }
-  for(k in (a.notes || {})){ if(own(a.notes, k) && typeof a.notes[k] === "string") o.notes[k] = a.notes[k]; }
-  (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ if(m && typeof m.id === "string" && typeof m.text === "string") o.mine.push({ id: m.id, text: m.text }); });
+  (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){
+    if(!m || typeof m.id !== "string" || typeof m.text !== "string") return;
+    var c = { id: m.id, text: m.text };
+    if(typeof m.spark === "string") c.spark = m.spark;
+    if(m.kind === "taken" || m.kind === "variant") c.kind = m.kind;
+    if(typeof m.hat === "string" && BS_ALL.indexOf(m.hat) !== -1) c.hat = m.hat;
+    if(m.killed) c.killed = true;
+    o.mine.push(c);
+  });
+  for(k in (a.killed || {})){ if(own(a.killed, k) && a.killed[k]) o.killed[k] = true; }
+  for(k in (a.read || {})){ if(own(a.read, k) && a.read[k] && BS_ALL.indexOf(k) !== -1) o.read[k] = true; }
+  if(Array.isArray(a.order)) o.order = a.order.filter(function(x){ return typeof x === "string"; });
   return o;
 }
-function bsPut(q, a){ state.answers[q.id] = a; markChanged(); saveState(); }
-function bsIdea(q, id){
-  var i;
-  for(i=0;i<(q.ideas || []).length;i++){ if(q.ideas[i].id === id) return q.ideas[i]; }
-  var m = bsA(q).mine;
-  for(i=0;i<(Array.isArray(m) ? m.length : 0);i++){ if(m[i] && m[i].id === id) return { id: id, text: m[i].text, mine: true }; }
-  return null;
+function bsPut(q, a){ state.answers[q.id] = a; if(q.role !== "order") bsOrderSync(); markChanged(); saveState(); }
+/* Once you've set an order, it always lists exactly what survives, in the order you see: a kill takes a card out,
+   a restore puts it back where it was, and a card you add joins at the end. A saved file then reads back the same. */
+function bsOrderQ(){ for(var i=0;i<QUESTIONS.length;i++){ if(QUESTIONS[i].role === "order") return QUESTIONS[i]; } return null; }
+function bsOrderKeyOf(key){ var m = /^extras\/(.+)$/.exec(key); return m ? "c-" + m[1] + "/" + m[1] : key; }
+function bsOrderSync(){
+  var oq = bsOrderQ(), oa = oq ? state.answers[oq.id] : null;
+  if(!oa || oa.status !== "hat" || !Array.isArray(oa.order)) return;
+  var keys = bsOrderKeys();
+  if(keys.join("\n") !== oa.order.join("\n")) oa.order = keys;
+}
+/* Your own cards are numbered u1, u2, and so on, past any id the card's own content uses. */
+function bsUsed(q){
+  var used = {};
+  (q.ideas || []).forEach(function(d){ used[d.id] = true; });
+  (q.sparks || []).forEach(function(d){ used[d.id] = true; });
+  if(q.idea) used[q.idea.id] = true;
+  return used;
+}
+function bsMineId(o, q){
+  var used = q ? bsUsed(q) : {};
+  o.mine.forEach(function(m){ used[m.id] = true; });
+  var id = "u" + o.next++;
+  while(own(used, id)) id = "u" + o.next++;
+  return id;
 }
 function bsHasInput(a){
   if(!a || a.status !== "hat") return false;
-  var k;
   if(a.seen) return true;
+  var k;
+  for(k in (a.killed || {})){ if(own(a.killed, k) && a.killed[k]) return true; }
+  for(k in (a.read || {})){ if(own(a.read, k) && a.read[k]) return true; }
   for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k]) return true; }
-  for(k in (a.notes || {})){ if(own(a.notes, k) && String(a.notes[k] || "").trim()) return true; }
-  return !!((Array.isArray(a.mine) && a.mine.length) || String(a.ask || "").trim());
+  for(k in (a.notes || {})){ if(own(a.notes, k) && bsStr(a.notes[k])) return true; }
+  if(bsStr(a.ask)) return true;
+  return !!((Array.isArray(a.mine) && a.mine.length) || (Array.isArray(a.order) && a.order.length));
 }
-/* What a hat's answer holds, as units the version checks can count: a star, a note, your idea, your answer. Your
-   own ideas count by their words, since a saved file numbers them afresh. With no question at hand, an idea counts
-   by its id alone. */
+/* A Claude card on an entry, by id: a suggestion, an extra, or the council's idea. */
+function bsTheirs(q, id){
+  var i;
+  for(i=0;i<(q.ideas || []).length;i++){ if(q.ideas[i].id === id) return q.ideas[i]; }
+  if(q.idea && q.idea.id === id) return q.idea;
+  return null;
+}
+function bsComment(q, hat){ for(var i=0;i<(q.council || []).length;i++){ if(q.council[i].hat === hat) return q.council[i].say; } return null; }
+/* What a card's answer holds, as units the version checks can count. Your own cards count by their words, since a
+   saved file numbers them afresh. With no card at hand, a kill or a read counts by its id alone. */
 function bsUnits(q, a){
-  var u = [];
+  var u = [], k;
   if(!a || a.status !== "hat") return u;
-  var mine = Array.isArray(a.mine) ? a.mine : [], txt = {}, k;
-  var tag = function(id){ return own(txt, id) ? txt[id] : (q ? null : "idea\n" + id); };
-  (q && q.ideas || []).forEach(function(d){ txt[d.id] = "idea\n" + d.id + "\n" + d.text; });
-  mine.forEach(function(m){ if(m && m.id){ txt[m.id] = "mine\n" + m.text; u.push("mine\n" + m.text); } });
-  for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k] && tag(k)) u.push("star\n" + tag(k)); }
-  for(k in (a.notes || {})){ if(own(a.notes, k) && String(a.notes[k] || "").trim() && tag(k)) u.push("note\n" + tag(k) + "\n" + String(a.notes[k]).trim()); }
-  if(String(a.ask || "").trim()) u.push("ask\n" + String(a.ask).trim());
+  (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ if(m && m.id) u.push("mine\n" + (m.kind || "") + "\n" + (m.hat || "") + "\n" + m.text + (m.killed ? "\nkilled" : "")); });
+  for(k in (a.killed || {})){ if(own(a.killed, k) && a.killed[k]){ var d = q ? bsTheirs(q, k) : null; if(!q || d) u.push("kill\n" + k + (d ? "\n" + d.text : "")); } }
+  for(k in (a.read || {})){ if(own(a.read, k) && a.read[k]){ var s = q ? bsComment(q, k) : null; if(!q || s) u.push("read\n" + k + (s ? "\n" + s : "")); } }
+  if(Array.isArray(a.order) && a.order.length) u.push("order\n" + a.order.join("\n"));
+  var mt = {};
+  (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ if(m && m.id) mt[m.id] = m.text; });
+  var nm = function(id){ return own(mt, id) ? "mine\n" + mt[id] : id; };
+  for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k]) u.push("star\n" + nm(k)); }
+  for(k in (a.notes || {})){ if(own(a.notes, k) && bsStr(a.notes[k])) u.push("note\n" + nm(k) + "\n" + String(a.notes[k]).trim()); }
+  if(bsStr(a.ask)) u.push("ask\n" + String(a.ask).trim());
   return u.sort();
 }
-/* How many of a hat's units the new answers lack. */
 function bsLost(a, b){
   var have = bsUnits(null, b), n = 0;
   bsUnits(null, a).forEach(function(x){ var i = have.indexOf(x); if(i === -1) n++; else have.splice(i, 1); });
   return n;
 }
 function bsNorm(q, a){ return JSON.stringify([!!(a && a.seen)].concat(bsUnits(q, a))); }
-/* Your own ideas are numbered u1, u2, and so on, past any id the hat's own ideas use. */
-function bsMineId(o, ideas){
-  var used = {};
-  (ideas || []).forEach(function(d){ used[d.id] = true; });
-  o.mine.forEach(function(m){ used[m.id] = true; });
-  var id = "u" + o.next++;
-  while(own(used, id)) id = "u" + o.next++;
-  return id;
-}
-/* A new version of a brainstorm keeps what still applies: stars and notes on ideas whose words didn't change, your
-   own ideas, and your answer while the hat asks the same thing. An idea of yours whose id the new version gives to
-   one of the hat's ideas takes a new number, and its star and note go with it. */
+/* A new version of a brainstorm keeps what still applies: your own cards (a spark they came from goes with them
+   while that spark is still there), kills on cards whose words didn't change, reads on comments that didn't change,
+   and your order, without anything that has gone. A card of yours whose id the new version uses takes a new number. */
 function bsCarry(oq, nq, a){
-  var o = { status: "hat", stars: {}, notes: {}, mine: [], ask: "", next: a.next || 1 }, kept = 0, k;
+  var o = { status: "hat", mine: [], killed: {}, read: {}, next: a.next || 1 }, kept = 0, k;
   if(a.seen) o.seen = true;
-  var oldTxt = {}, newTxt = {}, moved = {};
-  (oq.ideas || []).forEach(function(d){ oldTxt[d.id] = d.text; });
-  (nq.ideas || []).forEach(function(d){ newTxt[d.id] = d.text; });
+  var used = bsUsed(nq), sparksNow = {}, moved = {};
+  (nq.sparks || []).forEach(function(s){ sparksNow[s.id] = s.text; });
+  var oldSpark = {};
+  (oq.sparks || []).forEach(function(s){ oldSpark[s.id] = s.text; });
   (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){
-    if(!m || !m.id || own(moved, m.id)) return;
-    var id = (own(newTxt, m.id) || o.mine.some(function(x){ return x.id === m.id; })) ? bsMineId(o, nq.ideas) : m.id;
+    if(!m || !m.id) return;
+    var id = (own(used, m.id) || o.mine.some(function(x){ return x.id === m.id; })) ? bsMineId(o, nq) : m.id;
     moved[m.id] = id;
-    o.mine.push({ id: id, text: m.text });
+    var c = { id: id, text: m.text };
+    if(m.kind) c.kind = m.kind;
+    if(m.hat) c.hat = m.hat;
+    if(m.killed) c.killed = true;
+    if(m.spark && own(sparksNow, m.spark) && sparksNow[m.spark] === oldSpark[m.spark]) c.spark = m.spark;
+    o.mine.push(c);
     kept++;
   });
-  var still = function(id){ return !own(moved, id) && own(oldTxt, id) && own(newTxt, id) && oldTxt[id] === newTxt[id]; };
-  for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k] && (own(moved, k) || still(k))){ o.stars[own(moved, k) ? moved[k] : k] = true; kept++; } }
-  for(k in (a.notes || {})){ if(own(a.notes, k) && String(a.notes[k] || "").trim() && (own(moved, k) || still(k))){ o.notes[own(moved, k) ? moved[k] : k] = a.notes[k]; kept++; } }
-  if(String(a.ask || "").trim() && nq.ask && nq.ask === oq.ask && nq.question === oq.question){ o.ask = a.ask; kept++; }
+  for(k in (a.killed || {})){
+    if(!own(a.killed, k) || !a.killed[k]) continue;
+    var od = bsTheirs(oq, k), nd = bsTheirs(nq, k);
+    if(od && nd && od.text === nd.text){ o.killed[k] = true; kept++; }
+  }
+  for(k in (a.read || {})){
+    if(own(a.read, k) && a.read[k] && bsComment(oq, k) !== null && bsComment(oq, k) === bsComment(nq, k)){ o.read[k] = true; kept++; }
+  }
+  if(Array.isArray(a.order) && a.order.length){ o.order = a.order.slice(); kept++; }
   return { a: o, kept: kept, any: kept > 0 || !!o.seen };
 }
 function bsSame(oq, nq){
-  return !!(oq && nq && isHat(oq) && isHat(nq) && oq.hat === nq.hat && oq.role === nq.role && oq.question === nq.question && (oq.ask || "") === (nq.ask || "")
-    && JSON.stringify(oq.ideas || []) === JSON.stringify(nq.ideas || []));
+  if(!(oq && nq && isHat(oq) && isHat(nq) && oq.hat === nq.hat && oq.role === nq.role && oq.question === nq.question)) return false;
+  return JSON.stringify([oq.ideas || [], oq.sparks || [], oq.idea || null, oq.council || [], oq.goals || [], oq.avoid || []]) === JSON.stringify([nq.ideas || [], nq.sparks || [], nq.idea || null, nq.council || [], nq.goals || [], nq.avoid || []]);
+}
+
+/* Every card of the open brainstorm, yours and the hats', with where it lives, for the bucket, the recap, and the
+   order. key is "entry/card". */
+function bsCardsOf(qs, ans){
+  var out = [];
+  qs.forEach(function(q){
+    var a = bsA(q, ans), mine = Array.isArray(a.mine) ? a.mine : [], kd = a.killed || {};
+    if(q.role === "suggest" || q.role === "extras"){
+      (q.ideas || []).forEach(function(d){ out.push({ key: q.id + "/" + d.id, q: q, id: d.id, text: d.text, hat: d.hat || q.hat, by: d.hat || q.hat, mine: false, killed: !!(own(kd, d.id) && kd[d.id]), why: d.why }); });
+    }
+    if(q.role === "council"){
+      var x = bsCouncilSkipped(q, qs, ans);
+      out.push({ key: q.id + "/" + q.idea.id, q: q, id: q.idea.id, text: q.idea.text, hat: q.idea.hat, by: q.idea.by, mine: q.idea.by === "you", idea: true, extra: !!q.idea.extra, skipped: x, killed: !!(own(kd, q.idea.id) && kd[q.idea.id]) });
+    }
+    mine.forEach(function(m){
+      out.push({ key: q.id + "/" + m.id, q: q, id: m.id, text: m.text, hat: m.hat || q.hat, by: "you", mine: true, own: true, kind: m.kind || "", spark: m.spark || "", killed: !!m.killed });
+    });
+  });
+  return out;
+}
+function bsCards(){ return bsCardsOf(QUESTIONS, state.answers); }
+/* An extra you killed on the extras card never comes to the council. */
+function bsCouncilSkipped(q, qs, ans){
+  if(!q.idea || !q.idea.extra) return false;
+  for(var i=0;i<qs.length;i++){
+    if(qs[i].role === "extras"){ var kd = bsA(qs[i], ans).killed || {}; return !!(own(kd, q.idea.id) && kd[q.idea.id]); }
+  }
+  return false;
+}
+function bsKilledCount(){ return bsCards().filter(function(c){ return c.killed; }).length; }
+
+/* Round 2's survivors, in your order: every idea the council kept, with what you added on its card. */
+function bsSurvivors(qs, ans){
+  var list = [];
+  qs.forEach(function(q){
+    if(q.role !== "council") return;
+    var a = bsA(q, ans), kd = a.killed || {}, skip = bsCouncilSkipped(q, qs, ans);
+    if(!skip && !(own(kd, q.idea.id) && kd[q.idea.id])) list.push({ key: q.id + "/" + q.idea.id, text: q.idea.text, by: q.idea.by, hat: q.idea.hat, from: q.idea.extra ? "extra" : "round 1", id: q.idea.id });
+    (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){
+      if(!m.killed) list.push({ key: q.id + "/" + m.id, text: m.text, by: "you", hat: m.hat || q.idea.hat, from: m.kind === "taken" ? "taken from " + bsName(m.hat || q.hat) : "variant", on: q.idea.id });
+    });
+  });
+  return list;
+}
+function bsOrdered(qs, ans){
+  var list = bsSurvivors(qs, ans), oq = null, i;
+  for(i=0;i<qs.length;i++){ if(qs[i].role === "order") oq = qs[i]; }
+  var ord = oq && Array.isArray(bsA(oq, ans).order) ? bsA(oq, ans).order : [];
+  var byKey = {};
+  list.forEach(function(x){ byKey[x.key] = x; });
+  var out = [];
+  ord.forEach(function(k){ if(own(byKey, k)){ out.push(byKey[k]); delete byKey[k]; } });
+  list.forEach(function(x){ if(own(byKey, x.key)) out.push(x); });
+  return out;
 }
 
 /* The answers Claude gets back. */
+function bsMineOut(m){ var y = { text: m.text }; if(m.killed) y.killed = true; return y; }
 function bsExport(qs, ans, cfg){
+  if(bsOldQs(qs)) return bsOldExport(qs, ans, cfg);
+  var round = bsRound(qs), seen = 0, yours = 0, theirs = 0, killed = 0;
+  var cards = bsCardsOf(qs, ans);
+  cards.forEach(function(c){ if(c.mine && c.own) yours++; else if(!c.idea || round === 1) theirs++; if(c.killed) killed++; });
+  var answers = qs.map(function(q){
+    var a = bsA(q, ans), mine = Array.isArray(a.mine) ? a.mine : [], kd = a.killed || {};
+    var e = { id: q.id, step: q.role, hat: q.hat, issue: q.title, status: "brainstorm", seen: !!a.seen };
+    if(q.role !== "council") e.question = q.question;
+    if(a.seen) seen++;
+    if(q.role === "hold") e.yours = mine.map(bsMineOut);
+    else if(q.role === "spark"){
+      e.sparks = q.sparks.map(function(s){ return { id: s.id, text: s.text, yours: mine.filter(function(m){ return m.spark === s.id; }).map(bsMineOut) }; });
+      var loose = mine.filter(function(m){ return !m.spark || !q.sparks.some(function(s){ return s.id === m.spark; }); });
+      if(loose.length) e.yours = loose.map(bsMineOut);
+    }
+    else if(q.role === "suggest" || q.role === "extras"){
+      e.ideas = (q.ideas || []).map(function(d){ var x = { id: d.id, text: d.text, killed: !!(own(kd, d.id) && kd[d.id]) }; if(d.hat) x.hat = d.hat; return x; });
+      if(q.role === "suggest") e.yours = mine.map(bsMineOut);
+    }
+    else if(q.role === "council"){
+      var d = q.idea;
+      e.idea = { id: d.id, text: d.text, by: d.by, hat: d.hat };
+      if(d.extra) e.idea.extra = true;
+      if(bsCouncilSkipped(q, qs, ans)) e.skipped = true;
+      e.killed = !!(own(kd, d.id) && kd[d.id]);
+      e.read = BS_ALL.filter(function(h){ return !!((a.read || {})[h]) && bsComment(q, h) !== null; });
+      e.taken = mine.filter(function(m){ return m.kind === "taken"; }).map(function(m){ var y = bsMineOut(m); y.hat = m.hat || q.hat; return y; });
+      e.variants = mine.filter(function(m){ return m.kind !== "taken"; }).map(bsMineOut);
+    }
+    else if(q.role === "order"){
+      e.order = bsOrdered(qs, ans).map(function(x){ var o = { text: x.text, by: x.by, from: x.from }; if(x.id) o.id = x.id; if(x.on) o.on = x.on; return o; });
+      e.ranked = Array.isArray(a.order);
+    }
+    return e;
+  });
+  var tp = (qs[0] && qs[0].topic) || {};
+  var meta = { tool: "decision-wizard", kind: "brainstorm", round: round, wizard_version: WIZARD_VERSION, wizard_title: cfg.title || "", exported_at: new Date().toISOString(),
+               total: qs.length, seen: seen, yours: yours, killed: killed };
+  if(round === 1) meta.suggested = theirs;
+  else meta.ideas = qs.filter(function(q){ return q.role === "council"; }).length;
+  return { meta: meta, topic: { title: tp.title || "", question: tp.question || "" }, answers: answers };
+}
+/* A brainstorm's answers coming back in: a saved file, a backup, or answers pasted on their own. */
+function bsFromEntry(q, e){
+  if(!e || e.status !== "brainstorm") return null;
+  if(bsOldQs([q])) return bsOldFromEntry(q, e);
+  var a = { status: "hat", mine: [], killed: {}, read: {}, next: 1 }, any = false;
+  if(e.seen === true){ a.seen = true; any = true; }
+  var addMine = function(y, extra){
+    if(!y || typeof y.text !== "string" || !y.text.trim() || a.mine.length >= BS_MINE) return;
+    var c = { id: bsMineId(a, q), text: y.text.trim() }, k;
+    for(k in extra){ if(own(extra, k)) c[k] = extra[k]; }
+    if(y.killed === true) c.killed = true;
+    a.mine.push(c);
+    any = true;
+  };
+  if(q.role === "hold" || q.role === "suggest" || q.role === "spark") (Array.isArray(e.yours) ? e.yours : []).forEach(function(y){ addMine(y, {}); });
+  if(q.role === "spark"){
+    (Array.isArray(e.sparks) ? e.sparks : []).forEach(function(s){
+      if(!s || !q.sparks.some(function(x){ return x.id === s.id; })) return;
+      (Array.isArray(s.yours) ? s.yours : []).forEach(function(y){ addMine(y, { spark: s.id }); });
+    });
+  }
+  if(q.role === "suggest" || q.role === "extras"){
+    (Array.isArray(e.ideas) ? e.ideas : []).forEach(function(x){ if(x && x.killed === true && bsTheirs(q, x.id)){ a.killed[x.id] = true; any = true; } });
+  }
+  if(q.role === "council"){
+    if(e.killed === true){ a.killed[q.idea.id] = true; any = true; }
+    (Array.isArray(e.read) ? e.read : []).forEach(function(h){ if(bsComment(q, h) !== null){ a.read[h] = true; any = true; } });
+    (Array.isArray(e.taken) ? e.taken : []).forEach(function(y){ addMine(y, { kind: "taken", hat: BS_ALL.indexOf(y && y.hat) !== -1 ? y.hat : q.hat }); });
+    (Array.isArray(e.variants) ? e.variants : []).forEach(function(y){ addMine(y, { kind: "variant" }); });
+  }
+  if(q.role === "order" && e.ranked !== false && Array.isArray(e.order) && e.order.length){
+    a.orderTexts = e.order.filter(function(x){ return x && typeof x.text === "string"; }).map(function(x){ return { text: x.text, id: typeof x.id === "string" ? x.id : null, on: typeof x.on === "string" ? x.on : null }; });
+    any = true;
+  }
+  return any ? a : null;
+}
+/* An order read back from a file names its ideas by their words; once every card is in, it becomes keys again. */
+function bsFixOrder(qs, answers){
+  var oq = null, i;
+  for(i=0;i<qs.length;i++){ if(qs[i].role === "order") oq = qs[i]; }
+  if(!oq || !answers[oq.id] || !Array.isArray(answers[oq.id].orderTexts)) return;
+  var a = answers[oq.id], texts = a.orderTexts, list = bsSurvivors(qs, answers), keys = [];
+  delete a.orderTexts;
+  var pick = function(test){ for(var j=0;j<list.length;j++){ if(keys.indexOf(list[j].key) === -1 && test(list[j])){ keys.push(list[j].key); return true; } } return false; };
+  texts.forEach(function(t){
+    if(t.id && pick(function(x){ return x.id === t.id && !x.on; })) return;
+    if(t.on && pick(function(x){ return x.on === t.on && x.text === t.text; })) return;
+    pick(function(x){ return x.text === t.text; });
+  });
+  if(keys.length) a.order = keys;
+}
+
+/* Drawing. */
+function bsArt(hat, pose){ var s = BS_ART[hat] || BS_ART.blue; return s[pose] || s.still; }
+function bsWho(h){ return BS_WHO[h] ? BS_WHO[h].name + ", " + BS_WHO[h].what : ""; }
+function bsBand(hat, pose, kind, line, hold){
+  var h = '<div class="bshead"><span class="bsfig" id="bsfig" data-hat="' + esc(hat) + '" data-pose="' + pose + '">' + bsArt(hat, pose) + '</span><div class="bshmeta">';
+  h += '<div class="bschip"><span class="bsdot" aria-hidden="true"></span><span>' + esc(bsName(hat)) + ' hat</span><span class="bsname">' + esc(bsWho(hat)) + '</span></div>';
+  h += '<div class="bskind">' + esc(kind) + '</div>';
+  if(hold) h += '<div class="bshold">Holding back. Your turn.</div>';
+  else if(line) h += '<div class="bssay" ' + dirA(line) + '>' + esc(line) + '</div>';
+  return h + '</div></div>';
+}
+function bsHead(q, text){ var tp = bsTopic(); return '<div class="qtopic" ' + dirA(tp.title) + '>' + esc(tp.title) + '</div><h2 class="qtitle" id="qh" tabindex="-1" aria-describedby="pcount" ' + dirA(text) + '>' + esc(text) + '</h2>'; }
+function bsKillBtn(c){
+  return '<button type="button" class="bskill" data-action="bs-kill" data-key="' + esc(c.key) + '" aria-label="Kill this card" aria-describedby="bst-' + esc(c.key) + '" title="Kill">' + BS_KILL + '</button>';
+}
+/* One card, tinted in its hat's colour; yours with a dashed edge and a Yours tag. */
+function bsCardHTML(c, opts){
+  opts = opts || {};
+  var editing = bsEdit === c.key;
+  var h = '<div class="bsnote bs-' + esc(c.hat) + (c.mine ? " mine" : "") + (opts.big ? " big" : "") + '" role="listitem" data-card="' + esc(c.key) + '">';
+  h += '<div class="bsntop">' + (c.mine ? '<span class="bsyours">Yours</span>' : (opts.by ? '<span class="bsby">' + esc(opts.by) + '</span>' : '<span></span>')) + (opts.nokill ? '' : bsKillBtn(c)) + '</div>';
+  if(editing){
+    var ek = "edit:" + c.key;
+    h += '<textarea class="bsedit" dir="auto" data-role="bs-field" data-key="' + esc(ek) + '" aria-label="Edit your card" rows="2">' + esc(own(bsDraft, ek) ? bsDraft[ek] : c.text) + '</textarea>';
+    h += '<div class="bsnfoot"><button type="button" class="btn sm" data-action="bs-edit-save" data-key="' + esc(c.key) + '">Save</button><button type="button" class="btn sec sm" data-action="bs-edit-cancel">Cancel</button></div>';
+  } else {
+    h += '<p id="bst-' + esc(c.key) + '" ' + dirA(c.text) + '>' + esc(c.text) + '</p>';
+    if(opts.why || c.why) h += '<small ' + dirA(opts.why || c.why) + '>' + esc(opts.why || c.why) + '</small>';
+    if(c.mine && c.own && !opts.noedit) h += '<div class="bsnfoot"><button type="button" class="bslink" data-action="bs-edit" data-key="' + esc(c.key) + '" aria-describedby="bst-' + esc(c.key) + '">Edit</button></div>';
+  }
+  return h + '</div>';
+}
+function bsGrid(list, opts, label){
+  if(!list.length) return '';
+  return '<div class="bsnotes" role="list" aria-label="' + esc(label || "Cards") + '">' + list.map(function(c){ return bsCardHTML(c, opts); }).join("") + '</div>';
+}
+/* A box to write in: Enter adds the card, Shift+Enter starts a new line. */
+function bsBox(key, label, ph, big){
+  var v = own(bsDraft, key) ? bsDraft[key] : "";
+  var id = "bsf-" + key.replace(/[^a-zA-Z0-9_-]/g, "_");
+  return '<div class="bswrite' + (big ? " big" : "") + '"><label class="srx" for="' + id + '">' + esc(label) + '</label><textarea id="' + id + '" dir="auto" data-role="bs-field" data-key="' + esc(key) + '" rows="' + (big ? 2 : 1) + '" placeholder="' + esc(ph) + '">' + esc(v) + '</textarea>' +
+    '<div class="bswrow"><button type="button" class="btn sm" data-action="bs-add" data-key="' + esc(key) + '"' + (v.trim() ? '' : ' disabled') + '>Add</button><span><b>Enter</b> adds it</span><span><b>Shift+Enter</b> starts a new line</span></div></div>';
+}
+function bsMineHere(q, filter){
+  return bsCards().filter(function(c){ return c.q === q && c.own && !c.killed && (!filter || filter(c)); });
+}
+function bsPlanHTML(round){
+  var has = function(r){ return QUESTIONS.some(function(q){ return q.role === r; }); };
+  var steps = round === 1 ? ["Your turn"].concat(has("spark") ? ["Sparks"] : []).concat(["Suggestions", "Recap"]) : (has("extras") ? ["Extras"] : []).concat([plural(QUESTIONS.filter(function(q){ return q.role === "council"; }).length, "idea", "ideas"), "Your order"]);
+  return '<div class="bsplanrow"><span class="bsplanl" id="bsplanl">The plan</span><span class="bsplans" role="list" aria-labelledby="bsplanl">' + steps.map(function(s, i){ return (i ? '<span class="bsarrow" aria-hidden="true">&#8250;</span>' : '') + '<span role="listitem" class="bsplan bs-blue"><span class="bsdot" aria-hidden="true"></span>' + esc(s) + '</span>'; }).join("") + '</span></div>';
+}
+function bsHoldCard(q){
+  var a = bsA(q), first = QUESTIONS[0] === q;
+  var h = bsBand(q.hat, "still", BS_INFO[q.hat].kind, null, true) + bsHead(q, q.question);
+  h += bsBox("box:" + q.id, "Your idea", "Write an idea. Enter adds it.", true);
+  var mine = bsMineHere(q).reverse();
+  h += bsGrid(mine, {}, "Your cards under " + bsHatName(q));
+  if(first){ h += bsPlanHTML(1); h += contextHTML(q.topic || {}); }
+  h += '<div class="hint">' + (mine.length ? plural(mine.length, "card", "cards") + " here so far. " : "") + 'Nothing from the hats yet: their sparks and suggestions come after you\'ve written for all six.</div>';
+  return h;
+}
+function bsSparkCard(q){
+  var h = bsBand(q.hat, bsPose, BS_INFO[q.hat].kind, q.line || "") + bsHead(q, q.question);
+  q.sparks.forEach(function(s){
+    h += '<div class="bsspark bs-' + esc(q.hat) + '"><div class="bssq"><span class="bsav" aria-hidden="true">' + bsArt(q.hat, "still") + '</span><div class="bssqt" ' + dirA(s.text) + '>' + esc(s.text) + '</div></div>';
+    h += bsGrid(bsMineHere(q, function(c){ return c.spark === s.id; }), {}, "What this spark set off");
+    h += bsBox("spark:" + q.id + ":" + s.id, "What it sparks", "Write what it sparks. Enter adds it.");
+    h += '</div>';
+  });
+  var loose = bsMineHere(q, function(c){ return !c.spark || !q.sparks.some(function(s){ return s.id === c.spark; }); });
+  if(loose.length) h += bsGrid(loose, {}, "Your other cards here");
+  h += '<div class="hint">Sparks never name the idea. What you write under one remembers which spark set it off.</div>';
+  return h;
+}
+function bsAddToggle(key, label){
+  var open = !!bsBoxOpen[key] || (own(bsDraft, key) && bsDraft[key].trim());
+  if(open) return bsBox(key, label, label + ". Enter adds it.") + '<div class="bsaddrow2"><button type="button" class="bslink" data-action="bs-box-close" data-key="' + esc(key) + '">Close</button></div>';
+  return '<button type="button" class="bsadd" data-action="bs-box-open" data-key="' + esc(key) + '">+ ' + esc(label) + '</button>';
+}
+function bsSuggestCard(q){
+  var cards = bsCards(), hat = q.hat;
+  var h = bsBand(hat, bsPose, BS_INFO[hat].kind, q.line) + bsHead(q, q.question);
+  var mine = cards.filter(function(c){ return c.own && !c.killed && c.q.hat === hat && (c.q.role === "hold" || c.q.role === "spark" || c.q.role === "suggest"); });
+  h += '<h3 class="bssub2">Yours under ' + esc(bsHatName(q)) + '</h3>';
+  h += mine.length ? bsGrid(mine, {}, "Your cards under " + bsHatName(q)) : '<p class="bsnone">You didn\'t write anything under ' + esc(bsHatName(q)) + '.</p>';
+  var theirs = cards.filter(function(c){ return c.q === q && !c.mine && !c.killed; });
+  h += '<h3 class="bssub2"><span class="bsmini" aria-hidden="true">' + bsArt(hat, "still") + '</span>' + esc(BS_WHO[hat].name) + (hat === "blue" ? " suggests other paths" : " suggests") + '</h3>';
+  var all = (q.ideas || []).length;
+  h += theirs.length ? bsGrid(theirs, {}, BS_WHO[hat].name + "'s suggestions") : '<p class="bsnone">' + (all ? "You killed all of them." : esc(BS_WHO[hat].name) + " has nothing to suggest here.") + '</p>';
+  h += bsAddToggle("add:" + q.id, "Add one of your own");
+  h += '<div class="hint">Every card stays unless you kill it. Killed cards go to the bucket at the top, the only place to bring them back.</div>';
+  return h;
+}
+function bsRecapCard(q){
+  var cards = bsCards().filter(function(c){ return c.q.role !== "recap"; });
+  var yours = cards.filter(function(c){ return c.own; }).length, sugg = cards.filter(function(c){ return !c.mine; }).length, killed = cards.filter(function(c){ return c.killed; }).length;
+  var h = bsBand("blue", bsPose, BS_INFO.blue.kind, q.line) + bsHead(q, q.question);
+  h += '<div class="bsstats"><span class="bsstat"><b>' + yours + '</b> yours</span><span class="bsstat"><b>' + sugg + '</b> suggested</span><span class="bsstat"><b>' + killed + '</b> killed</span></div>';
+  var order = QUESTIONS.filter(function(x){ return x.role === "suggest"; }).map(function(x){ return x.hat; });
+  order.forEach(function(hat){
+    var mine = cards.filter(function(c){ return c.own && !c.killed && c.q.hat === hat; }), theirs = cards.filter(function(c){ return !c.mine && !c.killed && c.q.hat === hat; });
+    h += '<div class="bshat bs-' + esc(hat) + '"><h4><span class="bsdot" aria-hidden="true"></span>' + esc(bsName(hat)) + ', ' + esc(BS_INFO[hat].kind.toLowerCase()) + '<span class="bsc">' + mine.length + ' yours, ' + theirs.length + ' suggested</span></h4>';
+    var rows = mine.map(function(c){ return '<li><span class="bsbytag you">You</span><span ' + dirA(c.text) + '>' + esc(c.text) + '</span></li>'; }).concat(theirs.map(function(c){ return '<li><span class="bsbytag">' + esc(bsName(hat)) + '</span><span ' + dirA(c.text) + '>' + esc(c.text) + '</span></li>'; }));
+    h += rows.length ? '<ul>' + rows.join("") + '</ul>' : '<p class="bsnone">Nothing standing.</p>';
+    h += '</div>';
+  });
+  h += '<div class="hint">Finish round 1 shows your answers to hand back. Round 2 brings the council.</div>';
+  return h;
+}
+function bsAimsCard(q){
+  var h = bsBand("blue", bsPose, BS_INFO.blue.kind, q.line) + bsHead(q, q.question) + bsPlanHTML(2);
+  var aim = function(list, hat, title){
+    if(!list.length) return '';
+    return '<h3 class="bssub2"><span class="bsdot bs-' + hat + '" aria-hidden="true"></span>' + esc(title) + '</h3><div class="bsnotes small" role="list" aria-label="' + esc(title) + '">' + list.map(function(t){ return '<div class="bsnote bs-' + hat + ' mine" role="listitem"><div class="bsntop"><span class="bsyours">Yours</span><span></span></div><p ' + dirA(t) + '>' + esc(t) + '</p></div>'; }).join("") + '</div>';
+  };
+  h += aim(q.goals || [], "blue", "What you're aiming for") + aim(q.avoid || [], "black", "What you want to avoid");
+  h += contextHTML(q.topic || {});
+  h += '<div class="hint">Cap measures each idea against your aims; the extras try to steer clear of what you want to avoid.</div>';
+  return h;
+}
+function bsExtrasCard(q){
+  var h = bsBand("blue", bsPose, BS_INFO.blue.kind, q.line) + bsHead(q, q.question);
+  var cards = bsCards().filter(function(c){ return c.q === q && !c.mine; });
+  var live = cards.filter(function(c){ return !c.killed; });
+  BS_ALL.forEach(function(hat){
+    var here = live.filter(function(c){ return c.hat === hat; });
+    if(!here.length) return;
+    h += '<h3 class="bssub2"><span class="bsmini" aria-hidden="true">' + bsArt(hat, "still") + '</span>' + esc(bsName(hat)) + ', ' + esc(BS_INFO[hat].kind.toLowerCase()) + '</h3>' + bsGrid(here, {}, bsName(hat) + "'s extras");
+  });
+  if(!live.length) h += '<p class="bsnone">You killed every extra.</p>';
+  h += '<div class="hint">What you keep comes to the council in this round; what you kill is never discussed.</div>';
+  return h;
+}
+function bsSeatHTML(q, hat, a, open){
+  var say = bsComment(q, hat), read = !!((a.read || {})[hat]) && say !== null;
+  var h = '<button type="button" class="bsseat bs-' + hat + (open ? " open" : "") + (say === null ? " quiet" : "") + '" data-action="bs-seat" data-hat="' + hat + '" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="bsbub">';
+  h += '<span class="bsface" aria-hidden="true">' + bsArt(hat, open ? "talk" : "still") + '</span><span class="bsn"><span class="bsdot" aria-hidden="true"></span>' + esc(BS_WHO[hat].name) + '</span><span class="bsl">' + esc(BS_INFO[hat].kind) + '</span>';
+  h += '<span class="srx">' + (say === null ? ", nothing to add" : read ? ", read" : ", has something to say") + '</span>';
+  if(say !== null && read) h += '<span class="bsdone" aria-hidden="true">' + BS_CHECK + '</span>';
+  else if(say !== null) h += '<span class="bsbang" aria-hidden="true">!</span>';
+  return h + '</button>';
+}
+function bsBubbleHTML(q, hat, a){
+  if(!hat) return '<div class="bsbub empty" id="bsbub" role="region" aria-live="polite"><p>Open a hat to hear what it thinks of this idea.</p></div>';
+  var say = bsComment(q, hat), read = !!((a.read || {})[hat]), idx = BS_ALL.indexOf(hat);
+  var taken = (Array.isArray(a.mine) ? a.mine : []).some(function(m){ return m.kind === "taken" && m.hat === hat && !m.killed; });
+  var h = '<div class="bsbub bs-' + hat + '" id="bsbub" role="region" aria-live="polite" style="--x:' + ((idx + .5) / 6 * 100).toFixed(1) + '%"><div class="bsbh"><span class="bsdot" aria-hidden="true"></span>' + esc(bsName(hat).toUpperCase()) + ' HAT, ' + esc(BS_WHO[hat].name.toUpperCase()) + '</div>';
+  if(say === null) return h + '<p ' + dirA(BS_SILENT[hat]) + '>' + esc(BS_SILENT[hat]) + '</p></div>';
+  h += '<p ' + dirA(say) + '>' + esc(say) + '</p><div class="bsbrow">';
+  h += taken ? '<span class="bsreadl">' + BS_CHECK + ' Taken as your idea</span>' : '<button type="button" class="bstake" data-action="bs-take" data-hat="' + hat + '">Take it as an idea</button>';
+  h += '<span class="bsreadl" id="bsreadl"' + (read ? '' : ' hidden') + '>' + BS_CHECK + ' Counted as read</span>';
+  return h + '</div></div>';
+}
+function bsCouncilCard(q){
+  var a = bsA(q), d = q.idea, kd = a.killed || {}, dead = !!(own(kd, d.id) && kd[d.id]), skipped = bsCouncilSkipped(q, QUESTIONS, state.answers);
+  var n = QUESTIONS.filter(function(x){ return x.role === "council"; }), pos = n.indexOf(q) + 1;
+  var h = bsBand("blue", "still", "The council", "Six views on each idea. A gold mark means that hat has something to say; open it to read.");
+  var tp = bsTopic();
+  h += '<div class="qtopic" ' + dirA(tp.title) + '>' + esc(tp.title) + '</div><h2 class="qtitle srx" id="qh" tabindex="-1">Idea ' + pos + ' of ' + n.length + ': ' + esc(d.text) + '</h2>';
+  var card = { key: q.id + "/" + d.id, q: q, id: d.id, text: d.text, hat: d.hat, mine: d.by === "you", by: d.by, idea: true };
+  var from = d.extra ? "An extra from " + bsName(d.hat) + (d.from ? ": " + d.from : "") : (d.from || (d.by === "you" ? "" : "Suggested by " + bsName(d.by)));
+  if(skipped) return h + '<div class="bsgone"><p>You killed this extra on the extras card, so the council skips it.</p><button type="button" class="btn sec sm" data-action="bs-restore" data-key="' + esc("extras/" + d.id) + '">Restore it</button></div>' + bsCouncilMine(q);
+  if(dead) return h + '<div class="bsgone"><p ' + dirA(d.text) + '>&ldquo;' + esc(d.text) + '&rdquo; is killed. It\'s in the bucket.</p><button type="button" class="btn sec sm" data-action="bs-restore" data-key="' + esc(card.key) + '">Restore it</button></div>' + bsCouncilMine(q);
+  var ideaHTML = '<div class="bsidea">' + bsCardHTML(card, { nokill: true, big: true, by: d.by === "you" ? "" : bsName(d.by) + " suggested", why: from }) + '</div>';
+  var open = own(bsSeat, q.id) ? bsSeat[q.id] : "";
+  var seats = BS_ALL.map(function(hat){ return bsSeatHTML(q, hat, a, open === hat); });
+  if(SETTINGS.council === "row"){
+    h += ideaHTML + '<div class="bsseats row" role="group" aria-label="The council">' + seats.join("") + '</div>' + bsBubbleHTML(q, open, a);
+  } else {
+    h += '<div class="bstable"><div class="bscol" role="group" aria-label="The council, left">' + seats.slice(0, 3).join("") + '</div><div class="bsmid">' + ideaHTML + bsBubbleHTML(q, open, a) + '</div><div class="bscol" role="group" aria-label="The council, right">' + seats.slice(3).join("") + '</div></div>';
+  }
+  h += bsCouncilMine(q);
+  h += '<div class="bsacts">' + bsAddToggle("var:" + q.id, "Add a variant of your own") + '<button type="button" class="bskillbtn" data-action="bs-kill" data-key="' + esc(card.key) + '">' + BS_KILL + 'Kill this idea</button></div>';
+  return h;
+}
+function bsCouncilMine(q){
+  var mine = bsMineHere(q);
+  return mine.length ? '<h3 class="bssub2">Yours from this idea</h3>' + bsGrid(mine, {}, "Your cards from this idea") : '';
+}
+function bsOrderCard(q){
+  var list = bsOrdered(QUESTIONS, state.answers);
+  var h = bsBand("blue", bsPose, BS_INFO.blue.kind, q.line) + bsHead(q, q.question);
+  if(!list.length) return h + '<p class="bsnone">Nothing made it through the council.</p>';
+  h += '<ol class="rlist bsorder" id="bsorder" aria-label="Your order">';
+  list.forEach(function(x, i){
+    var pos = ", now " + (i + 1) + " of " + list.length, nm = x.text.length > 60 ? x.text.slice(0, 57) + "..." : x.text;
+    h += '<li class="ritem bs-' + esc(x.hat) + '" data-key="' + esc(x.key) + '"><button type="button" class="rhandle" tabindex="-1" aria-hidden="true" title="Drag to move">' + ICO.grip + '</button><span class="rpos">' + (i + 1) + '</span>';
+    h += '<span class="rtext"><span class="rl" ' + dirA(x.text) + '>' + esc(x.text) + '</span><span class="cx">' + esc(x.by === "you" ? "Yours" : bsName(x.by) + " suggested") + (x.from && x.from !== "round 1" ? ", " + esc(x.from) : "") + '</span></span>';
+    h += '<span class="rarrows"><button type="button" class="rarrow" data-action="bs-move" data-i="' + i + '" data-d="-1" aria-label="Move ' + esc(nm) + ' up' + esc(pos) + '"' + (i === 0 ? " disabled" : "") + '>' + ICO.up + '</button><button type="button" class="rarrow" data-action="bs-move" data-i="' + i + '" data-d="1" aria-label="Move ' + esc(nm) + ' down' + esc(pos) + '"' + (i === list.length - 1 ? " disabled" : "") + '>' + ICO.down + '</button></span></li>';
+  });
+  h += '</ol><div class="hint">Drag a row by its handle, or move it with its arrows. The decision round starts from the top.</div>';
+  return h;
+}
+function bsRetiredCard(q){
+  return '<div class="bsgone"><p>This brainstorm was made with wizard 0.8.0, whose brainstorms were replaced in 0.9.0, so its cards can\'t open here. Your answers to it are kept: Finish shows them, ready to copy.</p></div>';
+}
+function bsStepLabel(q){
+  var r = bsRound(), list = QUESTIONS.filter(function(x){ return x.role === q.role; }), k = list.indexOf(q) + 1;
+  if(bsOld()) return "Card " + (state.idx + 1) + " of " + QUESTIONS.length;
+  var map = { hold: "your turn: hat " + k + " of 6", spark: "sparks: " + k + " of " + list.length, suggest: "suggestions: hat " + k + " of 6", recap: "recap",
+              aims: "your aims", extras: "extras", council: "the council: idea " + k + " of " + list.length, order: "your order" };
+  return "Round " + r + ", " + map[q.role];
+}
+function bsTopHTML(q){
+  var pct = Math.round(state.idx / QUESTIONS.length * 100), n = bsOld() ? 0 : bsKilledCount();
+  var h = '<div class="ptop"><div class="progress"><div class="ptrack"><div class="pbar" style="width:' + pct + '%"></div></div>';
+  h += '<div class="pcount" id="pcount">' + esc(bsStepLabel(q)) + '</div>' + TIMER_PILL + '</div>';
+  var chip = projectChipHTML();
+  var sec = q.role === "council" ? '<span class="section-chip bssec bs-blue"><span class="bsdot" aria-hidden="true"></span>The council</span>' : '<span class="section-chip bssec bs-' + esc(q.hat) + '"><span class="bsdot" aria-hidden="true"></span>' + esc(bsHatName(q)) + ' hat</span>';
+  var bin = bsOld() ? '' : '<button type="button" class="bsbin" id="bsbinbtn" data-action="bs-bin" aria-haspopup="dialog" aria-label="Killed cards: ' + n + '">' + BS_BIN + '<span>Killed</span> <b>' + n + '</b></button>';
+  return h + '<div class="chiprow bschips">' + sec + chip + bin + '</div></div>';
+}
+function bsNextLabel(){
+  if(state.idx < QUESTIONS.length - 1) return "Next";
+  return bsOld() ? "Finish" : bsRound() === 1 ? "Finish round 1" : "Finish";
+}
+function renderHat(q){
+  customOpen = false;
+  if(bsLastQ && bsLastQ !== q.id){ var pq = bsQ(bsLastQ); if(pq) bsCommitDrafts(pq); }
+  bsLastQ = q.id;
+  var sk = screenKey(), fresh = bsScreen !== sk;
+  if(fresh){ bsScreen = sk; bsPose = "talk"; bsSettle(q, 2600); }
+  var h = bsTopHTML(q);
+  h += '<div class="qcard bscard bs-' + esc(q.role === "council" ? "blue" : q.hat) + ' bsr-' + esc(q.role) + '">';
+  if(bsOld()) h += bsRetiredCard(q);
+  else if(q.role === "hold") h += bsHoldCard(q);
+  else if(q.role === "spark") h += bsSparkCard(q);
+  else if(q.role === "suggest") h += bsSuggestCard(q);
+  else if(q.role === "recap") h += bsRecapCard(q);
+  else if(q.role === "aims") h += bsAimsCard(q);
+  else if(q.role === "extras") h += bsExtrasCard(q);
+  else if(q.role === "council") h += bsCouncilCard(q);
+  else if(q.role === "order") h += bsOrderCard(q);
+  h += '</div>';
+  h += '<div class="controls"><button type="button" class="btn sec" data-action="back"' + (state.idx === 0 ? " disabled" : "") + '>Back</button><span class="spacer"></span><button type="button" class="btn" data-action="bs-next">' + esc(bsNextLabel()) + '</button></div>';
+  document.getElementById("app").innerHTML = h;
+  if(q.role === "council") bsReadArm(q);
+  bsBinRefresh();
+}
+function bsSetPose(pose){
+  bsPose = pose;
+  var f = document.getElementById("bsfig");
+  if(f){ f.setAttribute("data-pose", pose); f.innerHTML = bsArt(f.getAttribute("data-hat"), pose); }
+}
+function bsSettle(q, ms){
+  if(bsPoseTimer) clearTimeout(bsPoseTimer);
+  var key = screenKey();
+  bsPoseTimer = setTimeout(function(){ bsPoseTimer = null; if(screenKey() === key) bsSetPose("still"); }, ms);
+}
+function bsPleased(q){ bsSetPose("pleased"); bsSettle(q, 1600); }
+
+/* The summary: what you wrote and what stands, with the answers to hand back. */
+function renderBsSummary(){
+  customOpen = false;
+  if(bsLastQ){ var pq = bsQ(bsLastQ); bsLastQ = null; if(pq) bsCommitDrafts(pq); }
+  var exp = buildExport(), tp = bsTopic(), seen = 0, old = bsOld(), r = bsRound();
+  QUESTIONS.forEach(function(q){ if(bsA(q).seen) seen++; });
+  var h = '<div class="ptop"><div class="progress"><div class="ptrack"><div class="pbar" style="width:100%"></div></div><div class="pcount">' + seen + ' of ' + QUESTIONS.length + ' cards seen</div>' + TIMER_PILL + '</div></div>';
+  h += '<div class="sumcard bssum"><h2 tabindex="-1">' + (old ? "An older brainstorm" : r === 1 ? "Round 1 is done" : "Round 2 is done") + '</h2>';
+  if(old) h += '<div class="sumstats">This brainstorm was made with wizard 0.8.0. Its answers are below, ready to copy.</div>';
+  else {
+    var cards = bsCards(), yours = cards.filter(function(c){ return c.own; }).length, killed = cards.filter(function(c){ return c.killed; }).length;
+    h += '<div class="sumstats"><b ' + dirA(tp.title) + '>' + esc(tp.title) + '</b>: <span ' + dirA(tp.question) + '>' + esc(tp.question) + '</span> You wrote <b>' + yours + '</b> ' + (yours === 1 ? "card" : "cards") + ' and killed <b>' + killed + '</b>. ' +
+      (r === 1 ? "Hand it back to Claude with Copy answers JSON or Save, and round 2 brings the council." : "Hand it back to Claude with Copy answers JSON or Save; your order is where the decision round starts.") + '</div>';
+    h += sumProjHTML();
+    if(r === 2){
+      var ord = bsOrdered(QUESTIONS, state.answers);
+      if(ord.length) h += '<ol class="bssumord">' + ord.map(function(x){ return '<li ' + dirA(x.text) + '>' + esc(x.text) + ' <span class="sumsub">' + esc(x.by === "you" ? "Yours" : bsName(x.by)) + '</span></li>'; }).join("") + '</ol>';
+    }
+  }
+  h += '<div class="exphead"><label for="exp"><b>Answers JSON</b></label><button type="button" class="btn sec" data-action="copy">Copy answers JSON</button></div>';
+  h += '<textarea id="exp" spellcheck="false">' + esc(JSON.stringify(exp, null, 2)) + '</textarea>';
+  h += '<div class="crow"><button type="button" class="btn" data-action="save">Save brainstorm</button>';
+  if(!old && seen < QUESTIONS.length) h += '<button type="button" class="btn sec" data-action="first-open">First card not seen</button>';
+  if(!old) h += '<button type="button" class="btn danger" data-action="reset">Reset all</button>';
+  h += '</div><div class="status" id="sum-status" role="status"></div></div>';
+  document.getElementById("app").innerHTML = h;
+  bsBinRefresh();
+}
+function bsSideItem(i, q, label, cnt, extra){
+  var a = bsA(q), cur = i === state.idx;
+  var h = '<button type="button" class="sitem bsitem bs-' + esc(q.role === "council" ? q.idea.hat : q.hat) + (cur ? " cur" : "") + (extra || "") + '" data-action="goto" data-idx="' + i + '"' + (cur ? ' aria-current="step"' : '') + '>';
+  h += '<span class="bsdot' + (a.seen ? " seen" : "") + '" aria-hidden="true"></span><span class="sid bssid">' + esc(label) + '</span><span class="stt" ' + dirA(label) + '>' + esc(label) + '</span>';
+  if(cnt) h += '<span class="scount">' + esc(cnt) + '</span>';
+  return h + '<span class="srx">' + (a.seen ? ", seen" : ", not seen yet") + '</span></button>';
+}
+function bsSideHTML(){
+  if(bsOld()) return '<div class="shead">Older brainstorm</div>' + QUESTIONS.map(function(q, i){ return bsSideItem(i, q, q.title, ""); }).join("");
+  var r = bsRound(), h = '<div class="shead">Round ' + r + '</div>', last = "", cards = bsCards(), councilN = 0;
+  var groups = { hold: "Your turn", spark: "Sparks", suggest: "Suggestions", council: "The council" };
+  QUESTIONS.forEach(function(q, i){
+    if(groups[q.role] && last !== q.role) h += '<div class="bsgh" aria-hidden="true">' + esc(groups[q.role]) + '</div>';
+    last = q.role;
+    if(q.role === "hold" || q.role === "spark"){
+      var n = cards.filter(function(c){ return c.q === q && c.own && !c.killed; }).length;
+      h += bsSideItem(i, q, bsHatName(q), n ? n + " yours" : "");
+    } else if(q.role === "suggest"){
+      var s = cards.filter(function(c){ return c.q === q && !c.mine && !c.killed; }).length;
+      h += bsSideItem(i, q, q.hat === "blue" ? "Blue, paths" : bsHatName(q), (q.ideas || []).length ? s + " of " + q.ideas.length : "");
+    } else if(q.role === "council"){
+      councilN++;
+      var a = bsA(q), kd = a.killed || {}, gone = (own(kd, q.idea.id) && kd[q.idea.id]) || bsCouncilSkipped(q, QUESTIONS, state.answers);
+      h += bsSideItem(i, q, councilN + ". " + q.idea.text, "", gone ? " gone" : "");
+    } else if(q.role === "extras"){
+      var lx = cards.filter(function(c){ return c.q === q && !c.mine && !c.killed; }).length;
+      h += bsSideItem(i, q, "Extras", lx + " of " + q.ideas.length);
+    } else {
+      h += bsSideItem(i, q, { recap: "Recap", aims: "Your aims", order: "Your order" }[q.role] || q.title, "");
+    }
+  });
+  return h;
+}
+
+/* What you do on a brainstorm's cards. */
+function bsCur(){ var q = cur(); return isHat(q) ? q : null; }
+function bsAttr(v){ return (window.CSS && CSS.escape) ? CSS.escape(String(v)) : String(v).replace(/["\\\n]/g, "\\$&"); }
+function bsFind(key){
+  var cs = bsCards();
+  for(var i=0;i<cs.length;i++){ if(cs[i].key === key) return cs[i]; }
+  return null;
+}
+/* A box's key says where a new card goes: box (Hold back), spark, add (a suggestion card), or var (a variant). */
+function bsAddFrom(key){
+  var q = bsCur(), t = document.querySelector('#app textarea[data-key="' + bsAttr(key) + '"]');
+  if(!q || !t) return;
+  var text = String(t.value || "").trim(), parts = key.split(":");
+  if(!text || parts[1] !== q.id) return;
+  var a = bsTake(q);
+  if(a.mine.length >= BS_MINE){ toast(false, "That's " + BS_MINE + " cards here, the most one card keeps."); return; }
+  var c = { id: bsMineId(a, q), text: text };
+  if(parts[0] === "spark"){ if(!q.sparks || !q.sparks.some(function(s){ return s.id === parts[2]; })) return; c.spark = parts[2]; }
+  else if(parts[0] === "var"){ if(q.role !== "council") return; c.kind = "variant"; }
+  else if(parts[0] !== "box" && parts[0] !== "add") return;
+  a.mine.push(c);
+  delete bsDraft[key];
+  bsPut(q, a);
+  scrollKeep(render);
+  var nt = document.querySelector('#app textarea[data-key="' + bsAttr(key) + '"]');
+  if(nt) nt.focus();
+  srSay("Added.");
+  bsPleased(q);
+  faceFlash("pick", 1300);
+}
+/* Text left in a box when you move on is added as a card, and an edit left open is saved, so nothing typed is lost. */
+function bsCommitDrafts(q){
+  if(!q || !isHat(q) || bsOld()) return 0;
+  var n = 0;
+  Object.keys(bsDraft).forEach(function(key){
+    var v = String(bsDraft[key] || "").trim();
+    if(key.indexOf("edit:") === 0){
+      var c = bsFind(key.slice(5));
+      if(c && c.own && !c.killed && v && c.text !== v){ var ea = bsTake(c.q); ea.mine.forEach(function(m){ if(m.id === c.id) m.text = v; }); bsPut(c.q, ea); n++; }
+      delete bsDraft[key];
+      if(bsEdit === key.slice(5)) bsEdit = null;
+      return;
+    }
+    var p = key.split(":");
+    if(p[1] !== q.id) return;
+    delete bsDraft[key];
+    if(!v) return;
+    var a = bsTake(q);
+    if(a.mine.length >= BS_MINE) return;
+    var nc = { id: bsMineId(a, q), text: v };
+    if(p[0] === "spark"){ if(!q.sparks || !q.sparks.some(function(s){ return s.id === p[2]; })) return; nc.spark = p[2]; }
+    else if(p[0] === "var"){ if(q.role !== "council") return; nc.kind = "variant"; }
+    else if(p[0] !== "box" && p[0] !== "add") return;
+    a.mine.push(nc);
+    bsPut(q, a);
+    n++;
+  });
+  if(n) toast(true, n === 1 ? "Kept what you'd typed." : "Kept the " + n + " things you'd typed.");
+  return n;
+}
+function bsBoxShow(key, open){
+  bsBoxOpen[key] = !!open;
+  if(!open) delete bsDraft[key];
+  scrollKeep(render);
+  var t = document.querySelector('#app textarea[data-key="' + bsAttr(key) + '"]');
+  if(open && t) t.focus();
+  if(!open) focusQuiet(document.querySelector('#app [data-action="bs-box-open"][data-key="' + bsAttr(key) + '"]'));
+}
+function bsFieldSet(key, val){
+  bsDraft[key] = String(val || "");
+  if(key.indexOf("edit:") === 0) return;
+  var ok = document.querySelector('#app [data-action="bs-add"][data-key="' + bsAttr(key) + '"]');
+  if(ok) ok.disabled = !bsDraft[key].trim();
+}
+/* Where the cursor or focus is, so a redraw that comes later (a kill landing) can put it back. */
+function bsFocusInfo(){
+  var a = document.activeElement, app = document.getElementById("app");
+  if(!a || a === document.body || !app || !app.contains(a)) return null;
+  var k = { key: a.getAttribute("data-key"), role: a.getAttribute("data-role"), act: a.getAttribute("data-action"), hat: a.getAttribute("data-hat"), id: a.id || "" };
+  try{ k.from = a.selectionStart; k.to = a.selectionEnd; }catch(e){}
+  return k;
+}
+function bsFocusBack(k){
+  if(!k) return false;
+  var el = null;
+  if(k.role === "bs-field" && k.key) el = document.querySelector('#app textarea[data-key="' + bsAttr(k.key) + '"]');
+  else if(k.act === "bs-seat" && k.hat) el = document.querySelector('#app .bsseat[data-hat="' + bsAttr(k.hat) + '"]');
+  else if(k.act && k.key) el = document.querySelector('#app [data-action="' + bsAttr(k.act) + '"][data-key="' + bsAttr(k.key) + '"]');
+  else if(k.id) el = document.getElementById(k.id);
+  if(!el || el.disabled) return false;
+  el.focus();
+  if(k.role === "bs-field" && typeof k.from === "number"){ try{ el.setSelectionRange(k.from, k.to); }catch(e){} }
+  return true;
+}
+/* Killing a card: it crumples and flies into the bucket, and stays there until you restore it. */
+function bsKill(key, from){
+  var c = bsFind(key);
+  if(!c || c.killed) return;
+  var a = bsTake(c.q);
+  if(c.own){ a.mine.forEach(function(m){ if(m.id === c.id) m.killed = true; }); }
+  else a.killed[c.id] = true;
+  if(bsEdit === key) bsEdit = null;
+  if(c.idea){ bsSeat[c.q.id] = ""; bsPinned[c.q.id] = false; if(bsReadTimer){ clearTimeout(bsReadTimer); bsReadTimer = null; } }
+  var oq = bsOrderQ(), oa = oq ? state.answers[oq.id] : null, ok = bsOrderKeyOf(key);
+  if(oa && Array.isArray(oa.order) && oa.order.indexOf(ok) !== -1) bsOrderGap[ok] = oa.order.indexOf(ok);
+  bsPut(c.q, a);
+  var el = null;
+  if(from && from.closest) el = from.closest(".bsnote") || from.closest(".bsidea");
+  if(c.idea){ var ie = document.querySelector("#app .bsidea .bsnote"); if(ie) el = ie; }
+  var bin = document.getElementById("bsbinbtn"), screen = screenKey();
+  var done = function(){
+    if(screenKey() !== screen){ var bb = document.querySelector("#bsbinbtn b"); if(bb) bb.textContent = String(bsKilledCount()); renderSide(); return; }
+    var f = document.activeElement, lost = !f || f === document.body || !document.documentElement.contains(f) || (el && el.contains && el.contains(f));
+    var info = lost ? null : bsFocusInfo();
+    scrollKeep(render);
+    if(info && bsFocusBack(info)) return;
+    if(!lost && !info){ var nf = document.activeElement; if(nf && nf !== document.body) return; }
+    focusQuiet(document.getElementById("bsbinbtn") || pageHeading());
+  };
+  srSay("Killed. It's in the bucket at the top.");
+  faceFlash("skip", 1100);
+  if(el && typeof CRUMPLE !== "undefined"){ el.style.pointerEvents = "none"; CRUMPLE.crumpleToss(el, bin, function(){ var b = document.querySelector("#bsbinbtn b"); if(b) b.textContent = String(bsKilledCount()); setTimeout(done, 60); }); }
+  else done();
+}
+function bsRestore(key){
+  var c = bsFind(key);
+  if(!c || !c.killed) return;
+  var a = bsTake(c.q);
+  if(c.own){ a.mine.forEach(function(m){ if(m.id === c.id) delete m.killed; }); }
+  else delete a.killed[c.id];
+  var oq = bsOrderQ(), oa = oq ? state.answers[oq.id] : null, ok = bsOrderKeyOf(key);
+  if(oa && Array.isArray(oa.order) && own(bsOrderGap, ok) && oa.order.indexOf(ok) === -1) oa.order.splice(Math.min(bsOrderGap[ok], oa.order.length), 0, ok);
+  delete bsOrderGap[ok];
+  bsPut(c.q, a);
+  scrollKeep(render);
+  bsBinRefresh();
+  srSay("Restored.");
+  toast(true, "Restored.");
+}
+function bsEditOpen(key){
+  var c = bsFind(key);
+  if(!c || !c.own) return;
+  bsEdit = key;
+  delete bsDraft["edit:" + key];
+  scrollKeep(render);
+  var t = document.querySelector('#app textarea[data-key="' + bsAttr("edit:" + key) + '"]');
+  if(t){ t.focus(); try{ t.setSelectionRange(t.value.length, t.value.length); }catch(e){} }
+}
+function bsEditSave(key){
+  var c = bsFind(key), t = document.querySelector('#app textarea[data-key="' + bsAttr("edit:" + key) + '"]');
+  if(!c || !c.own || !t) return;
+  var text = String(t.value || "").trim();
+  if(!text){ bsEditCancel(); return; }
+  var a = bsTake(c.q);
+  a.mine.forEach(function(m){ if(m.id === c.id) m.text = text; });
+  bsEdit = null;
+  delete bsDraft["edit:" + key];
+  bsPut(c.q, a);
+  scrollKeep(render);
+  focusQuiet(document.querySelector('#app [data-action="bs-edit"][data-key="' + bsAttr(key) + '"]') || pageHeading());
+  srSay("Saved.");
+}
+function bsEditCancel(){
+  var key = bsEdit;
+  bsEdit = null;
+  if(key) delete bsDraft["edit:" + key];
+  scrollKeep(render);
+  if(key) focusQuiet(document.querySelector('#app [data-action="bs-edit"][data-key="' + bsAttr(key) + '"]') || pageHeading());
+}
+/* The council: open a hat to read it. A comment counts as read once its bubble has been open for 3 seconds. */
+function bsSeatOpen(hat, pin){
+  var q = bsCur();
+  if(!q || q.role !== "council" || BS_ALL.indexOf(hat) === -1) return;
+  if(pin){
+    if(bsSeat[q.id] === hat && bsPinned[q.id]){ bsPinned[q.id] = false; bsSeat[q.id] = ""; bsNoHover = hat; }
+    else { bsSeat[q.id] = hat; bsPinned[q.id] = true; bsNoHover = null; }
+  } else {
+    if(bsPinned[q.id]) return;
+    bsSeat[q.id] = hat;
+  }
+  bsCouncilRedraw(q);
+}
+function bsSeatStay(){ if(bsLeaveTimer){ clearTimeout(bsLeaveTimer); bsLeaveTimer = null; } }
+function bsHoverCancel(){ if(bsHoverTimer){ clearTimeout(bsHoverTimer); bsHoverTimer = null; } }
+/* Hovering: with no bubble open, a seat opens at once. With one open, another seat opens only once the pointer rests
+   on it, so crossing seats on the way to the bubble doesn't switch it. A seat that slides under a pointer that hasn't
+   moved, as the bubble opens or closes, opens nothing. */
+function bsHoverAt(ev){
+  if(!bsOn() || bsOld()) return;
+  var q = bsCur();
+  if(!q || q.role !== "council"){ bsHoverCancel(); return; }
+  var x = ev.clientX, y = ev.clientY;
+  if(typeof x === "number"){ bsPtrX = x; bsPtrY = y; }
+  var t = ev.target, s = t && t.closest ? t.closest(".bsseat") : null;
+  if(s){
+    bsSeatStay();
+    var sh = s.getAttribute("data-hat");
+    if(sh === bsNoHover) return;
+    bsNoHover = null;
+    if(bsSeat[q.id] === sh || bsPinned[q.id]){ bsHoverCancel(); return; }
+    if(bsStillX !== null && Math.abs(x - bsStillX) < 3 && Math.abs(y - bsStillY) < 3) return;
+    if(!bsSeat[q.id]){ bsHoverCancel(); bsSeatOpen(sh, false); return; }
+    bsHoverCancel();
+    bsHoverTimer = setTimeout(function(){
+      bsHoverTimer = null;
+      var now = bsCur();
+      if(!now || now.id !== q.id || bsPinned[q.id] || bsSeat[q.id] === sh) return;
+      var el = document.elementFromPoint(bsPtrX, bsPtrY), at = el && el.closest ? el.closest(".bsseat") : null;
+      if(at && at.getAttribute("data-hat") === sh) bsSeatOpen(sh, false);
+    }, 260);
+    return;
+  }
+  bsHoverCancel();
+  bsNoHover = null;
+  if(t && t.closest && (t.closest("#bsbub") || t.closest(".bsseats") || t.closest(".bstable"))){ bsSeatStay(); return; }
+  bsSeatLeaveSoon();
+}
+function bsSeatLeaveSoon(){ if(bsLeaveTimer) return; bsLeaveTimer = setTimeout(function(){ bsLeaveTimer = null; bsSeatLeave(); }, 400); }
+function bsSeatLeave(){
+  var q = bsCur();
+  if(!q || q.role !== "council" || bsPinned[q.id]) return;
+  if(bsSeat[q.id]){ bsSeat[q.id] = ""; bsCouncilRedraw(q); }
+}
+/* Only the seats and the bubble redraw, so focus and scroll stay where they are. */
+function bsCouncilRedraw(q){
+  var a = bsA(q), open = bsSeat[q.id] || "";
+  bsStillX = bsPtrX; bsStillY = bsPtrY;
+  var seats = document.querySelectorAll("#app .bsseat");
+  for(var i=0;i<seats.length;i++){
+    var hat = seats[i].getAttribute("data-hat"), tmp = document.createElement("div");
+    tmp.innerHTML = bsSeatHTML(q, hat, a, open === hat);
+    var fresh = tmp.firstChild, had = document.activeElement === seats[i];
+    seats[i].parentNode.replaceChild(fresh, seats[i]);
+    if(had) fresh.focus();
+  }
+  var bub = document.getElementById("bsbub");
+  if(bub){ var t2 = document.createElement("div"); t2.innerHTML = bsBubbleHTML(q, open, a); bub.parentNode.replaceChild(t2.firstChild, bub); }
+  bsReadArm(q);
+}
+function bsReadArm(q){
+  if(bsReadTimer){ clearTimeout(bsReadTimer); bsReadTimer = null; }
+  var hat = bsSeat[q.id];
+  if(!hat || bsComment(q, hat) === null || (bsA(q).read || {})[hat] || !document.querySelector("#bsbub.bs-" + hat)) return;
+  var key = screenKey();
+  bsReadTimer = setTimeout(function(){
+    bsReadTimer = null;
+    var now = bsCur();
+    if(!now || now.id !== q.id || screenKey() !== key || bsSeat[q.id] !== hat || !document.querySelector("#bsbub.bs-" + hat)) return;
+    var a = bsTake(q);
+    a.read[hat] = true;
+    bsPut(q, a);
+    var l = document.getElementById("bsreadl");
+    if(l) l.removeAttribute("hidden");
+    var s = document.querySelector('#app .bsseat[data-hat="' + hat + '"]');
+    if(s){ var t = document.createElement("div"); t.innerHTML = bsSeatHTML(q, hat, a, true); var had = document.activeElement === s; s.parentNode.replaceChild(t.firstChild, s); if(had){ var f = document.querySelector('#app .bsseat[data-hat="' + hat + '"]'); if(f) f.focus(); } }
+    renderSide();
+  }, TIMING.bsread || 3000);
+}
+function bsTake2(hat){
+  var q = bsCur();
+  if(!q || q.role !== "council") return;
+  var say = bsComment(q, hat);
+  if(say === null) return;
+  var a = bsTake(q);
+  if(a.mine.some(function(m){ return m.kind === "taken" && m.hat === hat && !m.killed; })) return;
+  var gone = null;
+  a.mine.forEach(function(m){ if(!gone && m.kind === "taken" && m.hat === hat && m.killed) gone = m; });
+  if(gone) delete gone.killed;
+  else a.mine.push({ id: bsMineId(a, q), text: say, kind: "taken", hat: hat });
+  if(!a.read[hat]) a.read[hat] = true;
+  bsPut(q, a);
+  scrollKeep(render);
+  var st = document.querySelector('#app .bsseat[data-hat="' + hat + '"]');
+  if(st) st.focus();
+  srSay("Taken as your idea. It goes to your order.");
+  faceFlash("pick", 1300);
+}
+/* Your order. */
+function bsOrderKeys(){ return bsOrdered(QUESTIONS, state.answers).map(function(x){ return x.key; }); }
+function bsOrderSet(keys){
+  var q = bsCur();
+  if(!q || q.role !== "order") return;
+  var a = bsTake(q);
+  a.order = keys;
+  bsPut(q, a);
+}
+function bsMove(i, d){
+  var keys = bsOrderKeys(), j = i + d;
+  if(j < 0 || j >= keys.length) return;
+  var t = keys[i]; keys[i] = keys[j]; keys[j] = t;
+  bsOrderSet(keys);
+  scrollKeep(render);
+  var btn = document.querySelector('#app [data-action="bs-move"][data-i="' + j + '"][data-d="' + d + '"]');
+  if(!btn || btn.disabled) btn = document.querySelector('#app [data-action="bs-move"][data-i="' + j + '"][data-d="' + (-d) + '"]');
+  if(btn) btn.focus();
+  srSay("Moved to " + (j + 1) + " of " + keys.length + ".");
+}
+function bsDragStart(ev){
+  var hd = ev.target && ev.target.closest ? ev.target.closest("#bsorder .rhandle") : null;
+  if(!hd) return false;
+  var li = hd.closest("li"), list = document.getElementById("bsorder");
+  if(!li || !list) return false;
+  ev.preventDefault();
+  bsDrag = { li: li, list: list, id: ev.pointerId };
+  li.classList.add("dragging");
+  try{ hd.setPointerCapture(ev.pointerId); }catch(e){}
+  return true;
+}
+function bsDragMove(ev){
+  if(!bsDrag) return;
+  var items = Array.prototype.slice.call(bsDrag.list.querySelectorAll("li.ritem")), y = ev.clientY;
+  if(!items.length) return;
+  var top = items[0] === bsDrag.li && items[1] ? items[1] : items[0], bot = items[items.length - 1] === bsDrag.li && items.length > 1 ? items[items.length - 2] : items[items.length - 1];
+  if(y < top.getBoundingClientRect().top){ bsDrag.list.insertBefore(bsDrag.li, bsDrag.list.firstChild); return; }
+  if(y > bot.getBoundingClientRect().bottom){ bsDrag.list.appendChild(bsDrag.li); return; }
+  for(var i=0;i<items.length;i++){
+    var it = items[i];
+    if(it === bsDrag.li) continue;
+    var r = it.getBoundingClientRect();
+    if(y > r.top && y < r.bottom){
+      if(y < r.top + r.height / 2) bsDrag.list.insertBefore(bsDrag.li, it);
+      else bsDrag.list.insertBefore(bsDrag.li, it.nextSibling);
+      break;
+    }
+  }
+}
+function bsDragEnd(){
+  if(!bsDrag) return;
+  var keys = Array.prototype.slice.call(bsDrag.list.querySelectorAll("li.ritem")).map(function(li){ return li.getAttribute("data-key"); });
+  bsDrag.li.classList.remove("dragging");
+  bsDrag = null;
+  bsOrderSet(keys);
+  scrollKeep(render);
+  srSay("Order saved.");
+}
+function bsNext(){
+  var q = bsCur();
+  if(!q) return;
+  if(bsOld()){
+    var oa = JSON.parse(JSON.stringify(bsA(q)));
+    oa.status = "hat";
+    if(!oa.seen){ oa.seen = true; state.answers[q.id] = oa; markChanged(); }
+    if(sleeping) wakeUp();
+    advance();
+    return;
+  }
+  bsCommitDrafts(q);
+  var a = bsTake(q);
+  if(q.role === "order" && !a.order) a.order = bsOrderKeys();
+  if(!a.seen){ a.seen = true; state.answers[q.id] = a; markChanged(); }
+  else if(q.role === "order"){ state.answers[q.id] = a; markChanged(); }
+  if(sleeping) wakeUp();
+  advance();
+}
+/* Enter in a box adds the card; in an edit, it saves. Escape leaves an edit or closes a box you opened. */
+function bsKey(ev){
+  var t = ev.target;
+  if(bsBinOpen() && ev.key === "Escape"){ ev.preventDefault(); bsBinClose(); return true; }
+  if(bsBinOpen() && ev.key === "Tab"){ bsBinTab(ev); return true; }
+  if(!t || !t.getAttribute || t.getAttribute("data-role") !== "bs-field") return false;
+  var key = t.getAttribute("data-key") || "";
+  if(ev.key === "Enter" && !ev.shiftKey && !ev.isComposing){
+    ev.preventDefault();
+    if(key.indexOf("edit:") === 0) bsEditSave(key.slice(5)); else bsAddFrom(key);
+    return true;
+  }
+  if(ev.key === "Escape"){
+    if(key.indexOf("edit:") === 0){ ev.preventDefault(); bsEditCancel(); return true; }
+    if(key.indexOf("add:") === 0 || key.indexOf("var:") === 0){ ev.preventDefault(); bsBoxShow(key, false); return true; }
+  }
+  return false;
+}
+/* Whether a box the cursor is in still stands in the new version of its card. */
+function bsFieldStands(q, key){
+  var p = key.split(":");
+  if(p[0] === "edit"){ var rest = key.slice(5); return rest.split("/")[0] === q.id && !!bsFind(rest); }
+  if(p[1] !== q.id) return false;
+  if(p[0] === "spark") return !!(q.sparks && q.sparks.some(function(s){ return s.id === p[2]; }));
+  return p[0] === "box" || p[0] === "add" || (p[0] === "var" && q.role === "council");
+}
+function bsFieldBack(key, text){
+  bsDraft[key] = text;
+  if(key.indexOf("edit:") === 0) bsEdit = key.slice(5);
+  else if(key.indexOf("add:") === 0 || key.indexOf("var:") === 0) bsBoxOpen[key] = true;
+}
+
+/* The bucket: every killed card, from both rounds' cards, with Restore. */
+function bsBinOpen(){ var d = document.getElementById("bsbinp"); return !!(d && !d.hidden); }
+function bsBinHTML(){
+  var list = bsCards().filter(function(c){ return c.killed; });
+  var where = function(c){
+    if(c.own) return "Yours" + (c.kind === "taken" ? ", taken from " + bsName(c.hat) : c.kind === "variant" ? ", a variant" : "") + ", under " + bsName(c.q.role === "council" ? c.q.idea.hat : c.hat);
+    if(c.idea) return c.by === "you" ? "Your idea, killed on the council" : "Killed on the council, from " + bsName(c.by);
+    if(c.q.role === "extras") return "An extra from " + bsName(c.hat);
+    return "Suggested by " + bsName(c.hat);
+  };
+  var h = '<p class="bsbinp-note">Killed cards go back to Claude too, so it knows what you passed on. Restore puts a card back where it was.</p>';
+  if(!list.length) return h + '<p class="bsnone">Nothing killed yet.</p>';
+  return h + '<ul class="bsdeadl">' + list.map(function(c){
+    return '<li class="bsdead"><div class="bsdt"><p ' + dirA(c.text) + '>' + esc(c.text) + '</p><small><span class="bsdot bs-' + esc(c.hat) + '" aria-hidden="true"></span>' + esc(where(c)) + '</small></div><button type="button" class="btn sec sm" data-action="bs-restore" data-key="' + esc(c.key) + '">Restore</button></li>';
+  }).join("") + '</ul>';
+}
+function bsBinShow(){
+  var d = document.getElementById("bsbinp");
+  if(!d){
+    d = document.createElement("div");
+    d.id = "bsbinp";
+    d.hidden = true;
+    d.innerHTML = '<div class="bsbinscrim" data-action="bs-bin-close"></div><aside class="bsbinpanel" role="dialog" aria-modal="true" aria-labelledby="bsbinh"><div class="bsbinhd"><span class="bsbinico" aria-hidden="true">' + BS_BIN + '</span><h3 id="bsbinh">Killed cards</h3><button type="button" class="bsbinx" data-action="bs-bin-close" aria-label="Close">' + BS_KILL + '</button></div><div class="bsbinbd" id="bsbinbd"></div></aside>';
+    document.body.appendChild(d);
+  }
+  document.getElementById("bsbinbd").innerHTML = bsBinHTML();
+  d.hidden = false;
+  var x = d.querySelector(".bsbinx");
+  if(x) x.focus();
+}
+function bsBinClose(quiet){
+  var d = document.getElementById("bsbinp");
+  if(!d || d.hidden) return;
+  d.hidden = true;
+  if(!quiet) focusQuiet(document.getElementById("bsbinbtn") || pageHeading());
+}
+function bsBinRefresh(){
+  var d = document.getElementById("bsbinp");
+  if(!d || d.hidden) return;
+  if(!bsOn() || bsOld()){ bsBinClose(true); return; }
+  var bd = document.getElementById("bsbinbd");
+  if(bd) bd.innerHTML = bsBinHTML();
+  var f = document.activeElement;
+  if(!f || !d.contains(f)){ var x = d.querySelector(".bsbinx"); if(x) x.focus(); }
+}
+function bsBinTab(ev){
+  var d = document.getElementById("bsbinp"), f = d.querySelectorAll("button"), first = f[0], last = f[f.length - 1];
+  if(!first) return;
+  if(ev.shiftKey && document.activeElement === first){ ev.preventDefault(); last.focus(); }
+  else if(!ev.shiftKey && document.activeElement === last){ ev.preventDefault(); first.focus(); }
+  else if(!d.contains(document.activeElement)){ ev.preventDefault(); first.focus(); }
+}
+
+/* Brainstorms made by 0.8.0, still kept in this browser: their answers, as 0.8.0 wrote them. A backup made in
+   0.9.0 can carry one to another browser, so they can still be read from a backup. */
+function bsOldProblem(p){
+  var hs = p.hats;
+  if(!p.config || p.config.kind !== "brainstorm" || !p.topic || !bsStr(p.topic.title) || !bsStr(p.topic.question)) return "bad";
+  if(!Array.isArray(hs) || hs.length !== 7 || !hs[0] || hs[0].hat !== "blue" || !hs[6] || hs[6].hat !== "blue") return "bad";
+  for(var i=0;i<7;i++){
+    if(!hs[i] || BS_ALL.indexOf(hs[i].hat) === -1 || typeof hs[i].line !== "string") return "bad";
+    if(hs[i].ideas !== undefined && (!Array.isArray(hs[i].ideas) || !hs[i].ideas.every(function(d){ return d && bsStr(d.id) && bsStr(d.text); }))) return "bad";
+  }
+  return null;
+}
+function bsOldToRound(p){
+  var t = p.topic, qs = [], names = { white: "facts", red: "feelings", yellow: "benefits", black: "caution", green: "new ideas" };
+  for(var i=0;i<p.hats.length;i++){
+    var h = p.hats[i], role = i === 0 ? "open" : i === 6 ? "close" : "hat";
+    var q = { id: role === "hat" ? h.hat : role, type: "hat", hat: h.hat, role: role, section: "Brainstorm",
+              title: role === "open" ? "Blue: the focus" : role === "close" ? "Blue: wrap-up" : bsName(h.hat) + ": " + (names[h.hat] || ""),
+              question: role === "open" ? t.question : (cleanStr(h.question) || ""), line: h.line };
+    if(role === "open"){
+      q.topic = { title: t.title, question: t.question };
+      for(var k=0;k<BS_TOPIC_KEYS.length;k++){ if(t[BS_TOPIC_KEYS[k]] !== undefined) q.topic[BS_TOPIC_KEYS[k]] = t[BS_TOPIC_KEYS[k]]; }
+    } else {
+      q.ideas = (h.ideas || []).map(function(d){ var o = { id: d.id, text: d.text }; if(bsStr(d.why)) o.why = d.why; return o; });
+      if(role === "hat" && bsStr(h.ask)) q.ask = h.ask;
+    }
+    qs.push(q);
+  }
+  return { config: p.config, questions: qs };
+}
+function bsOldFromEntry(q, e){
+  var a = { status: "hat", stars: {}, notes: {}, mine: [], ask: "", next: 1 }, any = false, known = {}, used = {};
+  if(e.seen === true){ a.seen = true; any = true; }
+  (q.ideas || []).forEach(function(d){ known[d.id] = true; used[d.id] = true; });
+  (Array.isArray(e.ideas) ? e.ideas : []).forEach(function(x){
+    if(!x || typeof x.id !== "string" || !known[x.id]) return;
+    if(x.starred === true){ a.stars[x.id] = true; any = true; }
+    if(bsStr(x.comment)){ a.notes[x.id] = x.comment; any = true; }
+  });
+  if(q.role !== "open"){
+    (Array.isArray(e.yours) ? e.yours : []).forEach(function(y){
+      if(!y || !bsStr(y.text) || a.mine.length >= 20) return;
+      var id = "u" + a.next++;
+      while(own(used, id)) id = "u" + a.next++;
+      used[id] = true;
+      a.mine.push({ id: id, text: y.text.trim() });
+      if(y.starred === true) a.stars[id] = true;
+      if(bsStr(y.comment)) a.notes[id] = y.comment;
+      any = true;
+    });
+  }
+  if(q.ask && bsStr(e.answer)){ a.ask = e.answer; any = true; }
+  return any ? a : null;
+}
+function bsOldFromRound(cfg, qs){
+  var open = qs[0] || {}, tp = open.topic || {}, topic = { title: tp.title || "", question: tp.question || "" };
+  for(var k=0;k<BS_TOPIC_KEYS.length;k++){ if(tp[BS_TOPIC_KEYS[k]] !== undefined) topic[BS_TOPIC_KEYS[k]] = tp[BS_TOPIC_KEYS[k]]; }
+  return { config: cfg, topic: topic, hats: qs.map(function(q){
+    var h = { hat: q.hat, line: q.line };
+    if(q.role !== "open"){ h.question = q.question; h.ideas = (q.ideas || []).map(function(d){ var o = { id: d.id, text: d.text }; if(d.why) o.why = d.why; return o; }); }
+    if(q.ask) h.ask = q.ask;
+    return h;
+  }) };
+}
+function bsOldExport(qs, ans, cfg){
   var ideas = 0, starred = 0, yours = 0, seen = 0;
   var answers = qs.map(function(q){
     var a = bsA(q, ans), stars = a.stars || {}, notes = a.notes || {};
@@ -8452,322 +9864,14 @@ function bsExport(qs, ans, cfg){
     var e = { id: q.id, hat: q.hat, issue: q.title, question: q.question, status: "brainstorm", seen: !!a.seen };
     if(a.seen) seen++;
     if(q.role === "open") return e;
-    e.ideas = (q.ideas || []).map(function(d){
-      var x = { id: d.id, text: d.text, starred: !!(own(stars, d.id) && stars[d.id]) }, n = note(d.id);
-      if(n) x.comment = n;
-      ideas++; if(x.starred) starred++;
-      return x;
-    });
-    e.yours = (Array.isArray(a.mine) ? a.mine : []).map(function(m){
-      var y = { text: m.text, starred: !!(own(stars, m.id) && stars[m.id]) }, n = note(m.id);
-      if(n) y.comment = n;
-      yours++; if(y.starred) starred++;
-      return y;
-    });
+    e.ideas = (q.ideas || []).map(function(d){ var x = { id: d.id, text: d.text, starred: !!(own(stars, d.id) && stars[d.id]) }, n = note(d.id); if(n) x.comment = n; ideas++; if(x.starred) starred++; return x; });
+    e.yours = (Array.isArray(a.mine) ? a.mine : []).map(function(m){ var y = { text: m.text, starred: !!(own(stars, m.id) && stars[m.id]) }, n = note(m.id); if(n) y.comment = n; yours++; if(y.starred) starred++; return y; });
     if(q.ask){ e.ask = q.ask; e.answer = String(a.ask || "").trim(); }
     return e;
   });
   var tp = (qs[0] && qs[0].topic) || {};
-  return {
-    meta: { tool: "decision-wizard", kind: "brainstorm", wizard_version: WIZARD_VERSION, wizard_title: cfg.title || "", exported_at: new Date().toISOString(),
-            total: qs.length, seen: seen, ideas: ideas, yours: yours, starred: starred },
-    topic: { title: tp.title || "", question: tp.question || "" },
-    answers: answers
-  };
-}
-/* A brainstorm's answers coming back in: a saved file, a backup, or answers pasted on their own. */
-function bsFromEntry(q, e){
-  if(!e || e.status !== "brainstorm") return null;
-  var a = { status: "hat", stars: {}, notes: {}, mine: [], ask: "", next: 1 }, any = false;
-  if(e.seen === true){ a.seen = true; any = true; }
-  var known = {};
-  (q.ideas || []).forEach(function(d){ known[d.id] = true; });
-  (Array.isArray(e.ideas) ? e.ideas : []).forEach(function(x){
-    if(!x || typeof x.id !== "string" || !known[x.id]) return;
-    if(x.starred === true){ a.stars[x.id] = true; any = true; }
-    if(typeof x.comment === "string" && x.comment.trim()){ a.notes[x.id] = x.comment; any = true; }
-  });
-  if(q.role !== "open"){
-    (Array.isArray(e.yours) ? e.yours : []).forEach(function(y){
-      if(!y || typeof y.text !== "string" || !y.text.trim() || a.mine.length >= BS_MINE) return;
-      var id = bsMineId(a, q.ideas);
-      a.mine.push({ id: id, text: y.text.trim() });
-      if(y.starred === true) a.stars[id] = true;
-      if(typeof y.comment === "string" && y.comment.trim()) a.notes[id] = y.comment;
-      any = true;
-    });
-  }
-  if(q.ask && typeof e.answer === "string" && e.answer.trim()){ a.ask = e.answer; any = true; }
-  return any ? a : null;
-}
-
-/* Drawing. */
-function bsArt(hat, pose){ var s = BS_ART[hat] || BS_ART.blue; return s[pose] || s.still; }
-function bsStarBtn(id, on, text){
-  return '<button type="button" class="bsstar' + (on ? " on" : "") + '" data-action="bs-star" data-idea="' + esc(id) + '" aria-pressed="' + (on ? "true" : "false") + '" aria-label="Star" aria-describedby="bst-' + esc(id) + '">' + BS_STAR.replace("FILL", on ? "currentColor" : "none") + '</button>';
-}
-function bsNoteHTML(q, d, a){
-  var on = !!(a.stars && own(a.stars, d.id) && a.stars[d.id]), n = (a.notes && own(a.notes, d.id)) ? String(a.notes[d.id] || "") : "";
-  var has = !!n.trim(), o = bsOpenNotes[q.id + ":" + d.id], shown = o === true || (o !== false && has);
-  var h = '<div class="bsnote' + (on ? " lit" : "") + (d.mine ? " mine" : "") + '" role="listitem">';
-  h += '<div class="bsntop">' + (d.mine ? '<span class="bsyours">Yours</span>' : '<span></span>') + bsStarBtn(d.id, on, d.text) + '</div>';
-  h += '<p id="bst-' + esc(d.id) + '" ' + dirA(d.text) + '>' + esc(d.text) + '</p>';
-  if(d.why) h += '<small ' + dirA(d.why) + '>' + esc(d.why) + '</small>';
-  h += '<div class="bsnfoot">';
-  if(d.mine) h += '<button type="button" class="bslink" data-action="bs-remove" data-idea="' + esc(d.id) + '" aria-describedby="bst-' + esc(d.id) + '">Remove</button>';
-  h += '<button type="button" class="bspen' + (has ? " has" : "") + '" data-action="bs-pen" data-idea="' + esc(d.id) + '" aria-expanded="' + (shown ? "true" : "false") + '" aria-controls="bsn-' + esc(d.id) + '" aria-describedby="bst-' + esc(d.id) + '"><span aria-hidden="true">&#9998;</span> <span>' + (has ? "Note" : "Add a note") + '</span></button>';
-  h += '</div>';
-  h += '<div class="bsnbox" id="bsn-' + esc(d.id) + '"' + (shown ? '' : ' hidden') + '><textarea dir="auto" data-role="bs-note" data-idea="' + esc(d.id) + '" aria-label="Note on this idea" aria-describedby="bst-' + esc(d.id) + '" placeholder="Your note on this idea">' + esc(n) + '</textarea></div>';
-  return h + '</div>';
-}
-function bsIdeasHTML(q, a){
-  var list = (q.ideas || []).concat((Array.isArray(a.mine) ? a.mine : []).map(function(m){ return { id: m.id, text: m.text, mine: true }; }));
-  var h = list.length ? '<div class="bsnotes" role="list" aria-label="' + esc(q.role === "close" ? "Next steps" : bsHatName(q) + " hat's ideas") + '">' + list.map(function(d){ return bsNoteHTML(q, d, a); }).join("") + '</div>' : '';
-  var open = !!bsAddOpen[q.id], step = q.role === "close";
-  if((Array.isArray(a.mine) ? a.mine.length : 0) >= BS_MINE){ return h + '<p class="bsfull">That\'s ' + BS_MINE + ' of your own here, the most a hat keeps.</p>'; }
-  h += '<button type="button" class="bsadd" data-action="bs-add-open" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="bsaddp"' + (open ? ' hidden' : '') + '>+ ' + (step ? "Add a step of your own" : "Add an idea of your own") + '</button>';
-  h += '<div class="bsaddp" id="bsaddp"' + (open ? '' : ' hidden') + '><label class="bsaddl" for="bs-new">' + (step ? "Your step" : "Your idea") + '</label><textarea id="bs-new" dir="auto" data-role="bs-new" rows="2" placeholder="' + (step ? "A step worth taking" : "An idea of your own") + '">' + esc(bsDraft[q.id] || "") + '</textarea>';
-  h += '<div class="bsaddrow"><button type="button" class="btn" data-action="bs-add"' + ((bsDraft[q.id] || "").trim() ? '' : ' disabled') + '>Add</button><button type="button" class="btn sec" data-action="bs-add-cancel">Cancel</button><span class="bshint">Enter adds it; Shift+Enter starts a new line.</span></div></div>';
-  return h;
-}
-function bsBand(q, pose){
-  var w = BS_WHO[q.hat] || {}, kind = q.role === "close" ? BS_INFO.blue.close : BS_INFO[q.hat].kind;
-  var h = '<div class="bshead"><span class="bsfig" id="bsfig" data-hat="' + esc(q.hat) + '" data-pose="' + pose + '">' + bsArt(q.hat, pose) + '</span><div class="bshmeta">';
-  h += '<div class="bschip"><span class="bsdot" aria-hidden="true"></span><span>' + esc(bsHatName(q)) + ' hat</span>' + (w.name ? '<span class="bsname">' + esc(w.name + ", " + w.what) + '</span>' : '') + '</div>';
-  h += '<div class="bskind">' + esc(kind) + '</div>';
-  h += '<div class="bssay" ' + dirA(q.line) + '>' + esc(q.line) + '</div>';
-  return h + '</div></div>';
-}
-function bsPlanHTML(){
-  var h = '<div class="bsplanrow"><span class="bsplanl" id="bsplanl">The plan</span><span class="bsplans" role="list" aria-labelledby="bsplanl">';
-  for(var i=1;i<QUESTIONS.length;i++){
-    var q = QUESTIONS[i], seen = !!bsA(q).seen;
-    h += (i > 1 ? '<span class="bsarrow" aria-hidden="true">&#8250;</span>' : '') + '<span role="listitem"><button type="button" class="bsplan bs-' + esc(q.hat) + (seen ? " seen" : "") + '" data-action="goto" data-idx="' + i + '"><span class="bsdot" aria-hidden="true"></span>' + esc(bsHatName(q)) + '<span class="srx">' + (seen ? ", seen" : "") + '</span></button></span>';
-  }
-  return h + '</span></div>';
-}
-function bsStarredList(){
-  var rows = [], total = 0;
-  for(var i=1;i<QUESTIONS.length-1;i++){
-    var q = QUESTIONS[i], a = bsA(q), st = a.stars || {};
-    (q.ideas || []).forEach(function(d){ total++; if(own(st, d.id) && st[d.id]) rows.push({ q: q, text: d.text }); });
-    (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ total++; if(own(st, m.id) && st[m.id]) rows.push({ q: q, text: m.text, mine: true }); });
-  }
-  return { rows: rows, total: total };
-}
-function bsSummaryBlock(){
-  var s = bsStarredList(), asked = 0, told = 0;
-  for(var i=1;i<QUESTIONS.length-1;i++){ var q = QUESTIONS[i]; if(q.ask){ asked++; if(String(bsA(q).ask || "").trim()) told++; } }
-  var h = '<section class="bssum" aria-labelledby="bssumh"><h3 class="bssumh" id="bssumh">What you starred</h3>';
-  if(!s.rows.length) h += '<p class="bssumf">Nothing starred yet. Go back to any hat and star the ideas that matter.</p>';
-  else {
-    h += '<ul class="bssuml">' + s.rows.map(function(r){ return '<li class="bssumr bs-' + esc(r.q.hat) + '"><span class="bsdot" aria-hidden="true"></span><span class="bssumhat">' + esc(bsHatName(r.q)) + '</span><span ' + dirA(r.text) + '>' + (r.mine ? '<span class="bsyours">Yours</span> ' : '') + esc(r.text) + '</span></li>'; }).join("") + '</ul>';
-    h += '<p class="bssumf">' + s.rows.length + ' starred of ' + plural(s.total, "idea", "ideas") + '.' + (asked ? ' You answered ' + told + ' of the ' + plural(asked, "question", "questions") + ' the hats asked; your answers go back with the rest.' : '') + '</p>';
-  }
-  return h + '</section>';
-}
-function bsAskHTML(q, a){
-  return '<div class="bsask"><span class="bsav" aria-hidden="true">' + bsArt(q.hat, "still") + '</span><div class="bsaskb"><label class="bsaskq" for="bsask"><b>' + esc(bsHatName(q)) + ' asks you</b><span ' + dirA(q.ask) + '>' + esc(q.ask) + '</span></label>' +
-    '<textarea id="bsask" dir="auto" data-role="bs-ask" rows="2" placeholder="Type your answer">' + esc(a.ask || "") + '</textarea></div></div>';
-}
-function bsNextLabel(){
-  var i = state.idx, q = QUESTIONS[i], n = QUESTIONS[i + 1];
-  if(q.role === "open") return "Start with " + bsHatName(n);
-  if(q.role === "close") return "Finish";
-  return n && n.role === "close" ? "Next: back to Blue" : "Next: " + bsHatName(n) + " hat";
-}
-function renderHat(q){
-  customOpen = false;
-  var a = bsA(q), sk = screenKey(), fresh = bsScreen !== sk;
-  if(fresh){ bsScreen = sk; bsPose = "talk"; bsSettle(q, 2600); }
-  var h = chromeTop(q);
-  h += '<div class="qcard bscard bs-' + esc(q.hat) + '">';
-  h += bsBand(q, bsPose);
-  var tp = bsTopic();
-  h += '<div class="qtopic" ' + dirA(tp.title) + '>' + esc(tp.title) + '</div><h2 class="qtitle" id="qh" tabindex="-1" aria-describedby="pcount" ' + dirA(q.question) + '>' + esc(q.question) + '</h2>';
-  if(q.role === "open"){
-    h += bsPlanHTML();
-    h += contextHTML(q.topic || {});
-  } else {
-    if(q.role === "close"){ h += bsSummaryBlock(); h += '<h3 class="bssub">What\'s next? Star the steps worth taking.</h3>'; }
-    h += bsIdeasHTML(q, a);
-    if(q.ask) h += bsAskHTML(q, a);
-  }
-  h += '<div class="hint">' + (q.role === "open" ? "Each hat in the plan opens its card. Your stars, notes, and ideas go back to Claude with the brainstorm." : q.role === "close" ? "Finish shows your brainstorm and its answers, ready to hand back." : "Star what matters; the rest stay as heard. A note or an idea of your own goes back with them.") + '</div>';
-  h += '</div>';
-  h += '<div class="controls"><button type="button" class="btn sec" data-action="back"' + (state.idx === 0 ? " disabled" : "") + '>Back</button><span class="spacer"></span><button type="button" class="btn" data-action="bs-next">' + esc(bsNextLabel()) + '</button></div>';
-  document.getElementById("app").innerHTML = h;
-}
-/* The character speaks as its card opens, smiles when you star one of its ideas, and stands still otherwise. */
-function bsSetPose(pose){
-  bsPose = pose;
-  var f = document.getElementById("bsfig");
-  if(f && f.getAttribute("data-pose") !== pose){ f.innerHTML = bsArt(f.getAttribute("data-hat"), pose); f.setAttribute("data-pose", pose); }
-}
-function bsSettle(q, ms){
-  if(bsPoseTimer) clearTimeout(bsPoseTimer);
-  var sk = screenKey();
-  bsPoseTimer = setTimeout(function(){ bsPoseTimer = null; if(screenKey() === sk) bsSetPose("still"); else bsPose = "still"; }, ms);
-}
-function bsPleased(q){ bsSetPose("pleased"); bsSettle(q, 1600); }
-
-/* The brainstorm's summary, once you finish or jump past the last hat. */
-function renderBsSummary(){
-  customOpen = false;
-  var exp = buildExport(), s = bsStarredList(), tp = bsTopic(), seen = 0;
-  QUESTIONS.forEach(function(q){ if(bsA(q).seen) seen++; });
-  var last = QUESTIONS[QUESTIONS.length - 1], la = bsA(last), steps = (last.ideas || []).length + (Array.isArray(la.mine) ? la.mine.length : 0), took = 0, sk;
-  for(sk in (la.stars || {})){ if(own(la.stars, sk) && la.stars[sk] && bsIdea(last, sk)) took++; }
-  var h = '<div class="ptop"><div class="progress"><div class="ptrack"><div class="pbar" style="width:100%"></div></div><div class="pcount">' + seen + ' of ' + QUESTIONS.length + ' hats seen</div>' + TIMER_PILL + '</div></div>';
-  h += '<div class="sumcard"><h2 tabindex="-1">Your brainstorm</h2>';
-  h += '<div class="sumstats"><b ' + dirA(tp.title) + '>' + esc(tp.title) + '</b>: <span ' + dirA(tp.question) + '>' + esc(tp.question) + '</span> You starred <b>' + s.rows.length + '</b> of ' + plural(s.total, "idea", "ideas") + (steps ? ' and <b>' + took + '</b> of ' + plural(steps, "next step", "next steps") : '') + '. Hand it back to Claude with Copy answers JSON or Save. Click a hat to go back to it.</div>';
-  h += sumProjHTML();
-  h += '<table class="sum bssumt"><tr><th>Hat</th><th>What you starred and wrote</th></tr>';
-  for(var i=0;i<QUESTIONS.length;i++){
-    var q = QUESTIONS[i], a = bsA(q), st = a.stars || {}, notes = a.notes || {}, parts = [];
-    (q.ideas || []).forEach(function(d){ if(own(st, d.id) && st[d.id]) parts.push('<li ' + dirA(d.text) + '>' + esc(d.text) + '</li>'); });
-    (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ parts.push('<li ' + dirA(m.text) + '><span class="bsyours">Yours</span> ' + esc(m.text) + (own(st, m.id) && st[m.id] ? ' <span class="bsstarmark" aria-label="starred">&#9733;</span>' : '') + '</li>'); });
-    var nn = 0; for(var k in notes){ if(own(notes, k) && String(notes[k] || "").trim()) nn++; }
-    var cell = parts.length ? '<ul class="bscell">' + parts.join("") + '</ul>' : '';
-    if(nn) cell += '<div class="sumsub">' + plural(nn, "note", "notes") + '</div>';
-    if(q.ask && String(a.ask || "").trim()) cell += sumNote({ comment: a.ask }).replace("<b>Note</b>", "<b>Your answer</b>");
-    if(!cell) cell = q.role === "open" ? '<span class="sumsub">The focus and the plan</span>' : (a.seen ? '<span class="sumsub">Nothing starred</span>' : '<span class="pill open">not seen</span>');
-    h += '<tr class="rowbtn" data-action="goto" data-idx="' + i + '"><td><button type="button" class="sumgo bsgo bs-' + esc(q.hat) + '" data-action="goto" data-idx="' + i + '" aria-label="Go back to ' + esc(q.title) + '"><span class="bsdot" aria-hidden="true"></span>' + esc(q.title) + '</button></td><td>' + cell + '</td></tr>';
-  }
-  h += '</table>';
-  h += '<div class="exphead"><label for="exp"><b>Answers JSON</b></label><button type="button" class="btn sec" data-action="copy">Copy answers JSON</button></div>';
-  h += '<textarea id="exp" spellcheck="false">' + esc(JSON.stringify(exp, null, 2)) + '</textarea>';
-  h += '<div class="crow"><button type="button" class="btn" data-action="save">Save brainstorm</button>';
-  if(seen < QUESTIONS.length) h += '<button type="button" class="btn sec" data-action="first-open">First hat not seen</button>';
-  h += '<button type="button" class="btn danger" data-action="reset">Reset all</button></div>';
-  h += '<div class="status" id="sum-status" role="status"></div></div>';
-  document.getElementById("app").innerHTML = h;
-}
-function bsSideHTML(){
-  var h = '<div class="shead">Brainstorm</div>';
-  for(var i=0;i<QUESTIONS.length;i++){
-    var q = QUESTIONS[i], a = bsA(q), st = a.stars || {}, n = 0, k;
-    for(k in st){ if(own(st, k) && st[k] && bsIdea(q, k)) n++; }
-    h += '<button type="button" class="sitem bsitem bs-' + esc(q.hat) + (i === state.idx ? " cur" : "") + '" data-action="goto" data-idx="' + i + '"' + (i === state.idx ? ' aria-current="step"' : '') + '>';
-    h += '<span class="bsdot' + (a.seen ? " seen" : "") + '" aria-hidden="true"></span><span class="sid bssid">' + esc(bsHatName(q)) + '</span>';
-    h += '<span class="stt">' + esc(q.title) + '</span>' + (n && q.role !== "open" ? '<span class="scount">' + n + '&#9733;</span>' : '') + '<span class="srx">' + (a.seen ? ", seen" : ", not seen yet") + (n ? ", " + plural(n, "star", "stars") : "") + '</span></button>';
-  }
-  return h;
-}
-
-/* What you do on a hat's card. */
-function bsCur(){ var q = cur(); return isHat(q) ? q : null; }
-function bsAttr(v){ return String(v).replace(/["\\]/g, "\\$&"); }
-function bsStar(id){
-  var q = bsCur();
-  if(!q || !bsIdea(q, id)) return;
-  var a = bsTake(q), on = !a.stars[id];
-  if(on) a.stars[id] = true; else delete a.stars[id];
-  bsPut(q, a);
-  var b = document.querySelector('#app .bsstar[data-idea="' + bsAttr(id) + '"]');
-  if(b){
-    b.classList.toggle("on", on);
-    b.setAttribute("aria-pressed", on ? "true" : "false");
-    b.innerHTML = BS_STAR.replace("FILL", on ? "currentColor" : "none");
-    var card = b.closest ? b.closest(".bsnote") : null;
-    if(card) card.classList.toggle("lit", on);
-  }
-  renderSide();
-  if(q.role === "close"){ var sm = document.querySelector("#app .bssum"); if(sm) sm.outerHTML = bsSummaryBlock(); }
-  srSay(on ? "Starred." : "Star taken off.");
-  if(on){ bsPleased(q); faceFlash("pick", 1300); }
-}
-function bsPen(id){
-  var q = bsCur();
-  if(!q || !bsIdea(q, id)) return;
-  var p = document.getElementById("bsn-" + id), b = document.querySelector('#app .bspen[data-idea="' + bsAttr(id) + '"]');
-  if(!p) return;
-  var show = p.hasAttribute("hidden");
-  bsOpenNotes[q.id + ":" + id] = show;
-  if(show) p.removeAttribute("hidden"); else p.setAttribute("hidden", "");
-  if(b) b.setAttribute("aria-expanded", show ? "true" : "false");
-  if(show){ var t = p.querySelector("textarea"); if(t && t.focus) t.focus(); }
-}
-function bsNoteSet(id, val){
-  var q = bsCur();
-  if(!q || !bsIdea(q, id)) return;
-  var a = bsTake(q);
-  if(String(val || "").trim()) a.notes[id] = String(val); else delete a.notes[id];
-  bsOpenNotes[q.id + ":" + id] = true;
-  bsPut(q, a);
-  var b = document.querySelector('#app .bspen[data-idea="' + bsAttr(id) + '"]');
-  if(b){ var has = !!String(val || "").trim(); b.classList.toggle("has", has); var sp = b.querySelectorAll("span")[1]; if(sp) sp.textContent = has ? "Note" : "Add a note"; }
-}
-function bsAskSet(val){
-  var q = bsCur();
-  if(!q || !q.ask) return;
-  var a = bsTake(q);
-  a.ask = String(val || "");
-  bsPut(q, a);
-}
-function bsAddShow(open){
-  var q = bsCur();
-  if(!q) return;
-  bsAddOpen[q.id] = !!open;
-  if(!open) delete bsDraft[q.id];
-  var p = document.getElementById("bsaddp"), b = document.querySelector('#app [data-action="bs-add-open"]');
-  if(p){ if(open) p.removeAttribute("hidden"); else p.setAttribute("hidden", ""); }
-  if(b){ if(open) b.setAttribute("hidden", ""); else b.removeAttribute("hidden"); b.setAttribute("aria-expanded", open ? "true" : "false"); }
-  var t = document.getElementById("bs-new");
-  if(open && t){ t.focus(); }
-  if(!open){ if(t) t.value = ""; focusQuiet(b); }
-}
-function bsDraftSet(val){
-  var q = bsCur();
-  if(!q) return;
-  bsDraft[q.id] = String(val || "");
-  var ok = document.querySelector('#app [data-action="bs-add"]');
-  if(ok) ok.disabled = !bsDraft[q.id].trim();
-}
-function bsAdd(){
-  var q = bsCur(), t = document.getElementById("bs-new");
-  if(!q || !t) return;
-  var text = String(t.value || "").trim();
-  if(!text) return;
-  var a = bsTake(q);
-  if(a.mine.length >= BS_MINE) return;
-  var id = bsMineId(a, q.ideas);
-  a.mine.push({ id: id, text: text });
-  a.stars[id] = true;
-  delete bsDraft[q.id];
-  bsAddOpen[q.id] = false;
-  bsPut(q, a);
-  scrollKeep(render);
-  focusQuiet(document.querySelector('#app [data-action="bs-add-open"]'));
-  srSay("Added, with a star.");
-  faceFlash("pick", 1300);
-}
-function bsRemove(id){
-  var q = bsCur();
-  if(!q) return;
-  var a = bsTake(q), n = a.mine.length;
-  a.mine = a.mine.filter(function(m){ return m.id !== id; });
-  if(a.mine.length === n) return;
-  delete a.stars[id]; delete a.notes[id]; delete bsOpenNotes[q.id + ":" + id];
-  bsPut(q, a);
-  scrollKeep(render);
-  focusQuiet(document.querySelector('#app [data-action="bs-add-open"]') || pageHeading());
-  srSay("Removed.");
-}
-function bsNext(){
-  var q = bsCur();
-  if(!q) return;
-  var a = bsTake(q);
-  if(!a.seen){ a.seen = true; state.answers[q.id] = a; markChanged(); }
-  if(sleeping) wakeUp();
-  advance();
-}
-function bsKey(ev){
-  var t = ev.target;
-  if(!t || !t.getAttribute || t.getAttribute("data-role") !== "bs-new") return false;
-  if(ev.key === "Enter" && !ev.shiftKey && !ev.isComposing){ ev.preventDefault(); bsAdd(); return true; }
-  if(ev.key === "Escape"){ ev.preventDefault(); bsAddShow(false); return true; }
-  return false;
+  return { meta: { tool: "decision-wizard", kind: "brainstorm", wizard_version: WIZARD_VERSION, wizard_title: cfg.title || "", exported_at: new Date().toISOString(), total: qs.length, seen: seen, ideas: ideas, yours: yours, starred: starred },
+           topic: { title: tp.title || "", question: tp.question || "" }, answers: answers };
 }
 
 /* The brainstorm cast, one character per hat, each in three poses: still, talk (as its card opens), and pleased (when you star one of its ideas). */
@@ -8832,9 +9936,9 @@ document.addEventListener("click", function(ev){
   else if(act === "fcustom-cancel"){ cancelFupCustom(parseInt(el.getAttribute("data-f"), 10)); }
   else if(act === "skip"){ skip(); }
   else if(act === "next"){ advance(); }
-  else if(act === "back"){ back(); }
+  else if(act === "back"){ if(bsOn()) bsCommitDrafts(bsCur()); back(); }
   else if(act === "finish"){ finishNow(); }
-  else if(act === "goto"){ state.idx = parseInt(el.getAttribute("data-idx"), 10) || 0; saveState(); render(); }
+  else if(act === "goto"){ if(bsOn()) bsCommitDrafts(bsCur()); state.idx = parseInt(el.getAttribute("data-idx"), 10) || 0; saveState(); render(); }
   else if(act === "copy"){ copyJSON(); }
   else if(act === "save"){ saveRound(); }
   else if(act === "first-open"){ firstOpen(); }
@@ -8891,12 +9995,19 @@ document.addEventListener("click", function(ev){
   else if(act === "extra-open"){ extraOpen(parseInt(el.getAttribute("data-x"), 10) || 0); }
   else if(act === "modal-close"){ extraClose(); }
   else if(act === "modal-back"){ extraClose(); }
-  else if(act === "bs-star"){ bsStar(el.getAttribute("data-idea")); }
-  else if(act === "bs-pen"){ bsPen(el.getAttribute("data-idea")); }
-  else if(act === "bs-add-open"){ bsAddShow(true); }
-  else if(act === "bs-add"){ bsAdd(); }
-  else if(act === "bs-add-cancel"){ bsAddShow(false); }
-  else if(act === "bs-remove"){ bsRemove(el.getAttribute("data-idea")); }
+  else if(act === "bs-add"){ bsAddFrom(el.getAttribute("data-key") || ""); }
+  else if(act === "bs-box-open"){ bsBoxShow(el.getAttribute("data-key") || "", true); }
+  else if(act === "bs-box-close"){ bsBoxShow(el.getAttribute("data-key") || "", false); }
+  else if(act === "bs-kill"){ bsKill(el.getAttribute("data-key") || "", el); }
+  else if(act === "bs-restore"){ bsRestore(el.getAttribute("data-key") || ""); }
+  else if(act === "bs-edit"){ bsEditOpen(el.getAttribute("data-key") || ""); }
+  else if(act === "bs-edit-save"){ bsEditSave(el.getAttribute("data-key") || ""); }
+  else if(act === "bs-edit-cancel"){ bsEditCancel(); }
+  else if(act === "bs-bin"){ bsBinShow(); }
+  else if(act === "bs-bin-close"){ bsBinClose(); }
+  else if(act === "bs-seat"){ bsSeatOpen(el.getAttribute("data-hat"), true); }
+  else if(act === "bs-take"){ bsTake2(el.getAttribute("data-hat")); }
+  else if(act === "bs-move"){ bsMove(parseInt(el.getAttribute("data-i"), 10), parseInt(el.getAttribute("data-d"), 10)); }
   else if(act === "bs-next"){ bsNext(); }
 });
 document.addEventListener("mousedown", function(ev){
@@ -8922,12 +10033,8 @@ document.addEventListener("input", function(ev){
     openNotes[nid] = true;
     var nb = document.querySelector('.npen[data-note="' + nid + '"]');
     if(nb){ var nh = !!(t.value || "").trim(); nb.classList.toggle("has", nh); var ns = nb.querySelector("span"); if(ns) ns.textContent = nh ? "Note" : "Add a note"; }
-  } else if(t.getAttribute && t.getAttribute("data-role") === "bs-note"){
-    bsNoteSet(t.getAttribute("data-idea"), t.value || "");
-  } else if(t.getAttribute && t.getAttribute("data-role") === "bs-ask"){
-    bsAskSet(t.value || "");
-  } else if(t.getAttribute && t.getAttribute("data-role") === "bs-new"){
-    bsDraftSet(t.value || "");
+  } else if(t.getAttribute && t.getAttribute("data-role") === "bs-field"){
+    bsFieldSet(t.getAttribute("data-key") || "", t.value || "");
   } else if(t.getAttribute && t.getAttribute("data-role") === "bcomment"){
     bcomment(t.getAttribute("data-item"), t.value || "");
     var q = cur();
@@ -8937,6 +10044,12 @@ document.addEventListener("input", function(ev){
 window.addEventListener("resize", function(){ try{ fitBatch(); }catch(e){} });
 document.addEventListener("pointerdown", function(){ blindKeys = false; pressAt = Date.now(); }, true);
 document.addEventListener("pointerdown", rankDragStart);
+document.addEventListener("pointerdown", function(ev){ if(!(ev.button !== undefined && ev.button > 0)) bsDragStart(ev); });
+document.addEventListener("pointermove", bsDragMove);
+document.addEventListener("pointerup", bsDragEnd);
+document.addEventListener("pointercancel", bsDragEnd);
+document.addEventListener("mouseover", bsHoverAt);
+document.addEventListener("mousemove", bsHoverAt);
 document.addEventListener("pointermove", rankDragMove);
 document.addEventListener("pointerup", rankDragEnd);
 document.addEventListener("pointercancel", rankDragEnd);
@@ -8947,6 +10060,7 @@ document.addEventListener("keydown", function(ev){
   var mo = document.getElementById("modal");
   if(mo && mo.className.indexOf("on") !== -1){ if(ev.key === "Escape") extraClose(); return; }
   if(menuOpen && menuKeys(ev)) return;
+  if(bsBinOpen()){ bsKey(ev); return; }
   if(ev.target && ev.target.id === "optname" && ev.key === "Enter"){ ev.preventDefault(); setOption("name", ev.target.value); return; }
   if(ev.key === "Escape"){
     var m = document.getElementById("modal");

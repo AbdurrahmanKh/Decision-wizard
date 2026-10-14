@@ -1,163 +1,189 @@
 {
   "config": {
-    "title": "Loyalty Points, Brainstorm 1",
-    "tagline": "Points at checkout, looked at through six hats",
-    "product": "Shop Checkout",
+    "title": "Steam Handheld, Brainstorm 1",
+    "tagline": "Round 1: your ideas first",
+    "product": "Handheld",
     "kind": "brainstorm",
-    "needs_wizard": "0.8.0"
+    "round": 1,
+    "needs_wizard": "0.9.0"
   },
   "topic": {
-    "title": "Loyalty points at checkout",
-    "question": "Should checkout offer loyalty points?",
-    "context": "The checkout redesign kept guest checkout, and the CRM team still wants a reason for guests to make an account. Points are the idea on the table. Nothing is built yet, so this is the time to look at it from every side.",
-    "detail": [
-      {
-        "kind": "quote",
-        "src": "UX research report, June",
-        "text": "41% of completed purchases came through guest checkout."
-      },
-      {
-        "kind": "quote",
-        "src": "CRM strategy memo, August",
-        "text": "Guest orders are unreachable for lifecycle marketing."
-      }
-    ]
+    "title": "Steam games on my handheld",
+    "question": "What could get my Steam games onto my handheld?",
+    "context": "The handheld plays a few ported games well, but most of the Steam library still only runs on the PC. Nothing is decided yet: this is about finding ideas, not choosing one."
   },
-  "hats": [
+  "hold": [
     {
       "hat": "blue",
-      "line": "Today's focus is points at checkout. Five hats, then back to me."
+      "question": "Where is this going, and what are its main goals?"
     },
     {
       "hat": "white",
-      "line": "Numbers first. Here is what we have, and what nobody has measured.",
-      "question": "What do we know about points at checkout?",
-      "ideas": [
-        {
-          "id": "w1",
-          "text": "41% of purchases come through guest checkout, and guests can't hold points.",
-          "why": "From the June research report."
-        },
-        {
-          "id": "w2",
-          "text": "Nobody has asked shoppers whether they would join.",
-          "why": "No survey or test covers it."
-        },
-        {
-          "id": "w3",
-          "text": "Both launch payment providers can show a points balance.",
-          "why": "From the providers' integration docs."
-        },
-        {
-          "id": "w4",
-          "text": "Last year's coupon test lifted repeat orders for two months, then faded.",
-          "why": "From last year's coupon test results."
-        }
-      ],
-      "ask": "What do you know about our shoppers that I don't?"
+      "question": "What's the smallest version of this that would already be worth having?"
     },
     {
       "hat": "red",
-      "line": "Never mind the numbers. How does it feel?",
-      "question": "How does points at checkout feel?",
-      "ideas": [
-        {
-          "id": "r1",
-          "text": "Points feel like a thank-you."
-        },
-        {
-          "id": "r2",
-          "text": "Another box at checkout feels like a hurdle."
-        },
-        {
-          "id": "r3",
-          "text": "Shoppers are tired of joining loyalty programs."
-        }
-      ],
-      "ask": "What does your gut say about points?"
+      "question": "What excites you most about playing your Steam games on the handheld?"
     },
     {
       "hat": "yellow",
-      "line": "Let's see what's good about it.",
-      "question": "What could points at checkout do for us?",
-      "ideas": [
+      "question": "If you imagine it as wild as you can, how does it go?"
+    },
+    {
+      "hat": "black",
+      "question": "What could make this useless, or hurt and go badly?"
+    },
+    {
+      "hat": "green",
+      "question": "What's a twist on this that nobody would expect?"
+    }
+  ],
+  "sparks": [
+    {
+      "hat": "blue",
+      "line": "One to check the point.",
+      "sparks": [
         {
-          "id": "y1",
-          "text": "Points give guests a reason to make an account after paying."
+          "id": "s1",
+          "text": "Is the goal porting, or playing your whole library on the go?"
+        }
+      ]
+    },
+    {
+      "hat": "red",
+      "line": "No reasons needed. Just this.",
+      "sparks": [
+        {
+          "id": "s2",
+          "text": "What about your GOG games?"
+        }
+      ]
+    },
+    {
+      "hat": "yellow",
+      "line": "Two to get you buzzing. Write whatever they set off.",
+      "sparks": [
+        {
+          "id": "s3",
+          "text": "Does the game have to run on the handheld at all?"
         },
         {
-          "id": "y2",
-          "text": "Repeat buyers get something back, so they come back sooner."
-        },
-        {
-          "id": "y3",
-          "text": "A points balance gives the CRM team a reason to write."
+          "id": "s4",
+          "text": "What would you play if the battery never ran out?"
         }
       ]
     },
     {
       "hat": "black",
-      "line": "Someone has to look for the cracks.",
-      "question": "What could go wrong with points at checkout?",
+      "line": "One crack worth a look.",
+      "sparks": [
+        {
+          "id": "s5",
+          "text": "Many games won't run on hardware this weak. What decides which ones will?"
+        }
+      ]
+    }
+  ],
+  "suggest": [
+    {
+      "hat": "white",
+      "line": "Four within reach, from what we know. Kill any that miss.",
+      "question": "What's within reach?",
+      "ideas": [
+        {
+          "id": "w1",
+          "text": "Start with games that already have a Linux build: no port needed."
+        },
+        {
+          "id": "w2",
+          "text": "Check your library against a community list of games known to run, and start tonight."
+        },
+        {
+          "id": "w3",
+          "text": "Games with Steam Cloud already carry their saves between devices, so the handheld can pick up mid-game."
+        },
+        {
+          "id": "w4",
+          "text": "Begin with older and 2D games; they ask far less of the hardware."
+        }
+      ]
+    },
+    {
+      "hat": "red",
+      "line": "Here's how it could feel more like yours.",
+      "ideas": [
+        {
+          "id": "r1",
+          "text": "Pick up exactly where you left off on the PC, mid-level."
+        },
+        {
+          "id": "r2",
+          "text": "A shelf of game covers instead of a list."
+        },
+        {
+          "id": "r3",
+          "text": "A weekly pick: one game you forgot you own."
+        }
+      ]
+    },
+    {
+      "hat": "yellow",
+      "line": "Ooh, let's go far with it.",
+      "ideas": [
+        {
+          "id": "y1",
+          "text": "Your whole library, every game, streamed or ported, one tap away."
+        },
+        {
+          "id": "y2",
+          "text": "Ports that tune themselves to the battery left."
+        }
+      ]
+    },
+    {
+      "hat": "black",
+      "line": "A few ways to stay out of trouble.",
       "ideas": [
         {
           "id": "k1",
-          "text": "A points line adds weight to the page with the biggest drop-off.",
-          "why": "Checkout loses more shoppers than any other page."
+          "text": "Skip games whose anti-cheat doesn't support Linux; their online modes won't run."
         },
         {
           "id": "k2",
-          "text": "Unspent points sit on the books as money owed.",
-          "why": "Points count as a debt until they are spent or expire."
-        },
-        {
-          "id": "k3",
-          "text": "Points that take months to add up feel like nothing.",
-          "why": "Most shoppers order only a few times a year."
+          "text": "Port only what you'll actually play this month."
         }
       ]
     },
     {
       "hat": "green",
-      "line": "What if we did something else entirely?",
-      "question": "What else could we try?",
+      "line": "Sideways, then. Try these on.",
       "ideas": [
         {
           "id": "g1",
-          "text": "Show the points, don't ask: \"This order earns 120 points\", with Join after payment."
+          "text": "Port the save, not the game: carry your progress into a lighter version."
         },
         {
           "id": "g2",
-          "text": "Free shipping over a threshold instead of points."
-        },
-        {
-          "id": "g3",
-          "text": "Points only from the second order."
-        },
-        {
-          "id": "g4",
-          "text": "Let guests claim their points by email within 30 days."
+          "text": "A shared list other handheld owners add their ports to."
         }
       ]
     },
     {
       "hat": "blue",
-      "line": "Here is what you starred. Now, what's next?",
-      "question": "What did we find, and what should happen next?",
+      "line": "Two other paths to the same place.",
       "ideas": [
         {
-          "id": "n1",
-          "text": "Ask 200 shoppers whether they would join, before building anything."
+          "id": "b1",
+          "text": "Don't port at all: stream from the PC and spend the effort on the controls."
         },
         {
-          "id": "n2",
-          "text": "Decide where the points line sits: before or after payment."
-        },
-        {
-          "id": "n3",
-          "text": "Price unspent points with finance."
+          "id": "b2",
+          "text": "Buy the few games you play most again, where the handheld's store has them."
         }
       ]
     }
-  ]
+  ],
+  "recap": {
+    "line": "That's round 1. Send it back, and round 2 brings the council."
+  }
 }

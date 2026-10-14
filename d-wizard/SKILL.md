@@ -1,9 +1,9 @@
 ---
 name: "d-wizard"
-description: Send questions, decisions, or approvals as a Decision Wizard questions JSON instead of long prose. Use it whenever the user says "d-wizard", "communicate through the wizard", "wizard this", "ask me through the wizard", "decision wizard", "decision round", or asks to turn open questions into a wizard; and proactively when open decisions need evidence attached (conflicting sources, a table to compare), when content items need one-by-one approval (copy lines, assets, rows), when acting on a round's answers raises new decisions, or when a hard open question has no clear options (offer a brainstorm). Also use it to act on an answers JSON the user pastes, gives as a file, or says is ready in the project's wizard-rounds folder (meta.tool = "decision-wizard"); to make a wizard companion ("Make a companion for my Decision Wizard"); and to send a six-hats brainstorm when asked for one. Not for brainstorming in chat, quick clarifications, approving your own next steps, a single question, or questions for a teammate.
+description: Send questions, decisions, or approvals as a Decision Wizard questions JSON instead of long prose. Use it when the user says "d-wizard", "communicate through the wizard", "wizard this", "ask me through the wizard", "decision wizard", "decision round", or asks to turn open questions into a wizard; and proactively when open decisions need evidence attached (conflicting sources, tables to compare), when content items need one-by-one approval (copy lines, assets, rows), when acting on a round's answers raises new decisions, or a hard open question has no clear options (offer a brainstorm). Also use it to act on an answers JSON the user pastes, gives as a file, or says is ready in the project's wizard-rounds folder (meta.tool = "decision-wizard"); to make a wizard companion ("Make a companion for my Decision Wizard"); and to send a two-round six-hats brainstorm when asked for one. Not for brainstorming in chat, quick clarifications, approving your own next steps, a single question, or questions for a teammate.
 metadata:
-  version: "0.7.0"
-compatibility: Needs Decision Wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for a project's rounds to open in the wizard by themselves and for answers to be saved back into the round file, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, and 0.8.0 for brainstorms. Older wizards still open plain rounds, but show no recommendations and give no way to add a note to a pick.
+  version: "0.8.0"
+compatibility: Needs Decision Wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for a project's rounds to open in the wizard by themselves and for answers to be saved back into the round file, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, and 0.9.0 for brainstorms. Older wizards still open plain rounds, but show no recommendations and give no way to add a note to a pick.
 ---
 
 # Decision Wizard
@@ -14,7 +14,7 @@ In Claude Code, inside a project, the wizard can carry both ends by itself. Once
 
 If the user asks where the wizard is, or may not have one, point them to https://abdurrahmankh.github.io/decision-wizard/. Any copy of the wizard, hosted or their own, opens any valid questions JSON. Do not attempt to build or describe the HTML, and never open, read, or edit the user's own copy.
 
-To make a new companion for the wizard, including from a prompt the wizard writes ("Make a companion for my Decision Wizard."), read `references/companions.md` and follow it. To send a brainstorm, or to act on a brainstorm's answers (`meta.kind` is `"brainstorm"`), read `references/brainstorms.md` and follow it. The rest of this file is about rounds.
+To make a new companion for the wizard, including from a prompt the wizard writes ("Make a companion for my Decision Wizard."), read `references/companions.md` and follow it. To send a brainstorm, or to act on a brainstorm's answers (`meta.kind` is `"brainstorm"`), which is how its second round gets written, read `references/brainstorms.md` and follow it. The rest of this file is about rounds.
 
 ## When to use it, when not
 
@@ -24,7 +24,7 @@ An explicit request always fires it. Without one, use it when:
 - content items need one-by-one approval: copy lines, assets, rows of a table, sections of a document;
 - you are acting on a previous round's answers and new open decisions come up: they go into the next round, not into prose.
 
-When a hard open question has no clear options yet, so a round would only guess at them, offer a brainstorm in one line: the wizard's six thinking hats, each bringing ideas for the user to star. Send one only when the user asks.
+When a hard open question has no clear options yet, so a round would only guess at them, offer a brainstorm in one line: two rounds through the wizard's six thinking hats, where the user writes first, the hats spark and suggest, and then a council of all six weighs every idea. Send one only when the user asks.
 
 Do not use it for quick clarifications that need no evidence (which folder, which test runner, okay to install a package), for approving your own next steps (a refactor plan, the order of edits), or for one blocking yes or no question. For those, use the environment's native multiple-choice prompt when one exists, otherwise just ask. Decisions meant for a teammate go as a plain question in the message. Never use it to deliver information that requires no decision.
 
@@ -192,6 +192,7 @@ Handling rules:
 - `open` means still undecided. Record it as open wherever the decision lives. Never fill it in yourself.
 - A round file is saved as the user goes, so it can be read mid-round. `meta.open` counts what is still open: when the user says they are done and questions are open, those are deliberately open; when they have not said so, the round may simply not be finished.
 - Every answer, typed answer, and position stated in a comment is settled, per Decisions stay decided. A Discuss or Rework answer whose comment states a position is that position; only what the comment leaves open is still open.
+- When a question comes back open with a note saying the user is unsure, offer a brainstorm on that one question, in one line, after acting on the rest.
 - `custom` is the user's verbatim decision and is authoritative. Act on it. Ask a follow-up only when it is genuinely ambiguous, and quote the ambiguous part when asking.
 - A `comment` next to a pick is part of the decision: act on the pick with the comment's condition or detail attached. A `comment` on an open question works like Discuss: a position it states is settled, and only what it leaves open stays open.
 - Follow-ups come back inside their issue. `not_needed` means the main answer did not call for it: record it as not applicable and never answer it. A follow-up still `open` under an answered main question means the issue is only partly decided, and `meta.answered` does not count it.

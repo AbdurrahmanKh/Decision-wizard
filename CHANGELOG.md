@@ -2,6 +2,27 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.9.0 and skill 0.8.0, 14 October 2026
+
+### Added
+
+- Wizard: brainstorms in two rounds, replacing 0.8.0's one-file brainstorm. A brainstorm is for finding ideas; details and ways of doing them are left to rounds.
+- Wizard: round 1 runs in three passes. Your turn: each hat asks one question and shows nothing else, and one box under the question drops each card into the grid below with Enter. Sparks: a hat's questions that might set off ideas, each with its own box, and a card written under a spark remembers it. Suggestions: your cards under the hat first, then up to four from the hat, with a box to add one more; Blue's are other paths to the same goal. Blue's recap shows what's standing, hat by hat, with counts.
+- Wizard: kill replaces the star. Every card, yours and the hats', has a cross. A killed card crumples into a faceted paper ball and is tossed into the bin in the top bar, which shows the count and opens a panel listing every killed card with its hat and Restore. With reduced motion it fades instead. Your own cards can be edited too.
+- Wizard: round 2. Blue opens on your aims, your goals and what you want to avoid, with the plan. Then the hats' extras, grouped by hat, to kill or keep: a kept extra comes to the council in the same round, a killed one never does. Then the council, one idea at a time, with the six hats around it: a gold mark on each hat with something to say, its comment in a bubble when you open it (hover or click), a green check once it has been open three seconds and counts as read, and Take it as an idea. A hat with nothing to say has no mark and says a short line of its own. Under the idea: Add a variant of your own, and Kill this idea. Last, your order: every idea that survived, with what you took or added, moved by its drag handle or its arrows.
+- Wizard: nothing typed is lost. Text left in a box, or an edit left open, is kept as a card when you move to another card, however you get there.
+- Wizard: a Brainstorms card in Options, with The council: Round table (the default, three hats on each side of the idea, and on a phone three above and three below) or In a row (under the idea).
+- Wizard: what goes back to Claude: every card you wrote, by pass and by spark, every kill, the comments you read, what you took and added, and your order, with whether you set it.
+- Skill: `references/brainstorms.md`, rewritten for the two rounds: the cast's jobs at each step, the spark rule (a spark names a direction, never the idea), writing round 1, writing round 2 from round 1's answers (your goals and concerns into the aims, every idea that survived as you wrote it, the extras, and the council, where White and Black end on a question and a hat with nothing to add stays silent), both rounds' answers, and what comes next. `references/example-brainstorm-round2.json` is a complete round 2.
+- Skill: when a decision round comes back with a question left open and a note saying you're unsure, Claude offers a brainstorm on that one question, in one line.
+
+### Changed
+
+- Wizard: the hats' labels follow their new jobs: Blue the point, White realistic, Red human, Yellow the dream, Black caution, Green twists.
+- Wizard: Load shows which round a brainstorm is ("Brainstorm, round 1") and counts cards seen. When a brainstorm has no tagline, the one under the title says which round it is. What the files look like, in Load, describes both rounds.
+- Wizard: 0.8.0's brainstorms are retired. A file made for 0.8.0 no longer loads, and the wizard says why. One already in your list stays there, marked as made by an older wizard, with its answers ready to copy, and a backup holding one still restores it.
+- Skill: `references/example-brainstorm.json` is now a round 1. Round 2 comes without asking once round 1 is back, and after round 2 the decision round names the brainstorm in its tagline and starts from the top of your order. The description and the compatibility line name wizard 0.9.0 for brainstorms.
+
 ## Wizard 0.8.0 and skill 0.7.0, 14 October 2026
 
 ### Added
