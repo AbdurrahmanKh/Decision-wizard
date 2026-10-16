@@ -1013,7 +1013,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
                 <div class="mmtime" id="mmtime" role="none" hidden><span><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9.5 2.5h5"/></svg> <em class="mtlab">Time on this round</em></span><b></b></div>
                 <button type="button" role="menuitem" data-action="mm-options"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M19.15 10.08 L22.10 10.58 L22.10 13.42 L19.15 13.92 L18.41 15.70 L20.15 18.14 L18.14 20.15 L15.70 18.41 L13.92 19.15 L13.42 22.10 L10.58 22.10 L10.08 19.15 L8.30 18.41 L5.86 20.15 L3.85 18.14 L5.59 15.70 L4.85 13.92 L1.90 13.42 L1.90 10.58 L4.85 10.08 L5.59 8.30 L3.85 5.86 L5.86 3.85 L8.30 5.59 L10.08 4.85 L10.58 1.90 L13.42 1.90 L13.92 4.85 L15.70 5.59 L18.14 3.85 L20.15 5.86 L18.41 8.30Z"/><circle cx="12" cy="12" r="3"/></svg><span>Options</span></button>
                 <button type="button" role="menuitem" data-action="mm-load"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Load new question round</span></button>
-                <button type="button" role="menuitem" data-action="mm-next"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Next open question</span></button>
+                <button type="button" role="menuitem" data-action="mm-sleep"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h7l-7 9h7"/><path d="M13 5h5l-5 6h5"/><path d="M19 15h3l-3 4h3"/></svg><span>Sleep</span></button>
                 <button type="button" role="menuitem" data-action="mm-save"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span>Save round JSON file</span></button>
                 <button type="button" role="menuitem" class="mm-main" data-action="mm-copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span>Copy answers JSON</span></button>
               </div>
@@ -1165,7 +1165,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.9.0";
+var WIZARD_VERSION = "0.9.1";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -5959,16 +5959,22 @@ function scheduleIdle(){
   idleTimers.push(setTimeout(function(){ if(mascotOn() && !busy()) faceFlash("yawn", 2800); }, TIMING.yawn));
   idleTimers.push(setTimeout(function(){
     if(drawerOpen || confirmOpen || bldOpen()) return;
-    if(mascotOn()){
-      clearSpeech(); stopDance();
-      if(mTimer){ clearTimeout(mTimer); mTimer = null; }
-      if(flashTimer){ clearTimeout(flashTimer); flashTimer = null; }
-    }
-    sleeping = true;
-    pauseClock(CURKEY ? libEntry(CURKEY) : null, lastSeen + TIMING.sleep);
-    setFrame("sleep");
-    updateTimers();
+    goSleep(lastSeen + TIMING.sleep);
   }, TIMING.sleep));
+}
+/* The nap itself, from being away or from Sleep on the companion's menu. The round's clock stops at `at`. */
+function goSleep(at){
+  if(sleeping) return;
+  clearIdle();
+  if(mascotOn()){
+    clearSpeech(); stopDance();
+    if(mTimer){ clearTimeout(mTimer); mTimer = null; }
+    if(flashTimer){ clearTimeout(flashTimer); flashTimer = null; }
+  }
+  sleeping = true;
+  pauseClock(CURKEY ? libEntry(CURKEY) : null, at);
+  setFrame("sleep");
+  updateTimers();
 }
 var lastSeen = Date.now(), lastPersist = 0;
 function activity(ev){
@@ -6078,7 +6084,7 @@ function finishRound(){
 }
 
 
-/* Open questions: from the summary button, and from the mascot's menu. */
+/* Open questions: from the summary button. */
 function gotoOpen(fromStart){
   var t = QUESTIONS.length;
   if(!CURKEY || !t) return;
@@ -6093,8 +6099,7 @@ function gotoOpen(fromStart){
       return;
     }
   }
-  /* Nothing is open. The companion stays quiet; the summary's status line says so, and the menu's Next open question
-     is greyed out meanwhile, so the toast is only for a menu opened before the last answer went in. */
+  /* Nothing is open. The companion stays quiet; the summary's status line says so. */
   if(state.idx >= t){ setStatus("sum-status", true, bsOn() ? "Every card has been seen." : "Nothing open. Every issue has an answer."); }
   else { toast(true, bsOn() ? "Every card has been seen." : "Nothing is open. Every question has an answer."); }
 }
@@ -8076,7 +8081,7 @@ function optReact(key, frame){
 }
 
 var menuOpen = false, menuBy = null, menuCloseTimer = null, lastPointer = "mouse";
-var MENU_ORDER = ["mm-options", "mm-load", "mm-next", "mm-save", "mm-copy"];
+var MENU_ORDER = ["mm-options", "mm-load", "mm-sleep", "mm-save", "mm-copy"];
 function wideMode(){ try{ return window.matchMedia("(min-width: 1440px)").matches; }catch(e){ return false; } }
 /* Where the companion stands: beside the cards on a wide screen, under the question list while the list is a
    column beside the cards, and beside the progress bar below that. Only the list's column needs the companion
@@ -8112,9 +8117,9 @@ function arrangeMenu(up){
   var order = up ? MENU_ORDER : MENU_ORDER.slice().reverse();
   for(var i=0;i<order.length;i++){ var b = m.querySelector('[data-action="' + order[i] + '"]'); if(b) m.appendChild(b); }
   var none = !CURKEY || !QUESTIONS.length;
-  ["mm-save", "mm-copy", "mm-next"].forEach(function(a){ var x = m.querySelector('[data-action="' + a + '"]'); if(x) x.disabled = none; });
-  var nx = m.querySelector('[data-action="mm-next"]');
-  if(nx && !none) nx.disabled = answeredCount() >= QUESTIONS.length;
+  ["mm-save", "mm-copy"].forEach(function(a){ var x = m.querySelector('[data-action="' + a + '"]'); if(x) x.disabled = none; });
+  var sl = m.querySelector('[data-action="mm-sleep"]');
+  if(sl) sl.hidden = sleeping;
 }
 function openMenu(by){
   if(!mascotOn() || drawerOpen || confirmOpen) return;
@@ -9951,11 +9956,11 @@ document.addEventListener("click", function(ev){
   else if(act === "lib-delete"){ deleteRound(el.getAttribute("data-key")); }
   else if(act === "open-options"){ openOptions(); }
   else if(act === "timer-reset"){ resetTimer(); }
+  else if(act === "mm-sleep"){ closeMenu(true); goSleep(Date.now()); }
   else if(act === "mm-options"){ closeMenu(true); openOptions(); }
   else if(act === "mm-load"){ closeMenu(true); openDrawer(); }
   else if(act === "mm-save"){ closeMenu(true); saveRound(); }
   else if(act === "mm-copy"){ closeMenu(true); copyAnswers(true); }
-  else if(act === "mm-next"){ closeMenu(true); var was = screenKey(); gotoOpen(false); if(screenKey() !== was) focusQuiet(pageHeading()); }
   else if(act === "bubble-act"){ var ba = bubbleAction; hideBubble(); focusQuiet("#mascotbtn"); if(ba && ba.fn) ba.fn(); }
   else if(OPTKEYS[act]){ setOption(OPTKEYS[act], el.getAttribute("data-v")); }
   else if(act === "c-add"){ addCompanion(null); }

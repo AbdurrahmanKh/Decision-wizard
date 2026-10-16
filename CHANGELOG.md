@@ -2,6 +2,12 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.9.1, 16 October 2026
+
+### Changed
+
+- Wizard: Sleep, with a Zzz, takes the place of Next open question in the companion's menu. It puts the companion to sleep right away, as a long time away does, and stops the round's clock until you wake it with a click or a key. While the companion sleeps, the menu leaves Sleep out. The question list beside the cards already jumps to any open question.
+
 ## Wizard 0.9.0 and skill 0.8.0, 14 October 2026
 
 ### Added
