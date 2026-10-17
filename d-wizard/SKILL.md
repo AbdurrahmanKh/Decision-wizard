@@ -2,8 +2,8 @@
 name: "d-wizard"
 description: Send questions, decisions, or approvals as a Decision Wizard questions JSON instead of long prose. Use it when the user says "d-wizard", "communicate through the wizard", "wizard this", "ask me through the wizard", "decision wizard", "decision round", or asks to turn open questions into a wizard; and proactively when open decisions need evidence attached (conflicting sources, tables to compare), when content items need one-by-one approval (copy lines, assets, rows), when acting on a round's answers raises new decisions, or a hard open question has no clear options (offer a brainstorm). Also use it to act on an answers JSON the user pastes, gives as a file, or says is ready in the project's wizard-rounds folder (meta.tool = "decision-wizard"); to make a wizard companion ("Make a companion for my Decision Wizard"); and to send a two-round six-hats brainstorm when asked for one. Not for brainstorming in chat, quick clarifications, approving your own next steps, a single question, or questions for a teammate.
 metadata:
-  version: "0.8.0"
-compatibility: Needs Decision Wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for a project's rounds to open in the wizard by themselves and for answers to be saved back into the round file, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, and 0.9.0 for brainstorms. Older wizards still open plain rounds, but show no recommendations and give no way to add a note to a pick.
+  version: "0.9.0"
+compatibility: Needs Decision Wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for a project's rounds to open in the wizard by themselves and for answers to be saved back into the round file, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.10.0 for their round 2. Older wizards still open plain rounds, but show no recommendations and give no way to add a note to a pick.
 ---
 
 # Decision Wizard
@@ -24,7 +24,7 @@ An explicit request always fires it. Without one, use it when:
 - content items need one-by-one approval: copy lines, assets, rows of a table, sections of a document;
 - you are acting on a previous round's answers and new open decisions come up: they go into the next round, not into prose.
 
-When a hard open question has no clear options yet, so a round would only guess at them, offer a brainstorm in one line: two rounds through the wizard's six thinking hats, where the user writes first, the hats spark and suggest, and then a council of all six weighs every idea. Send one only when the user asks.
+When a hard open question has no clear options yet, so a round would only guess at them, offer a brainstorm in one line: two rounds through the wizard's six thinking hats, where the user writes first, the hats spark and suggest, and then a council of all six works on every idea. Send one only when the user asks.
 
 Do not use it for quick clarifications that need no evidence (which folder, which test runner, okay to install a package), for approving your own next steps (a refactor plan, the order of edits), or for one blocking yes or no question. For those, use the environment's native multiple-choice prompt when one exists, otherwise just ask. Decisions meant for a teammate go as a plain question in the message. Never use it to deliver information that requires no decision.
 

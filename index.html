@@ -983,6 +983,54 @@ html{scroll-padding-bottom:var(--lift,0px)}
 .bscard .qtitle,.bssum .sumstats{overflow-wrap:anywhere}
 .bscard .qtopic,.bscard .ctx p,.bscard .ctx blockquote,.bscard .ctx td,.bssay,.bscard .bsnote small,.bsbub p,.bssumord li,.bssum li,.bsgone p{overflow-wrap:anywhere}
 .bsgone p{white-space:pre-line}
+/* Brainstorms (0.10.0): each hat talks in its own colour; several comments a hat; changes you took, your rewrite
+   marked against the original, merged ideas, and an order left to Claude. */
+.bs-blue{--bs-talk:#E3ECFB;--bs-talkl:#9DBBEE;--bs-talkink:#221F17}
+.bs-white{--bs-talk:#EFEDE6;--bs-talkl:#C9C2B0;--bs-talkink:#221F17}
+.bs-red{--bs-talk:#FBE4E2;--bs-talkl:#EBA49E;--bs-talkink:#221F17}
+.bs-yellow{--bs-talk:#FBF1D2;--bs-talkl:#E2C66F;--bs-talkink:#221F17}
+.bs-black{--bs-talk:#E6E4E1;--bs-talkl:#A8A39B;--bs-talkink:#221F17}
+.bs-green{--bs-talk:#E1F2E7;--bs-talkl:#9FD0B0;--bs-talkink:#221F17}
+[data-theme="dark"] .bs-blue{--bs-talk:#26354A;--bs-talkl:#4F74AC;--bs-talkink:#F0EAD8}
+[data-theme="dark"] .bs-white{--bs-talk:#393A31;--bs-talkl:#9C9584;--bs-talkink:#F0EAD8}
+[data-theme="dark"] .bs-red{--bs-talk:#442A28;--bs-talkl:#A6514A;--bs-talkink:#F0EAD8}
+[data-theme="dark"] .bs-yellow{--bs-talk:#3F391F;--bs-talkl:#A98C2A;--bs-talkink:#F0EAD8}
+[data-theme="dark"] .bs-black{--bs-talk:#2F302A;--bs-talkl:#827B6C;--bs-talkink:#F0EAD8}
+[data-theme="dark"] .bs-green{--bs-talk:#233A2B;--bs-talkl:#438F5E;--bs-talkink:#F0EAD8}
+.bssay,.bssqt,.bsbub{background:var(--bs-talk,var(--bub-bg));color:var(--bs-talkink,var(--bub-ink));border-color:var(--bs-talkl,var(--bub-line))}
+.bssay:before{border-right-color:var(--bs-talkl,var(--bub-line))}
+.bsseats.row + .bsbub:before{border-bottom-color:var(--bs-talkl,var(--bub-line))}
+.bsbh{color:var(--muted)}
+[data-theme="dark"] .bsbh .bsdot{border-color:rgba(255,255,255,.35)}
+.bsbn{margin-left:auto;font-weight:700;letter-spacing:0}
+.bscm+.bscm{margin-top:12px;padding-top:12px;border-top:1px dashed var(--bs-talkl,var(--line))}
+.bstake{background:var(--card);color:var(--ink);border-color:var(--green)}
+.bstake:hover{background:var(--green-soft)}
+.bstake.ans{border-style:dashed}
+.bsreadl{color:var(--green)}
+.bsbub .bswrite{margin:10px 0 2px;background:var(--card)}
+.bsbub .bsaddrow2{margin-top:0}
+.bsbang.many{font-size:calc(14px*var(--fs))}
+.bsnote p del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;background:rgba(217,72,62,.12);border-radius:3px;padding:0 2px}
+.bsnote p ins{text-decoration:none;background:var(--gold-soft);box-shadow:inset 0 -2px 0 var(--gold);border-radius:3px;padding:0 2px}
+.bsnote .bsrwn{font-size:calc(12.5px*var(--fs))}
+.bsidea .bsnfoot{justify-content:flex-start;flex-wrap:wrap;gap:8px 12px;margin-top:8px}
+.bsidea .bsnfoot .bslink{margin-right:0}
+.bsidea .bsnfoot .bshint{margin-right:auto}
+.bsmgbtn{align-self:flex-start;margin-top:8px;border:1px dashed var(--bs-line);background:transparent;color:var(--ink);border-radius:999px;padding:4px 12px;font-family:inherit;font-size:calc(13px*var(--fs));font-weight:600;cursor:pointer}
+.bsmgbtn:hover{border-style:solid;border-color:var(--bs-edge)}
+.bsmgbtn:focus-visible,.bsordst .bslink:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.bsmgl{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.bsmgl li{display:flex;gap:8px;align-items:baseline;font-size:calc(14.5px*var(--fs));line-height:1.4}
+.bsmgl li>span:last-child{min-width:0;overflow-wrap:anywhere;white-space:pre-line}
+.bsmgl small{display:block;color:var(--muted);font-size:calc(12.5px*var(--fs))}
+.bsrwch{margin-top:10px;border:1px dashed var(--bs-line);border-radius:10px;padding:8px 12px;background:var(--card)}
+.bsrwch b{display:block;font-size:calc(12px*var(--fs));letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bsrwch ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
+.bsrwch li{display:flex;gap:7px;align-items:baseline;font-size:calc(14px*var(--fs));line-height:1.4;overflow-wrap:anywhere}
+.bsrwch li .bsdot{background:var(--bs-sw);transform:translateY(1px)}
+.bsordst{margin:12px 0 2px;font-size:calc(14px*var(--fs));color:var(--muted)}
+.bsordst .bslink{margin:0 0 0 4px;font-size:inherit;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -1059,7 +1107,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
     <details class="fmt">
       <summary>What the files look like</summary>
       <div class="ldef"><b>Round.</b> Either a bare array of questions, or an object {config, questions} where config sets {title, tagline, product}. Each question: <b>id</b>, <b>section</b>, <b>title</b>, <b>options</b> (array of strings). Ids must be unique, and so must row ids inside one batch. Optional: <b>question</b> (the question itself, shown large, with the title as a small topic line above it; the sidebar keeps the title); <b>context</b>; <b>detail</b> (array of {kind: quote, note, or code, src, text}; code keeps indentation and line breaks and shows src exactly as written, such as a file path and line); <b>links</b> (array of {label, url}); <b>extra</b> ({label, blocks:[{kind: text, text}, {kind: table, title, columns, rows}, {kind: quote, src, text}, {kind: note, text}, or {kind: code, src, text}]}, or a list of them for several buttons) for context popups; <b>customLabel</b>; <b>custom</b>: false; <b>skip</b>: false; <b>recommend</b> (the label of the recommended option) with <b>because</b> (the reason, finishing "I recommend this because"), on a question, a follow-up, or a batch row. For a batch table set <b>type</b>: "batch" and <b>items</b>: [{id, label, note}], sharing one options set per row. Every question and every row takes a note with the pen. <b>type</b>: "rank" makes a ranking of 2 to 10 options (recommend is the whole order); "number" takes <b>min</b>, <b>max</b>, <b>step</b>, and <b>unit</b> instead of options (recommend is a number); "bracket" runs 4 to 32 options in knockout pairs, in the listed order. In config, <b>needs_wizard</b> names the oldest wizard version the round is made for, and a round written into a project sets <b>project</b> (the project's name) and <b>folder</b> (the full path of the folder the round file is in).</div>
-      <div class="ldef"><b>Brainstorm.</b> An object with config.kind set to "brainstorm", a <b>topic</b> (a <b>title</b> and a <b>question</b>, and maybe context, detail, links, and extra, as a question has), and the cards of one of its two rounds. <b>Round 1</b> has <b>hold</b> (the six hats, Blue first, each with an optional <b>question</b>), <b>sparks</b> (optional: a hat with an optional <b>line</b> and up to three sparks {id, text}), <b>suggest</b> (the six hats, Blue last, each with a <b>line</b> and up to four <b>ideas</b> {id, text, why}), and an optional <b>recap</b> {line}. <b>Round 2</b> has <b>aims</b> (Blue's <b>line</b>, your <b>goals</b>, and what to <b>avoid</b>), optional <b>extras</b> {line, ideas: [{id, hat, text, why, council}]}, <b>ideas</b> [{id, text, by, hat, from, council}], where by is "you" or the hat that suggested it and council holds one {hat, say} per hat at most, and an optional <b>order</b> {line}. Ids use letters, digits, - and _, and are unique; ids like u1 are kept for your own cards. A brainstorm saves, backs up, and works with project folders as a round does. A file made for wizard 0.8.0, with a hats list, no longer loads; one already in your list keeps its answers.</div>
+      <div class="ldef"><b>Brainstorm.</b> An object with config.kind set to "brainstorm", a <b>topic</b> (a <b>title</b> and a <b>question</b>, and maybe context, detail, links, and extra, as a question has), and the cards of one of its two rounds. <b>Round 1</b> has <b>hold</b> (the six hats, Blue first, each with an optional <b>question</b>), <b>sparks</b> (optional: a hat with an optional <b>line</b> and up to three sparks {id, text}), <b>suggest</b> (the six hats, Blue last, each with a <b>line</b> and up to four <b>ideas</b> {id, text, why}), and an optional <b>recap</b> {line}. <b>Round 2</b> has <b>aims</b> (Blue's <b>line</b>, your <b>goals</b>, and what to <b>avoid</b>), optional <b>extras</b> {line, ideas: [{id, hat, text, why, council}]}, <b>ideas</b> [{id, text, by, hat, from, council}], where by is "you", the hat that suggested it, or "merged" (then <b>merged</b> lists the cards it came from, each {text, by, hat}), and council holds up to four {hat, say} per hat, and an optional <b>order</b> {line}. Ids use letters, digits, - and _, and are unique; ids like u1 are kept for your own cards. A brainstorm saves, backs up, and works with project folders as a round does. A file made for wizard 0.8.0, with a hats list, no longer loads; one already in your list keeps its answers.</div>
       <div class="ldef"><b>Saved file.</b> What Save writes: the answers JSON (meta and answers, the same as Copy answers JSON) with the whole round under <b>round</b>, so opening it picks up where you left off.</div>
       <div class="ldef"><b>Answers JSON.</b> Answers on their own merge into the round with the same title, or into the open round: matching ids overwrite, and open entries are ignored unless they carry a note. A note comes back as <b>comment</b>.</div>
       <div class="ldef"><b>Backup.</b> What Back up all rounds writes: every round in this browser with its answers, each in the saved-file form, under <b>rounds</b>. Loading a backup adds the rounds that are missing here and brings back the ones the backup has a newer copy of. When a round changed here after the backup was made, the wizard asks whether to keep it.</div>
@@ -1165,7 +1213,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.9.1";
+var WIZARD_VERSION = "0.10.0";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -3112,7 +3160,7 @@ function normAnswers(qs, ans){
   var out = [];
   for(var i=0;i<qs.length;i++){
     var q = qs[i], a = own(ans, q.id) ? ans[q.id] : null;
-    if(isHat(q)){ out.push(bsNorm(q, a)); continue; }
+    if(isHat(q)){ out.push(bsNorm(q, a, ans)); continue; }
     if(isBatch(q)){
       var rows = [];
       for(var j=0;j<q.items.length;j++){
@@ -8517,9 +8565,12 @@ var CRUMPLE = (function(){
    entry of the round's questions (type "hat", with a role), so the list of rounds, saving, folders, backups, and
    the other windows all work as they do for rounds; files going out are written back in the brainstorm's own form.
    Brainstorms made by 0.8.0 (a "hats" list) no longer open; ones already kept in this browser stay in Load, with
-   their answers still there to copy. */
+   their answers still there to copy.
+   0.10.0: on the council a hat can say up to four things on one idea, Claude can merge cards into one idea (by
+   "merged", with the cards it came from under merged), and you can take a comment as a new idea or as a change to
+   its idea, answer a hat's question, and rewrite the idea's words, marked against the original. */
 var BS_HATS = ["white", "red", "yellow", "black", "green"], BS_ALL = ["blue", "white", "red", "yellow", "black", "green"];
-var BS_SUGG_MAX = 4, BS_SPARK_MAX = 3, BS_EXTRA_MAX = 40, BS_IDEA_MAX = 120, BS_MINE = 60;
+var BS_SUGG_MAX = 4, BS_SPARK_MAX = 3, BS_EXTRA_MAX = 40, BS_IDEA_MAX = 120, BS_MINE = 60, BS_SAY_MAX = 4, BS_MERGE_MAX = 12;
 var BS_INFO = {
   blue:   { name: "Blue",   kind: "The point", hold: "Where is this going, and what are its main goals?", sugg: "What other path could get you there?" },
   white:  { name: "White",  kind: "Realistic", hold: "What's the smallest version of this that would already be worth having?", sugg: "What's within reach?" },
@@ -8539,7 +8590,7 @@ var BS_BIN = '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"
 var BS_CHECK = '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 var BS_RETIRED = "This brainstorm was made for wizard 0.8.0, and 0.9.0 replaced that kind of brainstorm. Ask Claude for it again in the new form. Nothing was loaded.";
 var bsScreen = null, bsPose = "still", bsPoseTimer = null, bsDraft = {}, bsEdit = null, bsBoxOpen = {}, bsSeat = {}, bsPinned = {}, bsReadTimer = null, bsDrag = null, bsNoHover = null, bsLeaveTimer = null;
-var bsLastQ = null, bsOrderGap = {}, bsHoverTimer = null, bsPtrX = -1, bsPtrY = -1, bsStillX = null, bsStillY = null;
+var bsRw = null, bsAnsSay = {}, bsLastQ = null, bsOrderGap = {}, bsHoverTimer = null, bsPtrX = -1, bsPtrY = -1, bsStillX = null, bsStillY = null;
 
 function isBS(c){ return !!(c && typeof c === "object" && c.kind === "brainstorm"); }
 function isHat(q){ return !!(q && q.type === "hat"); }
@@ -8633,8 +8684,8 @@ function bsProblem(p){
       for(var j=0;j<list.length;j++){
         var cm = list[j];
         if(!cm || !hatOk(cm.hat) || !bsStr(cm.say)) return where + ": each council comment needs a hat and what it says." + NL;
-        if(hs[cm.hat]) return where + ": " + bsName(cm.hat) + " speaks twice. Each hat says one thing at most." + NL;
-        hs[cm.hat] = true;
+        hs[cm.hat] = (hs[cm.hat] || 0) + 1;
+        if(hs[cm.hat] > BS_SAY_MAX) return where + ": " + bsName(cm.hat) + " says " + hs[cm.hat] + " things. A hat says up to " + BS_SAY_MAX + " on one idea." + NL;
       }
       return null;
     };
@@ -8657,8 +8708,20 @@ function bsProblem(p){
       e = p.ideas[i];
       x = idOk("The ideas", e, "idea " + (i + 1)); if(x) return x;
       if(!hatOk(e.hat)) return "Idea " + e.id + " needs the hat it came under." + NL;
-      if(e.by !== "you" && !hatOk(e.by)) return "Idea " + e.id + ": by is \"you\" or the hat that suggested it." + NL;
+      if(e.by !== "you" && e.by !== "merged" && !hatOk(e.by)) return "Idea " + e.id + ": by is \"you\", the hat that suggested it, or \"merged\"." + NL;
       if(e.from !== undefined && typeof e.from !== "string") return "Idea " + e.id + ": from must be text." + NL;
+      if(e.by === "merged" || e.merged !== undefined){
+        if(e.by !== "merged") return "Idea " + e.id + " lists merged cards, so its by is \"merged\"." + NL;
+        if(!Array.isArray(e.merged) || e.merged.length < 2) return "Idea " + e.id + " is merged, so merged lists the two or more cards it came from." + NL;
+        if(e.merged.length > BS_MERGE_MAX) return "Idea " + e.id + " merges " + e.merged.length + " cards; at most " + BS_MERGE_MAX + "." + NL;
+        for(k=0;k<e.merged.length;k++){
+          var mg = e.merged[k];
+          if(!mg || typeof mg !== "object" || !bsStr(mg.text)) return "Idea " + e.id + ": each merged card needs its text." + NL;
+          if(mg.by !== "you" && !hatOk(mg.by)) return "Idea " + e.id + ": a merged card's by is \"you\" or the hat that suggested it." + NL;
+          if(mg.hat !== undefined && !hatOk(mg.hat)) return "Idea " + e.id + ": a merged card's hat is one of the six." + NL;
+          if(mg.from !== undefined && typeof mg.from !== "string") return "Idea " + e.id + ": a merged card's from must be text." + NL;
+        }
+      }
       x = council("Idea " + e.id, e.council); if(x) return x;
     }
     if(p.order !== undefined && (!p.order || typeof p.order !== "object" || (p.order.line !== undefined && typeof p.order.line !== "string"))) return "Round 2's order must be an object, with an optional line." + NL;
@@ -8668,6 +8731,7 @@ function bsProblem(p){
 }
 function bsWhyOf(d){ var o = { id: d.id, text: d.text }; if(bsStr(d.why)) o.why = d.why; return o; }
 function bsCouncilOf(l){ return (Array.isArray(l) ? l : []).map(function(c){ return { hat: c.hat, say: c.say }; }); }
+function bsMergedOf(m){ var o = { text: m.text, by: m.by }; if(BS_ALL.indexOf(m.hat) !== -1) o.hat = m.hat; if(bsStr(m.from)) o.from = m.from; return o; }
 /* A brainstorm file as the wizard keeps it: one question entry per card. The config gets its round written in. */
 function bsToRound(p){
   var t = p.topic, qs = [], cfg = {}, k, i;
@@ -8703,6 +8767,7 @@ function bsToRound(p){
     p.ideas.forEach(function(d){
       var idea = { id: d.id, text: d.text, by: d.by, hat: d.hat };
       if(bsStr(d.from)) idea.from = d.from;
+      if(d.by === "merged" && Array.isArray(d.merged)) idea.merged = d.merged.map(bsMergedOf);
       qs.push({ id: "c-" + d.id, type: "hat", hat: d.hat, role: "council", section: "The council", title: d.text, question: d.text, idea: idea, council: bsCouncilOf(d.council) });
     });
     xs.forEach(function(d){
@@ -8710,7 +8775,7 @@ function bsToRound(p){
       if(bsStr(d.why)) idea.from = d.why;
       qs.push({ id: "c-" + d.id, type: "hat", hat: d.hat, role: "council", section: "The council", title: d.text, question: d.text, idea: idea, council: bsCouncilOf(d.council) });
     });
-    qs.push({ id: "order", type: "hat", hat: "blue", role: "order", section: "Your order", title: "Blue: your order", question: "Which ideas matter most?", line: (p.order && bsStr(p.order.line)) ? p.order.line : "These made it through. Put them in your order; the decision round starts from the top." });
+    qs.push({ id: "order", type: "hat", hat: "blue", role: "order", section: "Your order", title: "Blue: your order", question: "Which ideas matter most?", line: (p.order && bsStr(p.order.line)) ? p.order.line : "These made it through, in the order the council suggests. Move any you like, or leave the order to Claude; the decision round starts from the top." });
   }
   return { config: cfg, questions: qs };
 }
@@ -8736,7 +8801,7 @@ function bsFromRound(cfg, qs){
       else if(q.role === "council"){
         var d = q.idea, o = { id: d.id, text: d.text };
         if(d.extra){ o.hat = d.hat; if(d.from) o.why = d.from; o.council = bsCouncilOf(q.council); ex.push(o); }
-        else { o.by = d.by; o.hat = d.hat; if(d.from) o.from = d.from; o.council = bsCouncilOf(q.council); ideas.push(o); }
+        else { o.by = d.by; o.hat = d.hat; if(d.from) o.from = d.from; if(d.merged) o.merged = d.merged.map(bsMergedOf); o.council = bsCouncilOf(q.council); ideas.push(o); }
       }
       else if(q.role === "order") out.order = { line: q.line };
     });
@@ -8760,7 +8825,7 @@ function bsFileRound(p, saved){
   var r = bsToRound(p);
   return { saved: saved, bs: true, problem: null, config: r.config, questions: r.questions };
 }
-function bsFresh(){ bsDraft = {}; bsEdit = null; bsBoxOpen = {}; bsSeat = {}; bsPinned = {}; bsScreen = null; bsLastQ = null; bsOrderGap = {}; bsHoverCancel(); if(bsReadTimer){ clearTimeout(bsReadTimer); bsReadTimer = null; } bsBinClose(true); }
+function bsFresh(){ bsDraft = {}; bsEdit = null; bsRw = null; bsAnsSay = {}; bsBoxOpen = {}; bsSeat = {}; bsPinned = {}; bsScreen = null; bsLastQ = null; bsOrderGap = {}; bsHoverCancel(); if(bsReadTimer){ clearTimeout(bsReadTimer); bsReadTimer = null; } bsBinClose(true); }
 var BS_MARK = '<svg viewBox="0 0 20 16" width="17" height="14" aria-hidden="true" focusable="false"><path d="M5.6 1.2h8.8l.7 10.3H4.9z" fill="#3C73CF" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M1.2 11.6h17.6v2.6H1.2z" fill="#3C73CF" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.3 7.6h9.4" stroke="currentColor" stroke-width="1.6"/></svg>';
 var BS_NEEDS_HATS = 'This round says it is a brainstorm (config.kind "brainstorm") but lists questions. A brainstorm lists its topic and its cards instead. Nothing was loaded.';
 
@@ -8777,11 +8842,13 @@ function bsTake(q){
     if(!m || typeof m.id !== "string" || typeof m.text !== "string") return;
     var c = { id: m.id, text: m.text };
     if(typeof m.spark === "string") c.spark = m.spark;
-    if(m.kind === "taken" || m.kind === "variant") c.kind = m.kind;
+    if(m.kind === "taken" || m.kind === "variant" || m.kind === "change" || m.kind === "answer") c.kind = m.kind;
     if(typeof m.hat === "string" && BS_ALL.indexOf(m.hat) !== -1) c.hat = m.hat;
+    if(typeof m.on === "string") c.on = m.on;
     if(m.killed) c.killed = true;
     o.mine.push(c);
   });
+  if(typeof a.rewrite === "string" && a.rewrite.trim()) o.rewrite = a.rewrite;
   for(k in (a.killed || {})){ if(own(a.killed, k) && a.killed[k]) o.killed[k] = true; }
   for(k in (a.read || {})){ if(own(a.read, k) && a.read[k] && BS_ALL.indexOf(k) !== -1) o.read[k] = true; }
   if(Array.isArray(a.order)) o.order = a.order.filter(function(x){ return typeof x === "string"; });
@@ -8821,7 +8888,7 @@ function bsHasInput(a){
   for(k in (a.read || {})){ if(own(a.read, k) && a.read[k]) return true; }
   for(k in (a.stars || {})){ if(own(a.stars, k) && a.stars[k]) return true; }
   for(k in (a.notes || {})){ if(own(a.notes, k) && bsStr(a.notes[k])) return true; }
-  if(bsStr(a.ask)) return true;
+  if(bsStr(a.ask) || bsStr(a.rewrite)) return true;
   return !!((Array.isArray(a.mine) && a.mine.length) || (Array.isArray(a.order) && a.order.length));
 }
 /* A Claude card on an entry, by id: a suggestion, an extra, or the council's idea. */
@@ -8832,15 +8899,62 @@ function bsTheirs(q, id){
   return null;
 }
 function bsComment(q, hat){ for(var i=0;i<(q.council || []).length;i++){ if(q.council[i].hat === hat) return q.council[i].say; } return null; }
+/* Everything a hat says on an idea, in order (up to four from 0.10.0), and as one key for the version checks. */
+function bsSays(q, hat){ return (q.council || []).filter(function(c){ return c.hat === hat; }).map(function(c){ return c.say; }); }
+function bsSaysKey(q, hat){ var l = bsSays(q, hat); return l.length ? JSON.stringify(l) : null; }
+/* The idea's words as they stand: your rewrite when there is one. */
+function bsIdeaWords(q, a){ return (a && bsStr(a.rewrite)) ? String(a.rewrite).trim() : q.idea.text; }
+/* Blue's comment that starts "Closer to your goal:" is the idea changed, ready to take whole as its words. */
+function bsBlueWords(hat, say){
+  if(hat !== "blue") return "";
+  var m = /^\s*closer to your goal\s*:\s*/i.exec(String(say || ""));
+  if(!m) return "";
+  var t = String(say).slice(m[0].length).trim();
+  return t ? t.charAt(0).toUpperCase() + t.slice(1) : "";
+}
+function bsHash(t){ var h = 5381, x = String(t || ""); for(var i=0;i<x.length;i++){ h = ((h << 5) + h + x.charCodeAt(i)) | 0; } return (h >>> 0).toString(36); }
+function bsAnsKey(q, hat, say){ return "ans:" + q.id + ":" + hat + ":" + bsHash(say); }
+/* The question an answer box belongs to: its comment, found by its words, or the words it had when the box was drawn. */
+function bsAnsSaid(q, key){
+  var p = key.split(":"), list = q && q.role === "council" ? bsSays(q, p[2]) : [];
+  for(var i=0;i<list.length;i++){ if(bsHash(list[i]) === p[3]) return list[i]; }
+  return own(bsAnsSay, key) ? bsAnsSay[key] : undefined;
+}
+/* A hat whose bubble holds an answer box you opened, or text you typed, stays open until you close it. */
+function bsAnsBusy(qid, hat){
+  var pre = "ans:" + qid + ":" + hat + ":", k;
+  for(k in bsBoxOpen){ if(own(bsBoxOpen, k) && bsBoxOpen[k] && k.indexOf(pre) === 0) return true; }
+  for(k in bsDraft){ if(own(bsDraft, k) && k.indexOf(pre) === 0 && String(bsDraft[k] || "").trim()) return true; }
+  return false;
+}
+/* Whether a card of yours was taken from this comment. A take kept by 0.9, with no comment on record, matches by its
+   words, or by its hat when the hat says one thing. */
+function bsTookFrom(m, kind, hat, say, q){
+  if(!m || m.kind !== kind || m.hat !== hat) return false;
+  if(m.on) return m.on === say;
+  return m.text === say || (kind === "taken" && bsSays(q, hat).length === 1);
+}
+function bsAsks(say){ return /\?["'\u201D\u2019)\]]*\s*$/.test(String(say || "")); }
+function bsByLabel(by){ return by === "you" ? "Yours" : by === "merged" ? "Merged" : bsName(by) + " suggested"; }
 /* What a card's answer holds, as units the version checks can count. Your own cards count by their words, since a
    saved file numbers them afresh. With no card at hand, a kill or a read counts by its id alone. */
-function bsUnits(q, a){
+/* An order names your own cards by number, and a saved file numbers them afresh, so the checks name them by kind
+   and words when the other answers are at hand, and by their idea alone when they aren't. */
+function bsOrderUnit(k, all){
+  var m = /^([^\/]+)\/(u\d+)$/.exec(k);
+  if(!m) return k;
+  var e = all && own(all, m[1]) ? all[m[1]] : null, c = null;
+  (e && Array.isArray(e.mine) ? e.mine : []).forEach(function(x){ if(x && x.id === m[2]) c = x; });
+  return m[1] + "/" + (c ? (c.kind || "") + ":" + c.text : "mine");
+}
+function bsUnits(q, a, all){
   var u = [], k;
   if(!a || a.status !== "hat") return u;
-  (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ if(m && m.id) u.push("mine\n" + (m.kind || "") + "\n" + (m.hat || "") + "\n" + m.text + (m.killed ? "\nkilled" : "")); });
+  (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ if(m && m.id) u.push("mine\n" + (m.kind || "") + "\n" + (m.hat || "") + "\n" + (m.on && m.on !== m.text ? m.on + "\n" : "") + m.text + (m.killed ? "\nkilled" : "")); });
   for(k in (a.killed || {})){ if(own(a.killed, k) && a.killed[k]){ var d = q ? bsTheirs(q, k) : null; if(!q || d) u.push("kill\n" + k + (d ? "\n" + d.text : "")); } }
-  for(k in (a.read || {})){ if(own(a.read, k) && a.read[k]){ var s = q ? bsComment(q, k) : null; if(!q || s) u.push("read\n" + k + (s ? "\n" + s : "")); } }
-  if(Array.isArray(a.order) && a.order.length) u.push("order\n" + a.order.join("\n"));
+  for(k in (a.read || {})){ if(own(a.read, k) && a.read[k]){ var s = q ? bsSaysKey(q, k) : null; if(!q || s) u.push("read\n" + k + (s ? "\n" + s : "")); } }
+  if(Array.isArray(a.order) && a.order.length) u.push("order\n" + a.order.map(function(k){ return bsOrderUnit(k, all); }).join("\n"));
+  if(bsStr(a.rewrite)) u.push("rewrite\n" + String(a.rewrite).trim());
   var mt = {};
   (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){ if(m && m.id) mt[m.id] = m.text; });
   var nm = function(id){ return own(mt, id) ? "mine\n" + mt[id] : id; };
@@ -8854,7 +8968,7 @@ function bsLost(a, b){
   bsUnits(null, a).forEach(function(x){ var i = have.indexOf(x); if(i === -1) n++; else have.splice(i, 1); });
   return n;
 }
-function bsNorm(q, a){ return JSON.stringify([!!(a && a.seen)].concat(bsUnits(q, a))); }
+function bsNorm(q, a, all){ return JSON.stringify([!!(a && a.seen)].concat(bsUnits(q, a, all))); }
 /* A new version of a brainstorm keeps what still applies: your own cards (a spark they came from goes with them
    while that spark is still there), kills on cards whose words didn't change, reads on comments that didn't change,
    and your order, without anything that has gone. A card of yours whose id the new version uses takes a new number. */
@@ -8872,6 +8986,7 @@ function bsCarry(oq, nq, a){
     var c = { id: id, text: m.text };
     if(m.kind) c.kind = m.kind;
     if(m.hat) c.hat = m.hat;
+    if(m.on) c.on = m.on;
     if(m.killed) c.killed = true;
     if(m.spark && own(sparksNow, m.spark) && sparksNow[m.spark] === oldSpark[m.spark]) c.spark = m.spark;
     o.mine.push(c);
@@ -8883,8 +8998,9 @@ function bsCarry(oq, nq, a){
     if(od && nd && od.text === nd.text){ o.killed[k] = true; kept++; }
   }
   for(k in (a.read || {})){
-    if(own(a.read, k) && a.read[k] && bsComment(oq, k) !== null && bsComment(oq, k) === bsComment(nq, k)){ o.read[k] = true; kept++; }
+    if(own(a.read, k) && a.read[k] && bsSaysKey(oq, k) !== null && bsSaysKey(oq, k) === bsSaysKey(nq, k)){ o.read[k] = true; kept++; }
   }
+  if(bsStr(a.rewrite) && oq.idea && nq.idea && oq.idea.text === nq.idea.text){ o.rewrite = a.rewrite; kept++; }
   if(Array.isArray(a.order) && a.order.length){ o.order = a.order.slice(); kept++; }
   return { a: o, kept: kept, any: kept > 0 || !!o.seen };
 }
@@ -8907,7 +9023,7 @@ function bsCardsOf(qs, ans){
       out.push({ key: q.id + "/" + q.idea.id, q: q, id: q.idea.id, text: q.idea.text, hat: q.idea.hat, by: q.idea.by, mine: q.idea.by === "you", idea: true, extra: !!q.idea.extra, skipped: x, killed: !!(own(kd, q.idea.id) && kd[q.idea.id]) });
     }
     mine.forEach(function(m){
-      out.push({ key: q.id + "/" + m.id, q: q, id: m.id, text: m.text, hat: m.hat || q.hat, by: "you", mine: true, own: true, kind: m.kind || "", spark: m.spark || "", killed: !!m.killed });
+      out.push({ key: q.id + "/" + m.id, q: q, id: m.id, text: m.text, hat: m.hat || q.hat, by: "you", mine: true, own: true, kind: m.kind || "", spark: m.spark || "", on: m.on || "", killed: !!m.killed });
     });
   });
   return out;
@@ -8929,9 +9045,16 @@ function bsSurvivors(qs, ans){
   qs.forEach(function(q){
     if(q.role !== "council") return;
     var a = bsA(q, ans), kd = a.killed || {}, skip = bsCouncilSkipped(q, qs, ans);
-    if(!skip && !(own(kd, q.idea.id) && kd[q.idea.id])) list.push({ key: q.id + "/" + q.idea.id, text: q.idea.text, by: q.idea.by, hat: q.idea.hat, from: q.idea.extra ? "extra" : "round 1", id: q.idea.id });
-    (Array.isArray(a.mine) ? a.mine : []).forEach(function(m){
-      if(!m.killed) list.push({ key: q.id + "/" + m.id, text: m.text, by: "you", hat: m.hat || q.idea.hat, from: m.kind === "taken" ? "taken from " + bsName(m.hat || q.hat) : "variant", on: q.idea.id });
+    var mine = Array.isArray(a.mine) ? a.mine : [];
+    if(!skip && !(own(kd, q.idea.id) && kd[q.idea.id])){
+      var it = { key: q.id + "/" + q.idea.id, text: bsIdeaWords(q, a), by: q.idea.by, hat: q.idea.hat, from: q.idea.extra ? "extra" : "round 1", id: q.idea.id };
+      if(it.text !== q.idea.text) it.rewritten = true;
+      var nch = mine.filter(function(m){ return !m.killed && (m.kind === "change" || m.kind === "answer"); }).length;
+      if(nch) it.changes = nch;
+      list.push(it);
+    }
+    mine.forEach(function(m){
+      if(!m.killed && m.kind !== "change" && m.kind !== "answer") list.push({ key: q.id + "/" + m.id, text: m.text, by: "you", hat: m.hat || q.idea.hat, from: m.kind === "taken" ? "taken from " + bsName(m.hat || q.hat) : "variant", on: q.idea.id });
     });
   });
   return list;
@@ -8974,14 +9097,19 @@ function bsExport(qs, ans, cfg){
       var d = q.idea;
       e.idea = { id: d.id, text: d.text, by: d.by, hat: d.hat };
       if(d.extra) e.idea.extra = true;
+      if(d.merged) e.idea.merged = d.merged.map(function(m){ var o = { text: m.text, by: m.by }; if(m.hat) o.hat = m.hat; return o; });
       if(bsCouncilSkipped(q, qs, ans)) e.skipped = true;
       e.killed = !!(own(kd, d.id) && kd[d.id]);
       e.read = BS_ALL.filter(function(h){ return !!((a.read || {})[h]) && bsComment(q, h) !== null; });
-      e.taken = mine.filter(function(m){ return m.kind === "taken"; }).map(function(m){ var y = bsMineOut(m); y.hat = m.hat || q.hat; return y; });
-      e.variants = mine.filter(function(m){ return m.kind !== "taken"; }).map(bsMineOut);
+      var took = function(m){ var y = bsMineOut(m); y.hat = m.hat || q.hat; if(m.on) y.comment = m.on; return y; };
+      e.taken = mine.filter(function(m){ return m.kind === "taken"; }).map(took);
+      e.changes = mine.filter(function(m){ return m.kind === "change"; }).map(took);
+      e.answers = mine.filter(function(m){ return m.kind === "answer"; }).map(function(m){ var y = bsMineOut(m); y.hat = m.hat || q.hat; if(m.on) y.question = m.on; return y; });
+      e.variants = mine.filter(function(m){ return m.kind !== "taken" && m.kind !== "change" && m.kind !== "answer"; }).map(bsMineOut);
+      if(bsStr(a.rewrite) && String(a.rewrite).trim() !== d.text) e.rewrite = { text: String(a.rewrite).trim(), original: d.text };
     }
     else if(q.role === "order"){
-      e.order = bsOrdered(qs, ans).map(function(x){ var o = { text: x.text, by: x.by, from: x.from }; if(x.id) o.id = x.id; if(x.on) o.on = x.on; return o; });
+      e.order = bsOrdered(qs, ans).map(function(x){ var o = { text: x.text, by: x.by, from: x.from }; if(x.id) o.id = x.id; if(x.on) o.on = x.on; if(x.rewritten) o.rewritten = true; if(x.changes) o.changes = x.changes; return o; });
       e.ranked = Array.isArray(a.order);
     }
     return e;
@@ -9020,8 +9148,14 @@ function bsFromEntry(q, e){
   if(q.role === "council"){
     if(e.killed === true){ a.killed[q.idea.id] = true; any = true; }
     (Array.isArray(e.read) ? e.read : []).forEach(function(h){ if(bsComment(q, h) !== null){ a.read[h] = true; any = true; } });
-    (Array.isArray(e.taken) ? e.taken : []).forEach(function(y){ addMine(y, { kind: "taken", hat: BS_ALL.indexOf(y && y.hat) !== -1 ? y.hat : q.hat }); });
+    var hatOf = function(y){ return BS_ALL.indexOf(y && y.hat) !== -1 ? y.hat : q.hat; };
+    var tookIn = function(kind){ return function(y){ var x = { kind: kind, hat: hatOf(y) }; if(y && typeof y.comment === "string" && y.comment.trim()) x.on = y.comment; addMine(y, x); }; };
+    (Array.isArray(e.taken) ? e.taken : []).forEach(tookIn("taken"));
+    (Array.isArray(e.changes) ? e.changes : []).forEach(tookIn("change"));
+    (Array.isArray(e.answers) ? e.answers : []).forEach(function(y){ var x = { kind: "answer", hat: hatOf(y) }; if(y && typeof y.question === "string") x.on = y.question; addMine(y, x); });
     (Array.isArray(e.variants) ? e.variants : []).forEach(function(y){ addMine(y, { kind: "variant" }); });
+    var rw = e.rewrite;
+    if(rw && typeof rw.text === "string" && rw.text.trim() && rw.text.trim() !== q.idea.text && (typeof rw.original !== "string" || rw.original === q.idea.text)){ a.rewrite = rw.text.trim(); any = true; }
   }
   if(q.role === "order" && e.ranked !== false && Array.isArray(e.order) && e.order.length){
     a.orderTexts = e.order.filter(function(x){ return x && typeof x.text === "string"; }).map(function(x){ return { text: x.text, id: typeof x.id === "string" ? x.id : null, on: typeof x.on === "string" ? x.on : null }; });
@@ -9065,7 +9199,7 @@ function bsCardHTML(c, opts){
   opts = opts || {};
   var editing = bsEdit === c.key;
   var h = '<div class="bsnote bs-' + esc(c.hat) + (c.mine ? " mine" : "") + (opts.big ? " big" : "") + '" role="listitem" data-card="' + esc(c.key) + '">';
-  h += '<div class="bsntop">' + (c.mine ? '<span class="bsyours">Yours</span>' : (opts.by ? '<span class="bsby">' + esc(opts.by) + '</span>' : '<span></span>')) + (opts.nokill ? '' : bsKillBtn(c)) + '</div>';
+  h += '<div class="bsntop">' + (opts.tag ? '<span class="bsyours">' + esc(opts.tag) + '</span>' : c.mine ? '<span class="bsyours">Yours</span>' : (opts.by ? '<span class="bsby">' + esc(opts.by) + '</span>' : '<span></span>')) + (opts.nokill ? '' : bsKillBtn(c)) + '</div>';
   if(editing){
     var ek = "edit:" + c.key;
     h += '<textarea class="bsedit" dir="auto" data-role="bs-field" data-key="' + esc(ek) + '" aria-label="Edit your card" rows="2">' + esc(own(bsDraft, ek) ? bsDraft[ek] : c.text) + '</textarea>';
@@ -9179,24 +9313,99 @@ function bsExtrasCard(q){
   return h;
 }
 function bsSeatHTML(q, hat, a, open){
-  var say = bsComment(q, hat), read = !!((a.read || {})[hat]) && say !== null;
-  var h = '<button type="button" class="bsseat bs-' + hat + (open ? " open" : "") + (say === null ? " quiet" : "") + '" data-action="bs-seat" data-hat="' + hat + '" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="bsbub">';
+  var n = bsSays(q, hat).length, read = !!((a.read || {})[hat]) && n > 0;
+  var h = '<button type="button" class="bsseat bs-' + hat + (open ? " open" : "") + (n ? "" : " quiet") + '" data-action="bs-seat" data-hat="' + hat + '" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="bsbub">';
   h += '<span class="bsface" aria-hidden="true">' + bsArt(hat, open ? "talk" : "still") + '</span><span class="bsn"><span class="bsdot" aria-hidden="true"></span>' + esc(BS_WHO[hat].name) + '</span><span class="bsl">' + esc(BS_INFO[hat].kind) + '</span>';
-  h += '<span class="srx">' + (say === null ? ", nothing to add" : read ? ", read" : ", has something to say") + '</span>';
-  if(say !== null && read) h += '<span class="bsdone" aria-hidden="true">' + BS_CHECK + '</span>';
-  else if(say !== null) h += '<span class="bsbang" aria-hidden="true">!</span>';
+  h += '<span class="srx">' + (!n ? ", nothing to add" : read ? ", read" : n > 1 ? ", has " + n + " things to say" : ", has something to say") + '</span>';
+  if(n && read) h += '<span class="bsdone" aria-hidden="true">' + BS_CHECK + '</span>';
+  else if(n) h += '<span class="bsbang' + (n > 1 ? " many" : "") + '" aria-hidden="true">' + (n > 1 ? n : "!") + '</span>';
   return h + '</button>';
 }
+/* A hat's bubble: each thing it says, each with Take as a new idea and Take as a change; Blue's version can become
+   the idea's words, and a question can be answered right under it. */
 function bsBubbleHTML(q, hat, a){
   if(!hat) return '<div class="bsbub empty" id="bsbub" role="region" aria-live="polite"><p>Open a hat to hear what it thinks of this idea.</p></div>';
-  var say = bsComment(q, hat), read = !!((a.read || {})[hat]), idx = BS_ALL.indexOf(hat);
-  var taken = (Array.isArray(a.mine) ? a.mine : []).some(function(m){ return m.kind === "taken" && m.hat === hat && !m.killed; });
-  var h = '<div class="bsbub bs-' + hat + '" id="bsbub" role="region" aria-live="polite" style="--x:' + ((idx + .5) / 6 * 100).toFixed(1) + '%"><div class="bsbh"><span class="bsdot" aria-hidden="true"></span>' + esc(bsName(hat).toUpperCase()) + ' HAT, ' + esc(BS_WHO[hat].name.toUpperCase()) + '</div>';
-  if(say === null) return h + '<p ' + dirA(BS_SILENT[hat]) + '>' + esc(BS_SILENT[hat]) + '</p></div>';
-  h += '<p ' + dirA(say) + '>' + esc(say) + '</p><div class="bsbrow">';
-  h += taken ? '<span class="bsreadl">' + BS_CHECK + ' Taken as your idea</span>' : '<button type="button" class="bstake" data-action="bs-take" data-hat="' + hat + '">Take it as an idea</button>';
-  h += '<span class="bsreadl" id="bsreadl"' + (read ? '' : ' hidden') + '>' + BS_CHECK + ' Counted as read</span>';
+  var says = bsSays(q, hat), read = !!((a.read || {})[hat]), idx = BS_ALL.indexOf(hat), mine = Array.isArray(a.mine) ? a.mine : [];
+  var h = '<div class="bsbub bs-' + hat + '" id="bsbub" role="region" aria-live="polite" style="--x:' + ((idx + .5) / 6 * 100).toFixed(1) + '%"><div class="bsbh"><span class="bsdot" aria-hidden="true"></span>' + esc(bsName(hat).toUpperCase()) + ' HAT, ' + esc(BS_WHO[hat].name.toUpperCase()) + (says.length > 1 ? '<span class="bsbn">' + says.length + ' THINGS TO SAY</span>' : '') + '</div>';
+  if(!says.length) return h + '<p ' + dirA(BS_SILENT[hat]) + '>' + esc(BS_SILENT[hat]) + '</p></div>';
+  says.forEach(function(say, n){
+    var has = function(kind){ return mine.some(function(m){ return !m.killed && bsTookFrom(m, kind, hat, say, q); }); };
+    var done = function(t){ return '<span class="bsreadl">' + BS_CHECK + ' ' + t + '</span>'; };
+    var btn = function(how, t){ return '<button type="button" class="bstake" data-action="bs-take" data-hat="' + hat + '" data-n="' + n + '" data-how="' + how + '">' + t + '</button>'; };
+    h += '<div class="bscm"><p ' + dirA(say) + '>' + esc(say) + '</p><div class="bsbrow">';
+    h += has("taken") ? done("Taken as a new idea") : btn("idea", "Take as a new idea");
+    h += has("change") ? done("Taken as a change") : btn("change", "Take as a change");
+    var bw = bsBlueWords(hat, say);
+    if(bw) h += (bsIdeaWords(q, a) === bw && bw !== q.idea.text) ? done("The idea's words now") : btn("words", "Use as the idea's words");
+    var ak = bsAnsKey(q, hat, say), asks = bsAsks(say), answered = asks && has("answer");
+    if(asks) bsAnsSay[ak] = say;
+    var boxed = asks && !answered && (!!bsBoxOpen[ak] || !!(own(bsDraft, ak) && bsDraft[ak].trim()));
+    if(answered) h += done("Answered");
+    else if(asks && !boxed) h += '<button type="button" class="bstake ans" data-action="bs-box-open" data-key="' + esc(ak) + '">Answer it</button>';
+    h += '</div>';
+    if(boxed) h += bsBox(ak, "Your answer to " + bsName(hat), "Your answer. Enter adds it as a change.") + '<div class="bsaddrow2"><button type="button" class="bslink" data-action="bs-box-close" data-key="' + esc(ak) + '">Close</button></div>';
+    h += '</div>';
+  });
+  h += '<div class="bsbrow"><span class="bsreadl" id="bsreadl"' + (read ? '' : ' hidden') + '>' + BS_CHECK + ' Counted as read</span></div>';
+  return h + '</div>';
+}
+/* Your rewrite, marked word by word against the idea's original words. */
+function bsWordList(t){ return String(t).match(/\n|[^\s]+/g) || []; }
+function bsDiffHTML(a, b){
+  var x = bsWordList(a), y = bsWordList(b), n = x.length, m = y.length, i, j;
+  if(n * m > 160000) return esc(b);
+  var L = [];
+  for(i = n; i >= 0; i--){ L[i] = []; for(j = m; j >= 0; j--){ L[i][j] = (i === n || j === m) ? 0 : x[i] === y[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]); } }
+  var ops = [];
+  i = 0; j = 0;
+  while(i < n && j < m){
+    if(x[i] === y[j]){ ops.push(["=", x[i]]); i++; j++; }
+    else if(L[i + 1][j] >= L[i][j + 1]){ ops.push(["-", x[i]]); i++; }
+    else { ops.push(["+", y[j]]); j++; }
+  }
+  while(i < n) ops.push(["-", x[i++]]);
+  while(j < m) ops.push(["+", y[j++]]);
+  var runs = [], r = null;
+  ops.forEach(function(o){ if(r && r.t === o[0]) r.w.push(o[1]); else { r = { t: o[0], w: [o[1]] }; runs.push(r); } });
+  return runs.map(function(r){
+    var t = r.w.join(" ").replace(/ ?\n ?/g, "\n");
+    if(r.t === "-") t = t.replace(/\n/g, "\u00B6");
+    var e = esc(t);
+    return r.t === "=" ? e : r.t === "-" ? '<del>' + e + '</del>' : '<ins>' + e + '</ins>';
+  }).join(" ").replace(/ ?\n ?/g, "\n");
+}
+/* The idea on its council card: its words (your rewrite, marked), where it came from, the cards a merged idea came
+   from behind a button, and Rewrite. */
+function bsIdeaHTML(q, a, card, from){
+  var d = q.idea, words = bsIdeaWords(q, a), changed = words !== d.text;
+  var tag = d.by === "you" ? '<span class="bsyours">Yours</span>' : '<span class="bsby">' + esc(bsByLabel(d.by)) + '</span>';
+  var h = '<div class="bsidea"><div class="bsnote big bs-' + esc(d.hat) + (d.by === "you" ? " mine" : "") + '" data-card="' + esc(card.key) + '"><div class="bsntop">' + tag + '<span></span></div>';
+  if(bsRw === q.id){
+    var k = "rw:" + q.id;
+    h += '<label class="srx" for="bsrw">Rewrite the idea</label><textarea id="bsrw" class="bsedit" dir="auto" data-role="bs-field" data-key="' + esc(k) + '" rows="3">' + esc(own(bsDraft, k) ? bsDraft[k] : words) + '</textarea>';
+    var ch = (Array.isArray(a.mine) ? a.mine : []).filter(function(m){ return !m.killed && (m.kind === "change" || m.kind === "answer"); });
+    if(ch.length) h += '<div class="bsrwch"><b>Changes you took</b><ul>' + ch.map(function(m){ return '<li class="bs-' + esc(m.hat || q.hat) + '"><span class="bsdot" aria-hidden="true"></span><span ' + dirA(m.text) + '>' + esc(m.text) + '</span></li>'; }).join("") + '</ul></div>';
+    h += '<div class="bsnfoot"><span class="bshint">Enter saves, Shift+Enter starts a new line.</span><button type="button" class="btn sm" data-action="bs-rw-save">Save</button><button type="button" class="btn sec sm" data-action="bs-rw-cancel">Cancel</button></div>';
+    return h + '</div></div>';
+  }
+  h += '<p id="bst-' + esc(card.key) + '" ' + dirA(words) + '>' + (changed ? bsDiffHTML(d.text, words) : esc(words)) + '</p>';
+  if(from) h += '<small ' + dirA(from) + '>' + esc(from) + '</small>';
+  if(changed) h += '<small class="bsrwn">Your words, marked against the original: struck words are gone, highlighted words are new.</small>';
+  if(d.merged && d.merged.length){
+    var mk = "mg:" + q.id, mo = !!bsBoxOpen[mk];
+    h += '<button type="button" class="bsmgbtn" data-action="bs-merged" data-key="' + esc(mk) + '" aria-expanded="' + (mo ? "true" : "false") + '">' + (mo ? "Hide" : "Show") + ' the ' + d.merged.length + ' ideas it came from</button>';
+    if(mo) h += '<ul class="bsmgl" aria-label="The ideas it came from">' + d.merged.map(function(m){ return '<li class="bs-' + esc(m.hat || (m.by === "you" ? d.hat : m.by)) + '"><span class="bsbytag' + (m.by === "you" ? " you" : "") + '">' + esc(m.by === "you" ? "You" : bsName(m.by)) + '</span><span ' + dirA(m.text) + '>' + esc(m.text) + (m.from ? '<small ' + dirA(m.from) + '>' + esc(m.from) + '</small>' : '') + '</span></li>'; }).join("") + '</ul>';
+  }
+  h += '<div class="bsnfoot"><button type="button" class="btn sec sm" data-action="bs-rw">Rewrite</button>' + (changed ? '<button type="button" class="bslink" data-action="bs-rw-undo">Back to the original</button>' : '') + '</div>';
   return h + '</div></div>';
+}
+/* The changes you took on this idea, and your answers to its hats: they stay with the idea. */
+function bsChangesHTML(q, a){
+  var list = bsMineHere(q, function(c){ return c.kind === "change" || c.kind === "answer"; });
+  if(!list.length) return '';
+  var h = '<h3 class="bssub2">Changes you took</h3><div class="bsnotes small" role="list" aria-label="Changes you took">';
+  list.forEach(function(c){ h += bsCardHTML(c, { tag: c.kind === "answer" ? "Your answer" : "Change", why: c.kind === "answer" ? "Your answer to " + bsName(c.hat) + (c.on ? ": " + c.on : "") : "From " + bsName(c.hat) }); });
+  return h + '</div><div class="hint">' + (bsStr(a.rewrite) ? "Rewrite again to fold in more. Claude reads your words and these changes." : "They stay with this idea. Rewrite it to fold them into its words, or leave them here: Claude reads them either way.") + '</div>';
 }
 function bsCouncilCard(q){
   var a = bsA(q), d = q.idea, kd = a.killed || {}, dead = !!(own(kd, d.id) && kd[d.id]), skipped = bsCouncilSkipped(q, QUESTIONS, state.answers);
@@ -9205,10 +9414,10 @@ function bsCouncilCard(q){
   var tp = bsTopic();
   h += '<div class="qtopic" ' + dirA(tp.title) + '>' + esc(tp.title) + '</div><h2 class="qtitle srx" id="qh" tabindex="-1">Idea ' + pos + ' of ' + n.length + ': ' + esc(d.text) + '</h2>';
   var card = { key: q.id + "/" + d.id, q: q, id: d.id, text: d.text, hat: d.hat, mine: d.by === "you", by: d.by, idea: true };
-  var from = d.extra ? "An extra from " + bsName(d.hat) + (d.from ? ": " + d.from : "") : (d.from || (d.by === "you" ? "" : "Suggested by " + bsName(d.by)));
+  var from = d.extra ? "An extra from " + bsName(d.hat) + (d.from ? ": " + d.from : "") : (d.from || (d.by === "you" || d.by === "merged" ? "" : "Suggested by " + bsName(d.by)));
   if(skipped) return h + '<div class="bsgone"><p>You killed this extra on the extras card, so the council skips it.</p><button type="button" class="btn sec sm" data-action="bs-restore" data-key="' + esc("extras/" + d.id) + '">Restore it</button></div>' + bsCouncilMine(q);
   if(dead) return h + '<div class="bsgone"><p ' + dirA(d.text) + '>&ldquo;' + esc(d.text) + '&rdquo; is killed. It\'s in the bucket.</p><button type="button" class="btn sec sm" data-action="bs-restore" data-key="' + esc(card.key) + '">Restore it</button></div>' + bsCouncilMine(q);
-  var ideaHTML = '<div class="bsidea">' + bsCardHTML(card, { nokill: true, big: true, by: d.by === "you" ? "" : bsName(d.by) + " suggested", why: from }) + '</div>';
+  var ideaHTML = bsIdeaHTML(q, a, card, from);
   var open = own(bsSeat, q.id) ? bsSeat[q.id] : "";
   var seats = BS_ALL.map(function(hat){ return bsSeatHTML(q, hat, a, open === hat); });
   if(SETTINGS.council === "row"){
@@ -9216,23 +9425,25 @@ function bsCouncilCard(q){
   } else {
     h += '<div class="bstable"><div class="bscol" role="group" aria-label="The council, left">' + seats.slice(0, 3).join("") + '</div><div class="bsmid">' + ideaHTML + bsBubbleHTML(q, open, a) + '</div><div class="bscol" role="group" aria-label="The council, right">' + seats.slice(3).join("") + '</div></div>';
   }
+  h += bsChangesHTML(q, a);
   h += bsCouncilMine(q);
   h += '<div class="bsacts">' + bsAddToggle("var:" + q.id, "Add a variant of your own") + '<button type="button" class="bskillbtn" data-action="bs-kill" data-key="' + esc(card.key) + '">' + BS_KILL + 'Kill this idea</button></div>';
   return h;
 }
 function bsCouncilMine(q){
-  var mine = bsMineHere(q);
-  return mine.length ? '<h3 class="bssub2">Yours from this idea</h3>' + bsGrid(mine, {}, "Your cards from this idea") : '';
+  var mine = bsMineHere(q, function(c){ return c.kind !== "change" && c.kind !== "answer"; });
+  return mine.length ? '<h3 class="bssub2">New ideas you took or added</h3>' + bsGrid(mine, {}, "New ideas you took or added") : '';
 }
 function bsOrderCard(q){
   var list = bsOrdered(QUESTIONS, state.answers);
   var h = bsBand("blue", bsPose, BS_INFO.blue.kind, q.line) + bsHead(q, q.question);
   if(!list.length) return h + '<p class="bsnone">Nothing made it through the council.</p>';
+  h += '<p class="bsordst">' + (Array.isArray(bsA(q).order) ? 'This is your order now.<button type="button" class="bslink" data-action="bs-order-clear">Leave it to Claude</button>' : 'In the order the council suggests. Leave it as it is and Claude orders these; move any to make the order yours.') + '</p>';
   h += '<ol class="rlist bsorder" id="bsorder" aria-label="Your order">';
   list.forEach(function(x, i){
     var pos = ", now " + (i + 1) + " of " + list.length, nm = x.text.length > 60 ? x.text.slice(0, 57) + "..." : x.text;
     h += '<li class="ritem bs-' + esc(x.hat) + '" data-key="' + esc(x.key) + '"><button type="button" class="rhandle" tabindex="-1" aria-hidden="true" title="Drag to move">' + ICO.grip + '</button><span class="rpos">' + (i + 1) + '</span>';
-    h += '<span class="rtext"><span class="rl" ' + dirA(x.text) + '>' + esc(x.text) + '</span><span class="cx">' + esc(x.by === "you" ? "Yours" : bsName(x.by) + " suggested") + (x.from && x.from !== "round 1" ? ", " + esc(x.from) : "") + '</span></span>';
+    h += '<span class="rtext"><span class="rl" ' + dirA(x.text) + '>' + esc(x.text) + '</span><span class="cx">' + esc(bsByLabel(x.by)) + (x.from && x.from !== "round 1" ? ", " + esc(x.from) : "") + (x.rewritten ? ", in your words" : "") + (x.changes ? ", " + esc(plural(x.changes, "change", "changes")) : "") + '</span></span>';
     h += '<span class="rarrows"><button type="button" class="rarrow" data-action="bs-move" data-i="' + i + '" data-d="-1" aria-label="Move ' + esc(nm) + ' up' + esc(pos) + '"' + (i === 0 ? " disabled" : "") + '>' + ICO.up + '</button><button type="button" class="rarrow" data-action="bs-move" data-i="' + i + '" data-d="1" aria-label="Move ' + esc(nm) + ' down' + esc(pos) + '"' + (i === list.length - 1 ? " disabled" : "") + '>' + ICO.down + '</button></span></li>';
   });
   h += '</ol><div class="hint">Drag a row by its handle, or move it with its arrows. The decision round starts from the top.</div>';
@@ -9308,11 +9519,11 @@ function renderBsSummary(){
   else {
     var cards = bsCards(), yours = cards.filter(function(c){ return c.own; }).length, killed = cards.filter(function(c){ return c.killed; }).length;
     h += '<div class="sumstats"><b ' + dirA(tp.title) + '>' + esc(tp.title) + '</b>: <span ' + dirA(tp.question) + '>' + esc(tp.question) + '</span> You wrote <b>' + yours + '</b> ' + (yours === 1 ? "card" : "cards") + ' and killed <b>' + killed + '</b>. ' +
-      (r === 1 ? "Hand it back to Claude with Copy answers JSON or Save, and round 2 brings the council." : "Hand it back to Claude with Copy answers JSON or Save; your order is where the decision round starts.") + '</div>';
+      (r === 1 ? "Hand it back to Claude with Copy answers JSON or Save, and round 2 brings the council." : Array.isArray(bsA(bsOrderQ() || {}).order) ? "Hand it back to Claude with Copy answers JSON or Save; your order is where the decision round starts." : "Hand it back to Claude with Copy answers JSON or Save. You left the order to Claude, so it orders these before the decision round.") + '</div>';
     h += sumProjHTML();
     if(r === 2){
       var ord = bsOrdered(QUESTIONS, state.answers);
-      if(ord.length) h += '<ol class="bssumord">' + ord.map(function(x){ return '<li ' + dirA(x.text) + '>' + esc(x.text) + ' <span class="sumsub">' + esc(x.by === "you" ? "Yours" : bsName(x.by)) + '</span></li>'; }).join("") + '</ol>';
+      if(ord.length) h += '<ol class="bssumord">' + ord.map(function(x){ return '<li ' + dirA(x.text) + '>' + esc(x.text) + ' <span class="sumsub">' + esc(x.by === "you" ? "Yours" : x.by === "merged" ? "Merged" : bsName(x.by)) + (x.changes ? ", " + esc(plural(x.changes, "change", "changes")) : "") + '</span></li>'; }).join("") + '</ol>';
     }
   }
   h += '<div class="exphead"><label for="exp"><b>Answers JSON</b></label><button type="button" class="btn sec" data-action="copy">Copy answers JSON</button></div>';
@@ -9377,6 +9588,22 @@ function bsAddFrom(key){
   var c = { id: bsMineId(a, q), text: text };
   if(parts[0] === "spark"){ if(!q.sparks || !q.sparks.some(function(s){ return s.id === parts[2]; })) return; c.spark = parts[2]; }
   else if(parts[0] === "var"){ if(q.role !== "council") return; c.kind = "variant"; }
+  else if(parts[0] === "ans"){
+    var said = q.role === "council" ? bsAnsSaid(q, key) : undefined;
+    if(said === undefined) return;
+    c.kind = "answer"; c.hat = parts[2]; c.on = said;
+    a.read[parts[2]] = true;
+    a.mine.push(c);
+    delete bsDraft[key];
+    delete bsBoxOpen[key];
+    bsPut(q, a);
+    scrollKeep(render);
+    focusQuiet(document.querySelector('#app .bsseat[data-hat="' + bsAttr(parts[2]) + '"]') || pageHeading());
+    srSay("Your answer is a change to this idea now.");
+    bsPleased(q);
+    faceFlash("pick", 1300);
+    return;
+  }
   else if(parts[0] !== "box" && parts[0] !== "add") return;
   a.mine.push(c);
   delete bsDraft[key];
@@ -9404,12 +9631,24 @@ function bsCommitDrafts(q){
     var p = key.split(":");
     if(p[1] !== q.id) return;
     delete bsDraft[key];
+    if(p[0] === "rw"){
+      if(bsRw === q.id) bsRw = null;
+      if(q.role === "council" && v && v !== bsIdeaWords(q, bsA(q))){ var ra = bsTake(q); if(v === q.idea.text) delete ra.rewrite; else ra.rewrite = v; bsPut(q, ra); n++; }
+      return;
+    }
     if(!v) return;
     var a = bsTake(q);
     if(a.mine.length >= BS_MINE) return;
     var nc = { id: bsMineId(a, q), text: v };
     if(p[0] === "spark"){ if(!q.sparks || !q.sparks.some(function(s){ return s.id === p[2]; })) return; nc.spark = p[2]; }
     else if(p[0] === "var"){ if(q.role !== "council") return; nc.kind = "variant"; }
+    else if(p[0] === "ans"){
+      if(q.role !== "council") return;
+      var said = bsAnsSaid(q, key);
+      delete bsBoxOpen[key];
+      if(said === undefined) nc.kind = "variant";
+      else { nc.kind = "answer"; nc.hat = p[2]; nc.on = said; a.read[p[2]] = true; }
+    }
     else if(p[0] !== "box" && p[0] !== "add") return;
     a.mine.push(nc);
     bsPut(q, a);
@@ -9420,6 +9659,7 @@ function bsCommitDrafts(q){
 }
 function bsBoxShow(key, open){
   bsBoxOpen[key] = !!open;
+  if(open && key.indexOf("ans:") === 0){ var ap = key.split(":"); bsSeat[ap[1]] = ap[2]; bsPinned[ap[1]] = true; bsHoverCancel(); }
   if(!open) delete bsDraft[key];
   scrollKeep(render);
   var t = document.querySelector('#app textarea[data-key="' + bsAttr(key) + '"]');
@@ -9428,7 +9668,7 @@ function bsBoxShow(key, open){
 }
 function bsFieldSet(key, val){
   bsDraft[key] = String(val || "");
-  if(key.indexOf("edit:") === 0) return;
+  if(key.indexOf("edit:") === 0 || key.indexOf("rw:") === 0) return;
   var ok = document.querySelector('#app [data-action="bs-add"][data-key="' + bsAttr(key) + '"]');
   if(ok) ok.disabled = !bsDraft[key].trim();
 }
@@ -9537,6 +9777,7 @@ function bsSeatOpen(hat, pin){
   } else {
     if(bsPinned[q.id]) return;
     bsSeat[q.id] = hat;
+    if(bsAnsBusy(q.id, hat)) bsPinned[q.id] = true;
   }
   bsCouncilRedraw(q);
 }
@@ -9565,6 +9806,8 @@ function bsHoverAt(ev){
       bsHoverTimer = null;
       var now = bsCur();
       if(!now || now.id !== q.id || bsPinned[q.id] || bsSeat[q.id] === sh) return;
+      var bb = document.getElementById("bsbub");
+      if(bb && bb.contains(document.activeElement)) return;
       var el = document.elementFromPoint(bsPtrX, bsPtrY), at = el && el.closest ? el.closest(".bsseat") : null;
       if(at && at.getAttribute("data-hat") === sh) bsSeatOpen(sh, false);
     }, 260);
@@ -9579,6 +9822,8 @@ function bsSeatLeaveSoon(){ if(bsLeaveTimer) return; bsLeaveTimer = setTimeout(f
 function bsSeatLeave(){
   var q = bsCur();
   if(!q || q.role !== "council" || bsPinned[q.id]) return;
+  var bub = document.getElementById("bsbub");
+  if(bub && bub.contains(document.activeElement)) return;
   if(bsSeat[q.id]){ bsSeat[q.id] = ""; bsCouncilRedraw(q); }
 }
 /* Only the seats and the bubble redraw, so focus and scroll stay where they are. */
@@ -9616,24 +9861,109 @@ function bsReadArm(q){
     renderSide();
   }, TIMING.bsread || 3000);
 }
-function bsTake2(hat){
+/* Taking a comment: as a new idea of yours (it goes to your order), as a change to this idea (it stays with the
+   idea), or, for Blue's version, as the idea's words. */
+function bsTake2(hat, n, how){
   var q = bsCur();
   if(!q || q.role !== "council") return;
-  var say = bsComment(q, hat);
-  if(say === null) return;
-  var a = bsTake(q);
-  if(a.mine.some(function(m){ return m.kind === "taken" && m.hat === hat && !m.killed; })) return;
+  var say = bsSays(q, hat)[n || 0];
+  if(say === undefined) return;
+  var a = bsTake(q), st;
+  if(how === "words"){
+    var w = bsBlueWords(hat, say);
+    if(!w) return;
+    if(bsRw === q.id){
+      bsDraft["rw:" + q.id] = w;
+      scrollKeep(render);
+      var rt = document.getElementById("bsrw");
+      if(rt){ rt.focus(); try{ rt.setSelectionRange(rt.value.length, rt.value.length); }catch(e){} }
+      srSay("Blue's version is in the box. Save keeps it.");
+      return;
+    }
+    if(w === q.idea.text) delete a.rewrite; else a.rewrite = w;
+    a.read[hat] = true;
+    bsRw = null;
+    delete bsDraft["rw:" + q.id];
+    bsPut(q, a);
+    scrollKeep(render);
+    st = document.querySelector('#app .bsseat[data-hat="' + hat + '"]');
+    if(st) st.focus();
+    srSay("Blue's version is the idea's words now, marked against the original.");
+    faceFlash("pick", 1300);
+    return;
+  }
+  var kind = how === "change" ? "change" : "taken";
+  var same = function(m){ return bsTookFrom(m, kind, hat, say, q); };
+  if(a.mine.some(function(m){ return same(m) && !m.killed; })) return;
   var gone = null;
-  a.mine.forEach(function(m){ if(!gone && m.kind === "taken" && m.hat === hat && m.killed) gone = m; });
+  a.mine.forEach(function(m){ if(!gone && same(m) && m.killed) gone = m; });
   if(gone) delete gone.killed;
-  else a.mine.push({ id: bsMineId(a, q), text: say, kind: "taken", hat: hat });
-  if(!a.read[hat]) a.read[hat] = true;
+  else if(a.mine.length >= BS_MINE){ toast(false, "That's " + BS_MINE + " cards here, the most one card keeps."); return; }
+  else a.mine.push({ id: bsMineId(a, q), text: say, kind: kind, hat: hat, on: say });
+  a.read[hat] = true;
   bsPut(q, a);
   scrollKeep(render);
-  var st = document.querySelector('#app .bsseat[data-hat="' + hat + '"]');
+  st = document.querySelector('#app .bsseat[data-hat="' + hat + '"]');
   if(st) st.focus();
-  srSay("Taken as your idea. It goes to your order.");
+  srSay(kind === "change" ? "Taken as a change. It stays with this idea." : "Taken as a new idea. It goes to your order.");
   faceFlash("pick", 1300);
+}
+function bsRwFocus(){ focusQuiet(document.querySelector('#app [data-action="bs-rw"]') || pageHeading()); }
+function bsRwOpen(){
+  var q = bsCur();
+  if(!q || q.role !== "council") return;
+  bsRw = q.id;
+  delete bsDraft["rw:" + q.id];
+  scrollKeep(render);
+  var t = document.getElementById("bsrw");
+  if(t){ t.focus(); try{ t.setSelectionRange(t.value.length, t.value.length); }catch(e){} }
+}
+function bsRwSave(){
+  var q = bsCur(), t = document.getElementById("bsrw");
+  if(!q || q.role !== "council" || !t) return;
+  var v = String(t.value || "").trim();
+  if(!v){ bsRwCancel(); return; }
+  bsRw = null;
+  delete bsDraft["rw:" + q.id];
+  var a = bsTake(q);
+  if(v === q.idea.text) delete a.rewrite; else a.rewrite = v;
+  bsPut(q, a);
+  scrollKeep(render);
+  bsRwFocus();
+  srSay(v === q.idea.text ? "Saved. The idea has its original words." : "Saved. Your words are marked against the original.");
+}
+function bsRwCancel(){
+  var q = bsCur();
+  bsRw = null;
+  if(q) delete bsDraft["rw:" + q.id];
+  scrollKeep(render);
+  bsRwFocus();
+}
+function bsRwUndo(){
+  var q = bsCur();
+  if(!q || q.role !== "council") return;
+  var a = bsTake(q);
+  delete a.rewrite;
+  bsPut(q, a);
+  scrollKeep(render);
+  bsRwFocus();
+  srSay("Back to the original words.");
+}
+function bsMergedToggle(key){
+  bsBoxOpen[key] = !bsBoxOpen[key];
+  scrollKeep(render);
+  focusQuiet(document.querySelector('#app [data-action="bs-merged"][data-key="' + bsAttr(key) + '"]'));
+}
+function bsOrderClear(){
+  var q = bsCur();
+  if(!q || q.role !== "order") return;
+  var a = bsTake(q);
+  delete a.order;
+  bsOrderGap = {};
+  bsPut(q, a);
+  scrollKeep(render);
+  focusQuiet(pageHeading());
+  srSay("The order is Claude's to set again.");
 }
 /* Your order. */
 function bsOrderKeys(){ return bsOrdered(QUESTIONS, state.answers).map(function(x){ return x.key; }); }
@@ -9689,9 +10019,10 @@ function bsDragEnd(){
   var keys = Array.prototype.slice.call(bsDrag.list.querySelectorAll("li.ritem")).map(function(li){ return li.getAttribute("data-key"); });
   bsDrag.li.classList.remove("dragging");
   bsDrag = null;
-  bsOrderSet(keys);
+  var moved = keys.join("\n") !== bsOrderKeys().join("\n");
+  if(moved) bsOrderSet(keys);
   scrollKeep(render);
-  srSay("Order saved.");
+  srSay(moved ? "Order saved." : "Nothing moved.");
 }
 function bsNext(){
   var q = bsCur();
@@ -9706,7 +10037,6 @@ function bsNext(){
   }
   bsCommitDrafts(q);
   var a = bsTake(q);
-  if(q.role === "order" && !a.order) a.order = bsOrderKeys();
   if(!a.seen){ a.seen = true; state.answers[q.id] = a; markChanged(); }
   else if(q.role === "order"){ state.answers[q.id] = a; markChanged(); }
   if(sleeping) wakeUp();
@@ -9721,12 +10051,13 @@ function bsKey(ev){
   var key = t.getAttribute("data-key") || "";
   if(ev.key === "Enter" && !ev.shiftKey && !ev.isComposing){
     ev.preventDefault();
-    if(key.indexOf("edit:") === 0) bsEditSave(key.slice(5)); else bsAddFrom(key);
+    if(key.indexOf("edit:") === 0) bsEditSave(key.slice(5)); else if(key.indexOf("rw:") === 0) bsRwSave(); else bsAddFrom(key);
     return true;
   }
   if(ev.key === "Escape"){
     if(key.indexOf("edit:") === 0){ ev.preventDefault(); bsEditCancel(); return true; }
-    if(key.indexOf("add:") === 0 || key.indexOf("var:") === 0){ ev.preventDefault(); bsBoxShow(key, false); return true; }
+    if(key.indexOf("rw:") === 0){ ev.preventDefault(); bsRwCancel(); return true; }
+    if(key.indexOf("add:") === 0 || key.indexOf("var:") === 0 || key.indexOf("ans:") === 0){ ev.preventDefault(); bsBoxShow(key, false); return true; }
   }
   return false;
 }
@@ -9736,11 +10067,15 @@ function bsFieldStands(q, key){
   if(p[0] === "edit"){ var rest = key.slice(5); return rest.split("/")[0] === q.id && !!bsFind(rest); }
   if(p[1] !== q.id) return false;
   if(p[0] === "spark") return !!(q.sparks && q.sparks.some(function(s){ return s.id === p[2]; }));
+  if(p[0] === "rw") return q.role === "council";
+  if(p[0] === "ans") return q.role === "council" && bsSays(q, p[2]).some(function(x){ return bsHash(x) === p[3]; });
   return p[0] === "box" || p[0] === "add" || (p[0] === "var" && q.role === "council");
 }
 function bsFieldBack(key, text){
   bsDraft[key] = text;
   if(key.indexOf("edit:") === 0) bsEdit = key.slice(5);
+  else if(key.indexOf("rw:") === 0) bsRw = key.slice(3);
+  else if(key.indexOf("ans:") === 0){ var p = key.split(":"); bsBoxOpen[key] = true; bsSeat[p[1]] = p[2]; bsPinned[p[1]] = true; }
   else if(key.indexOf("add:") === 0 || key.indexOf("var:") === 0) bsBoxOpen[key] = true;
 }
 
@@ -9749,8 +10084,8 @@ function bsBinOpen(){ var d = document.getElementById("bsbinp"); return !!(d && 
 function bsBinHTML(){
   var list = bsCards().filter(function(c){ return c.killed; });
   var where = function(c){
-    if(c.own) return "Yours" + (c.kind === "taken" ? ", taken from " + bsName(c.hat) : c.kind === "variant" ? ", a variant" : "") + ", under " + bsName(c.q.role === "council" ? c.q.idea.hat : c.hat);
-    if(c.idea) return c.by === "you" ? "Your idea, killed on the council" : "Killed on the council, from " + bsName(c.by);
+    if(c.own) return "Yours" + (c.kind === "taken" ? ", taken from " + bsName(c.hat) : c.kind === "variant" ? ", a variant" : c.kind === "change" ? ", a change from " + bsName(c.hat) : c.kind === "answer" ? ", your answer to " + bsName(c.hat) : "") + ", under " + bsName(c.q.role === "council" ? c.q.idea.hat : c.hat);
+    if(c.idea) return c.by === "you" ? "Your idea, killed on the council" : c.by === "merged" ? "A merged idea, killed on the council" : "Killed on the council, from " + bsName(c.by);
     if(c.q.role === "extras") return "An extra from " + bsName(c.hat);
     return "Suggested by " + bsName(c.hat);
   };
@@ -10011,7 +10346,13 @@ document.addEventListener("click", function(ev){
   else if(act === "bs-bin"){ bsBinShow(); }
   else if(act === "bs-bin-close"){ bsBinClose(); }
   else if(act === "bs-seat"){ bsSeatOpen(el.getAttribute("data-hat"), true); }
-  else if(act === "bs-take"){ bsTake2(el.getAttribute("data-hat")); }
+  else if(act === "bs-take"){ bsTake2(el.getAttribute("data-hat"), parseInt(el.getAttribute("data-n") || "0", 10) || 0, el.getAttribute("data-how") || "idea"); }
+  else if(act === "bs-rw"){ bsRwOpen(); }
+  else if(act === "bs-rw-save"){ bsRwSave(); }
+  else if(act === "bs-rw-cancel"){ bsRwCancel(); }
+  else if(act === "bs-rw-undo"){ bsRwUndo(); }
+  else if(act === "bs-merged"){ bsMergedToggle(el.getAttribute("data-key") || ""); }
+  else if(act === "bs-order-clear"){ bsOrderClear(); }
   else if(act === "bs-move"){ bsMove(parseInt(el.getAttribute("data-i"), 10), parseInt(el.getAttribute("data-d"), 10)); }
   else if(act === "bs-next"){ bsNext(); }
 });

@@ -5,7 +5,7 @@
     "product": "Handheld",
     "kind": "brainstorm",
     "round": 2,
-    "needs_wizard": "0.9.0"
+    "needs_wizard": "0.10.0"
   },
   "topic": {
     "title": "Steam games on my handheld",
@@ -13,7 +13,7 @@
     "context": "The handheld plays a few ported games well, but most of the Steam library still only runs on the PC. Nothing is decided yet: this is about finding ideas, not choosing one."
   },
   "aims": {
-    "line": "Round 2. The hats have a few more first, then the council takes your ideas one at a time, and you put them in order.",
+    "line": "Round 2. The hats have a few more first, then the council takes your ideas one at a time, each hat handing you something to use.",
     "goals": [
       "Play my whole Steam library away from my desk.",
       "No fiddling: pick a game and play."
@@ -34,7 +34,7 @@
         "council": [
           {
             "hat": "red",
-            "say": "Soft and warm, like a book before sleep. This one feels like yours."
+            "say": "Aim for calm: the cosy mode also holds back notifications and achievement pop-ups, so nothing jolts you awake."
           },
           {
             "hat": "black",
@@ -49,7 +49,7 @@
         "council": [
           {
             "hat": "blue",
-            "say": "This keeps both paths and puts each where it works. Close to the core."
+            "say": "Closer to your goal: stream everything at home with nothing to set up per game, and keep a short shelf of ported games for outside."
           },
           {
             "hat": "green",
@@ -64,7 +64,7 @@
         "council": [
           {
             "hat": "white",
-            "say": "Wake-on-LAN needs the PC plugged in and set up for it. What would happen when it's off at the wall?"
+            "say": "Known about Wake-on-LAN: it needs the PC plugged in and switched on for it in the PC's firmware and network settings. What would happen when it's off at the wall?"
           }
         ]
       }
@@ -73,42 +73,82 @@
   "ideas": [
     {
       "id": "i1",
-      "text": "Stream games from my PC when it's on.",
-      "by": "you",
+      "text": "Stream games from my PC when it's on, and put the effort into the controls instead of porting.",
+      "by": "merged",
       "hat": "yellow",
-      "from": "From Yellow's spark: Does the game have to run on the handheld at all?",
+      "merged": [
+        {
+          "text": "Stream games from my PC when it's on.",
+          "by": "you",
+          "hat": "yellow",
+          "from": "From Yellow's spark: Does the game have to run on the handheld at all?"
+        },
+        {
+          "text": "Don't port at all: stream from the PC and spend the effort on the controls.",
+          "by": "blue",
+          "hat": "blue"
+        }
+      ],
       "council": [
         {
           "hat": "blue",
-          "say": "This goes straight at your first aim: your whole library away from the desk, with nothing ported."
+          "say": "Closer to your goal: stream your slower games with controls mapped for the handheld, and pick up exactly where the PC left off, so your whole library plays away from the desk with no fiddling."
         },
         {
           "hat": "white",
-          "say": "Streaming needs your PC on and a strong connection, so away from home it struggles. What would make it work on the go?"
+          "say": "Known from game streaming: input lag over wifi makes fast games feel off, and a cable at the PC's end is the usual fix. Which of your games are slow enough not to mind?"
         },
         {
           "hat": "red",
-          "say": "Instant, nothing to set up, every game you own. That's the fun version."
+          "say": "Relief is the one to aim for: open the handheld and the game you left on the PC is already there, mid-level."
         },
         {
           "hat": "black",
-          "say": "Fast games lag, and the battery drains on wifi. Which games would you never stream?"
+          "say": "Streaming keeps the wifi busy the whole session, so the battery drains faster than with a ported game. How long does a session need to last?"
+        },
+        {
+          "hat": "black",
+          "say": "It all rests on the PC being on and the connection holding. What's the plan for a train ride?"
         },
         {
           "hat": "green",
           "say": "Stream while the port downloads, then switch to the port when it's ready."
+        },
+        {
+          "hat": "green",
+          "say": "Map each game's controls once on the handheld, and keep the layout when a port arrives."
         }
       ]
     },
     {
       "id": "i2",
+      "text": "Games with Steam Cloud already carry their saves between devices, so the handheld can pick up mid-game.",
+      "by": "white",
+      "hat": "white",
+      "council": [
+        {
+          "hat": "red",
+          "say": "Aim for relief: when a game opens on the handheld, it shows where you left off on the PC, so picking up feels like nothing was lost."
+        },
+        {
+          "hat": "black",
+          "say": "A save made on both devices before they sync can conflict, and one of the two gets thrown away. Which device should win?"
+        }
+      ]
+    },
+    {
+      "id": "i3",
       "text": "Get one game I own running, start to finish.",
       "by": "you",
       "hat": "white",
       "council": [
         {
+          "hat": "blue",
+          "say": "Closer to your goal: pick a game you'd play every week, so the first port already proves the no-fiddling path and keeps paying off."
+        },
+        {
           "hat": "yellow",
-          "say": "One full game proves the whole path, and the next one gets easier."
+          "say": "Turn it into a recipe: write down each step as the first game goes, so the next port takes an evening instead of a weekend."
         },
         {
           "hat": "black",
@@ -117,31 +157,23 @@
       ]
     },
     {
-      "id": "i3",
+      "id": "i4",
       "text": "A check that rates a game before I try to port it.",
       "by": "you",
       "hat": "black",
       "from": "From Black's spark: Many games won't run on hardware this weak. What decides which ones will?",
       "council": [
         {
+          "hat": "blue",
+          "say": "Closer to your goal: the check sorts your whole library onto that shelf at once, so you only ever pick from games that are ready."
+        },
+        {
           "hat": "white",
-          "say": "A rating needs reports of how each game runs on this hardware, and those exist mostly for popular games. Where would ratings for the rest come from?"
+          "say": "Known from compatibility sites: ratings come from players' reports, so popular games are well covered and older or niche ones often have none. Where would ratings for the rest come from?"
         },
         {
           "hat": "green",
           "say": "Turn the rating into a shelf: ready tonight, worth a try, forget it."
-        }
-      ]
-    },
-    {
-      "id": "i4",
-      "text": "Games with Steam Cloud already carry their saves between devices, so the handheld can pick up mid-game.",
-      "by": "white",
-      "hat": "white",
-      "council": [
-        {
-          "hat": "red",
-          "say": "Picking up mid-level is the moment that makes it feel like your library."
         }
       ]
     },
@@ -154,28 +186,20 @@
       "council": [
         {
           "hat": "blue",
-          "say": "It widens the point from Steam to every game you own, still on your aim of playing away from the desk."
+          "say": "Closer to your goal: one list of every game you own, Steam and GOG together, each marked by whether it plays away from the desk."
+        },
+        {
+          "hat": "white",
+          "say": "Known about GOG: its games come without DRM, so one with a build that runs on the handheld can simply be copied over. Which of yours have one?"
         },
         {
           "hat": "yellow",
-          "say": "One list for every game you own is the dream version."
-        }
-      ]
-    },
-    {
-      "id": "i6",
-      "text": "Don't port at all: stream from the PC and spend the effort on the controls.",
-      "by": "blue",
-      "hat": "blue",
-      "council": [
-        {
-          "hat": "black",
-          "say": "It all rests on the PC being on and the connection holding. What's the plan for a train ride?"
+          "say": "Let the same list also show the games you haven't touched in a year, so the handheld becomes your way back into the backlog."
         }
       ]
     }
   ],
   "order": {
-    "line": "These made it through. Put them in your order; the decision round starts from the top."
+    "line": "These made it through, in the order we'd take them. Move any you like, or leave it to Claude; the decision round starts from the top."
   }
 }

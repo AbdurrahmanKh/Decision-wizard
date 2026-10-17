@@ -87,20 +87,23 @@
   "suggest": [
     {
       "hat": "white",
-      "line": "Four within reach, from what we know. Kill any that miss.",
+      "line": "Four within reach, from what I looked up. Kill any that miss.",
       "question": "What's within reach?",
       "ideas": [
         {
           "id": "w1",
-          "text": "Start with games that already have a Linux build: no port needed."
+          "text": "Start with games that already have a Linux build: no port needed.",
+          "why": "Each game's Steam store page lists the systems it runs on."
         },
         {
           "id": "w2",
-          "text": "Check your library against a community list of games known to run, and start tonight."
+          "text": "Check your library against a community list of games known to run, and start tonight.",
+          "why": "Community compatibility sites collect players' reports, game by game."
         },
         {
           "id": "w3",
-          "text": "Games with Steam Cloud already carry their saves between devices, so the handheld can pick up mid-game."
+          "text": "Games with Steam Cloud already carry their saves between devices, so the handheld can pick up mid-game.",
+          "why": "A game's Steam store page says whether it supports Steam Cloud."
         },
         {
           "id": "w4",

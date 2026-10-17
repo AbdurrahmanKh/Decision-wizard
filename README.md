@@ -43,10 +43,11 @@ When a question is still too open for options, ask Claude for a brainstorm in th
 
 - **Your aims** open it: your goals, and what you want to avoid.
 - **Extras:** a few more ideas from the hats, from what you wrote. Kill any that miss; the rest go to the council.
-- **The council:** every idea that survived, one at a time, with the six hats around it at a round table, or in a row if you choose that in Options. A gold mark means a hat has something to say: open it to read. Take a comment as an idea of your own, add a variant, or kill the idea.
-- **Your order:** drag what survived into order. The decision round Claude sends next starts from the top.
+- **The council:** every idea that survived, one at a time, with the six hats around it at a round table, or in a row if you choose that in Options. Claude merges cards that belong together into one idea, and **Show the ideas it came from** lists them. A gold mark means a hat has something to say, with a number when it says more than one thing: open it to read. Each hat hands you something to use, in its own color: Blue a sharper version of the idea, White a known pitfall it looked up, Red a change that makes it feel better to use, Yellow a more useful version, Black a crack, Green a twist or two.
+- **Work on the idea:** take a comment as a new idea of your own, or as a change that stays with the idea; answer a hat's question right under it; use Blue's version as the idea's words; or **Rewrite** the idea yourself, with what you changed marked against the original. You can also add a variant or kill the idea.
+- **Your order:** what survived, in the order the council suggests. Drag it into your own, or leave it and Claude orders it; **Leave it to Claude** gives it back. The decision round Claude sends next starts from the top.
 
-Send each round back the way you send a round. Brainstorms need wizard 0.9.0 and skill 0.8.0. The one-file brainstorms of wizard 0.8.0 no longer open, but the ones already in your list keep their answers.
+Send each round back the way you send a round. Brainstorms need wizard 0.9.0 and skill 0.8.0; round 2 as described here needs wizard 0.10.0 and skill 0.9.0. The one-file brainstorms of wizard 0.8.0 no longer open, but the ones already in your list keep their answers.
 
 ## Project folders, for Claude Code
 
@@ -88,7 +89,7 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 ## Versions
 
-- **Wizard: 0.9.1.** It's shown at the bottom of the wizard's Options panel.
-- **Skill: 0.8.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, and 0.9.0 for brainstorms.
+- **Wizard: 0.10.0.** It's shown at the bottom of the wizard's Options panel.
+- **Skill: 0.9.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.10.0 for their round 2.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).

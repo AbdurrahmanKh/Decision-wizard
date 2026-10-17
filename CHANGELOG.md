@@ -2,6 +2,40 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.10.0 and skill 0.9.0, 17 October 2026
+
+### Added
+
+- Wizard: on the council, take a comment as a new idea, as before, or as a change to the idea. A change stays with the idea, under it in Changes you took, and goes back to Claude with it.
+- Wizard: Answer it, under a comment that ends on a question. Your answer becomes a change to the idea, with the question it answers.
+- Wizard: Rewrite, on the idea. Its words open in a box with the changes you took beside them; once saved, what you changed is marked against the original, struck words gone and highlighted words new. Back to the original undoes it.
+- Wizard: Use as the idea's words, on Blue's "Closer to your goal:" version, which takes it whole as the idea's new words, marked the same way.
+- Wizard: a hat can say up to four things on one idea. Its seat shows how many, and its bubble lists them, each with its own buttons.
+- Wizard: merged ideas. Claude can merge cards from round 1 into one idea, and Show the ideas it came from lists them.
+- Wizard: Leave it to Claude, on the order card once you've moved something, gives the order back.
+- Skill: round 2 merges cards that belong together into one idea, keeping every card it came from; a hat can say several things on one idea; and the skill reads the changes, answers, and rewrites that come back, taking each idea as you left it.
+
+### Changed
+
+- Wizard: each hat talks in its own color, in its card's line, its sparks, and its council bubble, in place of the plain white bubble.
+- Wizard: the order card says it starts in the council's order, and that Claude orders the ideas when you leave it as it is.
+- Skill: round 2 needs wizard 0.10.0; round 1 still needs 0.9.0.
+- Skill: after round 2, every card that survived counts as wanted, the hats' suggestions and extras included. The decision round asks only what your rewrites and answers leave open, and asks what only you know, such as which of your games, with a typed answer.
+
+### Fixed
+
+- Wizard: passing the order card no longer counts as setting the order. Before, Next or Finish there sent the order back as yours even when you hadn't moved anything.
+
+## Skill 0.8.1, 17 October 2026
+
+### Changed
+
+- Skill: on the council, every hat hands you something to use on the idea, never a remark about it. Blue sharpens: written last, one line that starts "Closer to your goal:" with the idea changed to serve your goals better and the best of the other hats folded in, ready to take whole. White grounds: known pitfalls, technical, UX, or game design, that bear on the idea, saying where each is known from. Red names a feeling, then changes the idea to cause it, for the person who'll use the thing. Yellow grows the idea, or names the next idea it unlocks. Black's cracks and Green's twists stay as they were.
+- Skill: a comment that could sit under any other idea unchanged isn't written. That hat stays silent and says its own short line.
+- Skill: before writing each round of a brainstorm, Claude searches the web for what's known about the topic, where web search is available, and White names where each fact was found.
+- Skill: ordering what survives round 2 is up to you. The order card starts in the order Claude suggests; leave it as it is and Claude orders the ideas itself and starts the decision round from its own top, without asking you to rank anything.
+- Skill: both brainstorm examples follow the new council and name White's sources.
+
 ## Wizard 0.9.1, 16 October 2026
 
 ### Changed
