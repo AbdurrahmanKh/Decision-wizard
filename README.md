@@ -25,7 +25,7 @@ A local copy of `index.html` keeps working as a plain page; installing is for th
 
 1. **Ask for a round.** Say "d-wizard this" and name the topic. Claude may also start one on its own when decisions need weighing.
 2. **Get the round file.** In Claude it arrives as a file in the chat, even when Claude can reach your folders. In Claude Code it lands in `wizard-rounds/` in your project.
-3. **Load and answer.** Open the wizard, press **Load**, and choose the file, drag it in, or paste it. Answer each question, or skip it to leave it open.
+3. **Load and answer.** Open the wizard, press **Load**, and choose the file, drag it in, or paste it. Answer each question, or skip it to leave it open. A question's context sits between the question and its answers: **Hide** on the Context panel folds it on that question, and the Context card in Options can move it under the answers.
 4. **Send the answers back.** Choose **Copy answers JSON** in the companion's menu or on the last screen, and paste it to Claude. Or use **Save round JSON file** and give Claude the file. In Chrome or Edge, saving writes the answers into the round file itself, so in Claude Code you just say the answers are ready.
 
 ## Brainstorms
@@ -89,7 +89,7 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 ## Versions
 
-- **Wizard: 0.10.0.** It's shown at the bottom of the wizard's Options panel.
-- **Skill: 0.9.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.10.0 for their round 2.
+- **Wizard: 0.10.1.** It's shown at the bottom of the wizard's Options panel.
+- **Skill: 0.9.1.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.10.0 for their round 2.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).

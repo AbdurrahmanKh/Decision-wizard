@@ -2,6 +2,18 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.10.1 and skill 0.9.1, 21 October 2026
+
+### Added
+
+- Wizard: the Context panel folds. Hide, on its header, folds it to one bar on that question, and Show brings it back. Every new question opens with its context showing, and a question you folded stays folded while the page is open.
+- Wizard: a Context card in Options, with Before the answers, the default, or After the answers, where 0.10.0 put it.
+
+### Changed
+
+- Wizard: a question's context now sits between the question and its answers, so the framing, quotes, and notes come before the options. This holds for every kind of question and for follow-ups, each with its own context. Brainstorm cards keep their context where it was.
+- Skill: no longer describes where the wizard shows things (the context, the title, the question, a recommendation's reason), so a change to the wizard's layout never needs a skill update. Rounds and answers are unchanged.
+
 ## Wizard 0.10.0 and skill 0.9.0, 17 October 2026
 
 ### Added

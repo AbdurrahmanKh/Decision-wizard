@@ -113,8 +113,18 @@ h1{font-family:'Bricolage Grotesque','IBM Plex Sans',sans-serif;font-size:calc(2
 .plink:hover{border-color:var(--green)}
 .plink:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .ctx{margin:16px 0 4px;padding:14px 16px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
-.ctxlab{display:flex;align-items:center;gap:6px;font-size:calc(11.5px*var(--fs));font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
-.ctxlead{font-size:calc(15.5px*var(--fs));line-height:1.6;color:var(--ink);margin:0 0 10px;max-width:74ch}
+.ctxlab{display:flex;align-items:center;gap:6px;width:calc(100% + 16px);margin:-6px -8px -6px;padding:6px 8px;border:0;border-radius:8px;background:none;font:inherit;font-size:calc(11.5px*var(--fs));font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green);text-align:left;cursor:pointer}
+.ctxlab:hover{background:var(--line2)}
+.ctxlab:focus-visible{outline:3px solid var(--focus);outline-offset:0}
+.ctxtog{margin-left:auto;display:inline-flex;align-items:center;gap:4px;line-height:1;color:var(--muted);font-weight:700;letter-spacing:.02em;text-transform:none;font-size:calc(12.5px*var(--fs))}
+.ctxlab:hover .ctxtog{color:var(--ink)}
+.ctxtog svg{transform:rotate(180deg);transition:transform .15s ease}
+.ctx.shut{padding-top:10px;padding-bottom:10px}
+.ctx.shut .ctxtog svg{transform:none}
+.ctx.pre{margin:12px 0 16px}
+.fup .ctx.pre{margin:6px 0 12px}
+@media (prefers-reduced-motion:reduce){ .ctxtog svg{transition:none} }
+.ctxlead{font-size:calc(15.5px*var(--fs));line-height:1.6;color:var(--ink);margin:8px 0 10px;max-width:74ch}
 .cqs{display:grid;gap:10px;margin:10px 0}
 .cqs.two{grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
 .cq{margin:0;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:10px 14px}
@@ -1145,6 +1155,15 @@ html{scroll-padding-bottom:var(--lift,0px)}
       <div class="onote">When a round recommends an answer, a small wizard hat marks it, with the reason under it when there is one.</div>
     </section>
     <section class="ogroup">
+      <h3 class="dsec">Context</h3>
+      <div class="osub">Where it shows on a question</div>
+      <div class="seg" role="group" aria-label="Where the context shows on a question">
+        <button type="button" data-action="set-ctx" data-v="before" aria-pressed="false">Before the answers</button>
+        <button type="button" data-action="set-ctx" data-v="after" aria-pressed="false">After the answers</button>
+      </div>
+      <div class="onote">Context is the framing, quotes, notes, links, and popups a question comes with. Hide, on its panel, folds it on that question, and Show brings it back.</div>
+    </section>
+    <section class="ogroup">
       <h3 class="dsec">Keys</h3>
       <div class="orow" id="row-keys"><span class="olab">Number keys pick answers</span><div class="seg sm" role="group" aria-label="Number keys pick answers"><button type="button" data-action="set-keys" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-keys" data-v="off" aria-pressed="false">Off</button></div></div>
       <div class="onote">Keys 1 to 9 pick an answer while you're on the question, and 1 and 2 pick in a bracket. They never pick while you type.</div>
@@ -1213,7 +1232,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.10.0";
+var WIZARD_VERSION = "0.10.1";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -1465,7 +1484,7 @@ function applyConfig(){
   headMeta();
 }
 var SETKEY = "decision-wizard-settings-v1";
-var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true, keys: true, council: "table" };
+var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true, keys: true, council: "table", ctx: "before" };
 function loadSettings(){
   var s = readJSON(SETKEY);
   if(s && typeof s === "object"){
@@ -1482,6 +1501,7 @@ function loadSettings(){
     if(typeof s.recs === "boolean") SETTINGS.recs = s.recs;
     if(typeof s.keys === "boolean") SETTINGS.keys = s.keys;
     if(s.council === "table" || s.council === "row") SETTINGS.council = s.council;
+    if(s.ctx === "before" || s.ctx === "after") SETTINGS.ctx = s.ctx;
     if(typeof s.name === "string") SETTINGS.name = s.name.slice(0, 30);
   } else {
     var t = lsGet(TKEY);
@@ -1503,7 +1523,7 @@ function applySettings(){
   applyMascot();
   renderOptions();
 }
-var OPTKEYS = { "set-theme": "theme", "set-size": "size", "set-mascot": "mascot", "set-talk": "talk", "set-quips": "quips", "set-sound": "sound", "set-timerhover": "timerHover", "set-timerbar": "timerBar", "set-recs": "recs", "set-keys": "keys", "set-council": "council" };
+var OPTKEYS = { "set-theme": "theme", "set-size": "size", "set-mascot": "mascot", "set-talk": "talk", "set-quips": "quips", "set-sound": "sound", "set-timerhover": "timerHover", "set-timerbar": "timerBar", "set-recs": "recs", "set-keys": "keys", "set-council": "council", "set-ctx": "ctx" };
 function renderOptions(){
   renderCompanions();
   var bs = document.querySelectorAll('#optdrawer [data-action^="set-"]');
@@ -1590,11 +1610,12 @@ function setOption(k, v){
   else if(k === "talk" || k === "quips" || k === "sound" || k === "timerHover" || k === "timerBar" || k === "recs" || k === "keys"){ SETTINGS[k] = (v === "on" || v === true); }
   else if(k === "name"){ SETTINGS.name = String(v || "").trim().slice(0, 30); }
   else if(k === "council"){ if(v !== "table" && v !== "row") return; SETTINGS.council = v; }
+  else if(k === "ctx"){ if(v !== "before" && v !== "after") return; SETTINGS.ctx = v; }
   else return;
   saveSettings();
   applySettings();
   updateTimers();
-  if((k === "recs" || k === "keys" || k === "council") && QUESTIONS.length) scrollKeep(render);
+  if((k === "recs" || k === "keys" || k === "council" || k === "ctx") && QUESTIONS.length) scrollKeep(render);
   var map = null;
   if(k === "theme") map = { light: ["opt_light", "warn"], dark: ["opt_dark", "pick"], system: ["opt_system", "pick"] }[SETTINGS.theme];
   else if(k === "size") map = { large: ["opt_large", "pick"], compact: ["opt_compact", "skip"], normal: ["opt_normal", "pick"] }[SETTINGS.size];
@@ -1773,7 +1794,7 @@ function render(){
    screen is the same, and to the heading when it changed, so the keyboard and a screen reader carry on from the
    answer just given instead of from the top of the page. */
 var lastScreen = null;
-var FOCUS_KEYS = ["data-action", "data-role", "data-i", "data-item", "data-f", "data-side", "data-idx", "data-note", "data-x", "data-d", "data-idea"];
+var FOCUS_KEYS = ["data-action", "data-role", "data-i", "data-item", "data-f", "data-side", "data-idx", "data-note", "data-x", "data-d", "data-idea", "data-ck"];
 function screenKey(){ return (CURKEY || "") + "#" + (QUESTIONS.length ? state.idx : "none"); }
 function focusBefore(){
   var ae = document.activeElement, body = !ae || ae === document.body;
@@ -1972,6 +1993,7 @@ ICO.folder = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke
 ICO.grip = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="9" cy="6" r="1.7"/><circle cx="15" cy="6" r="1.7"/><circle cx="9" cy="12" r="1.7"/><circle cx="15" cy="12" r="1.7"/><circle cx="9" cy="18" r="1.7"/><circle cx="15" cy="18" r="1.7"/></svg>';
 ICO.up = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>';
 ICO.down = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+ICO.chev = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
 /* Recommendations: a round can name the option it recommends, with the reason. Wizard recommendations in Options turns them off. */
 function recOf(o){
   if(!SETTINGS.recs || !o || typeof o.recommend !== "string") return null;
@@ -2010,13 +2032,36 @@ function blockHTML(d, inDetail){
   if(d.kind === "note" || (inDetail && d.kind !== "text")) return '<div class="cnote">' + ICO.info + '<span ' + dirA(t) + '>' + esc(t) + '</span></div>';
   return '<p class="ctext" ' + dirA(t) + '>' + esc(t) + '</p>';
 }
-function contextHTML(q){
+/* The Context panel sits before the answers, or after them when Options says so (brainstorm cards keep their own
+   place). Its header folds it on that question; what is folded is remembered per round and question until the page
+   closes, so every new question opens with its context showing. */
+var CTXSHUT = {};
+function ctxBefore(){ return SETTINGS.ctx !== "after"; }
+function ctxKey(id){ return (CURKEY || "") + "#" + String(id == null ? "" : id); }
+var ctxSeq = 0;
+function ctxToggle(btn){
+  var sec = btn && btn.closest ? btn.closest(".ctx") : null, id = btn ? btn.getAttribute("data-ck") : null;
+  if(!sec || id === null) return;
+  var shut = !sec.classList.contains("shut"), ck = ctxKey(id);
+  if(shut) CTXSHUT[ck] = true; else delete CTXSHUT[ck];
+  sec.classList.toggle("shut", shut);
+  var body = document.getElementById(btn.getAttribute("aria-controls"));
+  if(body){ if(shut) body.setAttribute("hidden", ""); else body.removeAttribute("hidden"); }
+  btn.setAttribute("aria-expanded", shut ? "false" : "true");
+  var w = btn.querySelector(".ctxtw");
+  if(w) w.textContent = shut ? "Show" : "Hide";
+}
+function contextHTML(q, id, pre){
   var ctx = typeof q.context === "string" ? q.context.trim() : "";
   var det = Array.isArray(q.detail) ? q.detail.filter(function(d){ return d && d.text != null && String(d.text).trim(); }) : [];
   var links = Array.isArray(q.links) ? q.links.filter(function(L){ return L && L.url; }) : [];
   var xs = extras(q);
   if(!ctx && !det.length && !links.length && !xs.length) return "";
-  var h = '<section class="ctx" aria-label="Context"><div class="ctxlab">' + ICO.info + '<span>Context</span></div>';
+  if(id === undefined) id = q.id;
+  var shut = !!CTXSHUT[ctxKey(id)], bid = "ctxb-" + (++ctxSeq);
+  var h = '<section class="ctx' + (pre ? ' pre' : '') + (shut ? ' shut' : '') + '" aria-label="Context">';
+  h += '<button type="button" class="ctxlab" data-action="ctx-toggle" data-ck="' + esc(String(id == null ? "" : id)) + '" aria-expanded="' + (shut ? 'false' : 'true') + '" aria-controls="' + bid + '">' + ICO.info + '<span>Context</span><span class="ctxtog"><span class="ctxtw">' + (shut ? 'Show' : 'Hide') + '</span>' + ICO.chev + '</span></button>';
+  h += '<div class="ctxbody" id="' + bid + '"' + (shut ? ' hidden' : '') + '>';
   if(ctx) h += '<p class="ctxlead" ' + dirA(ctx) + '>' + esc(ctx) + '</p>';
   for(var i=0;i<det.length;){
     if(det[i].kind === "quote"){
@@ -2031,7 +2076,7 @@ function contextHTML(q){
     links.forEach(function(L){ h += '<a class="plink" href="' + esc(L.url) + '" target="_blank" rel="noopener">' + esc(L.label || L.url) + ' &#8599;</a>'; });
     h += '</div>';
   }
-  return h + '</section>';
+  return h + '</div></section>';
 }
 function hasQuestion(q){ return !!(q && typeof q.question === "string" && q.question.trim()); }
 function headHTML(q){
@@ -2047,6 +2092,8 @@ function renderSingle(q){
   h += '<div class="qcard">';
   h += '<div class="corner"><span class="n">' + esc(q.id) + '</span><span class="s" aria-hidden="true">&#10022;</span></div>';
   h += headHTML(q);
+  var pre = ctxBefore();
+  if(pre) h += contextHTML(q, q.id, true);
   if(saved && saved.status !== "open" && saved.status !== "batch"){ h += '<div class="recorded">Recorded: ' + (saved.status === "custom" ? "custom answer" : "picked") + '</div>'; }
   if(card){
     h += optionsHTML(q.options, saved, "pick", "", recOf(q));
@@ -2070,15 +2117,16 @@ function renderSingle(q){
         h += '<h3 class="fuptitle" id="fh-' + fi + '" tabindex="-1"><span class="fid">' + esc(f.id) + '</span><span ' + dirA(f.title) + '>' + esc(f.title) + '</span></h3>';
       }
       var fcard = isCardList(f.options);
+      if(pre) h += contextHTML({ context: f.context, detail: f.detail, links: f.links }, f.id, true);
       h += optionsHTML(f.options, fa, "fpick", fattr, recOf(f), "fh-" + fi);
       if(f.custom !== false){ h += customHTML(f.customLabel, fa, ["fcp-" + fi, "fct-" + fi, "fcok-" + fi], ["fcustom-open", "fcustom-confirm", "fcustom-cancel"], fattr, true); }
       h += noteHTML(f.id, f.question || f.title);
-      h += contextHTML({ context: f.context, detail: f.detail, links: f.links });
+      if(!pre) h += contextHTML({ context: f.context, detail: f.detail, links: f.links }, f.id);
       h += '</div>';
     }
     h += '</div>';
   }
-  h += contextHTML(q);
+  if(!pre) h += contextHTML(q);
   var hint;
   if(live.length && done1(saved)) hint = qAnsweredIn(q, state.answers) ? "All answered. Next moves on, or change any answer above." : (SETTINGS.keys ? "Number keys answer the first open follow-up. " : "") + "This issue moves on once they are answered.";
   else hint = (SETTINGS.keys ? 'Keys 1-' + Math.min(q.options.length, 9) + ' pick an answer. ' : '') + (all.length ? "Some answers open a follow-up below." : "Recording moves to the next issue.");
@@ -2112,7 +2160,7 @@ function typeTail(q, saved, hint){
   var h = "";
   if(q.custom !== false){ h += customHTML(q.customLabel, saved, ["cpanel", "ctext", "cok"], ["custom-open", "custom-confirm", "custom-cancel"], "", true); }
   h += noteHTML(q.id, q.title);
-  h += contextHTML(q);
+  if(!ctxBefore()) h += contextHTML(q);
   h += '<div class="hint">' + hint + '</div>';
   h += '</div>';
   h += chromeControls(q);
@@ -2122,7 +2170,7 @@ function typeHead(q, a){
   var h = chromeTop(q);
   h += '<div class="qcard">';
   h += '<div class="corner"><span class="n">' + esc(q.id) + '</span><span class="s" aria-hidden="true">&#10022;</span></div>';
-  h += headHTML(q) + recordedHTML(a);
+  h += headHTML(q) + (ctxBefore() ? contextHTML(q, q.id, true) : "") + recordedHTML(a);
   return h;
 }
 
@@ -2433,6 +2481,8 @@ function renderBatch(q){
   h += '<div class="qcard">';
   h += '<div class="corner"><span class="n">' + esc(q.id) + '</span><span class="s" aria-hidden="true">&#10022;</span></div>';
   h += headHTML(q);
+  var pre = ctxBefore();
+  if(pre) h += contextHTML(q, q.id, true);
   h += '<div class="bmeta"><span><b>' + done + '</b> of <b>' + q.items.length + '</b> rows answered</span><span>Pen adds a note on any row</span></div>';
   h += '<table class="btable">';
   for(var i=0;i<q.items.length;i++){
@@ -2453,7 +2503,7 @@ function renderBatch(q){
     h += '<tr class="bcrow" id="crow-' + esc(it.id) + '" style="' + (show ? "" : "display:none") + '"><td colspan="2"><textarea dir="auto" data-role="bcomment" data-item="' + esc(it.id) + '" aria-label="Note on this row"' + bn + ' placeholder="Note for this row">' + esc(ia.comment || "") + '</textarea></td></tr>';
   }
   h += '</table>';
-  h += contextHTML(q);
+  if(!pre) h += contextHTML(q);
   h += '<div class="crow" style="margin-top:14px"><button type="button" class="btn" data-action="batch-continue">Continue (' + done + '/' + q.items.length + ' answered)</button></div>';
   h += '<div class="hint">Unanswered rows stay open in the export. Notes travel with their row.</div>';
   h += '</div>';
@@ -9236,7 +9286,7 @@ function bsHoldCard(q){
   h += bsBox("box:" + q.id, "Your idea", "Write an idea. Enter adds it.", true);
   var mine = bsMineHere(q).reverse();
   h += bsGrid(mine, {}, "Your cards under " + bsHatName(q));
-  if(first){ h += bsPlanHTML(1); h += contextHTML(q.topic || {}); }
+  if(first){ h += bsPlanHTML(1); h += contextHTML(q.topic || {}, q.id); }
   h += '<div class="hint">' + (mine.length ? plural(mine.length, "card", "cards") + " here so far. " : "") + 'Nothing from the hats yet: their sparks and suggestions come after you\'ve written for all six.</div>';
   return h;
 }
@@ -9295,7 +9345,7 @@ function bsAimsCard(q){
     return '<h3 class="bssub2"><span class="bsdot bs-' + hat + '" aria-hidden="true"></span>' + esc(title) + '</h3><div class="bsnotes small" role="list" aria-label="' + esc(title) + '">' + list.map(function(t){ return '<div class="bsnote bs-' + hat + ' mine" role="listitem"><div class="bsntop"><span class="bsyours">Yours</span><span></span></div><p ' + dirA(t) + '>' + esc(t) + '</p></div>'; }).join("") + '</div>';
   };
   h += aim(q.goals || [], "blue", "What you're aiming for") + aim(q.avoid || [], "black", "What you want to avoid");
-  h += contextHTML(q.topic || {});
+  h += contextHTML(q.topic || {}, q.id);
   h += '<div class="hint">Cap measures each idea against your aims; the extras try to steer clear of what you want to avoid.</div>';
   return h;
 }
@@ -10261,6 +10311,7 @@ document.addEventListener("click", function(ev){
   else if(act === "bpick"){ bpick(el.getAttribute("data-item"), parseInt(el.getAttribute("data-i"), 10)); }
   else if(act === "bpen"){ bpen(el.getAttribute("data-item")); }
   else if(act === "note-toggle"){ toggleNote(el.getAttribute("data-note")); }
+  else if(act === "ctx-toggle"){ ctxToggle(el); }
   else if(act === "rk-move"){ rankMove(parseInt(el.getAttribute("data-i"), 10), parseInt(el.getAttribute("data-d"), 10)); }
   else if(act === "rk-record"){ rankRecord(); }
   else if(act === "num-record"){ numRecord(); }
