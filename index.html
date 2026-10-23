@@ -1339,7 +1339,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.11.0";
+var WIZARD_VERSION = "0.11.1";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -5271,7 +5271,85 @@ function setupFolders(){
         Promise.resolve(navigator.locks.request("decision-wizard-watch", function(){ becomeWatcher(); return new Promise(function(){}); })).then(null, solo);
       } else { solo(); }
     }catch(e){ solo(); }
-  });
+  }).then(sentGo, sentGo);
+}
+
+/* A round sent to open. Another app, such as Nullovation City's Wizard it, opens the wizard at its address with
+   #open= and the round after it, as base64url JSON: { file, round, answers }. Chrome and Edge take such a link into
+   the installed app, which focuses the window it has and gets the link through its launch queue; a tab reads it from
+   its own address. The round opens through the usual load, whatever was open: a round already here opens with its
+   answers, a changed version replaces it as Load would, and a new one comes in with any answers sent along. A round
+   that names no folder is linked to a connected folder that holds its file, so its answers save there. */
+var SENT = { ready: false, queue: [], last: "", at: 0 };
+function sentFrom(url){
+  var m = /#(?:.*&)?open=([A-Za-z0-9_-]+)/.exec(String(url || ""));
+  if(!m) return null;
+  try{
+    var b = atob(m[1].replace(/-/g, "+").replace(/_/g, "/")), bytes = new Uint8Array(b.length);
+    for(var i=0;i<b.length;i++){ bytes[i] = b.charCodeAt(i); }
+    var p = JSON.parse(new TextDecoder().decode(bytes));
+    return { code: m[1], p: (p && typeof p === "object" && p.round && typeof p.round === "object") ? p : null };
+  }catch(e){ return { code: m[1], p: null }; }
+}
+function sentArrive(url){
+  var s = sentFrom(url);
+  if(!s) return;
+  /* A first launch brings the same link twice: in the page's address and in the launch queue. */
+  if(s.code === SENT.last && Date.now() - SENT.at < 4000) return;
+  SENT.last = s.code; SENT.at = Date.now();
+  if(!s.p){ toast(false, "The link held no round the wizard can read, so nothing opened."); return; }
+  if(SENT.ready) openSent(s.p); else SENT.queue.push(s.p);
+}
+function sentGo(){
+  SENT.ready = true;
+  var q = SENT.queue;
+  SENT.queue = [];
+  q.forEach(openSent);
+}
+function openSent(p){
+  var round = p.round, cfg = (round.config && typeof round.config === "object") ? round.config : {};
+  var title = hasTitle(cfg) ? cfg.title : "";
+  var have = title ? findRound(title, canonKey(folderKey(cfg.folder))) : null;
+  /* A round the wizard keeps in a project folder stays in it, though the copy sent names no folder. */
+  if(have && have.folder && !cleanStr(cfg.folder)){
+    var nc = {}, nr = {}, k;
+    for(k in cfg){ if(own(cfg, k)) nc[k] = cfg[k]; }
+    nc.folder = have.folder;
+    for(k in round){ if(own(round, k)) nr[k] = round[k]; }
+    nr.config = nc; round = nr; cfg = nc;
+  }
+  var a = p.answers, withAnswers = !have && a && typeof a === "object" && a.meta && a.meta.tool === "decision-wizard" && Array.isArray(a.answers);
+  var text = JSON.stringify(withAnswers ? { meta: a.meta, answers: a.answers, round: round } : round);
+  return sentFile(cleanStr(cfg.folder) ? "" : p.file, title).then(function(h){ return ingestText(text, h ? { handle: h } : {}); });
+}
+/* The file of a round that names no folder, in a connected folder, when one holds it. */
+function sentFile(name, title){
+  name = cleanStr(name).split(/[\\\/]/).pop();
+  if(!name || !title || !/\.json$/i.test(name) || !fsSupported()) return Promise.resolve(null);
+  var list = folderList().filter(function(rec){ return rec.perm === "granted" && rec.handle && typeof rec.handle.getFileHandle === "function"; }), i = 0;
+  var next = function(){
+    if(i >= list.length) return null;
+    var rec = list[i++];
+    return Promise.resolve().then(function(){ return rec.handle.getFileHandle(name); }).then(function(h){
+      return readRound(h).then(function(r){ return (r && hasTitle(r.config) && r.config.title === title) ? h : next(); });
+    }, function(){ return next(); });
+  };
+  return Promise.resolve().then(next).then(null, function(){ return null; });
+}
+function setupSent(){
+  try{
+    if(window.launchQueue && typeof window.launchQueue.setConsumer === "function"){
+      window.launchQueue.setConsumer(function(lp){ if(lp && lp.targetURL) sentArrive(lp.targetURL); });
+    }
+  }catch(e){}
+  var fromHere = function(){
+    var here = String(location.href);
+    if(!/#(?:.*&)?open=/.test(here)) return;
+    try{ history.replaceState(null, "", location.pathname + location.search); }catch(e){}
+    sentArrive(here);
+  };
+  window.addEventListener("hashchange", fromHere);
+  fromHere();
 }
 
 /* The list of rounds and the Open drawer. */
@@ -10889,6 +10967,7 @@ scheduleBlink();
 setupApp();
 renderBadge();
 setupFolders();
+setupSent();
 setupCompanions();
 (function(){ var v = document.getElementById("oversion"); if(v) v.textContent = "Decision Wizard " + WIZARD_VERSION; })();
 scheduleTimerTick();

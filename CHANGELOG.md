@@ -2,6 +2,16 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.11.1, 24 October 2026
+
+### Added
+
+- Wizard: a link can open a round. The wizard's address with `#open=` and the round after it, as base64url JSON with `file`, `round` and `answers`, opens that round whatever was on screen: one already in the list opens with its answers, a changed version replaces it as Load would, and a new one comes in with the answers sent along. A round that names no folder saves into a connected folder that holds its file. Nullovation City's Wizard it opens its rounds this way.
+
+### Changed
+
+- Wizard: the installed app keeps to one window. In Chrome and Edge a link to the wizard opens in the app's open window, which gets it through its launch queue (`launch_handler`, `focus-existing`, in the manifest).
+
 ## Wizard 0.11.0 and skill 0.10.0, 23 October 2026
 
 ### Added

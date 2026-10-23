@@ -59,6 +59,12 @@ A round Claude Code writes names its project and the `wizard-rounds/` folder it'
 
 This works in Chrome and Edge on a computer, while the wizard is open. In a browser tab, the browser asks for your OK again on a later visit: choose **Allow on every visit** there, and it stops asking. The installed app keeps access by itself. **Load** lists the folders the wizard has, each with **Forget**.
 
+## Opened from another app
+
+A link to the wizard can carry a round: the wizard's address, then `#open=` and the round as base64url JSON, `{ "file": ..., "round": ..., "answers": ... }`, with its file's name and any answers so far. Nullovation City's Wizard it opens rounds this way. The round opens whatever was on screen: one already in your list opens with its answers, a changed version replaces it as Load would, and a new one comes in with the answers sent along. A round that names no folder saves its answers into a connected folder that holds its file.
+
+In Chrome and Edge on a computer, the installed app takes such a link and opens it in the window it already has. The app's settings in the browser can send its links to a tab instead.
+
 ## Companions
 
 A companion stands beside the cards and reacts as you answer. On a screen narrower than 1440 px it stands under the question list, or beside the progress bar on a phone, so it never pushes the cards down. Quill, the pocket wizard, and Swoop, the falcon, come with the wizard. Choose one in the Companion card of Options, or None; Quill and Swoop can be hidden there too.
@@ -89,7 +95,7 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 ## Versions
 
-- **Wizard: 0.11.0.** It's shown at the bottom of the wizard's Options panel.
+- **Wizard: 0.11.1.** It's shown at the bottom of the wizard's Options panel.
 - **Skill: 0.10.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.11.0 for their round 2.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
