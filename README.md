@@ -32,22 +32,22 @@ A local copy of `index.html` keeps working as a plain page; installing is for th
 
 When a question is still too open for options, ask Claude for a brainstorm in the wizard. A brainstorm is for finding ideas, not for settling details: those come after, in a round. It looks at one topic through the Six Thinking Hats, each worn by a character: Cap, the capybara (Blue, the point), Tally, the owl (White, realistic), Ruby, the fox (Red, human), Sunny, the bee (Yellow, the dream), Pebble, the tortoise (Black, caution), and Doodle, the chameleon (Green, twists). It always takes two rounds.
 
-**Round 1: your ideas first.**
+**Round 1: the hats ask first.**
 
-- **Your turn.** Each hat asks you one question and says nothing else. Write as many cards as you like; Enter adds one.
-- **Sparks.** Some hats bring a question or two that might set off more ideas, each with its own box.
-- **Suggestions.** Every hat suggests up to four ideas beside yours. Blue's are other paths to the same goal.
-- **Kill what misses.** Every card stays unless you kill it, yours too, and you can edit your own. A killed card crumples into the bin at the top, the only place to bring it back from.
+- **Questions.** Round 1 opens as a group chat on a phone. Each hat asks you one question, then some bring sparks: a question or two that might set off more ideas. Answer in the box and the next hat starts typing, or skip with **Next question**. Back goes to an earlier question, and the Left and Right arrow keys step through them too.
+- **Suggestions.** Then every hat suggests up to four ideas of its own, with what you answered under that hat beside them. Blue's are other paths to the same goal.
+- **Kill what misses.** Every card stays unless you kill it, and you can edit or delete your own answers. A killed card crumples into the bin at the top, the only place to bring it back from.
+- **Recap.** Cap ends round 1 with every question and what you answered, and the suggestions you kept.
 
 **Round 2: the council.** Send round 1 back, and Claude writes round 2 from it.
 
-- **Your aims** open it: your goals, and what you want to avoid.
+- **Your aims** open it: your goals, what you want to avoid, and what else you told the hats. Claude sorts your round 1 answers: only the ones that name something to build or do become ideas.
 - **Extras:** a few more ideas from the hats, from what you wrote. Kill any that miss; the rest go to the council.
-- **The council:** every idea that survived, one at a time, with the six hats around it at a round table, or in a row if you choose that in Options. Claude merges cards that belong together into one idea, and **Show the ideas it came from** lists them. A gold mark means a hat has something to say, with a number when it says more than one thing: open it to read. Each hat hands you something to use, in its own color: Blue a sharper version of the idea, White a known pitfall it looked up, Red a change that makes it feel better to use, Yellow a more useful version, Black a crack, Green a twist or two.
-- **Work on the idea:** take a comment as a new idea of your own, or as a change that stays with the idea; answer a hat's question right under it; use Blue's version as the idea's words; or **Rewrite** the idea yourself, with what you changed marked against the original. You can also add a variant or kill the idea.
+- **The council:** every idea that survived, one at a time, on its own card above a group chat with the six hats. Claude merges cards that belong together into one idea, and **Show the ideas it came from** lists them. The hats speak in turn, Cap last, with the next one typing while you read; a hat with nothing to say stays quiet, greyed in the chat's header. Each hat hands you something to use, in its own color: Blue a sharper version of the idea, White a known pitfall it looked up, Red a change that makes it feel better to use, Yellow a more useful version, Black a crack, Green a twist or two.
+- **Work on the idea:** take a comment as a new idea of your own, below the chat, or as a change, stuck onto the idea like a strip of torn paper; answer a hat's question, and the next hat speaks; use Blue's version as the idea's words; or **Rewrite** the idea yourself, with what you changed marked against the original. Write in the box for a variant of your own, or kill the idea with the cross on its card. Past the last hat, the arrow carries on to the next idea.
 - **Your order:** what survived, in the order the council suggests. Drag it into your own, or leave it and Claude orders it; **Leave it to Claude** gives it back. The decision round Claude sends next starts from the top.
 
-Send each round back the way you send a round. Brainstorms need wizard 0.9.0 and skill 0.8.0; round 2 as described here needs wizard 0.10.0 and skill 0.9.0. The one-file brainstorms of wizard 0.8.0 no longer open, but the ones already in your list keep their answers.
+Send each round back the way you send a round. Brainstorms need wizard 0.9.0 and skill 0.8.0; brainstorms as described here need wizard 0.11.0 and skill 0.10.0. The one-file brainstorms of wizard 0.8.0 no longer open, but the ones already in your list keep their answers.
 
 ## Project folders, for Claude Code
 
@@ -89,7 +89,7 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 ## Versions
 
-- **Wizard: 0.10.1.** It's shown at the bottom of the wizard's Options panel.
-- **Skill: 0.9.1.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.10.0 for their round 2.
+- **Wizard: 0.11.0.** It's shown at the bottom of the wizard's Options panel.
+- **Skill: 0.10.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.11.0 for their round 2.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).

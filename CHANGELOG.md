@@ -2,6 +2,27 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.11.0 and skill 0.10.0, 23 October 2026
+
+### Added
+
+- Wizard: round 1's questions are a group chat on a phone. Each hat asks its question, then the sparks come, one at a time; answer in the box and the next hat types for a moment before it asks, or skip with Next question. Back goes to an earlier question, and the Left and Right arrow keys step through them. Your answers show in the chat with your companion's face, or You with no companion, each with Edit and Delete.
+- Wizard: each idea on the council is a group chat too. The hats speak in turn, Cap last, and the next one types while you read; the arrow on the device names who's next. The buttons sit under the message showing, and fold into what you did once you move on. Past the last hat, the arrow carries on to the next idea, and Back from the first comment goes to the idea before.
+- Wizard: the idea has its own card above the chat, with Rewrite, the ideas a merged one came from, and a cross to kill it that outlines the idea in red. A change you take, and your answer to a hat's question with the question beside it, stick onto the idea as strips of torn paper in the hat's color, light or dark with the theme, each with Edit and a cross to take it off.
+- Wizard: round 2's aims card lists what else you told the hats: your round 1 answers that weren't ideas, each with the question it answered. A format change: round 2's `aims` can carry `said`.
+- Skill: the test for an idea. A round 1 answer becomes an idea only when it names something that could be built or done; a goal goes to the aims, a concern to what to avoid, and anything else, such as a fact or a feeling, to `aims.said`, where extras can grow from it.
+
+### Changed
+
+- Wizard: an answer on the council moves the chat on to the next hat; taking a comment doesn't. Your companion says what you did in plain words ("Taking this as a change."), and a new idea or variant joins the new ideas below the chat. The box at the bottom writes a variant, or your answer once you press Answer it.
+- Wizard: a comment counts as read once its message shows, and a hat with nothing to say stays quiet, greyed in the chat's header, instead of saying a built-in line.
+- Wizard: Cap's recap of round 1 lists every question with your answers, or Skipped, then the suggestions you kept, hat by hat.
+- Wizard: round 1's plan reads Questions, Suggestions, Recap, the list beside the cards groups the hats' questions under Questions, and the extras' own line, when Claude writes none, says "the hats had a few more ideas".
+- Wizard: what you type in round 1's box stays there while you move about round 1's questions, and is kept as an answer to the question showing when you leave them.
+- Wizard: the round table, with its seats, bubbles, and gold marks, is gone, and so are the council setting in Options (Round table or In a row) and the built-in lines for a hat with nothing to say.
+- Skill: sparks are always questions; round 1 is described as questions the user answers or skips; the council's comments are written in the order the hats should speak, Blue last; and `read` means the hat's comments reached the user. `needs_wizard` is `"0.11.0"` on round 2.
+- Skill: `references/brainstorms.md` no longer describes the wizard's screens, only what the user can do, so a new layout never needs a skill update.
+
 ## Wizard 0.10.1 and skill 0.9.1, 21 October 2026
 
 ### Added

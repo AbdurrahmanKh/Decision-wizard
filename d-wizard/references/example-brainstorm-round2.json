@@ -5,7 +5,7 @@
     "product": "Handheld",
     "kind": "brainstorm",
     "round": 2,
-    "needs_wizard": "0.10.0"
+    "needs_wizard": "0.11.0"
   },
   "topic": {
     "title": "Steam games on my handheld",
@@ -13,7 +13,7 @@
     "context": "The handheld plays a few ported games well, but most of the Steam library still only runs on the PC. Nothing is decided yet: this is about finding ideas, not choosing one."
   },
   "aims": {
-    "line": "Round 2. The hats have a few more first, then the council takes your ideas one at a time, each hat handing you something to use.",
+    "line": "Round 2. The hats have a few more ideas first, then the council takes your ideas one at a time, each hat handing you something to use.",
     "goals": [
       "Play my whole Steam library away from my desk.",
       "No fiddling: pick a game and play."
@@ -21,10 +21,22 @@
     "avoid": [
       "Hours of setup for games that run badly.",
       "Breaking my Steam account's rules."
+    ],
+    "said": [
+      {
+        "hat": "white",
+        "question": "What's the smallest version of this that would already be worth having?",
+        "answer": "Most of what I play is older indie games."
+      },
+      {
+        "hat": "red",
+        "question": "What excites you most about playing your Steam games on the handheld?",
+        "answer": "Playing in bed without my PC on."
+      }
     ]
   },
   "extras": {
-    "line": "From what you wrote, the hats had a few more. Kill any that miss.",
+    "line": "From what you wrote, the hats had a few more ideas. Kill any that miss.",
     "ideas": [
       {
         "id": "x1",
@@ -48,12 +60,12 @@
         "text": "Stream at home, and port only the games you take outside.",
         "council": [
           {
-            "hat": "blue",
-            "say": "Closer to your goal: stream everything at home with nothing to set up per game, and keep a short shelf of ported games for outside."
-          },
-          {
             "hat": "green",
             "say": "Let the handheld learn which games you take outside, and port those first."
+          },
+          {
+            "hat": "blue",
+            "say": "Closer to your goal: stream everything at home with nothing to set up per game, and keep a short shelf of ported games for outside."
           }
         ]
       },
@@ -91,10 +103,6 @@
       ],
       "council": [
         {
-          "hat": "blue",
-          "say": "Closer to your goal: stream your slower games with controls mapped for the handheld, and pick up exactly where the PC left off, so your whole library plays away from the desk with no fiddling."
-        },
-        {
           "hat": "white",
           "say": "Known from game streaming: input lag over wifi makes fast games feel off, and a cable at the PC's end is the usual fix. Which of your games are slow enough not to mind?"
         },
@@ -117,6 +125,10 @@
         {
           "hat": "green",
           "say": "Map each game's controls once on the handheld, and keep the layout when a port arrives."
+        },
+        {
+          "hat": "blue",
+          "say": "Closer to your goal: stream your slower games with controls mapped for the handheld, and pick up exactly where the PC left off, so your whole library plays away from the desk with no fiddling."
         }
       ]
     },
@@ -143,16 +155,16 @@
       "hat": "white",
       "council": [
         {
-          "hat": "blue",
-          "say": "Closer to your goal: pick a game you'd play every week, so the first port already proves the no-fiddling path and keeps paying off."
-        },
-        {
           "hat": "yellow",
           "say": "Turn it into a recipe: write down each step as the first game goes, so the next port takes an evening instead of a weekend."
         },
         {
           "hat": "black",
           "say": "The first port takes the longest, and that's where people stop. What would keep you going?"
+        },
+        {
+          "hat": "blue",
+          "say": "Closer to your goal: pick a game you'd play every week, so the first port already proves the no-fiddling path and keeps paying off."
         }
       ]
     },
@@ -164,16 +176,16 @@
       "from": "From Black's spark: Many games won't run on hardware this weak. What decides which ones will?",
       "council": [
         {
-          "hat": "blue",
-          "say": "Closer to your goal: the check sorts your whole library onto that shelf at once, so you only ever pick from games that are ready."
-        },
-        {
           "hat": "white",
           "say": "Known from compatibility sites: ratings come from players' reports, so popular games are well covered and older or niche ones often have none. Where would ratings for the rest come from?"
         },
         {
           "hat": "green",
           "say": "Turn the rating into a shelf: ready tonight, worth a try, forget it."
+        },
+        {
+          "hat": "blue",
+          "say": "Closer to your goal: the check sorts your whole library onto that shelf at once, so you only ever pick from games that are ready."
         }
       ]
     },
@@ -185,16 +197,16 @@
       "from": "From Red's spark: What about your GOG games?",
       "council": [
         {
-          "hat": "blue",
-          "say": "Closer to your goal: one list of every game you own, Steam and GOG together, each marked by whether it plays away from the desk."
-        },
-        {
           "hat": "white",
           "say": "Known about GOG: its games come without DRM, so one with a build that runs on the handheld can simply be copied over. Which of yours have one?"
         },
         {
           "hat": "yellow",
           "say": "Let the same list also show the games you haven't touched in a year, so the handheld becomes your way back into the backlog."
+        },
+        {
+          "hat": "blue",
+          "say": "Closer to your goal: one list of every game you own, Steam and GOG together, each marked by whether it plays away from the desk."
         }
       ]
     }

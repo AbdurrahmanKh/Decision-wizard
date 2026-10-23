@@ -797,7 +797,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 .qcard.bscard{padding:22px 26px;border-top:5px solid var(--bs-edge)}
 .bshead{display:flex;align-items:flex-end;gap:14px;margin:-6px 0 14px}
 .bsfig{flex:none;width:86px;height:113px;display:block}
-.bsfig svg,.bsav svg{width:100%;height:100%;display:block}
+.bsfig svg{width:100%;height:100%;display:block}
 .bshmeta{flex:1;min-width:0;padding-bottom:4px}
 .bschip{display:flex;flex-wrap:wrap;align-items:center;gap:2px 7px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:calc(17px*var(--fs));letter-spacing:.01em}
 .bsname{font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:calc(14px*var(--fs));color:var(--muted);margin-left:3px;letter-spacing:0}
@@ -845,7 +845,6 @@ html{scroll-padding-bottom:var(--lift,0px)}
 .bshint{font-size:calc(12.5px*var(--fs));color:var(--muted)}
 .bsfull{margin-top:12px;font-size:calc(13.5px*var(--fs));color:var(--muted)}
 .bsask{display:flex;align-items:flex-start;gap:12px;margin:14px 0 4px;padding:12px 14px;border:1.5px solid var(--bs-edge);border-radius:12px;background:var(--bs-tint)}
-.bsav{flex:none;width:40px;height:52px;display:block}
 .bsaskb{flex:1;min-width:0}
 .bsaskq{display:block;font-size:calc(15.5px*var(--fs));line-height:1.45;margin-bottom:8px}
 .bsaskq b{display:block;font-size:calc(12px*var(--fs));letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
@@ -883,20 +882,13 @@ html{scroll-padding-bottom:var(--lift,0px)}
 .bsbin{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px 4px 10px;font-family:inherit;font-weight:600;font-size:calc(13.5px*var(--fs));cursor:pointer}
 .bsbin:hover{border-color:var(--red)}
 .bsbin b{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;border-radius:999px;background:var(--red);color:#fff;font-size:calc(12px*var(--fs));padding:0 5px}
-.bsbin:focus-visible,.bskill:focus-visible,.bsseat:focus-visible,.bstake:focus-visible,.bskillbtn:focus-visible,.bsbinx:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.bshold{display:inline-flex;align-items:center;gap:8px;font-size:calc(14px*var(--fs));color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:5px 12px;margin-top:2px}
+.bsbin:focus-visible,.bskill:focus-visible,.bsbinx:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .bswrite{margin:12px 0 6px;border:1.5px dashed var(--line);border-radius:12px;padding:10px 12px;background:var(--panel)}
-.bswrite.big{border:2px solid var(--green2);padding:12px 14px}
 .bswrite textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-family:inherit;font-size:calc(15.5px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:44px;line-height:1.5}
-.bswrite.big textarea{min-height:62px;font-size:calc(16px*var(--fs))}
 .bswrite textarea:focus-visible,.bsedit:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
 .bswrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:8px;font-size:calc(12.5px*var(--fs));color:var(--muted)}
 .bswrow b{color:var(--ink)}
 .bsaddrow2{display:flex;justify-content:flex-end;margin-top:-2px}
-.bsspark{margin:16px 0 4px;padding:12px 14px;border:1px solid var(--bs-line);border-left:5px solid var(--bs-edge);border-radius:12px;background:var(--panel)}
-.bssq{display:flex;align-items:flex-start;gap:10px}
-.bssqt{position:relative;min-width:0;overflow-wrap:anywhere;white-space:pre-line;background:var(--bub-bg);color:var(--bub-ink);border:1.5px solid var(--bub-line);border-radius:12px;padding:8px 12px;font-size:calc(15.5px*var(--fs));line-height:1.45;font-weight:600}
-.bsspark .bsnotes{margin-top:10px}
 .bssub2{display:flex;align-items:center;gap:8px;font-size:calc(12px*var(--fs));font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:18px 0 0}
 .bssub2 .bsdot{background:var(--bs-sw)}
 .bsmini{display:inline-block;width:22px;height:29px;flex:none}
@@ -905,8 +897,6 @@ html{scroll-padding-bottom:var(--lift,0px)}
 .bskill{border:1.5px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 .bskill:hover{border-color:var(--red);color:var(--red)}
 .bsby{display:inline-block;font-size:calc(12px*var(--fs));color:var(--muted);font-weight:600}
-.bsnote.big{min-height:0;padding:14px 14px 10px}
-.bsnote.big p{font-size:calc(19px*var(--fs));font-weight:600;padding-top:22px;padding-right:0}
 .bsnote .bsedit{width:100%;border:1px solid var(--line);border-radius:9px;padding:8px 10px;font-family:inherit;font-size:calc(15px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:58px;line-height:1.45;margin-top:22px}
 .bsnote .bsnfoot .btn.sm{padding:5px 12px;font-size:calc(13px*var(--fs))}
 .bsnotes.small{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
@@ -923,40 +913,6 @@ html{scroll-padding-bottom:var(--lift,0px)}
 .bshat li{display:flex;gap:8px;align-items:baseline;font-size:calc(14.5px*var(--fs));line-height:1.4}
 .bsbytag{flex:none;font-size:calc(11px*var(--fs));font-weight:800;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--bs-edge);color:var(--muted);border-radius:6px;padding:0 6px;line-height:1.6}
 .bsbytag.you{border-color:var(--green);color:var(--green)}
-.bsidea{margin:12px 0 4px}
-.bsseats.row{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:16px 0 0}
-.bstable{display:grid;grid-template-columns:118px minmax(0,1fr) 118px;gap:12px;align-items:start;margin-top:12px}
-.bscol{display:flex;flex-direction:column;gap:10px}
-.bsmid{min-width:0}
-.bsmid .bsidea{margin-top:0}
-.bsseat{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;border:1.5px solid var(--line);border-radius:14px;padding:8px 4px 7px;background:var(--card);color:var(--ink);font-family:inherit;cursor:pointer;min-width:0}
-.bsseat:hover{border-color:var(--bs-edge)}
-.bsseat.open{border-color:var(--bs-edge);box-shadow:0 0 0 3px var(--bs-edge)}
-.bsseat.quiet .bsface{opacity:.6}
-.bsface{width:56px;height:74px;display:block}
-.bsface svg{width:100%;height:100%;display:block}
-.bsseat .bsn{display:flex;align-items:center;gap:5px;font-weight:700;font-size:calc(13px*var(--fs))}
-.bsseat .bsl{font-size:calc(11.5px*var(--fs));color:var(--muted)}
-.bsbang,.bsdone{position:absolute;top:-8px;right:-6px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--card)}
-.bsbang{width:26px;height:26px;background:var(--gold);color:#221F17;font-weight:900;font-size:calc(15px*var(--fs))}
-.bsdone{width:24px;height:24px;background:var(--green);color:#fff}
-.bsbub{position:relative;margin:12px 0 4px;background:var(--bub-bg);color:var(--bub-ink);border:1.5px solid var(--bub-line);border-radius:14px;padding:12px 14px}
-.bsseats.row + .bsbub:before{content:"";position:absolute;top:-10px;left:var(--x,10%);border:9px solid transparent;border-bottom-color:var(--bub-line);border-top:0;transform:translateX(-50%)}
-.bsmid .bsbub{border-left:6px solid var(--bs-edge)}
-.bsbub.empty{background:transparent;color:var(--muted);border:1.5px dashed var(--line)}
-.bsbub.empty p{font-size:calc(14px*var(--fs))}
-.bsbh{display:flex;align-items:center;gap:7px;font-size:calc(12.5px*var(--fs));font-weight:800;letter-spacing:.04em;color:#6E675A}
-.bsbh .bsdot{background:var(--bs-sw);border-color:#1B1810}
-.bsbub p{font-size:calc(16px*var(--fs));line-height:1.5;margin:4px 0 0}
-.bsbrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:10px}
-.bstake{border:1.5px solid #2F6B47;background:#fff;color:#22412D;border-radius:999px;padding:5px 13px;font-family:inherit;font-weight:700;font-size:calc(13.5px*var(--fs));cursor:pointer}
-.bstake:hover{background:#EAF5EE}
-.bsreadl{display:inline-flex;align-items:center;gap:5px;font-size:calc(12.5px*var(--fs));color:#4E6B57}
-.bsacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;align-items:flex-start}
-.bsacts .bsadd{flex:1;min-width:220px;margin-top:0;width:auto}
-.bsacts .bswrite{flex:1;min-width:220px;margin:0}
-.bskillbtn{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--red);background:transparent;color:var(--red);border-radius:12px;padding:10px 14px;font-family:inherit;font-weight:700;font-size:calc(14.5px*var(--fs));cursor:pointer}
-.bskillbtn:hover{background:var(--red);color:#fff}
 .bsgone{margin:14px 0 4px;border:1.5px dashed var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
 .bsgone p{margin:0;color:var(--muted);font-size:calc(15px*var(--fs));max-width:60ch}
 .bsgh{font-size:calc(11px*var(--fs));font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 9px 4px}
@@ -979,19 +935,12 @@ html{scroll-padding-bottom:var(--lift,0px)}
 .bsdt small{display:flex;align-items:center;gap:6px;font-size:calc(12.5px*var(--fs));color:var(--muted);margin-top:3px}
 .bsdt .bsdot{background:var(--bs-sw)}
 @media (max-width:880px){
-  .bsseats.row{grid-template-columns:repeat(3,1fr)}
-  .bstable{grid-template-columns:minmax(0,1fr)}
-  .bscol{flex-direction:row}
-  .bscol .bsseat{flex:1}
-  .bsface{width:46px;height:61px}
   .bsgh{display:none}
-  .bsacts .bswrite{flex-basis:100%}
   .bswrite textarea{min-height:68px}
 }
-@media (prefers-reduced-motion:reduce){ .bsbang{animation:none} }
 .bscard .bsnote p,.bsdt p,#bsorder .rl,.bssumord li{white-space:pre-line}
 .bscard .qtitle,.bssum .sumstats{overflow-wrap:anywhere}
-.bscard .qtopic,.bscard .ctx p,.bscard .ctx blockquote,.bscard .ctx td,.bssay,.bscard .bsnote small,.bsbub p,.bssumord li,.bssum li,.bsgone p{overflow-wrap:anywhere}
+.bscard .qtopic,.bscard .ctx p,.bscard .ctx blockquote,.bscard .ctx td,.bssay,.bscard .bsnote small,.bssumord li,.bssum li,.bsgone p{overflow-wrap:anywhere}
 .bsgone p{white-space:pre-line}
 /* Brainstorms (0.10.0): each hat talks in its own colour; several comments a hat; changes you took, your rewrite
    marked against the original, merged ideas, and an order left to Claude. */
@@ -1007,26 +956,8 @@ html{scroll-padding-bottom:var(--lift,0px)}
 [data-theme="dark"] .bs-yellow{--bs-talk:#3F391F;--bs-talkl:#A98C2A;--bs-talkink:#F0EAD8}
 [data-theme="dark"] .bs-black{--bs-talk:#2F302A;--bs-talkl:#827B6C;--bs-talkink:#F0EAD8}
 [data-theme="dark"] .bs-green{--bs-talk:#233A2B;--bs-talkl:#438F5E;--bs-talkink:#F0EAD8}
-.bssay,.bssqt,.bsbub{background:var(--bs-talk,var(--bub-bg));color:var(--bs-talkink,var(--bub-ink));border-color:var(--bs-talkl,var(--bub-line))}
+.bssay{background:var(--bs-talk,var(--bub-bg));color:var(--bs-talkink,var(--bub-ink));border-color:var(--bs-talkl,var(--bub-line))}
 .bssay:before{border-right-color:var(--bs-talkl,var(--bub-line))}
-.bsseats.row + .bsbub:before{border-bottom-color:var(--bs-talkl,var(--bub-line))}
-.bsbh{color:var(--muted)}
-[data-theme="dark"] .bsbh .bsdot{border-color:rgba(255,255,255,.35)}
-.bsbn{margin-left:auto;font-weight:700;letter-spacing:0}
-.bscm+.bscm{margin-top:12px;padding-top:12px;border-top:1px dashed var(--bs-talkl,var(--line))}
-.bstake{background:var(--card);color:var(--ink);border-color:var(--green)}
-.bstake:hover{background:var(--green-soft)}
-.bstake.ans{border-style:dashed}
-.bsreadl{color:var(--green)}
-.bsbub .bswrite{margin:10px 0 2px;background:var(--card)}
-.bsbub .bsaddrow2{margin-top:0}
-.bsbang.many{font-size:calc(14px*var(--fs))}
-.bsnote p del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;background:rgba(217,72,62,.12);border-radius:3px;padding:0 2px}
-.bsnote p ins{text-decoration:none;background:var(--gold-soft);box-shadow:inset 0 -2px 0 var(--gold);border-radius:3px;padding:0 2px}
-.bsnote .bsrwn{font-size:calc(12.5px*var(--fs))}
-.bsidea .bsnfoot{justify-content:flex-start;flex-wrap:wrap;gap:8px 12px;margin-top:8px}
-.bsidea .bsnfoot .bslink{margin-right:0}
-.bsidea .bsnfoot .bshint{margin-right:auto}
 .bsmgbtn{align-self:flex-start;margin-top:8px;border:1px dashed var(--bs-line);background:transparent;color:var(--ink);border-radius:999px;padding:4px 12px;font-family:inherit;font-size:calc(13px*var(--fs));font-weight:600;cursor:pointer}
 .bsmgbtn:hover{border-style:solid;border-color:var(--bs-edge)}
 .bsmgbtn:focus-visible,.bsordst .bslink:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
@@ -1034,13 +965,194 @@ html{scroll-padding-bottom:var(--lift,0px)}
 .bsmgl li{display:flex;gap:8px;align-items:baseline;font-size:calc(14.5px*var(--fs));line-height:1.4}
 .bsmgl li>span:last-child{min-width:0;overflow-wrap:anywhere;white-space:pre-line}
 .bsmgl small{display:block;color:var(--muted);font-size:calc(12.5px*var(--fs))}
-.bsrwch{margin-top:10px;border:1px dashed var(--bs-line);border-radius:10px;padding:8px 12px;background:var(--card)}
-.bsrwch b{display:block;font-size:calc(12px*var(--fs));letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.bsrwch ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
-.bsrwch li{display:flex;gap:7px;align-items:baseline;font-size:calc(14px*var(--fs));line-height:1.4;overflow-wrap:anywhere}
-.bsrwch li .bsdot{background:var(--bs-sw);transform:translateY(1px)}
 .bsordst{margin:12px 0 2px;font-size:calc(14px*var(--fs));color:var(--muted)}
 .bsordst .bslink{margin:0 0 0 4px;font-size:inherit;color:var(--ink)}
+/* Brainstorms (0.11.0): talks. Round 1's questions and each idea's council are a group talk on a phone; the idea sits on
+   its own card above, with what you stuck onto it as torn paper. */
+.bs-blue{--tk-name:#2F63B8}.bs-white{--tk-name:#776B52}.bs-red{--tk-name:#B8382F}
+.bs-yellow{--tk-name:#946F06}.bs-black{--tk-name:#3E3A33}.bs-green{--tk-name:#2D7F4C}
+[data-theme="dark"] .bs-blue{--tk-name:#93B6F2}[data-theme="dark"] .bs-white{--tk-name:#DAD3BF}[data-theme="dark"] .bs-red{--tk-name:#F2928A}
+[data-theme="dark"] .bs-yellow{--tk-name:#EDC651}[data-theme="dark"] .bs-black{--tk-name:#CFC7B3}[data-theme="dark"] .bs-green{--tk-name:#74CF97}
+.tkidea{position:relative;margin:10px 0 0;background:var(--bs-tint);border:1px solid var(--bs-line);border-top:4px solid var(--bs-edge);border-radius:8px 8px 12px 12px;padding:10px 14px 12px}
+.tkidea.mine{border-style:dashed;border-top-style:solid}
+.tkidea:has(.tkkill:hover),.tkidea:has(.tkkill:focus-visible){outline:2.5px solid var(--red);outline-offset:3px}
+.tkitop{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:32px}
+.tkkill{flex:none}
+.tkwords{font-size:calc(17px*var(--fs));font-weight:600;line-height:1.42;margin:2px 0 0;overflow-wrap:anywhere;white-space:pre-wrap}
+.tkwords del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;background:rgba(217,72,62,.12);border-radius:3px;padding:0 2px}
+.tkwords ins{text-decoration:none;background:var(--gold-soft);box-shadow:inset 0 -2px 0 var(--gold);border-radius:3px;padding:0 2px}
+.tkfrom{display:block;font-size:calc(13px*var(--fs));color:var(--muted);line-height:1.4;margin-top:4px;overflow-wrap:anywhere}
+.tkifoot{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-top:10px}
+.tkifoot .btn.sm{padding:5px 12px;font-size:calc(13px*var(--fs))}
+.tkifoot .bsmgbtn{margin:0}
+.tkifoot .bslink{margin:0}
+.tkidea .bsedit{width:100%;border:1px solid var(--line);border-radius:9px;padding:8px 10px;font-family:inherit;font-size:calc(15px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:70px;line-height:1.45;margin-top:4px}
+.tkstks{display:flex;flex-direction:column;gap:10px;margin-top:12px;padding-top:14px;border-top:1px dashed var(--bs-line)}
+/* A sticker is a strip of paper in its hat's colour, light or dark with the theme, torn along the top and bottom and
+   taped on. The wrapper carries the shadow, so it follows the tear. */
+.tkstk{--paper:#F1EFE8;--paper-ink:#221F17;--paper-name:#776B52;--paper-line:rgba(34,31,23,.14);--tape:rgba(255,255,255,.62);--tape-line:rgba(34,31,23,.08);
+  position:relative;filter:drop-shadow(0 1px 1px rgba(0,0,0,.12)) drop-shadow(0 4px 6px rgba(0,0,0,.14))}
+.tkstk.bs-blue{--paper:#E6EEFB;--paper-name:#2F63B8}.tkstk.bs-white{--paper:#F3F1EA;--paper-name:#776B52}.tkstk.bs-red{--paper:#FBE8E6;--paper-name:#B8382F}
+.tkstk.bs-yellow{--paper:#FBF2D7;--paper-name:#8A6705}.tkstk.bs-black{--paper:#EAE8E4;--paper-name:#3E3A33}.tkstk.bs-green{--paper:#E5F2E9;--paper-name:#2D7F4C}
+[data-theme="dark"] .tkstk{--paper-ink:#F0EAD8;--paper-line:rgba(240,234,216,.16);--tape:rgba(240,234,216,.16);--tape-line:rgba(240,234,216,.1);filter:drop-shadow(0 1px 1px rgba(0,0,0,.35)) drop-shadow(0 5px 8px rgba(0,0,0,.35))}
+[data-theme="dark"] .tkstk.bs-blue{--paper:#2D3C54;--paper-name:#93B6F2}[data-theme="dark"] .tkstk.bs-white{--paper:#43443B;--paper-name:#DAD3BF}[data-theme="dark"] .tkstk.bs-red{--paper:#4C302D;--paper-name:#F2928A}
+[data-theme="dark"] .tkstk.bs-yellow{--paper:#474126;--paper-name:#EDC651}[data-theme="dark"] .tkstk.bs-black{--paper:#3B3C35;--paper-name:#CFC7B3}[data-theme="dark"] .tkstk.bs-green{--paper:#2A4230;--paper-name:#74CF97}
+.tkstk:before{content:"";position:absolute;z-index:1;top:-5px;left:50%;width:62px;height:15px;margin-left:-31px;background:var(--tape);border:1px solid var(--tape-line);border-radius:2px}
+.tkpaper{display:flex;align-items:flex-start;gap:9px;background:var(--paper) linear-gradient(180deg,rgba(255,255,255,.07),rgba(0,0,0,.02));color:var(--paper-ink);padding:11px 38px 11px 10px}
+.tkstk:has(.tkstkx:hover) .tkpaper,.tkstk:has(.tkstkx:focus-visible) .tkpaper{box-shadow:inset 0 0 0 2px var(--red)}
+.tkstk.lit{animation:tkpaper .35s ease-out}
+@keyframes tkpaper{from{opacity:0}to{opacity:1}}
+.tkstkf{flex:none;width:30px;height:30px;border-radius:50%;overflow:hidden;background:var(--card);box-shadow:0 0 0 1.5px var(--paper-line)}
+.tkstkf svg{width:100%;height:100%;display:block}
+.tkstkb{min-width:0;flex:1}
+.tkstkl{display:block;font-size:calc(10.5px*var(--fs));font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--paper-name);line-height:1.5}
+.tkstk p{font-size:calc(14px*var(--fs));line-height:1.4;overflow-wrap:anywhere;white-space:pre-line;color:var(--paper-ink)}
+.tkstk p.tkq{font-size:calc(13px*var(--fs));opacity:.78}
+.tkstk p.tka{font-weight:600;margin-top:2px}
+.tkstk p.tka b{font-weight:800;color:var(--green)}
+.tkstkx{position:absolute;z-index:2;top:9px;right:8px;width:24px;height:24px;border-radius:50%;border:1.5px solid transparent;background:transparent;color:var(--paper-ink);opacity:.55;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.tkstkx:hover,.tkstkx:focus-visible{opacity:1;border-color:var(--red);color:var(--red)}
+.tkstkx:focus-visible,.tkstke:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+.tkstkx svg{width:13px;height:13px}
+.tkstke{border:0;background:transparent;color:var(--paper-ink);opacity:.6;font:inherit;font-size:calc(12px*var(--fs));text-decoration:underline;text-underline-offset:2px;cursor:pointer;padding:0 2px;margin-left:4px}
+.tkstke:hover{opacity:1}
+.tkstk textarea{width:100%;border:1px solid var(--paper-line);border-radius:8px;padding:6px 8px;font:inherit;font-size:calc(14px*var(--fs));background:var(--field);color:var(--ink);resize:vertical;min-height:52px}
+.tkstkrow{display:flex;gap:6px;margin-top:6px}
+.tkstkrow .btn{padding:4px 11px;font-size:calc(12.5px*var(--fs))}
+/* The device. */
+.tkwrap{display:flex;justify-content:center;margin:16px 0 4px}
+.tkdev{--dev-frame:#26241F;--dev-edge:#3A372F;--scr-bg:#ECE6D6;--scr-pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='132' height='132' viewBox='0 0 132 132' fill='none' stroke='%23221F17' stroke-opacity='.07' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 34h20M18 34V20h12v14'/%3E%3Cpath d='M86 18l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6-4.5-4 6-1z'/%3E%3Cpath d='M106 88a8 8 0 1 0-12 7v4h8v-4a8 8 0 0 0 4-7zM98 103h6'/%3E%3Cpath d='M30 100c-6-5-10-8-10-12a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 4-4 7-10 12z'/%3E%3Cpath d='M60 66a6 6 0 1 1 8 5.6V75M68 81v.5'/%3E%3Ccircle cx='118' cy='52' r='2'/%3E%3Ccircle cx='52' cy='120' r='2'/%3E%3Ccircle cx='8' cy='66' r='1.6'/%3E%3C/svg%3E");--hdr-bg:#FBF8EF;--hdr-line:#E3DAC4;--out-bg:#DDF0E3;--out-line:#A9D5B9;--kb-bg:rgba(34,31,23,.085);--kb-hover:rgba(34,31,23,.14);--svc-bg:rgba(34,31,23,.09);--svc-ink:#5D5647;--comp-bg:#FBF8EF;
+  flex:0 1 470px;min-width:0;background:var(--dev-frame);border-radius:40px;padding:22px 10px 0;position:relative;
+  box-shadow:0 0 0 1px var(--dev-edge),inset 0 0 0 1.5px rgba(255,255,255,.07),0 22px 44px -22px rgba(0,0,0,.55)}
+[data-theme="dark"] .tkdev{--dev-frame:#0B0D08;--dev-edge:#3B4530;--scr-bg:#12160E;--scr-pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='132' height='132' viewBox='0 0 132 132' fill='none' stroke='%23F0EAD8' stroke-opacity='.05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 34h20M18 34V20h12v14'/%3E%3Cpath d='M86 18l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6-4.5-4 6-1z'/%3E%3Cpath d='M106 88a8 8 0 1 0-12 7v4h8v-4a8 8 0 0 0 4-7zM98 103h6'/%3E%3Cpath d='M30 100c-6-5-10-8-10-12a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 4-4 7-10 12z'/%3E%3Cpath d='M60 66a6 6 0 1 1 8 5.6V75M68 81v.5'/%3E%3Ccircle cx='118' cy='52' r='2'/%3E%3Ccircle cx='52' cy='120' r='2'/%3E%3Ccircle cx='8' cy='66' r='1.6'/%3E%3C/svg%3E");--hdr-bg:#1B2116;--hdr-line:#2E3725;--out-bg:#24382D;--out-line:#346542;--kb-bg:rgba(240,234,216,.12);--kb-hover:rgba(240,234,216,.2);--svc-bg:rgba(240,234,216,.09);--svc-ink:#B9AF97;--comp-bg:#1B2116}
+.tkdev:before{content:"";position:absolute;top:9px;left:50%;width:58px;height:5px;margin-left:-29px;border-radius:3px;background:rgba(255,255,255,.12)}
+.tkdev:after{content:"";position:absolute;top:7px;left:50%;margin-left:40px;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 2px rgba(0,0,0,.4)}
+.tkscr{background:var(--scr-bg) var(--scr-pat);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;min-height:300px}
+.tkhdr{display:flex;align-items:center;gap:10px;padding:9px 14px 9px 12px;background:var(--hdr-bg);border-bottom:1px solid var(--hdr-line)}
+.tkstack{display:flex;flex:none}
+.tkstack .tkav{width:26px;height:26px;margin-left:-9px;box-shadow:0 0 0 2px var(--hdr-bg)}
+.tkstack .tkav:first-child{margin-left:0}
+.tkstack .tkav.dim{opacity:.35;filter:grayscale(1)}
+.tkhtx{min-width:0;flex:1;line-height:1.25}
+.tkhtx b{display:block;font-size:calc(14.5px*var(--fs));color:var(--ink)}
+.tkhtx span{display:block;font-size:calc(12.5px*var(--fs));color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tkhtx span.typing{color:var(--green)}
+.tkmsgs{flex:1;display:flex;flex-direction:column;gap:3px;padding:12px 10px 10px;max-height:clamp(280px,48vh,470px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(127,120,100,.45) transparent}
+.tkmsgs > :first-child{margin-top:auto}
+.tkrow{display:flex;align-items:flex-end;gap:7px;max-width:94%}
+.tkrow.in{align-self:flex-start}
+.tkrow.out{align-self:flex-end;flex-direction:row-reverse}
+.tkrow.gap{margin-top:7px}
+.tkav{width:34px;height:34px;border-radius:50%;overflow:hidden;flex:none;display:inline-flex;align-items:center;justify-content:center;background:var(--bs-tint,var(--card));box-shadow:inset 0 0 0 2px var(--bs-edge,var(--line))}
+.tkav svg{width:100%;height:100%;display:block}
+.tkav.ghost{visibility:hidden}
+.tkav.comp{background:var(--comp-bg);box-shadow:inset 0 0 0 2px var(--green)}
+.tkav.you{background:var(--green);color:#fff;font-weight:800;font-size:calc(11px*var(--fs))}
+.tkcol{display:flex;flex-direction:column;align-items:stretch;min-width:0}
+.tkb{background:var(--bs-talk);color:var(--bs-talkink);border:1px solid var(--bs-talkl);border-radius:16px 16px 16px 5px;padding:6px 11px 8px;font-size:calc(14.5px*var(--fs));line-height:1.42;overflow-wrap:anywhere;white-space:pre-line;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.tkrow.ask .tkb{font-size:calc(15px*var(--fs))}
+.tkrow.in.mid .tkb{border-bottom-left-radius:16px}
+.tkrow.cur .tkb{box-shadow:0 0 0 2px var(--bs-edge),0 6px 14px -8px rgba(0,0,0,.35)}
+.tkname{display:flex;align-items:baseline;gap:6px;font-weight:800;font-size:calc(12.5px*var(--fs));color:var(--tk-name);margin-bottom:1px;white-space:normal}
+.tkname i{font-style:normal;font-weight:600;opacity:.72;font-size:calc(11.5px*var(--fs))}
+.tkb small{display:block;font-size:calc(12px*var(--fs));opacity:.72;margin-top:3px;line-height:1.35}
+.tkspk{display:inline-block;font-size:calc(10.5px*var(--fs));font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.65;margin-right:4px}
+.tkrow.out .tkb{background:var(--out-bg);border-color:var(--out-line);color:var(--ink);border-radius:16px 16px 5px 16px}
+.tkrow.out.mid .tkb{border-bottom-right-radius:16px}
+.tkrow.out .tkname{color:var(--green);justify-content:flex-end}
+.tkrow.out .tkb small{text-align:right}
+.tkquote{display:block;border-left:3px solid var(--bs-edge);background:var(--bs-talk);border-radius:6px;padding:3px 8px 4px;margin:2px 0 5px;font-size:calc(12.5px*var(--fs));line-height:1.35;color:var(--bs-talkink);white-space:normal}
+.tkquote b{display:block;color:var(--tk-name);font-size:calc(11.5px*var(--fs))}
+.tkquote span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tkquote.one span{-webkit-line-clamp:1}
+.tkkb{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px}
+.tkkb button{border:0;border-radius:10px;background:var(--kb-bg);color:var(--ink);font-family:inherit;font-weight:700;font-size:calc(13px*var(--fs));padding:8px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;text-align:center;line-height:1.25}
+.tkkb button:hover{background:var(--kb-hover)}
+.tkkb button.full{grid-column:1 / -1}
+.tkkb button.done{color:var(--green);cursor:default;background:transparent;box-shadow:inset 0 0 0 1.5px var(--kb-bg)}
+.tkkb button.on{background:var(--green);color:#fff}
+.tkdone{display:flex;flex-wrap:wrap;gap:4px 10px;margin:3px 2px 0;font-size:calc(12px*var(--fs));color:var(--green);font-weight:600}
+.tkdone span{display:inline-flex;align-items:center;gap:4px}
+.tkown{display:flex;justify-content:flex-end;gap:10px;margin:2px 4px 0}
+.tkown button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:calc(12px*var(--fs));text-decoration:underline;text-underline-offset:2px;cursor:pointer;padding:1px 2px}
+.tkown button:hover,.tkown button:focus-visible{color:var(--ink)}
+.tkrow.out .tkb .tkown{margin:6px 0 0}
+.tkedit{display:block;width:100%;min-width:220px;border:1px solid var(--out-line);border-radius:10px;padding:6px 9px;font:inherit;font-size:calc(14.5px*var(--fs));background:var(--field);color:var(--ink);resize:vertical}
+.tksvc{align-self:center;background:var(--svc-bg);color:var(--svc-ink);border-radius:999px;padding:3px 11px;font-size:calc(12px*var(--fs));font-weight:600;margin:6px 0;text-align:center;max-width:92%}
+.tkrow.typing{cursor:pointer}
+.tkrow.typing .tkb{padding:11px 14px;display:inline-flex;gap:4px;align-items:center}
+.tkrow.typing .tkb i{width:7px;height:7px;border-radius:50%;background:var(--bs-talkink);opacity:.4;animation:tkdot 1.2s infinite}
+.tkrow.typing .tkb i:nth-child(2){animation-delay:.18s}
+.tkrow.typing .tkb i:nth-child(3){animation-delay:.36s}
+.tktl{font-size:calc(12px*var(--fs));color:var(--muted);margin:0 0 6px 2px;align-self:center}
+@keyframes tkdot{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-4px);opacity:.85}}
+.tkin{animation:tkin .32s cubic-bezier(.2,.9,.3,1.15) both}
+@keyframes tkin{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+.tkcomp{background:var(--hdr-bg);border-top:1px solid var(--hdr-line);padding:7px 10px 10px}
+.tkreply{display:flex;align-items:center;gap:8px;margin:0 0 6px}
+.tkreply .tkquote{flex:1;margin:0}
+.tkreply button{flex:none;width:26px;height:26px;border-radius:50%;border:0;background:var(--kb-bg);color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.tkreply button svg{width:12px;height:12px}
+.tkline{display:flex;align-items:flex-end;gap:8px}
+.tkline textarea{flex:1;min-width:0;resize:none;border:1px solid var(--line);border-radius:19px;padding:8px 13px;font-family:inherit;font-size:calc(14.5px*var(--fs));line-height:1.4;background:var(--field);color:var(--ink);min-height:38px;max-height:120px}
+.tkline textarea:focus{outline:2px solid var(--green);outline-offset:0;border-color:transparent}
+.tksend{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--green);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.tksend:disabled{opacity:.35;cursor:default}
+.tksend svg{width:18px;height:18px}
+.tkhint{font-size:calc(11.5px*var(--fs));color:var(--muted);margin:5px 4px 0}
+.tkchin{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 6px 12px}
+.tknav{flex:none;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 15px 0 11px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#EFE8D4;font-family:inherit;font-weight:700;font-size:calc(13.5px*var(--fs));cursor:pointer;min-width:0}
+.tknav.nx{padding:0 11px 0 13px;background:var(--gold);border-color:var(--gold);color:#221B06}
+[data-theme="dark"] .tknav.nx{background:#D2A62F;border-color:#D2A62F}
+.tknav:disabled{opacity:.35;cursor:default}
+.tknav:focus-visible{outline:3px solid #F0D27A;outline-offset:2px}
+.tknav svg{width:16px;height:16px;flex:none}
+.tknav .tkav{width:24px;height:24px;margin:0 1px}
+.tknav .lb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tkdots{flex:1;display:flex;align-items:center;justify-content:center;min-width:0}
+.tkdotrow{display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:center}
+.tkdotrow + .tkcount{display:none}
+.tkdot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.tkdot.on{background:var(--bs-edge)}
+.tkdot.cur{width:18px;border-radius:4px}
+.tkcount{font-size:calc(12px*var(--fs));color:rgba(255,255,255,.6);font-weight:600}
+.tkkb button:focus-visible,.tkreply button:focus-visible,.tksend:focus-visible,.tkown button:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+.tktopic{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px 12px}
+.tktopic .qtopic{margin:0 0 2px}
+.tktopic .qtitle{font-size:calc(19px*var(--fs));line-height:1.3;margin:0}
+.tkbelow{margin-top:12px}
+.tkbelow .bssub2:first-child{margin-top:4px}
+.qcard.bscard:has(.tkwrap){padding-bottom:18px}
+.tkrecap{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.tkrecap > li{background:var(--bs-tint);border:1px solid var(--bs-line);border-left:4px solid var(--bs-edge);border-radius:10px;padding:8px 12px}
+.tkrq{display:flex;align-items:baseline;gap:7px;font-size:calc(14px*var(--fs));color:var(--muted);overflow-wrap:anywhere}
+.tkrq b{color:var(--ink);flex:none}
+.tkrecap ul{margin:5px 0 0 18px;padding:0}
+.tkrecap ul li{font-weight:600;font-size:calc(15px*var(--fs));overflow-wrap:anywhere;white-space:pre-line}
+.tkskip{display:block;margin:4px 0 0 18px;font-size:calc(13px*var(--fs));color:var(--muted);font-style:italic}
+.tksaid{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.tksaid li{background:var(--bs-tint);border:1px dashed var(--bs-line);border-top:4px solid var(--bs-edge);border-radius:6px 6px 10px 10px;padding:9px 12px;display:flex;flex-direction:column;gap:4px}
+.tksq{display:flex;gap:6px;align-items:baseline;font-size:calc(12.5px*var(--fs));color:var(--muted);overflow-wrap:anywhere}
+.tksq .bsdot{background:var(--bs-sw)}
+.tksa{font-size:calc(15px*var(--fs));font-weight:600;overflow-wrap:anywhere;white-space:pre-line}
+@media (prefers-reduced-motion:reduce){ .tkin,.tkstk.lit{animation:none} .tkrow.typing .tkb i{animation:none;opacity:.6} }
+@media (max-width:700px){
+  .tkwrap{margin:12px -6px 4px}
+  .tkdev{flex-basis:100%;border-radius:30px;padding:16px 5px 0}
+  .tkdev:before{top:6px}
+  .tkdev:after{top:4px}
+  .tkscr{border-radius:24px;min-height:280px}
+  .tkmsgs{max-height:clamp(260px,56vh,480px);padding:10px 7px 8px}
+  .tkrow{max-width:97%}
+  .tkav{width:30px;height:30px}
+  .tkidea{padding:9px 12px 11px}
+  .tkpaper{padding-right:34px}
+  .tkchin{padding:10px 4px 12px}
+  .tknav.pv{padding:0 11px}
+  .tknav.pv .lb{display:none}
+  .tkdotrow{display:none}
+  .tkdotrow + .tkcount{display:inline}
+}
 </style>
 </head>
 <body>
@@ -1117,7 +1229,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
     <details class="fmt">
       <summary>What the files look like</summary>
       <div class="ldef"><b>Round.</b> Either a bare array of questions, or an object {config, questions} where config sets {title, tagline, product}. Each question: <b>id</b>, <b>section</b>, <b>title</b>, <b>options</b> (array of strings). Ids must be unique, and so must row ids inside one batch. Optional: <b>question</b> (the question itself, shown large, with the title as a small topic line above it; the sidebar keeps the title); <b>context</b>; <b>detail</b> (array of {kind: quote, note, or code, src, text}; code keeps indentation and line breaks and shows src exactly as written, such as a file path and line); <b>links</b> (array of {label, url}); <b>extra</b> ({label, blocks:[{kind: text, text}, {kind: table, title, columns, rows}, {kind: quote, src, text}, {kind: note, text}, or {kind: code, src, text}]}, or a list of them for several buttons) for context popups; <b>customLabel</b>; <b>custom</b>: false; <b>skip</b>: false; <b>recommend</b> (the label of the recommended option) with <b>because</b> (the reason, finishing "I recommend this because"), on a question, a follow-up, or a batch row. For a batch table set <b>type</b>: "batch" and <b>items</b>: [{id, label, note}], sharing one options set per row. Every question and every row takes a note with the pen. <b>type</b>: "rank" makes a ranking of 2 to 10 options (recommend is the whole order); "number" takes <b>min</b>, <b>max</b>, <b>step</b>, and <b>unit</b> instead of options (recommend is a number); "bracket" runs 4 to 32 options in knockout pairs, in the listed order. In config, <b>needs_wizard</b> names the oldest wizard version the round is made for, and a round written into a project sets <b>project</b> (the project's name) and <b>folder</b> (the full path of the folder the round file is in).</div>
-      <div class="ldef"><b>Brainstorm.</b> An object with config.kind set to "brainstorm", a <b>topic</b> (a <b>title</b> and a <b>question</b>, and maybe context, detail, links, and extra, as a question has), and the cards of one of its two rounds. <b>Round 1</b> has <b>hold</b> (the six hats, Blue first, each with an optional <b>question</b>), <b>sparks</b> (optional: a hat with an optional <b>line</b> and up to three sparks {id, text}), <b>suggest</b> (the six hats, Blue last, each with a <b>line</b> and up to four <b>ideas</b> {id, text, why}), and an optional <b>recap</b> {line}. <b>Round 2</b> has <b>aims</b> (Blue's <b>line</b>, your <b>goals</b>, and what to <b>avoid</b>), optional <b>extras</b> {line, ideas: [{id, hat, text, why, council}]}, <b>ideas</b> [{id, text, by, hat, from, council}], where by is "you", the hat that suggested it, or "merged" (then <b>merged</b> lists the cards it came from, each {text, by, hat}), and council holds up to four {hat, say} per hat, and an optional <b>order</b> {line}. Ids use letters, digits, - and _, and are unique; ids like u1 are kept for your own cards. A brainstorm saves, backs up, and works with project folders as a round does. A file made for wizard 0.8.0, with a hats list, no longer loads; one already in your list keeps its answers.</div>
+      <div class="ldef"><b>Brainstorm.</b> An object with config.kind set to "brainstorm", a <b>topic</b> (a <b>title</b> and a <b>question</b>, and maybe context, detail, links, and extra, as a question has), and the cards of one of its two rounds. <b>Round 1</b> has <b>hold</b> (the six hats, Blue first, each with an optional <b>question</b>), <b>sparks</b> (optional: a hat with an optional <b>line</b> and up to three sparks {id, text}), <b>suggest</b> (the six hats, Blue last, each with a <b>line</b> and up to four <b>ideas</b> {id, text, why}), and an optional <b>recap</b> {line}. <b>Round 2</b> has <b>aims</b> (Blue's <b>line</b>, your <b>goals</b>, what to <b>avoid</b>, and <b>said</b>, your answers from round 1 that weren't ideas, each {hat, question, answer}), optional <b>extras</b> {line, ideas: [{id, hat, text, why, council}]}, <b>ideas</b> [{id, text, by, hat, from, council}], where by is "you", the hat that suggested it, or "merged" (then <b>merged</b> lists the cards it came from, each {text, by, hat}), and council holds up to four {hat, say} per hat, and an optional <b>order</b> {line}. Ids use letters, digits, - and _, and are unique; ids like u1 are kept for your own cards. A brainstorm saves, backs up, and works with project folders as a round does. A file made for wizard 0.8.0, with a hats list, no longer loads; one already in your list keeps its answers.</div>
       <div class="ldef"><b>Saved file.</b> What Save writes: the answers JSON (meta and answers, the same as Copy answers JSON) with the whole round under <b>round</b>, so opening it picks up where you left off.</div>
       <div class="ldef"><b>Answers JSON.</b> Answers on their own merge into the round with the same title, or into the open round: matching ids overwrite, and open entries are ignored unless they carry a note. A note comes back as <b>comment</b>.</div>
       <div class="ldef"><b>Backup.</b> What Back up all rounds writes: every round in this browser with its answers, each in the saved-file form, under <b>rounds</b>. Loading a backup adds the rounds that are missing here and brings back the ones the backup has a newer copy of. When a round changed here after the backup was made, the wizard asks whether to keep it.</div>
@@ -1167,11 +1279,6 @@ html{scroll-padding-bottom:var(--lift,0px)}
       <h3 class="dsec">Keys</h3>
       <div class="orow" id="row-keys"><span class="olab">Number keys pick answers</span><div class="seg sm" role="group" aria-label="Number keys pick answers"><button type="button" data-action="set-keys" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-keys" data-v="off" aria-pressed="false">Off</button></div></div>
       <div class="onote">Keys 1 to 9 pick an answer while you're on the question, and 1 and 2 pick in a bracket. They never pick while you type.</div>
-    </section>
-    <section class="ogroup">
-      <h3 class="dsec">Brainstorms</h3>
-      <div class="orow" id="row-council"><span class="olab">The council</span><div class="seg sm" role="group" aria-label="How the council sits"><button type="button" data-action="set-council" data-v="table" aria-pressed="false">Round table</button><button type="button" data-action="set-council" data-v="row" aria-pressed="false">In a row</button></div></div>
-      <div class="onote">How the six hats sit around each idea in a brainstorm's round 2: three on each side of the idea, or in a row under it.</div>
     </section>
     <section class="ogroup">
       <h3 class="dsec">Look</h3>
@@ -1232,7 +1339,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.10.1";
+var WIZARD_VERSION = "0.11.0";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -1484,7 +1591,7 @@ function applyConfig(){
   headMeta();
 }
 var SETKEY = "decision-wizard-settings-v1";
-var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true, keys: true, council: "table", ctx: "before" };
+var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true, keys: true, ctx: "before" };
 function loadSettings(){
   var s = readJSON(SETKEY);
   if(s && typeof s === "object"){
@@ -1500,7 +1607,6 @@ function loadSettings(){
     if(typeof s.timerBar === "boolean") SETTINGS.timerBar = s.timerBar;
     if(typeof s.recs === "boolean") SETTINGS.recs = s.recs;
     if(typeof s.keys === "boolean") SETTINGS.keys = s.keys;
-    if(s.council === "table" || s.council === "row") SETTINGS.council = s.council;
     if(s.ctx === "before" || s.ctx === "after") SETTINGS.ctx = s.ctx;
     if(typeof s.name === "string") SETTINGS.name = s.name.slice(0, 30);
   } else {
@@ -1523,7 +1629,7 @@ function applySettings(){
   applyMascot();
   renderOptions();
 }
-var OPTKEYS = { "set-theme": "theme", "set-size": "size", "set-mascot": "mascot", "set-talk": "talk", "set-quips": "quips", "set-sound": "sound", "set-timerhover": "timerHover", "set-timerbar": "timerBar", "set-recs": "recs", "set-keys": "keys", "set-council": "council", "set-ctx": "ctx" };
+var OPTKEYS = { "set-theme": "theme", "set-size": "size", "set-mascot": "mascot", "set-talk": "talk", "set-quips": "quips", "set-sound": "sound", "set-timerhover": "timerHover", "set-timerbar": "timerBar", "set-recs": "recs", "set-keys": "keys", "set-ctx": "ctx" };
 function renderOptions(){
   renderCompanions();
   var bs = document.querySelectorAll('#optdrawer [data-action^="set-"]');
@@ -1609,13 +1715,12 @@ function setOption(k, v){
   else if(k === "mascot"){ if(v !== "quill" && v !== "swoop" && v !== "none" && !own(CMP.list, v)) return; SETTINGS.mascot = v; SETTINGS.mascotFolder = own(CMP.list, v) ? CMP.list[v].folder : ""; }
   else if(k === "talk" || k === "quips" || k === "sound" || k === "timerHover" || k === "timerBar" || k === "recs" || k === "keys"){ SETTINGS[k] = (v === "on" || v === true); }
   else if(k === "name"){ SETTINGS.name = String(v || "").trim().slice(0, 30); }
-  else if(k === "council"){ if(v !== "table" && v !== "row") return; SETTINGS.council = v; }
   else if(k === "ctx"){ if(v !== "before" && v !== "after") return; SETTINGS.ctx = v; }
   else return;
   saveSettings();
   applySettings();
   updateTimers();
-  if((k === "recs" || k === "keys" || k === "council" || k === "ctx") && QUESTIONS.length) scrollKeep(render);
+  if((k === "recs" || k === "keys" || k === "ctx" || (k === "mascot" && bsTalkOf(cur()))) && QUESTIONS.length) scrollKeep(render);
   var map = null;
   if(k === "theme") map = { light: ["opt_light", "warn"], dark: ["opt_dark", "pick"], system: ["opt_system", "pick"] }[SETTINGS.theme];
   else if(k === "size") map = { large: ["opt_large", "pick"], compact: ["opt_compact", "skip"], normal: ["opt_normal", "pick"] }[SETTINGS.size];
@@ -1704,7 +1809,7 @@ function answeredCount(){ return countAnswered(QUESTIONS, state.answers); }
 function headMeta(){
   var el = document.getElementById("headmeta");
   if(!el) return;
-  el.textContent = (CONFIG.tagline && CONFIG.tagline.length) ? CONFIG.tagline : bsOn() ? (bsOld() ? "A brainstorm made by an older wizard." : bsRound() === 1 ? "A brainstorm, round 1: your ideas first, then sparks, then the hats' suggestions." : "A brainstorm, round 2: the council on every idea, then your order.") : (QUESTIONS.length === 0 ? "No round loaded. Press Load, or drop a round file on the page." : (QUESTIONS.length + " issues. Click to answer; skipped issues stay open."));
+  el.textContent = (CONFIG.tagline && CONFIG.tagline.length) ? CONFIG.tagline : bsOn() ? (bsOld() ? "A brainstorm made by an older wizard." : bsRound() === 1 ? "A brainstorm, round 1: the hats' questions first, then their suggestions." : "A brainstorm, round 2: the council on every idea, then your order.") : (QUESTIONS.length === 0 ? "No round loaded. Press Load, or drop a round file on the page." : (QUESTIONS.length + " issues. Click to answer; skipped issues stay open."));
 }
 
 function renderSide(){
@@ -1795,7 +1900,8 @@ function render(){
    answer just given instead of from the top of the page. */
 var lastScreen = null;
 var FOCUS_KEYS = ["data-action", "data-role", "data-i", "data-item", "data-f", "data-side", "data-idx", "data-note", "data-x", "data-d", "data-idea", "data-ck"];
-function screenKey(){ return (CURKEY || "") + "#" + (QUESTIONS.length ? state.idx : "none"); }
+/* Round 1's talk crosses from one hat's card to the next as you answer it, and stays one screen. */
+function screenKey(){ return (CURKEY || "") + "#" + (!QUESTIONS.length ? "none" : bsTalkOf(QUESTIONS[state.idx]) === "r1" ? "talk" : state.idx); }
 function focusBefore(){
   var ae = document.activeElement, body = !ae || ae === document.body;
   var host = body ? null : (ae.closest ? ae.closest("#app, #side, #mascot") : null);
@@ -1803,6 +1909,7 @@ function focusBefore(){
   if(host && host.id !== "mascot"){
     if(ae.getAttribute("data-action") || ae.getAttribute("data-role")){
       sel = FOCUS_KEYS.map(function(k){ var v = ae.getAttribute(k); return v === null ? "" : "[" + k + '="' + String(v).replace(/["\\]/g, "\\$&") + '"]'; }).join("");
+      if(ae.getAttribute("data-key") !== null) sel += '[data-key="' + String(ae.getAttribute("data-key")).replace(/["\\]/g, "\\$&") + '"]';
     } else if(ae.id){ sel = "#" + ae.id; }
   }
   return { screen: lastScreen, mine: body || !!host, body: body, el: ae, sel: sel, host: host ? host.id : "", caret: (ae && typeof ae.selectionStart === "number") ? ae.selectionStart : null };
@@ -5695,7 +5802,7 @@ var LINES = {
   }
 };
 /* Timings, in milliseconds. Kept in one place so they are easy to tune. */
-var TIMING = { cpoll: 4000, statMin: 35000, statMax: 75000, statChance: 0.6, nudge: 120000, yawn: 180000, sleep: 240000, remind: 60000, fast: 2000, speedGap: 300000, longThink: 60000, minLine: 4000, lineBase: 1200, linePerChar: 55, lineMax: 9000, actionLine: 11000, faceHold: 1500, staleLine: 20000, poll: 4000, fileSave: 500, scanDelay: 150, back: 8000, hour: null };
+var TIMING = { cpoll: 4000, statMin: 35000, statMax: 75000, statChance: 0.6, nudge: 120000, yawn: 180000, sleep: 240000, remind: 60000, fast: 2000, speedGap: 300000, longThink: 60000, minLine: 4000, lineBase: 1200, linePerChar: 55, lineMax: 9000, actionLine: 11000, faceHold: 1500, staleLine: 20000, poll: 4000, fileSave: 500, scanDelay: 150, back: 8000, bstype: 650, hour: null };
 try{ if(window.__WIZ_TIMING){ for(var tk in window.__WIZ_TIMING){ if(Object.prototype.hasOwnProperty.call(window.__WIZ_TIMING, tk)) TIMING[tk] = window.__WIZ_TIMING[tk]; } } }catch(e){}
 function nowHour(){ return typeof TIMING.hour === "number" ? TIMING.hour : new Date().getHours(); }
 var HOLD = { pick: 1300, skip: 1600, greet: 5600, milestone: 4200, error: 5200, finish: 6500, quip: 5200, batch: 4600,
@@ -8620,7 +8727,7 @@ var CRUMPLE = (function(){
    "merged", with the cards it came from under merged), and you can take a comment as a new idea or as a change to
    its idea, answer a hat's question, and rewrite the idea's words, marked against the original. */
 var BS_HATS = ["white", "red", "yellow", "black", "green"], BS_ALL = ["blue", "white", "red", "yellow", "black", "green"];
-var BS_SUGG_MAX = 4, BS_SPARK_MAX = 3, BS_EXTRA_MAX = 40, BS_IDEA_MAX = 120, BS_MINE = 60, BS_SAY_MAX = 4, BS_MERGE_MAX = 12;
+var BS_SUGG_MAX = 4, BS_SPARK_MAX = 3, BS_EXTRA_MAX = 40, BS_IDEA_MAX = 120, BS_MINE = 60, BS_SAY_MAX = 4, BS_MERGE_MAX = 12, BS_SAID_MAX = 60;
 var BS_INFO = {
   blue:   { name: "Blue",   kind: "The point", hold: "Where is this going, and what are its main goals?", sugg: "What other path could get you there?" },
   white:  { name: "White",  kind: "Realistic", hold: "What's the smallest version of this that would already be worth having?", sugg: "What's within reach?" },
@@ -8629,9 +8736,6 @@ var BS_INFO = {
   black:  { name: "Black",  kind: "Caution", hold: "What could make this useless, or hurt and go badly?", sugg: "What would keep it out of trouble?" },
   green:  { name: "Green",  kind: "Twists", hold: "What's a twist on this that nobody would expect?", sugg: "What twist could feed it?" }
 };
-/* What a hat with nothing to add says on the council, in its own voice. */
-var BS_SILENT = { blue: "Nothing to add. It stays on the point.", white: "No facts to add on this one.", red: "It's fine. No strong feelings.",
-                  yellow: "It's an OK idea! Nothing more from me.", black: "No cracks I can see.", green: "No twist this time. Hm." };
 var BS_WHO = { blue: { name: "Cap", what: "the capybara" }, white: { name: "Tally", what: "the owl" }, red: { name: "Ruby", what: "the fox" },
                yellow: { name: "Sunny", what: "the bee" }, black: { name: "Pebble", what: "the tortoise" }, green: { name: "Doodle", what: "the chameleon" } };
 var BS_TOPIC_KEYS = ["context", "detail", "links", "extra"];
@@ -8639,8 +8743,8 @@ var BS_KILL = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true
 var BS_BIN = '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4.5h6V7"/><path d="M6.5 7l1 13h9l1-13"/><path d="M10 11v6M14 11v6"/></svg>';
 var BS_CHECK = '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 var BS_RETIRED = "This brainstorm was made for wizard 0.8.0, and 0.9.0 replaced that kind of brainstorm. Ask Claude for it again in the new form. Nothing was loaded.";
-var bsScreen = null, bsPose = "still", bsPoseTimer = null, bsDraft = {}, bsEdit = null, bsBoxOpen = {}, bsSeat = {}, bsPinned = {}, bsReadTimer = null, bsDrag = null, bsNoHover = null, bsLeaveTimer = null;
-var bsRw = null, bsAnsSay = {}, bsLastQ = null, bsOrderGap = {}, bsHoverTimer = null, bsPtrX = -1, bsPtrY = -1, bsStillX = null, bsStillY = null;
+var bsScreen = null, bsPose = "still", bsPoseTimer = null, bsDraft = {}, bsEdit = null, bsBoxOpen = {}, bsDrag = null;
+var bsRw = null, bsLastQ = null, bsOrderGap = {};
 
 function isBS(c){ return !!(c && typeof c === "object" && c.kind === "brainstorm"); }
 function isHat(q){ return !!(q && q.type === "hat"); }
@@ -8727,6 +8831,14 @@ function bsProblem(p){
     if(!am || typeof am !== "object" || !bsStr(am.line)) return "Round 2 needs aims with Blue's line." + NL;
     var strs = function(l){ return l === undefined || (Array.isArray(l) && l.every(bsStr)); };
     if(!strs(am.goals) || !strs(am.avoid)) return "Round 2's aims: goals and avoid are lists of text." + NL;
+    if(am.said !== undefined){
+      if(!Array.isArray(am.said)) return "Round 2's aims: said is a list of your answers from round 1." + NL;
+      if(am.said.length > BS_SAID_MAX) return "Round 2's aims list " + am.said.length + " things you said; at most " + BS_SAID_MAX + "." + NL;
+      for(i=0;i<am.said.length;i++){
+        x = am.said[i];
+        if(!x || typeof x !== "object" || !hatOk(x.hat) || !bsStr(x.question) || !bsStr(x.answer)) return "Round 2's aims: each thing in said needs the hat that asked, its question, and your answer." + NL;
+      }
+    }
     var council = function(where, list){
       if(list === undefined) return null;
       if(!Array.isArray(list)) return where + ": council must be a list." + NL;
@@ -8781,6 +8893,7 @@ function bsProblem(p){
 }
 function bsWhyOf(d){ var o = { id: d.id, text: d.text }; if(bsStr(d.why)) o.why = d.why; return o; }
 function bsCouncilOf(l){ return (Array.isArray(l) ? l : []).map(function(c){ return { hat: c.hat, say: c.say }; }); }
+function bsSaidOf(x){ return { hat: x.hat, question: x.question, answer: x.answer }; }
 function bsMergedOf(m){ var o = { text: m.text, by: m.by }; if(BS_ALL.indexOf(m.hat) !== -1) o.hat = m.hat; if(bsStr(m.from)) o.from = m.from; return o; }
 /* A brainstorm file as the wizard keeps it: one question entry per card. The config gets its round written in. */
 function bsToRound(p){
@@ -8807,11 +8920,11 @@ function bsToRound(p){
   } else {
     cfg.round = 2;
     var am = p.aims;
-    qs.push({ id: "aims", type: "hat", hat: "blue", role: "aims", section: "Your aims", title: "Blue: your aims", question: t.question, line: am.line, goals: (am.goals || []).slice(), avoid: (am.avoid || []).slice(), topic: topic });
+    qs.push({ id: "aims", type: "hat", hat: "blue", role: "aims", section: "Your aims", title: "Blue: your aims", question: t.question, line: am.line, goals: (am.goals || []).slice(), avoid: (am.avoid || []).slice(), said: (am.said || []).map(bsSaidOf), topic: topic });
     var xs = (p.extras && p.extras.ideas) || [];
     if(xs.length){
       var xq = { id: "extras", type: "hat", hat: "blue", role: "extras", section: "Extras", title: "Extras", question: "Anything here worth keeping?", ideas: xs.map(function(d){ var o = bsWhyOf(d); o.hat = d.hat; return o; }) };
-      xq.line = bsStr(p.extras.line) ? p.extras.line : "From what you wrote, the hats had a few more. Kill any that miss.";
+      xq.line = bsStr(p.extras.line) ? p.extras.line : "From what you wrote, the hats had a few more ideas. Kill any that miss.";
       qs.push(xq);
     }
     p.ideas.forEach(function(d){
@@ -8846,7 +8959,7 @@ function bsFromRound(cfg, qs){
   } else {
     var ex = [], ideas = [];
     qs.forEach(function(q){
-      if(q.role === "aims") out.aims = { line: q.line, goals: (q.goals || []).slice(), avoid: (q.avoid || []).slice() };
+      if(q.role === "aims"){ out.aims = { line: q.line, goals: (q.goals || []).slice(), avoid: (q.avoid || []).slice() }; if(q.said && q.said.length) out.aims.said = q.said.map(bsSaidOf); }
       else if(q.role === "extras") out.extras = { line: q.line, ideas: [] };
       else if(q.role === "council"){
         var d = q.idea, o = { id: d.id, text: d.text };
@@ -8875,7 +8988,7 @@ function bsFileRound(p, saved){
   var r = bsToRound(p);
   return { saved: saved, bs: true, problem: null, config: r.config, questions: r.questions };
 }
-function bsFresh(){ bsDraft = {}; bsEdit = null; bsRw = null; bsAnsSay = {}; bsBoxOpen = {}; bsSeat = {}; bsPinned = {}; bsScreen = null; bsLastQ = null; bsOrderGap = {}; bsHoverCancel(); if(bsReadTimer){ clearTimeout(bsReadTimer); bsReadTimer = null; } bsBinClose(true); }
+function bsFresh(){ bsDraft = {}; bsEdit = null; bsRw = null; bsBoxOpen = {}; bsScreen = null; bsLastQ = null; bsOrderGap = {}; bsTalkFresh(); bsBinClose(true); }
 var BS_MARK = '<svg viewBox="0 0 20 16" width="17" height="14" aria-hidden="true" focusable="false"><path d="M5.6 1.2h8.8l.7 10.3H4.9z" fill="#3C73CF" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M1.2 11.6h17.6v2.6H1.2z" fill="#3C73CF" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.3 7.6h9.4" stroke="currentColor" stroke-width="1.6"/></svg>';
 var BS_NEEDS_HATS = 'This round says it is a brainstorm (config.kind "brainstorm") but lists questions. A brainstorm lists its topic and its cards instead. Nothing was loaded.';
 
@@ -8963,20 +9076,6 @@ function bsBlueWords(hat, say){
   return t ? t.charAt(0).toUpperCase() + t.slice(1) : "";
 }
 function bsHash(t){ var h = 5381, x = String(t || ""); for(var i=0;i<x.length;i++){ h = ((h << 5) + h + x.charCodeAt(i)) | 0; } return (h >>> 0).toString(36); }
-function bsAnsKey(q, hat, say){ return "ans:" + q.id + ":" + hat + ":" + bsHash(say); }
-/* The question an answer box belongs to: its comment, found by its words, or the words it had when the box was drawn. */
-function bsAnsSaid(q, key){
-  var p = key.split(":"), list = q && q.role === "council" ? bsSays(q, p[2]) : [];
-  for(var i=0;i<list.length;i++){ if(bsHash(list[i]) === p[3]) return list[i]; }
-  return own(bsAnsSay, key) ? bsAnsSay[key] : undefined;
-}
-/* A hat whose bubble holds an answer box you opened, or text you typed, stays open until you close it. */
-function bsAnsBusy(qid, hat){
-  var pre = "ans:" + qid + ":" + hat + ":", k;
-  for(k in bsBoxOpen){ if(own(bsBoxOpen, k) && bsBoxOpen[k] && k.indexOf(pre) === 0) return true; }
-  for(k in bsDraft){ if(own(bsDraft, k) && k.indexOf(pre) === 0 && String(bsDraft[k] || "").trim()) return true; }
-  return false;
-}
 /* Whether a card of yours was taken from this comment. A take kept by 0.9, with no comment on record, matches by its
    words, or by its hat when the hat says one thing. */
 function bsTookFrom(m, kind, hat, say, q){
@@ -9056,7 +9155,7 @@ function bsCarry(oq, nq, a){
 }
 function bsSame(oq, nq){
   if(!(oq && nq && isHat(oq) && isHat(nq) && oq.hat === nq.hat && oq.role === nq.role && oq.question === nq.question)) return false;
-  return JSON.stringify([oq.ideas || [], oq.sparks || [], oq.idea || null, oq.council || [], oq.goals || [], oq.avoid || []]) === JSON.stringify([nq.ideas || [], nq.sparks || [], nq.idea || null, nq.council || [], nq.goals || [], nq.avoid || []]);
+  return JSON.stringify([oq.ideas || [], oq.sparks || [], oq.idea || null, oq.council || [], oq.goals || [], oq.avoid || [], oq.said || []]) === JSON.stringify([nq.ideas || [], nq.sparks || [], nq.idea || null, nq.council || [], nq.goals || [], nq.avoid || [], nq.said || []]);
 }
 
 /* Every card of the open brainstorm, yours and the hats', with where it lives, for the bucket, the recap, and the
@@ -9232,12 +9331,11 @@ function bsFixOrder(qs, answers){
 /* Drawing. */
 function bsArt(hat, pose){ var s = BS_ART[hat] || BS_ART.blue; return s[pose] || s.still; }
 function bsWho(h){ return BS_WHO[h] ? BS_WHO[h].name + ", " + BS_WHO[h].what : ""; }
-function bsBand(hat, pose, kind, line, hold){
+function bsBand(hat, pose, kind, line){
   var h = '<div class="bshead"><span class="bsfig" id="bsfig" data-hat="' + esc(hat) + '" data-pose="' + pose + '">' + bsArt(hat, pose) + '</span><div class="bshmeta">';
   h += '<div class="bschip"><span class="bsdot" aria-hidden="true"></span><span>' + esc(bsName(hat)) + ' hat</span><span class="bsname">' + esc(bsWho(hat)) + '</span></div>';
   h += '<div class="bskind">' + esc(kind) + '</div>';
-  if(hold) h += '<div class="bshold">Holding back. Your turn.</div>';
-  else if(line) h += '<div class="bssay" ' + dirA(line) + '>' + esc(line) + '</div>';
+  if(line) h += '<div class="bssay" ' + dirA(line) + '>' + esc(line) + '</div>';
   return h + '</div></div>';
 }
 function bsHead(q, text){ var tp = bsTopic(); return '<div class="qtopic" ' + dirA(tp.title) + '>' + esc(tp.title) + '</div><h2 class="qtitle" id="qh" tabindex="-1" aria-describedby="pcount" ' + dirA(text) + '>' + esc(text) + '</h2>'; }
@@ -9277,31 +9375,8 @@ function bsMineHere(q, filter){
 }
 function bsPlanHTML(round){
   var has = function(r){ return QUESTIONS.some(function(q){ return q.role === r; }); };
-  var steps = round === 1 ? ["Your turn"].concat(has("spark") ? ["Sparks"] : []).concat(["Suggestions", "Recap"]) : (has("extras") ? ["Extras"] : []).concat([plural(QUESTIONS.filter(function(q){ return q.role === "council"; }).length, "idea", "ideas"), "Your order"]);
+  var steps = round === 1 ? ["Questions", "Suggestions", "Recap"] : (has("extras") ? ["Extras"] : []).concat([plural(QUESTIONS.filter(function(q){ return q.role === "council"; }).length, "idea", "ideas"), "Your order"]);
   return '<div class="bsplanrow"><span class="bsplanl" id="bsplanl">The plan</span><span class="bsplans" role="list" aria-labelledby="bsplanl">' + steps.map(function(s, i){ return (i ? '<span class="bsarrow" aria-hidden="true">&#8250;</span>' : '') + '<span role="listitem" class="bsplan bs-blue"><span class="bsdot" aria-hidden="true"></span>' + esc(s) + '</span>'; }).join("") + '</span></div>';
-}
-function bsHoldCard(q){
-  var a = bsA(q), first = QUESTIONS[0] === q;
-  var h = bsBand(q.hat, "still", BS_INFO[q.hat].kind, null, true) + bsHead(q, q.question);
-  h += bsBox("box:" + q.id, "Your idea", "Write an idea. Enter adds it.", true);
-  var mine = bsMineHere(q).reverse();
-  h += bsGrid(mine, {}, "Your cards under " + bsHatName(q));
-  if(first){ h += bsPlanHTML(1); h += contextHTML(q.topic || {}, q.id); }
-  h += '<div class="hint">' + (mine.length ? plural(mine.length, "card", "cards") + " here so far. " : "") + 'Nothing from the hats yet: their sparks and suggestions come after you\'ve written for all six.</div>';
-  return h;
-}
-function bsSparkCard(q){
-  var h = bsBand(q.hat, bsPose, BS_INFO[q.hat].kind, q.line || "") + bsHead(q, q.question);
-  q.sparks.forEach(function(s){
-    h += '<div class="bsspark bs-' + esc(q.hat) + '"><div class="bssq"><span class="bsav" aria-hidden="true">' + bsArt(q.hat, "still") + '</span><div class="bssqt" ' + dirA(s.text) + '>' + esc(s.text) + '</div></div>';
-    h += bsGrid(bsMineHere(q, function(c){ return c.spark === s.id; }), {}, "What this spark set off");
-    h += bsBox("spark:" + q.id + ":" + s.id, "What it sparks", "Write what it sparks. Enter adds it.");
-    h += '</div>';
-  });
-  var loose = bsMineHere(q, function(c){ return !c.spark || !q.sparks.some(function(s){ return s.id === c.spark; }); });
-  if(loose.length) h += bsGrid(loose, {}, "Your other cards here");
-  h += '<div class="hint">Sparks never name the idea. What you write under one remembers which spark set it off.</div>';
-  return h;
 }
 function bsAddToggle(key, label){
   var open = !!bsBoxOpen[key] || (own(bsDraft, key) && bsDraft[key].trim());
@@ -9322,31 +9397,15 @@ function bsSuggestCard(q){
   h += '<div class="hint">Every card stays unless you kill it. Killed cards go to the bucket at the top, the only place to bring them back.</div>';
   return h;
 }
-function bsRecapCard(q){
-  var cards = bsCards().filter(function(c){ return c.q.role !== "recap"; });
-  var yours = cards.filter(function(c){ return c.own; }).length, sugg = cards.filter(function(c){ return !c.mine; }).length, killed = cards.filter(function(c){ return c.killed; }).length;
-  var h = bsBand("blue", bsPose, BS_INFO.blue.kind, q.line) + bsHead(q, q.question);
-  h += '<div class="bsstats"><span class="bsstat"><b>' + yours + '</b> yours</span><span class="bsstat"><b>' + sugg + '</b> suggested</span><span class="bsstat"><b>' + killed + '</b> killed</span></div>';
-  var order = QUESTIONS.filter(function(x){ return x.role === "suggest"; }).map(function(x){ return x.hat; });
-  order.forEach(function(hat){
-    var mine = cards.filter(function(c){ return c.own && !c.killed && c.q.hat === hat; }), theirs = cards.filter(function(c){ return !c.mine && !c.killed && c.q.hat === hat; });
-    h += '<div class="bshat bs-' + esc(hat) + '"><h4><span class="bsdot" aria-hidden="true"></span>' + esc(bsName(hat)) + ', ' + esc(BS_INFO[hat].kind.toLowerCase()) + '<span class="bsc">' + mine.length + ' yours, ' + theirs.length + ' suggested</span></h4>';
-    var rows = mine.map(function(c){ return '<li><span class="bsbytag you">You</span><span ' + dirA(c.text) + '>' + esc(c.text) + '</span></li>'; }).concat(theirs.map(function(c){ return '<li><span class="bsbytag">' + esc(bsName(hat)) + '</span><span ' + dirA(c.text) + '>' + esc(c.text) + '</span></li>'; }));
-    h += rows.length ? '<ul>' + rows.join("") + '</ul>' : '<p class="bsnone">Nothing standing.</p>';
-    h += '</div>';
-  });
-  h += '<div class="hint">Finish round 1 shows your answers to hand back. Round 2 brings the council.</div>';
-  return h;
-}
 function bsAimsCard(q){
   var h = bsBand("blue", bsPose, BS_INFO.blue.kind, q.line) + bsHead(q, q.question) + bsPlanHTML(2);
   var aim = function(list, hat, title){
     if(!list.length) return '';
     return '<h3 class="bssub2"><span class="bsdot bs-' + hat + '" aria-hidden="true"></span>' + esc(title) + '</h3><div class="bsnotes small" role="list" aria-label="' + esc(title) + '">' + list.map(function(t){ return '<div class="bsnote bs-' + hat + ' mine" role="listitem"><div class="bsntop"><span class="bsyours">Yours</span><span></span></div><p ' + dirA(t) + '>' + esc(t) + '</p></div>'; }).join("") + '</div>';
   };
-  h += aim(q.goals || [], "blue", "What you're aiming for") + aim(q.avoid || [], "black", "What you want to avoid");
+  h += aim(q.goals || [], "blue", "What you're aiming for") + aim(q.avoid || [], "black", "What you want to avoid") + bsSaidHTML(q);
   h += contextHTML(q.topic || {}, q.id);
-  h += '<div class="hint">Cap measures each idea against your aims; the extras try to steer clear of what you want to avoid.</div>';
+  h += '<div class="hint">Cap measures each idea against your aims; the extras try to steer clear of what you want to avoid' + ((q.said || []).length ? ', and can build on what else you told the hats' : '') + '.</div>';
   return h;
 }
 function bsExtrasCard(q){
@@ -9361,43 +9420,6 @@ function bsExtrasCard(q){
   if(!live.length) h += '<p class="bsnone">You killed every extra.</p>';
   h += '<div class="hint">What you keep comes to the council in this round; what you kill is never discussed.</div>';
   return h;
-}
-function bsSeatHTML(q, hat, a, open){
-  var n = bsSays(q, hat).length, read = !!((a.read || {})[hat]) && n > 0;
-  var h = '<button type="button" class="bsseat bs-' + hat + (open ? " open" : "") + (n ? "" : " quiet") + '" data-action="bs-seat" data-hat="' + hat + '" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="bsbub">';
-  h += '<span class="bsface" aria-hidden="true">' + bsArt(hat, open ? "talk" : "still") + '</span><span class="bsn"><span class="bsdot" aria-hidden="true"></span>' + esc(BS_WHO[hat].name) + '</span><span class="bsl">' + esc(BS_INFO[hat].kind) + '</span>';
-  h += '<span class="srx">' + (!n ? ", nothing to add" : read ? ", read" : n > 1 ? ", has " + n + " things to say" : ", has something to say") + '</span>';
-  if(n && read) h += '<span class="bsdone" aria-hidden="true">' + BS_CHECK + '</span>';
-  else if(n) h += '<span class="bsbang' + (n > 1 ? " many" : "") + '" aria-hidden="true">' + (n > 1 ? n : "!") + '</span>';
-  return h + '</button>';
-}
-/* A hat's bubble: each thing it says, each with Take as a new idea and Take as a change; Blue's version can become
-   the idea's words, and a question can be answered right under it. */
-function bsBubbleHTML(q, hat, a){
-  if(!hat) return '<div class="bsbub empty" id="bsbub" role="region" aria-live="polite"><p>Open a hat to hear what it thinks of this idea.</p></div>';
-  var says = bsSays(q, hat), read = !!((a.read || {})[hat]), idx = BS_ALL.indexOf(hat), mine = Array.isArray(a.mine) ? a.mine : [];
-  var h = '<div class="bsbub bs-' + hat + '" id="bsbub" role="region" aria-live="polite" style="--x:' + ((idx + .5) / 6 * 100).toFixed(1) + '%"><div class="bsbh"><span class="bsdot" aria-hidden="true"></span>' + esc(bsName(hat).toUpperCase()) + ' HAT, ' + esc(BS_WHO[hat].name.toUpperCase()) + (says.length > 1 ? '<span class="bsbn">' + says.length + ' THINGS TO SAY</span>' : '') + '</div>';
-  if(!says.length) return h + '<p ' + dirA(BS_SILENT[hat]) + '>' + esc(BS_SILENT[hat]) + '</p></div>';
-  says.forEach(function(say, n){
-    var has = function(kind){ return mine.some(function(m){ return !m.killed && bsTookFrom(m, kind, hat, say, q); }); };
-    var done = function(t){ return '<span class="bsreadl">' + BS_CHECK + ' ' + t + '</span>'; };
-    var btn = function(how, t){ return '<button type="button" class="bstake" data-action="bs-take" data-hat="' + hat + '" data-n="' + n + '" data-how="' + how + '">' + t + '</button>'; };
-    h += '<div class="bscm"><p ' + dirA(say) + '>' + esc(say) + '</p><div class="bsbrow">';
-    h += has("taken") ? done("Taken as a new idea") : btn("idea", "Take as a new idea");
-    h += has("change") ? done("Taken as a change") : btn("change", "Take as a change");
-    var bw = bsBlueWords(hat, say);
-    if(bw) h += (bsIdeaWords(q, a) === bw && bw !== q.idea.text) ? done("The idea's words now") : btn("words", "Use as the idea's words");
-    var ak = bsAnsKey(q, hat, say), asks = bsAsks(say), answered = asks && has("answer");
-    if(asks) bsAnsSay[ak] = say;
-    var boxed = asks && !answered && (!!bsBoxOpen[ak] || !!(own(bsDraft, ak) && bsDraft[ak].trim()));
-    if(answered) h += done("Answered");
-    else if(asks && !boxed) h += '<button type="button" class="bstake ans" data-action="bs-box-open" data-key="' + esc(ak) + '">Answer it</button>';
-    h += '</div>';
-    if(boxed) h += bsBox(ak, "Your answer to " + bsName(hat), "Your answer. Enter adds it as a change.") + '<div class="bsaddrow2"><button type="button" class="bslink" data-action="bs-box-close" data-key="' + esc(ak) + '">Close</button></div>';
-    h += '</div>';
-  });
-  h += '<div class="bsbrow"><span class="bsreadl" id="bsreadl"' + (read ? '' : ' hidden') + '>' + BS_CHECK + ' Counted as read</span></div>';
-  return h + '</div>';
 }
 /* Your rewrite, marked word by word against the idea's original words. */
 function bsWordList(t){ return String(t).match(/\n|[^\s]+/g) || []; }
@@ -9424,66 +9446,6 @@ function bsDiffHTML(a, b){
     return r.t === "=" ? e : r.t === "-" ? '<del>' + e + '</del>' : '<ins>' + e + '</ins>';
   }).join(" ").replace(/ ?\n ?/g, "\n");
 }
-/* The idea on its council card: its words (your rewrite, marked), where it came from, the cards a merged idea came
-   from behind a button, and Rewrite. */
-function bsIdeaHTML(q, a, card, from){
-  var d = q.idea, words = bsIdeaWords(q, a), changed = words !== d.text;
-  var tag = d.by === "you" ? '<span class="bsyours">Yours</span>' : '<span class="bsby">' + esc(bsByLabel(d.by)) + '</span>';
-  var h = '<div class="bsidea"><div class="bsnote big bs-' + esc(d.hat) + (d.by === "you" ? " mine" : "") + '" data-card="' + esc(card.key) + '"><div class="bsntop">' + tag + '<span></span></div>';
-  if(bsRw === q.id){
-    var k = "rw:" + q.id;
-    h += '<label class="srx" for="bsrw">Rewrite the idea</label><textarea id="bsrw" class="bsedit" dir="auto" data-role="bs-field" data-key="' + esc(k) + '" rows="3">' + esc(own(bsDraft, k) ? bsDraft[k] : words) + '</textarea>';
-    var ch = (Array.isArray(a.mine) ? a.mine : []).filter(function(m){ return !m.killed && (m.kind === "change" || m.kind === "answer"); });
-    if(ch.length) h += '<div class="bsrwch"><b>Changes you took</b><ul>' + ch.map(function(m){ return '<li class="bs-' + esc(m.hat || q.hat) + '"><span class="bsdot" aria-hidden="true"></span><span ' + dirA(m.text) + '>' + esc(m.text) + '</span></li>'; }).join("") + '</ul></div>';
-    h += '<div class="bsnfoot"><span class="bshint">Enter saves, Shift+Enter starts a new line.</span><button type="button" class="btn sm" data-action="bs-rw-save">Save</button><button type="button" class="btn sec sm" data-action="bs-rw-cancel">Cancel</button></div>';
-    return h + '</div></div>';
-  }
-  h += '<p id="bst-' + esc(card.key) + '" ' + dirA(words) + '>' + (changed ? bsDiffHTML(d.text, words) : esc(words)) + '</p>';
-  if(from) h += '<small ' + dirA(from) + '>' + esc(from) + '</small>';
-  if(changed) h += '<small class="bsrwn">Your words, marked against the original: struck words are gone, highlighted words are new.</small>';
-  if(d.merged && d.merged.length){
-    var mk = "mg:" + q.id, mo = !!bsBoxOpen[mk];
-    h += '<button type="button" class="bsmgbtn" data-action="bs-merged" data-key="' + esc(mk) + '" aria-expanded="' + (mo ? "true" : "false") + '">' + (mo ? "Hide" : "Show") + ' the ' + d.merged.length + ' ideas it came from</button>';
-    if(mo) h += '<ul class="bsmgl" aria-label="The ideas it came from">' + d.merged.map(function(m){ return '<li class="bs-' + esc(m.hat || (m.by === "you" ? d.hat : m.by)) + '"><span class="bsbytag' + (m.by === "you" ? " you" : "") + '">' + esc(m.by === "you" ? "You" : bsName(m.by)) + '</span><span ' + dirA(m.text) + '>' + esc(m.text) + (m.from ? '<small ' + dirA(m.from) + '>' + esc(m.from) + '</small>' : '') + '</span></li>'; }).join("") + '</ul>';
-  }
-  h += '<div class="bsnfoot"><button type="button" class="btn sec sm" data-action="bs-rw">Rewrite</button>' + (changed ? '<button type="button" class="bslink" data-action="bs-rw-undo">Back to the original</button>' : '') + '</div>';
-  return h + '</div></div>';
-}
-/* The changes you took on this idea, and your answers to its hats: they stay with the idea. */
-function bsChangesHTML(q, a){
-  var list = bsMineHere(q, function(c){ return c.kind === "change" || c.kind === "answer"; });
-  if(!list.length) return '';
-  var h = '<h3 class="bssub2">Changes you took</h3><div class="bsnotes small" role="list" aria-label="Changes you took">';
-  list.forEach(function(c){ h += bsCardHTML(c, { tag: c.kind === "answer" ? "Your answer" : "Change", why: c.kind === "answer" ? "Your answer to " + bsName(c.hat) + (c.on ? ": " + c.on : "") : "From " + bsName(c.hat) }); });
-  return h + '</div><div class="hint">' + (bsStr(a.rewrite) ? "Rewrite again to fold in more. Claude reads your words and these changes." : "They stay with this idea. Rewrite it to fold them into its words, or leave them here: Claude reads them either way.") + '</div>';
-}
-function bsCouncilCard(q){
-  var a = bsA(q), d = q.idea, kd = a.killed || {}, dead = !!(own(kd, d.id) && kd[d.id]), skipped = bsCouncilSkipped(q, QUESTIONS, state.answers);
-  var n = QUESTIONS.filter(function(x){ return x.role === "council"; }), pos = n.indexOf(q) + 1;
-  var h = bsBand("blue", "still", "The council", "Six views on each idea. A gold mark means that hat has something to say; open it to read.");
-  var tp = bsTopic();
-  h += '<div class="qtopic" ' + dirA(tp.title) + '>' + esc(tp.title) + '</div><h2 class="qtitle srx" id="qh" tabindex="-1">Idea ' + pos + ' of ' + n.length + ': ' + esc(d.text) + '</h2>';
-  var card = { key: q.id + "/" + d.id, q: q, id: d.id, text: d.text, hat: d.hat, mine: d.by === "you", by: d.by, idea: true };
-  var from = d.extra ? "An extra from " + bsName(d.hat) + (d.from ? ": " + d.from : "") : (d.from || (d.by === "you" || d.by === "merged" ? "" : "Suggested by " + bsName(d.by)));
-  if(skipped) return h + '<div class="bsgone"><p>You killed this extra on the extras card, so the council skips it.</p><button type="button" class="btn sec sm" data-action="bs-restore" data-key="' + esc("extras/" + d.id) + '">Restore it</button></div>' + bsCouncilMine(q);
-  if(dead) return h + '<div class="bsgone"><p ' + dirA(d.text) + '>&ldquo;' + esc(d.text) + '&rdquo; is killed. It\'s in the bucket.</p><button type="button" class="btn sec sm" data-action="bs-restore" data-key="' + esc(card.key) + '">Restore it</button></div>' + bsCouncilMine(q);
-  var ideaHTML = bsIdeaHTML(q, a, card, from);
-  var open = own(bsSeat, q.id) ? bsSeat[q.id] : "";
-  var seats = BS_ALL.map(function(hat){ return bsSeatHTML(q, hat, a, open === hat); });
-  if(SETTINGS.council === "row"){
-    h += ideaHTML + '<div class="bsseats row" role="group" aria-label="The council">' + seats.join("") + '</div>' + bsBubbleHTML(q, open, a);
-  } else {
-    h += '<div class="bstable"><div class="bscol" role="group" aria-label="The council, left">' + seats.slice(0, 3).join("") + '</div><div class="bsmid">' + ideaHTML + bsBubbleHTML(q, open, a) + '</div><div class="bscol" role="group" aria-label="The council, right">' + seats.slice(3).join("") + '</div></div>';
-  }
-  h += bsChangesHTML(q, a);
-  h += bsCouncilMine(q);
-  h += '<div class="bsacts">' + bsAddToggle("var:" + q.id, "Add a variant of your own") + '<button type="button" class="bskillbtn" data-action="bs-kill" data-key="' + esc(card.key) + '">' + BS_KILL + 'Kill this idea</button></div>';
-  return h;
-}
-function bsCouncilMine(q){
-  var mine = bsMineHere(q, function(c){ return c.kind !== "change" && c.kind !== "answer"; });
-  return mine.length ? '<h3 class="bssub2">New ideas you took or added</h3>' + bsGrid(mine, {}, "New ideas you took or added") : '';
-}
 function bsOrderCard(q){
   var list = bsOrdered(QUESTIONS, state.answers);
   var h = bsBand("blue", bsPose, BS_INFO.blue.kind, q.line) + bsHead(q, q.question);
@@ -9505,7 +9467,8 @@ function bsRetiredCard(q){
 function bsStepLabel(q){
   var r = bsRound(), list = QUESTIONS.filter(function(x){ return x.role === q.role; }), k = list.indexOf(q) + 1;
   if(bsOld()) return "Card " + (state.idx + 1) + " of " + QUESTIONS.length;
-  var map = { hold: "your turn: hat " + k + " of 6", spark: "sparks: " + k + " of " + list.length, suggest: "suggestions: hat " + k + " of 6", recap: "recap",
+  if(bsTalkOf(q) === "r1"){ var steps = bsTalkSteps("r1"); return "Round 1, question " + (bsTalkCur("r1", steps) + 1) + " of " + steps.length; }
+  var map = { suggest: "suggestions: hat " + k + " of 6", recap: "recap",
               aims: "your aims", extras: "extras", council: "the council: idea " + k + " of " + list.length, order: "your order" };
   return "Round " + r + ", " + map[q.role];
 }
@@ -9524,15 +9487,15 @@ function bsNextLabel(){
 }
 function renderHat(q){
   customOpen = false;
-  if(bsLastQ && bsLastQ !== q.id){ var pq = bsQ(bsLastQ); if(pq) bsCommitDrafts(pq); }
+  if(bsLastQ && bsLastQ !== q.id){ var pq = bsQ(bsLastQ); if(pq) bsCommitDrafts(pq); bsTalk.reply = null; }
+  if(bsTalk.pending && bsTalk.pending.idx !== state.idx) bsTalkDrop();
   bsLastQ = q.id;
   var sk = screenKey(), fresh = bsScreen !== sk;
   if(fresh){ bsScreen = sk; bsPose = "talk"; bsSettle(q, 2600); }
   var h = bsTopHTML(q);
   h += '<div class="qcard bscard bs-' + esc(q.role === "council" ? "blue" : q.hat) + ' bsr-' + esc(q.role) + '">';
   if(bsOld()) h += bsRetiredCard(q);
-  else if(q.role === "hold") h += bsHoldCard(q);
-  else if(q.role === "spark") h += bsSparkCard(q);
+  else if(q.role === "hold" || q.role === "spark") h += bsTalkCard(q);
   else if(q.role === "suggest") h += bsSuggestCard(q);
   else if(q.role === "recap") h += bsRecapCard(q);
   else if(q.role === "aims") h += bsAimsCard(q);
@@ -9542,7 +9505,7 @@ function renderHat(q){
   h += '</div>';
   h += '<div class="controls"><button type="button" class="btn sec" data-action="back"' + (state.idx === 0 ? " disabled" : "") + '>Back</button><span class="spacer"></span><button type="button" class="btn" data-action="bs-next">' + esc(bsNextLabel()) + '</button></div>';
   document.getElementById("app").innerHTML = h;
-  if(q.role === "council") bsReadArm(q);
+  bsTalkAfter(q);
   bsBinRefresh();
 }
 function bsSetPose(pose){
@@ -9556,6 +9519,487 @@ function bsSettle(q, ms){
   bsPoseTimer = setTimeout(function(){ bsPoseTimer = null; if(screenKey() === key) bsSetPose("still"); }, ms);
 }
 function bsPleased(q){ bsSetPose("pleased"); bsSettle(q, 1600); }
+
+/* Talks (0.11.0). Round 1's questions are one talk, across the hold and spark cards: each hat's own question, then the
+   sparks, answered in the box or skipped with Next question, an answer bringing the next question after a moment of
+   typing. Each idea on the council is a talk of its own: its comments in the round's order with Cap last, since his
+   version folds in the others; the next hat typing while you read; buttons only on the message showing. A hat with
+   nothing to say says nothing, and the header greys it out.
+   A talk is a list of steps, one message each. The current step is the last one showing. Typing is decoration on the
+   way to a step: any press finishes it, so nothing waits on a timer to become usable. Round 1's talk is one screen to
+   the focus code (screenKey), so the box keeps the cursor as the talk crosses from one hat's card to the next, and
+   what you type in its box stays there until you send it or leave the talk. */
+var bsTalk = { cur: {}, reply: null, pending: null, fresh: null, freshOut: null, freshStk: null };
+var BS_SAID = { change: "Taking this as a change.", taken: "Taking this as a new idea.", words: "Using this as the idea's words." };
+var BS_TALK_ICO = {
+  prev: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  next: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  send: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12l16-8-6 16-2.5-6.5z" fill="currentColor"/></svg>'
+};
+function bsTalkFresh(){ bsTalkDrop(); bsTalk.cur = {}; bsTalk.reply = null; bsTalk.fresh = null; bsTalk.freshOut = null; bsTalk.freshStk = null; }
+/* Which talk a card belongs to, if any. */
+function bsTalkOf(q){
+  if(!q || !isHat(q) || bsOldQs(QUESTIONS)) return null;
+  if(q.role === "council") return "c:" + q.id;
+  if(q.role === "hold" || q.role === "spark") return "r1";
+  return null;
+}
+function bsTalkMsg(kind, hat, say, x){ var m = { kind: kind, hat: hat, say: say }; for(var k in (x || {})){ if(own(x, k)) m[k] = x[k]; } return m; }
+function bsTalkSteps(talk){
+  var out = [];
+  if(talk === "r1"){
+    QUESTIONS.forEach(function(q){
+      if(q.role === "hold") out.push({ q: q, m: bsTalkMsg("ask", q.hat, q.question), pre: [] });
+      else if(q.role === "spark"){
+        (q.sparks || []).forEach(function(s, i){
+          var st = { q: q, m: bsTalkMsg("spark", q.hat, s.text, { sid: s.id, first: i === 0 }), pre: [] };
+          if(i === 0 && q.line) st.pre.push(bsTalkMsg("line", q.hat, q.line));
+          out.push(st);
+        });
+      }
+    });
+    return out;
+  }
+  var cq = talk && talk.indexOf("c:") === 0 ? bsQ(talk.slice(2)) : null;
+  if(!cq) return out;
+  var idx = {}, says = [];
+  (cq.council || []).forEach(function(c){ var n = idx[c.hat] || 0; idx[c.hat] = n + 1; says.push(bsTalkMsg("say", c.hat, c.say, { n: n })); });
+  return says.filter(function(m){ return m.hat !== "blue"; }).concat(says.filter(function(m){ return m.hat === "blue"; })).map(function(m){ return { q: cq, m: m, pre: [] }; });
+}
+/* The current step, or -1 for a talk with no steps (an idea no hat speaks on). Round 1's follows the card you're on:
+   arriving another way (the list, the card's Back or Next) starts you at that card's first question. An idea you
+   come back to opens as far as you'd read. */
+function bsTalkCur(talk, steps){
+  if(!steps.length) return -1;
+  var i = own(bsTalk.cur, talk) ? bsTalk.cur[talk] : 0;
+  if(talk === "r1"){
+    var q = cur();
+    if(!(i >= 0 && i < steps.length && steps[i].q === q)){
+      i = 0;
+      for(var k=0;k<steps.length;k++){ if(steps[k].q === q){ i = k; break; } }
+    }
+  } else if(!own(bsTalk.cur, talk)){
+    var rd = bsA(steps[0].q).read || {};
+    while(i < steps.length - 1 && rd[steps[i].m.hat] && rd[steps[i + 1].m.hat]) i++;
+  }
+  i = Math.max(0, Math.min(i, steps.length - 1));
+  bsTalk.cur[talk] = i;
+  return i;
+}
+/* The step a talk stands on, without following the card: where text left in round 1's box belongs. */
+function bsTalkNow(talk){
+  var steps = bsTalkSteps(talk), i = own(bsTalk.cur, talk) ? bsTalk.cur[talk] : 0;
+  return steps.length ? steps[Math.max(0, Math.min(i, steps.length - 1))] : null;
+}
+/* Drawing again keeps the page where it is; a new message brings the device's chin into view if it's below. */
+function bsTalkDraw(follow){
+  scrollKeep(render);
+  if(!follow) return;
+  var chin = document.querySelector("#app .tkchin");
+  if(chin && chin.getBoundingClientRect().bottom > window.innerHeight - 8){
+    try{ chin.scrollIntoView({ block: "end", behavior: reducedMotion() ? "auto" : "smooth" }); }catch(e){ chin.scrollIntoView(false); }
+  }
+}
+function bsTalkMove(talk, to, typing){
+  bsTalkSettle();
+  if(typing && !reducedMotion()){
+    bsTalk.pending = { talk: talk, to: to, idx: state.idx, timer: setTimeout(function(){ if(bsTalk.pending) bsTalk.pending.timer = null; bsTalkSettle(); }, TIMING.bstype) };
+    bsTalkDraw(true);
+    return;
+  }
+  bsTalkLand(talk, to);
+}
+/* A move on its way lands now, unless you've gone to another card since. */
+function bsTalkSettle(){
+  var p = bsTalk.pending;
+  if(!p) return;
+  if(p.timer) clearTimeout(p.timer);
+  bsTalk.pending = null;
+  if(p.idx === state.idx && bsTalkOf(cur()) === p.talk) bsTalkLand(p.talk, p.to);
+}
+function bsTalkDrop(){ if(bsTalk.pending && bsTalk.pending.timer) clearTimeout(bsTalk.pending.timer); bsTalk.pending = null; }
+function bsTalkLand(talk, to){
+  var st = bsTalkSteps(talk)[to];
+  if(!st) return;
+  if(talk === "r1" && st.q !== cur()){ bsSeenNow(cur()); state.idx = QUESTIONS.indexOf(st.q); saveState(); }
+  bsTalk.cur[talk] = to;
+  bsTalk.fresh = talk + "#" + to;
+  bsTalkRead(st);
+  bsTalkDraw(true);
+  srSay(BS_WHO[st.m.hat].name + (st.m.kind === "spark" ? "'s spark: " : ": ") + st.m.say);
+}
+/* Past either end: round 1's talk hands over to the suggestion cards; on the council the arrow carries on to the next
+   idea, and back to the one before. What's in the box is kept on the way out, as an answer if you were answering. */
+function bsTalkLeave(talk, dir){
+  if(dir > 0) bsNext();
+  else if(talk !== "r1" && state.idx > 0) back();
+}
+function bsSeenNow(q){ if(!q || !isHat(q)) return; var a = bsTake(q); if(!a.seen){ a.seen = true; bsPut(q, a); } }
+function bsTalkNext(){
+  if(bsTalk.pending){ bsTalkSettle(); return; }
+  var talk = bsTalkOf(cur());
+  if(!talk) return;
+  var steps = bsTalkSteps(talk), i = bsTalkCur(talk, steps);
+  if(i >= steps.length - 1){ bsTalkLeave(talk, 1); return; }
+  bsTalkMove(talk, i + 1, talk === "r1");
+}
+function bsTalkPrev(){
+  if(bsTalk.pending){ bsTalkDrop(); bsTalkDraw(false); return; }
+  var talk = bsTalkOf(cur());
+  if(!talk) return;
+  var steps = bsTalkSteps(talk), i = bsTalkCur(talk, steps);
+  /* An answer you've started stays an answer to its comment; with nothing typed, going back lets the comment go. */
+  if(!String(bsDraft[bsTalkKey(talk)] || "").trim()) bsTalk.reply = null;
+  if(i > 0) bsTalkMove(talk, i - 1, false); else bsTalkLeave(talk, -1);
+}
+/* A comment counts as read once its message is the current one. */
+function bsTalkRead(st){
+  if(!st || st.m.kind !== "say" || ((bsA(st.q).read || {})[st.m.hat])) return;
+  var t = bsTake(st.q);
+  t.read[st.m.hat] = true;
+  bsPut(st.q, t);
+}
+function bsLive(q){ var a = bsA(q); return (Array.isArray(a.mine) ? a.mine : []).filter(function(m){ return !m.killed; }); }
+function bsTalkTook(q, m, kind){ return bsLive(q).some(function(c){ return bsTookFrom(c, kind, m.hat, m.say, q); }); }
+function bsTalkIsWords(q, m){ var bw = bsBlueWords(m.hat, m.say); return !!bw && bsIdeaWords(q, bsA(q)) === bw && bw !== q.idea.text; }
+/* Your answers, and your companion's replies when you take a comment, after the message they answer. An answer whose
+   spark has gone from a newer version of the round stays with that hat's first spark. */
+function bsTalkReplies(q, m){
+  var out = [];
+  if(m.kind === "ask" || m.kind === "spark"){
+    var sp = q.sparks || [], loose = function(c){ return !c.spark || !sp.some(function(s){ return s.id === c.spark; }); };
+    bsLive(q).forEach(function(c){
+      var mine = m.kind === "ask" ? !c.spark : (c.spark === m.sid || (m.first && loose(c)));
+      if(mine) out.push({ t: "out", text: c.text, key: q.id + "/" + c.id, own: true });
+    });
+  } else if(m.kind === "say"){
+    bsLive(q).forEach(function(c){
+      if(!c.kind || !bsTookFrom(c, c.kind, m.hat, m.say, q)) return;
+      if(c.kind === "answer") out.push({ t: "out", quote: m, text: c.text, key: q.id + "/" + c.id });
+      else if(c.kind === "change" || c.kind === "taken") out.push({ t: "out", quote: m, text: BS_SAID[c.kind], key: q.id + "/" + c.id, note: c.kind === "taken" ? "Added below as a new idea" : "" });
+    });
+    if(bsTalkIsWords(q, m)) out.push({ t: "out", quote: m, text: BS_SAID.words, key: q.id + "/words" });
+  }
+  return out;
+}
+/* Everything showing in a talk, in order. */
+function bsTalkFlat(talk){
+  var steps = bsTalkSteps(talk), i = bsTalkCur(talk, steps), items = [], q = cur();
+  var typingTo = bsTalk.pending && bsTalk.pending.talk === talk ? bsTalk.pending.to : -1;
+  for(var k=0;k<=i;k++){
+    var s = steps[k];
+    s.pre.forEach(function(m){ items.push({ t: "in", m: m, q: s.q, step: k }); });
+    items.push({ t: "in", m: s.m, q: s.q, step: k, cur: k === i && typingTo < 0 });
+    bsTalkReplies(s.q, s.m).forEach(function(r){ items.push(r); });
+  }
+  if(talk !== "r1") bsLive(q).filter(function(c){ return c.kind === "variant"; }).forEach(function(c){ items.push({ t: "out", text: c.text, key: q.id + "/" + c.id, note: "Added below as a new idea" }); });
+  /* Who types next: the step on its way after an answer or Next question, or, on the council, the next hat while you
+     read. Round 1's hats wait for your answer. */
+  var ahead = typingTo >= 0 ? steps[typingTo] : (talk !== "r1" ? steps[i + 1] : null);
+  if(ahead) items.push({ t: "typing", hat: ahead.m.hat });
+  else if(!steps.length) items.push({ t: "svc", text: "No hat has anything to add on this idea." });
+  else if(i === steps.length - 1){
+    if(talk !== "r1") items.push({ t: "svc", text: "That's everyone on this idea." });
+    else if(bsTalkReplies(steps[i].q, steps[i].m).length) items.push({ t: "svc", text: "That's every question." });
+  }
+  return { items: items, steps: steps, i: i, ahead: ahead };
+}
+function bsTalkFace(svg){ return String(svg || "").replace('viewBox="0 -12 200 262"', 'viewBox="10 0 180 180"'); }
+function bsTalkAv(hat, pose, cls){ return '<span class="tkav bs-' + hat + (cls ? " " + cls : "") + '" aria-hidden="true">' + bsTalkFace(bsArt(hat, pose || "still")) + '</span>'; }
+function bsCompAv(cls){
+  var k = mascotKey();
+  if(!k) return '<span class="tkav you' + (cls ? " " + cls : "") + '" aria-hidden="true">You</span>';
+  return '<span class="tkav comp' + (cls ? " " + cls : "") + '" aria-hidden="true">' + bsTalkFace((ART[k] && (ART[k].greet || ART[k].idle)) || "") + '</span>';
+}
+function bsCompName(){ var k = mascotKey(); return k ? (MSHORT[k] || (CMP.list[k] && CMP.list[k].name) || "Your companion") : "You"; }
+function bsTalkQuote(m, one){
+  var lab = m.kind === "spark" ? BS_WHO[m.hat].name + "'s spark" : BS_WHO[m.hat].name;
+  return '<span class="tkquote bs-' + m.hat + (one ? " one" : "") + '"><b>' + esc(lab) + '</b><span ' + dirA(m.say) + '>' + esc(m.say) + '</span></span>';
+}
+/* The buttons under the message showing: Take as a new idea, Take as a change, Use as the idea's words on Cap's
+   version, and Answer it under a question. What you did turns into a check. */
+function bsTalkKeys(q, m){
+  if(m.kind !== "say") return "";
+  var done = function(label, cls){ return '<button type="button" class="done' + (cls ? " " + cls : "") + '" aria-disabled="true">' + BS_CHECK + ' ' + label + '</button>'; };
+  var take = function(how, label, cls){ return '<button type="button"' + (cls ? ' class="' + cls + '"' : '') + ' data-action="bs-take" data-hat="' + m.hat + '" data-n="' + m.n + '" data-how="' + how + '">' + label + '</button>'; };
+  var h = bsTalkTook(q, m, "taken") ? done("New idea") : take("idea", "Take as a new idea");
+  h += bsTalkTook(q, m, "change") ? done("Taken as a change") : take("change", "Take as a change");
+  if(bsBlueWords(m.hat, m.say)) h += bsTalkIsWords(q, m) ? done("The idea's words now", "full") : take("words", "Use as the idea's words", "full");
+  if(bsAsks(m.say)){
+    var on = !!(bsTalk.reply && bsTalk.reply.q === q.id && bsTalk.reply.say === m.say);
+    h += bsTalkTook(q, m, "answer") ? done("Answered", "full") : '<button type="button" class="full' + (on ? " on" : "") + '" data-action="bs-talk-reply" data-hat="' + m.hat + '" data-n="' + m.n + '" aria-pressed="' + on + '">' + (on ? "Answering below" : "Answer it") + '</button>';
+  }
+  return '<div class="tkkb" role="group" aria-label="What to do with this">' + h + '</div>';
+}
+/* On a message you've moved past, its buttons fold into what you did with it. */
+function bsTalkDone(q, m){
+  if(m.kind !== "say") return "";
+  var out = [];
+  if(bsTalkTook(q, m, "taken")) out.push("New idea");
+  if(bsTalkTook(q, m, "change")) out.push("Change");
+  if(bsTalkTook(q, m, "answer")) out.push("Answered");
+  if(bsTalkIsWords(q, m)) out.push("The idea's words");
+  return out.length ? '<div class="tkdone">' + out.map(function(t){ return '<span>' + BS_CHECK + ' ' + t + '</span>'; }).join("") + '</div>' : "";
+}
+function bsTalkOut(it, first, last){
+  var editing = it.own && bsEdit === it.key, ek = "edit:" + it.key;
+  var h = '<div class="tkrow out' + (first ? " gap" : "") + (last ? "" : " mid") + (bsTalk.freshOut === it.key ? " tkin" : "") + '" data-card="' + esc(it.key) + '">' + bsCompAv(last ? "" : "ghost") + '<div class="tkcol"><div class="tkb">';
+  if(first) h += '<span class="tkname">' + esc(bsCompName()) + '</span>';
+  if(it.quote) h += bsTalkQuote(it.quote, true);
+  if(editing){
+    h += '<textarea class="tkedit" dir="auto" rows="2" data-role="bs-field" data-key="' + esc(ek) + '" aria-label="Edit your answer">' + esc(own(bsDraft, ek) ? bsDraft[ek] : it.text) + '</textarea>';
+    h += '<span class="tkown"><button type="button" data-action="bs-edit-save" data-key="' + esc(it.key) + '">Save</button><button type="button" data-action="bs-edit-cancel">Cancel</button></span>';
+  } else {
+    h += '<span id="tko-' + esc(it.key) + '" ' + dirA(it.text) + '>' + esc(it.text) + '</span>';
+    if(it.note) h += '<small>' + esc(it.note) + '</small>';
+  }
+  h += '</div>';
+  if(it.own && !editing) h += '<span class="tkown"><button type="button" data-action="bs-edit" data-key="' + esc(it.key) + '" aria-describedby="tko-' + esc(it.key) + '">Edit</button><button type="button" data-action="bs-kill" data-key="' + esc(it.key) + '" aria-describedby="tko-' + esc(it.key) + '">Delete</button></span>';
+  return h + '</div></div>';
+}
+function bsTalkHTML(talk){
+  var f = bsTalkFlat(talk), items = f.items, h = "", prevT = null, prevHat = null;
+  items.forEach(function(it, n){
+    var nx = items[n + 1];
+    if(it.t === "svc"){ h += '<div class="tksvc">' + esc(it.text) + '</div>'; prevT = "svc"; prevHat = null; return; }
+    if(it.t === "typing"){
+      h += '<div class="tkrow in typing bs-' + it.hat + (prevT ? " gap" : "") + '" data-action="bs-talk-typing">' + bsTalkAv(it.hat, "talk") + '<span class="tkb" aria-hidden="true"><i></i><i></i><i></i></span><span class="tktl">' + esc(BS_WHO[it.hat].name) + ' is typing</span></div>';
+      prevT = "typing"; return;
+    }
+    if(it.t === "out"){ h += bsTalkOut(it, prevT !== "out", !(nx && nx.t === "out")); prevT = "out"; prevHat = null; return; }
+    var m = it.m, first = prevT !== "in" || prevHat !== m.hat, last = !(nx && nx.t === "in" && nx.m.hat === m.hat);
+    var cls = "tkrow in bs-" + m.hat + (m.kind === "ask" || m.kind === "spark" ? " ask" : "") + (it.cur ? " cur" : "") + (first && prevT ? " gap" : "") + (last ? "" : " mid") + (bsTalk.fresh === talk + "#" + it.step ? " tkin" : "");
+    h += '<div class="' + cls + '">' + bsTalkAv(m.hat, it.cur ? "talk" : "still", last ? "" : "ghost") + '<div class="tkcol"><div class="tkb">';
+    if(first) h += '<span class="tkname">' + esc(BS_WHO[m.hat].name) + '<i>' + esc(BS_INFO[m.hat].kind) + '</i></span>';
+    if(m.kind === "spark") h += '<span class="tkspk">Spark</span>';
+    h += '<span ' + dirA(m.say) + '>' + esc(m.say) + '</span></div>';
+    h += (it.cur ? bsTalkKeys(it.q, m) : bsTalkDone(it.q, m)) + '</div></div>';
+    prevT = "in"; prevHat = m.hat;
+  });
+  return { html: h, f: f };
+}
+/* The box at the bottom: in round 1 it answers the question showing; on the council it writes a variant, or your
+   answer to the comment Answer it quoted. */
+function bsTalkKey(talk){ return "talk:" + (talk === "r1" ? "r1" : talk.slice(2)); }
+function bsTalkBox(talk){
+  var q = cur(), replying = talk !== "r1" && bsTalk.reply && bsTalk.reply.q === q.id, key = bsTalkKey(talk), ph, hint;
+  if(talk === "r1"){ ph = "Your answer..."; hint = "Enter sends it, and the next question comes. Shift+Enter starts a new line."; }
+  else if(replying){ ph = "Your answer to " + BS_WHO[bsTalk.reply.hat].name + "..."; hint = "Your answer sticks to the idea. Enter sends it."; }
+  else { ph = "Write a variant of this idea..."; hint = "A variant joins the new ideas below. Enter sends it."; }
+  var v = own(bsDraft, key) ? bsDraft[key] : "";
+  var h = '<div class="tkcomp">';
+  if(replying) h += '<div class="tkreply">' + bsTalkQuote(bsTalk.reply.m) + '<button type="button" data-action="bs-talk-unreply" aria-label="Stop answering">' + BS_KILL + '</button></div>';
+  h += '<div class="tkline"><label class="srx" for="tkbox">' + esc(ph) + '</label><textarea id="tkbox" dir="auto" rows="1" data-role="bs-field" data-key="' + esc(key) + '" placeholder="' + esc(ph) + '" aria-describedby="tkhint">' + esc(v) + '</textarea>';
+  h += '<button type="button" class="tksend" id="tksend" data-action="bs-talk-send" aria-label="Send"' + (String(v).trim() ? '' : ' disabled') + '>' + BS_TALK_ICO.send + '</button></div>';
+  return h + '<div class="tkhint" id="tkhint">' + esc(hint) + '</div></div>';
+}
+function bsTalkChin(talk, f){
+  var nx = f.steps[f.i + 1];
+  if(talk === "r1") return { t: nx ? "Next question" : "Suggestions", av: "" };
+  if(nx) return { t: BS_WHO[nx.m.hat].name, av: bsTalkAv(nx.m.hat, "still") };
+  var after = QUESTIONS[state.idx + 1];
+  return { t: !after ? "Finish" : after.role === "council" ? "Next idea" : "Next card", av: "" };
+}
+/* The device: a header with the six hats (those with nothing to say on this idea greyed), the talk, the box, and the
+   arrows on its chin. */
+function bsDeviceHTML(talk){
+  var c = bsTalkHTML(talk), f = c.f, q = cur(), speaks = {};
+  (q.council || []).forEach(function(x){ speaks[x.hat] = true; });
+  var stack = BS_ALL.map(function(hat){ return bsTalkAv(hat, "still", talk !== "r1" && !speaks[hat] ? "dim" : ""); }).join("");
+  var title = talk === "r1" ? "Round 1" : "The council", typing = f.ahead && (talk !== "r1" || bsTalk.pending) ? f.ahead.m.hat : null, sub;
+  if(typing) sub = '<span class="typing">' + esc(BS_WHO[typing].name) + ' is typing...</span>';
+  else if(talk === "r1") sub = '<span>Question ' + (f.i + 1) + ' of ' + f.steps.length + '</span>';
+  else sub = '<span>' + Object.keys(speaks).length + ' of 6 have something to say</span>';
+  var nl = bsTalkChin(talk, f), prevOff = f.i <= 0 && !bsTalk.pending && (talk === "r1" || state.idx === 0);
+  /* Where you are in the talk: a dot per message, or on a phone, and past 22 messages, a count. */
+  var dots = f.steps.length < 2 ? "" : (f.steps.length > 22 ? "" : '<span class="tkdotrow">' + f.steps.map(function(s, k){ return '<span class="tkdot bs-' + s.m.hat + (k <= f.i ? " on" : "") + (k === f.i ? " cur" : "") + '"></span>'; }).join("") + '</span>') + '<span class="tkcount">' + (f.i + 1) + ' of ' + f.steps.length + '</span>';
+  var h = '<div class="tkwrap"><div class="tkdev" role="region" aria-label="' + esc(title) + '"><div class="tkscr"><div class="tkhdr"><span class="tkstack">' + stack + '</span><span class="tkhtx"><b>' + esc(title) + '</b>' + sub + '</span></div>';
+  h += '<div class="tkmsgs" id="tkmsgs">' + c.html + '</div>' + bsTalkBox(talk) + '</div>';
+  h += '<div class="tkchin"><button type="button" class="tknav pv" data-action="bs-talk-prev" aria-label="Back"' + (prevOff ? ' disabled' : '') + '>' + BS_TALK_ICO.prev + '<span class="lb">Back</span></button>';
+  h += '<span class="tkdots" aria-hidden="true">' + dots + '</span><button type="button" class="tknav nx" data-action="bs-talk-next">' + nl.av + '<span class="lb">' + esc(nl.t) + '</span>' + BS_TALK_ICO.next + '</button></div></div></div>';
+  return h;
+}
+/* After a card is drawn: a talk scrolls to its newest message, and the comment showing counts as read. */
+function bsTalkAfter(q){
+  var talk = bsTalkOf(q), m = document.getElementById("tkmsgs");
+  if(talk && m){
+    var steps = bsTalkSteps(talk), i = bsTalkCur(talk, steps);
+    if(i >= 0 && !bsTalk.pending) bsTalkRead(steps[i]);
+    m.scrollTop = m.scrollHeight;
+  }
+  bsTalk.fresh = null; bsTalk.freshOut = null; bsTalk.freshStk = null;
+}
+
+/* The cards that talk. Round 1's shows the topic over the talk. */
+function bsTalkCard(q){
+  var tp = bsTopic(), h = '<div class="tktopic"><div class="qtopic" ' + dirA(tp.title) + '>' + esc(tp.title) + '</div><h2 class="qtitle" id="qh" tabindex="-1" aria-describedby="pcount" ' + dirA(tp.question) + '>' + esc(tp.question) + '</h2>';
+  if(q === QUESTIONS[0]) h += bsPlanHTML(1) + contextHTML(q.topic || {}, q.id);
+  return h + '</div>' + bsDeviceHTML("r1");
+}
+/* A strip of paper torn along the top and bottom, taped onto the idea: each sticker tears its own way, the same every
+   time it's drawn. */
+function bsTear(key){
+  var h = bsHash(key), seed = 7, n = 24, top = [], bot = [], k;
+  for(k=0;k<h.length;k++) seed = (seed * 31 + h.charCodeAt(k)) >>> 0;
+  var rnd = function(){ seed = (seed * 1103515245 + 12345) >>> 0; return (seed >>> 8) / 16777216; };
+  for(k=0;k<=n;k++) top.push((k / n * 100).toFixed(2) + "% " + (rnd() * 5).toFixed(1) + "px");
+  for(k=n;k>=0;k--) bot.push((k / n * 100).toFixed(2) + "% calc(100% - " + (rnd() * 5).toFixed(1) + "px)");
+  return "polygon(" + top.concat(bot).join(",") + ")";
+}
+function bsLastQuestion(t){ var m = String(t || "").match(/[^.!?]*\?["'”’)\]]*\s*$/); return m ? m[0].trim() : String(t || ""); }
+function bsStickerHTML(c){
+  var h = '<div class="tkstk bs-' + esc(c.hat) + (bsTalk.freshStk === c.key ? " lit" : "") + '" role="listitem" data-card="' + esc(c.key) + '"><div class="tkpaper" style="clip-path:' + bsTear(c.key) + '"><span class="tkstkf" aria-hidden="true">' + bsTalkFace(bsArt(c.hat, "still")) + '</span><span class="tkstkb">';
+  if(bsEdit === c.key){
+    var ek = "edit:" + c.key;
+    h += '<span class="tkstkl">' + (c.kind === "answer" ? "Your answer" : "Change") + '</span><textarea dir="auto" class="bsedit" data-role="bs-field" data-key="' + esc(ek) + '" aria-label="Edit" rows="2">' + esc(own(bsDraft, ek) ? bsDraft[ek] : c.text) + '</textarea><span class="tkstkrow"><button type="button" class="btn sm" data-action="bs-edit-save" data-key="' + esc(c.key) + '">Save</button><button type="button" class="btn sec sm" data-action="bs-edit-cancel">Cancel</button></span>';
+  } else if(c.kind === "answer"){
+    h += '<span class="tkstkl">' + esc(BS_WHO[c.hat].name) + ' asked</span><p class="tkq" ' + dirA(c.on) + '>' + esc(bsLastQuestion(c.on)) + '</p><p class="tka" id="bst-' + esc(c.key) + '" ' + dirA(c.text) + '><b>You:</b> ' + esc(c.text) + '<button type="button" class="tkstke" data-action="bs-edit" data-key="' + esc(c.key) + '" aria-describedby="bst-' + esc(c.key) + '">Edit</button></p>';
+  } else {
+    h += '<span class="tkstkl">Change, from ' + esc(BS_WHO[c.hat].name) + '</span><p id="bst-' + esc(c.key) + '" ' + dirA(c.text) + '>' + esc(c.text) + '<button type="button" class="tkstke" data-action="bs-edit" data-key="' + esc(c.key) + '" aria-describedby="bst-' + esc(c.key) + '">Edit</button></p>';
+  }
+  return h + '</span><button type="button" class="tkstkx" data-action="bs-kill" data-key="' + esc(c.key) + '" aria-label="Take it off the idea" aria-describedby="bst-' + esc(c.key) + '" title="Take it off">' + BS_KILL + '</button></div></div>';
+}
+/* The idea on its own card: its words (your rewrite, marked), where it came from, the cards a merged idea came from
+   behind a button, Rewrite, the cross that kills it, and what you stuck onto it. */
+function bsIdeaHTML(q, a, key, from){
+  var d = q.idea, words = bsIdeaWords(q, a), changed = words !== d.text;
+  var tag = d.by === "you" ? '<span class="bsyours">Yours</span>' : '<span class="bsby">' + esc(bsByLabel(d.by)) + '</span>';
+  var h = '<div class="tkidea bs-' + esc(d.hat) + (d.by === "you" ? " mine" : "") + '" id="tkidea" data-card="' + esc(key) + '"><div class="tkitop">' + tag;
+  h += '<button type="button" class="bskill tkkill" data-action="bs-kill" data-key="' + esc(key) + '" aria-label="Kill this idea" title="Kill this idea">' + BS_KILL + '</button></div>';
+  if(bsRw === q.id){
+    var k = "rw:" + q.id;
+    h += '<label class="srx" for="bsrw">Rewrite the idea</label><textarea id="bsrw" class="bsedit" dir="auto" data-role="bs-field" data-key="' + esc(k) + '" rows="3">' + esc(own(bsDraft, k) ? bsDraft[k] : words) + '</textarea>';
+    h += '<div class="tkifoot"><button type="button" class="btn sm" data-action="bs-rw-save">Save</button><button type="button" class="btn sec sm" data-action="bs-rw-cancel">Cancel</button><span class="bshint">Enter saves, Shift+Enter starts a new line.</span></div>';
+  } else {
+    h += '<p class="tkwords" id="bst-' + esc(key) + '" ' + dirA(words) + '>' + (changed ? bsDiffHTML(d.text, words) : esc(words)) + '</p>';
+    if(from) h += '<small class="tkfrom" ' + dirA(from) + '>' + esc(from) + '</small>';
+    if(changed) h += '<small class="tkfrom">Your words, marked against the original: struck words are gone, highlighted words are new.</small>';
+    h += '<div class="tkifoot"><button type="button" class="btn sec sm" data-action="bs-rw">Rewrite</button>';
+    if(changed) h += '<button type="button" class="bslink" data-action="bs-rw-undo">Back to the original</button>';
+    if(d.merged && d.merged.length){ var mk = "mg:" + q.id, mo = !!bsBoxOpen[mk]; h += '<button type="button" class="bsmgbtn" data-action="bs-merged" data-key="' + esc(mk) + '" aria-expanded="' + mo + '">' + (mo ? "Hide" : "Show") + ' the ' + d.merged.length + ' ideas it came from</button>'; }
+    h += '</div>';
+    if(d.merged && d.merged.length && bsBoxOpen["mg:" + q.id]) h += '<ul class="bsmgl" aria-label="The ideas it came from">' + d.merged.map(function(m){ return '<li class="bs-' + esc(m.hat || (m.by === "you" ? d.hat : m.by)) + '"><span class="bsbytag' + (m.by === "you" ? " you" : "") + '">' + esc(m.by === "you" ? "You" : bsName(m.by)) + '</span><span ' + dirA(m.text) + '>' + esc(m.text) + (m.from ? '<small ' + dirA(m.from) + '>' + esc(m.from) + '</small>' : '') + '</span></li>'; }).join("") + '</ul>';
+  }
+  var st = bsMineHere(q, function(c){ return c.kind === "change" || c.kind === "answer"; });
+  if(st.length) h += '<div class="tkstks" role="list" aria-label="What you stuck onto this idea">' + st.map(bsStickerHTML).join("") + '</div>';
+  return h + '</div>';
+}
+/* What you took as a new idea, and your variants: new ideas, below the talk. */
+function bsNewIdeasHTML(q){
+  var mine = bsMineHere(q, function(c){ return c.kind !== "change" && c.kind !== "answer"; });
+  return mine.length ? '<div class="tkbelow"><h3 class="bssub2">New ideas from this one</h3>' + bsGrid(mine, {}, "New ideas from this one") + '</div>' : '';
+}
+function bsCouncilCard(q){
+  var a = bsA(q), d = q.idea, kd = a.killed || {}, key = q.id + "/" + d.id, tp = bsTopic();
+  var all = QUESTIONS.filter(function(x){ return x.role === "council"; });
+  var h = '<div class="qtopic" ' + dirA(tp.title) + '>' + esc(tp.title) + '</div><h2 class="qtitle srx" id="qh" tabindex="-1">Idea ' + (all.indexOf(q) + 1) + ' of ' + all.length + ': ' + esc(d.text) + '</h2>';
+  var from = d.extra ? "An extra from " + bsName(d.hat) + (d.from ? ": " + d.from : "") : (d.from || (d.by === "you" || d.by === "merged" ? "" : "Suggested by " + bsName(d.by)));
+  if(bsCouncilSkipped(q, QUESTIONS, state.answers)) return h + '<div class="bsgone"><p>You killed this extra on the extras card, so the council skips it.</p><button type="button" class="btn sec sm" data-action="bs-restore" data-key="' + esc("extras/" + d.id) + '">Restore it</button></div>' + bsNewIdeasHTML(q);
+  if(own(kd, d.id) && kd[d.id]) return h + '<div class="bsgone"><p ' + dirA(d.text) + '>&ldquo;' + esc(d.text) + '&rdquo; is killed. It\'s in the bucket.</p><button type="button" class="btn sec sm" data-action="bs-restore" data-key="' + esc(key) + '">Restore it</button></div>' + bsNewIdeasHTML(q);
+  return h + bsIdeaHTML(q, a, key, from) + bsDeviceHTML("c:" + q.id) + bsNewIdeasHTML(q);
+}
+/* Cap's recap of round 1: every question with what you answered, then, hat by hat, the suggestions you kept and the
+   cards you added among them. */
+function bsRecapCard(q){
+  var asked = bsTalkSteps("r1"), cards = bsCards();
+  var answered = asked.filter(function(s){ return bsTalkReplies(s.q, s.m).length; }).length, kept = cards.filter(function(c){ return !c.own && !c.killed && c.q.role === "suggest"; }).length;
+  var h = bsBand("blue", bsPose, BS_INFO.blue.kind, q.line) + bsHead(q, q.question);
+  h += '<div class="bsstats"><span class="bsstat"><b>' + answered + '</b> of ' + asked.length + ' questions answered</span><span class="bsstat"><b>' + kept + '</b> ' + (kept === 1 ? "suggestion" : "suggestions") + ' kept</span></div>';
+  h += '<h3 class="bssub2">Your answers</h3><ol class="tkrecap">';
+  asked.forEach(function(s){
+    var r = bsTalkReplies(s.q, s.m);
+    h += '<li class="bs-' + s.m.hat + '"><span class="tkrq"><span class="bsdot" aria-hidden="true"></span><b>' + esc(BS_WHO[s.m.hat].name) + '</b><span ' + dirA(s.m.say) + '>' + esc(s.m.say) + '</span></span>';
+    h += r.length ? '<ul>' + r.map(function(x){ return '<li ' + dirA(x.text) + '>' + esc(x.text) + '</li>'; }).join("") + '</ul>' : '<span class="tkskip">Skipped</span>';
+    h += '</li>';
+  });
+  h += '</ol>';
+  var groups = "";
+  QUESTIONS.filter(function(x){ return x.role === "suggest"; }).forEach(function(sq){
+    var here = cards.filter(function(c){ return c.q === sq && !c.killed; });
+    if(!here.length) return;
+    groups += '<div class="bshat bs-' + esc(sq.hat) + '"><h4><span class="bsdot" aria-hidden="true"></span>' + esc(BS_WHO[sq.hat].name) + ', ' + esc(BS_INFO[sq.hat].kind.toLowerCase()) + '</h4><ul>' + here.map(function(c){ return '<li>' + (c.own ? '<span class="bsbytag you">You</span>' : '') + '<span ' + dirA(c.text) + '>' + esc(c.text) + '</span></li>'; }).join("") + '</ul></div>';
+  });
+  h += '<h3 class="bssub2">The suggestions you kept</h3>' + (groups || '<p class="bsnone">You killed every suggestion.</p>');
+  return h + '<div class="hint">Finish round 1 shows your answers to hand back. Claude reads them, makes ideas of the ones that are ideas, and round 2 brings the council.</div>';
+}
+/* Round 2's aims card lists what else you told the hats: your answers in round 1 that weren't ideas. */
+function bsSaidHTML(q){
+  var list = q.said || [];
+  if(!list.length) return '';
+  return '<h3 class="bssub2">What else you told the hats</h3><ul class="tksaid" aria-label="What else you told the hats">' + list.map(function(x){
+    return '<li class="bs-' + esc(x.hat) + '"><span class="tksq"><span class="bsdot" aria-hidden="true"></span><span ' + dirA(x.question) + '>' + esc(BS_WHO[x.hat].name) + ' asked: ' + esc(x.question) + '</span></span><span class="tksa" ' + dirA(x.answer) + '>' + esc(x.answer) + '</span></li>';
+  }).join("") + '</ul>';
+}
+
+/* What you do in a talk. */
+function bsTalkSend(){
+  var q = cur(), talk = bsTalkOf(q), box = document.getElementById("tkbox");
+  if(!talk || !box) return;
+  /* A press while the next message is typing only brings it in, so nothing you send lands on a question you haven't
+     seen. */
+  if(bsTalk.pending){ bsTalkSettle(); return; }
+  var text = String(box.value || "").trim(), key = box.getAttribute("data-key") || "";
+  if(!text) return;
+  var steps = bsTalkSteps(talk), i = bsTalkCur(talk, steps), kept = bsTalkKeep(q, talk, text);
+  if(!kept) return;
+  var moveOn = talk === "r1" || kept.answer;
+  delete bsDraft[key];
+  bsTalk.freshOut = kept.key;
+  if(kept.answer) bsTalk.freshStk = kept.key;
+  srSay(talk === "r1" ? "Answered." : kept.answer ? "Your answer is stuck to the idea." : "Your variant is a new idea, below the talk.");
+  faceFlash("pick", 1300);
+  if(moveOn && i < steps.length - 1) bsTalkMove(talk, i + 1, true);
+  else bsTalkDraw(true);
+  focusQuiet(document.getElementById("tkbox"));
+}
+/* Text from a talk's box, kept: in round 1 an answer to the question the talk stands on; on the council your answer
+   to the comment you're answering, or a variant. */
+function bsTalkKeep(q, talk, text){
+  var key;
+  if(talk === "r1"){
+    var st = bsTalkNow("r1");
+    if(!st) return null;
+    key = bsTalkAdd(st.q, st.m.kind === "spark" ? { text: text, spark: st.m.sid } : { text: text });
+    return key ? { key: key, answer: false } : null;
+  }
+  var r = bsTalk.reply;
+  bsTalk.reply = null;
+  var answer = !!(r && r.q === q.id && bsSays(q, r.hat).indexOf(r.say) !== -1);
+  key = bsTalkAdd(q, answer ? { text: text, kind: "answer", hat: r.hat, on: r.say } : { text: text, kind: "variant" });
+  return key ? { key: key, answer: answer } : null;
+}
+function bsTalkAdd(q, c){
+  var a = bsTake(q);
+  if(a.mine.length >= BS_MINE){ toast(false, "That's " + BS_MINE + " cards here, the most one card keeps."); return null; }
+  c.id = bsMineId(a, q);
+  a.mine.push(c);
+  if(c.kind === "answer") a.read[c.hat] = true;
+  bsPut(q, a);
+  return q.id + "/" + c.id;
+}
+function bsTalkReply(hat, n){
+  var q = cur(), talk = bsTalkOf(q), m = null;
+  if(!talk || talk === "r1") return;
+  bsTalkSteps(talk).forEach(function(s){ if(s.m.hat === hat && s.m.n === n) m = s.m; });
+  if(!m) return;
+  bsTalk.reply = (bsTalk.reply && bsTalk.reply.q === q.id && bsTalk.reply.say === m.say) ? null : { q: q.id, hat: hat, n: n, say: m.say, m: m };
+  bsTalkDraw(false);
+  focusQuiet(bsTalk.reply ? document.getElementById("tkbox") : document.querySelector('#app [data-action="bs-talk-reply"][data-hat="' + hat + '"][data-n="' + n + '"]'));
+}
+function bsTalkUnreply(){ bsTalk.reply = null; bsTalkDraw(false); focusQuiet(document.getElementById("tkbox")); }
+/* Left and Right step a talk while the cursor isn't in a box. */
+function bsTalkArrow(ev){
+  if((ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") || ev.shiftKey || !bsTalkOf(cur()) || !document.getElementById("tkmsgs")) return false;
+  var at = ev.target;
+  if(at && at !== document.body && !(at.closest && at.closest("#app"))) return false;
+  ev.preventDefault();
+  if(ev.key === "ArrowRight") bsTalkNext(); else bsTalkPrev();
+  return true;
+}
+/* After a take, focus goes to the next thing you might do with the same comment, or the box. */
+function bsTalkFocusAfterTake(){
+  focusQuiet(document.querySelector("#app .tkrow.cur .tkkb button:not(.done)") || document.getElementById("tkbox") || pageHeading());
+}
 
 /* The summary: what you wrote and what stands, with the answers to hand back. */
 function renderBsSummary(){
@@ -9595,7 +10039,7 @@ function bsSideItem(i, q, label, cnt, extra){
 function bsSideHTML(){
   if(bsOld()) return '<div class="shead">Older brainstorm</div>' + QUESTIONS.map(function(q, i){ return bsSideItem(i, q, q.title, ""); }).join("");
   var r = bsRound(), h = '<div class="shead">Round ' + r + '</div>', last = "", cards = bsCards(), councilN = 0;
-  var groups = { hold: "Your turn", spark: "Sparks", suggest: "Suggestions", council: "The council" };
+  var groups = { hold: "Questions", spark: "Sparks", suggest: "Suggestions", council: "The council" };
   QUESTIONS.forEach(function(q, i){
     if(groups[q.role] && last !== q.role) h += '<div class="bsgh" aria-hidden="true">' + esc(groups[q.role]) + '</div>';
     last = q.role;
@@ -9627,35 +10071,15 @@ function bsFind(key){
   for(var i=0;i<cs.length;i++){ if(cs[i].key === key) return cs[i]; }
   return null;
 }
-/* A box's key says where a new card goes: box (Hold back), spark, add (a suggestion card), or var (a variant). */
+/* Add one of your own, on a suggestion card. */
 function bsAddFrom(key){
   var q = bsCur(), t = document.querySelector('#app textarea[data-key="' + bsAttr(key) + '"]');
   if(!q || !t) return;
   var text = String(t.value || "").trim(), parts = key.split(":");
-  if(!text || parts[1] !== q.id) return;
+  if(!text || parts[0] !== "add" || parts[1] !== q.id) return;
   var a = bsTake(q);
   if(a.mine.length >= BS_MINE){ toast(false, "That's " + BS_MINE + " cards here, the most one card keeps."); return; }
-  var c = { id: bsMineId(a, q), text: text };
-  if(parts[0] === "spark"){ if(!q.sparks || !q.sparks.some(function(s){ return s.id === parts[2]; })) return; c.spark = parts[2]; }
-  else if(parts[0] === "var"){ if(q.role !== "council") return; c.kind = "variant"; }
-  else if(parts[0] === "ans"){
-    var said = q.role === "council" ? bsAnsSaid(q, key) : undefined;
-    if(said === undefined) return;
-    c.kind = "answer"; c.hat = parts[2]; c.on = said;
-    a.read[parts[2]] = true;
-    a.mine.push(c);
-    delete bsDraft[key];
-    delete bsBoxOpen[key];
-    bsPut(q, a);
-    scrollKeep(render);
-    focusQuiet(document.querySelector('#app .bsseat[data-hat="' + bsAttr(parts[2]) + '"]') || pageHeading());
-    srSay("Your answer is a change to this idea now.");
-    bsPleased(q);
-    faceFlash("pick", 1300);
-    return;
-  }
-  else if(parts[0] !== "box" && parts[0] !== "add") return;
-  a.mine.push(c);
+  a.mine.push({ id: bsMineId(a, q), text: text });
   delete bsDraft[key];
   bsPut(q, a);
   scrollKeep(render);
@@ -9665,7 +10089,9 @@ function bsAddFrom(key){
   bsPleased(q);
   faceFlash("pick", 1300);
 }
-/* Text left in a box when you move on is added as a card, and an edit left open is saved, so nothing typed is lost. */
+/* Text left in a box when you move on is kept, and an edit left open is saved, so nothing typed is lost. Round 1's
+   talk is one screen: what's in its box waits there while you're in the talk, and is kept as an answer when you
+   leave it. */
 function bsCommitDrafts(q){
   if(!q || !isHat(q) || bsOld()) return 0;
   var n = 0;
@@ -9678,6 +10104,13 @@ function bsCommitDrafts(q){
       if(bsEdit === key.slice(5)) bsEdit = null;
       return;
     }
+    if(key.indexOf("talk:") === 0){
+      var here = bsTalkOf(q);
+      if(!here || key !== bsTalkKey(here) || (here === "r1" && bsTalkOf(cur()) === "r1")) return;
+      delete bsDraft[key];
+      if(v && bsTalkKeep(q, here, v)) n++;
+      return;
+    }
     var p = key.split(":");
     if(p[1] !== q.id) return;
     delete bsDraft[key];
@@ -9686,21 +10119,10 @@ function bsCommitDrafts(q){
       if(q.role === "council" && v && v !== bsIdeaWords(q, bsA(q))){ var ra = bsTake(q); if(v === q.idea.text) delete ra.rewrite; else ra.rewrite = v; bsPut(q, ra); n++; }
       return;
     }
-    if(!v) return;
+    if(!v || p[0] !== "add") return;
     var a = bsTake(q);
     if(a.mine.length >= BS_MINE) return;
-    var nc = { id: bsMineId(a, q), text: v };
-    if(p[0] === "spark"){ if(!q.sparks || !q.sparks.some(function(s){ return s.id === p[2]; })) return; nc.spark = p[2]; }
-    else if(p[0] === "var"){ if(q.role !== "council") return; nc.kind = "variant"; }
-    else if(p[0] === "ans"){
-      if(q.role !== "council") return;
-      var said = bsAnsSaid(q, key);
-      delete bsBoxOpen[key];
-      if(said === undefined) nc.kind = "variant";
-      else { nc.kind = "answer"; nc.hat = p[2]; nc.on = said; a.read[p[2]] = true; }
-    }
-    else if(p[0] !== "box" && p[0] !== "add") return;
-    a.mine.push(nc);
+    a.mine.push({ id: bsMineId(a, q), text: v });
     bsPut(q, a);
     n++;
   });
@@ -9709,7 +10131,6 @@ function bsCommitDrafts(q){
 }
 function bsBoxShow(key, open){
   bsBoxOpen[key] = !!open;
-  if(open && key.indexOf("ans:") === 0){ var ap = key.split(":"); bsSeat[ap[1]] = ap[2]; bsPinned[ap[1]] = true; bsHoverCancel(); }
   if(!open) delete bsDraft[key];
   scrollKeep(render);
   var t = document.querySelector('#app textarea[data-key="' + bsAttr(key) + '"]');
@@ -9719,14 +10140,14 @@ function bsBoxShow(key, open){
 function bsFieldSet(key, val){
   bsDraft[key] = String(val || "");
   if(key.indexOf("edit:") === 0 || key.indexOf("rw:") === 0) return;
-  var ok = document.querySelector('#app [data-action="bs-add"][data-key="' + bsAttr(key) + '"]');
+  var ok = key.indexOf("talk:") === 0 ? document.getElementById("tksend") : document.querySelector('#app [data-action="bs-add"][data-key="' + bsAttr(key) + '"]');
   if(ok) ok.disabled = !bsDraft[key].trim();
 }
 /* Where the cursor or focus is, so a redraw that comes later (a kill landing) can put it back. */
 function bsFocusInfo(){
   var a = document.activeElement, app = document.getElementById("app");
   if(!a || a === document.body || !app || !app.contains(a)) return null;
-  var k = { key: a.getAttribute("data-key"), role: a.getAttribute("data-role"), act: a.getAttribute("data-action"), hat: a.getAttribute("data-hat"), id: a.id || "" };
+  var k = { key: a.getAttribute("data-key"), role: a.getAttribute("data-role"), act: a.getAttribute("data-action"), id: a.id || "" };
   try{ k.from = a.selectionStart; k.to = a.selectionEnd; }catch(e){}
   return k;
 }
@@ -9734,7 +10155,6 @@ function bsFocusBack(k){
   if(!k) return false;
   var el = null;
   if(k.role === "bs-field" && k.key) el = document.querySelector('#app textarea[data-key="' + bsAttr(k.key) + '"]');
-  else if(k.act === "bs-seat" && k.hat) el = document.querySelector('#app .bsseat[data-hat="' + bsAttr(k.hat) + '"]');
   else if(k.act && k.key) el = document.querySelector('#app [data-action="' + bsAttr(k.act) + '"][data-key="' + bsAttr(k.key) + '"]');
   else if(k.id) el = document.getElementById(k.id);
   if(!el || el.disabled) return false;
@@ -9742,7 +10162,8 @@ function bsFocusBack(k){
   if(k.role === "bs-field" && typeof k.from === "number"){ try{ el.setSelectionRange(k.from, k.to); }catch(e){} }
   return true;
 }
-/* Killing a card: it crumples and flies into the bucket, and stays there until you restore it. */
+/* Killing a card: it crumples and flies into the bucket, and stays there until you restore it. In a talk, what crumples
+   is your answer's bubble, a sticker, or the idea's own card. */
 function bsKill(key, from){
   var c = bsFind(key);
   if(!c || c.killed) return;
@@ -9750,13 +10171,13 @@ function bsKill(key, from){
   if(c.own){ a.mine.forEach(function(m){ if(m.id === c.id) m.killed = true; }); }
   else a.killed[c.id] = true;
   if(bsEdit === key) bsEdit = null;
-  if(c.idea){ bsSeat[c.q.id] = ""; bsPinned[c.q.id] = false; if(bsReadTimer){ clearTimeout(bsReadTimer); bsReadTimer = null; } }
+  if(c.idea) bsTalk.reply = null;
   var oq = bsOrderQ(), oa = oq ? state.answers[oq.id] : null, ok = bsOrderKeyOf(key);
   if(oa && Array.isArray(oa.order) && oa.order.indexOf(ok) !== -1) bsOrderGap[ok] = oa.order.indexOf(ok);
   bsPut(c.q, a);
   var el = null;
-  if(from && from.closest) el = from.closest(".bsnote") || from.closest(".bsidea");
-  if(c.idea){ var ie = document.querySelector("#app .bsidea .bsnote"); if(ie) el = ie; }
+  if(from && from.closest){ el = from.closest(".bsnote") || from.closest(".tkstk"); if(!el && from.closest(".tkrow")) el = from.closest(".tkrow").querySelector(".tkb"); }
+  if(c.idea) el = document.getElementById("tkidea") || el;
   var bin = document.getElementById("bsbinbtn"), screen = screenKey();
   var done = function(){
     if(screenKey() !== screen){ var bb = document.querySelector("#bsbinbtn b"); if(bb) bb.textContent = String(bsKilledCount()); renderSide(); return; }
@@ -9817,108 +10238,15 @@ function bsEditCancel(){
   scrollKeep(render);
   if(key) focusQuiet(document.querySelector('#app [data-action="bs-edit"][data-key="' + bsAttr(key) + '"]') || pageHeading());
 }
-/* The council: open a hat to read it. A comment counts as read once its bubble has been open for 3 seconds. */
-function bsSeatOpen(hat, pin){
-  var q = bsCur();
-  if(!q || q.role !== "council" || BS_ALL.indexOf(hat) === -1) return;
-  if(pin){
-    if(bsSeat[q.id] === hat && bsPinned[q.id]){ bsPinned[q.id] = false; bsSeat[q.id] = ""; bsNoHover = hat; }
-    else { bsSeat[q.id] = hat; bsPinned[q.id] = true; bsNoHover = null; }
-  } else {
-    if(bsPinned[q.id]) return;
-    bsSeat[q.id] = hat;
-    if(bsAnsBusy(q.id, hat)) bsPinned[q.id] = true;
-  }
-  bsCouncilRedraw(q);
-}
-function bsSeatStay(){ if(bsLeaveTimer){ clearTimeout(bsLeaveTimer); bsLeaveTimer = null; } }
-function bsHoverCancel(){ if(bsHoverTimer){ clearTimeout(bsHoverTimer); bsHoverTimer = null; } }
-/* Hovering: with no bubble open, a seat opens at once. With one open, another seat opens only once the pointer rests
-   on it, so crossing seats on the way to the bubble doesn't switch it. A seat that slides under a pointer that hasn't
-   moved, as the bubble opens or closes, opens nothing. */
-function bsHoverAt(ev){
-  if(!bsOn() || bsOld()) return;
-  var q = bsCur();
-  if(!q || q.role !== "council"){ bsHoverCancel(); return; }
-  var x = ev.clientX, y = ev.clientY;
-  if(typeof x === "number"){ bsPtrX = x; bsPtrY = y; }
-  var t = ev.target, s = t && t.closest ? t.closest(".bsseat") : null;
-  if(s){
-    bsSeatStay();
-    var sh = s.getAttribute("data-hat");
-    if(sh === bsNoHover) return;
-    bsNoHover = null;
-    if(bsSeat[q.id] === sh || bsPinned[q.id]){ bsHoverCancel(); return; }
-    if(bsStillX !== null && Math.abs(x - bsStillX) < 3 && Math.abs(y - bsStillY) < 3) return;
-    if(!bsSeat[q.id]){ bsHoverCancel(); bsSeatOpen(sh, false); return; }
-    bsHoverCancel();
-    bsHoverTimer = setTimeout(function(){
-      bsHoverTimer = null;
-      var now = bsCur();
-      if(!now || now.id !== q.id || bsPinned[q.id] || bsSeat[q.id] === sh) return;
-      var bb = document.getElementById("bsbub");
-      if(bb && bb.contains(document.activeElement)) return;
-      var el = document.elementFromPoint(bsPtrX, bsPtrY), at = el && el.closest ? el.closest(".bsseat") : null;
-      if(at && at.getAttribute("data-hat") === sh) bsSeatOpen(sh, false);
-    }, 260);
-    return;
-  }
-  bsHoverCancel();
-  bsNoHover = null;
-  if(t && t.closest && (t.closest("#bsbub") || t.closest(".bsseats") || t.closest(".bstable"))){ bsSeatStay(); return; }
-  bsSeatLeaveSoon();
-}
-function bsSeatLeaveSoon(){ if(bsLeaveTimer) return; bsLeaveTimer = setTimeout(function(){ bsLeaveTimer = null; bsSeatLeave(); }, 400); }
-function bsSeatLeave(){
-  var q = bsCur();
-  if(!q || q.role !== "council" || bsPinned[q.id]) return;
-  var bub = document.getElementById("bsbub");
-  if(bub && bub.contains(document.activeElement)) return;
-  if(bsSeat[q.id]){ bsSeat[q.id] = ""; bsCouncilRedraw(q); }
-}
-/* Only the seats and the bubble redraw, so focus and scroll stay where they are. */
-function bsCouncilRedraw(q){
-  var a = bsA(q), open = bsSeat[q.id] || "";
-  bsStillX = bsPtrX; bsStillY = bsPtrY;
-  var seats = document.querySelectorAll("#app .bsseat");
-  for(var i=0;i<seats.length;i++){
-    var hat = seats[i].getAttribute("data-hat"), tmp = document.createElement("div");
-    tmp.innerHTML = bsSeatHTML(q, hat, a, open === hat);
-    var fresh = tmp.firstChild, had = document.activeElement === seats[i];
-    seats[i].parentNode.replaceChild(fresh, seats[i]);
-    if(had) fresh.focus();
-  }
-  var bub = document.getElementById("bsbub");
-  if(bub){ var t2 = document.createElement("div"); t2.innerHTML = bsBubbleHTML(q, open, a); bub.parentNode.replaceChild(t2.firstChild, bub); }
-  bsReadArm(q);
-}
-function bsReadArm(q){
-  if(bsReadTimer){ clearTimeout(bsReadTimer); bsReadTimer = null; }
-  var hat = bsSeat[q.id];
-  if(!hat || bsComment(q, hat) === null || (bsA(q).read || {})[hat] || !document.querySelector("#bsbub.bs-" + hat)) return;
-  var key = screenKey();
-  bsReadTimer = setTimeout(function(){
-    bsReadTimer = null;
-    var now = bsCur();
-    if(!now || now.id !== q.id || screenKey() !== key || bsSeat[q.id] !== hat || !document.querySelector("#bsbub.bs-" + hat)) return;
-    var a = bsTake(q);
-    a.read[hat] = true;
-    bsPut(q, a);
-    var l = document.getElementById("bsreadl");
-    if(l) l.removeAttribute("hidden");
-    var s = document.querySelector('#app .bsseat[data-hat="' + hat + '"]');
-    if(s){ var t = document.createElement("div"); t.innerHTML = bsSeatHTML(q, hat, a, true); var had = document.activeElement === s; s.parentNode.replaceChild(t.firstChild, s); if(had){ var f = document.querySelector('#app .bsseat[data-hat="' + hat + '"]'); if(f) f.focus(); } }
-    renderSide();
-  }, TIMING.bsread || 3000);
-}
-/* Taking a comment: as a new idea of yours (it goes to your order), as a change to this idea (it stays with the
-   idea), or, for Blue's version, as the idea's words. */
+/* Taking a comment: as a new idea of yours (it goes to your order), as a change to this idea (it sticks to the
+   idea), or, for Blue's version, as the idea's words. Your companion says so in the talk, and the comment stays the one
+   showing, since only an answer moves the talk on. */
 function bsTake2(hat, n, how){
   var q = bsCur();
   if(!q || q.role !== "council") return;
   var say = bsSays(q, hat)[n || 0];
   if(say === undefined) return;
-  var a = bsTake(q), st;
+  var a = bsTake(q);
   if(how === "words"){
     var w = bsBlueWords(hat, say);
     if(!w) return;
@@ -9935,9 +10263,9 @@ function bsTake2(hat, n, how){
     bsRw = null;
     delete bsDraft["rw:" + q.id];
     bsPut(q, a);
-    scrollKeep(render);
-    st = document.querySelector('#app .bsseat[data-hat="' + hat + '"]');
-    if(st) st.focus();
+    bsTalk.freshOut = q.id + "/words";
+    bsTalkDraw(false);
+    bsTalkFocusAfterTake();
     srSay("Blue's version is the idea's words now, marked against the original.");
     faceFlash("pick", 1300);
     return;
@@ -9945,17 +10273,18 @@ function bsTake2(hat, n, how){
   var kind = how === "change" ? "change" : "taken";
   var same = function(m){ return bsTookFrom(m, kind, hat, say, q); };
   if(a.mine.some(function(m){ return same(m) && !m.killed; })) return;
-  var gone = null;
+  var gone = null, id;
   a.mine.forEach(function(m){ if(!gone && same(m) && m.killed) gone = m; });
-  if(gone) delete gone.killed;
+  if(gone){ delete gone.killed; id = gone.id; }
   else if(a.mine.length >= BS_MINE){ toast(false, "That's " + BS_MINE + " cards here, the most one card keeps."); return; }
-  else a.mine.push({ id: bsMineId(a, q), text: say, kind: kind, hat: hat, on: say });
+  else { id = bsMineId(a, q); a.mine.push({ id: id, text: say, kind: kind, hat: hat, on: say }); }
   a.read[hat] = true;
   bsPut(q, a);
-  scrollKeep(render);
-  st = document.querySelector('#app .bsseat[data-hat="' + hat + '"]');
-  if(st) st.focus();
-  srSay(kind === "change" ? "Taken as a change. It stays with this idea." : "Taken as a new idea. It goes to your order.");
+  bsTalk.freshOut = q.id + "/" + id;
+  if(kind === "change") bsTalk.freshStk = bsTalk.freshOut;
+  bsTalkDraw(false);
+  bsTalkFocusAfterTake();
+  srSay(kind === "change" ? "Taken as a change. It's stuck to the idea." : "Taken as a new idea. It's below the talk, and goes to your order.");
   faceFlash("pick", 1300);
 }
 function bsRwFocus(){ focusQuiet(document.querySelector('#app [data-action="bs-rw"]') || pageHeading()); }
@@ -10092,13 +10421,19 @@ function bsNext(){
   if(sleeping) wakeUp();
   advance();
 }
-/* Enter in a box adds the card; in an edit, it saves. Escape leaves an edit or closes a box you opened. */
+/* Enter in a box adds the card; in an edit, it saves; in a talk, it sends. Escape leaves an edit, closes a box you
+   opened, or stops answering a comment. */
 function bsKey(ev){
   var t = ev.target;
   if(bsBinOpen() && ev.key === "Escape"){ ev.preventDefault(); bsBinClose(); return true; }
   if(bsBinOpen() && ev.key === "Tab"){ bsBinTab(ev); return true; }
   if(!t || !t.getAttribute || t.getAttribute("data-role") !== "bs-field") return false;
   var key = t.getAttribute("data-key") || "";
+  if(key.indexOf("talk:") === 0){
+    if(ev.key === "Enter" && !ev.shiftKey && !ev.isComposing){ ev.preventDefault(); bsTalkSend(); return true; }
+    if(ev.key === "Escape" && bsTalk.reply){ ev.preventDefault(); bsTalkUnreply(); return true; }
+    return false;
+  }
   if(ev.key === "Enter" && !ev.shiftKey && !ev.isComposing){
     ev.preventDefault();
     if(key.indexOf("edit:") === 0) bsEditSave(key.slice(5)); else if(key.indexOf("rw:") === 0) bsRwSave(); else bsAddFrom(key);
@@ -10107,7 +10442,7 @@ function bsKey(ev){
   if(ev.key === "Escape"){
     if(key.indexOf("edit:") === 0){ ev.preventDefault(); bsEditCancel(); return true; }
     if(key.indexOf("rw:") === 0){ ev.preventDefault(); bsRwCancel(); return true; }
-    if(key.indexOf("add:") === 0 || key.indexOf("var:") === 0 || key.indexOf("ans:") === 0){ ev.preventDefault(); bsBoxShow(key, false); return true; }
+    if(key.indexOf("add:") === 0){ ev.preventDefault(); bsBoxShow(key, false); return true; }
   }
   return false;
 }
@@ -10115,18 +10450,16 @@ function bsKey(ev){
 function bsFieldStands(q, key){
   var p = key.split(":");
   if(p[0] === "edit"){ var rest = key.slice(5); return rest.split("/")[0] === q.id && !!bsFind(rest); }
+  if(p[0] === "talk"){ var tk = bsTalkOf(q); return !!tk && bsTalkKey(tk) === key; }
   if(p[1] !== q.id) return false;
-  if(p[0] === "spark") return !!(q.sparks && q.sparks.some(function(s){ return s.id === p[2]; }));
   if(p[0] === "rw") return q.role === "council";
-  if(p[0] === "ans") return q.role === "council" && bsSays(q, p[2]).some(function(x){ return bsHash(x) === p[3]; });
-  return p[0] === "box" || p[0] === "add" || (p[0] === "var" && q.role === "council");
+  return p[0] === "add";
 }
 function bsFieldBack(key, text){
   bsDraft[key] = text;
   if(key.indexOf("edit:") === 0) bsEdit = key.slice(5);
   else if(key.indexOf("rw:") === 0) bsRw = key.slice(3);
-  else if(key.indexOf("ans:") === 0){ var p = key.split(":"); bsBoxOpen[key] = true; bsSeat[p[1]] = p[2]; bsPinned[p[1]] = true; }
-  else if(key.indexOf("add:") === 0 || key.indexOf("var:") === 0) bsBoxOpen[key] = true;
+  else if(key.indexOf("add:") === 0) bsBoxOpen[key] = true;
 }
 
 /* The bucket: every killed card, from both rounds' cards, with Restore. */
@@ -10396,8 +10729,12 @@ document.addEventListener("click", function(ev){
   else if(act === "bs-edit-cancel"){ bsEditCancel(); }
   else if(act === "bs-bin"){ bsBinShow(); }
   else if(act === "bs-bin-close"){ bsBinClose(); }
-  else if(act === "bs-seat"){ bsSeatOpen(el.getAttribute("data-hat"), true); }
   else if(act === "bs-take"){ bsTake2(el.getAttribute("data-hat"), parseInt(el.getAttribute("data-n") || "0", 10) || 0, el.getAttribute("data-how") || "idea"); }
+  else if(act === "bs-talk-next" || act === "bs-talk-typing"){ bsTalkNext(); }
+  else if(act === "bs-talk-prev"){ bsTalkPrev(); }
+  else if(act === "bs-talk-send"){ bsTalkSend(); }
+  else if(act === "bs-talk-reply"){ bsTalkReply(el.getAttribute("data-hat"), parseInt(el.getAttribute("data-n") || "0", 10) || 0); }
+  else if(act === "bs-talk-unreply"){ bsTalkUnreply(); }
   else if(act === "bs-rw"){ bsRwOpen(); }
   else if(act === "bs-rw-save"){ bsRwSave(); }
   else if(act === "bs-rw-cancel"){ bsRwCancel(); }
@@ -10445,8 +10782,6 @@ document.addEventListener("pointerdown", function(ev){ if(!(ev.button !== undefi
 document.addEventListener("pointermove", bsDragMove);
 document.addEventListener("pointerup", bsDragEnd);
 document.addEventListener("pointercancel", bsDragEnd);
-document.addEventListener("mouseover", bsHoverAt);
-document.addEventListener("mousemove", bsHoverAt);
 document.addEventListener("pointermove", rankDragMove);
 document.addEventListener("pointerup", rankDragEnd);
 document.addEventListener("pointercancel", rankDragEnd);
@@ -10481,6 +10816,8 @@ document.addEventListener("keydown", function(ev){
   if(customOpen && ev.key === "Escape"){ cancelCustom(); return; }
   /* Keys held with Ctrl, Alt, or Cmd are the browser's shortcuts (Ctrl+2 is its second tab), so they never pick. */
   if(ev.ctrlKey || ev.altKey || ev.metaKey) return;
+  /* Left and Right step a talk. */
+  if(bsTalkArrow(ev)) return;
   /* Number keys answer only while you're on the card (or nowhere in particular), never from the question list,
      the header, or the companion, and Options can turn them off. */
   if(!SETTINGS.keys) return;
