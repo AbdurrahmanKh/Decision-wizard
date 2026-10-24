@@ -6,6 +6,7 @@
   "scope": "./",
   "display": "standalone",
   "launch_handler": { "client_mode": "focus-existing" },
+  "protocol_handlers": [ { "protocol": "web+dwizard", "url": "./?open=%s" } ],
   "background_color": "#171B12",
   "theme_color": "#0E5B46",
   "icons": [

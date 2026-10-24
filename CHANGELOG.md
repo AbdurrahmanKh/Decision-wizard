@@ -2,6 +2,12 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.11.2, 24 October 2026
+
+### Added
+
+- Wizard: a `web+dwizard:` link opens the installed app from any browser or app, since a link clicked in one browser can't reach an app installed from another. The app registers the link type with the system (`protocol_handlers` in the manifest). The link names a round by its file and title (`web+dwizard:open/` and base64url JSON), and the wizard opens it from a connected folder that holds its file, else from its list, else says which folder to open once, or asks to be allowed into one it knows. Nullovation City's Wizard it opens rounds this way.
+
 ## Wizard 0.11.1, 24 October 2026
 
 ### Added

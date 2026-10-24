@@ -63,7 +63,9 @@ This works in Chrome and Edge on a computer, while the wizard is open. In a brow
 
 A link to the wizard can carry a round: the wizard's address, then `#open=` and the round as base64url JSON, `{ "file": ..., "round": ..., "answers": ... }`, with its file's name and any answers so far. Nullovation City's Wizard it opens rounds this way. The round opens whatever was on screen: one already in your list opens with its answers, a changed version replaces it as Load would, and a new one comes in with the answers sent along. A round that names no folder saves its answers into a connected folder that holds its file.
 
-In Chrome and Edge on a computer, the installed app takes such a link and opens it in the window it already has. The app's settings in the browser can send its links to a tab instead.
+In Chrome and Edge on a computer, the installed app takes such a link when it's clicked in the same browser, and opens it in the window it already has. The app's settings in the browser can send its links to a tab instead.
+
+From another browser, or any other app, a `web+dwizard:` link opens the installed app: `web+dwizard:open/` and the round's file name and title as base64url JSON, `{ "file": ..., "title": ... }`. The app registers the link type with the system when it's installed, or on its next update; the first time, the browser and the app may each ask before opening it. The link only names the round, so the round has to be in the wizard already, or in a project folder the wizard has: the wizard opens its file there, or says which folder to open once.
 
 ## Companions
 
@@ -95,7 +97,7 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 ## Versions
 
-- **Wizard: 0.11.1.** It's shown at the bottom of the wizard's Options panel.
+- **Wizard: 0.11.2.** It's shown at the bottom of the wizard's Options panel.
 - **Skill: 0.10.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.11.0 for their round 2.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).

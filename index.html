@@ -1339,7 +1339,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.11.1";
+var WIZARD_VERSION = "0.11.2";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -5274,22 +5274,36 @@ function setupFolders(){
   }).then(sentGo, sentGo);
 }
 
-/* A round sent to open. Another app, such as Nullovation City's Wizard it, opens the wizard at its address with
-   #open= and the round after it, as base64url JSON: { file, round, answers }. Chrome and Edge take such a link into
-   the installed app, which focuses the window it has and gets the link through its launch queue; a tab reads it from
-   its own address. The round opens through the usual load, whatever was open: a round already here opens with its
-   answers, a changed version replaces it as Load would, and a new one comes in with any answers sent along. A round
-   that names no folder is linked to a connected folder that holds its file, so its answers save there. */
+/* A round sent to open, in one of two links another app opens, such as Nullovation City's Wizard it.
+   - The wizard's address with #open= and the round after it, as base64url JSON: { file, round, answers }. A tab
+     reads it from its own address. Chrome and Edge take such a link into the installed app when it is clicked in the
+     same browser, and the app, which keeps to the window it has, gets it through its launch queue.
+   - A web+dwizard: link naming the round, web+dwizard:open/ and base64url JSON: { file, title }. The installed app
+     registers web+dwizard with the system, so this link opens it from any browser or app, as ?open= on its address.
+     The system takes only about 2,000 characters, so the link names the round rather than carrying it: the wizard
+     opens it from a connected folder that holds its file, or from its own list, and otherwise says what it needs.
+   The round opens through the usual load, whatever was open: a round already here opens with its answers, a changed
+   version replaces it as Load would, and a new one comes in with any answers sent along. A round that names no folder
+   is linked to a connected folder that holds its file, so its answers save there. */
 var SENT = { ready: false, queue: [], last: "", at: 0 };
-function sentFrom(url){
-  var m = /#(?:.*&)?open=([A-Za-z0-9_-]+)/.exec(String(url || ""));
-  if(!m) return null;
+function b64json(code){
   try{
-    var b = atob(m[1].replace(/-/g, "+").replace(/_/g, "/")), bytes = new Uint8Array(b.length);
+    var b = atob(code.replace(/-/g, "+").replace(/_/g, "/")), bytes = new Uint8Array(b.length);
     for(var i=0;i<b.length;i++){ bytes[i] = b.charCodeAt(i); }
     var p = JSON.parse(new TextDecoder().decode(bytes));
-    return { code: m[1], p: (p && typeof p === "object" && p.round && typeof p.round === "object") ? p : null };
-  }catch(e){ return { code: m[1], p: null }; }
+    return (p && typeof p === "object") ? p : null;
+  }catch(e){ return null; }
+}
+function sentFrom(url){
+  url = String(url || "");
+  var m = /#(?:.*&)?open=([A-Za-z0-9_-]+)/.exec(url);
+  if(m){ var p = b64json(m[1]); return { code: m[1], kind: "round", p: (p && p.round && typeof p.round === "object") ? p : null }; }
+  var q = "";
+  try{ q = new URL(url).searchParams.get("open") || ""; }catch(e){ q = ""; }
+  var r = /^web\+dwizard:(?:\/\/)?open\/([A-Za-z0-9_-]+)\/?$/i.exec(q.trim());
+  if(!r) return null;
+  var n = b64json(r[1]);
+  return { code: r[1], kind: "ref", p: (n && hasTitle(n)) ? n : null };
 }
 function sentArrive(url){
   var s = sentFrom(url);
@@ -5298,13 +5312,14 @@ function sentArrive(url){
   if(s.code === SENT.last && Date.now() - SENT.at < 4000) return;
   SENT.last = s.code; SENT.at = Date.now();
   if(!s.p){ toast(false, "The link held no round the wizard can read, so nothing opened."); return; }
-  if(SENT.ready) openSent(s.p); else SENT.queue.push(s.p);
+  if(SENT.ready) sentOpen(s); else SENT.queue.push(s);
 }
+function sentOpen(s){ return s.kind === "ref" ? openRef(s.p) : openSent(s.p); }
 function sentGo(){
   SENT.ready = true;
   var q = SENT.queue;
   SENT.queue = [];
-  q.forEach(openSent);
+  q.forEach(sentOpen);
 }
 function openSent(p){
   var round = p.round, cfg = (round.config && typeof round.config === "object") ? round.config : {};
@@ -5322,7 +5337,34 @@ function openSent(p){
   var text = JSON.stringify(withAnswers ? { meta: a.meta, answers: a.answers, round: round } : round);
   return sentFile(cleanStr(cfg.folder) ? "" : p.file, title).then(function(h){ return ingestText(text, h ? { handle: h } : {}); });
 }
-/* The file of a round that names no folder, in a connected folder, when one holds it. */
+/* A round a web+dwizard: link names, { file, title }: its file in a connected folder first, so the newest version
+   opens and its answers save there; else the round of that title in the list; else what the wizard needs to find it. */
+function openRef(r){
+  var title = r.title, file = cleanStr(r.file).split(/[\\\/]/).pop();
+  dropNotice("ref");
+  return sentFile(file, title).then(function(h){
+    if(h) return h.getFile().then(readFileText).then(function(text){ return ingestText(text, { handle: h }); });
+    var e = findByTitle(title);
+    if(e){
+      if(e.key === CURKEY || switchTo(e.key)) ingestDone('Opened "' + title + '".', true);
+      return;
+    }
+    var waiting = folderList().filter(function(rec){ return rec.perm !== "granted" && rec.perm !== "gone"; });
+    if(waiting.length){
+      addNotice({ id: "ref", label: "Allow", fn: function(){ allowThen(waiting, r); },
+                  text: '"' + title + '" may be in a folder the browser wants your OK for again. Press Allow, and the wizard looks there.' });
+      return;
+    }
+    var fs = fsSupported();
+    addNotice({ id: "ref", label: fs ? "Open a project folder" : undefined, fn: fs ? function(){ Promise.resolve(openProjectFolder()).then(function(ok){ if(ok) openRef(r); }); } : undefined,
+                text: '"' + title + '" isn\'t in this wizard yet.' + (file ? " Its file is " + file + ", in the wizard-rounds folder it came from." : "") + (fs ? " Open that folder once, and it opens here." : " Load that file in Load.") });
+  });
+}
+function allowThen(list, r){
+  dropNotice("ref");
+  Promise.all(list.map(function(rec){ return dirAsk(rec).then(function(p){ if(p === "granted") grantDone(rec); return p; }); })).then(function(){ openRef(r); });
+}
+/* The file of a round in a connected folder, when one holds it under that name and title. */
 function sentFile(name, title){
   name = cleanStr(name).split(/[\\\/]/).pop();
   if(!name || !title || !/\.json$/i.test(name) || !fsSupported()) return Promise.resolve(null);
@@ -5343,9 +5385,10 @@ function setupSent(){
     }
   }catch(e){}
   var fromHere = function(){
-    var here = String(location.href);
-    if(!/#(?:.*&)?open=/.test(here)) return;
-    try{ history.replaceState(null, "", location.pathname + location.search); }catch(e){}
+    var here = String(location.href), hash = /#(?:.*&)?open=/.test(here), ref = false;
+    try{ ref = /^web\+dwizard:/i.test(new URL(here).searchParams.get("open") || ""); }catch(e){}
+    if(!hash && !ref) return;
+    try{ history.replaceState(null, "", location.pathname); }catch(e){}
     sentArrive(here);
   };
   window.addEventListener("hashchange", fromHere);
