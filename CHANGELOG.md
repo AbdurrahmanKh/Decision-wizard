@@ -2,6 +2,34 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.11.3, 27 October 2026
+
+### Added
+
+- Wizard: your companion's lines are laid out to read at a glance. Each line is split into its sentences and shows in one of the shapes that fit it: as it is, or one sentence a line, and on a wide screen, now and then, with its number up in a thought bubble over your companion too. The shape changes from one line to the next. A long line arrives a piece at a time, 0.8 seconds apart, like chat messages; with your system's reduce motion setting on, it shows at once.
+- Wizard: what the wizard fills into a line shows in bold, in your companion's color, with a small icon, the size of the words around it: the decisions ahead (a stack of cards), the time a round may take (a clock whose slice shows the minutes) and the time it took (a stopwatch), answers you picked (a check mark) and wrote (a quill), questions still open (an open circle), rounds finished (a trophy), decisions today (a sun), and answers about to be cleared (a warning sign). Counts are digits that stay on one line with their word, "7 decisions", even at the start of a sentence, and the estimate reads "9 min".
+- Wizard: those words are green for Quill and slate for Swoop. A companion you made takes the strongest color in its idle picture, or its black, white, or grey when it has no real color, darkened until it reads on the bubble.
+- Wizard: the estimate learns your pace. The time you spend on each question is kept, leaving out the minutes before a nap, and once you've finished three rounds the estimate follows your own seconds for each kind of question. Time estimate, in Options, has Follow my pace, on to start with, and Seconds for a plain question, to set your own; the other kinds keep their share of it. Before it has learned, the estimate starts from a real pace, about twice what it used to count. Quill and Swoop say when the estimate is yours: "About 12 minutes, at your pace." Backups keep the time per question.
+- Wizard: Quill and Swoop have a line for a pick other than the one with the wizard hat, at most once every five minutes: "Ignoring my recommendation again. Noted."
+- Wizard: on a number question, your companion thinks of the value in a thought bubble as you move the slider. The thought bubble floats over its head on a wide screen, and beside it under 1440 px.
+- Wizard: in a bracket, each option knocked out goes with a line of its own, its name struck through: "Pears is gone." The next match's line replaces it.
+- Wizard: on a grouped card, your companion's thought bubble holds a grid of faint circles, one a row, pale yellow while open and pale green once answered, filling in as you go. It comes up once you answer a row on a card of more than five, or when you click your companion on any grouped card, stays beside its lines until you leave the card, and fades a moment after the last row. A long card's circles are smaller, so the grid keeps its size. On a narrow screen it shows for a moment after each row.
+- Wizard: a writing pose. Quill and Swoop take it while you type an answer of your own, a note, or an idea in a brainstorm, and go back once you stop. A companion you build can have one; without it, it stays as it is.
+- Wizard: when your companion suggests calling another one in, that one peeks into the bubble, up over its edge and back, then settles. Call it in, and the one leaving waves goodbye as the new one steps up.
+- Wizard: the builder has the new moments (Estimate, your pace; Against the hat; Knockout) and the writing pose among the pictures. Create with Claude still asks for the 14 poses.
+
+### Changed
+
+- Wizard: the bubble's words are aligned left everywhere, beside the cards and in the side column, where they were centered.
+- Wizard: a line stays up 6 to 11 seconds by its length, where it was 4 to 9, and 13 with a button. A line waiting its turn is dropped after 45 seconds instead of 20, so longer lines don't push others out.
+- Wizard: a remark that started on one question finishes after you move on, and what the next question brings waits for it: a grouped card's line comes after the remark, and after any line about your pick. Only the nudge to skip a question you've just answered is still dropped.
+- Wizard: your companion naps after 3 minutes away instead of 4, with the yawn half a minute before.
+- Wizard: the line for an answer the moment its question showed now comes within 6 seconds of it, where it was 2.
+
+### Fixed
+
+- Wizard: anything that says you're back wakes your companion from a nap: moving the pointer, the wheel, a key, a click or tap anywhere, or coming back to the window. Before, only a click or a key did, so the round's clock could stay paused while you read.
+
 ## Wizard 0.11.2, 24 October 2026
 
 ### Added

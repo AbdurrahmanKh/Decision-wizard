@@ -71,7 +71,7 @@ From another browser, or any other app, a `web+dwizard:` link opens the installe
 
 A companion stands beside the cards and reacts as you answer. On a screen narrower than 1440 px it stands under the question list, or beside the progress bar on a phone, so it never pushes the cards down. Quill, the pocket wizard, and Swoop, the falcon, come with the wizard. Choose one in the Companion card of Options, or None; Quill and Swoop can be hidden there too.
 
-You can add your own, in Chrome and Edge on a computer. Each companion is a folder of pictures, one per pose (`idle.png`, `greet.svg`, and so on; only `idle` is required), with `companion.json` for its name and its lines when it talks. Your companions live in one companions folder on your computer, which you pick once in Options.
+You can add your own, in Chrome and Edge on a computer. Each companion is a folder of pictures, one per pose (`idle.png`, `greet.svg`, and so on; only `idle` is required), with `companion.json` for its name and its lines when it talks. Your companions live in one companions folder on your computer, which you pick once in Options. One more picture is optional: `writing`, the pose it takes while you type. The builder takes it; Create with Claude doesn't ask for it yet.
 
 - **Add one** with **Add** in the Companion card, or by dropping a companion's folder, or its zip, on the wizard. The wizard shows it and asks first, then copies the folder into your companions folder and switches to it. A folder you put in the companions folder yourself joins by itself.
 - **Make one with Claude.** **Create with Claude**, in the builder, writes the prompt for you: describe the companion (its name, title, look, art style, sound, mood, and the language of its lines), copy the prompt, and paste it into Claude, with reference pictures if you like. Claude needs the d-wizard skill, version 0.6.2 or later; it draws the poses, writes the lines, and sends the companion back as a zip. Drop the zip on the wizard as it is. In Claude Code, give Claude your companions folder's path and it writes the companion straight in. You can also just ask Claude for a companion in your own words.
@@ -97,7 +97,7 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 ## Versions
 
-- **Wizard: 0.11.2.** It's shown at the bottom of the wizard's Options panel.
+- **Wizard: 0.11.3.** It's shown at the bottom of the wizard's Options panel.
 - **Skill: 0.10.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.11.0 for their round 2.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
