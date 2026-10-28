@@ -367,8 +367,8 @@ body.nomascot #mascot{display:none}
 .mthink:empty{display:none}
 .mthink .mtk{position:relative;display:inline-flex;align-items:center;padding:.4em .75em;background:var(--bub-bg);color:var(--bub-ink);border:1px solid var(--bub-line);border-radius:22px;box-shadow:0 6px 16px rgba(0,0,0,.22);font-size:calc(14px*var(--fs));white-space:nowrap}
 .mthink::before,.mthink::after{content:"";position:absolute;background:var(--bub-bg);border:1px solid var(--bub-line);border-radius:50%}
-.mthink::before{width:11px;height:11px;left:calc(50% + 4px);bottom:-14px}
-.mthink::after{width:6px;height:6px;left:calc(50% + 12px);bottom:-23px}
+.mthink::before{width:11px;height:11px;left:calc(50% + 9px);bottom:-14px}
+.mthink::after{width:6px;height:6px;left:calc(50% + 2px);bottom:-24px}
 @media(max-width:880px){
   .stage .mthink{left:56px;right:auto;top:6px;bottom:auto;justify-content:flex-start;transform-origin:0 50%;transform:scale(.55) translateX(-10px)}
   .stage .mthink.on{transform:none}
@@ -405,7 +405,7 @@ body.nomascot #mascot{display:none}
   #mascot{position:absolute;top:0;bottom:0;left:calc(100% + 18px);width:clamp(120px,calc((100vw - 1080px) / 2 - 40px),240px)}
   .mstick{position:sticky;top:80px;padding-top:116px;flex-direction:column;align-items:center}
   .mmenu{left:auto;right:0}
-  .mframe{width:min(170px,100%);height:auto;aspect-ratio:200 / 262}
+  .mframe{width:min(170px,100%);height:auto;aspect-ratio:200 / 262;margin-inline:auto}
   .mbubble{flex:none;width:100%}
   .mbubble::before{top:-7px;left:calc(50% - 6px);border-bottom:0;border-top:1px solid var(--bub-line)}
 }
@@ -1397,7 +1397,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.11.3";
+var WIZARD_VERSION = "0.11.4";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -1603,7 +1603,7 @@ function switchTo(key){
   if(!loadRoundIntoView(key)) return false;
   var e = libEntry(key), now = Date.now();
   if(prev) pauseClock(prev, now);
-  if(e){ e.opened = now; resumeClock(e, now); e.lastActiveAt = now; delete e.unseen; }
+  if(e){ e.opened = now; if(sleeping) pauseClock(e, now); else resumeClock(e, now); e.lastActiveAt = now; delete e.unseen; }
   LIB.current = key;
   saveLib();
   applyConfig();
@@ -2047,18 +2047,19 @@ function scheduleTimerTick(){
 function updateTimers(){
   var ms = roundClock(), txt = ms === null ? "" : fmtClock(ms);
   var e = CURKEY ? libEntry(CURKEY) : null, paused = !!(e && e.pausedAt && !clockFrozen(e));
+  var lab = !paused ? "Time on this round" : mascotOn() ? "Paused while " + (MSHORT[mascotKey()] || "your companion") + " naps" : "Paused while you are away";
   var bar = document.getElementById("ptime");
   if(bar){
     bar.hidden = !(SETTINGS.timerBar && txt);
     bar.querySelector("b").textContent = txt;
     bar.classList.toggle("paused", paused);
-    bar.title = paused ? "Paused while you are away" : "Time on this round";
+    bar.title = lab;
   }
   var mt = document.getElementById("mmtime");
   if(mt){
     mt.hidden = !(SETTINGS.timerHover && txt);
     mt.querySelector("b").textContent = txt;
-    mt.querySelector(".mtlab").textContent = paused ? "Paused while you are away" : "Time on this round";
+    mt.querySelector(".mtlab").textContent = lab;
     mt.classList.toggle("paused", paused);
   }
   var ot = document.getElementById("otime"), rb = document.getElementById("timerresetbtn");
@@ -2615,6 +2616,7 @@ function bkPick(side){
   if(!q || qType(q) !== "bracket") return;
   var prev = state.answers[q.id], st = bracketState(q, bkMatches(prev));
   if(!st.current || (side !== 0 && side !== 1)) return;
+  if(sleeping) wakeUp();
   var ms = bkMatches(prev).slice(0, st.played).concat([{ round: st.current.round, pair: st.current.pair.slice(), winner: st.current.pair[side] }]);
   var nst = bracketState(q, ms), was = done1(prev), wasDone = answeredCount() === QUESTIONS.length;
   if(nst.winner !== undefined){
@@ -6266,7 +6268,7 @@ function thinkHide(by){
 
 /* Drawing, bubble, and the reaction engine. */
 function setFrame(name){
-  if(!mascotOn()) return;
+  if(!mascotOn() || (sleeping && name !== "sleep")) return;
   var el = document.getElementById("mframe");
   var art = ART[mascotKey()];
   if(!el || !art || !art[name]) return;
@@ -6386,11 +6388,11 @@ function writingPose(){
 }
 /* The grid on a grouped card, in the thought bubble: a faint circle a row, filling in as you answer. It isn't a line, so
    it stays up beside the companion's lines until you leave the card, and fades a moment after the last row. It comes
-   up once you answer a row on a card of more than five, or when you click the companion on any grouped card. A long
-   card's circles are smaller, so the grid stays about five across. On a narrow screen the thought shares the space
-   beside the companion with its lines and the section's name, so there the grid shows only for a moment after you
-   answer a row or click, and never over a line. */
-var GRID = null;
+   up once you answer a row on a card of more than five, or a moment after you click the companion on any grouped card
+   with a row still open; a run of clicks for the dance never brings it. A long card's circles are smaller, so the grid
+   stays about five across. On a narrow screen the thought shares the space beside the companion with its lines and the
+   section's name, so there the grid shows only for a moment after you answer a row or click, and never over a line. */
+var GRID = null, gridClickTimer = null;
 function gridCols(n){ return n <= 5 ? n : Math.max(5, Math.ceil(Math.sqrt(n))); }
 function lineUp(){ var b = document.getElementById("mbubble"); return !!(b && b.classList.contains("on")); }
 function gridDraw(asked){
@@ -6413,17 +6415,23 @@ function gridDraw(asked){
   if(done === n) GRID = null;
   if(done === n || narrow){
     if(thinkTimer) clearTimeout(thinkTimer);
-    thinkTimer = setTimeout(function(){ thinkHide("grid"); }, done === n ? 2400 : 3000);
+    thinkTimer = setTimeout(function(){ thinkHide("grid"); }, done === n ? 1200 : 3000);
   }
 }
 function gridShow(){
   var q = cur();
   if(!q || !isBatch(q) || bsOn() || !mascotOn()) return;
+  if(!GRID && batchDone(q) === q.items.length) return;
   GRID = { key: CURKEY, qid: q.id };
   gridDraw(true);
 }
+function gridSoon(){
+  if(gridClickTimer) clearTimeout(gridClickTimer);
+  gridClickTimer = setTimeout(function(){ gridClickTimer = null; gridShow(); }, 450);
+}
 function gridHide(){
   GRID = null;
+  if(gridClickTimer){ clearTimeout(gridClickTimer); gridClickTimer = null; }
   thinkHide("grid");
 }
 function stopDance(){
@@ -6453,7 +6461,7 @@ function lineDuration(text, action){
 function readMs(text){ return Math.min(9000, Math.max(4000, TIMING.lineBase + TIMING.linePerChar * String(text || "").length)); }
 var DEDUPE = { hat: 1, skip: 1, pick: 1, speed: 1, second: 1, stat: 1, nudge: 1, remind: 1, recap: 1 };
 function react(kind, data){
-  if(bldOpen()) return;
+  if(bldOpen() || sleeping) return;
   data = data || {};
   var it = { kind: kind, data: data, cls: speechClass(kind, data), at: Date.now() };
   if(INTERRUPTS[kind]){
@@ -6545,8 +6553,10 @@ function restoreFrame(){
   if(sleeping || danceTimer || flashTimer) return;
   setFrame(nowItem ? nowItem.frame : "idle");
 }
-/* A face that answers what you did, without words and without touching the queue. */
+/* A face that answers what you did, without words and without touching the queue. What you did was a decision, so a
+   sleeping companion wakes for it first. */
 function faceFlash(kind, ms){
+  if(sleeping){ if(kind === "yawn") return; wakeUp(); }
   playSound(SOUND_FOR[kind] || kind);
   REACT_LOG.push(kind);
   if(REACT_LOG.length > 60) REACT_LOG.shift();
@@ -6649,7 +6659,7 @@ function nudge(){
                    when: function(){ return state.idx === idx && !qAnswered(q); } });
 }
 
-/* Away: a yawn, then a nap with a little Zzz, then waking up on your return. */
+/* Away: a yawn, then a nap with a little Zzz. */
 function clearIdle(){ for(var i=0;i<idleTimers.length;i++) clearTimeout(idleTimers[i]); idleTimers = []; }
 function scheduleIdle(){
   clearIdle();
@@ -6669,25 +6679,16 @@ function goSleep(at){
     if(flashTimer){ clearTimeout(flashTimer); flashTimer = null; }
   }
   sleeping = true;
-  napMove = null;
   dwellStop(Math.min(at || Date.now(), lastSeen));
   pauseClock(CURKEY ? libEntry(CURKEY) : null, at);
   setFrame("sleep");
   updateTimers();
 }
-var lastSeen = Date.now(), lastPersist = 0, napMove = null;
-/* Any sign you're back wakes a nap: a click or tap anywhere, a key, the wheel, the window coming to the front, or the
-   pointer moving more than a nudge. */
-function wakesUp(ev){
-  if(!ev) return false;
-  var t = ev.type;
-  if(t === "pointerdown" || t === "keydown" || t === "wheel" || t === "touchstart" || t === "focus") return true;
-  if(t !== "pointermove") return false;
-  if(!napMove){ napMove = { x: ev.clientX, y: ev.clientY }; return false; }
-  return Math.abs(ev.clientX - napMove.x) + Math.abs(ev.clientY - napMove.y) > 24;
-}
-function activity(ev){
-  if(sleeping){ if(wakesUp(ev)) wakeUp(); return; }
+var lastSeen = Date.now(), lastPersist = 0;
+/* Moving about the page, clicking elsewhere, or typing leave a sleeping companion asleep (see wakeUp). With no companion
+   there is nothing to click, so being back is enough to start the clock again. */
+function activity(){
+  if(sleeping){ if(!mascotOn()) wakeUp(); return; }
   var now = Date.now();
   lastSeen = now;
   if(now - lastAct < 1000) return;
@@ -6700,6 +6701,9 @@ function noteSeen(){
   var e = CURKEY ? libEntry(CURKEY) : null;
   if(e && !e.pausedAt) patchEntry(e, { lastActiveAt: lastSeen });
 }
+/* A nap lasts until you click your companion, or its menu, or make a decision: an answer, a skip, a match in a bracket,
+   or a choice in a brainstorm. While it sleeps it says nothing, and the round's clock waits with it. A round that came
+   in during the nap gets its greeting now, in place of the waking line. */
 function wakeUp(){
   if(!sleeping) return;
   sleeping = false;
@@ -6707,7 +6711,8 @@ function wakeUp(){
   lastSeen = wokeAt;
   resumeClock(CURKEY ? libEntry(CURKEY) : null, wokeAt);
   dwellStart();
-  if(mascotOn()) react("wake");
+  if(CMP.held) releaseGreet();
+  else if(mascotOn()) react("wake");
   scheduleIdle();
   updateTimers();
 }
@@ -7047,6 +7052,8 @@ function notePoke(){
     pokes = [];
     lastSecret = now;
     closeMenu(false);
+    gridHide();
+    thinkHide();
     react("poke");
     animateDance(1800);
     return true;
@@ -7055,7 +7062,7 @@ function notePoke(){
 }
 function noteKey(ev){
   var t = ev.target;
-  if(ev.ctrlKey || ev.metaKey || ev.altKey || !ev.key || ev.key.length !== 1) return;
+  if(sleeping || ev.ctrlKey || ev.metaKey || ev.altKey || !ev.key || ev.key.length !== 1) return;
   if(t && (t.tagName === "TEXTAREA" || t.tagName === "INPUT")) return;
   if(!/[a-z]/i.test(ev.key)){ typedKeys = ""; return; }
   typedKeys = (typedKeys + ev.key.toLowerCase()).slice(-12);
@@ -7444,9 +7451,10 @@ function setupCompanions(){
     return queryCdir(h).then(function(p){ return useCdir(h, p); });
   }).then(null, function(){}).then(function(){ CMP.ready = true; refreshCard(); releaseGreet(); });
 }
-/* A round opening while the chosen companion's folder is still being read waits for it, so its greeting isn't lost. */
+/* A round opening while the chosen companion's folder is still being read waits for it, so its greeting isn't lost, and
+   one opening while the companion sleeps waits for it to wake. */
 function holdGreet(opts){
-  if(CMP.ready || !cmpWaiting()) return false;
+  if(!sleeping && (CMP.ready || !cmpWaiting())) return false;
   CMP.held = opts || {};
   return true;
 }
@@ -8975,9 +8983,10 @@ function closeMenu(restoreFocus){
   if(restoreFocus && b) b.focus();
 }
 function mascotClick(ev){
+  if(sleeping){ wakeUp(); return; }
   if(Date.now() - wokeAt < 600) return;
   if(notePoke()) return;
-  if(isBatch(cur())) gridShow();
+  if(isBatch(cur())) gridSoon();
   if(ev && ev.detail === 0){ if(menuOpen) closeMenu(true); else openMenu("key"); return; }
   if(lastPointer === "mouse"){ if(!menuOpen) openMenu("click"); return; }
   if(menuOpen) closeMenu(false); else openMenu("touch");
@@ -11365,10 +11374,10 @@ document.addEventListener("click", function(ev){
   else if(act === "open-options"){ openOptions(); }
   else if(act === "timer-reset"){ resetTimer(); }
   else if(act === "mm-sleep"){ closeMenu(true); goSleep(Date.now()); }
-  else if(act === "mm-options"){ closeMenu(true); openOptions(); }
-  else if(act === "mm-load"){ closeMenu(true); openDrawer(); }
-  else if(act === "mm-save"){ closeMenu(true); saveRound(); }
-  else if(act === "mm-copy"){ closeMenu(true); copyAnswers(true); }
+  else if(act === "mm-options"){ closeMenu(true); wakeUp(); openOptions(); }
+  else if(act === "mm-load"){ closeMenu(true); wakeUp(); openDrawer(); }
+  else if(act === "mm-save"){ closeMenu(true); wakeUp(); saveRound(); }
+  else if(act === "mm-copy"){ closeMenu(true); wakeUp(); copyAnswers(true); }
   else if(act === "bubble-act"){ var ba = bubbleAction; hideBubble(); focusQuiet("#mascotbtn"); if(ba && ba.fn) ba.fn(); }
   else if(OPTKEYS[act]){ setOption(OPTKEYS[act], el.getAttribute("data-v")); }
   else if(act === "c-add"){ addCompanion(null); }

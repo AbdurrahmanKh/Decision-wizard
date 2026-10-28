@@ -2,6 +2,19 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.11.4, 28 October 2026
+
+### Changed
+
+- Wizard: once your companion naps, it sleeps until you click it or its menu, or make a decision: an answer, a skip, a match in a bracket, or a choice in a brainstorm. Moving the pointer, scrolling, keys, and clicks anywhere else leave it asleep, where in 0.11.3 any of them woke it. While it sleeps it says nothing, and the round's clock waits with it: the time reads "Paused while Quill naps". A round that opens during the nap gets its greeting when your companion wakes. With no companion, coming back still starts the clock again.
+- Wizard: on a grouped card, clicking your companion brings the grid up a moment later, and only while a row is still open. After the last row, the circles fade sooner, and a click doesn't bring them back.
+
+### Fixed
+
+- Wizard: clicking your companion fast for the dance showed the grid in its thought bubble. The dance now hides any thought.
+- Wizard: the thought bubble's trail ran off to the right of your companion's head. It now curves down into it.
+- Wizard: on a screen wider than 1500 px, your companion stood left of the middle of its column, so its bubbles and the speech bubble's pointer missed it. It now stands in the middle, under them.
+
 ## Wizard 0.11.3, 27 October 2026
 
 ### Added
