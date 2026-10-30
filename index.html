@@ -240,6 +240,9 @@ tr.rowbtn:hover td{background:var(--line2)}
 .mback{position:fixed;inset:0;background:rgba(10,12,8,.6);display:none;z-index:60;overflow:auto;padding:18px}
 .mback.on{display:block}
 .mcard{max-width:880px;margin:40px auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:0;overflow:hidden;box-shadow:0 22px 60px rgba(0,0,0,.35)}
+.mcard.narrow{max-width:420px}
+.mcard.narrow #mbody{padding-top:16px}
+.mcard.narrow .ostats{margin-top:0}
 .mhead{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:0;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--green-soft)}
 .mico{display:inline-flex;flex:none;width:30px;height:30px;border-radius:9px;align-items:center;justify-content:center;background:var(--green);color:var(--card)}
 #mbody{padding:6px 22px 22px}
@@ -263,13 +266,50 @@ table.xt td:first-child{font-weight:700}
 .dhead h2{font-family:'Bricolage Grotesque',sans-serif;font-size:calc(20px*var(--fs));font-weight:800}
 .dhead.fam{gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--green-soft)}
 .dhead.fam h2{flex:1;min-width:0;font-size:calc(19px*var(--fs))}
-.ogroup{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:12px 14px 14px;margin-bottom:12px}
-.ogroup > .dsec{display:flex;align-items:center;gap:8px;margin:0 0 10px;color:var(--ink);font-size:calc(11.5px*var(--fs))}
-.ogroup > .dsec::before{content:"";width:14px;height:3px;border-radius:2px;background:var(--gold)}
+.ogroup{border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-bottom:12px}
+/* A section of Options folds with a click on its heading. The gold dash turns into a plus while it is folded, and a
+   folded heading shows the section's settings after its name. */
+.ogroup > .dsec{margin:0;color:var(--ink);font-size:calc(11.5px*var(--fs))}
+.osec{display:flex;align-items:center;gap:8px;width:100%;min-width:0;margin:0;padding:12px 14px;border:0;border-radius:13px;background:transparent;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;text-align:left;cursor:pointer}
+.osec:hover .osname{color:var(--green)}
+.osec:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
+.ofold{position:relative;flex:none;width:14px;height:14px}
+.ofold::before,.ofold::after{content:"";position:absolute;border-radius:2px;background:var(--gold)}
+.ofold::before{left:0;right:0;top:5.5px;height:3px}
+.ofold::after{top:0;bottom:0;left:5.5px;width:3px;transform:scaleY(0);transition:transform .15s ease}
+.osec[aria-expanded="false"] .ofold::after{transform:none}
+.osname{flex:none}
+.osval{flex:1;min-width:0;margin-left:6px;text-align:right;text-transform:none;letter-spacing:0;font-weight:500;font-size:calc(12px*var(--fs));color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.osec[aria-expanded="true"] .osval{display:none}
+.osbody{padding:0 14px 14px}
+.osbody > :first-child{margin-top:0}
+@media (prefers-reduced-motion:reduce){ .ofold::after{transition:none} }
 .ogroup .seg button{background:var(--card)}
-.ogroup .odanger{border:0;padding:0;background:transparent}
+.ogroup .odanger{border:0;padding:0;background:transparent;margin-top:14px}
 .osub{font-size:calc(14px*var(--fs));font-weight:600;margin:12px 0 7px}
-.ogroup > .dsec + .osub{margin-top:0}
+/* On and Off as one switch. */
+.oswitch{flex:none;position:relative;width:46px;height:26px;padding:0;border:1.5px solid var(--line);border-radius:999px;background:var(--card);cursor:pointer;transition:background .15s,border-color .15s}
+.oswitch::after{content:"";position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:50%;background:var(--muted);transition:transform .15s ease,background .15s}
+.oswitch:hover{border-color:var(--green2)}
+.oswitch[aria-checked="true"]{border-color:var(--green);background:var(--green-soft)}
+.oswitch[aria-checked="true"]::after{transform:translateX(20px);background:var(--green)}
+.oswitch:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){ .oswitch,.oswitch::after{transition:none} }
+/* A note that explains a setting waits behind the small i after its name. */
+.olabw{display:inline-flex;align-items:center;gap:7px;min-width:0}
+.oinfo{flex:none;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;padding:0;border:1.5px solid var(--line);border-radius:50%;background:transparent;color:var(--muted);cursor:pointer}
+.oinfo:hover{border-color:var(--green2);color:var(--green)}
+.oinfo[aria-expanded="true"]{border-color:var(--green);color:var(--green);background:var(--green-soft)}
+.oinfo:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.osub.olabw{display:flex}
+.ostbtn{flex:none;display:inline-flex;align-items:center;justify-content:center;padding:0}
+#row-cdir{flex-wrap:wrap;row-gap:8px}
+#row-cdir .obtns{margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+.cchosen .olabw{flex:1}
+.onote-sub{margin:-2px 0 9px}
+.osub.ogrp{font-size:calc(12.5px*var(--fs));font-weight:700;color:var(--muted);margin:18px 0 0}
+.osbody > .osub.ogrp:first-child{margin-top:0}
+.osub.ogrp + .orow{margin-top:8px}
 .ofoot{font-size:calc(12.5px*var(--fs));color:var(--muted);text-align:center;margin-top:14px;line-height:1.5}
 .ofoot .oversion{margin-top:2px}
 .dbody{flex:1;overflow:auto;padding:16px 18px 26px}
@@ -430,15 +470,19 @@ body:not(.nomascot) .sidecol.withcomp{max-height:calc(100vh - 94px)}
 .mpick .seg{flex:1}
 .mprev{flex:none;width:46px;height:60px}
 /* Companions as tiles in Options, and pictures as poses. */
-.ctiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
-.ctile{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;padding:8px 4px 7px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-family:inherit;font-weight:600;font-size:calc(12.5px*var(--fs));cursor:pointer}
+/* Each tile is all picture, in the shape every companion's pictures share, and the name sits on a soft fade over the feet. */
+.ctiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.ctile{--tbg:var(--card);position:relative;display:block;min-width:0;aspect-ratio:200/262;padding:0;border:1.5px solid var(--line);border-radius:12px;background:var(--tbg);color:var(--ink);font-family:inherit;font-weight:600;font-size:calc(12.5px*var(--fs));cursor:pointer;overflow:hidden}
 .ctile:hover{border-color:var(--green2)}
-.ctile[aria-pressed="true"]{border-color:var(--green);background:var(--green-soft);color:var(--green);font-weight:700}
+.ctile[aria-pressed="true"]{--tbg:var(--green-soft);border-color:var(--green);color:var(--green);font-weight:700}
 .ctile:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.ctname{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ctface{display:flex;align-items:center;justify-content:center;width:40px;height:52px}
+.ctface{position:absolute;inset:0;display:block}
 .ctface svg,.ctface .mimg,.ctface .mstack{display:block;width:100%;height:100%}
-.ctile.add{border-style:dashed;color:var(--green);background:transparent}
+.ctname{position:absolute;left:0;right:0;bottom:0;padding:18px 4px 5px;text-align:center;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:linear-gradient(to bottom,transparent,color-mix(in srgb,var(--tbg) 86%,transparent) 62%)}
+.ctile.none .ctface{inset:16% 24% 30%}
+.ctile.none .ctname{background:none}
+.cbtn{display:inline-flex;align-items:center;gap:5px}
+.cbtn svg{flex:none}
 .cchosen{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;font-size:calc(14px*var(--fs));color:var(--muted)}
 .cchosen b{color:var(--ink)}
 .chidden{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px;font-size:calc(13px*var(--fs));color:var(--muted)}
@@ -541,7 +585,6 @@ img.mimg.pix{image-rendering:pixelated}
 .bld-line.bad{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
 .bld-err{display:flex;gap:6px;align-items:flex-start;font-size:calc(12.5px*var(--fs));color:var(--red);line-height:1.4;margin:-1px 0 2px}
 .bld-err svg{flex:none;margin-top:1px}
-.ctile.build{border-style:dashed;color:var(--green);background:transparent}
 @media (max-width:1250px){
   .bld-body{grid-template-columns:320px minmax(0,1fr);overflow:auto;align-items:start}
   .bld-col{overflow:visible;min-height:auto}
@@ -1291,84 +1334,80 @@ html{scroll-padding-bottom:var(--lift,0px)}
   </div>
 </div>
 <div class="drawer" id="optdrawer" role="dialog" aria-modal="true" aria-labelledby="opttitle" aria-hidden="true">
-  <div class="dhead fam"><span class="mico" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M5.5 18.5l1.8-1.8M16.7 7.3l1.8-1.8"/></svg></span><h2 id="opttitle">Options</h2><button type="button" class="mclose" data-action="drawer-close" aria-label="Close">&#10005;</button></div>
+  <div class="dhead fam"><span class="mico" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M5.5 18.5l1.8-1.8M16.7 7.3l1.8-1.8"/></svg></span><h2 id="opttitle">Options</h2><button type="button" class="mclose ostbtn" id="statsbtn" data-action="stats-open" aria-haspopup="dialog" aria-label="Stats" title="Stats"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5.5 19v-7M12 19V6M18.5 19v-4.5"/></svg></button><button type="button" class="mclose" data-action="drawer-close" aria-label="Close">&#10005;</button></div>
   <div class="dbody">
-    <section class="ogroup">
-      <h3 class="dsec">Companion</h3>
-      <div class="ctiles" id="ctiles" role="group" aria-label="Companion"></div>
-      <div class="cchosen" id="cchosen"></div>
-      <div class="chidden" id="chidden"></div>
-      <div class="mprevline" id="mprevline" role="status" aria-live="polite"></div>
-      <div class="orow" id="row-cdir" hidden></div>
-      <div class="onote" id="cnote">Hover over your companion, or tap it, for its menu.</div>
-      <div class="orow" id="row-talk"><span class="olab">Speech bubbles</span><div class="seg sm" role="group" aria-label="Speech bubbles"><button type="button" data-action="set-talk" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-talk" data-v="off" aria-pressed="false">Off</button></div></div>
-      <div class="orow" id="row-quips"><span class="olab">Stat remarks</span><div class="seg sm" role="group" aria-label="Stat remarks"><button type="button" data-action="set-quips" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-quips" data-v="off" aria-pressed="false">Off</button></div></div>
-      <div class="orow" id="row-sound"><span class="olab">Sound effects</span><div class="seg sm" role="group" aria-label="Sound effects"><button type="button" data-action="set-sound" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-sound" data-v="off" aria-pressed="false">Off</button></div></div>
-      <div class="orow"><label class="olab" for="optname">Your name</label><input type="text" id="optname" class="oname" maxlength="30" autocomplete="off" placeholder="Optional"></div>
-    </section>
-    <section class="ogroup">
-      <h3 class="dsec">Round timer</h3>
-      <div class="orow" id="row-timerhover"><span class="olab">When you hover the companion</span><div class="seg sm" role="group" aria-label="Round timer when you hover the companion"><button type="button" data-action="set-timerhover" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-timerhover" data-v="off" aria-pressed="false">Off</button></div></div>
-      <div class="orow" id="row-timerbar"><span class="olab">Next to the progress bar</span><div class="seg sm" role="group" aria-label="Round timer next to the progress bar"><button type="button" data-action="set-timerbar" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-timerbar" data-v="off" aria-pressed="false">Off</button></div></div>
-      <div class="orow" id="row-timerreset"><span class="olab">This round's clock <span class="otime" id="otime"></span></span><button type="button" class="btn sec obtn" id="timerresetbtn" data-action="timer-reset" aria-label="Reset this round's clock">Reset</button></div>
-      <div class="onote">The clock starts when a round is first loaded and stops once every question has an answer. It pauses while your companion naps, and while you have another round open.</div>
-    </section>
-    <section class="ogroup">
-      <h3 class="dsec">Time estimate</h3>
-      <div class="orow" id="row-estauto"><span class="olab">Follow my pace</span><div class="seg sm" role="group" aria-label="Follow my pace"><button type="button" data-action="set-estauto" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-estauto" data-v="off" aria-pressed="false">Off</button></div></div>
-      <div class="orow" id="row-estsec"><label class="olab" for="optest">Seconds for a plain question</label><input type="number" id="optest" class="oname onum" min="5" max="600" step="1" inputmode="numeric" aria-describedby="estnote"></div>
-      <div class="onote" id="estnote"></div>
-    </section>
-    <section class="ogroup">
-      <h3 class="dsec">Recommendations</h3>
-      <div class="orow" id="row-recs"><span class="olab">Wizard recommendations</span><div class="seg sm" role="group" aria-label="Wizard recommendations"><button type="button" data-action="set-recs" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-recs" data-v="off" aria-pressed="false">Off</button></div></div>
-      <div class="onote">When a round recommends an answer, a small wizard hat marks it, with the reason under it when there is one.</div>
-    </section>
-    <section class="ogroup">
-      <h3 class="dsec">Context</h3>
-      <div class="osub">Where it shows on a question</div>
-      <div class="seg" role="group" aria-label="Where the context shows on a question">
-        <button type="button" data-action="set-ctx" data-v="before" aria-pressed="false">Before the answers</button>
-        <button type="button" data-action="set-ctx" data-v="after" aria-pressed="false">After the answers</button>
-      </div>
-      <div class="onote">Context is the framing, quotes, notes, links, and popups a question comes with. Hide, on its panel, folds it on that question, and Show brings it back.</div>
-    </section>
-    <section class="ogroup">
-      <h3 class="dsec">Keys</h3>
-      <div class="orow" id="row-keys"><span class="olab">Number keys pick answers</span><div class="seg sm" role="group" aria-label="Number keys pick answers"><button type="button" data-action="set-keys" data-v="on" aria-pressed="false">On</button><button type="button" data-action="set-keys" data-v="off" aria-pressed="false">Off</button></div></div>
-      <div class="onote">Keys 1 to 9 pick an answer while you're on the question, and 1 and 2 pick in a bracket. They never pick while you type.</div>
-    </section>
-    <section class="ogroup">
-      <h3 class="dsec">Look</h3>
-      <div class="osub">Theme</div>
-      <div class="seg" role="group" aria-label="Theme">
-        <button type="button" data-action="set-theme" data-v="dark" aria-pressed="false">Dark</button>
-        <button type="button" data-action="set-theme" data-v="light" aria-pressed="false">Light</button>
-        <button type="button" data-action="set-theme" data-v="system" aria-pressed="false">System</button>
-      </div>
-      <div class="osub">Text size</div>
-      <div class="seg" role="group" aria-label="Text size">
-        <button type="button" data-action="set-size" data-v="compact" aria-pressed="false">Compact</button>
-        <button type="button" data-action="set-size" data-v="normal" aria-pressed="false">Normal</button>
-        <button type="button" data-action="set-size" data-v="large" aria-pressed="false">Large</button>
+    <section class="ogroup" data-sec="companion">
+      <h3 class="dsec"><button type="button" class="osec" data-action="sec-toggle" data-sec="companion" aria-expanded="true" aria-controls="osb-companion"><span class="ofold" aria-hidden="true"></span><span class="osname">Companion</span><span class="osval" id="osv-companion"></span></button></h3>
+      <div class="osbody" id="osb-companion">
+        <div class="ctiles" id="ctiles" role="group" aria-label="Companion"></div>
+        <div class="cchosen" id="cchosen"></div>
+        <div class="onote" id="nt-comp" hidden></div>
+        <div class="chidden" id="chidden"></div>
+        <div class="mprevline" id="mprevline" role="status" aria-live="polite"></div>
+        <div class="orow" id="row-cdir" hidden></div>
+        <div class="onote" id="nt-cdir" hidden></div>
+        <div class="onote" id="cnote" hidden></div>
+        <div class="orow" id="row-talk"><span class="olab">Speech bubbles</span><button type="button" class="oswitch" role="switch" data-action="toggle-opt" data-k="talk" aria-checked="false" aria-label="Speech bubbles"></button></div>
+        <div class="orow" id="row-quips"><span class="olab">Stat remarks</span><button type="button" class="oswitch" role="switch" data-action="toggle-opt" data-k="quips" aria-checked="false" aria-label="Stat remarks"></button></div>
+        <div class="orow" id="row-sound"><span class="olab">Sound effects</span><button type="button" class="oswitch" role="switch" data-action="toggle-opt" data-k="sound" aria-checked="false" aria-label="Sound effects"></button></div>
+        <div class="orow"><label class="olab" for="optname">Your name</label><input type="text" id="optname" class="oname" maxlength="30" autocomplete="off" placeholder="Optional"></div>
       </div>
     </section>
-    <section class="ogroup">
-      <h3 class="dsec" id="ostatshead">Stats</h3>
-      <div class="crow"><button type="button" class="btn sec" id="statsbtn" data-action="stats-toggle" aria-expanded="false" aria-controls="ostats">Show stats</button></div>
-      <div class="ostats" id="ostats" hidden></div>
-      <p class="ostnote" id="ostnote" hidden>Counted in this browser.</p>
+    <section class="ogroup" data-sec="look">
+      <h3 class="dsec"><button type="button" class="osec" data-action="sec-toggle" data-sec="look" aria-expanded="true" aria-controls="osb-look"><span class="ofold" aria-hidden="true"></span><span class="osname">Look</span><span class="osval" id="osv-look"></span></button></h3>
+      <div class="osbody" id="osb-look">
+        <div class="osub">Theme</div>
+        <div class="seg" role="group" aria-label="Theme">
+          <button type="button" data-action="set-theme" data-v="dark" aria-pressed="false">Dark</button>
+          <button type="button" data-action="set-theme" data-v="light" aria-pressed="false">Light</button>
+          <button type="button" data-action="set-theme" data-v="system" aria-pressed="false">System</button>
+        </div>
+        <div class="osub">Text size</div>
+        <div class="seg" role="group" aria-label="Text size">
+          <button type="button" data-action="set-size" data-v="compact" aria-pressed="false">Compact</button>
+          <button type="button" data-action="set-size" data-v="normal" aria-pressed="false">Normal</button>
+          <button type="button" data-action="set-size" data-v="large" aria-pressed="false">Large</button>
+        </div>
+      </div>
     </section>
-    <section class="ogroup">
-      <h3 class="dsec">App</h3>
-      <div class="orow" id="row-install"><span class="olab">Install the wizard as an app</span><button type="button" class="btn sec obtn" id="installbtn" data-action="install-app" hidden>Install</button></div>
-      <div class="onote" id="installnote"></div>
+    <section class="ogroup" data-sec="answering">
+      <h3 class="dsec"><button type="button" class="osec" data-action="sec-toggle" data-sec="answering" aria-expanded="true" aria-controls="osb-answering"><span class="ofold" aria-hidden="true"></span><span class="osname">Answering</span><span class="osval" id="osv-answering"></span></button></h3>
+      <div class="osbody" id="osb-answering">
+        <div class="orow" id="row-recs"><span class="olabw"><span class="olab">Wizard recommendations</span><button type="button" class="oinfo" data-action="opt-info" data-note="nt-recs" aria-expanded="false" aria-controls="nt-recs" aria-label="About Wizard recommendations"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 11v7M12 6.5v.01"/></svg></button></span><button type="button" class="oswitch" role="switch" data-action="toggle-opt" data-k="recs" aria-checked="false" aria-label="Wizard recommendations"></button></div>
+        <div class="onote" id="nt-recs" hidden>When a round recommends an answer, a small wizard hat marks it, with the reason under it when there is one.</div>
+        <div class="osub olabw"><span>Where the context shows</span><button type="button" class="oinfo" data-action="opt-info" data-note="nt-ctx" aria-expanded="false" aria-controls="nt-ctx" aria-label="About where the context shows"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 11v7M12 6.5v.01"/></svg></button></div>
+        <div class="onote onote-sub" id="nt-ctx" hidden>Context is the framing, quotes, notes, links, and popups a question comes with. Hide, on its panel, folds it on that question, and Show brings it back.</div>
+        <div class="seg" role="group" aria-label="Where the context shows on a question">
+          <button type="button" data-action="set-ctx" data-v="before" aria-pressed="false">Before the answers</button>
+          <button type="button" data-action="set-ctx" data-v="after" aria-pressed="false">After the answers</button>
+        </div>
+        <div class="orow" id="row-keys"><span class="olabw"><span class="olab">Number keys pick answers</span><button type="button" class="oinfo" data-action="opt-info" data-note="nt-keys" aria-expanded="false" aria-controls="nt-keys" aria-label="About Number keys pick answers"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 11v7M12 6.5v.01"/></svg></button></span><button type="button" class="oswitch" role="switch" data-action="toggle-opt" data-k="keys" aria-checked="false" aria-label="Number keys pick answers"></button></div>
+        <div class="onote" id="nt-keys" hidden>Keys 1 to 9 pick an answer while you're on the question, and 1 and 2 pick in a bracket. They never pick while you type.</div>
+      </div>
     </section>
-    <section class="ogroup">
-      <h3 class="dsec">Saved data</h3>
-      <div class="odanger">
-        <p>Clear everything this browser keeps for the wizard: every round, its answers, the project folders it remembers, and these options. Files you saved stay where they are.</p>
-        <div class="crow"><button type="button" class="btn sec" data-action="backup-all">Back up all rounds first</button><button type="button" class="btn danger" data-action="wipe-all">Clear everything</button></div>
+    <section class="ogroup" data-sec="time">
+      <h3 class="dsec"><button type="button" class="osec" data-action="sec-toggle" data-sec="time" aria-expanded="true" aria-controls="osb-time"><span class="ofold" aria-hidden="true"></span><span class="osname">Time</span><span class="osval" id="osv-time"></span></button></h3>
+      <div class="osbody" id="osb-time">
+        <div class="osub ogrp">Round timer</div>
+        <div class="orow" id="row-timerhover"><span class="olab">When you hover the companion</span><button type="button" class="oswitch" role="switch" data-action="toggle-opt" data-k="timerHover" aria-checked="false" aria-label="Round timer when you hover the companion"></button></div>
+        <div class="orow" id="row-timerbar"><span class="olab">Next to the progress bar</span><button type="button" class="oswitch" role="switch" data-action="toggle-opt" data-k="timerBar" aria-checked="false" aria-label="Round timer next to the progress bar"></button></div>
+        <div class="orow" id="row-timerreset"><span class="olabw"><span class="olab">This round's clock <span class="otime" id="otime"></span></span><button type="button" class="oinfo" data-action="opt-info" data-note="nt-clock" aria-expanded="false" aria-controls="nt-clock" aria-label="About this round's clock"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 11v7M12 6.5v.01"/></svg></button></span><button type="button" class="btn sec obtn" id="timerresetbtn" data-action="timer-reset" aria-label="Reset this round's clock">Reset</button></div>
+        <div class="onote" id="nt-clock" hidden>The clock starts when a round is first loaded and stops once every question has an answer. It pauses while your companion naps, and while you have another round open.</div>
+        <div class="osub ogrp">Time estimate</div>
+        <div class="orow" id="row-estauto"><span class="olab">Follow my pace</span><button type="button" class="oswitch" role="switch" data-action="toggle-opt" data-k="estAuto" aria-checked="false" aria-label="Follow my pace"></button></div>
+        <div class="orow" id="row-estsec"><span class="olabw"><label class="olab" for="optest">Seconds for a plain question</label><button type="button" class="oinfo" data-action="opt-info" data-note="estnote" aria-expanded="false" aria-controls="estnote" aria-label="About the time estimate"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 11v7M12 6.5v.01"/></svg></button></span><input type="number" id="optest" class="oname onum" min="5" max="600" step="1" inputmode="numeric" aria-describedby="estnote"></div>
+        <div class="onote" id="estnote" hidden></div>
+      </div>
+    </section>
+    <section class="ogroup" data-sec="appdata">
+      <h3 class="dsec"><button type="button" class="osec" data-action="sec-toggle" data-sec="appdata" aria-expanded="true" aria-controls="osb-appdata"><span class="ofold" aria-hidden="true"></span><span class="osname">App and data</span><span class="osval" id="osv-appdata"></span></button></h3>
+      <div class="osbody" id="osb-appdata">
+        <div class="orow" id="row-install"><span class="olabw"><span class="olab">Install the wizard as an app</span><button type="button" class="oinfo" data-action="opt-info" data-note="installnote" aria-expanded="false" aria-controls="installnote" aria-label="About installing the wizard"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 11v7M12 6.5v.01"/></svg></button></span><button type="button" class="btn sec obtn" id="installbtn" data-action="install-app" hidden>Install</button></div>
+        <div class="onote" id="installnote" hidden></div>
+        <div class="odanger">
+          <p>Clear everything this browser keeps for the wizard: every round, its answers, the project folders it remembers, and these options. Files you saved stay where they are.</p>
+          <div class="crow"><button type="button" class="btn sec" data-action="backup-all">Back up all rounds first</button><button type="button" class="btn danger" data-action="wipe-all">Clear everything</button></div>
+        </div>
       </div>
     </section>
     <div class="ofoot"><p>Options stay in this browser. Rounds never change them.</p><div class="oversion" id="oversion"></div></div>
@@ -1397,7 +1436,7 @@ html{scroll-padding-bottom:var(--lift,0px)}
 <script>
 "use strict";
 /* The wizard's version. Bump the last number (0.1.1) for a minor update, the middle one (0.2.0) for a major one. */
-var WIZARD_VERSION = "0.11.4";
+var WIZARD_VERSION = "0.11.5";
 
 var CONFIG = { title:"Decision Wizard", tagline:"", product:"" };
 
@@ -1649,7 +1688,9 @@ function applyConfig(){
   headMeta();
 }
 var SETKEY = "decision-wizard-settings-v1";
-var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true, keys: true, ctx: "before", estAuto: true, estSec: 0 };
+var SETTINGS = { theme: "dark", size: "normal", mascot: "quill", mascotFolder: "", hidden: [], talk: true, quips: true, sound: true, name: "", timerHover: true, timerBar: false, recs: true, keys: true, ctx: "before", estAuto: true, estSec: 0, secs: ["companion"] };
+/* The sections of Options, top to bottom. SETTINGS.secs lists the ones left open. */
+var OSECS = ["companion", "look", "answering", "time", "appdata"];
 function loadSettings(){
   var s = readJSON(SETKEY);
   if(s && typeof s === "object"){
@@ -1669,6 +1710,7 @@ function loadSettings(){
     if(typeof s.estAuto === "boolean") SETTINGS.estAuto = s.estAuto;
     if(typeof s.estSec === "number" && s.estSec >= 5 && s.estSec <= 600) SETTINGS.estSec = Math.round(s.estSec);
     if(typeof s.name === "string") SETTINGS.name = s.name.slice(0, 30);
+    if(Array.isArray(s.secs)) SETTINGS.secs = s.secs.filter(function(k, i, a){ return OSECS.indexOf(k) !== -1 && a.indexOf(k) === i; });
   } else {
     var t = lsGet(TKEY);
     if(t === "light" || t === "dark") SETTINGS.theme = t;
@@ -1700,13 +1742,15 @@ function renderOptions(){
     if(typeof cur === "boolean") cur = cur ? "on" : "off";
     bs[i].setAttribute("aria-pressed", cur === bs[i].getAttribute("data-v") ? "true" : "false");
   }
+  var sw = document.querySelectorAll("#optdrawer .oswitch");
+  for(var w=0;w<sw.length;w++) sw[w].setAttribute("aria-checked", SETTINGS[sw[w].getAttribute("data-k")] ? "true" : "false");
   var off = !mascotOn();
   var rt = document.getElementById("row-talk"), rq = document.getElementById("row-quips");
   var rh = document.getElementById("row-timerhover");
   var why = function(row, w){
     if(!row) return;
     row.className = "orow" + (w ? " dim" : "");
-    var lab = row.querySelector(".olab"), g = row.querySelector(".seg");
+    var lab = row.querySelector(".olab"), g = row.querySelector(".seg, .oswitch");
     if(lab) lab.setAttribute("data-why", w);
     if(g){ var base = g.getAttribute("data-base") || g.getAttribute("aria-label"); g.setAttribute("data-base", base); g.setAttribute("aria-label", base + (w ? ". " + w : "")); }
   };
@@ -1725,13 +1769,73 @@ function renderOptions(){
       ? (pi.overall ? "Learned from " + plur(pi.rounds, "finished round") + " in this browser, leaving long breaks out. It keeps learning as you finish more." : "Nothing finished to learn from yet, so it starts from the default and learns as you finish rounds.")
       : "Your own number. From your rounds it would be " + sug + ". Every other kind of question keeps its share of it.";
   }
-  var os = document.getElementById("ostats");
-  if(os){
-    var card = function(v, l){ return '<div class="ostat"><b>' + esc(String(v)) + '</b><span>' + esc(l) + '</span></div>'; };
-    os.innerHTML = card(STATS.decisions, "Decisions made") + card(STATS.day === todayKey() ? STATS.dayDecisions : 0, "Decisions today") + card(STATS.rounds, "Rounds finished") + card(STATS.typed, "Answers you wrote") + card(STATS.fastestMs ? fmtDuration(STATS.fastestMs) : "Not yet", "Fastest round");
-  }
   renderInstall();
+  renderSecs();
 }
+/* Each section of Options folds with a click on its heading, and stays as you left it in this browser. */
+function secOpen(k){ return SETTINGS.secs.indexOf(k) !== -1; }
+function secToggle(k){
+  if(OSECS.indexOf(k) === -1) return;
+  if(secOpen(k)) SETTINGS.secs = SETTINGS.secs.filter(function(x){ return x !== k; });
+  else SETTINGS.secs.push(k);
+  saveSettings();
+  renderSecs();
+}
+/* What a folded heading shows after its name. */
+function secVals(){
+  var on = function(b){ return b ? "on" : "off"; };
+  var mk = mascotKey(), comp = mk ? (MSHORT[mk] || "") : (cmpWaiting() ? "" : "None"), offs = [];
+  if(mk && !SETTINGS.talk) offs.push("no bubbles");
+  if(mk && !SETTINGS.sound) offs.push("no sound");
+  var clock = SETTINGS.timerHover && SETTINGS.timerBar ? "Clock on hover and by the bar" : SETTINGS.timerHover ? "Clock on hover" : SETTINGS.timerBar ? "Clock by the bar" : "Clock hidden";
+  var n = LIB.rounds.length, app = standalone() ? "installed" : (hosted() && installPrompt) ? "can install" : "";
+  return {
+    companion: [comp].concat(offs).filter(Boolean).join(", "),
+    look: { dark: "Dark", light: "Light", system: "System" }[SETTINGS.theme] + ", " + { compact: "Compact", normal: "Normal", large: "Large" }[SETTINGS.size],
+    answering: "Recommendations " + on(SETTINGS.recs) + ", keys " + on(SETTINGS.keys) + ", context " + (SETTINGS.ctx === "after" ? "last" : "first"),
+    time: clock + ", " + (SETTINGS.estAuto ? "your pace" : SETTINGS.estSec + " s a question"),
+    appdata: [plur(n, "round") + " saved", app].filter(Boolean).join(", ")
+  };
+}
+function renderSecs(){
+  var v = secVals();
+  OSECS.forEach(function(k){
+    var b = document.querySelector('#optdrawer .osec[data-sec="' + k + '"]'), body = document.getElementById("osb-" + k), val = document.getElementById("osv-" + k);
+    if(!b || !body) return;
+    var open = secOpen(k);
+    b.setAttribute("aria-expanded", open ? "true" : "false");
+    body.hidden = !open;
+    if(val && val.textContent !== v[k]){ val.textContent = v[k]; val.title = v[k]; }
+  });
+}
+/* A note behind a small i opens in place under its setting. */
+function infoToggle(btn){
+  var n = btn && document.getElementById(btn.getAttribute("data-note"));
+  if(!n) return;
+  n.hidden = !n.hidden;
+  btn.setAttribute("aria-expanded", n.hidden ? "false" : "true");
+}
+function infoBtn(id, about){
+  var n = document.getElementById(id), open = !!(n && !n.hidden);
+  return '<button type="button" class="oinfo" data-action="opt-info" data-note="' + id + '" aria-expanded="' + open + '" aria-controls="' + id + '" aria-label="About ' + esc(about) + '">' + INFO_ICO + '</button>';
+}
+var INFO_ICO = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 11v7M12 6.5v.01"/></svg>';
+/* Stats open from the small chart in the Options header, in a popup over the panel. */
+function statsOpen(){
+  var t = document.getElementById("mtitle"), b = document.getElementById("mbody"), m = document.getElementById("modal");
+  if(!t || !b || !m) return;
+  var card = function(v, l){ return '<div class="ostat"><b>' + esc(String(v)) + '</b><span>' + esc(l) + '</span></div>'; };
+  t.innerHTML = '<span class="mico" aria-hidden="true">' + STATS_ICO + '</span><span>Stats</span>';
+  b.innerHTML = '<div class="ostats">' + card(STATS.decisions, "Decisions made") + card(STATS.day === todayKey() ? STATS.dayDecisions : 0, "Decisions today") + card(STATS.rounds, "Rounds finished") + card(STATS.typed, "Answers you wrote") + card(STATS.fastestMs ? fmtDuration(STATS.fastestMs) : "Not yet", "Fastest round") + '</div><p class="ostnote">Counted in this browser.</p>';
+  var c = m.querySelector(".mcard");
+  if(c) c.classList.add("narrow");
+  if(m.className.indexOf("on") === -1) mOpener = document.activeElement;
+  m.className = "mback on";
+  var d = drawerOpen && document.getElementById(drawerId);
+  if(d) d.setAttribute("inert", ""); else setInert(true);
+  setTimeout(function(){ try{ m.querySelector(".mclose").focus(); }catch(err){} }, 30);
+}
+var STATS_ICO = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5.5 19v-7M12 19V6M18.5 19v-4.5"/></svg>';
 /* The hosted wizard installs as an app: a service worker keeps a copy for offline use, and online the newest version always loads.
    A local copy of the page skips all of this. */
 var installPrompt = null;
@@ -1749,6 +1853,7 @@ function renderInstall(){
   else msg = "Your browser's menu may offer Install app or Add to Home Screen. Once installed, the wizard opens offline and loads the newest version whenever you're online.";
   b.hidden = !show;
   n.textContent = msg;
+  renderSecs();
 }
 function installApp(){
   var ev = installPrompt;
@@ -1766,15 +1871,6 @@ function setupApp(){
   window.addEventListener("beforeinstallprompt", function(ev){ ev.preventDefault(); installPrompt = ev; renderInstall(); });
   window.addEventListener("appinstalled", function(){ installPrompt = null; renderInstall(); toast(true, "Installed. The wizard now opens from your apps, offline too."); });
   try{ if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").then(null, function(){}); }catch(e){}
-}
-function toggleStats(){
-  var os = document.getElementById("ostats"), note = document.getElementById("ostnote"), b = document.getElementById("statsbtn");
-  if(!os || !b) return;
-  var show = os.hasAttribute("hidden");
-  if(show){ os.removeAttribute("hidden"); if(note) note.removeAttribute("hidden"); renderOptions(); }
-  else { os.setAttribute("hidden", ""); if(note) note.setAttribute("hidden", ""); }
-  b.setAttribute("aria-expanded", show ? "true" : "false");
-  b.textContent = show ? "Hide stats" : "Show stats";
 }
 function setOption(k, v){
   var prevName = SETTINGS.name;
@@ -2699,6 +2795,8 @@ function extraOpen(k){
   if(!e || !t || !b || !m) return;
   t.innerHTML = '<span class="mico">' + xIcon(e) + '</span><span ' + dirA(e.label || "") + '>' + esc(e.label || "More context") + '</span>';
   b.innerHTML = e.blocks.map(function(d){ return blockHTML(d, false); }).join("");
+  var c = m.querySelector(".mcard");
+  if(c) c.classList.remove("narrow");
   if(m.className.indexOf("on") === -1) mOpener = document.activeElement;
   m.className = "mback on";
   setInert(true);
@@ -2709,7 +2807,9 @@ function extraClose(){
   var m = document.getElementById("modal");
   if(!m || m.className.indexOf("on") === -1) return;
   m.className = "mback";
-  setInert(false);
+  /* Stats open over Options, which stays open under them. */
+  var d = drawerOpen && document.getElementById(drawerId);
+  if(d) d.removeAttribute("inert"); else setInert(false);
   var o = mOpener;
   mOpener = null;
   if(o && document.body.contains(o)) focusQuiet(o);
@@ -5567,7 +5667,9 @@ function openDrawer(){
 }
 function openOptions(){
   renderOptions();
-  showDrawer("optdrawer", document.querySelector("#optdrawer [aria-pressed=true]"));
+  var ps = document.querySelectorAll("#optdrawer [aria-pressed=true]"), f = null;
+  for(var i=0;i<ps.length && !f;i++){ if(!ps[i].closest("[hidden]")) f = ps[i]; }
+  showDrawer("optdrawer", f || document.querySelector("#optdrawer .osec"));
 }
 function closeDrawer(){
   if(!drawerOpen) return;
@@ -5618,6 +5720,11 @@ function wipeAll(){
   SETTINGS.timerHover = true;
   SETTINGS.timerBar = false;
   SETTINGS.recs = true;
+  SETTINGS.keys = true;
+  SETTINGS.ctx = "before";
+  SETTINGS.estAuto = true;
+  SETTINGS.estSec = 0;
+  SETTINGS.secs = ["companion"];
   SETTINGS.name = "";
   STATS = JSON.parse(JSON.stringify(STATS_DEFAULT));
   applySettings();
@@ -7098,7 +7205,6 @@ var CMP = { handle: null, perm: "none", list: {}, folders: {}, seen: {}, scanned
 var ZZ_SVG = '<svg class="mzz" viewBox="0 0 40 30" aria-hidden="true"><path d="M3 18h7l-7 9h7M16 4h12L16 18h12" fill="none" stroke="#1B1810" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 18h7l-7 9h7M16 4h12L16 18h12" fill="none" stroke="#F6F0E2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 var CMP_ICO = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="M12 8.5 13.2 10.8 15.5 12 13.2 13.2 12 15.5 10.8 13.2 8.5 12 10.8 10.8Z" fill="currentColor"/></svg>';
 var NONE_ICO = '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="3 3" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg>';
-var PLUS_ICO = '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
 
 function cmpKey(name){ return "c:" + String(name).toLowerCase(); }
 function visibleKeys(){
@@ -7719,8 +7825,8 @@ function forgetCompanions(){
   dropNotice("cdir");
   CMP.folders = {}; CMP.list = {}; CMP.seen = {}; CMP.scannedFor = null; CMP.shown = {}; CMP.handle = null; CMP.perm = "none"; CMP.cardSig = "";
 }
-/* The Companion card in Options: a tile per companion, the chosen one's line, and the companions folder. Each part is
-   written only when it changes, so a look at the folder never moves the focus or the scroll. */
+/* The Companion card in Options: a tile per companion and None, the chosen one's line, and the companions folder with
+   Add and Create. Each part is written only when it changes, so a look at the folder never moves the focus or the scroll. */
 function renderCompanions(){
   var box = document.getElementById("ctiles");
   if(!box) return;
@@ -7731,44 +7837,49 @@ function renderCompanions(){
     h += '<button type="button" class="ctile" data-action="set-mascot" data-v="' + esc(k) + '" aria-pressed="' + (k === SETTINGS.mascot) + '" aria-label="' + esc(MNAME[k] || k) + '">'
       + '<span class="ctface"' + (k === mk ? ' id="mprev"' : '') + ' aria-hidden="true">' + ART[k].idle + '</span><span class="ctname" ' + dirA(MSHORT[k]) + '>' + esc(MSHORT[k]) + '</span></button>';
   });
-  h += '<button type="button" class="ctile" data-action="set-mascot" data-v="none" aria-pressed="' + (SETTINGS.mascot === "none") + '"><span class="ctface" aria-hidden="true">' + NONE_ICO + '</span><span class="ctname">None</span></button>';
-  if(fsSupported()) h += '<button type="button" class="ctile add" data-action="c-add" aria-label="Add a companion"><span class="ctface" aria-hidden="true">' + PLUS_ICO + '</span><span class="ctname">Add</span></button>'
-    + '<button type="button" class="ctile build" data-action="b-new" aria-label="Build a companion"><span class="ctface" aria-hidden="true">' + bIco(28) + '</span><span class="ctname">Build</span></button>';
+  h += '<button type="button" class="ctile none" data-action="set-mascot" data-v="none" aria-pressed="' + (SETTINGS.mascot === "none") + '"><span class="ctface" aria-hidden="true">' + NONE_ICO + '</span><span class="ctname">None</span></button>';
   var before = box.__h;
   setHTML(box, h);
   if(focusV && box.__h !== before){
     var bs = box.querySelectorAll("button");
     for(var i=0;i<bs.length;i++){ if((bs[i].getAttribute("data-v") || bs[i].getAttribute("data-action")) === focusV){ focusQuiet(bs[i]); break; } }
   }
-  var t = "";
-  if(mk && (mk === "quill" || mk === "swoop")) t = '<span><b>' + esc(MSHORT[mk]) + '</b>' + esc(MNAME[mk].slice(MSHORT[mk].length)) + '</span><button type="button" class="btn sec obtn" data-action="c-hide" data-v="' + mk + '" aria-label="Hide ' + esc(MSHORT[mk]) + '">Hide</button>';
-  else if(mk){ var c = CMP.list[mk]; t = '<span ' + dirA(MNAME[mk]) + '><b>' + esc(c.name) + '</b>' + (c.about ? ", " + esc(c.about) : "") + '</span>' + (CMP.perm === "granted" ? '<span class="obtns"><button type="button" class="btn sec obtn" data-action="b-edit" data-v="' + esc(mk) + '" aria-label="Edit ' + esc(c.name) + '">Edit</button><button type="button" class="btn sec obtn" data-action="c-remove" data-v="' + esc(mk) + '" aria-label="Remove ' + esc(c.name) + '">Remove</button></span>' : ''); }
+  var t = "", ntc = document.getElementById("nt-comp"), menuNote = "Hover over your companion, or tap it, for its menu." + (fsSupported() ? "" : " Companions you add work in Chrome and Edge on a computer.");
+  if(ntc && ntc.textContent !== menuNote) ntc.textContent = menuNote;
+  /* With no companion there is no menu to tell of. */
+  if(ntc && !mk && !ntc.hidden) ntc.hidden = true;
+  if(mk && (mk === "quill" || mk === "swoop")) t = '<span class="olabw"><span><b>' + esc(MSHORT[mk]) + '</b>' + esc(MNAME[mk].slice(MSHORT[mk].length)) + '</span>' + infoBtn("nt-comp", MSHORT[mk] + "'s menu") + '</span><button type="button" class="btn sec obtn" data-action="c-hide" data-v="' + mk + '" aria-label="Hide ' + esc(MSHORT[mk]) + '">Hide</button>';
+  else if(mk){ var c = CMP.list[mk]; t = '<span class="olabw"><span ' + dirA(MNAME[mk]) + '><b>' + esc(c.name) + '</b>' + (c.about ? ", " + esc(c.about) : "") + '</span>' + infoBtn("nt-comp", c.name + "'s menu") + '</span>' + (CMP.perm === "granted" ? '<span class="obtns"><button type="button" class="btn sec obtn" data-action="b-edit" data-v="' + esc(mk) + '" aria-label="Edit ' + esc(c.name) + '">Edit</button><button type="button" class="btn sec obtn" data-action="c-remove" data-v="' + esc(mk) + '" aria-label="Remove ' + esc(c.name) + '">Remove</button></span>' : ''); }
   else if(cmpWaiting()) t = '<span>Your companion shows once its folder can be read.</span>';
   else t = '<span>No companion.</span>';
   setHTML(document.getElementById("cchosen"), t);
   setHTML(document.getElementById("chidden"), SETTINGS.hidden.length ? '<span>Hidden:</span>' + SETTINGS.hidden.map(function(k){ return '<button type="button" class="btn sec obtn" data-action="c-show" data-v="' + k + '">Show ' + esc(MSHORT[k]) + '</button>'; }).join("") : "");
-  var row = document.getElementById("row-cdir"), note = document.getElementById("cnote");
+  var row = document.getElementById("row-cdir"), note = document.getElementById("cnote"), ntd = document.getElementById("nt-cdir");
   if(row){
-    if(!fsSupported()){ row.hidden = true; setHTML(row, ""); }
+    if(!fsSupported()){ row.hidden = true; setHTML(row, ""); if(ntd) ntd.hidden = true; }
     else {
       row.hidden = false;
-      var lab = '<span class="olab">Companions folder' + (CMP.handle ? '<span class="cdirname" dir="auto">' + esc(CMP.handle.name) + '</span>' : '') + '</span>', btns = "";
+      var lab = '<span class="olabw"><span class="olab">Companions folder' + (CMP.handle ? '<span class="cdirname" dir="auto">' + esc(CMP.handle.name) + '</span>' : '') + '</span>' + infoBtn("nt-cdir", "the companions folder") + '</span>', btns = "";
       if(!CMP.handle) btns = '<button type="button" class="btn sec obtn" data-action="c-pick">Pick a folder</button>';
       else if(CMP.perm === "granted" || CMP.perm === "gone") btns = '<button type="button" class="btn sec obtn" data-action="c-pick">Change</button>';
       else if(CMP.perm === "denied") btns = '<button type="button" class="btn sec obtn" data-action="c-pick">Change</button>';
       else btns = '<button type="button" class="btn obtn" data-action="c-allow">Allow</button><button type="button" class="btn sec obtn" data-action="c-pick">Change</button>';
-      setHTML(row, lab + '<span class="obtns">' + btns + '</span>');
+      var make = '<button type="button" class="btn sec obtn cbtn" data-action="c-add" aria-label="Add a companion">' + ADD_ICO + 'Add</button><button type="button" class="btn sec obtn cbtn" data-action="b-new" aria-label="Create a companion">' + bIco(14) + 'Create</button>';
+      setHTML(row, lab + '<span class="obtns">' + make + btns + '</span>');
     }
   }
+  var ntdText = "Each companion you add is a folder of pictures in your companions folder. Add brings one in, and Create makes one of your own.";
+  if(ntd && ntd.textContent !== ntdText) ntd.textContent = ntdText;
+  /* A folder that can't be read is a warning, so it stays in view. */
   if(note){
-    var nt;
-    if(!fsSupported()) nt = "Companions you add work in Chrome and Edge on a computer. Hover over your companion, or tap it, for its menu.";
-    else if(CMP.handle && CMP.perm === "gone") nt = "Your companions folder can't be read just now. It's looked for again every few seconds, and when you come back to the page. Hover over your companion, or tap it, for its menu.";
-    else if(CMP.handle && CMP.perm === "denied") nt = "The browser is blocking your companions folder. Allow it from the icon in the address bar, or pick it again with Change. Hover over your companion, or tap it, for its menu.";
-    else nt = "Each companion you add is a folder of pictures in your companions folder. Hover over your companion, or tap it, for its menu.";
+    var nt = "";
+    if(fsSupported() && CMP.handle && CMP.perm === "gone") nt = "Your companions folder can't be read just now. It's looked for again every few seconds, and when you come back to the page.";
+    else if(fsSupported() && CMP.handle && CMP.perm === "denied") nt = "The browser is blocking your companions folder. Allow it from the icon in the address bar, or pick it again with Change.";
     if(note.textContent !== nt) note.textContent = nt;
+    note.hidden = !nt;
   }
 }
+var ADD_ICO = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
 
 /* The companion builder: pick every picture, write every line, and save the companion's folder into the companions
    folder. A full workshop over the wizard: name and poses on the left, the companion in the middle, every moment's
@@ -7822,7 +7933,7 @@ var BUSES = { idle: "Most of the time. Every pose without a picture of its own e
   writing: "While you type: an answer of your own, a note, or an idea in a brainstorm. Optional: without it, your companion stays as it is." };
 var BPLAY = [["Greet", "greet", "greet", "greet"], ["Pick", "pick", "pick", "pick"], ["Skip", "skip", "skip", "skip"], ["Milestone", "half", "milestone", "milestone"],
   ["Warn", "warn", "warn", "warn"], ["Error", "error", "error", "error"], ["Finish", "finish", "finish", "finish"], ["Nap", "", "", ""], ["Dance", "", "", "finish"]];
-/* Function declarations, so the Options card can draw the Build tile before this block has run. */
+/* Function declarations, so the Options card can draw the Create button before this block has run. */
 function bIco(n){ return '<svg viewBox="0 0 24 24" width="' + n + '" height="' + n + '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="M13.5 6.5l4 4"/></svg>'; }
 function bldOpen(){ return typeof BLD !== "undefined" && !!BLD && !!BLD.open; }
 var BWARN = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2.8 20h18.4Z"/><path d="M12 10v4"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg>';
@@ -8130,7 +8241,7 @@ function bTeardown(focusSel){
   showDrawer("optdrawer", null);
   if(ret && document.body.contains(ret)) lastFocus = ret;
   /* After the panel has slid in, as Options does, since a hidden panel can't take the focus. */
-  var sel = focusSel || (from === "b-edit" ? '#cchosen [data-action="b-edit"]' : '#ctiles [data-action="b-new"]');
+  var sel = focusSel || (from === "b-edit" ? '#cchosen [data-action="b-edit"]' : '#row-cdir [data-action="b-new"]');
   setTimeout(function(){ var t = document.querySelector(sel); if(t && drawerOpen && drawerId === "optdrawer") try{ t.focus({ preventScroll: true }); }catch(e){} }, 60);
 }
 function builderClose(){
@@ -8888,7 +8999,7 @@ function zipDrop(file){
 /* Reactions to Options: shown right in the panel while it is open. */
 function optReact(key, frame){
   if(!mascotOn()) return;
-  var inPanel = drawerOpen && drawerId === "optdrawer";
+  var inPanel = drawerOpen && drawerId === "optdrawer" && secOpen("companion");
   if(!inPanel){ if(SETTINGS.talk) react("opt", { key: key, frame: frame, name: SETTINGS.name }); return; }
   var pv = document.getElementById("mprev"), pl = document.getElementById("mprevline");
   var art = ART[mascotKey()];
@@ -11380,6 +11491,10 @@ document.addEventListener("click", function(ev){
   else if(act === "mm-copy"){ closeMenu(true); wakeUp(); copyAnswers(true); }
   else if(act === "bubble-act"){ var ba = bubbleAction; hideBubble(); focusQuiet("#mascotbtn"); if(ba && ba.fn) ba.fn(); }
   else if(OPTKEYS[act]){ setOption(OPTKEYS[act], el.getAttribute("data-v")); }
+  else if(act === "toggle-opt"){ var ok = el.getAttribute("data-k"); setOption(ok, !SETTINGS[ok]); }
+  else if(act === "sec-toggle"){ secToggle(el.getAttribute("data-sec")); }
+  else if(act === "opt-info"){ infoToggle(el); }
+  else if(act === "stats-open"){ statsOpen(); }
   else if(act === "c-add"){ addCompanion(null); }
   else if(act === "c-pick"){ pickCdir(); }
   else if(act === "c-allow"){ allowCdir(); }
@@ -11413,7 +11528,6 @@ document.addEventListener("click", function(ev){
   else if(act === "folder-open"){ openProjectFolder(); }
   else if(act === "notice-act"){ noticeAct(el.getAttribute("data-id")); }
   else if(act === "notice-close"){ noticeClose(el.getAttribute("data-id")); }
-  else if(act === "stats-toggle"){ toggleStats(); }
   else if(act === "extra-open"){ extraOpen(parseInt(el.getAttribute("data-x"), 10) || 0); }
   else if(act === "modal-close"){ extraClose(); }
   else if(act === "modal-back"){ extraClose(); }

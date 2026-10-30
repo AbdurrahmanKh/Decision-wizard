@@ -73,9 +73,9 @@ A companion stands beside the cards and reacts as you answer. On a screen narrow
 
 You can add your own, in Chrome and Edge on a computer. Each companion is a folder of pictures, one per pose (`idle.png`, `greet.svg`, and so on; only `idle` is required), with `companion.json` for its name and its lines when it talks. Your companions live in one companions folder on your computer, which you pick once in Options. One more picture is optional: `writing`, the pose it takes while you type. The builder takes it; Create with Claude doesn't ask for it yet.
 
-- **Add one** with **Add** in the Companion card, or by dropping a companion's folder, or its zip, on the wizard. The wizard shows it and asks first, then copies the folder into your companions folder and switches to it. A folder you put in the companions folder yourself joins by itself.
+- **Add one** with **Add**, by the companions folder in the Companion card, or by dropping a companion's folder, or its zip, on the wizard. The wizard shows it and asks first, then copies the folder into your companions folder and switches to it. A folder you put in the companions folder yourself joins by itself.
 - **Make one with Claude.** **Create with Claude**, in the builder, writes the prompt for you: describe the companion (its name, title, look, art style, sound, mood, and the language of its lines), copy the prompt, and paste it into Claude, with reference pictures if you like. Claude needs the d-wizard skill, version 0.6.2 or later; it draws the poses, writes the lines, and sends the companion back as a zip. Drop the zip on the wizard as it is. In Claude Code, give Claude your companions folder's path and it writes the companion straight in. You can also just ask Claude for a companion in your own words.
-- **Build one yourself** with **Build** in the Companion card. It opens a workshop: a tile for each pose, where you choose or drop a picture; buttons that play the poses the way the wizard will; and a box for each line, moment by moment, with how many lines the moment needs and what it can fill in. **Start from** copies another companion's pictures and lines to begin with. **Save** writes the folder into your companions folder and switches to it.
+- **Make one yourself** with **Create**, next to Add. It opens a workshop: a tile for each pose, where you choose or drop a picture; buttons that play the poses the way the wizard will; and a box for each line, moment by moment, with how many lines the moment needs and what it can fill in. **Start from** copies another companion's pictures and lines to begin with. **Save** writes the folder into your companions folder and switches to it.
 - **Edit one** with **Edit** beside it in the Companion card, which opens it in the same workshop. Save writes your changes into its folder.
 - **Remove one** with **Remove** in the Companion card, which deletes its folder after asking, or delete the folder yourself.
 - **Inky, the octopus,** the first companion made this way, is attached to the [wizard 0.7.0 release](https://github.com/AbdurrahmanKh/decision-wizard/releases/tag/wizard-v0.7.0) as `Inky.zip`.
@@ -97,7 +97,7 @@ Each copy of the wizard keeps its own list of rounds, and clearing a browser's s
 
 ## Versions
 
-- **Wizard: 0.11.4.** It's shown at the bottom of the wizard's Options panel.
-- **Skill: 0.10.0.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.11.0 for their round 2.
+- **Wizard: 0.11.5.** It's shown at the bottom of the wizard's Options panel.
+- **Skill: 0.10.1.** It's in the skill's `SKILL.md`. It needs wizard 0.3.0 or later, 0.4.0 for rounds with ranking, number, or bracket questions, 0.6.0 for project folders, 0.7.0 for companions, 0.7.3 to drop a companion's zip on the wizard as it is, 0.9.0 for brainstorms, and 0.11.0 for their round 2.
 
 A minor update bumps the last number (0.2.2). A major update bumps the middle number (0.3.0). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).

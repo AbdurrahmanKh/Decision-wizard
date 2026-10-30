@@ -2,6 +2,22 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.11.5 and skill 0.10.1, 30 October 2026
+
+### Changed
+
+- Wizard: Options is five sections that fold: Companion, Look, Answering (Wizard recommendations, where the context shows, and Number keys pick answers), Time (the round timer and the time estimate), and App and data (Install, Back up all rounds first, and Clear everything). A click on a section's heading folds or opens it. The gold dash before the heading turns into a plus while the section is folded, and a folded heading shows its settings after its name, such as "Dark, Normal". Each section stays as you left it in this browser; the first time, only Companion is open.
+- Wizard: every On and Off pair in Options is one switch.
+- Wizard: a note that explains a setting waits behind a small i after the setting's name, and opens in place under it. A companions folder that can't be read, or that the browser blocks, still says so in view.
+- Wizard: the companion tiles are all picture. Five share a row, each companion fills its tile, and its name sits on a soft fade over its feet. None stays a tile. Add, and Create, which was Build, sit in the Companions folder row.
+- Wizard: Stats is a small chart beside the close button at the top of Options. It opens your counts in a popup over the panel, and the Show stats button is gone.
+- Wizard: while the Companion section is folded, your companion answers a change in Options from its place beside the cards instead of from its tile.
+- Skill: the companion guide names Create, next to Add, where it named Build.
+
+### Fixed
+
+- Wizard: Clear everything now also puts Number keys, where the context shows, and the time estimate back to how they start. Before, they kept your old choices until the page was reloaded, and any change in Options saved them again.
+
 ## Wizard 0.11.4, 28 October 2026
 
 ### Changed
