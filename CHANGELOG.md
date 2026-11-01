@@ -2,6 +2,12 @@
 
 What changed in the Decision Wizard and the d-wizard skill, newest first. The wizard and the skill keep their own version numbers. 
 
+## Wizard 0.11.6, 1 November 2026
+
+### Added
+
+- Wizard: in Options, a companion's tile rocks on its feet while the mouse rests on it: a lean to the right, then left and right in turn, 12 degrees each way, about 1.4 seconds a full rock. It keeps rocking while the mouse stays, even after a click picks it, and eases back to standing when the mouse leaves. The None tile stays still, a tap on a touch screen doesn't start it, and with your system's reduce motion setting on, no tile rocks.
+
 ## Wizard 0.11.5 and skill 0.10.1, 30 October 2026
 
 ### Changed
